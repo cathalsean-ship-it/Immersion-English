@@ -1,0 +1,126 @@
+---
+const dublinSub = [
+  { href: '/dublin-summer-2027', label: 'Overview' },
+  { href: '/dublin-summer-2027/accommodation', label: 'Accommodation' },
+  { href: '/dublin-summer-2027/trips-and-activities', label: 'Trips & Activities' },
+  { href: '/dublin-summer-2027/weekly-programme', label: 'Weekly Programme' },
+  { href: '/dublin-summer-2027/faqs', label: 'FAQs' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-ink/5 bg-off-white/70 backdrop-blur-md backdrop-saturate-150">
+  <nav class="container-x">
+    <div class="flex items-center justify-between gap-6 h-[72px]">
+      <a href="/" class="flex items-center gap-[10px] no-underline text-ink font-bold text-[1.05rem] font-heading tracking-tight">
+        <span class="nav-mark">
+          i<span class="text-brand-orange">·</span>
+        </span>
+        <span>Immersion English</span>
+      </a>
+
+      <!-- DESKTOP NAV -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="/about" class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">About</a>
+        <a href="/lessons" class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">Lessons</a>
+
+        <!-- Dropdown -->
+        <div class="relative group">
+          <a
+            href="/dublin-summer-2027"
+            class="flex items-center gap-1 text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors group-focus-within:text-brand-green"
+          >
+            Dublin Summer 2027
+            <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <!-- pt-3 keeps the hover bridge so the menu doesn't close in the gap -->
+          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 transition-all duration-200">
+            <ul class="bg-off-white border border-line rounded-md shadow-lift py-2 min-w-[230px]">
+              {dublinSub.map(item => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="block px-5 py-[10px] text-[0.9rem] text-ink-soft no-underline hover:text-brand-green hover:bg-cream transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a href="/contact" class="nav-cta no-underline">Contact</a>
+      </div>
+
+      <!-- MOBILE TOGGLE -->
+      <button
+        id="nav-toggle"
+        class="md:hidden w-10 h-10 p-2 bg-transparent border-0 flex flex-col justify-center items-stretch gap-[5px] cursor-pointer"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="block h-[2px] bg-ink rounded-[2px] transition-transform"></span>
+        <span class="block h-[2px] bg-ink rounded-[2px] transition-opacity"></span>
+        <span class="block h-[2px] bg-ink rounded-[2px] transition-transform"></span>
+      </button>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="hidden md:hidden pb-5">
+      <div class="flex flex-col gap-1 border-t border-line pt-4">
+        <a href="/about" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">About</a>
+        <a href="/lessons" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Lessons</a>
+
+        <!-- Mobile dropdown -->
+        <div>
+          <button
+            id="mobile-dublin-toggle"
+            class="w-full flex items-center justify-between py-2 bg-transparent border-0 cursor-pointer text-ink-soft text-[0.98rem] font-medium hover:text-brand-green transition-colors"
+            aria-expanded="false"
+            aria-controls="mobile-dublin-sub"
+          >
+            <span>Dublin Summer 2027</span>
+            <svg id="mobile-dublin-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <ul id="mobile-dublin-sub" class="hidden flex-col gap-1 pl-4 mt-1 mb-2 border-l-2 border-line">
+            {dublinSub.map(item => (
+              <li>
+                <a href={item.href} class="block py-[7px] text-[0.92rem] text-ink-soft no-underline hover:text-brand-green transition-colors">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <a href="/contact" class="nav-cta no-underline text-center mt-2">Contact</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  // Mobile Dublin submenu toggle
+  const dublinToggle = document.getElementById('mobile-dublin-toggle');
+  const dublinSub = document.getElementById('mobile-dublin-sub');
+  const dublinChevron = document.getElementById('mobile-dublin-chevron');
+  dublinToggle?.addEventListener('click', () => {
+    const open = dublinSub?.classList.toggle('hidden') === false;
+    dublinSub?.classList.toggle('flex', open);
+    dublinToggle.setAttribute('aria-expanded', String(open));
+    dublinChevron?.classList.toggle('rotate-180', open);
+  });
+</script>

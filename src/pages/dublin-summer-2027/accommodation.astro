@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Accommodation — Dublin Summer 2027" description="Students stay at Belgrove Residences, University College Dublin. Single rooms, shared bathrooms, 24/7 supervision.">
+
+  <!-- HERO -->
+  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
+    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+      <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
+        ← Dublin Summer 2027
+      </a>
+      <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange);">
+        <span class="inline-block w-6 h-[1.5px]" style="background: var(--orange);"></span>
+        Accommodation
+      </p>
+      <h1 class="text-white mb-5 max-w-[16ch]">
+        Staying at<br />University College
+        <span style="color: var(--orange);">Dublin.</span>
+      </h1>
+      <p class="text-white/80 text-[1.15rem] max-w-[50ch] leading-[1.55]">
+        Students stay on the beautiful UCD campus in Belgrove Residences — single rooms in shared apartments with 24/7 on-site supervision and security.
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT UCD -->
+  <section class="section">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-center">
+        <div
+          class="rounded-md overflow-hidden shadow-lift aspect-[4/3]"
+          style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px), #c8d5dd;"
+        ></div>
+        <div>
+          <span class="eyebrow eyebrow-dot">About UCD</span>
+          <h2 class="mb-5">University College Dublin</h2>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
+            Founded over 160 years ago, University College Dublin is Ireland's largest and most internationally connected university. Ranked among the top 1% of universities worldwide, UCD is home to more than 38,000 students from 152 countries.
+          </p>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch]">
+            The beautiful 1.33 km² campus combines parkland, modern facilities, and world-class learning spaces. Through extensive partnerships and exchange opportunities with over 400 universities worldwide, UCD offers students the chance to experience Ireland's rich culture while connecting with the global academic world.
+          </p>
+          <blockquote class="mt-8 pl-5 border-l-2 border-brand-green">
+            <p class="text-ink-soft text-[0.98rem] italic">UCD — where learning, research, and culture come together to shape global citizens.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELGROVE RESIDENCES -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 md:gap-20 items-center">
+        <div>
+          <span class="eyebrow eyebrow-dot">Where students stay</span>
+          <h2 class="mb-5">Belgrove Residences at UCD</h2>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
+            Located on the main UCD campus, the Belgrove Residences are three-storey apartment buildings set around grassed areas. Each student has their own private single bedroom within a shared apartment of 4–5 bedrooms and 2 bathrooms.
+          </p>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-8">
+            The residence is within walking distance to all campus amenities including restaurants and the gym, and a short walk to the Dublin Bus terminus which serves 16 different routes into the city.
+          </p>
+          <dl class="grid grid-cols-2 gap-5 border-t border-line pt-7">
+            {[
+              { label: 'Room type', value: 'Private single bedroom' },
+              { label: 'Bathrooms', value: '2 shared per apartment' },
+              { label: 'Students per apartment', value: '4–5' },
+              { label: 'Boys & girls', value: 'Separate areas' },
+            ].map(({ label, value }) => (
+              <div>
+                <dt class="font-heading text-[0.72rem] uppercase tracking-[0.12em] text-ink-soft mb-1 font-semibold">{label}</dt>
+                <dd class="m-0 font-heading font-semibold text-ink text-[0.98rem]">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div
+          class="rounded-md overflow-hidden shadow-lift aspect-[4/3]"
+          style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px), #d6d2c5;"
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">What's included</span>
+        <h2>Everything taken care of.</h2>
+        <p>The programme fee of €1,800 is all-inclusive — here's what's covered.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+        {[
+          { icon: '✈', item: 'Round-trip flights: Sofia–Dublin–Sofia (with 20kg check-in)' },
+          { icon: '🛏', item: 'Private single bedroom in a shared apartment at UCD' },
+          { icon: '📶', item: 'Free Wi-Fi throughout the UCD campus' },
+          { icon: '🔒', item: '24/7 reception and security at UCD campus accommodation' },
+          { icon: '🚌', item: 'Airport transfers on arrival and departure days' },
+          { icon: '👥', item: 'Group leaders in rooms next to student areas at night' },
+          { icon: '🏋', item: 'Walking distance to campus restaurants and gym' },
+          { icon: '🇧🇬', item: 'Bulgarian-speaking staff member available at all times' },
+          { icon: '🧺', item: 'On-site laundry facilities available (extra cost)' },
+        ].map(({ icon, item }) => (
+          <div class="flex items-start gap-4 py-5 border-b border-line sm:pr-8">
+            <span class="text-[1.2rem] flex-shrink-0 mt-[2px]">{icon}</span>
+            <span class="text-ink text-[0.97rem] leading-relaxed">{item}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 bg-cream border border-line rounded-lg p-6">
+        <p class="font-heading font-semibold text-ink mb-2">Please note: food is not included</p>
+        <p class="text-ink-soft text-[0.95rem] leading-relaxed">The €1,800 package does not include meals. There are many breakfast, lunch, and dinner options at the UCD food hall. We recommend a daily allowance of €20–25 for food, plus an extra €50 per week for souvenirs and spending money.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark">
+    <div class="container-x text-center">
+      <h2 class="mb-5">Questions about accommodation?</h2>
+      <p class="max-w-[44ch] mx-auto mb-8" style="color: rgba(254,255,254,0.74);">
+        Get in touch if you have specific questions about where your child will stay. We're happy to help.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/contact" class="btn btn-primary">Ask us anything <span class="btn-arrow">→</span></a>
+        <a href="/dublin-summer-2027" class="btn btn-ghost text-white border-white/30 hover:border-white">Back to programme</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

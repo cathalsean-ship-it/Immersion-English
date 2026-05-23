@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Home" description="Immersion English – speaking-focused English lessons in Sofia and a summer programme in Dublin for teens aged 13–17.">
+  <!-- HERO -->
+  <section class="relative min-h-[80vh] flex items-stretch text-white overflow-hidden isolate pb-10">
+    <div
+      class="absolute inset-0 -z-[2] bg-[#1a2a20] bg-cover bg-[center_40%]"
+      style="background-image: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"
+    ></div>
+    <div
+      class="absolute inset-0 -z-[1] pointer-events-none"
+      style="background:
+        linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%),
+        linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"
+    ></div>
+
+    <div class="container-x relative z-10 w-full flex items-end pt-[116px] pb-[56px]">
+      <div class="max-w-[760px]">
+        <span
+          class="inline-flex items-center gap-[10px] py-[7px] pr-[14px] pl-2 rounded-full bg-white/[.12] backdrop-blur-md border border-white/[.18] text-white font-heading font-semibold text-[0.78rem] tracking-[0.04em] mb-6"
+        >
+          <span class="bg-white text-brand-green px-[10px] py-[3px] rounded-full text-[0.7rem] tracking-[0.08em] uppercase">
+            Dublin Summer 2027
+          </span>
+          <span>Sofia & Dublin · July 2027</span>
+        </span>
+
+        <h1 class="text-white">
+          Confident English<br />
+          comes from using it –<br />
+          not <span style="color: var(--orange);">memorising</span> it.
+        </h1>
+
+        <p class="mt-6 text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
+          Immersion English is a speaking-focused English school in Sofia. We offer year-round courses online and an immersive summer programme in Dublin for teens aged 13–17.
+        </p>
+
+        <div class="mt-8 flex gap-4 items-center flex-wrap">
+          <a href="/dublin-summer-2027" class="btn btn-primary">
+            Explore Dublin Summer 2027
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="/lessons" class="btn btn-ghost text-white border-white/30 hover:border-white">
+            View our lessons
+          </a>
+        </div>
+
+        <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-3 gap-5 max-w-[640px]">
+          <div>
+            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">13</span>
+            <span class="block mt-2 text-[0.84rem] text-white/80">Max group size</span>
+          </div>
+          <div>
+            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">10+</span>
+            <span class="block mt-2 text-[0.84rem] text-white/80">Years' experience</span>
+          </div>
+          <div>
+            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">€1,800</span>
+            <span class="block mt-2 text-[0.84rem] text-white/80">Dublin programme</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden md:flex absolute right-10 bottom-[120px] z-20 flex-col gap-4 items-end">
+      <div
+        class="w-[150px] h-[150px] rounded-full bg-brand-green text-white grid place-items-center text-center font-heading font-bold leading-[1.1] shadow-[0_16px_40px_rgba(0,0,0,0.3)] -rotate-6"
+      >
+        <div>
+          <span class="block text-[1.55rem] tracking-[-0.02em]">€1,800</span>
+          <span class="block text-[0.62rem] font-medium tracking-[0.14em] uppercase opacity-95 mt-1">Full package</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS BAND -->
+  <section class="bg-white border-b border-line">
+    <div class="container-x py-6">
+      <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-center font-heading font-semibold text-[0.92rem] text-ink">
+        <span>Taught by British Council teachers</span>
+        <span class="text-brand-orange">◆</span>
+        <span>CELTA-qualified</span>
+        <span class="text-brand-orange">◆</span>
+        <span>Cambridge &amp; IELTS specialists</span>
+        <span class="text-brand-orange">◆</span>
+        <span>Small groups, max 8</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Why Immersion English</span>
+        <h2>English is learned best when it's used meaningfully.</h2>
+        <p>
+          Our lessons are designed for ambitious learners who want to communicate with confidence and clarity. We go beyond the textbook.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="trust-card">
+          <div class="trust-icon">✦</div>
+          <h3>Speaking-first teaching</h3>
+          <p>Every lesson prioritises active speaking and real communication over passive learning. You leave each class having used English, not just studied it.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">✦</div>
+          <h3>Small groups, real attention</h3>
+          <p>Maximum 8 students in our online Speak Up courses. You get individual feedback, more time to speak, and a teacher who knows your goals.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">✦</div>
+          <h3>Experience that counts</h3>
+          <p>Lenny is CELTA-qualified with over 10 years of experience teaching at the British Council in Sofia and international summer programmes in Oxford and Brighton.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="section">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.05fr] gap-10 md:gap-20 items-center">
+        <div
+          class="rounded-lg overflow-hidden shadow-lift aspect-[5/6]"
+          style="background:
+            repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px),
+            #c8d8cc;"
+        ></div>
+
+        <div>
+          <span class="eyebrow eyebrow-dot">Dublin Summer 2027</span>
+          <h2 class="mt-4 mb-4">English beyond the classroom.</h2>
+          <p class="text-ink-soft text-[1.08rem] max-w-[56ch]">
+            Our flagship immersive programme takes teenagers to Dublin for one week of full English immersion – daily lessons, real-world experiences, and cultural adventures.
+          </p>
+
+          <dl class="grid grid-cols-2 gap-7 my-10 py-8 border-y border-line">
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Duration</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">7 days</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">13–17</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Group size</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">Max 13</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Departs</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">Sofia</dd>
+            </div>
+          </dl>
+
+          <ul class="list-none p-0 m-0 flex flex-col gap-[14px]">
+            {[
+              'Round-trip flights Sofia–Dublin–Sofia included.',
+              'Accommodation at University College Dublin campus.',
+              '15 hours of English lessons with a native, CELTA-qualified teacher.',
+              '1 full day trip + 5 half-day trips across Dublin and Ireland.',
+              '24/7 supervision, with a Bulgarian speaker available at all times.',
+            ].map(text => (
+              <li class="flex items-start gap-3 text-ink text-base">
+                <span class="flex-shrink-0 mt-1 w-[18px] h-[18px] rounded-full bg-brand-green-soft text-brand-green grid place-items-center text-xs">✓</span>
+                <span>{text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="section" style="background: linear-gradient(135deg, #008037 0%, #006a2d 100%);">
+    <div class="container-x">
+      <div class="max-w-[840px] mx-auto text-center">
+        <span class="block font-heading font-bold text-[3.5rem] leading-none text-brand-orange">&ldquo;</span>
+        <p class="text-white text-[1.6rem] md:text-[1.95rem] font-heading font-semibold leading-[1.32] tracking-[-0.01em] -mt-2 mb-7 text-balance">
+          Lenny is the most motivational English teacher I've ever met — fun, professional, and focused on exactly what I needed.
+        </p>
+        <p class="text-white/75 font-heading font-semibold text-[0.92rem] tracking-[0.04em]">— Natalya Baleva</p>
+        <a href="/about" class="inline-flex items-center gap-2 mt-7 text-white/90 hover:text-white font-heading font-semibold text-[0.9rem] no-underline border-b border-white/30 hover:border-white pb-[2px] transition-colors">
+          Read more student stories →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DUBLIN GALLERY -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Dublin</span>
+        <h2>A city where every conversation is an adventure.</h2>
+        <p>Dublin's warmth, charm, and character make it the perfect place to live English, not just learn it.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-5 auto-rows-[200px] md:auto-rows-[280px]">
+        {[
+          { n: 1, label: 'Trinity College', caption: 'Walk where Joyce and Wilde once studied' },
+          { n: 2, label: 'Howth Cliff Walk', caption: 'Sea views and fresh Atlantic air' },
+          { n: 3, label: 'Glendalough', caption: 'Ancient Ireland in the Wicklow Mountains' },
+          { n: 4, label: "St Stephen's Green", caption: 'A quiet escape in the heart of the city' },
+          { n: 5, label: 'Dublin Castle', caption: '800 years of history' },
+        ].map(({ n, label, caption }, i) => (
+          <div
+            class:list={[
+              'relative rounded-md overflow-hidden cursor-pointer transition-transform hover:-translate-y-[3px]',
+              i < 3 ? 'col-span-1 md:col-span-2' : '',
+              i === 3 ? 'col-span-1 md:col-start-2 md:col-span-2' : '',
+              i === 4 ? 'col-span-2 md:col-start-4 md:col-span-2' : '',
+            ]}
+            style={`background:
+              repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px),
+              ${['#c8d8cc','#c2d0dc','#d6d2c5','#c7cfd8','#d7c3b0'][i]};`}
+          >
+            <div class="absolute inset-0 flex flex-col justify-end p-[22px] text-white" style="background: linear-gradient(180deg, rgba(20,32,26,0) 50%, rgba(20,32,26,0.65) 100%);">
+              <span class="font-mono text-[0.72rem] tracking-[0.08em] opacity-85">0{n}</span>
+              <span class="font-heading font-semibold text-[1.25rem] tracking-[-0.01em] mt-1">{label}</span>
+              <span class="text-[0.86rem] opacity-85 mt-[2px]">{caption}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-dark">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+        <div>
+          <span class="eyebrow eyebrow-dot">Contact</span>
+          <h2 class="mt-4 mb-4">Got a question? We're here.</h2>
+          <p>Book a free consultation and we'll help you find the right programme or course.</p>
+
+          <div class="flex flex-col gap-6 mt-8">
+            {[
+              { label: 'Email', value: 'immersionenglish.ie@gmail.com', icon: '✉' },
+              { label: 'Phone (English)', value: '+359 893 387 464', icon: '📞' },
+              { label: 'Phone (Bulgarian)', value: '+359 889 178 100', icon: '📞' },
+            ].map(({ label, value, icon }) => (
+              <div class="flex gap-4 items-start py-4 border-b border-white/10">
+                <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green grid place-items-center flex-shrink-0">{icon}</div>
+                <div>
+                  <div class="font-heading text-[0.78rem] uppercase tracking-[0.12em] text-white/55 mb-[2px] font-semibold">{label}</div>
+                  <div class="font-heading font-medium text-white text-[1.02rem]">{value}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="bg-white text-ink rounded-lg p-9 shadow-lift">
+          <h3 class="text-[1.35rem] mb-[6px]">Book a free consultation</h3>
+          <p class="text-ink-soft text-[0.95rem] mb-6">Tell us about your goals and we'll help you find the right course or programme. We reply within one working day.</p>
+
+          <div class="grid grid-cols-2 gap-[14px] mb-[14px]">
+            <div class="flex flex-col gap-[6px]">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
+              <input type="text" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+            </div>
+            <div class="flex flex-col gap-[6px]">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Last name</label>
+              <input type="text" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+            </div>
+            <div class="flex flex-col gap-[6px] col-span-2">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
+              <input type="email" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+            </div>
+            <div class="flex flex-col gap-[6px] col-span-2">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
+              <textarea rows="3" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-y min-h-[90px]"></textarea>
+            </div>
+          </div>
+
+          <button class="btn btn-primary w-full justify-center mt-2">
+            Send message
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

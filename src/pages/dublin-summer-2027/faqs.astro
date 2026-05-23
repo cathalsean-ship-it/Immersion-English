@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    id: 'programme',
+    heading: 'The programme',
+    faqs: [
+      {
+        q: 'What will the timetable be?',
+        a: "Students are busy all day long and will have a balanced educational timetable, daily trips, and free time between activities. Exact programme dates for July 2027 will be announced in September 2026. All enrolled families will receive the full schedule no later than two weeks before departure.",
+      },
+      {
+        q: 'How many students will be in the group?',
+        a: 'There is a maximum of 13 students per group so that we can ensure individual attention, safety, and close supervision.',
+      },
+      {
+        q: 'What qualifications do your teachers have?',
+        a: 'Our teachers have CELTA (Certificate in English Language Teaching to Speakers of Other Languages) qualifications, as well as Young Learner teaching qualifications.',
+      },
+      {
+        q: 'What age group is the programme for?',
+        a: 'The programme is designed for teens aged 13–17. Under certain circumstances, if a child turns 13 or 18 and is still in high school up until the summer of the camp, we may accept them on the programme.',
+      },
+      {
+        q: 'What level of English do students need?',
+        a: 'Students of all levels are welcome. They will sit a level test on arrival and be placed in the most appropriate group. Our end-of-programme certificate will record the level and note strengths and recommended next level.',
+      },
+      {
+        q: 'What will my child\'s end-of-course certificate say?',
+        a: 'The certificate records the number of hours studied and notes your child\'s strengths and weaknesses with a recommendation for the next English level. Example: "Sofia Dimitrova has attended an English Language Course for 15 hours and has progressed with reference to the CEFR descriptors at Upper Intermediate Level (B2)."',
+      },
+      {
+        q: 'What is the CEFR, and how do I understand the levels?',
+        a: 'The CEFR is the Common European Framework of Reference for Languages — the international standard for describing language ability from A1 (complete beginner) to C2 (mastery). All Immersion English programmes are aligned to this scale, with a focus on communicative competence in real-life, everyday situations.',
+      },
+    ],
+  },
+  {
+    id: 'logistics',
+    heading: 'Logistics & travel',
+    faqs: [
+      {
+        q: 'Does the price include flights?',
+        a: 'Yes. The programme price of €1,800 includes round-trip flights Sofia–Dublin–Sofia with a 20kg check-in bag. Additional fees apply for extra checked-in luggage.',
+      },
+      {
+        q: 'Are airport transfers included?',
+        a: 'Yes. Immersion English staff will meet all students at Dublin Airport on arrival day and accompany them on departure day.',
+      },
+      {
+        q: 'What happens on the first day?',
+        a: "On arrival, students will be shown to their room and given a tour of the campus and relevant information about living on campus, classes, and activities. They'll also be shown their classroom and activity meeting point for the following day, then join in scheduled activities.",
+      },
+      {
+        q: 'What should my child bring?',
+        a: 'You will receive a full packing list no later than two weeks before departure. Immersion English will provide all learning materials, a branded raincoat, and a notebook for your child.',
+      },
+      {
+        q: 'What is the nationality mix of the group?',
+        a: 'Your child will be with other Bulgarian students aged 13–17. Group leaders and the teaching assistant are English speakers. A Bulgarian speaker will be available at all times, but Bulgarian will only be used for special circumstances.',
+      },
+    ],
+  },
+  {
+    id: 'accommodation',
+    heading: 'Accommodation & campus',
+    faqs: [
+      {
+        q: 'Where will my child stay?',
+        a: 'Students stay at Belgrove Residences on the University College Dublin (UCD) campus. Each child has their own single bedroom within a private apartment of 4 bedrooms and 2 shared bathrooms. There is 24/7 reception and security, on-site laundry facilities (at extra cost), and the accommodation is within walking distance to all campus amenities.',
+      },
+      {
+        q: 'Are the rooms en suite?',
+        a: 'The majority of rooms are not en suite — students share toilets and shower areas within their apartment.',
+      },
+      {
+        q: 'Are boys and girls placed in different areas?',
+        a: 'Yes. Boys and girls are in separate areas of the residence.',
+      },
+      {
+        q: 'Is there free Wi-Fi on campus?',
+        a: 'Yes, there is free Wi-Fi throughout the UCD campus.',
+      },
+      {
+        q: 'Are meals included?',
+        a: 'No. Meals are not included in the €1,800 package. There are many breakfast, lunch, and dinner options at the UCD food hall. We recommend a daily allowance of €20–25 for food, plus an extra €50 per week for souvenirs and spending money.',
+      },
+    ],
+  },
+  {
+    id: 'safety',
+    heading: 'Safety & welfare',
+    faqs: [
+      {
+        q: 'Is there supervision outside class hours?',
+        a: 'Yes. Immersion English staff are present and reachable 24 hours a day throughout the programme. Group leaders sleep in rooms next to each student area and are on call at night.',
+      },
+      {
+        q: 'How is the residence supervised at night?',
+        a: 'Group leaders sleep in rooms next to student areas and are on call throughout the night. In addition, there is 24-hour security at the UCD campus accommodation.',
+      },
+      {
+        q: 'Can my child leave the UCD campus alone?',
+        a: "No. Students are not allowed to leave campus without supervision. All Dublin city centre visits and landmark excursions take place as a supervised group.",
+      },
+      {
+        q: 'What happens if a student gets sick?',
+        a: "Our staff are trained to handle medical situations. We carry a first-aid kit at all times and have emergency contact procedures in place. In the event of illness, parents are contacted immediately and the student is cared for by a staff member at all times.",
+      },
+      {
+        q: 'Can parents contact students during the programme?',
+        a: "Yes. Students keep their phones and can call and message families freely during free time. Parents can also contact the programme director at any time. During classes, activities, and lights-out, phones must be turned off.",
+      },
+      {
+        q: 'Are mobile phones allowed?',
+        a: 'Yes, but during classes, activities and lights-out, mobile phones must be turned off.',
+      },
+    ],
+  },
+  {
+    id: 'costs',
+    heading: 'Costs & booking',
+    faqs: [
+      {
+        q: 'What is included in the price?',
+        a: 'The full package price of €1,800 includes: round-trip flights Sofia–Dublin–Sofia (with 20kg check-in), single-room accommodation at UCD, 15 hours of English lessons, 1 full day trip and 5 half-day trips, 7 evening activities, airport transfers, level test, and end-of-programme certificate.',
+      },
+      {
+        q: 'Are there any additional costs?',
+        a: 'The package does not include food. We recommend €20–25 per day for meals at the UCD food hall, plus €50 per week for personal spending money. On-site laundry facilities are available at an extra cost.',
+      },
+      {
+        q: 'When do I pay the deposit and fees?',
+        a: 'A non-refundable deposit of €650 is required to reserve a place. The remaining balance of €1,150 is due no later than 31 May 2027. We will send bank details after your free consultation and once you have reserved a spot.',
+      },
+      {
+        q: 'What is the refund policy?',
+        a: 'The €650 deposit is non-refundable, as it secures a flight for your child. In the unlikely event the programme does not go ahead, all payments will be fully refunded. All cancellations must be made in writing to immersionenglish.ie@gmail.com. Refunds are processed within 7–10 business days. No refunds are given for no-shows or early departures.',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title="FAQs — Dublin Summer 2027" description="Frequently asked questions about the Immersion English Dublin Summer Programme 2027 for teens aged 13–17.">
+
+  <!-- HERO -->
+  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
+    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+      <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
+        ← Dublin Summer 2027
+      </a>
+      <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange);">
+        <span class="inline-block w-6 h-[1.5px]" style="background: var(--orange);"></span>
+        FAQs
+      </p>
+      <h1 class="text-white mb-5 max-w-[14ch]">
+        Your questions,<br />
+        <span style="color: var(--orange);">answered.</span>
+      </h1>
+      <p class="text-white/80 text-[1.15rem] max-w-[50ch] leading-[1.55]">
+        Everything parents and students want to know before booking the Dublin Summer Programme.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="section">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-10 md:gap-16 items-start">
+
+        <!-- Sticky nav -->
+        <nav class="hidden md:flex flex-col gap-1 sticky top-[90px]">
+          {sections.map(({ id, heading }) => (
+            <a
+              href={`#${id}`}
+              class="text-[0.9rem] font-heading font-semibold text-ink-soft hover:text-brand-green transition-colors no-underline py-2 px-3 rounded-md hover:bg-cream"
+            >
+              {heading}
+            </a>
+          ))}
+          <div class="mt-6 pt-6 border-t border-line">
+            <a href="/contact" class="btn btn-primary text-[0.88rem] py-3 px-5 justify-center w-full">
+              Still have questions?
+            </a>
+          </div>
+        </nav>
+
+        <!-- FAQ content -->
+        <div class="flex flex-col gap-14">
+          {sections.map(({ id, heading, faqs }) => (
+            <div id={id}>
+              <h2 class="text-[1.5rem] mb-8 pb-5 border-b-2 border-brand-green">{heading}</h2>
+              <div class="flex flex-col gap-0">
+                {faqs.map(({ q, a }) => (
+                  <div class="py-7 border-b border-line last:border-0">
+                    <h3 class="text-[1.05rem] mb-3">{q}</h3>
+                    <p class="text-ink-soft text-[0.97rem] leading-relaxed max-w-[66ch]">{a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark">
+    <div class="container-x text-center">
+      <h2 class="mb-5">Still have a question?</h2>
+      <p class="max-w-[44ch] mx-auto mb-8" style="color: rgba(254,255,254,0.74);">
+        We're happy to answer anything, big or small. Get in touch and we'll reply within one working day.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/contact" class="btn btn-primary">
+          Contact us
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="/dublin-summer-2027" class="btn btn-ghost text-white border-white/30 hover:border-white">
+          Back to programme
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

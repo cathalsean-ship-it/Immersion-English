@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Weekly Programme — Dublin Summer 2027" description="The weekly timetable for the Immersion English Dublin Summer Programme 2027.">
+
+  <!-- HERO -->
+  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
+    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+      <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
+        ← Dublin Summer 2027
+      </a>
+      <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange);">
+        <span class="inline-block w-6 h-[1.5px]" style="background: var(--orange);"></span>
+        Weekly programme
+      </p>
+      <h1 class="text-white mb-5 max-w-[16ch]">
+        Students are busy<br />all day
+        <span style="color: var(--orange);">long.</span>
+      </h1>
+      <p class="text-white/80 text-[1.15rem] max-w-[50ch] leading-[1.55]">
+        A balanced timetable of English lessons, daily trips, and evening activities — with free time built in between.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHAT'S IN A WEEK -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">A week at a glance</span>
+        <h2>Learning in every moment of the day.</h2>
+        <p>Every day combines structured English lessons with cultural activities and social events — with English as the language of every interaction.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        {[
+          { label: 'English lessons', hours: '15h', sublabel: 'over the week', color: 'var(--green)' },
+          { label: 'Day trips & activities', hours: '6', sublabel: 'outings (1 full + 5 half)', color: 'var(--orange)' },
+          { label: 'Evening activities', hours: '7', sublabel: 'social events', color: '#7b6cf0' },
+          { label: 'Max group size', hours: '13', sublabel: 'students', color: '#b0b8b4' },
+        ].map(({ label, hours, sublabel, color }) => (
+          <div class="bg-white border border-line rounded-md p-6 flex flex-col gap-2">
+            <span class="w-3 h-3 rounded-full flex-shrink-0" style={`background: ${color};`}></span>
+            <span class="font-heading font-bold text-[1.8rem] text-ink tracking-[-0.02em] leading-none">{hours}</span>
+            <span class="font-heading font-semibold text-ink text-[0.92rem]">{label}</span>
+            <span class="text-ink-soft text-[0.8rem]">{sublabel}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMETABLE NOTICE -->
+  <section class="section">
+    <div class="container-x">
+      <div class="max-w-3xl mx-auto">
+        <span class="eyebrow eyebrow-dot">Full timetable</span>
+        <h2 class="mt-4 mb-6">The detailed timetable is coming.</h2>
+
+        <div class="bg-cream border border-line rounded-lg p-8 mb-10">
+          <p class="font-heading font-semibold text-ink mb-2">Exact dates and full schedule</p>
+          <p class="text-ink-soft text-[0.98rem] leading-relaxed">
+            Exact programme dates for July 2027 will be announced in September 2026, along with the full detailed daily timetable. All enrolled families will receive the complete schedule no later than two weeks before departure.
+          </p>
+        </div>
+
+        <h3 class="text-[1.2rem] mb-6">What a typical day looks like</h3>
+
+        <div class="flex flex-col gap-0 border-t border-line">
+          {[
+            { time: 'Morning', title: 'English lessons', desc: '15 hours of lessons across the week, taught by Lenny in small groups of maximum 13 students. Focus on speaking, fluency, and real communication.', color: 'var(--green)' },
+            { time: 'Afternoon', title: 'Trips & activities', desc: '1 full day trip (Kilkenny, Wicklow Mountains and Glendalough) plus 5 half-day trips across Dublin — Trinity College, Howth, Dublin Zoo, and more.', color: 'var(--orange)' },
+            { time: 'Evening', title: 'Social activities', desc: '7 evening activities — sports night, talent show, quiz night, games evenings, and more. Teams are mixed across nationalities.', color: '#7b6cf0' },
+            { time: 'Throughout', title: 'Free time', desc: 'Free time is built in between activities — to explore, recharge, or chat with new friends. Always supervised.', color: '#b0b8b4' },
+          ].map(({ time, title, desc, color }) => (
+            <div class="flex gap-6 items-start py-7 border-b border-line">
+              <div class="flex-shrink-0 w-28">
+                <span class="font-heading font-semibold text-[0.8rem] uppercase tracking-[0.1em] text-ink-soft">{time}</span>
+              </div>
+              <div class="flex gap-4 items-start flex-1">
+                <span class="w-2 h-2 rounded-full flex-shrink-0 mt-[8px]" style={`background: ${color};`}></span>
+                <div>
+                  <p class="font-heading font-semibold text-ink text-[1.05rem] mb-1">{title}</p>
+                  <p class="text-ink-soft text-[0.97rem] leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-10 bg-cream border border-line rounded-lg p-6">
+          <p class="font-heading font-semibold text-ink mb-2">About mobile phones</p>
+          <p class="text-ink-soft text-[0.92rem] leading-relaxed">Yes, students may bring mobile phones. During classes, activities and lights-out, mobile phones must be turned off. Students can call and message families freely during free time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark">
+    <div class="container-x text-center">
+      <h2 class="mb-5">Interested in July 2027?</h2>
+      <p class="max-w-[44ch] mx-auto mb-8" style="color: rgba(254,255,254,0.74);">
+        Register your interest now and we'll send the full timetable as soon as it's confirmed in September 2026.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/contact" class="btn btn-primary">
+          Register your interest
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="/dublin-summer-2027/faqs" class="btn btn-ghost text-white border-white/30 hover:border-white">
+          Read the FAQs
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

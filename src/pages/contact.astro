@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact Us" description="Book a free consultation with Immersion English — online English lessons in Sofia and the Dublin Summer Programme for teens.">
+
+  <!-- HERO (compact) -->
+  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 40vh;">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
+    <div class="container-x relative z-10 pt-[120px] pb-[72px]">
+      <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange);">
+        <span class="inline-block w-6 h-[1.5px]" style="background: var(--orange);"></span>
+        Contact
+      </p>
+      <h1 class="text-white mb-4">Get in touch.</h1>
+      <p class="text-white/80 text-[1.15rem] max-w-[46ch] leading-[1.55]">
+        Questions about lessons, the Dublin programme, or anything else — we're happy to hear from you.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Registration process</span>
+        <h2>Three steps to get started.</h2>
+        <p>Whether you're joining a course or enquiring about the Dublin Summer Programme, here's how it works.</p>
+      </div>
+      <ol class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {[
+          {
+            n: '01',
+            title: 'Book a free online consultation',
+            body: 'Fill out the form below to book a 20-minute online consultation with one of our teachers to discuss your goals, experience, and the most suitable course options.',
+          },
+          {
+            n: '02',
+            title: 'Complete an online level check',
+            body: "For Exam Prep lessons only. After your consultation, we'll send you a link to a short level check to assess your current level accurately.",
+          },
+          {
+            n: '03',
+            title: 'Confirm your place',
+            body: "Once you've completed the consultation, we'll email you a registration form, full course details, and payment instructions. Your place is confirmed once both are received.",
+          },
+        ].map(({ n, title, body }) => (
+          <li class="trust-card">
+            <span class="font-heading font-bold text-[2rem] leading-none tracking-[-0.03em]" style="color: var(--orange);">{n}</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM + DETAILS -->
+  <section class="section">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10 md:gap-16 items-start">
+
+        <!-- LEFT: details -->
+        <div>
+          <span class="eyebrow eyebrow-dot">How to reach us</span>
+          <h2 class="mt-4 mb-6 text-[1.9rem]">We reply within one working day.</h2>
+
+          <div class="flex flex-col gap-0 border-t border-line">
+            {[
+              { label: 'Email', value: 'immersionenglish.ie@gmail.com', icon: '✉', href: 'mailto:immersionenglish.ie@gmail.com' },
+              { label: 'Phone (English)', value: '+359 893 387 464', icon: '📞', href: 'tel:+359893387464' },
+              { label: 'Phone (Bulgarian)', value: '+359 889 178 100', icon: '📞', href: 'tel:+359889178100' },
+              { label: 'Facebook', value: 'immersionenglish.ie', icon: 'f', href: 'https://facebook.com/immersionenglish.ie' },
+            ].map(({ label, value, icon, href }) => (
+              <a
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                class="flex gap-4 items-start py-5 border-b border-line no-underline group"
+              >
+                <div class="w-9 h-9 rounded-full grid place-items-center flex-shrink-0 text-[1rem] group-hover:opacity-80 transition-opacity" style="background: var(--green-soft); color: var(--green);">{icon}</div>
+                <div>
+                  <div class="font-heading text-[0.72rem] uppercase tracking-[0.12em] mb-[3px] font-semibold text-ink-soft">{label}</div>
+                  <div class="text-ink font-medium text-[0.98rem] group-hover:text-brand-green transition-colors">{value}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div class="mt-8 bg-cream border border-line rounded-lg p-6">
+            <p class="font-heading font-semibold text-ink mb-2">Pastoral support for Dublin Summer 2027</p>
+            <p class="text-ink-soft text-[0.92rem] leading-relaxed">Before departure, you'll meet Lenny and our Bulgarian-speaking team member in person at a pre-departure evening in Sofia. During the programme, our Bulgarian-speaking staff member is available throughout for any questions or concerns — from you or your child.</p>
+          </div>
+        </div>
+
+        <!-- RIGHT: form -->
+        <div class="bg-white border border-line rounded-lg p-9 shadow-lift">
+          <h3 class="text-[1.45rem] mb-1">Book a free consultation</h3>
+          <p class="text-ink-soft text-[0.95rem] mb-7">Tell us a bit about yourself and what you're looking for — we'll get back to you within one working day.</p>
+
+          <div class="grid grid-cols-2 gap-[14px]">
+            <div class="flex flex-col gap-[6px]">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
+              <input type="text" placeholder="Jana" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+            </div>
+            <div class="flex flex-col gap-[6px]">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Last name</label>
+              <input type="text" placeholder="Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+            </div>
+            <div class="flex flex-col gap-[6px] col-span-2">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
+              <input type="email" placeholder="jana@example.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+            </div>
+            <div class="flex flex-col gap-[6px] col-span-2">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">I'm interested in</label>
+              <select class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
+                <option value="">Select a course or programme…</option>
+                <option>Speak Up! (group speaking course)</option>
+                <option>Personal Speaking Coach (1:1)</option>
+                <option>Exam Prep (CAE / IELTS)</option>
+                <option>Dublin Summer 2027</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-[6px] col-span-2">
+              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
+              <textarea rows="4" placeholder="Tell us a bit about yourself and what you're looking for…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none min-h-[100px]"></textarea>
+            </div>
+          </div>
+          <button class="btn btn-primary w-full justify-center mt-5">
+            Send message
+            <span class="btn-arrow">→</span>
+          </button>
+          <p class="text-center text-ink-soft text-[0.82rem] mt-4">We reply within one working day.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

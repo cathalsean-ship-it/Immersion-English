@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Dublin Summer 2027"
+  description="Immersion English Summer Programme for Teens — 1 week in Dublin, Ireland. Ages 13–17. July 2027. €1,800 full package including flights."
+>
+
+  <!-- HERO -->
+  <section class="relative min-h-[80vh] flex items-stretch text-white overflow-hidden isolate pb-10">
+    <div
+      class="absolute inset-0 -z-[2]"
+      style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"
+    ></div>
+    <div
+      class="absolute inset-0 -z-[1] pointer-events-none"
+      style="background:
+        linear-gradient(180deg, rgba(20,32,26,0.3) 0%, rgba(20,32,26,0.5) 45%, rgba(20,32,26,0.92) 100%),
+        linear-gradient(95deg, rgba(0,60,100,0.4) 0%, rgba(20,32,26,0.1) 60%, rgba(20,32,26,0) 100%);"
+    ></div>
+
+    <div class="container-x relative z-10 w-full flex items-end pt-[116px] pb-[56px]">
+      <div class="max-w-[760px]">
+        <span
+          class="inline-flex items-center gap-[10px] py-[7px] pr-[14px] pl-2 rounded-full bg-white/[.12] backdrop-blur-md border border-white/[.18] text-white font-heading font-semibold text-[0.78rem] tracking-[0.04em] mb-7"
+        >
+          <span class="bg-white text-brand-green px-[10px] py-[3px] rounded-full text-[0.7rem] tracking-[0.08em] uppercase">
+            Summer 2027
+          </span>
+          <span>Dublin, Ireland · July 2027</span>
+        </span>
+
+        <h1 class="text-white">
+          Dublin Summer School<br />
+          for Teenagers<br />
+          <span style="color: var(--orange);">aged 13–17.</span>
+        </h1>
+
+        <p class="mt-7 text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
+          More than just English lessons — it's a journey into Irish culture, connection, and communication. Set in the heart of Dublin, students practise English through interactive classes, real-world experiences, and memorable adventures.
+        </p>
+
+        <div class="mt-9 flex gap-4 items-center flex-wrap">
+          <a href="/contact" class="btn btn-primary">
+            Apply now
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#programme" class="btn btn-ghost text-white border-white/30 hover:border-white">
+            See the programme
+          </a>
+        </div>
+
+        <div class="mt-14 pt-7 border-t border-white/[.18] grid grid-cols-3 gap-5 max-w-[640px]">
+          <div>
+            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">13</span>
+            <span class="block mt-2 text-[0.84rem] text-white/80">Max group size</span>
+          </div>
+          <div>
+            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">13–17</span>
+            <span class="block mt-2 text-[0.84rem] text-white/80">Age range</span>
+          </div>
+          <div>
+            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">7</span>
+            <span class="block mt-2 text-[0.84rem] text-white/80">Days in Dublin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden md:flex absolute right-10 bottom-[120px] z-20 flex-col gap-4 items-end">
+      <div
+        class="w-[150px] h-[150px] rounded-full bg-brand-green text-white grid place-items-center text-center font-heading font-bold leading-[1.1] shadow-[0_16px_40px_rgba(0,0,0,0.3)] -rotate-6"
+      >
+        <div>
+          <span class="block text-[1.55rem] tracking-[-0.02em]">€1,800</span>
+          <span class="block text-[0.62rem] font-medium tracking-[0.14em] uppercase opacity-95 mt-1">Full package</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME OVERVIEW -->
+  <section id="programme" class="section">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.05fr] gap-10 md:gap-20 items-center">
+        <div
+          class="rounded-lg overflow-hidden shadow-lift aspect-[5/6]"
+          style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px), #c8d5dd;"
+        ></div>
+        <div>
+          <span class="eyebrow eyebrow-dot">The programme</span>
+          <h2 class="mt-4 mb-5">A safe, fully supervised programme combining English learning, cultural activities, and real-life communication.</h2>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch]">
+            Starting in July 2027, your child will experience full language immersion in Dublin, practising English daily through real-life communication while exploring the city's iconic landmarks and hidden gems.
+          </p>
+
+          <dl class="grid grid-cols-2 gap-7 my-10 py-8 border-y border-line">
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Duration</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">7 days</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">13–17</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Group size</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">Max 13</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Starting from</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">July 2027</dd>
+            </div>
+          </dl>
+
+          <p class="text-ink-soft text-[0.88rem] italic mb-6">Exact dates to be announced in September 2026.</p>
+
+          <ul class="list-none p-0 m-0 flex flex-col gap-[14px]">
+            {[
+              'Round-trip flights: Sofia–Dublin–Sofia (with 20kg check-in).',
+              'Single-room accommodation at University College Dublin campus.',
+              '15 hours of English lessons with Lenny, native CELTA-qualified teacher.',
+              '1 full day trip + 5 half-day trips across Dublin and Ireland.',
+              '7 evening activities.',
+              'Level test and end-of-programme certificate.',
+              '24/7 supervision, with a Bulgarian speaker available at all times.',
+            ].map(text => (
+              <li class="flex items-start gap-3 text-ink text-base">
+                <span class="flex-shrink-0 mt-1 w-[18px] h-[18px] rounded-full grid place-items-center text-xs" style="background: var(--green-soft); color: var(--green);">✓</span>
+                <span>{text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY JOIN -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Why join</span>
+        <h2>English beyond the classroom.</h2>
+        <p>Every moment in Dublin is a chance to speak, learn, and grow.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {[
+          { icon: '🎓', title: 'Taught by Lenny', body: 'Study with Cathal (Lenny) Leonard — an Irish, CELTA-qualified English teacher with over 10 years of experience teaching teenagers and adults.' },
+          { icon: '🗣', title: 'Build real confidence', body: 'Build confidence through communication and teamwork. Improve your English by living it — inside and outside the classroom.' },
+          { icon: '🌍', title: 'Make lasting friendships', body: 'Meet new people and make lasting friendships. Explore Dublin\'s culture, music, and spirit with a local who knows the city.' },
+        ].map(({ icon, title, body }) => (
+          <div class="trust-card">
+            <div class="trust-icon text-[1.8rem]">{icon}</div>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PASTORAL REASSURANCE -->
+  <section class="section">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center">
+        <div>
+          <span class="eyebrow eyebrow-dot">Your child is in safe hands</span>
+          <h2 class="mt-4 mb-5">From Sofia to Dublin and back.</h2>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
+            Before departure, you'll meet Lenny and our Bulgarian-speaking team member in person at our pre-departure information evening in Sofia.
+          </p>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch]">
+            During the programme, our Bulgarian-speaking staff member is available throughout for any questions or concerns — from you or your child.
+          </p>
+          <div class="mt-8 flex flex-col gap-4">
+            {[
+              '24/7 supervision by Immersion English staff',
+              'Bulgarian speaker available at all times',
+              'Pre-departure information evening in Sofia',
+              'Group leaders in rooms next to student areas at night',
+              '24-hour campus security at UCD',
+            ].map(item => (
+              <div class="flex items-start gap-3">
+                <span class="flex-shrink-0 mt-1 w-[18px] h-[18px] rounded-full grid place-items-center text-xs" style="background: var(--green-soft); color: var(--green);">✓</span>
+                <span class="text-ink text-[0.97rem]">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div
+          class="rounded-md overflow-hidden shadow-lift aspect-[4/3]"
+          style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px), #c8d8cc;"
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION LINKS -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Find out more</span>
+        <h2>Everything you need to know.</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {[
+          { href: '/dublin-summer-2027/accommodation', icon: '🏠', title: 'Accommodation', desc: 'Single-room accommodation at University College Dublin — one of Ireland\'s most internationally connected universities.' },
+          { href: '/dublin-summer-2027/trips-and-activities', icon: '🗺', title: 'Trips & Activities', desc: 'Trinity College, the Book of Kells, Howth Cliff Walk, Glendalough, Dublin Castle — and much more.' },
+          { href: '/dublin-summer-2027/weekly-programme', icon: '📅', title: 'Weekly Programme', desc: 'A balanced timetable of daily English lessons, afternoon trips, and evening social activities.' },
+          { href: '/dublin-summer-2027/faqs', icon: '💬', title: 'FAQs', desc: 'Answers to the questions parents and students ask most before booking.' },
+        ].map(({ href, icon, title, desc }) => (
+          <a href={href} class="trust-card group no-underline text-ink">
+            <div class="text-[1.8rem] w-10 h-10 grid place-items-center">{icon}</div>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+            <span class="inline-flex items-center gap-2 text-[0.88rem] font-heading font-semibold mt-auto pt-4 border-t border-line group-hover:gap-3 transition-all" style="color: var(--green);">
+              Find out more →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark">
+    <div class="container-x text-center">
+      <span class="eyebrow eyebrow-dot">Ready to go?</span>
+      <h2 class="mt-4 mb-5">Places are limited. Apply for July 2027.</h2>
+      <p class="max-w-[50ch] mx-auto mb-8 text-[1.05rem]" style="color: rgba(254,255,254,0.74);">
+        €650 deposit to reserve a place. Balance of €1,150 due no later than 31 May 2027. Contact us to register your interest or ask a question.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/contact" class="btn btn-primary">
+          Apply now
+          <span class="btn-arrow">→</span>
+        </a>
+        <a href="/dublin-summer-2027/faqs" class="btn btn-ghost text-white border-white/30 hover:border-white">
+          Read the FAQs
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
