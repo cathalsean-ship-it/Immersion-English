@@ -59,13 +59,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           '10+ years of experience',
           'Communicative lessons',
           'Cambridge & IELTS specialists',
-          'Small groups, max 8',
-        ].map((item, i, arr) => (
+        ].map((item) => (
           <>
+            <span class="w-[7px] h-[7px] rounded-full flex-shrink-0" style="background: var(--orange);"></span>
             <span class="font-heading font-semibold text-[0.9rem] text-white tracking-wide">{item}</span>
-            {i < arr.length - 1 && (
-              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 hidden sm:inline-block" style="background: var(--orange);"></span>
-            )}
           </>
         ))}
       </div>
