@@ -347,3 +347,13 @@
   .prose-body { font-size: 0.98rem; }
   .prose-body h2 { font-size: 1.25rem; }
 }
+
+/* Blog cards */
+.blog-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+.blog-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px rgba(20,32,26,0.09) !important;
+  border-color: rgba(0,128,55,0.2) !important;
+}
