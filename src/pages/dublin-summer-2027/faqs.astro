@@ -3,125 +3,130 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const sections = [
   {
-    id: 'programme',
-    heading: 'The programme',
+    id: 'cost-and-booking',
+    heading: 'Cost and Booking',
     faqs: [
       {
-        q: 'What will the timetable be?',
-        a: 'Students are busy all day long and will have a balanced educational timetable, daily trips, and free time between activities.',
-        link: { href: '/dublin-summer-2027/weekly-programme', label: 'View the weekly timetable →' },
+        q: 'What is the programme fee?',
+        a: 'The programme fee is €1,350 per student. Flights are not included — parents book direct Ryanair flights Sofia–Dublin independently. We\'ll send you a step-by-step Flight Booking Guide with exact dates and luggage requirements once you register.',
       },
       {
-        q: 'How many students will be in the group?',
-        a: 'There is a maximum of 13 students per group so that we can ensure individual attention, safety, and close supervision.',
+        q: 'Are there any additional extra costs and how much pocket money does a student need?',
+        a: 'The programme fee does not include food. We recommend a daily food allowance of €20–25. Teenagers have diverse nutritional needs and preferences, and we believe giving them the freedom to choose their own meals is part of growing in independence and confidence — one of the things that makes this programme different. There are plenty of options at the UCD food hall and during daily excursions to suit every appetite and dietary requirement. Most students also bring around €50 for the week for souvenirs, snacks, and personal extras. Laundry facilities are available on campus at an additional cost.',
       },
       {
-        q: 'What qualifications do your teachers have?',
-        a: 'Our teachers have CELTA (Certificate in English Language Teaching to Speakers of Other Languages) qualifications, as well as Young Learner teaching qualifications.',
+        q: 'Are meals included in the price?',
+        a: 'No, meals are not included. There are many meal options available for breakfast, lunch and dinner at the UCD campus food court.',
+        link: { href: 'https://thefoodhallatucdvillage.ie/', label: 'See more here →', external: true },
       },
       {
-        q: 'Will you accept a 12 year old or an 18 year old?',
-        a: 'No, our age range is from 13 to 17 years of age. However, under certain circumstances, if a child turns 13 or 18 and is still in high school up until the summer of the camp, we may accept them on the programme.',
+        q: 'Does the price include the flights?',
+        a: 'No. Following the postponement to summer 2027, flights are no longer included in the programme fee. Parents book direct Ryanair flights Sofia (SOF) → Dublin (DUB) independently. Once you register, we\'ll send you a step-by-step Flight Booking Guide with the exact travel dates, luggage requirements, and details of where to meet our team at Dublin Airport.',
       },
       {
-        q: 'What happens on the first day of school?',
-        a: 'On arrival, students will be shown to their room and given a tour of the campus and relevant information regarding living on campus, classes, and activities. They will also be shown their classroom and activity meeting point for the next day. They will then join in scheduled activities.',
+        q: 'When do I pay the deposit and fees?',
+        a: 'A non-refundable deposit of €350 is required to reserve a place for your child. The remaining balance of €1,000 is due no later than 31 May 2027. We will send you the bank details once we have the free online consultation and after you have reserved a spot for your child.',
+        link: { href: 'https://forms.gle/64c9HqoGLTq6XHmJ9', label: 'Reserve a spot →', external: true },
       },
       {
-        q: 'What is the nationality mix of the group?',
-        a: 'Your child will be with other Bulgarian students between the age of 13 to 17, but the group leaders and teaching assistant are English speakers. Be assured, there will be a Bulgarian speaker available at all times, but Bulgarian will only be used for special circumstances.',
-      },
-      {
-        q: "What will my child's end-of-course certificate say?",
-        a: 'Absolutely! Your child\'s end-of-course certificate will record the number of hours they have studied and will note your child\'s strengths and weaknesses with a recommendation for the next English level. E.g. Sofia Dimitrova has attended an English Language Course for 20 hours and has progressed with reference to the CEFR descriptors at Upper Intermediate Level (B2).',
-      },
-      {
-        q: 'What is the CEFR, and how do I understand the levels – A2, B1, B2, C1?',
-        a: 'The CEFR is the Common European Framework of Reference for Languages, which was developed to provide a common basis for the explicit description of objectives, content and methods in second/foreign language education. All of the programmes at Immersion English are aligned to this scale; we run classes from A2 to C1.',
-        link: { href: 'https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions', label: 'For more information on the CEFR please click here →', external: true },
-      },
-      {
-        q: 'Is the Immersion English summer programme aligned to the CEFR?',
-        a: 'Yes, our programme is aligned to the CEFR and our focus is on communicative competence in real-life, everyday situations.',
+        q: 'What is the refund policy?',
+        a: 'The €650 deposit is non-refundable and ensures a flight for your child. In the unlikely event that the programme does not go ahead, all payments made will be fully refunded. Important notes: all cancellations must be made in writing to immersionenglish.ie@gmail.com; refunds will be processed within 7–10 business days of the cancellation confirmation; no refunds will be given for no-shows or early departures from courses.',
       },
     ],
   },
   {
-    id: 'logistics',
-    heading: 'Logistics & travel',
+    id: 'the-programme',
+    heading: 'The Programme',
     faqs: [
       {
-        q: 'Does the price include the flights?',
-        a: 'Yes, the programme price includes flight costs and a 20kg check-in. Additional fees apply for additional checked-in luggage.',
+        q: 'What will the timetable be?',
+        a: 'Students are busy all day long and will have a balanced educational timetable, daily trips and free time between activities.',
+        link: { href: '/dublin-summer-2027/weekly-programme', label: 'View the weekly timetable →' },
       },
       {
-        q: 'What should my child bring?',
-        a: 'You will receive a packing list no later than two weeks before departure. We will provide all learning materials, a branded raincoat, and a notebook for your child.',
+        q: 'What happens on the first day of school?',
+        a: 'On arrival students will be shown to their room and given a tour of the campus and relevant information regarding living on campus, classes and activities. They will also be shown their classroom and activity meeting point for the next day. They will then join in scheduled activities.',
       },
       {
-        q: 'Can my child leave the UCD campus and go to Dublin City Centre alone?',
-        a: 'No, students are not allowed to leave campus without supervision, but we will explore Dublin City Centre and notable landmarks as a group.',
-        link: { href: '/dublin-summer-2027/weekly-programme', label: 'See the full programme →' },
+        q: 'How many students will be in the group/class?',
+        a: 'There is a maximum of 13 students per group so that we can ensure individual attention, safety and close supervision.',
+      },
+      {
+        q: 'What is the nationality mix of the group?',
+        a: 'All students will be Bulgarian, aged 13–17. Lessons and activities are conducted entirely in English to maximise immersion. A Bulgarian-speaking member of staff is present throughout the programme for continuous support and parent communication.',
+      },
+      {
+        q: 'Will you accept a 12 year old or an 18 year old?',
+        a: 'No, our age range is from 13 to 17 years of age. However, under certain circumstances, if a child turns 13, or 18 and is still in high school up until the summer of the camp, we may accept them on the programme.',
       },
     ],
   },
   {
     id: 'accommodation',
-    heading: 'Accommodation & campus',
+    heading: 'Accommodation',
     faqs: [
       {
-        q: 'Where will my child stay?',
-        a: 'Students stay at the University College Dublin (UCD) campus. Each child will have their own single bedroom within a private apartment with 4 bedrooms and two shared bathrooms. There is 24/7 reception and security, on-site laundry facilities (at an extra cost), and it is located within walking distance to all campus amenities including restaurants and the gym, and a short walk to the Dublin Bus campus terminus which serves 16 different routes.',
-        link: { href: '/dublin-summer-2027/accommodation', label: 'See more about the accommodation →' },
+        q: 'Where will my child stay during the Immersion English Summer School programme?',
+        a: 'We will be staying at the University College Dublin (UCD) campus. Each child will have their own single bedroom within a private apartment with 4 bedrooms and with two shared bathrooms. There is 24/7 reception and security, on-site laundry facilities (at an extra cost) and is located within walking distance to all campus amenities including the restaurants and gym and is a short walk to the Dublin Bus campus terminus which serves 16 different routes.',
+        link: { href: '/dublin-summer-2027/accommodation', label: 'See more about the accommodation and UCD campus →' },
       },
       {
-        q: 'Are the rooms en suite?',
-        a: 'The majority of rooms are not en suite – students share toilets and shower areas within their apartment.',
+        q: 'Are the rooms ensuite?',
+        a: 'The majority of rooms are not en suite, they have shared toilets and shower areas.',
       },
       {
         q: 'Are boys and girls placed in different areas of the residence?',
         a: 'Yes, boys and girls are in different areas of the residence.',
       },
       {
-        q: 'Is there free Wi-Fi on campus?',
-        a: 'Yes, there is free Wi-Fi throughout the UCD campus.',
-      },
-      {
-        q: 'Are meals included in the price?',
-        a: 'No, meals are not included. There are many meal options available for breakfast, lunch, and dinner at the UCD campus food court.',
-        link: { href: 'https://thefoodhallatucdvillage.ie/', label: 'See the UCD food hall →', external: true },
+        q: 'Is there free wifi on the UCD campus?',
+        a: 'Yes, there is free wifi.',
       },
     ],
   },
   {
-    id: 'safety',
-    heading: 'Safety & welfare',
+    id: 'safety-and-supervision',
+    heading: 'Safety and Supervision',
     faqs: [
       {
         q: 'How is the residence supervised at night?',
         a: 'Group leaders sleep in rooms next to each student area and are on call. In addition, there is 24-hour security at the UCD campus accommodation.',
       },
       {
+        q: 'Can my child leave the UCD campus and go to Dublin City Centre alone?',
+        a: 'No, students are not allowed to leave campus without supervision, but we will explore Dublin City Centre and notable landmarks as a group.',
+        link: { href: '/dublin-summer-2027/weekly-programme', label: 'See full programme →' },
+      },
+      {
         q: 'Are mobile phones allowed?',
-        a: 'Yes, but during classes, activities, and lights-out, mobile phones must be turned off.',
+        a: 'Yes, but during classes, activities and lights-out, mobile phones must be turned off.',
+      },
+      {
+        q: 'What should my child bring?',
+        a: 'You will receive a packing list no later than two weeks before departure. We will provide all learning materials, a branded raincoat and notebook for your child.',
       },
     ],
   },
   {
-    id: 'costs',
-    heading: 'Costs & booking',
+    id: 'english-levels-and-certification',
+    heading: 'English Levels and Certification',
     faqs: [
       {
-        q: 'Are there any additional costs and how much pocket money does a student need?',
-        a: 'Please note that the package cost of €1,700 covers flights with 20kg check-in, transport costs, city trips, and activities, but does not include food. We realise teenagers have different food preferences and they will have many food options to choose from at the UCD food hall and during the daily excursions. We recommend you provide a €20–25 daily allowance for food. Most students bring an additional €50 pocket money per week for souvenirs, sweets, etc.',
+        q: 'What qualifications do your teachers have?',
+        a: 'Our teachers have CELTA (Certificate in English Language Training to Speakers of Other Languages) qualifications as well as Young Learner teaching qualifications.',
       },
       {
-        q: 'When do I pay the deposit and fees?',
-        a: 'A non-refundable deposit of €650 is required to reserve a spot for your child. The remaining balance of €1,100 is due no later than 31 May 2027. We will send you the bank details once we have had the free online consultation and after you have reserved a spot for your child.',
+        q: 'What is the CEFR, and how do I understand the levels – A2, B1, B2, C1?',
+        a: 'The CEFR is the Common European Framework of Reference for Languages, which was developed to provide a common basis for the explicit description of objectives, content and methods in second/foreign language education. All of the programmes at ICE are aligned to this scale, we run classes from A2 to C1.',
+        link: { href: 'https://www.coe.int/en/web/common-european-framework-reference-languages/level-descriptions', label: 'For more information on the CEFR please click here →', external: true },
       },
       {
-        q: 'What is the refund policy?',
-        a: 'The €650 deposit is non-refundable and ensures a flight for your child. In the unlikely event that the programme does not go ahead, all payments made will be fully refunded. Important notes: all cancellations must be made in writing to immersionenglish.ie@gmail.com; refunds will be processed within 7–10 business days of the cancellation confirmation; no refunds will be given for no-shows or early departures.',
+        q: "What will my child's end-of-course Certificate say?",
+        a: "Absolutely! Your child's end-of-course Certificate will record the number of hours they have studied and will note your child's strengths and weaknesses with a recommendation for the next English level. E.g. Sofia Dimitrova has attended an English Language Course for 20 hours and has progressed with reference to the CEFR descriptors at Upper Intermediate Level (B2).",
+      },
+      {
+        q: 'Is the Immersion English summer programme aligned to the CEFR?',
+        a: 'Yes, our programme is aligned to the CEFR and our focus is on communicative competence in real-life, everyday situations.',
       },
     ],
   },
@@ -178,7 +183,9 @@ const sections = [
         <div class="flex flex-col gap-14">
           {sections.map(({ id, heading, faqs }) => (
             <div id={id}>
-              <h2 class="text-[1.5rem] mb-6 pb-5 border-b-2 border-brand-green">{heading}</h2>
+              <div class="flex items-center gap-4 mb-6 pb-5 border-b-2 border-brand-green">
+                <h2 class="text-[1.5rem] m-0">{heading}</h2>
+              </div>
               <div class="flex flex-col">
                 {faqs.map(({ q, a, link }) => (
                   <div class="faq-item border-b border-line last:border-0">
