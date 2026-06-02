@@ -16,7 +16,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"
     ></div>
 
-    <div class="container-x relative z-10 w-full flex items-end pt-[116px] pb-[56px]">
+    <div class="container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[116px] pb-[48px] md:pb-[56px]">
       <div class="max-w-[760px]">
         <span
           class="inline-flex items-center gap-[10px] py-[7px] pr-[14px] pl-2 rounded-full bg-white/[.12] backdrop-blur-md border border-white/[.18] text-white font-heading font-semibold text-[0.78rem] tracking-[0.04em] mb-6"
@@ -33,11 +33,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           not <span style="color: var(--orange);">memorising</span> it.
         </h1>
 
-        <p class="mt-6 text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
+        <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
           Immersion English is a speaking-focused English school in Sofia. We offer year-round courses online and an immersive summer programme in Dublin for teens aged 13–17.
         </p>
 
-        <div class="mt-8 flex gap-4 items-center flex-wrap">
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
           <a href="/dublin-summer-2027" class="btn btn-primary">
             Explore Dublin Summer 2027
             <span class="btn-arrow">→</span>
@@ -57,7 +57,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CREDENTIALS BAND -->
   <section style="background: var(--ink); border-bottom: none;">
     <div class="container-x py-5">
-      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
         {[
           'CELTA-qualified teachers',
           '10+ years of experience',
@@ -68,7 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <>
             <span class="font-heading font-semibold text-[0.9rem] text-white tracking-wide">{item}</span>
             {i < arr.length - 1 && (
-              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 hidden sm:inline-block" style="background: var(--orange);"></span>
             )}
           </>
         ))}
@@ -123,7 +123,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- PROGRAMME -->
-  <section class="section" style="padding-left: 0; overflow: hidden;">
+  <section class="section" style="padding-left: 0; padding-right: 0; overflow: hidden;">
     <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; align-items: center;" class="programme-grid">
       <!-- Image: bleeds to left edge -->
       <div class="homepage-hero-img-wrap relative" style="aspect-ratio: 4/5; overflow: hidden;">
@@ -142,7 +142,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <!-- Content: normal container padding on right side -->
-      <div style="padding: 64px 5vw 64px 5vw;" class="programme-content">
+      <div style="padding: 40px 24px 40px 24px;" class="programme-content md-pad-programme">
 
         <div>
           <span class="eyebrow eyebrow-dot">Dublin Summer 2027</span>
@@ -184,7 +184,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             ].map(({ label, detail }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
                 <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
-                <span class="text-[0.95rem]">
+                <span class="text-[0.88rem] md:text-[0.95rem]">
                   <strong class="font-semibold text-ink">{label}</strong>
                   <span class="text-ink-soft"> – {detail}</span>
                 </span>
@@ -266,7 +266,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container-x">
       <div class="max-w-[840px] mx-auto text-center">
         <span class="block font-heading font-bold text-[3.5rem] leading-none text-brand-orange">&ldquo;</span>
-        <p class="text-white text-[1.6rem] md:text-[1.95rem] font-heading font-semibold leading-[1.32] tracking-[-0.01em] -mt-2 mb-7 text-balance">
+        <p class="text-white text-[1.25rem] md:text-[1.95rem] font-heading font-semibold leading-[1.35] tracking-[-0.01em] -mt-2 mb-7 text-balance">
           Lenny is the most motivational English teacher I've ever met – fun, professional, and focused on exactly what I needed.
         </p>
         <p class="text-white/75 font-heading font-semibold text-[0.92rem] tracking-[0.04em]">– Natalya Baleva</p>
@@ -304,11 +304,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
 
-        <div class="bg-white text-ink rounded-lg p-9 shadow-lift">
+        <div class="bg-white text-ink rounded-lg p-6 md:p-9 shadow-lift">
           <h3 class="text-[1.35rem] mb-[6px]">Book a free consultation</h3>
           <p class="text-ink-soft text-[0.95rem] mb-6">Tell us about your goals and we'll help you find the right course or programme. We reply within one working day.</p>
 
-          <div class="grid grid-cols-2 gap-[14px] mb-[14px]">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[14px] mb-[14px]">
             <div class="flex flex-col gap-[6px]">
               <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
               <input type="text" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
