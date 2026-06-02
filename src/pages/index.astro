@@ -123,16 +123,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- PROGRAMME -->
-  <section class="section">
-    <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.05fr] gap-10 md:gap-20 items-center">
-        <div class="rounded-lg overflow-hidden shadow-lift aspect-[5/6] homepage-hero-img-wrap">
-          <img
-            src="/students-walking.jpg"
-            alt="Students exploring Dublin"
-            class="homepage-hero-img w-full h-full object-cover"
-          />
+  <section class="section" style="padding-left: 0; overflow: hidden;">
+    <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; align-items: center;" class="programme-grid">
+      <!-- Image: bleeds to left edge -->
+      <div class="homepage-hero-img-wrap relative" style="aspect-ratio: 4/5; overflow: hidden;">
+        <img
+          src="/students-walking.jpg"
+          alt="Students exploring Dublin"
+          class="homepage-hero-img w-full h-full object-cover"
+        />
+        <!-- Floating badge -->
+        <div style="position: absolute; bottom: 32px; right: 32px; background: var(--orange); color: white; border-radius: 12px; padding: 16px 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);">
+          <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; line-height: 1; margin: 0;">July 2027</p>
+          <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.75rem; opacity: 0.9; margin: 4px 0 0; letter-spacing: 0.06em; text-transform: uppercase;">Dublin, Ireland</p>
         </div>
+        <!-- Gradient overlay at bottom -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,26,0) 55%, rgba(20,32,26,0.35) 100%); pointer-events: none;"></div>
+      </div>
+
+      <!-- Content: normal container padding on right side -->
+      <div style="padding: 64px 5vw 64px 5vw;" class="programme-content">
 
         <div>
           <span class="eyebrow eyebrow-dot">Dublin Summer 2027</span>

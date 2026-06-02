@@ -274,3 +274,18 @@
 .homepage-hero-img-wrap:hover .homepage-hero-img {
   filter: grayscale(0%) contrast(1);
 }
+
+/* Programme section — bleed image layout */
+.programme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .programme-grid {
+    grid-template-columns: 1fr;
+  }
+  .programme-content {
+    padding: 40px 24px !important;
+  }
+}
