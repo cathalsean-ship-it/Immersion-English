@@ -56,17 +56,17 @@ const articles = [
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 44vh;">
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.2) 0%, rgba(20,32,26,0.65) 100%);"></div>
-    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[56px] md:pb-[80px]">
       <p class="eyebrow mb-4" style="color: var(--orange);">Immersion English</p>
       <h1 class="text-white mb-6" style="max-width: 16ch;">Insights &amp; perspectives</h1>
-      <p class="text-white/75 text-[1.15rem]" style="max-width: 52ch;">Reflections on language learning, teaching, and the role of real communication in building genuine confidence in English.</p>
+      <p class="text-white/75 text-[1rem] md:text-[1.15rem]" style="max-width: 52ch;">Reflections on language learning, teaching, and the role of real communication in building genuine confidence in English.</p>
     </div>
   </section>
 
   <!-- ARTICLES GRID -->
   <section class="section">
     <div class="container-x">
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 32px;">
+      <div class="blog-grid">
         {articles.map((article, i) => (
           <a
             href={`/blog/${article.slug}`}
@@ -102,7 +102,7 @@ const articles = [
       <p class="eyebrow eyebrow-dot mb-5">Ready to start?</p>
       <h2 class="mb-5">Confident English comes from using it</h2>
       <p style="color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 32px;">Speaking-focused lessons in Sofia and an immersive summer programme in Dublin for teens aged 13–17.</p>
-      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
         <a href="/lessons" class="btn btn-primary">
           View our lessons
           <span class="btn-arrow"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
