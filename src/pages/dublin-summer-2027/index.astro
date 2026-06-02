@@ -3,8 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Dublin Summer School for Teenagers 2027 | Immersion English"
-  description="1-week English immersion programme in Dublin, Ireland for teenagers aged 13–17. CELTA-qualified teaching, small groups, full supervision. July 2027. €1,350."
+  title="English Summer Programme for Teens in Dublin 2027 | Immersion English"
+  description="English Summer Programme for teens aged 13–17 in Dublin, Ireland. 1-week immersive experience with CELTA-qualified teaching, city trips, and full supervision. July 2027. Programme fee €1,350."
 >
 
   <!-- HERO -->
@@ -20,13 +20,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </span>
 
         <h1 class="text-white">
-          English immersion<br />
-          in Dublin for<br />
+          English Summer<br />
+          Programme for<br />
           <span style="color: var(--orange);">teens aged 13–17.</span>
         </h1>
 
         <p class="mt-5 text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">
-          More than just English lessons – a journey into Irish culture, connection, and real communication. Your child doesn't just learn English here. They <em>live</em> it.
+          A 1-week English immersion experience in Dublin, Ireland for Bulgarian teenagers aged 13–17. Small groups, CELTA-qualified teaching, and full supervision – from arrival to departure. Your child doesn’t just learn English here. They <em>live</em> it.
         </p>
 
         <div class="mt-9 flex gap-4 items-center flex-wrap">
@@ -140,13 +140,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         {[
-          { title: 'Learn from the best', body: 'Study with Cathal (Lenny) Leonard – an Irish, CELTA-qualified teacher with over 10 years of experience teaching teenagers and adults in Dublin and beyond.' },
-          { title: 'Speak English every day', body: 'Build real communicative confidence through interactive lessons, cultural activities, and daily real-world use. English inside and outside the classroom.' },
-          { title: 'Unforgettable memories', body: 'Make lasting friendships, explore one of Europe\'s most vibrant cities, and experience Irish culture, music, and spirit with a local who knows Dublin inside out.' },
+          { title: 'Expert CELTA-qualified teaching', body: 'Study with Cathal (Lenny) Leonard – an Irish, native CELTA-qualified teacher with over 10 years of experience teaching English to teenagers and adults.' },
+          { title: 'Speak English every day', body: 'Build real communicative confidence through interactive lessons, cultural activities, and daily real-world use – English inside and outside the classroom.' },
+          { title: 'Make lasting friendships', body: 'Meet like-minded teenagers, build connections that last beyond the week, and discover what it feels like to communicate freely in another language.' },
+          { title: 'Explore Dublin with a local', body: 'Experience Irish culture, music, and spirit with a local who knows the city. From Trinity College to the Wicklow Mountains – a city full of stories.' },
+          { title: 'Grow in real confidence', body: 'Students leave not just with better English, but with the genuine confidence to use it – in meetings, interviews, travel, and everyday life.' },
+          { title: 'Safe and fully supervised', body: 'From Sofia to Dublin and back. Bulgarian-speaking staff on hand throughout, 24/7 supervision, and a pre-departure evening in Sofia for parents.' },
         ].map(({ title, body }) => (
           <div class="trust-card">
             <div style="display: flex; flex-direction: column; gap: 14px;">
-              <h3 style="margin: 0;">{title}</h3>
+              <h3 style="margin: 0; min-height: 2.6em;">{title}</h3>
               <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
             </div>
             <p style="margin: 0;">{body}</p>
@@ -181,7 +184,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             ))}
           </ul>
         </div>
-        <div class="rounded-md overflow-hidden shadow-lift aspect-[4/3]" style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px), #c8d8cc;"></div>
+        <img src="/teens-cafe.jpg" alt="Teenagers laughing together" class="rounded-md overflow-hidden shadow-lift w-full object-cover" style="aspect-ratio: 4/3;" />
       </div>
     </div>
   </section>
