@@ -211,19 +211,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           { title: "St Stephen's Green", desc: "A quiet escape in the heart of the city – Dublin's most beautiful park, calm, green, and full of character.", tag: 'Nature', color: '#c8d8cc', img: '/st-stephens-green.jpg' },
           { title: 'Glendalough', desc: 'Discover the breathtaking 6th-century monastic site and twin lakes in the Wicklow Mountains. Ancient Ireland at its finest.', tag: 'History', color: '#d7c3b0', img: '/glendalough.jpg' },
         ].map(({ title, desc, tag, color, img = null }) => (
-          <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group">
-            <div class="bg-white border border-line rounded-lg overflow-hidden transition-all duration-200 group-hover:shadow-md group-hover:-translate-y-[3px] flex flex-col h-full">
-              {img
-              ? <img src={img} alt={title} class="aspect-video w-full object-cover" />
-              : <div class="aspect-video w-full" style={`background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
-            }
+          <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group trip-card-link">
+            <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
+              <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
+                {img
+                  ? <img src={img} alt={title} class="trip-card-img w-full h-full object-cover" />
+                  : <div class="w-full h-full" style={`background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
+                }
+              </div>
               <div class="p-6 flex flex-col flex-1">
                 <div class="flex items-center justify-between gap-3 mb-3">
                   <h3 class="text-[1.05rem]">{title}</h3>
-                  <span class="text-[0.65rem] font-heading font-semibold uppercase tracking-[0.1em] px-[8px] py-[3px] rounded-full flex-shrink-0" style="background: var(--green-soft); color: var(--green);">{tag}</span>
+                  <span class="trip-tag text-[0.65rem] font-heading font-semibold uppercase tracking-[0.1em] px-[8px] py-[3px] rounded-full flex-shrink-0">{tag}</span>
                 </div>
                 <p class="text-ink-soft text-[0.9rem] leading-relaxed flex-1">{desc}</p>
-
               </div>
             </div>
           </a>
