@@ -135,9 +135,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div>
           <span class="eyebrow eyebrow-dot">Dublin Summer 2027</span>
-          <h2 class="mt-4 mb-4">English. Beyond the classroom.</h2>
-          <p class="text-ink-soft text-[1.08rem] max-w-[56ch]">
-            Our flagship immersive English programme takes Bulgarian teenagers to Dublin, Ireland – where English becomes part of daily life. Real conversations. Real confidence. One unforgettable week.
+          <h2 class="mt-4 mb-2">English. Beyond the classroom.</h2>
+          <p class="text-ink-soft text-[1.08rem] max-w-[56ch] mb-3">
+            Our flagship immersive English programme takes Bulgarian teenagers to Dublin, Ireland – where English becomes part of daily life.
+          </p>
+          <p class="font-heading font-semibold text-[1.18rem] leading-snug mb-0" style="color: var(--orange);">
+            Real conversations.<br/>Real confidence.<br/>One unforgettable week.
           </p>
 
           <dl class="grid grid-cols-2 gap-7 my-10 py-8 border-y border-line">
@@ -159,21 +162,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </dl>
 
-          <ul class="list-none p-0 m-0 flex flex-col gap-[14px]">
+          <ul class="list-none p-0 m-0 flex flex-col gap-3">
             {[
-              'Daily guided English practice with a native, CELTA-qualified teacher.',
-              'Accommodation at University College Dublin (UCD) campus.',
-              'Real-world communication skills built through cultural activities and city trips.',
-              'Small groups of max 13 students – structured days with close supervision.',
-              'Bulgarian-speaking staff on hand throughout; 24/7 pastoral support.',
-              'Book your own direct Ryanair flight Sofia–Dublin (we send you a step-by-step guide).',
-            ].map(text => (
-              <li class="flex items-start gap-3 text-ink text-base">
-                <span class="flex-shrink-0 mt-1 w-[18px] h-[18px] rounded-full bg-brand-green-soft text-brand-green grid place-items-center text-xs">✓</span>
-                <span>{text}</span>
+              { label: 'Daily guided English practice', detail: 'with a native, CELTA-qualified teacher' },
+              { label: 'Accommodation at UCD campus', detail: 'University College Dublin' },
+              { label: 'Real-world communication skills', detail: 'through cultural activities and city trips across Dublin' },
+              { label: 'Small groups of max 13 students', detail: 'structured days with clear daily schedule' },
+              { label: 'Full supervision from arrival to departure', detail: 'with a Bulgarian speaker available at all times' },
+              { label: 'Book your own direct Ryanair flight', detail: 'Sofia–Dublin · we send you a step-by-step guide' },
+            ].map(({ label, detail }) => (
+              <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
+                <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
+                <span class="text-[0.95rem]">
+                  <strong class="font-semibold text-ink">{label}</strong>
+                  <span class="text-ink-soft"> – {detail}</span>
+                </span>
               </li>
             ))}
           </ul>
+
+          <div class="flex gap-3 mt-8 flex-wrap">
+            <a href="/dublin-summer-2027" class="btn btn-primary">
+              Explore the programme
+              <span class="btn-arrow"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+            </a>
+            <a href="/contact" class="btn btn-ghost">Book a free consultation</a>
+          </div>
         </div>
       </div>
     </div>
