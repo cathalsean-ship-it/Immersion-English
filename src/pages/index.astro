@@ -89,17 +89,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div class="trust-card">
-          <div class="trust-icon">✦</div>
+          <div class="w-[10px] h-[10px] rounded-full mb-5" style="background: var(--orange);"></div>
           <h3>Speaking-first teaching</h3>
           <p>Every lesson prioritises active speaking and real communication over passive learning. You leave each class having used English, not just studied it.</p>
         </div>
         <div class="trust-card">
-          <div class="trust-icon">✦</div>
+          <div class="w-[10px] h-[10px] rounded-full mb-5" style="background: var(--orange);"></div>
           <h3>Small groups, real attention</h3>
           <p>Maximum 8 students in our online Speak Up courses. You get individual feedback, more time to speak, and a teacher who knows your goals.</p>
         </div>
         <div class="trust-card">
-          <div class="trust-icon">✦</div>
+          <div class="w-[10px] h-[10px] rounded-full mb-5" style="background: var(--orange);"></div>
           <h3>Experience that counts</h3>
           <p>Lenny is CELTA-qualified with over 10 years of experience teaching at the British Council in Sofia and international summer programmes in Oxford and Brighton.</p>
         </div>
@@ -232,52 +232,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- DUBLIN GALLERY -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Dublin</span>
-        <h2>A city where every conversation is an adventure.</h2>
-        <p>Dublin's warmth, charm, and character make it the perfect place to live English, not just learn it.</p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-6 gap-5 auto-rows-[200px] md:auto-rows-[280px]">
-        {[
-          { n: 1, label: 'Trinity College', caption: 'Walk where Joyce and Wilde once studied' },
-          { n: 2, label: 'Howth Cliff Walk', caption: 'Sea views and fresh Atlantic air' },
-          { n: 3, label: 'Glendalough', caption: 'Ancient Ireland in the Wicklow Mountains' },
-          { n: 4, label: "St Stephen's Green", caption: 'A quiet escape in the heart of the city' },
-          { n: 5, label: 'Dublin Castle', caption: '800 years of history' },
-        ].map(({ n, label, caption }, i) => (
-          <div
-            class:list={[
-              'relative rounded-md overflow-hidden cursor-pointer transition-transform hover:-translate-y-[3px]',
-              i < 3 ? 'col-span-1 md:col-span-2' : '',
-              i === 3 ? 'col-span-1 md:col-start-2 md:col-span-2' : '',
-              i === 4 ? 'col-span-2 md:col-start-4 md:col-span-2' : '',
-            ]}
-            style={`background:
-              repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px),
-              ${['#c8d8cc','#c2d0dc','#d6d2c5','#c7cfd8','#d7c3b0'][i]};`}
-          >
-            <div class="absolute inset-0 flex flex-col justify-end p-[22px] text-white" style="background: linear-gradient(180deg, rgba(20,32,26,0) 50%, rgba(20,32,26,0.65) 100%);">
-              <span class="font-mono text-[0.72rem] tracking-[0.08em] opacity-85">0{n}</span>
-              <span class="font-heading font-semibold text-[1.25rem] tracking-[-0.01em] mt-1">{label}</span>
-              <span class="text-[0.86rem] opacity-85 mt-[2px]">{caption}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <!-- CONTACT -->
   <section class="section section-dark">
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         <div>
-          <span class="eyebrow eyebrow-dot">Contact</span>
-          <h2 class="mt-4 mb-4" style="color: var(--green);">Got a question? We're here.</h2>
+          <span class="eyebrow eyebrow-dot" style="color: var(--green);">Contact</span>
+          <h2 class="mt-4 mb-4"><span class="text-white">Got a </span><span style="color: var(--orange);">question?</span><span class="text-white"> We're here.</span></h2>
           <p>Book a free consultation and we'll help you find the right programme or course.</p>
 
           <div class="flex flex-col gap-6 mt-8">
