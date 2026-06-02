@@ -289,3 +289,12 @@
     padding: 40px 24px !important;
   }
 }
+
+/* Standalone greyscale hover — for images without a wrapper trigger */
+.img-greyscale {
+  filter: grayscale(100%) contrast(1.05);
+  transition: filter 0.45s ease;
+}
+.img-greyscale:hover {
+  filter: grayscale(0%) contrast(1);
+}
