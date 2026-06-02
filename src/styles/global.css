@@ -357,3 +357,95 @@
   box-shadow: 0 12px 32px rgba(20,32,26,0.09) !important;
   border-color: rgba(0,128,55,0.2) !important;
 }
+
+/* ── Blog article prose ────────────────────────────────────────────────────── */
+.prose-body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+.prose-body p {
+  margin-bottom: 1.5em;
+}
+/* Lead paragraph — first p after the hero image */
+.prose-body > p:first-child {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--ink);
+  font-weight: 400;
+}
+/* H2 headings with orange underbar */
+.prose-body h2 {
+  font-size: 1.4rem;
+  margin-top: 2.2em;
+  margin-bottom: 0.3em;
+  color: var(--ink);
+  padding-bottom: 10px;
+}
+.prose-body h2::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 2px;
+  margin-top: 8px;
+}
+/* Orange dot bullet lists */
+.prose-body ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.prose-body ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.prose-body ul li::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+/* Inline images */
+.prose-body img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  margin: 40px 0;
+  aspect-ratio: 16/7;
+  object-fit: cover;
+}
+/* Links */
+.prose-body a {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-body a:hover { opacity: 0.8; }
+/* Article CTA box */
+.article-cta {
+  margin-top: 56px;
+  padding: 36px 40px;
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--orange);
+}
+@media (max-width: 767px) {
+  .prose-body { font-size: 0.98rem; }
+  .prose-body > p:first-child { font-size: 1.05rem; }
+  .prose-body h2 { font-size: 1.2rem; }
+  .article-cta { padding: 24px; }
+}
