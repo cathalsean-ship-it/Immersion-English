@@ -251,14 +251,9 @@
 }
 .trip-card-img {
   filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.5s ease;
+  transition: filter 0.55s ease;
 }
-/* Reveal on hover (desktop) */
 .trip-card-link:hover .trip-card-img {
-  filter: grayscale(0%) contrast(1);
-}
-/* Reveal on scroll (mobile + desktop) */
-.trip-card-img.in-view {
   filter: grayscale(0%) contrast(1);
 }
 .trip-tag {
@@ -276,8 +271,7 @@
   filter: grayscale(100%) contrast(1.05);
   transition: filter 0.6s ease;
 }
-.homepage-hero-img-wrap:hover .homepage-hero-img,
-.homepage-hero-img.in-view {
+.homepage-hero-img-wrap:hover .homepage-hero-img {
   filter: grayscale(0%) contrast(1);
 }
 
@@ -285,23 +279,22 @@
 .programme-grid {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
-  align-items: center;
+  align-items: stretch;
+}
+.homepage-hero-img-wrap {
+  position: relative;
+  min-height: 480px;
 }
 @media (max-width: 767px) {
   .programme-grid {
     grid-template-columns: 1fr;
   }
+  .homepage-hero-img-wrap {
+    min-height: 280px;
+    aspect-ratio: 4/3;
+  }
   .programme-content {
     padding: 36px 24px 40px !important;
-  }
-  .homepage-hero-img-wrap {
-    aspect-ratio: 16/9 !important;
-  }
-  /* Hero image badge smaller on mobile */
-  .homepage-hero-img-wrap [style*="position: absolute; bottom: 32px"] {
-    bottom: 16px !important;
-    right: 16px !important;
-    padding: 10px 14px !important;
   }
 }
 @media (min-width: 768px) {
@@ -315,9 +308,7 @@
   filter: grayscale(100%) contrast(1.05);
   transition: filter 0.5s ease;
 }
-/* Reveal on hover (desktop) or scroll (mobile) */
-.img-greyscale:hover,
-.img-greyscale.in-view {
+.img-greyscale:hover {
   filter: grayscale(0%) contrast(1);
 }
 

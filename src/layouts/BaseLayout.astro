@@ -49,38 +49,5 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
       <slot />
     </main>
     <Footer />
-    <script>
-      // Greyscale reveal on scroll — works on both mobile and desktop
-      // Targets: .img-greyscale, .trip-card-img, .homepage-hero-img
-      const selectors = '.img-greyscale, .trip-card-img, .homepage-hero-img';
-
-      function revealOnScroll() {
-        const imgs = document.querySelectorAll(selectors);
-        if (!imgs.length) return;
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
-            } else {
-              // Remove when scrolled out so it re-animates on scroll back
-              entry.target.classList.remove('in-view');
-            }
-          });
-        }, {
-          threshold: 0.2,   // 20% visible triggers reveal
-          rootMargin: '0px 0px -40px 0px'
-        });
-
-        imgs.forEach(img => observer.observe(img));
-      }
-
-      // Run after DOM ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', revealOnScroll);
-      } else {
-        revealOnScroll();
-      }
-    </script>
   </body>
 </html>
