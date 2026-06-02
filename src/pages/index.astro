@@ -88,21 +88,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="trust-card">
-          <div class="w-[10px] h-[10px] rounded-full mb-5" style="background: var(--orange);"></div>
-          <h3>Speaking-first teaching</h3>
-          <p>Every lesson prioritises active speaking and real communication over passive learning. You leave each class having used English, not just studied it.</p>
-        </div>
-        <div class="trust-card">
-          <div class="w-[10px] h-[10px] rounded-full mb-5" style="background: var(--orange);"></div>
-          <h3>Small groups, real attention</h3>
-          <p>Maximum 8 students in our online Speak Up courses. You get individual feedback, more time to speak, and a teacher who knows your goals.</p>
-        </div>
-        <div class="trust-card">
-          <div class="w-[10px] h-[10px] rounded-full mb-5" style="background: var(--orange);"></div>
-          <h3>Experience that counts</h3>
-          <p>Lenny is CELTA-qualified with over 10 years of experience teaching at the British Council in Sofia and international summer programmes in Oxford and Brighton.</p>
-        </div>
+        {[
+          { title: 'Speaking-first teaching', body: 'Every lesson prioritises active speaking and real communication over passive learning. You leave each class having used English, not just studied it.' },
+          { title: 'Small groups, real attention', body: 'Maximum 8 students in our online Speak Up courses. You get individual feedback, more time to speak, and a teacher who knows your goals.' },
+          { title: 'Experience that counts', body: 'Lenny is CELTA-qualified with over 10 years of experience teaching at the British Council in Sofia and international summer programmes in Oxford and Brighton.' },
+        ].map(({ title, body }) => (
+          <div class="trust-card" style="justify-content: space-between;">
+            <h3 style="margin: 0;">{title}</h3>
+            <div class="w-[10px] h-[10px] rounded-full flex-shrink-0" style="background: var(--orange);"></div>
+            <p style="margin: 0;">{body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
