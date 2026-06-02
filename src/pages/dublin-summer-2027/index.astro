@@ -83,8 +83,30 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section id="programme" class="section">
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-start">
-        <div class="sticky top-[90px]">
-          <img src="/teens-dublin.jpg" alt="Teenagers enjoying Dublin" class="img-greyscale w-full rounded-lg shadow-lift object-cover" style="aspect-ratio: 3/2; object-position: center 40%;" />
+        <div class="dublin-img-wrap" style="position: relative; border-radius: var(--radius-md); overflow: hidden; min-height: 520px;">
+          <img
+            src="/teens-dublin.jpg"
+            alt="Teenagers enjoying Dublin"
+            class="img-greyscale"
+            style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%;"
+          />
+          <!-- Dark gradient -->
+          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,26,0) 45%, rgba(20,32,26,0.65) 100%); pointer-events: none;"></div>
+          <!-- Stat badge — bottom left -->
+          <div style="position: absolute; bottom: 24px; left: 24px; right: 24px; display: flex; gap: 12px;">
+            <div style="background: white; border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">13</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Max students</p>
+            </div>
+            <div style="background: white; border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">7</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Days in Dublin</p>
+            </div>
+            <div style="background: var(--orange); border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: white; line-height: 1; margin: 0;">€1,350</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: rgba(255,255,255,0.85); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Programme fee</p>
+            </div>
+          </div>
         </div>
         <div>
           <span class="eyebrow eyebrow-dot">What's included</span>
@@ -162,7 +184,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- SAFETY -->
   <section class="section">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center" style="padding-bottom: 28px;">
         <div>
           <span class="eyebrow eyebrow-dot">Safety & supervision</span>
           <h2 class="mt-4 mb-5">Your child is in <span style="color: var(--orange);">safe</span> hands – every step of the way.</h2>
@@ -184,7 +206,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             ))}
           </ul>
         </div>
-        <img src="/teens-cafe.jpg" alt="Teenagers laughing together" class="img-greyscale rounded-md shadow-lift w-full object-cover" style="aspect-ratio: 4/3;" />
+        <div style="position: relative;">
+          <!-- Main photo -->
+          <div style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 8px 32px rgba(20,32,26,0.12);">
+            <img
+              src="/teens-cafe.jpg"
+              alt="Teenagers laughing together"
+              class="img-greyscale w-full object-cover"
+              style="aspect-ratio: 4/3; display: block;"
+            />
+          </div>
+          <!-- Offset quote card -->
+          <div style="position: absolute; bottom: -28px; left: -20px; background: var(--ink); color: white; border-radius: 12px; padding: 20px 24px; max-width: 260px; box-shadow: 0 8px 32px rgba(20,32,26,0.25);">
+            <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin: 0 0 8px;">From Sofia to Dublin</p>
+            <p style="font-size: 0.88rem; line-height: 1.5; color: rgba(255,255,255,0.85); margin: 0;">A Bulgarian speaker on hand at every step. Your child is never alone.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

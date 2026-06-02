@@ -487,3 +487,28 @@
     gap: 20px;
   }
 }
+
+/* Dublin page image layouts */
+.dublin-img-wrap {
+  min-height: 520px;
+}
+@media (max-width: 767px) {
+  .dublin-img-wrap {
+    min-height: 320px;
+    border-radius: var(--radius-md);
+  }
+  /* Stat badges — smaller on mobile */
+  .dublin-img-wrap [style*="position: absolute; bottom: 24px"] {
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+    gap: 8px !important;
+  }
+  /* Safety offset card — reposition on mobile */
+  .dublin-safety-img [style*="position: absolute; bottom: -28px"] {
+    position: static !important;
+    margin-top: 16px;
+    max-width: 100% !important;
+    border-radius: 10px;
+  }
+}
