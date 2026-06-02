@@ -265,3 +265,12 @@
   background: var(--green-soft);
   color: var(--green);
 }
+
+/* Homepage programme section image — greyscale until hover */
+.homepage-hero-img {
+  filter: grayscale(100%) contrast(1.05);
+  transition: filter 0.5s ease;
+}
+.homepage-hero-img-wrap:hover .homepage-hero-img {
+  filter: grayscale(0%) contrast(1);
+}
