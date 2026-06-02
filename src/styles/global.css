@@ -266,7 +266,7 @@
   color: var(--green);
 }
 
-/* Homepage programme section image — greyscale until hover */
+/* Homepage programme section image – greyscale until hover */
 .homepage-hero-img {
   filter: grayscale(100%) contrast(1.05);
   transition: filter 0.6s ease;
@@ -275,7 +275,7 @@
   filter: grayscale(0%) contrast(1);
 }
 
-/* Programme section — bleed image layout */
+/* Programme section – bleed image layout */
 .programme-grid {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
@@ -303,7 +303,7 @@
   }
 }
 
-/* Standalone greyscale hover — for images without a wrapper trigger */
+/* Standalone greyscale hover – for images without a wrapper trigger */
 .img-greyscale {
   filter: grayscale(100%) contrast(1.05);
   transition: filter 0.5s ease;
@@ -323,7 +323,7 @@
   /* Section heads centred text */
   .section-head h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); }
 
-  /* Trust cards — full width, less padding */
+  /* Trust cards – full width, less padding */
   .trust-card { padding: 28px 22px 24px; }
 
   /* Eyebrow labels */
@@ -358,7 +358,7 @@
 .prose-body p {
   margin-bottom: 1.5em;
 }
-/* Lead paragraph — first p after the hero image */
+/* Lead paragraph – first p after the hero image */
 .prose-body > p:first-child {
   font-size: 1.15rem;
   line-height: 1.7;
@@ -497,14 +497,14 @@
     min-height: 320px;
     border-radius: var(--radius-md);
   }
-  /* Stat badges — smaller on mobile */
+  /* Stat badges – smaller on mobile */
   .dublin-img-wrap [style*="position: absolute; bottom: 24px"] {
     bottom: 16px !important;
     left: 16px !important;
     right: 16px !important;
     gap: 8px !important;
   }
-  /* Safety offset card — reposition on mobile */
+  /* Safety offset card – reposition on mobile */
   .dublin-safety-img [style*="position: absolute; bottom: -28px"] {
     position: static !important;
     margin-top: 16px;
