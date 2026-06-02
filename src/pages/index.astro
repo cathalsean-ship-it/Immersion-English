@@ -220,14 +220,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <span class="text-[0.65rem] font-heading font-semibold uppercase tracking-[0.1em] px-[8px] py-[3px] rounded-full flex-shrink-0" style="background: var(--green-soft); color: var(--green);">{tag}</span>
                 </div>
                 <p class="text-ink-soft text-[0.9rem] leading-relaxed flex-1">{desc}</p>
-                <span class="inline-flex items-center gap-2 mt-4 text-[0.85rem] font-heading font-semibold" style="color: var(--green);">
-                  See all trips →
-                </span>
+
               </div>
             </div>
           </a>
         ))}
       </div>
+
+      <div class="flex justify-center mt-10">
+        <a
+          href="/dublin-summer-2027/trips-and-activities"
+          class="inline-flex items-center gap-3 no-underline group"
+          style="color: var(--ink-soft);"
+        >
+          <span class="w-8 h-[1.5px]" style="background: var(--orange); display: inline-block;"></span>
+          <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">
+            See all trips &amp; activities
+          </span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="group-hover:translate-x-1 transition-transform">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+
     </div>
   </section>
 
