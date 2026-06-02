@@ -251,9 +251,14 @@
 }
 .trip-card-img {
   filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.4s ease;
+  transition: filter 0.5s ease;
 }
+/* Reveal on hover (desktop) */
 .trip-card-link:hover .trip-card-img {
+  filter: grayscale(0%) contrast(1);
+}
+/* Reveal on scroll (mobile + desktop) */
+.trip-card-img.in-view {
   filter: grayscale(0%) contrast(1);
 }
 .trip-tag {
@@ -269,9 +274,10 @@
 /* Homepage programme section image — greyscale until hover */
 .homepage-hero-img {
   filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.5s ease;
+  transition: filter 0.6s ease;
 }
-.homepage-hero-img-wrap:hover .homepage-hero-img {
+.homepage-hero-img-wrap:hover .homepage-hero-img,
+.homepage-hero-img.in-view {
   filter: grayscale(0%) contrast(1);
 }
 
@@ -307,9 +313,11 @@
 /* Standalone greyscale hover — for images without a wrapper trigger */
 .img-greyscale {
   filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.45s ease;
+  transition: filter 0.5s ease;
 }
-.img-greyscale:hover {
+/* Reveal on hover (desktop) or scroll (mobile) */
+.img-greyscale:hover,
+.img-greyscale.in-view {
   filter: grayscale(0%) contrast(1);
 }
 
