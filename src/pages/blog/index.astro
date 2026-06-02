@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = [
+  {
+    slug: 'why-speaking-english-feels-harder-than-reading-or-listening',
+    title: 'Why Speaking English Feels Harder Than Reading or Listening',
+    excerpt: 'Many English learners understand far more than they can comfortably say. The reason speaking feels harder lies in how the brain processes language and how English is usually learned.',
+    date: '15 January 2026',
+    author: 'Cathal Leonard',
+    image: 'https://lh3.googleusercontent.com/sitesv/AA5AbUAEl87M7IdGXXPGRntNOMO8z4SQWqiUOtgp9FG7QOmGqA_PuX2q_SgilW6cdjP6Jlpg-DPAcAbQgJeH5ZUw4FDtJqnTrt33jmTC9asEt2HmbXLMtY1ZMyspBJhxnRSQm6wrlwmHThqrNBRPoE90cR6bjxas_t--848cRJFGXwYG03YpNDeD9hNyN-M8OwX4q3NztujGu16Y_A_J_E01f6ZjZPxs7We6zKrUjIw=w1280',
+    imageAlt: 'Person hesitating to speak',
+  },
+  {
+    slug: 'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt',
+    title: 'CEFR: What Your English Level Really Tells You – and What It Doesn\'t',
+    excerpt: 'Being told you\'re B2 or C1 doesn\'t always mean you feel confident speaking English. CEFR levels are useful, but they don\'t show the full picture of real communication.',
+    date: '10 January 2026',
+    author: 'Cathal Leonard',
+    image: 'https://lh3.googleusercontent.com/sitesv/AA5AbUCn9-MwQPcHi4DeItn4KtH5UoZfb8rcVIbIKcaTr-WUQob0gHybWS0zpTDW3c7j-o3udmd9B_XZE4EfWX_I6aCakKCPtP4iVvIs7zNTrYVjsjjaZNC0Py2hN-eHr2HGBzqRkMJQKtKhZN9vekM1-jroh5QTR5HSURtnX_m9f2aJENYpCfbwsFlADi3FUeDcBHKcN6BGHHpR8GgMQLj0GHOdeVExp5Pjm9Qk=w1280',
+    imageAlt: 'CEFR language levels',
+  },
+  {
+    slug: 'why-ireland-is-one-of-the-best-places-in-the-world-to-learn-english',
+    title: 'Why Ireland Is One of the Best Places in the World to Learn English',
+    excerpt: 'Ireland combines high-quality English education with a culture built on conversation, storytelling, and human connection. Discover why it\'s one of the best places in the world to learn English through immersion.',
+    date: '22 December 2025',
+    author: 'Cathal Leonard',
+    image: 'https://lh3.googleusercontent.com/sitesv/AA5AbUCCK5TJUo2tFhHoqdNVV8UTjhu0tPez0mOTGOzgyAWOaY-R8ec-o8wqMK7jPa_wKKOrvTeuC50eVwrqBDgg5SjbI8jlepSuWkAzE6hfvm2j8-A28rzBDaALiUQC1E-Q0GmXXLeD_Zq-9UsxQpVyjt_5m3P7-ZCOAvOzsPFohooiql01enp4w50iQFNmAPpQlOK8d-AHUpKrMEDG7vGGXWB3Rwa2BclmNZ2HieE=w1280',
+    imageAlt: 'Irish people in conversation in a pub',
+  },
+  {
+    slug: 'ai-and-the-human-touch-in-language-learning',
+    title: 'AI and the Human Touch: Why Teachers Matter More Than Ever',
+    excerpt: 'Artificial intelligence can support learning – but real progress happens through human connection. Research shows that teachers remain essential to developing real communicative competence.',
+    date: '21 October 2025',
+    author: 'Cathal Leonard',
+    image: 'https://lh3.googleusercontent.com/sitesv/AA5AbUCnNlNeM317sIUFG4Ix-e73CyK46UH9ugS_QghKj1XmuFQwLSMBRbPQ_8FG5RqpaYT3Wk-JwiQndQWnW-WgL0DVm3bCJGbFpmPc3eASLB1QKBVEwZW9funv3Jj1lDl9-lfoW7YdIwIWxXqQEeo1Y0JEHEeABwSmbbfkn5t8s6OZaWn-cxJIWYnDSjbneZ4X4AfT0DZZl_tpW4fFq0k_oJo87EKWk5KeKUUObD4=w1280',
+    imageAlt: 'AI robot on a wooden bench',
+  },
+  {
+    slug: 'the-power-of-conversation-how-small-talk-builds-big-confidence',
+    title: 'The Power of Conversation: How Small Talk Builds Big Confidence',
+    excerpt: 'Small talk isn\'t small. Research shows everyday conversation boosts confidence, wellbeing, and fluency – especially when guided by CELTA-qualified teachers.',
+    date: '14 August 2025',
+    author: 'Cathal Leonard',
+    image: 'https://lh3.googleusercontent.com/sitesv/AA5AbUB4MkiwgX9cUv4OGI9_K5pNNesVxho6IuHGtfhtmUSh4l5TxrMrvKl5tXIxV6LieYYGQ8gVGN62wvolBkfvefooOsowQwreiTiPtG9qkFn6llXXR5e9AFblr-BMN7qEfzu6NjV8798Gq53gIlJwq-0fl_pqyWlYTwuHNvqtSVj9LNElxpl28PL3XzLiP3qKWMrGSqegToemX_hNfpYyYP5q73ppepvLa_9KFgY=w1280',
+    imageAlt: 'Teens in conversation',
+  },
+];
+---
+
+<BaseLayout title="Blog | Immersion English" description="Insights from Immersion English – teaching reflections, research, and perspectives on language learning and English education.">
+
+  <!-- HERO -->
+  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 44vh;">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.2) 0%, rgba(20,32,26,0.65) 100%);"></div>
+    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+      <p class="eyebrow mb-4" style="color: var(--orange);">Immersion English</p>
+      <h1 class="text-white mb-6" style="max-width: 16ch;">Insights &amp; ideas</h1>
+      <p class="text-white/75 text-[1.15rem]" style="max-width: 52ch;">Reflections on language learning, teaching, and the role of real communication in building genuine confidence in English.</p>
+    </div>
+  </section>
+
+  <!-- ARTICLES GRID -->
+  <section class="section">
+    <div class="container-x">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 32px;">
+        {articles.map((article, i) => (
+          <a
+            href={`/blog/${article.slug}`}
+            class="no-underline group"
+            style="display: flex; flex-direction: column; background: white; border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;"
+            onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(20,32,26,0.09)'; this.style.borderColor='rgba(0,128,55,0.2)'"
+            onmouseout="this.style.transform=''; this.style.boxShadow=''; this.style.borderColor='var(--line)'"
+          >
+            <div style="aspect-ratio: 16/9; overflow: hidden; background: var(--cream);">
+              <img
+                src={article.image}
+                alt={article.imageAlt}
+                style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;"
+                onmouseover="this.style.transform='scale(1.03)'"
+                onmouseout="this.style.transform=''"
+              />
+            </div>
+            <div style="padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1; gap: 12px;">
+              <p style="font-size: 0.8rem; color: var(--ink-soft); font-family: 'Montserrat', sans-serif; font-weight: 500;">{article.date} &middot; {article.author}</p>
+              <h3 style="font-size: 1.1rem; line-height: 1.3; color: var(--ink);">{article.title}</h3>
+              <p style="font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; flex: 1;">{article.excerpt}</p>
+              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.88rem; font-weight: 600; font-family: 'Montserrat', sans-serif; color: var(--green); margin-top: 8px;">
+                Read article
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-tinted">
+    <div class="container-x" style="max-width: 680px; text-align: center;">
+      <p class="eyebrow eyebrow-dot mb-5">Ready to start?</p>
+      <h2 class="mb-5">Confident English comes from using it</h2>
+      <p style="color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 32px;">Speaking-focused lessons in Sofia and an immersive summer programme in Dublin for teens aged 13–17.</p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="/lessons" class="btn btn-primary">
+          View our lessons
+          <span class="btn-arrow"><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+        <a href="/dublin-summer-2027" class="btn btn-ghost">Dublin Summer 2027</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
