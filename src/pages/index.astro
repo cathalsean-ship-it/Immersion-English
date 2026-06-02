@@ -204,16 +204,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {[
-          { title: 'Trinity College', desc: "Walk the same paths as Oscar Wilde and Samuel Beckett at one of Ireland's most iconic universities.", tag: 'Cultural', color: '#c8d5dd' },
+          { title: 'Trinity College', desc: "Walk the same paths as Oscar Wilde and Samuel Beckett at one of Ireland's most iconic universities.", tag: 'Cultural', color: '#c8d5dd', img: '/trinity-college.jpg' },
           { title: 'Dublin Castle', desc: 'History meets imagination at Dublin Castle – the heart of the city for over 800 years.', tag: 'History', color: '#c8d8cc' },
           { title: 'The Book of Kells', desc: "Ireland's greatest cultural treasure – a world-famous illuminated manuscript and the stunning Long Room library.", tag: 'Cultural', color: '#d6d2c5' },
           { title: 'Howth Cliff Walk', desc: 'Fresh air, sea views, and endless photo moments! Stunning coastal cliffs, a lighthouse, and seals along the way.', tag: 'Nature', color: '#c2d0dc' },
           { title: "St Stephen's Green", desc: "A quiet escape in the heart of the city – Dublin's most beautiful park, calm, green, and full of character.", tag: 'Nature', color: '#c8d8cc' },
           { title: 'Glendalough', desc: 'Discover the breathtaking 6th-century monastic site and twin lakes in the Wicklow Mountains. Ancient Ireland at its finest.', tag: 'History', color: '#d7c3b0' },
-        ].map(({ title, desc, tag, color }) => (
+        ].map(({ title, desc, tag, color, img = null }) => (
           <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group">
             <div class="bg-white border border-line rounded-lg overflow-hidden transition-all duration-200 group-hover:shadow-md group-hover:-translate-y-[3px] flex flex-col h-full">
-              <div class="aspect-video w-full" style={`background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
+              {img
+              ? <img src={img} alt={title} class="aspect-video w-full object-cover" />
+              : <div class="aspect-video w-full" style={`background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
+            }
               <div class="p-6 flex flex-col flex-1">
                 <div class="flex items-center justify-between gap-3 mb-3">
                   <h3 class="text-[1.05rem]">{title}</h3>
