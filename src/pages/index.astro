@@ -51,31 +51,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="hidden md:flex absolute right-10 bottom-[120px] z-20 flex-col gap-4 items-end">
-      <div
-        class="w-[150px] h-[150px] rounded-full bg-brand-green text-white grid place-items-center text-center font-heading font-bold leading-[1.1] shadow-[0_16px_40px_rgba(0,0,0,0.3)] -rotate-6"
-      >
-        <div>
-          <span class="block text-[1.55rem] tracking-[-0.02em]">€1,800</span>
-          <span class="block text-[0.62rem] font-medium tracking-[0.14em] uppercase opacity-95 mt-1">Full package</span>
-        </div>
-      </div>
-    </div>
+
   </section>
 
   <!-- CREDENTIALS BAND -->
-  <section class="bg-white border-b border-line">
-    <div class="container-x py-6">
-      <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-center font-heading font-semibold text-[0.92rem] text-ink">
-        <span>CELTA-qualified teachers</span>
-        <span class="w-2 h-2 rounded-full inline-block" style="background: var(--orange);"></span>
-        <span>10+ years of experience</span>
-        <span class="w-2 h-2 rounded-full inline-block" style="background: var(--orange);"></span>
-        <span>Communicative lessons</span>
-        <span class="w-2 h-2 rounded-full inline-block" style="background: var(--orange);"></span>
-        <span>Cambridge &amp; IELTS specialists</span>
-        <span class="w-2 h-2 rounded-full inline-block" style="background: var(--orange);"></span>
-        <span>Small groups, max 8</span>
+  <section style="background: var(--ink); border-bottom: none;">
+    <div class="container-x py-5">
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center">
+        {[
+          'CELTA-qualified teachers',
+          '10+ years of experience',
+          'Communicative lessons',
+          'Cambridge & IELTS specialists',
+          'Small groups, max 8',
+        ].map((item, i, arr) => (
+          <>
+            <span class="font-heading font-semibold text-[0.9rem] text-white tracking-wide">{item}</span>
+            {i < arr.length - 1 && (
+              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+            )}
+          </>
+        ))}
       </div>
     </div>
   </section>
@@ -182,6 +178,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+
+  <!-- DUBLIN TRIPS -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Trips &amp; Activities</span>
+        <h2>Explore Dublin and beyond.</h2>
+        <p>Six unforgettable experiences included in the programme – from ancient castles to coastal cliff walks.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {[
+          { title: 'Trinity College', desc: "Walk the same paths as Oscar Wilde and Samuel Beckett at one of Ireland's most iconic universities.", tag: 'Cultural', color: '#c8d5dd' },
+          { title: 'Dublin Castle', desc: 'History meets imagination at Dublin Castle – the heart of the city for over 800 years.', tag: 'History', color: '#c8d8cc' },
+          { title: 'The Book of Kells', desc: "Ireland's greatest cultural treasure – a world-famous illuminated manuscript and the stunning Long Room library.", tag: 'Cultural', color: '#d6d2c5' },
+          { title: 'Howth Cliff Walk', desc: 'Fresh air, sea views, and endless photo moments! Stunning coastal cliffs, a lighthouse, and seals along the way.', tag: 'Nature', color: '#c2d0dc' },
+          { title: "St Stephen's Green", desc: "A quiet escape in the heart of the city – Dublin's most beautiful park, calm, green, and full of character.", tag: 'Nature', color: '#c8d8cc' },
+          { title: 'Glendalough', desc: 'Discover the breathtaking 6th-century monastic site and twin lakes in the Wicklow Mountains. Ancient Ireland at its finest.', tag: 'History', color: '#d7c3b0' },
+        ].map(({ title, desc, tag, color }) => (
+          <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group">
+            <div class="bg-white border border-line rounded-lg overflow-hidden transition-all duration-200 group-hover:shadow-md group-hover:-translate-y-[3px] flex flex-col h-full">
+              <div class="aspect-video w-full" style={`background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
+              <div class="p-6 flex flex-col flex-1">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="text-[1.05rem]">{title}</h3>
+                  <span class="text-[0.65rem] font-heading font-semibold uppercase tracking-[0.1em] px-[8px] py-[3px] rounded-full flex-shrink-0" style="background: var(--green-soft); color: var(--green);">{tag}</span>
+                </div>
+                <p class="text-ink-soft text-[0.9rem] leading-relaxed flex-1">{desc}</p>
+                <span class="inline-flex items-center gap-2 mt-4 text-[0.85rem] font-heading font-semibold" style="color: var(--green);">
+                  See all trips →
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- PULL QUOTE -->
   <section class="section" style="background: linear-gradient(135deg, #008037 0%, #006a2d 100%);">
     <div class="container-x">
@@ -243,7 +277,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         <div>
           <span class="eyebrow eyebrow-dot">Contact</span>
-          <h2 class="mt-4 mb-4">Got a question? We're here.</h2>
+          <h2 class="mt-4 mb-4" style="color: var(--green);">Got a question? We're here.</h2>
           <p>Book a free consultation and we'll help you find the right programme or course.</p>
 
           <div class="flex flex-col gap-6 mt-8">
@@ -286,9 +320,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <button class="btn btn-primary w-full justify-center mt-2">
+          <a href="mailto:immersionenglish.ie@gmail.com" class="btn btn-primary w-full justify-center mt-2">
             Send message
-          </button>
+          </a>
         </div>
       </div>
     </div>
