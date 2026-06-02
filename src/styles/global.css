@@ -312,3 +312,30 @@
 .img-greyscale:hover {
   filter: grayscale(0%) contrast(1);
 }
+
+/* ── Global mobile improvements ── */
+@media (max-width: 767px) {
+  /* Tighter section padding on mobile */
+  .section { padding-top: 56px; padding-bottom: 56px; }
+
+  /* Hero headings scale down */
+  h1 { font-size: clamp(2rem, 8vw, 3.5rem); }
+
+  /* Section heads centred text */
+  .section-head h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); }
+
+  /* Trust cards — full width, less padding */
+  .trust-card { padding: 28px 22px 24px; }
+
+  /* Eyebrow labels */
+  .eyebrow { font-size: 0.68rem; }
+
+  /* FAQs sidebar hidden (already hidden md:flex) */
+
+  /* Contact form on Dublin page */
+  .contact-form-pad { padding: 24px !important; }
+
+  /* Blog article prose */
+  .prose-body { font-size: 0.98rem; }
+  .prose-body h2 { font-size: 1.25rem; }
+}

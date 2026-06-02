@@ -8,7 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 54vh;">
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
-    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange);">
         <span class="inline-block w-6 h-[1.5px]" style="background: var(--orange);"></span>
         Our lessons
@@ -17,7 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Speaking-focused English<br />for confident,
         <span style="color: var(--orange);">real-life</span> communication.
       </h1>
-      <p class="text-white/80 text-[1.15rem] max-w-[52ch] leading-[1.55]">
+      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[52ch] leading-[1.55]">
         All sessions are taught online, in small groups or individually, with a strong focus on speaking. Fees include all learning materials.
       </p>
     </div>
@@ -32,7 +32,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p>Every course focuses on speaking with accuracy and confidence, developing natural fluency, and using English for real purposes.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:items-start">
 
         <!-- Speak Up! -->
         <div class="trust-card relative">

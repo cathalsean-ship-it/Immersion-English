@@ -139,7 +139,7 @@ const sections = [
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
-    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
         ← Dublin Summer 2027
       </a>
@@ -199,7 +199,7 @@ const sections = [
                       </span>
                     </button>
                     <div class="faq-body" style="display:none;">
-                      <div class="pb-6 pr-2 md:pr-10">
+                      <div class="pb-5 pr-2 md:pr-10">
                         <p class="text-ink-soft text-[0.97rem] leading-relaxed max-w-[66ch]">{a}</p>
                         {link && (
                           <a
@@ -232,7 +232,7 @@ const sections = [
       <p class="max-w-[44ch] mx-auto mb-8" style="color: rgba(254,255,254,0.74);">
         We're happy to answer anything, big or small. Get in touch and we'll reply within one working day.
       </p>
-      <div class="flex gap-4 justify-center flex-wrap">
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
         <a href="/contact" class="btn btn-primary">
           Contact us
           <span class="btn-arrow">→</span>

@@ -27,7 +27,7 @@ const testimonials = [
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 54vh;">
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
-    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange);">
         <span class="inline-block w-6 h-[1.5px]" style="background: var(--orange);"></span>
         About us
@@ -36,7 +36,7 @@ const testimonials = [
         Immersion English –<br />
         <span style="color: var(--orange);">English for Life.</span>
       </h1>
-      <p class="text-white/80 text-[1.15rem] max-w-[52ch] leading-[1.55]">
+      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[52ch] leading-[1.55]">
         Based in Sofia, we move beyond traditional textbook methods to offer a dynamic and personalised approach to English language education.
       </p>
     </div>
@@ -75,17 +75,17 @@ const testimonials = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         {[
           {
-            icon: '◎',
+            icon: '●',
             title: 'Authentic materials',
             body: 'Compelling books, gripping drama series, insightful podcasts – we use rich, real-world English that transforms language learning from a task into a passion.',
           },
           {
-            icon: '◈',
+            icon: '●',
             title: 'Personal to you',
             body: 'Your interests, your goals, your pace. We tailor every learning journey to the individual – no two students follow exactly the same path.',
           },
           {
-            icon: '◉',
+            icon: '●',
             title: 'Communication over memorisation',
             body: 'We go beyond traditional methods. Speaking, thinking, and communicating in English – naturally and independently – is always the goal.',
           },
@@ -111,7 +111,7 @@ const testimonials = [
       <div class="flex flex-col gap-16">
 
         <!-- Lenny -->
-        <div class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
           <div
             class="rounded-md overflow-hidden shadow-soft"
             style="aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), #d6e0d9;"
@@ -134,7 +134,7 @@ const testimonials = [
         <div class="border-t border-line"></div>
 
         <!-- Lina -->
-        <div class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
           <div
             class="rounded-md overflow-hidden shadow-soft"
             style="aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), #d9d6e0;"
@@ -157,7 +157,7 @@ const testimonials = [
         <div class="border-t border-line"></div>
 
         <!-- Lia -->
-        <div class="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
           <div
             class="rounded-md overflow-hidden shadow-soft"
             style="aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), #e0dbd6;"
@@ -188,7 +188,7 @@ const testimonials = [
         <span class="eyebrow eyebrow-dot">What students say</span>
         <h2>Real results. Real students.</h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
         {testimonials.map(({ quote, name }) => (
           <div class="bg-white border border-line rounded-lg p-8 flex flex-col gap-5">
             <p class="text-[1.35rem] text-brand-green font-heading font-bold leading-none">"</p>
@@ -208,7 +208,7 @@ const testimonials = [
       <p class="max-w-[46ch] mx-auto mb-8 text-[1.05rem]" style="color: rgba(254,255,254,0.74);">
         Book a free consultation and we'll help you find the right course or programme for your goals.
       </p>
-      <div class="flex gap-4 justify-center flex-wrap">
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
         <a href="/contact" class="btn btn-primary">
           Book a free consultation
           <span class="btn-arrow">→</span>

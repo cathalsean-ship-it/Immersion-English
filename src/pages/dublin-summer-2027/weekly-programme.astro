@@ -8,7 +8,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
-    <div class="container-x relative z-10 pt-[120px] pb-[80px]">
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
         ← Dublin Summer 2027
       </a>
@@ -20,7 +20,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         Students are busy<br />all day
         <span style="color: var(--orange);">long.</span>
       </h1>
-      <p class="text-white/80 text-[1.15rem] max-w-[50ch] leading-[1.55]">
+      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[50ch] leading-[1.55]">
         A balanced timetable of English lessons, daily trips, and evening activities – with free time built in between.
       </p>
     </div>
@@ -105,7 +105,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <p class="max-w-[44ch] mx-auto mb-8" style="color: rgba(254,255,254,0.74);">
         Register your interest now and we'll send the full timetable as soon as it's confirmed in September 2026.
       </p>
-      <div class="flex gap-4 justify-center flex-wrap">
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
         <a href="/contact" class="btn btn-primary">
           Register your interest
           <span class="btn-arrow">→</span>

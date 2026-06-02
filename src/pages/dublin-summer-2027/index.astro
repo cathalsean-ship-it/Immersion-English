@@ -12,7 +12,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.3) 0%, rgba(20,32,26,0.5) 45%, rgba(20,32,26,0.92) 100%);"></div>
 
-    <div class="container-x relative z-10 w-full flex items-end pt-[116px] pb-[56px]">
+    <div class="container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[116px] pb-[44px] md:pb-[56px]">
       <div class="max-w-[760px]">
         <span class="inline-flex items-center gap-[10px] py-[7px] pr-[14px] pl-2 rounded-full bg-white/[.12] backdrop-blur-md border border-white/[.18] text-white font-heading font-semibold text-[0.78rem] tracking-[0.04em] mb-7">
           <span class="bg-white text-brand-green px-[10px] py-[3px] rounded-full text-[0.7rem] tracking-[0.08em] uppercase">Summer 2027</span>
@@ -25,11 +25,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <span style="color: var(--orange);">teens aged 13–17.</span>
         </h1>
 
-        <p class="mt-5 text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">
+        <p class="mt-4 text-[0.98rem] md:text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">
           A 1-week English immersion experience in Dublin, Ireland for Bulgarian teenagers aged 13–17. Small groups, CELTA-qualified teaching, and full supervision – from arrival to departure. Your child doesn’t just learn English here. They <em>live</em> it.
         </p>
 
-        <div class="mt-9 flex gap-4 items-center flex-wrap">
+        <div class="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
           <a href="/contact" class="btn btn-primary">
             Reserve a place
             <span class="btn-arrow">→</span>
@@ -39,7 +39,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </a>
         </div>
 
-        <div class="mt-14 pt-7 border-t border-white/[.18] grid grid-cols-4 gap-5 max-w-[680px]">
+        <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-[680px]">
           <div>
             <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">7</span>
             <span class="block mt-2 text-[0.84rem] text-white/80">Days in Dublin</span>
@@ -84,7 +84,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-start">
         <div class="sticky top-[90px]">
-          <img src="/teens-dublin.jpg" alt="Teenagers enjoying Dublin" class="img-greyscale w-full rounded-lg shadow-lift object-cover" style="aspect-ratio: 3/2; object-position: center 35%;" />
+          <img src="/teens-dublin.jpg" alt="Teenagers enjoying Dublin" class="img-greyscale w-full rounded-lg shadow-lift object-cover" style="aspect-ratio: 3/2; object-position: center 40%;" />
         </div>
         <div>
           <span class="eyebrow eyebrow-dot">What's included</span>
@@ -138,7 +138,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h2>More than a language course.</h2>
         <p>A week that builds confidence, friendships, and real English for life.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {[
           { title: 'Expert CELTA-qualified teaching', body: 'Study with Cathal (Lenny) Leonard – an Irish, native CELTA-qualified teacher with over 10 years of experience teaching English to teenagers and adults.' },
           { title: 'Speak English every day', body: 'Build real communicative confidence through interactive lessons, cultural activities, and daily real-world use – English inside and outside the classroom.' },
@@ -196,7 +196,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <span class="eyebrow eyebrow-dot">Explore the programme</span>
         <h2>Everything you need to know.</h2>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
           { href: '/dublin-summer-2027/accommodation', title: 'Accommodation', desc: 'Single-room accommodation at University College Dublin (UCD) – safe, comfortable, and at the heart of campus life.' },
           { href: '/dublin-summer-2027/trips-and-activities', title: 'Trips & Activities', desc: 'Trinity College, Book of Kells, Howth Cliff Walk, Glendalough, Dublin Castle – 6 trips plus 7 evening activities.' },
