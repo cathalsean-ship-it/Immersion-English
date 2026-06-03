@@ -15,7 +15,7 @@ const {
   ogImage = '/og-default.jpg',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://immersionenglish.netlify.app');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://immersion-english.com');
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin}${ogImage}`;
 ---
 
