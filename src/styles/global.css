@@ -512,3 +512,20 @@
     border-radius: 10px;
   }
 }
+
+/* Lessons hero parallax */
+.lessons-hero-bg {
+  overflow: hidden;
+}
+.lessons-parallax-img {
+  transition: transform 0.1s linear;
+  will-change: transform;
+  transform-origin: center top;
+  min-height: 120%;
+  object-fit: cover;
+}
+@media (max-width: 767px) {
+  .lessons-parallax-img {
+    transform: none !important;
+  }
+}

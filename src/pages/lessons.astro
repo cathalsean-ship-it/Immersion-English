@@ -2,118 +2,218 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="English Lessons" description="Speaking-focused online English lessons in small groups or 1-to-1. Speak Up, Personal Coaching, and Exam Prep courses.">
+<BaseLayout
+  title="English Lessons in Sofia | Speak Up, 1:1 Coaching & Exam Prep | Immersion English"
+  description="Speaking-focused English lessons online for adults. Group courses, personal 1:1 coaching, and exam preparation with a CELTA-qualified native teacher. B2 and above."
+>
 
   <!-- HERO -->
-  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 54vh;">
-    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
-    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
+  <section class="relative flex items-center text-white overflow-hidden isolate lessons-hero" style="min-height: 54vh;">
+    <!-- Parallax photo -->
+    <div class="absolute inset-0 -z-[2] lessons-hero-bg">
+      <img
+        src="/lessons-hero.jpg"
+        alt="Speech bubble with orange dots — conversation and English speaking"
+        class="w-full h-full object-cover object-center lessons-parallax-img"
+      />
+    </div>
+    <!-- Dark overlay so text is readable -->
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(135deg, rgba(10,45,20,0.82) 0%, rgba(20,32,26,0.75) 60%, rgba(10,45,20,0.65) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
-      <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange);">
-        <span class="inline-block w-6 h-[1.5px]" style="background: var(--orange);"></span>
-        Our lessons
+      <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+        Online English lessons
       </p>
-      <h1 class="text-white mb-5 max-w-[16ch]">
-        Speaking-focused English<br />for confident,
-        <span style="color: var(--orange);">real-life</span> communication.
+      <h1 class="text-white mb-5" style="max-width: 18ch;">
+        English lessons that make you <span style="color: var(--orange);">speak</span> – from day one.
       </h1>
       <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[52ch] leading-[1.55]">
-        All sessions are taught online, in small groups or individually, with a strong focus on speaking. Fees include all learning materials.
+        All sessions are taught online by a CELTA-qualified native teacher, in small groups or 1:1. Every lesson prioritises real communication over passive grammar drills. Course fees include all learning materials.
       </p>
     </div>
   </section>
+
+  <script>
+    // Subtle parallax on scroll — image moves at 40% of scroll speed
+    const hero = document.querySelector('.lessons-hero');
+    const img = document.querySelector('.lessons-parallax-img');
+    if (hero && img) {
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            if (scrollY < heroBottom) {
+              img.style.transform = `translateY(${scrollY * 0.3}px)`;
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+  </script>
 
   <!-- COURSES -->
   <section class="section section-tinted">
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Our courses</span>
-        <h2>The right programme for your level and goals.</h2>
-        <p>Every course focuses on speaking with accuracy and confidence, developing natural fluency, and using English for real purposes.</p>
+        <h2>Three ways to build confident English.</h2>
+        <p>Whether you prefer the energy of a group or the focus of 1:1 coaching, every course is built around one goal – using English with confidence in real situations.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:items-start">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:items-start">
 
         <!-- Speak Up! -->
-        <div class="trust-card relative">
-          <span class="absolute top-5 right-5 text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--green-soft); color: var(--green);">
-            Most popular
-          </span>
-          <div class="trust-icon text-[1.4rem]">◉</div>
-          <h3>Speak Up!</h3>
-          <p>Our structured group speaking programme is focused on expressing ideas clearly, interacting confidently, and thinking in English.</p>
-          <ul class="flex flex-col gap-2 mt-2 text-[0.88rem] text-ink-soft">
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> 12 lessons over 6 weeks</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> 90-minute lessons</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Online, Tuesdays & Thursdays 19:00–20:30</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Maximum 8 students</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Weekly skill focus (opinion, storytelling, debate…)</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> B2 and above</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> End-of-programme feedback report</li>
-          </ul>
-          <p class="text-[0.82rem] font-heading font-bold tracking-[0.06em] pt-5 mt-auto border-t border-line text-ink text-[1.1rem]">
-            €290 per course
+        <div class="trust-card relative flex flex-col">
+          <!-- Format badge -->
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--green-soft); color: var(--green);">Group · max 8</span>
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--orange); color: white;">Most popular</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
+            <h3 style="margin: 0;">Speak Up!</h3>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+          </div>
+
+          <p class="mt-4 text-ink-soft text-[0.95rem] leading-relaxed">
+            Our structured group speaking programme. Express ideas clearly, interact confidently, and start <em>thinking</em> in English – not translating.
           </p>
+
+          <ul class="flex flex-col gap-2 mt-4 text-[0.88rem] text-ink-soft">
+            {[
+              '12 lessons over 6 weeks',
+              '90-minute lessons, online',
+              'Small groups of maximum 8 students',
+              'Weekly skill focus – opinion, storytelling, debate',
+              'End-of-programme feedback report',
+              'Level: B2 and above',
+            ].map(item => (
+              <li class="flex items-start gap-2">
+                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div class="pt-5 mt-auto border-t border-line">
+            <p class="font-heading font-bold text-ink text-[1.2rem]">€290 <span class="text-[0.85rem] font-normal text-ink-soft">per course</span></p>
+            <p class="text-[0.8rem] text-ink-soft mt-1">€24 per lesson – all materials included</p>
+          </div>
         </div>
 
         <!-- Personal Speaking Coach -->
-        <div class="trust-card relative">
-          <div class="trust-icon text-[1.4rem]">◈</div>
-          <h3>Personal Speaking Coach</h3>
-          <p>Personalised 1:1 speaking coaching for learners who need faster progress tailored to their individual goals and needs.</p>
-          <ul class="flex flex-col gap-2 mt-2 text-[0.88rem] text-ink-soft">
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> 90-minute online sessions</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Minimum 3 lessons</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Flexible schedule around your availability</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Personal speaking diagnosis</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Targeted feedback and coaching</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Flexible focus: confidence, fluency, interviews</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> B2 and above</li>
+        <div class="trust-card relative flex flex-col">
+          <div class="flex items-center mb-2">
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #3b5bdb;">1:1 · flexible</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
+            <h3 style="margin: 0;">Personal Speaking Coach</h3>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+          </div>
+
+          <p class="mt-4 text-ink-soft text-[0.95rem] leading-relaxed">
+            Personalised 1:1 coaching built entirely around you – your goals, your schedule, your pace. Ideal for professionals, frequent travellers, or anyone who wants faster, focused progress.
+          </p>
+
+          <ul class="flex flex-col gap-2 mt-4 text-[0.88rem] text-ink-soft">
+            {[
+              '90-minute online sessions',
+              'Flexible schedule – book around your availability',
+              'Personal speaking diagnosis in lesson 1',
+              'Targeted feedback every session',
+              'Focus areas: confidence, fluency, business English, interviews',
+              'Level: B2 and above',
+            ].map(item => (
+              <li class="flex items-start gap-2">
+                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                {item}
+              </li>
+            ))}
           </ul>
+
           <div class="pt-5 mt-auto border-t border-line">
-            <p class="font-heading font-bold text-ink text-[1.1rem]">€45 per lesson</p>
-            <p class="text-[0.82rem] text-ink-soft mt-1">5 lessons: €215 <span class="text-brand-green font-semibold">(save 5%)</span></p>
-            <p class="text-[0.82rem] text-ink-soft">10 lessons: €405 <span class="text-brand-green font-semibold">(save 10%)</span></p>
+            <p class="font-heading font-bold text-ink text-[1.2rem]">€45 <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
+            <div class="flex flex-col gap-1 mt-2">
+              <p class="text-[0.82rem] text-ink-soft">5 lessons: <strong class="text-ink">€215</strong> <span style="color: var(--green);" class="font-semibold">– save 5%</span></p>
+              <p class="text-[0.82rem] text-ink-soft">10 lessons: <strong class="text-ink">€405</strong> <span style="color: var(--green);" class="font-semibold">– save 10%</span></p>
+            </div>
           </div>
         </div>
 
         <!-- Exam Prep -->
-        <div class="trust-card">
-          <div class="trust-icon text-[1.4rem]">◎</div>
-          <h3>Exam Prep</h3>
-          <p>1:1 speaking-focused exam preparation for students who know English but need to perform confidently under exam conditions – Cambridge CAE, IELTS, and more.</p>
-          <ul class="flex flex-col gap-2 mt-2 text-[0.88rem] text-ink-soft">
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> 12 lessons over 6 weeks</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> 90-minute online lessons</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Real speaking tasks + targeted feedback</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Exam strategy, not memorised scripts</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> Lots of speaking practice – natural fluency, less fear</li>
-            <li class="flex items-start gap-2"><span style="color:var(--green); flex-shrink:0;">✓</span> B2 and above</li>
-          </ul>
-          <p class="text-[0.82rem] font-heading font-bold tracking-[0.06em] pt-5 mt-auto border-t border-line text-ink text-[1.1rem]">
-            €45 per lesson
+        <div class="trust-card relative flex flex-col">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #3b5bdb;">1:1</span>
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--green-soft); color: var(--green);">Group options</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
+            <h3 style="margin: 0;">Exam Preparation</h3>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+          </div>
+
+          <p class="mt-4 text-ink-soft text-[0.95rem] leading-relaxed">
+            For students who know English but need to perform under exam conditions. Cambridge CAE, IELTS, and more. We focus on how to answer – not what to memorise.
           </p>
+
+          <ul class="flex flex-col gap-2 mt-4 text-[0.88rem] text-ink-soft">
+            {[
+              'Real speaking and writing tasks – not drills',
+              'Clear exam strategy and structure',
+              'Targeted, personalised feedback',
+              'Build confidence and natural fluency',
+              'Level: B2 and above',
+            ].map(item => (
+              <li class="flex items-start gap-2">
+                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Sub-options -->
+          <div class="mt-4 flex flex-col gap-3">
+            <div class="rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
+              <p class="font-heading font-semibold text-[0.82rem] text-ink mb-1">1:1 Exam Prep <span class="text-ink-soft font-normal">– speaking & writing</span></p>
+              <p class="text-[0.78rem] text-ink-soft">12 lessons · 6 weeks · 90 min · online</p>
+              <p class="font-heading font-bold text-ink mt-1">€45 <span class="text-[0.78rem] font-normal text-ink-soft">per lesson</span></p>
+            </div>
+            <div class="rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
+              <p class="font-heading font-semibold text-[0.82rem] text-ink mb-1">Group Exam Focus <span class="text-ink-soft font-normal">– speaking or writing</span></p>
+              <p class="text-[0.78rem] text-ink-soft">4 weeks · 90 min/week · small groups · online</p>
+              <p class="font-heading font-bold text-ink mt-1">€50 <span class="text-[0.78rem] font-normal text-ink-soft">per lesson</span></p>
+            </div>
+          </div>
+
+          <div class="pt-5 mt-auto border-t border-line">
+            <p class="text-[0.8rem] text-ink-soft">Not sure which exam format? Book a free consultation and we'll advise.</p>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- APPROACH -->
+  <!-- HOW IT WORKS -->
   <section class="section">
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center">
         <div>
-          <span class="eyebrow eyebrow-dot">Our approach</span>
-          <h2 class="mt-4 mb-5">Speaking with confidence starts on day one.</h2>
+          <span class="eyebrow eyebrow-dot">How it works</span>
+          <h2 class="mt-4 mb-5">Simple to start. <span style="color: var(--orange);">Effective</span> from lesson one.</h2>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-10">
-            We focus on clear communication, natural fluency, and effective strategies – not memorised scripts or passive grammar drills. You'll leave every lesson having actually used English.
+            No placement tests, no lengthy sign-up forms. A free 20-minute consultation is all it takes to get started with the right course for your goals.
           </p>
           <ol class="flex flex-col gap-8">
             {[
-              { n: '01', title: 'Free consultation', body: 'We meet online to discuss your goals, experience, and which course suits you best. No pressure, no obligation.' },
-              { n: '02', title: 'Level check (Exam Prep)', body: 'For Exam Prep students, we send a short online level check to place you accurately and personalise the programme.' },
-              { n: '03', title: 'Start your course', body: "Your place is confirmed once we've received your registration form and course fee. Then we get started." },
+              { n: '01', title: 'Free consultation', body: 'We meet online to understand your goals, level, and which course suits you best. No pressure, no obligation – just an honest conversation.' },
+              { n: '02', title: 'Choose your course', body: 'We recommend the best fit and confirm your place once the registration form and course fee are received. Quick, simple, done.' },
+              { n: '03', title: 'Start speaking', body: 'From your very first lesson, you\'ll be using English – not just studying it. Progress you can feel from day one.' },
             ].map(({ n, title, body }) => (
               <li class="flex gap-6 items-start">
                 <span class="font-heading font-bold text-[1.5rem] leading-none tracking-[-0.03em] flex-shrink-0 mt-1" style="color: var(--orange);">{n}</span>
@@ -125,10 +225,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             ))}
           </ol>
         </div>
-        <div
-          class="rounded-md overflow-hidden shadow-lift aspect-[4/5]"
-          style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px), #d6e0d9;"
-        ></div>
+        <div class="rounded-md overflow-hidden shadow-lift">
+          <img
+            src="/teens-cafe.jpg"
+            alt="Students in conversation during an English lesson"
+            class="img-greyscale w-full object-cover"
+            style="aspect-ratio: 4/5; display: block;"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IMMERSION ENGLISH -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Why choose us</span>
+        <h2>Not another English course.</h2>
+        <p>Every lesson is built around real communication – because that's the only way to build real confidence.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {[
+          { title: 'CELTA-qualified teacher', body: 'Taught by Cathal (Lenny) Leonard – an Irish, native English speaker with a CELTA qualification and over 10 years of teaching experience.' },
+          { title: 'Speaking from day one', body: 'Every lesson prioritises active speaking. You leave each session having used English – not just studied it.' },
+          { title: 'Small groups, real attention', body: 'Maximum 8 students in group courses. You get individual feedback, more time to speak, and a teacher who knows your goals.' },
+          { title: 'Flexible and online', body: 'All lessons are online. No commute, no fixed classroom – just great teaching wherever you are.' },
+          { title: 'Honest feedback', body: 'No vague praise. You receive clear, constructive feedback so you know exactly what to improve and how.' },
+          { title: 'Materials included', body: 'All course materials are prepared and provided by your teacher. Nothing extra to buy or download.' },
+        ].map(({ title, body }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <h3 style="margin: 0; min-height: 2.6em;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0;">{body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -140,15 +273,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div>
           <span class="eyebrow eyebrow-dot">Ready to start?</span>
           <h2 class="mt-4 mb-4">Not sure which course is right for you?</h2>
-          <p style="color: rgba(254,255,254,0.74);">Book a free 20-minute online consultation with Lenny and we'll help you find the perfect fit.</p>
+          <p style="color: rgba(254,255,254,0.74);">Book a free 20-minute online consultation with Lenny. We'll listen, ask the right questions, and recommend the best fit – no obligation.</p>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 md:justify-end">
-          <a href="/contact" class="btn btn-primary">
-            Book a free consultation
-          </a>
-          <a href="/dublin-summer-2027" class="btn btn-ghost text-white border-white/30 hover:border-white">
-            Dublin Summer 2027
-          </a>
+          <a href="/contact" class="btn btn-primary">Book a free consultation</a>
+          <a href="/dublin-summer-2027" class="btn btn-ghost text-white border-white/30 hover:border-white">Dublin Summer 2027</a>
         </div>
       </div>
     </div>
