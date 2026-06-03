@@ -63,6 +63,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h2>A typical week in Dublin.</h2>
         <p>Exact dates and the final detailed schedule will be confirmed in September 2026. The structure below is representative of a typical programme week.</p>
       </div>
+      <!-- Colour key -->
+      <div class="flex flex-wrap gap-4 mb-5">
+        {[
+          { color: 'var(--green)', label: 'Lessons + trip' },
+          { color: 'var(--orange)', label: 'Full day trip' },
+          { color: 'var(--ink)', label: 'Arrival / departure' },
+        ].map(({ color, label }) => (
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-sm flex-shrink-0" style={`background: ${color};`}></span>
+            <span class="text-[0.8rem] font-heading font-semibold text-ink-soft">{label}</span>
+          </div>
+        ))}
+      </div>
       <div class="flex justify-end mb-4">
         <button id="expand-all" class="text-[0.85rem] font-heading font-semibold flex items-center gap-2 transition-colors no-underline" style="color: var(--green); background: none; border: none; cursor: pointer;">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -75,7 +88,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           {
             day: 'Sunday',
             label: 'Arrival day',
-            color: 'var(--green)',
+            color: 'var(--ink)',
             slots: [
               { time: 'Afternoon', activity: 'Arrival at Dublin Airport – met by the Immersion English team' },
               { time: 'Late afternoon', activity: 'Check-in at Belgrove Residences, UCD – tour of campus and rooms' },
@@ -84,8 +97,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           },
           {
             day: 'Monday',
-            label: 'First full day',
-            color: 'var(--orange)',
+            label: 'Lessons + city trip',
+            color: 'var(--green)',
             slots: [
               { time: '09:00 – 12:00', activity: 'English lesson – level placement and speaking warm-up' },
               { time: '12:00 – 13:00', activity: 'Lunch (free time at UCD food hall)' },
@@ -96,8 +109,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           },
           {
             day: 'Tuesday',
-            label: 'City & culture',
-            color: '#7b6cf0',
+            label: 'Lessons + city trip',
+            color: 'var(--green)',
             slots: [
               { time: '09:00 – 12:00', activity: 'English lesson – speaking skills and fluency' },
               { time: '12:00 – 13:00', activity: 'Lunch (free time)' },
@@ -120,7 +133,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           },
           {
             day: 'Thursday',
-            label: 'Nature & city',
+            label: 'Lessons + city trip',
             color: 'var(--green)',
             slots: [
               { time: '09:00 – 12:00', activity: 'English lesson – real-world communication tasks' },
@@ -132,8 +145,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           },
           {
             day: 'Friday',
-            label: 'City exploration',
-            color: '#b0b8b4',
+            label: 'Lessons + city trip',
+            color: 'var(--green)',
             slots: [
               { time: '09:00 – 12:00', activity: 'English lesson – exam skills or fluency focus' },
               { time: '12:00 – 13:00', activity: 'Lunch (free time)' },
@@ -144,8 +157,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           },
           {
             day: 'Saturday',
-            label: 'Shopping & farewell',
-            color: 'var(--orange)',
+            label: 'Lessons + farewell',
+            color: 'var(--green)',
             slots: [
               { time: 'Morning', activity: 'English lesson – end-of-week review and reflection' },
               { time: 'Afternoon', activity: 'Half-day trip – Dundrum Town Centre' },
@@ -155,7 +168,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           {
             day: 'Sunday',
             label: 'Departure day',
-            color: '#b0b8b4',
+            color: 'var(--ink)',
             slots: [
               { time: 'Morning', activity: 'Check-out from UCD – luggage and final preparations' },
               { time: 'Midday', activity: 'Depart for Dublin Airport with the Immersion English team' },
