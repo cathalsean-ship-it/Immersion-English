@@ -12,7 +12,7 @@ const { title, description, href, image, imageAlt = '' } = Astro.props;
 
 <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow flex flex-col">
   {image
-    ? <img src={image} alt={imageAlt || title} class="w-full h-48 object-cover" />
+    ? <img src={image} alt={imageAlt || title} class="w-full h-48 object-cover" loading="lazy" loading="lazy" />
     : <div class="w-full h-48 bg-gray-100 flex items-center justify-center text-gray-400 text-sm">Image placeholder</div>
   }
   <div class="p-6 flex flex-col flex-1">

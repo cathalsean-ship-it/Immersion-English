@@ -10,6 +10,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 
 
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why Speaking English Feels Harder Than Reading or Listening",
+    "author": {
+      "@type": "Person",
+      "name": "Cathal Leonard",
+      "url": "https://immersion-english.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Immersion English",
+      "url": "https://immersion-english.com"
+    },
+    "datePublished": "2026-01-15",
+    "inLanguage": "en"
+  }</script>
+
   <!-- HERO -->
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 38vh;">
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
@@ -21,7 +40,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </a>
       <p class="eyebrow mb-4" style="color: var(--orange);">Blog</p>
       <h1 class="text-white mb-5" style="max-width: 22ch; font-size: clamp(1.6rem, 5vw, 3rem);">Why Speaking English Feels Harder Than Reading or Listening</h1>
-      <p style="color: rgba(255,255,255,0.65); font-size: 0.88rem; font-family: 'Montserrat', sans-serif; font-weight: 500;">15 January 2026 &middot; By Cathal Leonard</p>
+      <p style="color: rgba(255,255,255,0.65); font-size: 0.88rem; font-family: 'Montserrat', sans-serif; font-weight: 500; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">15 January 2026 &middot; By Cathal Leonard <span style="opacity:0.5;">·</span> 5 min read</p>
     </div>
   </section>
 
@@ -33,7 +52,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         src="/blog-speaking-harder.jpg"
         alt="Person hesitating to speak"
         class="article-hero-img"
-      />
+      loading="lazy" loading="lazy" />
 
       <div class="prose-body">
 

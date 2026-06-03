@@ -25,22 +25,65 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta property="og:title" content={`${title} | Immersion English`} />
+    <meta name="theme-color" content="#008037" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Immersion English" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:site" content="@immersionenglish" />
+
+    <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/iE-mark.svg" />
+    <link rel="apple-touch-icon" href="/iE-mark.svg" />
+
+    <!-- Fonts — display=swap prevents render blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@400;700&display=swap&display=swap"
     />
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LanguageSchool",
+      "name": "Immersion English",
+      "url": "https://immersion-english.com",
+      "logo": "https://immersion-english.com/iE-mark.svg",
+      "description": "Speaking-focused English lessons online and an immersive summer programme in Dublin for teenagers aged 13–17.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sofia",
+        "addressCountry": "BG"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "immersionenglish.ie@gmail.com",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.facebook.com/immersionenglish.ie",
+        "https://www.youtube.com/@immersionenglish3932"
+      ]
+    })} />
+
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">

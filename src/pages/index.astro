@@ -218,7 +218,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
               <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
                 {img
-                  ? <img src={img} alt={title} class="trip-card-img w-full h-full object-cover" />
+                  ? <img src={img} alt={title} class="trip-card-img w-full h-full object-cover" loading="lazy" loading="lazy" />
                   : <div class="w-full h-full" style={`background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
                 }
               </div>
