@@ -114,11 +114,11 @@ const testimonials = [
         <h2>Small team. <span style="color: var(--orange);">Big</span> expertise.</h2>
         <p>Three people who care deeply about language, learning, and the confidence that comes from both.</p>
       </div>
-      <div class="flex flex-col gap-16">
 
-        <!-- Lenny -->
-        <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
-          <div class="rounded-md overflow-hidden shadow-soft">
+      <!-- Lenny — featured founder layout -->
+      <div class="grid grid-cols-1 md:grid-cols-[340px_1fr] gap-8 md:gap-16 items-start mb-16">
+        <div style="position: relative;">
+          <div class="rounded-lg overflow-hidden shadow-lift" style="border: 1px solid var(--line);">
             <img
               src="/team-lenny.jpg"
               alt="Cathal Leonard – Founder and Senior English Teacher at Immersion English"
@@ -126,70 +126,77 @@ const testimonials = [
               style="aspect-ratio: 3/4; object-position: center top; display: block;"
             />
           </div>
-          <div>
-            <p class="font-heading font-bold text-[1.3rem] text-ink">Cathal (Lenny) Leonard</p>
-            <p class="text-[0.9rem] font-semibold mt-1 mb-5" style="color: var(--green);">Founder · Senior English Teacher · CELTA-qualified · British Council ESAT-J Examiner</p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-4">
-              Cathal – known to students as Lenny – is a native Irish, CELTA-qualified English teacher with over ten years of experience working with teenage and adult learners. He has taught at the British Council in Sofia and led international summer programmes in Oxford and Brighton.
-            </p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-4">
-              Lenny specialises in exam preparation – with a strong track record of guiding students to success in Cambridge C1 Advanced (CAE) and IELTS – as well as speaking-focused general English and professional communication. He holds a BA from NUI Galway and an MA in Political Science from Queen's University Belfast.
-            </p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed">
-              His lessons are lively, focused, and full of humour. Students leave not just with better English, but with the confidence to use it. When he's not teaching, he's usually playing (or attempting to play) his guitar.
-            </p>
+          <!-- Founder badge -->
+          <div style="position: absolute; bottom: -16px; left: 24px; background: var(--green); color: white; border-radius: 8px; padding: 8px 16px; box-shadow: 0 4px 16px rgba(20,32,26,0.2);">
+            <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">Founder</p>
           </div>
         </div>
+        <div class="pt-2 md:pt-4">
+          <p class="font-heading font-bold text-[1.5rem] text-ink mb-1">Cathal (Lenny) Leonard</p>
+          <p class="text-[0.9rem] font-semibold mb-6" style="color: var(--green);">Senior English Teacher · CELTA-qualified · British Council ESAT-J Examiner</p>
+          <div style="width: 40px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 24px;"></div>
+          <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-4">
+            Cathal – known to students as Lenny – is a native Irish, CELTA-qualified English teacher with over ten years of experience working with teenage and adult learners. He has taught at the British Council in Sofia and led international summer programmes in Oxford and Brighton.
+          </p>
+          <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-4">
+            Lenny specialises in exam preparation – with a strong track record of guiding students to success in Cambridge C1 Advanced (CAE) and IELTS – as well as speaking-focused general English and professional communication. He holds a BA from NUI Galway and an MA in Political Science from Queen's University Belfast.
+          </p>
+          <p class="text-ink-soft text-[1.02rem] leading-relaxed">
+            His lessons are lively, focused, and full of humour. Students leave not just with better English, but with the confidence to use it. When he's not teaching, he's usually playing (or attempting to play) his guitar.
+          </p>
+        </div>
+      </div>
 
-        <div class="border-t border-line"></div>
+      <!-- Lina & Lia — card grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" style="padding-top: 48px; border-top: 1px solid var(--line);">
 
         <!-- Lina -->
-        <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
-          <div class="rounded-md overflow-hidden shadow-soft">
+        <div style="background: white; border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden;">
+          <div style="overflow: hidden; background: var(--cream);">
             <img
               src="/team-lina.jpg"
               alt="Lina Georgieva – Co-founder of the Immersion English Dublin Summer Programme"
               class="w-full object-cover"
-              style="aspect-ratio: 3/4; object-position: center top; display: block;"
+              style="aspect-ratio: 3/4; object-position: center top; display: block; max-height: 380px;"
             />
           </div>
-          <div>
-            <p class="font-heading font-bold text-[1.3rem] text-ink">Lina Georgieva</p>
-            <p class="text-[0.9rem] font-semibold mt-1 mb-5" style="color: var(--green);">Co-founder, Dublin Summer Programme · Marketing & Business Development Manager</p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-4">
+          <div style="padding: 28px 28px 32px;">
+            <p class="font-heading font-bold text-[1.2rem] text-ink mb-1">Lina Georgieva</p>
+            <p class="text-[0.82rem] font-semibold mb-4" style="color: var(--green);">Co-founder, Dublin Summer Programme · Marketing & Business Development Manager</p>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 16px;"></div>
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-3">
               Lina is the co-founder of the Immersion English Dublin Summer Programme. With over a decade of international experience in education, communications, and marketing, she brings the strategic vision and creative energy that shaped the programme from the ground up.
             </p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-4">
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-3">
               A graduate of Hunter College, City University of New York (BA in Film and Media Studies), Lina currently works as Global Capability Development Manager at the British Council – leading initiatives that connect learners, teachers, and institutions across the world.
             </p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed">
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed">
               Bilingual in English and Bulgarian and fluent in several other languages, Lina is also a certified yoga teacher. The Dublin Summer Programme is her way of bringing together her passions for language, culture, travel, and meaningful learning experiences for young people.
             </p>
           </div>
         </div>
 
-        <div class="border-t border-line"></div>
-
         <!-- Lia -->
-        <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
-          <div class="rounded-md overflow-hidden shadow-soft">
+        <div style="background: white; border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden;">
+          <div style="overflow: hidden; background: var(--cream);">
             <img
               src="/team-lia.jpg"
               alt="Liana Zheleva – Teaching Assistant at Immersion English"
               class="w-full object-cover"
-              style="aspect-ratio: 3/4; object-position: center top; display: block;"
+              style="aspect-ratio: 3/4; object-position: center top; display: block; max-height: 380px;"
             />
           </div>
-          <div>
-            <p class="font-heading font-bold text-[1.3rem] text-ink">Liana (Lia) Zheleva</p>
-            <p class="text-[0.9rem] font-semibold mt-1 mb-5" style="color: var(--green);">Teaching Assistant · Bilingual EN / BG</p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-4">
+          <div style="padding: 28px 28px 32px;">
+            <p class="font-heading font-bold text-[1.2rem] text-ink mb-1">Liana (Lia) Zheleva</p>
+            <p class="text-[0.82rem] font-semibold mb-4" style="color: var(--green);">Teaching Assistant · Bilingual EN / BG</p>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 16px;"></div>
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-3">
               Lia is a final-year student at the National Fine Arts High School in Sofia, where she has developed a passion for creativity, expression, and human connection. Bilingual in English and Bulgarian, she brings a warm, grounded presence to the Immersion English team.
             </p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-4">
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-3">
               Having attended The Lir Academy's Young Actors Summer Programme in Dublin, Lia knows the city and its culture first-hand – giving her a genuine connection to everything the Immersion English Summer Programme offers its students.
             </p>
-            <p class="text-ink-soft text-[1.02rem] leading-relaxed">
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed">
               Passionate about theatre, music, and working with people, Lia supports both teachers and students on the programme – helping create an environment where learning feels natural, fun, and genuinely memorable.
             </p>
           </div>
