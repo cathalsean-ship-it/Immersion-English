@@ -37,11 +37,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:items-start">
 
         <!-- Speak Up! -->
-        <div class="trust-card relative flex flex-col">
+        <div class="flex flex-col" style="background: white; border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;">
+          <!-- Most popular banner -->
+          <div style="background: var(--orange); padding: 7px 16px; text-align: center;">
+            <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: white;">Most popular</span>
+          </div>
+          <div class="trust-card-inner flex flex-col flex-1" style="padding: 40px 36px 32px;">
           <!-- Format badge -->
-          <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center mb-2">
             <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--green-soft); color: var(--green);">Group</span>
-            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--orange); color: white;">Most popular</span>
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
@@ -72,6 +76,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="pt-5 mt-auto border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.2rem]">€290 <span class="text-[0.85rem] font-normal text-ink-soft">per course</span></p>
             <p class="text-[0.8rem] text-ink-soft mt-1">€24 per lesson – all materials included</p>
+          </div>
           </div>
         </div>
 
@@ -184,10 +189,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <div class="rounded-md overflow-hidden shadow-lift">
           <img
-            src="/teens-cafe.jpg"
-            alt="Students in conversation during an English lesson"
-            class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/5; display: block;"
+            src="/lessons-hero.jpg"
+            alt="Speech bubble — the heart of every English lesson"
+            class="w-full object-cover"
+            style="aspect-ratio: 4/5; display: block; object-position: center;"
           />
         </div>
       </div>
