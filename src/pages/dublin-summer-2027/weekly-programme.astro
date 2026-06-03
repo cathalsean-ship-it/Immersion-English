@@ -63,8 +63,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <h2>A typical week in Dublin.</h2>
         <p>Exact dates and the final detailed schedule will be confirmed in September 2026. The structure below is representative of a typical programme week.</p>
       </div>
+      <div class="flex justify-end mb-4">
+        <button id="expand-all" class="text-[0.85rem] font-heading font-semibold flex items-center gap-2 transition-colors no-underline" style="color: var(--green); background: none; border: none; cursor: pointer;">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          Expand all days
+        </button>
+      </div>
 
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2" id="timetable">
         {[
           {
             day: 'Sunday',
@@ -157,24 +163,31 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             ],
           },
         ].map(({ day, label, color, slots }) => (
-          <div class="rounded-lg overflow-hidden border border-line">
-            <!-- Day header -->
-            <div class="flex items-center gap-4 px-5 py-3" style={`background: ${color}; color: white;`}>
-              <span class="font-heading font-bold text-[1.05rem]">{day}</span>
-              <span class="text-[0.8rem] opacity-80 font-heading font-semibold uppercase tracking-wider">{label}</span>
-            </div>
-            <!-- Slots -->
-            <div class="divide-y divide-line bg-white">
-              {slots.map(({ time, activity }) => (
-                <div class="flex gap-0 items-start">
-                  <div class="flex-shrink-0 w-[140px] md:w-[180px] px-4 md:px-5 py-3 border-r border-line">
-                    <span class="font-heading font-semibold text-[0.78rem] text-ink-soft">{time}</span>
+          <div class="day-item rounded-lg overflow-hidden border border-line">
+            <!-- Day header — clickable -->
+            <button class="day-trigger w-full flex items-center justify-between gap-4 px-5 py-3 cursor-pointer border-0 text-left" style={`background: ${color}; color: white;`} aria-expanded="false">
+              <div class="flex items-center gap-3">
+                <span class="font-heading font-bold text-[1.05rem]">{day}</span>
+                <span class="text-[0.8rem] opacity-80 font-heading font-semibold uppercase tracking-wider">{label}</span>
+              </div>
+              <svg class="day-chevron flex-shrink-0 transition-transform duration-300" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <!-- Slots — hidden by default -->
+            <div class="day-body" style="display: none;">
+              <div class="divide-y divide-line bg-white">
+                {slots.map(({ time, activity }) => (
+                  <div class="flex gap-0 items-start">
+                    <div class="flex-shrink-0 w-[140px] md:w-[180px] px-4 md:px-5 py-3 border-r border-line">
+                      <span class="font-heading font-semibold text-[0.78rem] text-ink-soft">{time}</span>
+                    </div>
+                    <div class="px-4 md:px-6 py-3 flex-1">
+                      <span class="text-[0.92rem] text-ink">{activity}</span>
+                    </div>
                   </div>
-                  <div class="px-4 md:px-6 py-3 flex-1">
-                    <span class="text-[0.92rem] text-ink">{activity}</span>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         ))}
@@ -218,3 +231,41 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
 </BaseLayout>
+
+<script>
+  // Individual day accordions
+  document.querySelectorAll('.day-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.day-item');
+      const body = item.querySelector('.day-body');
+      const chevron = item.querySelector('.day-chevron');
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      body.style.display = isOpen ? 'none' : 'block';
+      trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+  });
+
+  // Expand / collapse all
+  const expandBtn = document.getElementById('expand-all');
+  let allOpen = false;
+  if (expandBtn) {
+    expandBtn.addEventListener('click', () => {
+      allOpen = !allOpen;
+      document.querySelectorAll('.day-item').forEach(item => {
+        const body = item.querySelector('.day-body');
+        const chevron = item.querySelector('.day-chevron');
+        const trigger = item.querySelector('.day-trigger');
+        body.style.display = allOpen ? 'block' : 'none';
+        trigger.setAttribute('aria-expanded', allOpen ? 'true' : 'false');
+        chevron.style.transform = allOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+      });
+      expandBtn.innerHTML = `
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="${allOpen ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'}"/>
+        </svg>
+        ${allOpen ? 'Collapse all days' : 'Expand all days'}
+      `;
+    });
+  }
+</script>
