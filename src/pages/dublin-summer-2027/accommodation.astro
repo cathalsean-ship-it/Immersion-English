@@ -9,8 +9,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <!-- HERO -->
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
-    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
-    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
+    <div class="absolute inset-0 -z-[2]" style="overflow:hidden;">
+      <img src="/belgrove-night.jpg" alt="Belgrove Residences at UCD at night" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+    </div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(10,20,15,0.55) 0%, rgba(10,20,15,0.82) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
         ← Dublin Summer 2027
@@ -34,10 +36,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-center">
         <div class="rounded-md overflow-hidden shadow-lift">
           <img
-            src="/trinity-college.jpg"
-            alt="University College Dublin campus"
+            src="/ucd-campus.jpg"
+            alt="University College Dublin campus aerial view"
             class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/3; object-position: center; display: block;"
+            style="aspect-ratio: 4/3; object-position: center 30%; display: block;"
           />
         </div>
         <div>
@@ -91,11 +93,31 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
         <div class="rounded-md overflow-hidden shadow-lift">
           <img
-            src="/students-walking.jpg"
-            alt="Students walking on the UCD campus"
+            src="/belgrove-1.jpg"
+            alt="Belgrove Residences exterior, UCD Dublin"
             class="img-greyscale w-full object-cover"
             style="aspect-ratio: 4/3; object-position: center; display: block;"
           />
+        </div>
+      <!-- Photo gallery -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
+        <div class="rounded-md overflow-hidden shadow-lift">
+          <img
+            src="/belgrove-room.jpg"
+            alt="Private single bedroom at Belgrove Residences UCD"
+            class="img-greyscale w-full object-cover"
+            style="aspect-ratio: 4/3; object-fit: cover; display: block;"
+          />
+          <p class="text-[0.8rem] text-ink-soft font-heading font-semibold px-3 py-2" style="background: var(--cream);">Private single bedroom</p>
+        </div>
+        <div class="rounded-md overflow-hidden shadow-lift">
+          <img
+            src="/belgrove-kitchen.jpg"
+            alt="Shared kitchen and living space at Belgrove Residences UCD"
+            class="img-greyscale w-full object-cover"
+            style="aspect-ratio: 4/3; object-fit: cover; display: block;"
+          />
+          <p class="text-[0.8rem] text-ink-soft font-heading font-semibold px-3 py-2" style="background: var(--cream);">Shared kitchen and living space</p>
         </div>
       </div>
     </div>
