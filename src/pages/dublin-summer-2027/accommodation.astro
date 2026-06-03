@@ -7,12 +7,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   description="Students on the Immersion English Dublin Summer Programme stay at Belgrove Residences, University College Dublin. Private single rooms, 24/7 supervision, safe and central."
 >
 
-  <!-- HERO -->
+  <!-- HERO with UCD campus photo -->
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
     <div class="absolute inset-0 -z-[2]" style="overflow:hidden;">
-      <img src="/belgrove-night.jpg" alt="Belgrove Residences at UCD at night" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+      <img src="/ucd-campus.jpg" alt="University College Dublin campus" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;" />
     </div>
-    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(10,20,15,0.55) 0%, rgba(10,20,15,0.82) 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(10,20,15,0.5) 0%, rgba(10,20,15,0.85) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
         ← Dublin Summer 2027
@@ -36,10 +36,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-center">
         <div class="rounded-md overflow-hidden shadow-lift">
           <img
-            src="/ucd-campus.jpg"
-            alt="University College Dublin campus aerial view"
+            src="/belgrove-night.jpg"
+            alt="Belgrove Residences at UCD at night"
             class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/3; object-position: center 30%; display: block;"
+            style="aspect-ratio: 4/3; object-position: center; display: block;"
           />
         </div>
         <div>
@@ -49,7 +49,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             Founded over 160 years ago, University College Dublin is Ireland's largest and most internationally connected university. Ranked among the top 1% of universities worldwide, UCD is home to over 38,000 students from 152 countries.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            The beautiful 1.33 km² campus combines parkland, modern facilities, and world-class learning spaces. It's a campus designed for student life – with restaurants, sports facilities, libraries, and green spaces all within walking distance.
+            The beautiful 1.33 km² campus combines parkland, modern facilities, and world-class learning spaces – restaurants, sports facilities, libraries, and green spaces all within walking distance.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch]">
             For our students, staying at UCD isn't just about having a bed – it's about living and learning in an environment that feels genuinely academic, international, and inspiring.
@@ -62,7 +62,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- BELGROVE -->
   <section class="section section-tinted">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 md:gap-20 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 md:gap-20 items-start">
         <div>
           <span class="eyebrow eyebrow-dot">Where students stay</span>
           <h2 class="mt-4 mb-3">Belgrove Residences at UCD.</h2>
@@ -72,8 +72,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-8">
             The residences are within walking distance of campus restaurants, the university gym, and the Dublin Bus terminus – which serves 16 different routes connecting the campus directly to the city centre and beyond.
           </p>
-
-          <!-- Quick facts grid -->
           <dl class="grid grid-cols-2 gap-5 pt-7 border-t border-line">
             {[
               { label: 'Room type', value: 'Private single bedroom' },
@@ -91,33 +89,41 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </dl>
         </div>
 
-        <div class="rounded-md overflow-hidden shadow-lift">
-          <img
-            src="/belgrove-1.jpg"
-            alt="Belgrove Residences exterior, UCD Dublin"
-            class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/3; object-position: center; display: block;"
-          />
-        </div>
-      <!-- Photo gallery -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
-        <div class="rounded-md overflow-hidden shadow-lift">
-          <img
-            src="/belgrove-room.jpg"
-            alt="Private single bedroom at Belgrove Residences UCD"
-            class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/3; object-fit: cover; display: block;"
-          />
-          <p class="text-[0.8rem] text-ink-soft font-heading font-semibold px-3 py-2" style="background: var(--cream);">Private single bedroom</p>
-        </div>
-        <div class="rounded-md overflow-hidden shadow-lift">
-          <img
-            src="/belgrove-kitchen.jpg"
-            alt="Shared kitchen and living space at Belgrove Residences UCD"
-            class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/3; object-fit: cover; display: block;"
-          />
-          <p class="text-[0.8rem] text-ink-soft font-heading font-semibold px-3 py-2" style="background: var(--cream);">Shared kitchen and living space</p>
+        <!-- Photo carousel -->
+        <div>
+          <div class="carousel rounded-md overflow-hidden shadow-lift" style="position: relative;">
+            <div class="carousel-track" style="display: flex; transition: transform 0.4s ease;">
+              {[
+                { src: '/belgrove-1.jpg', caption: 'Belgrove Residences exterior' },
+                { src: '/belgrove-night.jpg', caption: 'Belgrove Residences at night' },
+                { src: '/belgrove-room.jpg', caption: 'Private single bedroom' },
+                { src: '/belgrove-kitchen.jpg', caption: 'Shared kitchen and living space' },
+              ].map(({ src, caption }) => (
+                <div class="carousel-slide" style="min-width: 100%; position: relative;">
+                  <img
+                    src={src}
+                    alt={caption}
+                    class="w-full object-cover"
+                    style="aspect-ratio: 4/3; display: block;"
+                  />
+                  <p class="text-[0.78rem] font-heading font-semibold text-ink-soft px-3 py-2" style="background: var(--cream);">{caption}</p>
+                </div>
+              ))}
+            </div>
+            <!-- Prev / Next -->
+            <button class="carousel-prev" aria-label="Previous" style="position:absolute;top:40%;left:10px;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="carousel-next" aria-label="Next" style="position:absolute;top:40%;right:10px;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <!-- Dots -->
+            <div class="carousel-dots" style="display:flex;gap:6px;justify-content:center;padding:10px 0 4px;background:var(--cream);">
+              {[0,1,2,3].map((i) => (
+                <button class="carousel-dot" data-index={i} aria-label={`Slide ${i+1}`} style={`width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:${i===0 ? 'var(--orange)' : 'var(--line)'};padding:0;`}></button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -154,13 +160,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         ))}
       </div>
 
-      <!-- Food note -->
+      <!-- Food note — positive spin -->
       <div class="mt-8 rounded-lg p-6 flex items-start gap-4" style="background: var(--ink); color: white;">
         <span class="flex-shrink-0 mt-[5px] w-[8px] h-[8px] rounded-full" style="background: var(--orange);"></span>
         <div>
-          <p class="font-heading font-semibold text-[0.95rem] text-white mb-1">Food is not included in the programme fee</p>
+          <p class="font-heading font-semibold text-[0.95rem] text-white mb-1">Food – chosen by your child, not us</p>
           <p class="text-[0.88rem] leading-relaxed" style="color: rgba(255,255,255,0.7);">
-            There are many breakfast, lunch, and dinner options at the UCD food hall. We recommend a daily food allowance of €20–25, plus around €50 per week for souvenirs and personal extras.
+            Every teenager has different tastes, preferences, and nutritional needs – and we think choosing your own meals is part of learning to be independent. The UCD food hall has plenty of options for every appetite. We recommend a daily food budget of €20–25, plus around €50 per week for souvenirs and personal extras.
           </p>
         </div>
       </div>
@@ -172,14 +178,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Getting there</span>
-        <h2>Flights: book your own direct Ryanair route.</h2>
-        <p>Following the postponement to summer 2027, flights are no longer included in the programme fee. Parents book directly with Ryanair – it's straightforward and we make it easy.</p>
+        <h2>Flights: simple, direct, and stress-free.</h2>
+        <p>Parents book direct Ryanair flights Sofia–Dublin independently. We make the process easy – and we'll be there waiting when your child lands.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         {[
-          { n: '01', title: 'Direct route', body: 'Ryanair fly direct between Sofia (SOF) and Dublin (DUB). The journey takes around 3 hours and 30 minutes.' },
-          { n: '02', title: 'Step-by-step guide', body: 'Once you register, we send you a full flight booking guide with exact dates, luggage requirements, and meeting instructions at Dublin Airport.' },
-          { n: '03', title: 'We meet you there', body: 'Our team meets every student at Dublin Airport on arrival day and accompanies the group back to UCD campus.' },
+          { n: '01', title: 'Direct Ryanair flight', body: 'Ryanair fly direct between Sofia (SOF) and Dublin (DUB). The journey takes around 3 hours 30 minutes – no connections, no complications.' },
+          { n: '02', title: 'We send you everything', body: 'On registration, we send a full step-by-step flight booking guide with exact travel dates, luggage requirements, and all the information you need.' },
+          { n: '03', title: 'We meet your child at the airport', body: 'Our team will be at Dublin Airport to meet every student on arrival day. From that moment on, your child is with us – supervised and looked after all the way to UCD.' },
         ].map(({ n, title, body }) => (
           <div class="trust-card">
             <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -210,3 +216,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
 </BaseLayout>
+
+<script>
+  const carousel = document.querySelector('.carousel');
+  if (carousel) {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    let current = 0;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => {
+        d.style.background = i === current ? 'var(--orange)' : 'var(--line)';
+      });
+    }
+
+    carousel.querySelector('.carousel-prev').addEventListener('click', () => goTo(current - 1));
+    carousel.querySelector('.carousel-next').addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    // Auto-advance every 4 seconds
+    setInterval(() => goTo(current + 1), 4000);
+  }
+</script>
