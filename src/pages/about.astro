@@ -46,10 +46,14 @@ const testimonials = [
   <section class="section">
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-center">
-        <div
-          class="rounded-md overflow-hidden shadow-lift aspect-[4/3]"
-          style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.04) 0 2px, transparent 2px 14px), #c8d8cc;"
-        ></div>
+        <div class="rounded-md overflow-hidden shadow-lift">
+          <img
+            src="/team-lina.jpg"
+            alt="Lina Georgieva – Co-founder of Immersion English"
+            class="img-greyscale w-full object-cover"
+            style="aspect-ratio: 3/4; object-position: center top; display: block;"
+          />
+        </div>
         <div>
           <span class="eyebrow eyebrow-dot">Who we are</span>
           <h2 class="mt-4 mb-5">Where learning connects with your life.</h2>
@@ -91,9 +95,11 @@ const testimonials = [
           },
         ].map(({ icon, title, body }) => (
           <div class="trust-card">
-            <div class="trust-icon text-[1.5rem]">{icon}</div>
-            <h3>{title}</h3>
-            <p>{body}</p>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <h3 style="margin: 0;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0;">{body}</p>
           </div>
         ))}
       </div>
@@ -112,10 +118,14 @@ const testimonials = [
 
         <!-- Lenny -->
         <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
-          <div
-            class="rounded-md overflow-hidden shadow-soft"
-            style="aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), #d6e0d9;"
-          ></div>
+          <div class="rounded-md overflow-hidden shadow-soft">
+            <img
+              src="/team-lenny.jpg"
+              alt="Cathal (Lenny) Leonard – Founder & Senior English Teacher"
+              class="img-greyscale w-full object-cover"
+              style="aspect-ratio: 3/4; object-position: center top; display: block;"
+            />
+          </div>
           <div>
             <p class="font-heading font-bold text-[1.3rem] text-ink">Cathal (Lenny) Leonard</p>
             <p class="text-[0.9rem] font-semibold mt-1 mb-5" style="color: var(--green);">Founder & Senior English Teacher · CELTA-qualified · British Council ESAT-J Examiner</p>
@@ -135,10 +145,14 @@ const testimonials = [
 
         <!-- Lina -->
         <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
-          <div
-            class="rounded-md overflow-hidden shadow-soft"
-            style="aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), #d9d6e0;"
-          ></div>
+          <div class="rounded-md overflow-hidden shadow-soft">
+            <img
+              src="/team-lina.jpg"
+              alt="Lina Georgieva – Co-founder"
+              class="img-greyscale w-full object-cover"
+              style="aspect-ratio: 3/4; object-position: center top; display: block;"
+            />
+          </div>
           <div>
             <p class="font-heading font-bold text-[1.3rem] text-ink">Lina Georgieva</p>
             <p class="text-[0.9rem] font-semibold mt-1 mb-5" style="color: var(--green);">Co-founder · Marketing & Business Development Manager</p>
@@ -158,10 +172,14 @@ const testimonials = [
 
         <!-- Lia -->
         <div class="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 md:gap-12 items-start">
-          <div
-            class="rounded-md overflow-hidden shadow-soft"
-            style="aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), #e0dbd6;"
-          ></div>
+          <div class="rounded-md overflow-hidden shadow-soft">
+            <img
+              src="/team-lia.jpg"
+              alt="Liana Zheleva – Teaching Assistant"
+              class="img-greyscale w-full object-cover"
+              style="aspect-ratio: 3/4; object-position: center top; display: block;"
+            />
+          </div>
           <div>
             <p class="font-heading font-bold text-[1.3rem] text-ink">Liana Zheleva</p>
             <p class="text-[0.9rem] font-semibold mt-1 mb-5" style="color: var(--green);">Teaching Assistant · Bilingual EN / BG</p>
