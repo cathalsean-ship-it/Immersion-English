@@ -52,17 +52,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CREDENTIALS BAND -->
   <section style="background: var(--ink); border-bottom: none;">
     <div class="container-x py-5">
-      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
         {[
           'CELTA-qualified teachers',
           '10+ years of experience',
           'Communicative lessons',
           'Cambridge & IELTS specialists',
         ].map((item) => (
-          <>
+          <span class="flex items-center gap-2 flex-shrink-0">
             <span class="w-[7px] h-[7px] rounded-full flex-shrink-0" style="background: var(--orange);"></span>
-            <span class="font-heading font-semibold text-[0.9rem] text-white tracking-wide">{item}</span>
-          </>
+            <span class="font-heading font-semibold text-[0.88rem] text-white tracking-wide">{item}</span>
+          </span>
         ))}
       </div>
     </div>
