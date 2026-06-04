@@ -170,10 +170,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- HOW IT WORKS + PHOTO -->
-  <section class="section" style="padding-left: 0; overflow: hidden;">
-    <div style="display: grid; grid-template-columns: 1fr 1.1fr; align-items: stretch;" class="programme-grid">
-      <!-- Image -->
-      <div class="homepage-hero-img-wrap relative" style="min-height: 480px; overflow: hidden;">
+  <section class="section" style="overflow: hidden; padding-left: 0;">
+    <div class="programme-grid" style="display: grid; grid-template-columns: 1fr; align-items: stretch;">
+      <!-- Image — hidden on mobile -->
+      <div class="homepage-hero-img-wrap relative lessons-hide-mobile" style="min-height: 480px; overflow: hidden;">
         <img
           src="/lessons-hero.jpg"
           alt="The heart of every English lesson – conversation"
@@ -220,8 +220,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- WHY IMMERSION ENGLISH — horizontal list instead of card grid -->
   <section class="section section-tinted">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-20 items-start">
-        <div class="sticky top-[90px]">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-20 items-start">
+        <div class="md:sticky md:top-[90px]">
           <span class="eyebrow eyebrow-dot">Why choose us</span>
           <h2 class="mt-4 mb-5">Not another English course.</h2>
           <p class="text-ink-soft leading-relaxed mb-6">Every lesson is built around real communication – because that's the only way to build real confidence.</p>
