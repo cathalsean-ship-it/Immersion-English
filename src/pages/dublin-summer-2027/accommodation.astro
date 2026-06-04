@@ -10,7 +10,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <!-- HERO with UCD campus photo -->
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
     <div class="absolute inset-0 -z-[2]" style="overflow:hidden;">
-      <img src="/ucd-campus-clean.jpg" alt="University College Dublin campus" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;" loading="lazy" loading="lazy" />
+      <img src="/ucd-campus-clean.webp" alt="University College Dublin campus" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;" loading="lazy" loading="lazy" />
     </div>
     <!-- Gradient stronger on left so text is readable, fades to transparent on right -->
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(10,20,15,0.4) 0%, rgba(10,20,15,0.78) 100%);"></div>
@@ -37,7 +37,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-center">
         <div class="rounded-md overflow-hidden shadow-lift">
           <img
-            src="/belgrove-night.jpg"
+            src="/belgrove-night.webp"
             alt="Belgrove Residences at UCD at night"
             class="img-greyscale w-full object-cover"
             style="aspect-ratio: 4/3; object-position: center; display: block;"
@@ -95,10 +95,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <div class="carousel rounded-md overflow-hidden shadow-lift" style="position: relative;">
             <div class="carousel-track" style="display: flex; transition: transform 0.4s ease;">
               {[
-                { src: '/belgrove-1.jpg', caption: 'Belgrove Residences exterior' },
-                { src: '/belgrove-night.jpg', caption: 'Belgrove Residences at night' },
-                { src: '/belgrove-room.jpg', caption: 'Private single bedroom' },
-                { src: '/belgrove-kitchen.jpg', caption: 'Shared kitchen and living space' },
+                { src: '/belgrove-1.webp', caption: 'Belgrove Residences exterior' },
+                { src: '/belgrove-night.webp', caption: 'Belgrove Residences at night' },
+                { src: '/belgrove-room.webp', caption: 'Private single bedroom' },
+                { src: '/belgrove-kitchen.webp', caption: 'Shared kitchen and living space' },
               ].map(({ src, caption }) => (
                 <div class="carousel-slide" style="min-width: 100%; position: relative;">
                   <img
