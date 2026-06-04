@@ -169,27 +169,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- HOW IT WORKS + PHOTO -->
-  <section class="section" style="overflow: hidden; padding-left: 0;">
-    <div class="programme-grid" style="display: grid; grid-template-columns: 1fr; align-items: stretch;">
-      <!-- Image — hidden on mobile -->
-      <div class="homepage-hero-img-wrap relative lessons-hide-mobile" style="min-height: 480px; overflow: hidden;">
-        <img
-          src="/lessons-hero.jpg"
-          alt="The heart of every English lesson – conversation"
-          class="homepage-hero-img w-full h-full object-cover"
-          style="position: absolute; inset: 0;"
-          loading="lazy"
-        />
-        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,26,0) 40%, rgba(20,32,26,0.6) 100%); pointer-events: none;"></div>
-        <div style="position: absolute; bottom: 24px; left: 24px; right: 24px; display: flex; gap: 8px; flex-wrap: wrap;">
-          {['Speaking', 'Fluency', 'Confidence', 'Connection'].map(tag => (
-            <span style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 5px 12px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.72rem; color: white; letter-spacing: 0.04em;">{tag}</span>
-          ))}
-        </div>
-      </div>
-      <!-- Content -->
-      <div style="padding: 64px 5vw;" class="programme-content">
+  <!-- HOW IT WORKS — full bleed photo background -->
+  <section class="relative overflow-hidden" style="min-height: 520px;">
+    <!-- Full bleed photo -->
+    <img
+      src="/lessons-hero.jpg"
+      alt="The heart of every English lesson – conversation"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="lazy"
+    />
+    <!-- Gradient overlay — stronger on left so content is readable -->
+    <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(248,245,240,0.97) 0%, rgba(248,245,240,0.95) 40%, rgba(248,245,240,0.5) 70%, rgba(248,245,240,0) 100%);"></div>
+    <!-- Content floats over photo -->
+    <div class="container-x relative z-10 section">
+      <div class="max-w-[520px]">
         <span class="eyebrow eyebrow-dot">How it works</span>
         <h2 class="mt-4 mb-3">Simple to start.<br/><span style="color: var(--orange);">Effective</span> from lesson one.</h2>
         <p class="text-ink-soft text-[1.05rem] leading-relaxed mb-10">
