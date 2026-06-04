@@ -24,8 +24,7 @@ const trips = [
     title: "St Patrick's Cathedral",
     desc: "One of Ireland's most breathtaking landmarks. St Patrick's Cathedral is filled with beauty, history, and inspiration – a place where architecture, music, and storytelling come together to create a uniquely Irish experience.",
     tag: 'History',
-    img: null,
-    color: '#d7c3b0',
+    img: '/st-patricks-cathedral.jpg',
   },
   {
     title: "St Stephen's Green",
@@ -44,8 +43,7 @@ const trips = [
     title: 'Dublin Zoo',
     desc: 'A fun, educational experience in the heart of Phoenix Park – one of Europe\'s largest urban parks. Students explore wildlife from around the world while practising English naturally through observation, discussion, and shared discovery.',
     tag: 'Fun',
-    img: null,
-    color: '#c7cfd8',
+    img: '/dublin-zoo.jpg',
   },
   {
     title: 'Howth Cliff Walk',
@@ -57,8 +55,7 @@ const trips = [
     title: 'Dundrum Town Centre',
     desc: 'With over 160 stores across three floors, Dundrum has something for everyone. Grab a snack, browse the latest fashion, or find unique souvenirs and gifts. The perfect spot to unwind and practise real-world English in a relaxed setting.',
     tag: 'Shopping',
-    img: null,
-    color: '#d9d6e0',
+    img: '/dundrum-town-centre.jpg',
   },
 ];
 ---
@@ -148,9 +145,9 @@ const trips = [
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         {[
-          { title: 'Kilkenny', desc: "One of Ireland's most charming medieval cities. We explore narrow streets, ancient castle walls, and local culture – real living history in one of Europe's best-preserved medieval towns.", img: null, color: '#d6d2c5' },
+          { title: 'Kilkenny', desc: "One of Ireland's most charming medieval cities. We explore narrow streets, ancient castle walls, and local culture – real living history in one of Europe's best-preserved medieval towns.", img: '/kilkenny.jpg', color: '#d6d2c5' },
           { title: 'Wicklow Mountains', desc: "Travel through the dramatic landscapes of Wicklow Mountains National Park – sweeping valleys, ancient forests, and some of Ireland's most stunning scenery. A world away from the city.", img: null, color: '#c8d8cc' },
-          { title: 'Glendalough', desc: "Discover the breathtaking 6th-century monastic site and twin glacial lakes of Glendalough. Ancient Ireland at its most awe-inspiring – a place that genuinely takes your breath away.", img: '/glendalough.jpg' },
+          { title: 'Glendalough', desc: "Discover the breathtaking 6th-century monastic site and twin glacial lakes of Glendalough. Ancient Ireland at its most awe-inspiring – a place that genuinely takes your breath away.", img: '/glendalough-lake.jpg' },
         ].map(({ title, desc, img, color }) => (
           <div class="bg-white border border-line rounded-lg overflow-hidden shadow-soft flex flex-col">
             <div style="overflow: hidden;">
