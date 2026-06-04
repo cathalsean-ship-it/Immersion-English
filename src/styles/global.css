@@ -123,7 +123,7 @@
 
   .btn-primary {
     background: var(--orange);
-    color: white;
+    color: #14201a;
     box-shadow: 0 6px 20px rgba(255,145,77,0.32);
   }
   .btn-primary:hover {
