@@ -9,7 +9,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[56px] md:pb-[72px]">
-      <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange);">
+      <p class="font-heading font-semibold text-[0.72rem] tracking-[0.18em] uppercase mb-5 flex items-center gap-3" style="color: var(--orange-text);">
         <span class="inline-block w-6 h-[1.5px]" style="background: var(--orange);"></span>
         Contact
       </p>
@@ -47,7 +47,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           },
         ].map(({ n, title, body }) => (
           <li class="trust-card">
-            <span class="font-heading font-bold text-[2rem] leading-none tracking-[-0.03em]" style="color: var(--orange);">{n}</span>
+            <span class="font-heading font-bold text-[2rem] leading-none tracking-[-0.03em]" style="color: var(--orange-text);">{n}</span>
             <h3>{title}</h3>
             <p>{body}</p>
           </li>
@@ -101,20 +101,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
             <div class="flex flex-col gap-[6px]">
-              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
-              <input type="text" placeholder="Jana" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <label for="first-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
+              <input id="first-name" type="text" placeholder="Jana" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px]">
-              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Last name</label>
-              <input type="text" placeholder="Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <label for="last-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Last name</label>
+              <input id="last-name" type="text" placeholder="Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
-              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
-              <input type="email" placeholder="jana@example.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <label for="email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
+              <input id="email" type="email" placeholder="jana@example.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
-              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">I'm interested in</label>
-              <select class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
+              <label for="interest" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">I'm interested in</label>
+              <select id="interest" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
                 <option value="">Select a course or programme…</option>
                 <option>Speak Up! (group speaking course)</option>
                 <option>Personal Speaking Coach (1:1)</option>
@@ -124,8 +124,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </select>
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
-              <label class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
-              <textarea rows="4" placeholder="Tell us a bit about yourself and what you're looking for…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none min-h-[100px]"></textarea>
+              <label for="message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
+              <textarea id="message" rows="4" placeholder="Tell us a bit about yourself and what you're looking for…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none min-h-[100px]"></textarea>
             </div>
           </div>
           <button class="btn btn-primary w-full justify-center mt-5">
