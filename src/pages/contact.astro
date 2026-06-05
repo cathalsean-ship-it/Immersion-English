@@ -99,7 +99,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3 class="text-[1.45rem] mb-1">Book a free consultation</h3>
           <p class="text-ink-soft text-[0.95rem] mb-7">Tell us a bit about yourself and what you're looking for – we'll get back to you within one working day.</p>
 
-          <form name="individual-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
+          <form name="individual-enquiry" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
             <input type="hidden" name="form-name" value="individual-enquiry" />
             <input type="hidden" name="subject" value="[Immersion English] New Individual Enquiry" />
             <p class="hidden"><input name="bot-field" /></p>
