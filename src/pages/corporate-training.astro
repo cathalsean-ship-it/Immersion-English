@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Corporate English Training Sofia | Business English for Teams | Immersion English"
+  description="Tailored Business English training for companies and teams in Sofia. CELTA-qualified native teacher with British Council experience. 1:1 and small group programmes built around your industry and goals."
+  ogImage="/corporate-team.webp"
+>
+
+  <!-- HERO -->
+  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 54vh;">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #0d2d1f 0%, #14201a 60%, #1a3a28 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.2) 0%, rgba(20,32,26,0.65) 100%);"></div>
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div>
+          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+            Corporate English Training
+          </p>
+          <h1 class="text-white mb-5" style="max-width: 20ch;">
+            English training your team will actually <span style="color: var(--orange-text);">use.</span>
+          </h1>
+          <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55] mb-8">
+            Tailored Business English programmes for companies and teams in Sofia. Built around your industry, your goals, and the real situations your people face every day.
+          </p>
+          <a href="/contact" class="btn btn-primary">Discuss your team's needs</a>
+        </div>
+        <!-- Stats -->
+        <div class="hidden md:grid grid-cols-2 gap-4">
+          {[
+            { n: '10+', label: 'Years of experience' },
+            { n: 'CELTA', label: 'Qualified native teacher' },
+            { n: 'BC', label: 'British Council background' },
+            { n: '1:1 & Group', label: 'Formats available' },
+          ].map(({ n, label }) => (
+            <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
+              <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">{n}</p>
+              <p class="text-[0.82rem] text-white/65 font-heading font-semibold">{label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IT MATTERS -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-12 md:gap-20 items-center">
+        <div>
+          <span class="eyebrow eyebrow-dot">Why it matters</span>
+          <h2 class="mt-4 mb-5">Your team's English is a business asset.</h2>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed mb-5">
+            In international meetings, client calls, and written correspondence, how confidently your people communicate in English directly affects how your company is perceived — and how deals are won.
+          </p>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed">
+            Generic language courses teach grammar. We teach your team to perform — in the specific situations that matter most to your business.
+          </p>
+        </div>
+        <div class="flex flex-col gap-5">
+          {[
+            { title: 'Client-facing communication', body: 'Presentations, negotiations, calls, and meetings with international clients and partners.' },
+            { title: 'Internal reporting & correspondence', body: 'Emails, reports, proposals, and written communication that reflect well on your organisation.' },
+            { title: 'CV and interview preparation', body: 'For employees preparing for international roles or internal promotions requiring English proficiency.' },
+            { title: 'Confidence under pressure', body: 'Speaking in a second language in high-stakes situations is a skill. We build it deliberately.' },
+          ].map(({ title, body }) => (
+            <div class="flex gap-4 items-start p-5 bg-white rounded-xl shadow-soft" style="border: 1px solid var(--line);">
+              <span class="flex-shrink-0 mt-[7px] w-[8px] h-[8px] rounded-full" style="background: var(--orange);"></span>
+              <div>
+                <p class="font-heading font-semibold text-ink text-[1rem] mb-1">{title}</p>
+                <p class="text-ink-soft text-[0.93rem] leading-relaxed">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO BREAK -->
+  <div style="height: 480px; overflow: hidden;">
+    <img
+      src="/corporate-team.webp"
+      alt="Business English corporate training — professional team"
+      class="img-greyscale w-full h-full object-cover"
+      style="object-position: center 50%;"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- PROGRAMMES -->
+  <section class="section">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Our programmes</span>
+        <h2>Two ways to train your team.</h2>
+        <p>Whether you need targeted coaching for one employee or a structured programme for a whole team, we build it around you.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- 1:1 -->
+        <div class="bg-white border border-line rounded-xl p-7 flex flex-col shadow-soft">
+          <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full mb-4 inline-block" style="background: #e8f0fe; color: #3b5bdb;">Individual</span>
+          <h3 class="text-[1.2rem] mb-2">1:1 Business English Coaching</h3>
+          <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
+          <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-5">
+            Intensive, personalised coaching for senior employees, managers, or anyone who needs to perform in English at a high level. Sessions are built entirely around their role, their goals, and their specific challenges.
+          </p>
+          <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
+            {[
+              'Tailored to the employee\'s industry and role',
+              'Meetings, presentations, negotiations, emails',
+              'CV and interview preparation',
+              'Flexible scheduling around working hours',
+              'Regular progress feedback',
+              'Monthly invoicing available',
+            ].map(item => (
+              <li class="flex items-start gap-2">
+                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div class="pt-5 border-t border-line">
+            <p class="font-heading font-bold text-ink text-[1.3rem]">€60 <span class="text-[0.85rem] font-normal text-ink-soft">per session</span></p>
+            <p class="text-[0.82rem] text-ink-soft mt-1">10-session package: <strong class="text-ink">€540</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]">save 10%</span></p>
+          </div>
+        </div>
+
+        <!-- Small group -->
+        <div class="bg-white rounded-xl p-7 flex flex-col shadow-soft" style="border: 1.5px solid var(--green);">
+          <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full mb-4 inline-block" style="background: var(--green-soft); color: var(--green);">Team</span>
+          <h3 class="text-[1.2rem] mb-2">Small Group Team Training</h3>
+          <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
+          <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-5">
+            Structured group sessions for teams who work together in English — sales, client services, operations, or any department with shared communication needs. Up to 6 participants per group.
+          </p>
+          <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
+            {[
+              'Up to 6 participants per group',
+              'Built around your team\'s shared context',
+              'Real workplace scenarios and role plays',
+              'Speaking, listening, and professional writing',
+              'Flexible scheduling around working hours',
+              'Monthly invoicing available',
+            ].map(item => (
+              <li class="flex items-start gap-2">
+                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div class="pt-5 border-t border-line">
+            <p class="font-heading font-bold text-ink text-[1.3rem]">Custom pricing</p>
+            <p class="text-[0.82rem] text-ink-soft mt-1">Based on group size and programme length. Get in touch for a quote.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IMMERSION ENGLISH -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-20 items-start">
+        <div class="md:sticky md:top-[90px]">
+          <span class="eyebrow eyebrow-dot">Why choose us</span>
+          <h2 class="mt-4 mb-5">Serious credentials. Personal approach.</h2>
+          <p class="text-ink-soft leading-relaxed mb-6">We're not a language school with a roster of teachers. Every corporate programme is delivered by the same CELTA-qualified native teacher — consistently, personally, and with full accountability.</p>
+          <a href="/about" class="inline-flex items-center gap-3 no-underline group" style="color: var(--ink-soft);">
+            <span class="w-8 h-[1.5px] inline-block" style="background: var(--orange);"></span>
+            <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">Meet the teacher</span>
+          </a>
+        </div>
+        <div class="flex flex-col divide-y divide-line">
+          {[
+            { title: 'CELTA-qualified native teacher', body: 'Taught by Cathal (Lenny) Leonard — an Irish, native English speaker with a CELTA qualification and over 10 years of experience, including at the British Council in Sofia.' },
+            { title: 'British Council background', body: 'Lenny has taught at the British Council Sofia and led international programmes in Oxford and Brighton. Corporate clients get that level of expertise without the group-course format.' },
+            { title: 'Built around your business', body: 'Every programme starts with a consultation to understand your team\'s roles, goals, and working context. No off-the-shelf syllabi.' },
+            { title: 'Consistent delivery', body: 'One teacher, one approach, full continuity. Your team builds a relationship with their teacher — which is how real progress happens.' },
+            { title: 'Flexible and low-friction', body: 'Sessions are scheduled around your team\'s working hours. Monthly invoicing available for companies. No lengthy onboarding process.' },
+          ].map(({ title, body }) => (
+            <div class="py-6 flex gap-4 items-start">
+              <span class="flex-shrink-0 mt-[7px] w-[8px] h-[8px] rounded-full" style="background: var(--orange);"></span>
+              <div>
+                <p class="font-heading font-semibold text-ink text-[1.02rem] mb-1">{title}</p>
+                <p class="text-ink-soft text-[0.95rem] leading-relaxed">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="eyebrow eyebrow-dot">Get in touch</span>
+          <h2 class="mt-4 mb-4">Ready to invest in your team's English?</h2>
+          <p style="color: rgba(254,255,254,0.74);">Tell us about your team and what you're trying to achieve. We'll put together a programme proposal — no obligation, no pressure.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 md:justify-end">
+          <a href="/contact" class="btn btn-primary">Discuss your team's needs</a>
+          <a href="/lessons" class="btn btn-ghost text-white border-white/30 hover:border-white">Individual lessons</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

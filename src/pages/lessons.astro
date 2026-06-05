@@ -320,57 +320,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- CORPORATE OFFER -->
-  <section class="section" style="background: var(--ink); color: white;">
+  <!-- CORPORATE TEASER -->
+  <section class="section section-tinted">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-center">
-
-        <div>
-          <span class="eyebrow eyebrow-dot" style="color: var(--orange-text);">Corporate & teams</span>
-          <h2 class="mt-4 mb-5 text-white">Training your team?</h2>
-          <p style="color: rgba(255,255,255,0.72);" class="text-[1.05rem] leading-relaxed mb-6">
-            We work with companies and organisations in Sofia to deliver tailored Business English programmes — helping teams communicate more confidently in international meetings, client calls, presentations, and written correspondence.
-          </p>
-          <p style="color: rgba(255,255,255,0.72);" class="text-[1.05rem] leading-relaxed">
-            Programmes are delivered by a CELTA-qualified native teacher with British Council experience — and built around your team's actual roles, goals, and working context.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-5">
-          {[
-            { title: 'Tailored to your industry', body: 'Every programme is built around your team\'s specific context — whether that\'s client-facing communication, internal reporting, presentations, or negotiations.' },
-            { title: '1:1 or small group', body: 'Individual coaching for senior employees, or small-group sessions for teams working in the same context. Both options available.' },
-            { title: 'Flexible scheduling', body: 'Sessions scheduled around your team\'s working hours. Monthly invoicing available for companies.' },
-            { title: 'Measurable progress', body: 'Clear objectives set at the start of each programme, with regular feedback so you can see exactly how your team is developing.' },
-          ].map(({ title, body }) => (
-            <div class="flex gap-4 items-start">
-              <span class="flex-shrink-0 mt-[7px] w-[8px] h-[8px] rounded-full" style="background: var(--orange);"></span>
-              <div>
-                <p class="font-heading font-semibold text-white text-[1rem] mb-1">{title}</p>
-                <p class="text-[0.93rem] leading-relaxed" style="color: rgba(255,255,255,0.62);">{body}</p>
-              </div>
-            </div>
-          ))}
-
-          <div class="mt-4">
-            <a href="/contact" class="btn btn-primary">Discuss your team's needs</a>
+      <div class="rounded-xl overflow-hidden shadow-lift" style="border: 1.5px solid var(--green); background: var(--ink);">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-0">
+          <div class="p-8 md:p-10">
+            <span class="eyebrow eyebrow-dot" style="color: var(--orange-text);">Corporate Training</span>
+            <h2 class="mt-4 mb-4 text-white" style="font-size: clamp(1.5rem, 2.4vw, 2rem);">Training your team?</h2>
+            <p style="color: rgba(255,255,255,0.72);" class="text-[1rem] leading-relaxed max-w-[52ch]">
+              We work with companies in Sofia to deliver tailored Business English programmes — 1:1 coaching and small group sessions built around your team's actual roles, industry, and goals. CELTA-qualified native teacher with British Council experience.
+            </p>
+          </div>
+          <div class="flex items-center p-8 md:p-10 md:border-l" style="border-color: rgba(255,255,255,0.1);">
+            <a href="/corporate-training" class="btn btn-primary whitespace-nowrap">See corporate programmes</a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
-  <!-- CORPORATE PHOTO BREAK -->
-  <div style="height: 560px; overflow: hidden;">
-    <img
-      src="/corporate-team.webp"
-      alt="Business English training — professional team in a meeting"
-      class="img-greyscale w-full h-full object-cover"
-      style="object-position: center 50%;"
-      loading="lazy"
-    />
-  </div>
 
   <!-- CTA -->
   <section class="section section-dark">
