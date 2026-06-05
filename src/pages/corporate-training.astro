@@ -257,33 +257,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3 class="text-[1.3rem] mb-1">Corporate Enquiry</h3>
           <p class="text-ink-soft text-[0.93rem] mb-6">We reply within one working day.</p>
 
-          <div class="flex flex-col gap-4">
+          <form name="corporate-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col gap-4">
+            <input type="hidden" name="form-name" value="corporate-enquiry" />
+            <input type="hidden" name="subject" value="[Immersion English] New Corporate Enquiry" />
+            <p class="hidden"><input name="bot-field" /></p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Full name</label>
-                <input id="corp-name" type="text" placeholder="Jana Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+                <input id="corp-name" name="full-name" type="text" placeholder="Jana Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
               </div>
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-company" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Company</label>
-                <input id="corp-company" type="text" placeholder="Acme Ltd." class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+                <input id="corp-company" name="company" type="text" placeholder="Acme Ltd." class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
-                <input id="corp-email" type="email" placeholder="jana@company.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+                <input id="corp-email" name="email" type="email" placeholder="jana@company.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
               </div>
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-phone" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Phone</label>
-                <input id="corp-phone" type="tel" placeholder="+359 88 000 0000" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+                <input id="corp-phone" name="phone" type="tel" placeholder="+359 88 000 0000" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
               </div>
             </div>
 
             <div class="flex flex-col gap-[6px]">
               <label for="corp-team-size" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Team size</label>
-              <select id="corp-team-size" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
+              <select id="corp-team-size" name="team-size" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
                 <option value="">Select team size…</option>
                 <option>1 person (individual coaching)</option>
                 <option>2–3 people</option>
@@ -294,7 +297,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             <div class="flex flex-col gap-[6px]">
               <label for="corp-goals" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Primary goal</label>
-              <select id="corp-goals" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
+              <select id="corp-goals" name="primary-goal" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
                 <option value="">Select primary goal…</option>
                 <option>Meetings & presentations</option>
                 <option>Client communication & negotiations</option>
@@ -307,13 +310,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             <div class="flex flex-col gap-[6px]">
               <label for="corp-message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Anything else we should know?</label>
-              <textarea id="corp-message" rows="3" placeholder="Industry, current English level, preferred schedule, budget…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none"></textarea>
+              <textarea id="corp-message" name="message" rows="3" placeholder="Industry, current English level, preferred schedule, budget…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none"></textarea>
             </div>
 
-            <button class="btn btn-primary w-full justify-center mt-1">Submit enquiry</button>
+            <button type="submit" class="btn btn-primary w-full justify-center mt-1">Submit enquiry</button>
             <p class="text-center text-ink-soft text-[0.82rem]">We reply within one working day.</p>
 
-          </div>
+          </form>
         </div>
 
       </div>

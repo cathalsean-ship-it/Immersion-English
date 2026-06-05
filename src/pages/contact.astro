@@ -99,22 +99,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3 class="text-[1.45rem] mb-1">Book a free consultation</h3>
           <p class="text-ink-soft text-[0.95rem] mb-7">Tell us a bit about yourself and what you're looking for – we'll get back to you within one working day.</p>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
+          <form name="individual-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
+            <input type="hidden" name="form-name" value="individual-enquiry" />
+            <input type="hidden" name="subject" value="[Immersion English] New Individual Enquiry" />
+            <p class="hidden"><input name="bot-field" /></p>
             <div class="flex flex-col gap-[6px]">
               <label for="first-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
-              <input id="first-name" type="text" placeholder="Jana" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <input id="first-name" name="first-name" type="text" placeholder="Jana" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px]">
               <label for="last-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Last name</label>
-              <input id="last-name" type="text" placeholder="Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <input id="last-name" name="last-name" type="text" placeholder="Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
               <label for="email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
-              <input id="email" type="email" placeholder="jana@example.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <input id="email" name="email" type="email" placeholder="jana@example.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
               <label for="interest" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">I'm interested in</label>
-              <select id="interest" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
+              <select id="interest" name="interest" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
                 <option value="">Select a course or programme…</option>
                 <option>Speak Up! (group speaking course)</option>
                 <option>General English (1:1)</option>
@@ -128,13 +131,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
               <label for="message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
-              <textarea id="message" rows="4" placeholder="Tell us a bit about yourself and what you're looking for…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none min-h-[100px]"></textarea>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us a bit about yourself and what you're looking for…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none min-h-[100px]"></textarea>
             </div>
-          </div>
-          <button class="btn btn-primary w-full justify-center mt-5">
-            Send message
-          </button>
-          <p class="text-center text-ink-soft text-[0.82rem] mt-4">We reply within one working day.</p>
+            <div class="col-span-2">
+              <button type="submit" class="btn btn-primary w-full justify-center">Send message</button>
+              <p class="text-center text-ink-soft text-[0.82rem] mt-4">We reply within one working day.</p>
+            </div>
+          </form>
         </div>
 
       </div>
