@@ -145,26 +145,23 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     </main>
     <Footer />
     <script>
-    // Scroll-triggered greyscale reveal — fires at midpoint on mobile, hover on desktop
+    // Scroll-triggered greyscale reveal — runs on all devices
     (function () {
-      if (window.matchMedia('(hover: none)').matches) {
-        // Touch/mobile device — use IntersectionObserver
-        const targets = document.querySelectorAll('.img-greyscale, .trip-card-img, .homepage-hero-img');
-        if (!targets.length) return;
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-              } else {
-                entry.target.classList.remove('in-view');
-              }
-            });
-          },
-          { threshold: 0.6 }
-        );
-        targets.forEach((el) => observer.observe(el));
-      }
+      const targets = document.querySelectorAll('.img-greyscale, .trip-card-img, .homepage-hero-img');
+      if (!targets.length) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            } else {
+              entry.target.classList.remove('in-view');
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+      targets.forEach((el) => observer.observe(el));
     })();
   </script>
 </body>
