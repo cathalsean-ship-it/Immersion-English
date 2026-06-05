@@ -316,6 +316,9 @@
 .img-greyscale:hover {
   filter: grayscale(0%) contrast(1);
 }
+.img-greyscale.no-hover-reveal:hover {
+  filter: grayscale(100%) contrast(1.05);
+}
 /* Scroll-triggered colour reveal — applied by JS on mobile */
 .img-greyscale.in-view,
 .trip-card-img.in-view,
