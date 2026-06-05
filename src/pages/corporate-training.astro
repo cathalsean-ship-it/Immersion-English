@@ -3,13 +3,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <style>
-  .eyebrow { color: #5BB8F5; }
-  .eyebrow-dot::before { background: #5BB8F5; }
+  .eyebrow { color: #1a85d6; }
+  .eyebrow-dot::before { background: #1a85d6; }
 </style>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Immersion English",
+  "url": "https://immersion-english.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Sofia", "addressCountry": "BG" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Corporate English Training Sofia — Корпоративно обучение по английски",
+    "itemListElement": [
+      {
+        "@type": "Course",
+        "name": "1:1 Business English Coaching Sofia",
+        "description": "Personalised Business English coaching for professionals and senior employees in Sofia. Native CELTA-qualified teacher with British Council experience. Meetings, presentations, negotiations, emails, CV and interview preparation.",
+        "provider": { "@type": "EducationalOrganization", "name": "Immersion English", "url": "https://immersion-english.com" },
+        "courseMode": ["online", "onsite"],
+        "educationalLevel": "B2-C2",
+        "audience": { "@type": "Audience", "audienceType": "Business professionals, corporate teams, Sofia-based companies" },
+        "inLanguage": "en",
+        "offers": { "@type": "Offer", "price": "60", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "description": "€60 per session. 10-session package €540." }
+      },
+      {
+        "@type": "Course",
+        "name": "Small Group Business English Training Sofia",
+        "description": "Structured group Business English training for corporate teams in Sofia. Up to 6 participants per group. Built around your team's industry, roles and communication goals. Native teacher with British Council background.",
+        "provider": { "@type": "EducationalOrganization", "name": "Immersion English", "url": "https://immersion-english.com" },
+        "courseMode": ["online", "onsite"],
+        "educationalLevel": "B2-C2",
+        "audience": { "@type": "Audience", "audienceType": "Corporate teams, HR managers, Sofia-based companies" },
+        "inLanguage": "en",
+        "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "description": "Custom pricing based on group size and programme length." }
+      }
+    ]
+  }
+}
+</script>
+
 <BaseLayout
-  title="Corporate English Training Sofia | Business English for Teams | Immersion English"
-  description="Tailored Business English training for companies and teams in Sofia. CELTA-qualified native teacher with British Council experience. 1:1 and small group programmes built around your industry and goals."
+  title="Corporate English Training Sofia | Бизнес английски за екипи | Immersion English"
+  description="Tailored Business English training for companies and teams in Sofia. Корпоративно обучение по английски за екипи — CELTA-qualified native teacher, British Council background. 1:1 and small group programmes built around your industry and goals."
   ogImage="/corporate-hero.webp"
 >
 
@@ -20,8 +58,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
         <div>
-          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-6" style="color: #5BB8F5;">
-            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #5BB8F5;"></span>
+          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-6" style="color: #1a85d6;">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #1a85d6;"></span>
             Corporate English Training
           </p>
           <h1 class="text-white mb-5" style="max-width: 20ch;">
@@ -30,7 +68,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55] mb-8">
             Tailored Business English programmes for companies and teams in Sofia. Built around your industry, your goals, and the real situations your people face every day.
           </p>
-          <a href="#enquiry" class="btn btn-primary" style="background: #5BB8F5; border-color: #5BB8F5;">Make an enquiry</a>
+          <a href="#enquiry" class="btn btn-primary" style="background: #1a85d6; border-color: #1a85d6;">Make an enquiry</a>
         </div>
         <div class="hidden md:grid grid-cols-2 gap-4">
           {[
@@ -54,8 +92,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-12 md:gap-20 items-center">
         <div>
-          <span class="eyebrow eyebrow-dot" style="color: #5BB8F5;">Why it matters</span>
-          <h2 class="mt-4 mb-5">Your team's English is a business asset.</h2>
+          <span class="eyebrow eyebrow-dot" style="color: #1a85d6;">Why it matters</span>
+          <h2 class="mt-4 mb-5">Your team's English is a business asset — and a competitive advantage.</h2>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed mb-5">
             In international meetings, client calls, and written correspondence, how confidently your people communicate in English directly affects how your company is perceived — and how deals are won.
           </p>
@@ -98,8 +136,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section">
     <div class="container-x">
       <div class="section-head">
-        <span class="eyebrow eyebrow-dot" style="color: #5BB8F5;">Our programmes</span>
-        <h2>Two ways to train your team.</h2>
+        <span class="eyebrow eyebrow-dot" style="color: #1a85d6;">Our programmes</span>
+        <h2>Business English Training Programmes for Teams in Sofia.</h2>
         <p>Whether you need targeted coaching for one employee or a structured programme for a whole team, we build it around you.</p>
       </div>
 
@@ -174,8 +212,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Sticky left: heading + Lenny profile -->
         <div class="md:sticky md:top-[90px]">
-          <span class="eyebrow eyebrow-dot" style="color: #5BB8F5;">Why choose us</span>
-          <h2 class="mt-4 mb-5">Serious credentials. Personal approach.</h2>
+          <span class="eyebrow eyebrow-dot" style="color: #1a85d6;">Why choose us</span>
+          <h2 class="mt-4 mb-5">Why choose a native English teacher for your corporate training in Sofia.</h2>
           <p class="text-ink-soft leading-relaxed mb-8">We're not a language school with a roster of teachers. Every corporate programme is delivered by the same person — consistently, personally, and with full accountability.</p>
 
           <!-- Lenny mini profile -->
@@ -241,8 +279,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Left: context -->
         <div>
-          <span class="eyebrow eyebrow-dot" style="color: #5BB8F5;">Corporate enquiry</span>
-          <h2 class="mt-4 mb-5 text-white">Tell us about your team.</h2>
+          <span class="eyebrow eyebrow-dot" style="color: #1a85d6;">Corporate enquiry</span>
+          <h2 class="mt-4 mb-5 text-white">Start your corporate English training programme today.</h2>
           <p style="color: rgba(254,255,254,0.74);" class="text-[1.05rem] leading-relaxed mb-8">
             Fill in the form and we'll get back to you within one working day with a programme proposal tailored to your team's needs.
           </p>
@@ -321,7 +359,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <textarea id="corp-message" name="message" rows="3" placeholder="Industry, current English level, preferred schedule, budget…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary w-full justify-center mt-1" style="background: #5BB8F5; border-color: #5BB8F5;">Submit enquiry</button>
+            <button type="submit" class="btn btn-primary w-full justify-center mt-1" style="background: #1a85d6; border-color: #1a85d6;">Submit enquiry</button>
             <p class="text-center text-ink-soft text-[0.82rem]">We reply within one working day.</p>
 
           </form>
