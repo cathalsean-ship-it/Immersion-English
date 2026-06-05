@@ -140,7 +140,7 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     (function () {
       if (window.matchMedia('(hover: none)').matches) {
         // Touch/mobile device — use IntersectionObserver
-        const targets = document.querySelectorAll('.img-greyscale, .trip-card-img');
+        const targets = document.querySelectorAll('.img-greyscale, .trip-card-img, .homepage-hero-img');
         if (!targets.length) return;
         const observer = new IntersectionObserver(
           (entries) => {

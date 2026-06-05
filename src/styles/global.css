@@ -252,7 +252,7 @@
 }
 .trip-card-img {
   filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.55s ease;
+  transition: filter 0.6s ease;
 }
 .trip-card-link:hover .trip-card-img {
   filter: grayscale(0%) contrast(1);
@@ -311,14 +311,15 @@
 /* Standalone greyscale hover – for images without a wrapper trigger */
 .img-greyscale {
   filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.55s ease;
+  transition: filter 0.6s ease;
 }
 .img-greyscale:hover {
   filter: grayscale(0%) contrast(1);
 }
 /* Scroll-triggered colour reveal — applied by JS on mobile */
 .img-greyscale.in-view,
-.trip-card-img.in-view {
+.trip-card-img.in-view,
+.homepage-hero-img.in-view {
   filter: grayscale(0%) contrast(1);
 }
 
