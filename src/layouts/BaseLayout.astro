@@ -156,12 +156,11 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
-              } else {
-                entry.target.classList.remove('in-view');
+                observer.unobserve(entry.target); // stay in colour once revealed
               }
             });
           },
-          { threshold: 0.5 } // triggers when 50% of image is visible
+          { threshold: 0.2 } // triggers when 20% of image is visible — needed for large images on small screens
         );
         targets.forEach((el) => observer.observe(el));
       }
