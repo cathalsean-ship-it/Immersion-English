@@ -186,7 +186,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           // Fallback — insert success message before form
           const msg = document.createElement('div');
           msg.style.cssText = 'background: var(--green); color: white; border-radius: 10px; padding: 16px 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;';
-          msg.textContent = '✓ Message sent! We'll be in touch within one working day.';
+          msg.textContent = "✓ Message sent! We'll be in touch within one working day.";
           form.parentNode.insertBefore(msg, form);
         }
       } catch (err) {
