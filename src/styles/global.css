@@ -316,14 +316,16 @@
 .img-greyscale:hover {
   filter: grayscale(0%) contrast(1);
 }
+/* Full-bleed photos: no hover reveal, scroll only */
+.img-greyscale.no-hover-reveal,
 .img-greyscale.no-hover-reveal:hover {
   filter: grayscale(100%) contrast(1.05);
 }
-/* Scroll-triggered colour reveal — applied by JS on mobile */
+/* Scroll-triggered colour reveal — applied by JS */
 .img-greyscale.in-view,
 .trip-card-img.in-view,
 .homepage-hero-img.in-view {
-  filter: grayscale(0%) contrast(1);
+  filter: grayscale(0%) contrast(1) !important;
 }
 
 /* ── Global mobile improvements ── */
