@@ -99,7 +99,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h3 class="text-[1.45rem] mb-1">Book a free consultation</h3>
           <p class="text-ink-soft text-[0.95rem] mb-7">Tell us a bit about yourself and what you're looking for – we'll get back to you within one working day.</p>
 
-          <form name="individual-enquiry" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
+          <div id="form-success" style="display:none; background: var(--green); color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">✓ Message sent! We'll be in touch within one working day.</div>
+          <form name="individual-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
             <input type="hidden" name="form-name" value="individual-enquiry" />
             <input type="hidden" name="subject" value="[Immersion English] New Individual Enquiry" />
             <p class="hidden"><input name="bot-field" /></p>
@@ -164,4 +165,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+<script>
+  // Handle all netlify forms on this page — prevent redirect, show success message
+  document.querySelectorAll('form[data-netlify]').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString(),
+        });
+        // Hide form, show success
+        form.style.display = 'none';
+        const success = form.previousElementSibling;
+        if (success && success.id && success.id.includes('success')) {
+          success.style.display = 'block';
+        } else {
+          // Fallback — insert success message before form
+          const msg = document.createElement('div');
+          msg.style.cssText = 'background: var(--green); color: white; border-radius: 10px; padding: 16px 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;';
+          msg.textContent = '✓ Message sent! We'll be in touch within one working day.';
+          form.parentNode.insertBefore(msg, form);
+        }
+      } catch (err) {
+        alert('Something went wrong. Please email us directly at immersionenglish.ie@gmail.com');
+      }
+    });
+  });
+</script>
 </BaseLayout>
