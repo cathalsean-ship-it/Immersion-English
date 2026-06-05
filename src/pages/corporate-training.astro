@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout
   title="Corporate English Training Sofia | Business English for Teams | Immersion English"
   description="Tailored Business English training for companies and teams in Sofia. CELTA-qualified native teacher with British Council experience. 1:1 and small group programmes built around your industry and goals."
-  ogImage="/corporate-team.webp"
+  ogImage="/corporate-hero.webp"
 >
 
   <!-- HERO -->
@@ -25,9 +25,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55] mb-8">
             Tailored Business English programmes for companies and teams in Sofia. Built around your industry, your goals, and the real situations your people face every day.
           </p>
-          <a href="/contact" class="btn btn-primary">Discuss your team's needs</a>
+          <a href="#enquiry" class="btn btn-primary">Make an enquiry</a>
         </div>
-        <!-- Stats -->
         <div class="hidden md:grid grid-cols-2 gap-4">
           {[
             { n: '10+', label: 'Years of experience' },
@@ -59,7 +58,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Generic language courses teach grammar. We teach your team to perform — in the specific situations that matter most to your business.
           </p>
         </div>
-        <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-4">
           {[
             { title: 'Client-facing communication', body: 'Presentations, negotiations, calls, and meetings with international clients and partners.' },
             { title: 'Internal reporting & correspondence', body: 'Emails, reports, proposals, and written communication that reflect well on your organisation.' },
@@ -82,10 +81,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- PHOTO BREAK -->
   <div style="height: 480px; overflow: hidden;">
     <img
-      src="/corporate-team.webp"
-      alt="Business English corporate training — professional team"
+      src="/corporate-hero.webp"
+      alt="Corporate English training — direction and clarity"
       class="img-greyscale w-full h-full object-cover"
-      style="object-position: center 50%;"
+      style="object-position: center 60%;"
       loading="lazy"
     />
   </div>
@@ -167,22 +166,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section section-tinted">
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8 md:gap-20 items-start">
+
+        <!-- Sticky left: heading + Lenny profile -->
         <div class="md:sticky md:top-[90px]">
           <span class="eyebrow eyebrow-dot">Why choose us</span>
           <h2 class="mt-4 mb-5">Serious credentials. Personal approach.</h2>
-          <p class="text-ink-soft leading-relaxed mb-6">We're not a language school with a roster of teachers. Every corporate programme is delivered by the same CELTA-qualified native teacher — consistently, personally, and with full accountability.</p>
-          <a href="/about" class="inline-flex items-center gap-3 no-underline group" style="color: var(--ink-soft);">
-            <span class="w-8 h-[1.5px] inline-block" style="background: var(--orange);"></span>
-            <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">Meet the teacher</span>
-          </a>
+          <p class="text-ink-soft leading-relaxed mb-8">We're not a language school with a roster of teachers. Every corporate programme is delivered by the same person — consistently, personally, and with full accountability.</p>
+
+          <!-- Lenny mini profile -->
+          <div class="rounded-xl overflow-hidden shadow-soft" style="border: 1px solid var(--line); background: white;">
+            <img
+              src="/team-lenny.webp"
+              alt="Cathal (Lenny) Leonard – Senior English Teacher"
+              class="w-full object-cover"
+              style="aspect-ratio: 4/3; object-position: center top;"
+              loading="lazy"
+            />
+            <div class="p-5">
+              <p class="font-heading font-bold text-ink text-[1.05rem] mb-1">Cathal (Lenny) Leonard</p>
+              <p class="text-[0.82rem] font-semibold mb-3" style="color: var(--green);">Senior English Teacher</p>
+              <ul class="flex flex-col gap-1 text-[0.82rem] text-ink-soft">
+                {[
+                  'Native Irish English speaker',
+                  'CELTA-qualified (Certificate in Teaching English to Speakers of Other Languages)',
+                  '10+ years teaching adults & professionals',
+                  'British Council Sofia — teacher & examiner',
+                  'Summer programmes: Oxford & Brighton',
+                ].map(item => (
+                  <li class="flex items-start gap-2">
+                    <span class="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
+
+        <!-- Right: credentials list -->
         <div class="flex flex-col divide-y divide-line">
           {[
-            { title: 'CELTA-qualified native teacher', body: 'Taught by Cathal (Lenny) Leonard — an Irish, native English speaker with a CELTA qualification and over 10 years of experience, including at the British Council in Sofia.' },
-            { title: 'British Council background', body: 'Lenny has taught at the British Council Sofia and led international programmes in Oxford and Brighton. Corporate clients get that level of expertise without the group-course format.' },
-            { title: 'Built around your business', body: 'Every programme starts with a consultation to understand your team\'s roles, goals, and working context. No off-the-shelf syllabi.' },
+            { title: 'CELTA-qualified native teacher', body: 'The CELTA (Certificate in Teaching English to Speakers of Other Languages) is the internationally recognised gold standard in English language teaching. Lenny holds a CELTA qualification alongside over 10 years of experience teaching adults and professionals.' },
+            { title: 'British Council background', body: 'Lenny has taught at the British Council Sofia and led international programmes in Oxford and Brighton. Corporate clients get that level of expertise in a fully personalised format.' },
+            { title: 'Built around your business', body: 'Every programme starts with a consultation to understand your team\'s roles, goals, and working context. No off-the-shelf syllabi — everything is tailored.' },
             { title: 'Consistent delivery', body: 'One teacher, one approach, full continuity. Your team builds a relationship with their teacher — which is how real progress happens.' },
-            { title: 'Flexible and low-friction', body: 'Sessions are scheduled around your team\'s working hours. Monthly invoicing available for companies. No lengthy onboarding process.' },
+            { title: 'Flexible and low-friction', body: 'Sessions scheduled around your team\'s working hours. Monthly invoicing available for companies. No lengthy onboarding process.' },
           ].map(({ title, body }) => (
             <div class="py-6 flex gap-4 items-start">
               <span class="flex-shrink-0 mt-[7px] w-[8px] h-[8px] rounded-full" style="background: var(--orange);"></span>
@@ -193,23 +221,101 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           ))}
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-dark">
+  <!-- ENQUIRY FORM -->
+  <section class="section section-dark" id="enquiry">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+
+        <!-- Left: context -->
         <div>
-          <span class="eyebrow eyebrow-dot">Get in touch</span>
-          <h2 class="mt-4 mb-4">Ready to invest in your team's English?</h2>
-          <p style="color: rgba(254,255,254,0.74);">Tell us about your team and what you're trying to achieve. We'll put together a programme proposal — no obligation, no pressure.</p>
+          <span class="eyebrow eyebrow-dot">Corporate enquiry</span>
+          <h2 class="mt-4 mb-5 text-white">Tell us about your team.</h2>
+          <p style="color: rgba(254,255,254,0.74);" class="text-[1.05rem] leading-relaxed mb-8">
+            Fill in the form and we'll get back to you within one working day with a programme proposal tailored to your team's needs.
+          </p>
+          <div class="flex flex-col gap-4">
+            {[
+              { n: '01', text: 'You fill in the enquiry form below' },
+              { n: '02', text: 'We prepare a tailored programme proposal' },
+              { n: '03', text: 'We schedule a call to discuss and finalise' },
+            ].map(({ n, text }) => (
+              <div class="flex gap-4 items-center">
+                <span class="font-heading font-bold text-[1.3rem] leading-none flex-shrink-0" style="color: var(--orange-text);">{n}</span>
+                <p class="text-[0.95rem]" style="color: rgba(254,255,254,0.74);">{text}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div class="flex flex-col sm:flex-row gap-4 md:justify-end">
-          <a href="/contact" class="btn btn-primary">Discuss your team's needs</a>
-          <a href="/lessons" class="btn btn-ghost text-white border-white/30 hover:border-white">Individual lessons</a>
+
+        <!-- Right: form -->
+        <div class="bg-white border border-line rounded-xl p-7 md:p-9 shadow-lift">
+          <h3 class="text-[1.3rem] mb-1">Corporate Enquiry</h3>
+          <p class="text-ink-soft text-[0.93rem] mb-6">We reply within one working day.</p>
+
+          <div class="flex flex-col gap-4">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex flex-col gap-[6px]">
+                <label for="corp-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Full name</label>
+                <input id="corp-name" type="text" placeholder="Jana Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              </div>
+              <div class="flex flex-col gap-[6px]">
+                <label for="corp-company" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Company</label>
+                <input id="corp-company" type="text" placeholder="Acme Ltd." class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex flex-col gap-[6px]">
+                <label for="corp-email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
+                <input id="corp-email" type="email" placeholder="jana@company.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              </div>
+              <div class="flex flex-col gap-[6px]">
+                <label for="corp-phone" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Phone</label>
+                <input id="corp-phone" type="tel" placeholder="+359 88 000 0000" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-[6px]">
+              <label for="corp-team-size" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Team size</label>
+              <select id="corp-team-size" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
+                <option value="">Select team size…</option>
+                <option>1 person (individual coaching)</option>
+                <option>2–3 people</option>
+                <option>4–6 people</option>
+                <option>7+ people</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-[6px]">
+              <label for="corp-goals" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Primary goal</label>
+              <select id="corp-goals" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
+                <option value="">Select primary goal…</option>
+                <option>Meetings & presentations</option>
+                <option>Client communication & negotiations</option>
+                <option>Professional writing (emails, reports)</option>
+                <option>CV & interview preparation</option>
+                <option>General Business English</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-[6px]">
+              <label for="corp-message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Anything else we should know?</label>
+              <textarea id="corp-message" rows="3" placeholder="Industry, current English level, preferred schedule, budget…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none"></textarea>
+            </div>
+
+            <button class="btn btn-primary w-full justify-center mt-1">Submit enquiry</button>
+            <p class="text-center text-ink-soft text-[0.82rem]">We reply within one working day.</p>
+
+          </div>
         </div>
+
       </div>
     </div>
   </section>
