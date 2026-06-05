@@ -135,5 +135,28 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
       <slot />
     </main>
     <Footer />
-  </body>
+    <script>
+    // Scroll-triggered greyscale reveal — fires at midpoint on mobile, hover on desktop
+    (function () {
+      if (window.matchMedia('(hover: none)').matches) {
+        // Touch/mobile device — use IntersectionObserver
+        const targets = document.querySelectorAll('.img-greyscale, .trip-card-img');
+        if (!targets.length) return;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+              } else {
+                entry.target.classList.remove('in-view');
+              }
+            });
+          },
+          { threshold: 0.5 } // triggers when 50% of image is visible
+        );
+        targets.forEach((el) => observer.observe(el));
+      }
+    })();
+  </script>
+</body>
 </html>

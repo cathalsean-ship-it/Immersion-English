@@ -241,7 +241,7 @@
   }
 }
 
-/* Trip card greyscale hover effect */
+/* Trip card greyscale hover effect — scroll-triggered on mobile */
 .trip-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
@@ -311,9 +311,14 @@
 /* Standalone greyscale hover – for images without a wrapper trigger */
 .img-greyscale {
   filter: grayscale(100%) contrast(1.05);
-  transition: filter 0.5s ease;
+  transition: filter 0.55s ease;
 }
 .img-greyscale:hover {
+  filter: grayscale(0%) contrast(1);
+}
+/* Scroll-triggered colour reveal — applied by JS on mobile */
+.img-greyscale.in-view,
+.trip-card-img.in-view {
   filter: grayscale(0%) contrast(1);
 }
 
