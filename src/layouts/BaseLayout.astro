@@ -52,6 +52,15 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     <link rel="icon" type="image/svg+xml" href="/iE-mark.svg" />
     <link rel="apple-touch-icon" href="/iE-mark.svg" />
 
+    <!-- Google Tag Manager — loaded off the main thread via Partytown -->
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GTM-XXXXXXX');
+    </script>
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=GTM-XXXXXXX"></script>
+
     <!-- Fonts — non-blocking async load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

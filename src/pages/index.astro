@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import studentsWalking from '../assets/students-walking.jpg';
 ---
 
 <BaseLayout title="Immersion English | English Lessons in Sofia & Dublin Summer School for Teens" description="CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults and an immersive summer school in Dublin for teenagers aged 13–17. Летен езиков курс в Дъблин за тийнейджъри от България.">
@@ -119,11 +121,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; align-items: center;" class="programme-grid">
       <!-- Image: bleeds to left edge -->
       <div class="homepage-hero-img-wrap relative" style="overflow: hidden; min-height: 480px;">
-        <img
-          src="/students-walking.webp"
+        <Image
+          src={studentsWalking}
           alt="Students exploring Dublin"
           class="homepage-hero-img w-full h-full object-cover"
           style="position: absolute; inset: 0;"
+          fetchpriority="high"
+          loading="eager"
+          widths={[640, 1024, 1440]}
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
         <!-- Gradient overlay -->
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,26,0) 50%, rgba(20,32,26,0.55) 100%); pointer-events: none; z-index: 1;"></div>
@@ -218,7 +224,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
               <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
                 {img
-                  ? <img src={img} alt={title} class="trip-card-img w-full h-full object-cover" loading="lazy" loading="lazy" />
+                  ? <img src={img} alt={title} class="trip-card-img w-full h-full object-cover" loading="lazy" />
                   : <div class="w-full h-full" style={`background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
                 }
               </div>
