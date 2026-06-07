@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Self-hosted fonts — served from Netlify, no external DNS roundtrips */
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fontsource/lato/400.css';
+@import '@fontsource/lato/700.css';
+
 :root {
   --green: #008037;
   --green-deep: #006a2d;

@@ -61,16 +61,9 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     </script>
     <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=GTM-XXXXXXX"></script>
 
-    <!-- Fonts — non-blocking async load -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@400;700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@400;700&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@400;700&display=swap" /></noscript>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87"></script>
-    <script>
+    <!-- Google Analytics — off main thread via Partytown -->
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87"></script>
+    <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
