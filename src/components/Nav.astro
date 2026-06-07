@@ -73,19 +73,24 @@ const dublinSub = [
         <a href="/lessons" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Lessons</a>
         <a href="/corporate-training" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Corporate Training</a>
 
-        <!-- Mobile dropdown -->
+        <!-- Mobile dropdown — link + separate chevron -->
         <div>
-          <button
-            id="mobile-dublin-toggle"
-            class="w-full flex items-center justify-between py-2 bg-transparent border-0 cursor-pointer text-ink-soft text-[0.98rem] font-medium hover:text-brand-green transition-colors"
-            aria-expanded="false"
-            aria-controls="mobile-dublin-sub"
-          >
-            <span>Dublin Summer 2027</span>
-            <svg id="mobile-dublin-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+          <div class="flex items-center justify-between">
+            <a href="/dublin-summer-2027" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors flex-1">
+              Dublin Summer 2027
+            </a>
+            <button
+              id="mobile-dublin-toggle"
+              class="w-10 h-10 flex items-center justify-center bg-transparent border-0 cursor-pointer text-ink-soft hover:text-brand-green transition-colors"
+              aria-expanded="false"
+              aria-controls="mobile-dublin-sub"
+              aria-label="Toggle Dublin Summer submenu"
+            >
+              <svg id="mobile-dublin-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
           <ul id="mobile-dublin-sub" class="hidden flex-col gap-1 pl-4 mt-1 mb-2 border-l-2 border-line">
             {dublinSub.map(item => (
               <li>
