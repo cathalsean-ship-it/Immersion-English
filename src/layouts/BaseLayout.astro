@@ -56,20 +56,14 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     <link rel="icon" type="image/svg+xml" href="/iE-mark.svg" />
     <link rel="apple-touch-icon" href="/iE-mark.svg" />
 
-    <!-- Google Analytics — deferred until after page paint -->
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87"></script>
     <script>
-      window.addEventListener('load', function() {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87';
-        s.async = true;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-JCEKWZWT87');
-        gtag('config', 'G-G193KE10LZ');
-      });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JCEKWZWT87');
+      gtag('config', 'G-G193KE10LZ');
     </script>
     <!-- Bulgarian language keywords for SEO -->
     <meta name="keywords" content="английски език София, летен езиков курс Дъблин, английски за тийнейджъри, езикова програма Ирландия, летен езиков лагер Дъблин, IELTS подготовка София, Cambridge CAE София, English summer school Dublin Bulgaria, английски уроци онлайн София" />
