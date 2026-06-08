@@ -1,19 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Immersion English">
-  <!-- Green background -->
-  <rect width="32" height="32" rx="8" fill="#1a9632"/>
-
-  <!-- i stem: centred in left half (x centre ~9) -->
-  <rect x="7.5" y="15" width="3" height="11" rx="0.5" fill="#fff"/>
+  <rect width="32" height="32" rx="6" fill="#008036"/>
+  <!-- i stem -->
+  <rect x="8.28" y="12.88" width="5.03" height="14.94" rx="0.5" fill="#ffffff"/>
+  <!-- E vertical stem -->
+  <rect x="14.25" y="12.88" width="2.12" height="14.94" rx="0.5" fill="#ffffff"/>
+  <!-- E top bar -->
+  <rect x="14.25" y="12.88" width="11.22" height="2.12" rx="0.5" fill="#ffffff"/>
+  <!-- E middle bar -->
+  <rect x="14.25" y="19.45" width="8.75" height="1.91" rx="0.5" fill="#ffffff"/>
+  <!-- E bottom bar -->
+  <rect x="14.25" y="25.69" width="11.22" height="2.12" rx="0.5" fill="#ffffff"/>
   <!-- orange dot -->
-  <circle cx="9" cy="11.5" r="2.2" fill="#E07010"/>
-
-  <!-- E: centred in right half (x start ~14.5) -->
-  <!-- vertical stem -->
-  <rect x="14.5" y="10" width="3" height="16" rx="0.5" fill="#fff"/>
-  <!-- top bar -->
-  <rect x="14.5" y="10" width="9" height="2.8" rx="0.5" fill="#fff"/>
-  <!-- middle bar -->
-  <rect x="14.5" y="15.6" width="7" height="2.5" rx="0.5" fill="#fff"/>
-  <!-- bottom bar -->
-  <rect x="14.5" y="23.2" width="9" height="2.8" rx="0.5" fill="#fff"/>
+  <circle cx="10.8" cy="11.08" r="1.48" fill="#ff914c"/>
 </svg>
