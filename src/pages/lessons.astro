@@ -253,9 +253,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- HOW IT WORKS – full bleed photo background -->
-  <section class="relative overflow-hidden" style="min-height: 520px; background-image: url('/lessons-hero.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-    <!-- Gradient overlay – stronger on left so content is readable -->
-    <div class="absolute inset-0" style="background: linear-gradient(90deg, rgba(248,245,240,0.97) 0%, rgba(248,245,240,0.95) 40%, rgba(248,245,240,0.5) 70%, rgba(248,245,240,0) 100%);"></div>
+  <section class="relative overflow-hidden" style="min-height: 520px; background-color: var(--cream);">
+    <!-- Background image – desktop only -->
+    <div class="absolute inset-0 hidden md:block" style="background-image: url('/lessons-hero.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+    <!-- Gradient overlay – desktop only -->
+    <div class="absolute inset-0 hidden md:block" style="background: linear-gradient(90deg, rgba(248,245,240,0.97) 0%, rgba(248,245,240,0.95) 40%, rgba(248,245,240,0.5) 70%, rgba(248,245,240,0) 100%);"></div>
     <!-- Content floats over photo -->
     <div class="container-x relative z-10 section">
       <div class="max-w-[520px]">
