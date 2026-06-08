@@ -140,7 +140,7 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     <script>
     // Greyscale reveal — only the image whose centre is closest to screen midpoint gets colour
     (function () {
-      const targets = Array.from(document.querySelectorAll('.img-greyscale, .trip-card-img, .homepage-hero-img'));
+      const targets = Array.from(document.querySelectorAll('.img-greyscale:not(.no-hover-reveal), .trip-card-img, .homepage-hero-img'));
       if (!targets.length) return;
 
       function update() {
