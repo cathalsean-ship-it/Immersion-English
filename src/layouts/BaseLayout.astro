@@ -147,6 +147,8 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
       const targets = Array.from(document.querySelectorAll('.img-greyscale:not(.no-hover-reveal), .trip-card-img, .homepage-hero-img'));
       if (!targets.length) return;
 
+      let ticking = false;
+
       function update() {
         const mid = window.innerHeight / 2;
         let closest = null;
@@ -167,9 +169,16 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
             el.classList.remove('in-view');
           }
         });
+        ticking = false;
       }
 
-      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
+
       update();
     })();
   </script>
