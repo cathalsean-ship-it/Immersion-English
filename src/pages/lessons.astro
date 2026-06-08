@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="English Lessons in Sofia, Bulgaria | Online Speaking Courses | Immersion English"
-  description="Online English lessons with a CELTA-qualified native teacher in Sofia, Bulgaria. Group speaking courses, 1:1 coaching, and Cambridge CAE & IELTS exam preparation. B2 and above. Онлайн уроци по английски език в София с носител на езика."
+  description="Online English lessons with a CELTA-qualified native teacher in Sofia, Bulgaria. Group speaking courses, 1:1 coaching, and Cambridge CAE & IELTS exam preparation. B1 and above. Онлайн уроци по английски език в София с носител на езика."
   ogImage="/lessons-hero.webp"
 >
 
@@ -33,7 +33,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             { n: '10+', label: 'Years of experience' },
             { n: 'Native', label: 'CELTA-qualified teacher' },
             { n: '5', label: 'Courses available' },
-            { n: 'B2+', label: 'All levels welcome' },
+            { n: 'B1+', label: 'All levels welcome' },
           ].map(({ n, label }) => (
             <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
               <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">{n}</p>
@@ -77,13 +77,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               'Groups of 8 students',
               'Weekly skill focus: opinion, storytelling, debate',
               'End-of-programme feedback report',
-              'Level: B2 and above',
             ].map(item => (
               <li class="flex items-start gap-2">
                 <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[6px]" style="background: var(--orange);"></span>
                 {item}
               </li>
             ))}
+            <li class="flex items-start gap-2">
+              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[6px]" style="background: var(--orange);"></span>
+              Level: B1 and above (<a href="/blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt" class="underline hover:text-brand-green transition-colors" style="color: var(--green);">what is CEFR?</a>)
+            </li>
           </ul>
           <!-- Right: price + CTA -->
           <div class="flex flex-col gap-4 min-w-[180px]">
@@ -117,13 +120,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               'Flexible schedule – book around your availability',
               'Targeted feedback every session',
               'Focus areas: confidence, fluency, business English, interviews',
-              'Level: B2 and above',
             ].map(item => (
               <li class="flex items-start gap-2">
                 <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
                 {item}
               </li>
             ))}
+            <li class="flex items-start gap-2">
+              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[6px]" style="background: var(--orange);"></span>
+              Level: B1 and above (<a href="/blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt" class="underline hover:text-brand-green transition-colors" style="color: var(--green);">what is CEFR?</a>)
+            </li>
           </ul>
           <div class="pt-5 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.3rem]">€50 <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
@@ -151,13 +157,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               'Clear exam strategy and structure',
               'Targeted, personalised feedback',
               'Build confidence and natural fluency',
-              'Level: B2 and above',
             ].map(item => (
               <li class="flex items-start gap-2">
                 <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
                 {item}
               </li>
             ))}
+            <li class="flex items-start gap-2">
+              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[6px]" style="background: var(--orange);"></span>
+              Level: B1 and above (<a href="/blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt" class="underline hover:text-brand-green transition-colors" style="color: var(--green);">what is CEFR?</a>)
+            </li>
           </ul>
           <div class="pt-5 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.3rem]">€45 <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
@@ -196,13 +205,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               'Grammar and vocabulary in context – not in isolation',
               'Flexible schedule – book around your availability',
               'Targeted feedback every session',
-              'Level: B2 and above',
             ].map(item => (
               <li class="flex items-start gap-2">
                 <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
                 {item}
               </li>
             ))}
+            <li class="flex items-start gap-2">
+              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[6px]" style="background: var(--orange);"></span>
+              Level: B1 and above (<a href="/blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt" class="underline hover:text-brand-green transition-colors" style="color: var(--green);">what is CEFR?</a>)
+            </li>
           </ul>
           <div class="pt-5 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.3rem]">€45 <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
@@ -231,13 +243,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               'CV and interview preparation',
               'Industry-specific vocabulary and communication',
               'Flexible schedule – book around your availability',
-              'Level: B2 and above',
             ].map(item => (
               <li class="flex items-start gap-2">
                 <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
                 {item}
               </li>
             ))}
+            <li class="flex items-start gap-2">
+              <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[6px]" style="background: var(--orange);"></span>
+              Level: B1 and above (<a href="/blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt" class="underline hover:text-brand-green transition-colors" style="color: var(--green);">what is CEFR?</a>)
+            </li>
           </ul>
           <div class="pt-5 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.3rem]">€45 <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
