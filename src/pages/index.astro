@@ -56,13 +56,13 @@ import studentsWalking from '../assets/students-walking.jpg';
     <div class="container-x py-5">
       <div class="flex flex-wrap items-center justify-start md:justify-center gap-x-5 gap-y-3">
         {[
-          'CELTA-qualified teachers',
+          'CELTA-qualified teacher',
           '10+ years of experience',
           'Communicative lessons',
-          'Cambridge & IELTS specialists',
+          'Cambridge & IELTS specialist',
         ].map((item) => (
-          <span class="flex items-center gap-2 flex-shrink-0">
-            <span class="w-[7px] h-[7px] rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+          <span class="flex items-center gap-2" style="flex-shrink: 0; white-space: nowrap;">
+            <span class="w-[7px] h-[7px] rounded-full" style="background: var(--orange); flex-shrink: 0; display: inline-block; min-width: 7px;"></span>
             <span class="font-heading font-semibold text-[0.88rem] text-white tracking-wide">{item}</span>
           </span>
         ))}
@@ -206,9 +206,9 @@ import studentsWalking from '../assets/students-walking.jpg';
   <section class="section section-tinted">
     <div class="container-x">
       <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Trips &amp; Activities</span>
+        <span class="eyebrow eyebrow-dot">Included in Dublin Summer 2027</span>
         <h2>Explore Dublin and beyond.</h2>
-        <p>Six unforgettable experiences included in the programme – from ancient castles to coastal cliff walks.</p>
+        <p>Six guided trips and cultural experiences are built into the programme – from ancient castles to coastal cliff walks. No extras to book.</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {[
@@ -247,7 +247,7 @@ import studentsWalking from '../assets/students-walking.jpg';
         >
           <span class="w-8 h-[1.5px]" style="background: var(--orange); display: inline-block;"></span>
           <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">
-            See all trips &amp; activities
+            See all trips included in the programme
           </span>
           <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="group-hover:translate-x-1 transition-transform">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
