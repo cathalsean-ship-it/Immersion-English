@@ -285,14 +285,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <!-- Right: photo -->
-        <div class="rounded-xl overflow-hidden" style="min-height: 400px;">
+        <div class="rounded-xl overflow-hidden relative" style="min-height: 400px;">
           <img
             src="/lessons-hero.webp"
             alt="English lesson in progress"
-            class="w-full h-full object-cover"
+            class="img-greyscale w-full h-full object-cover"
             style="min-height: 400px;"
             loading="lazy"
           />
+          <!-- Subtle orange tint overlay -->
+          <div class="absolute inset-0 rounded-xl pointer-events-none" style="background: rgba(200, 90, 10, 0.08); mix-blend-mode: multiply;"></div>
         </div>
 
       </div>
