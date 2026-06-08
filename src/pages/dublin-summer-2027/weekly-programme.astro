@@ -179,7 +179,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           },
         ].map(({ day, label, color, slots }) => (
           <div class="day-item rounded-lg overflow-hidden border border-line">
-            <!-- Day header — clickable -->
+            <!-- Day header – clickable -->
             <button class="day-trigger w-full flex items-center justify-between gap-4 px-5 py-3 cursor-pointer border-0 text-left" style={`background: ${color}; color: white;`} aria-expanded="false">
               <div class="flex items-center gap-3">
                 <span class="font-heading font-bold text-[1.05rem]">{day}</span>
@@ -189,7 +189,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
-            <!-- Slots — hidden by default -->
+            <!-- Slots – hidden by default -->
             <div class="day-body" style="display: none;">
               <div class="divide-y divide-line bg-white">
                 {slots.map(({ time, activity }) => (
