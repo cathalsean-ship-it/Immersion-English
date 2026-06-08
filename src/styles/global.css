@@ -3,10 +3,34 @@
 @tailwind utilities;
 
 /* Self-hosted fonts — served from Netlify, no external DNS roundtrips */
-@import '@fontsource/montserrat/600.css';
-@import '@fontsource/montserrat/700.css';
-@import '@fontsource/lato/400.css';
-@import '@fontsource/lato/700.css';
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('/fonts/montserrat-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('/fonts/montserrat-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('/fonts/lato-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('/fonts/lato-latin-700-normal.woff2') format('woff2');
+}
 
 :root {
   --green: #008037;
