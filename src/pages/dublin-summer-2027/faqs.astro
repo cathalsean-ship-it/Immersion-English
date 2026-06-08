@@ -137,6 +137,19 @@ const sections = [
   ogImage="/trinity-college.webp"
 >
 
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": sections.flatMap(({ faqs }) => faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": a
+    }
+  })))
+})} />
+
   <!-- HERO -->
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
