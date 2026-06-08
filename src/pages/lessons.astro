@@ -289,7 +289,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <img
             src="/lessons-hero.webp"
             alt="English lesson in progress"
-            class="img-greyscale w-full h-full object-cover"
+            class="img-greyscale no-hover-reveal w-full h-full object-cover"
+            id="lessons-hero-img"
             style="min-height: 400px;"
             loading="lazy"
           />
@@ -374,4 +375,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
 </BaseLayout>
+
+<script>
+  const img = document.getElementById('lessons-hero-img');
+  if (img) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          img.classList.add('in-view');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(img);
+  }
+</script>
 
