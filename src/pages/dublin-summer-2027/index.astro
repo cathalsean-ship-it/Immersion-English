@@ -12,7 +12,7 @@ import teensDublin from '../../assets/teens-dublin.jpg';
 >
 
 
-  <script type="application/ld+json">{JSON.stringify({
+  <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Course",
     "name": "English Summer Programme for Teens – Dublin 2027",
@@ -40,7 +40,7 @@ import teensDublin from '../../assets/teens-dublin.jpg';
         "addressCountry": "IE"
       }
     }
-  })}</script>
+  })} />
 
   <!-- HERO -->
   <section class="relative min-h-[88vh] flex items-stretch text-white overflow-hidden isolate pb-10">
