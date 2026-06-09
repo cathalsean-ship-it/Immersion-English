@@ -143,63 +143,81 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <!-- 1:1 -->
-        <div class="bg-white border border-line rounded-xl p-7 flex flex-col shadow-soft">
-          <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full mb-4 inline-block" style="background: #e8f0fe; color: #3b5bdb;">Individual</span>
-          <h3 class="text-[1.2rem] mb-2">1:1 Business English Coaching</h3>
-          <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
-          <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-5">
-            Intensive, personalised coaching for senior employees, managers, or anyone who needs to perform in English at a high level. Sessions are built entirely around their role, their goals, and their specific challenges.
-          </p>
-          <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
-            {[
-              'Tailored to the employee\'s industry and role',
-              'Meetings, presentations, negotiations, emails',
-              'CV and interview preparation',
-              'Flexible scheduling around working hours',
-              'Regular progress feedback',
-              'Monthly invoicing available',
-            ].map(item => (
-              <li class="flex items-start gap-2">
-                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <div class="pt-5 border-t border-line">
-            <p class="font-heading font-bold text-ink text-[1.3rem]">€60 <span class="text-[0.85rem] font-normal text-ink-soft">per session</span></p>
-            <div class="flex gap-4 mt-2 flex-wrap">
-              <p class="text-[0.82rem] text-ink-soft">10 sessions: <strong class="text-ink">€540</strong> <span style="color: #1a85d6;" class="font-semibold text-[0.78rem]"> save 10%</span></p>
+        <!-- 1:1 Business English Coaching -->
+        <div class="bg-white border border-line rounded-xl overflow-hidden flex flex-col shadow-soft">
+          <div style="background: var(--orange); height: 4px;"></div>
+          <div class="p-7 flex flex-col flex-1">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #1a85d6;">Individual</span>
+              <span class="text-[0.72rem] font-heading font-semibold text-ink-soft">1 employee</span>
+            </div>
+            <h3 class="text-[1.2rem] mb-1">1:1 Business English Coaching</h3>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-4">
+              Intensive, personalised coaching built entirely around <strong class="text-ink">one person</strong> – their role, their goals, and their specific communication challenges. Every session is different because every person is different.
+            </p>
+            <div class="rounded-lg px-4 py-3 mb-5" style="background: #f0f4ff; border-left: 3px solid #1a85d6;">
+              <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-wide mb-1" style="color: #1a85d6;">Best for</p>
+              <p class="text-[0.85rem] text-ink-soft">Senior managers, executives, and high-performers who need to operate confidently in English at a high level.</p>
+            </div>
+            <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
+              {[
+                "Fully tailored to the individual's role and industry",
+                'Meetings, presentations, negotiations, emails',
+                'CV and interview preparation',
+                'Flexible scheduling around working hours',
+                'Detailed progress feedback after every session',
+                'Monthly invoicing available',
+              ].map(item => (
+                <li class="flex items-start gap-2">
+                  <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div class="pt-5 border-t border-line">
+              <p class="font-heading font-bold text-ink text-[1.3rem]">€60 <span class="text-[0.85rem] font-normal text-ink-soft">per session</span></p>
+              <p class="text-[0.82rem] text-ink-soft mt-1">10 sessions: <strong class="text-ink">€540</strong> <span style="color: #1a85d6;" class="font-semibold"> – save 10%</span></p>
             </div>
           </div>
         </div>
 
-        <!-- Small group -->
-        <div class="bg-white rounded-xl p-7 flex flex-col shadow-soft" style="border: 1.5px solid #1a85d6;">
-          <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full mb-4 inline-block" style="background: #e8f0fe; color: #1a85d6;">Team</span>
-          <h3 class="text-[1.2rem] mb-2">Small Group Team Training</h3>
-          <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
-          <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-5">
-            Structured group sessions for teams who work together in English – sales, client services, operations, or any department with shared communication needs. Up to 6 participants per group.
-          </p>
-          <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
-            {[
-              'Up to 6 participants per group',
-              'Built around your team\'s shared context',
-              'Real workplace scenarios and role plays',
-              'Speaking, listening, and professional writing',
-              'Flexible scheduling around working hours',
-              'Monthly invoicing available',
-            ].map(item => (
-              <li class="flex items-start gap-2">
-                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <div class="pt-5 border-t border-line">
-            <p class="font-heading font-bold text-ink text-[1.3rem]">Custom pricing</p>
-            <p class="text-[0.82rem] text-ink-soft mt-1">Based on group size and programme length. Get in touch for a quote.</p>
+        <!-- Small Group Team Training -->
+        <div class="rounded-xl overflow-hidden flex flex-col shadow-soft" style="border: 1.5px solid #1a85d6; background: white;">
+          <div style="background: #1a85d6; height: 4px;"></div>
+          <div class="p-7 flex flex-col flex-1">
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #1a85d6;">Team</span>
+              <span class="text-[0.72rem] font-heading font-semibold text-ink-soft">Up to 6 people</span>
+            </div>
+            <h3 class="text-[1.2rem] mb-1">Small Group Business English Training</h3>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
+            <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-4">
+              Structured sessions for <strong class="text-ink">teams who work together</strong> – built around your shared context, your industry, and the real situations your people face every day.
+            </p>
+            <div class="rounded-lg px-4 py-3 mb-5" style="background: #f0f4ff; border-left: 3px solid #1a85d6;">
+              <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-wide mb-1" style="color: #1a85d6;">Best for</p>
+              <p class="text-[0.85rem] text-ink-soft">Sales teams, client services, operations – any group with shared communication goals who need to perform in English together.</p>
+            </div>
+            <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
+              {[
+                'Up to 6 participants per group',
+                "Built around your team's shared industry and context",
+                'Real workplace scenarios, role plays, and case studies',
+                'Speaking, listening, and professional writing',
+                'Flexible scheduling around working hours',
+                'Monthly invoicing available',
+              ].map(item => (
+                <li class="flex items-start gap-2">
+                  <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div class="pt-5 border-t border-line">
+              <p class="font-heading font-bold text-ink text-[1.3rem]">Custom pricing</p>
+              <p class="text-[0.82rem] text-ink-soft mt-1">Based on group size and programme length. Get in touch for a tailored quote.</p>
+            </div>
           </div>
         </div>
 
