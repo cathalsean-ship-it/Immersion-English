@@ -29,17 +29,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <!-- Quick stats -->
         <div class="hidden md:grid grid-cols-2 gap-4">
-          {[
-            { n: '10+', label: 'Years of experience' },
-            { n: 'Native', label: 'Irish English teacher' },
-            { n: '5', label: 'Courses available' },
-            { n: 'B1+', label: 'All levels welcome' },
-          ].map(({ n, label }) => (
-            <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
-              <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">{n}</p>
-              <p class="text-[0.82rem] text-white/65 font-heading font-semibold">{label}</p>
-            </div>
-          ))}
+          <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
+            <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">10+</p>
+            <p class="text-[0.82rem] text-white/65 font-heading font-semibold">Years of experience</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
+            <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">Native</p>
+            <p class="text-[0.82rem] text-white/65 font-heading font-semibold">English teacher from Ireland</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
+            <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">Individual</p>
+            <p class="text-[0.82rem] text-white/65 font-heading font-semibold">& group lessons</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
+            <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">B1+</p>
+            <p class="text-[0.82rem] text-white/65 font-heading font-semibold"><a href="/blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt" style="color: rgba(255,255,255,0.65); text-decoration: underline; text-underline-offset: 2px;">on the CEFR scale</a></p>
+          </div>
         </div>
       </div>
     </div>
