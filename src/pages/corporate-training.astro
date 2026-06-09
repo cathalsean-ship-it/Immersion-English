@@ -175,8 +175,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <!-- Small group -->
-        <div class="bg-white rounded-xl p-7 flex flex-col shadow-soft" style="border: 1.5px solid var(--green);">
-          <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full mb-4 inline-block" style="background: var(--green-soft); color: var(--green);">Team</span>
+        <div class="bg-white rounded-xl p-7 flex flex-col shadow-soft" style="border: 1.5px solid #1a85d6;">
+          <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full mb-4 inline-block" style="background: #e8f0fe; color: #1a85d6;">Team</span>
           <h3 class="text-[1.2rem] mb-2">Small Group Team Training</h3>
           <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
           <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-5">
@@ -218,36 +218,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h2 class="mt-4 mb-5">Why choose a native English teacher for your corporate training in Sofia.</h2>
           <p class="text-ink-soft leading-relaxed mb-8">We're not a language school with a roster of teachers. Every corporate programme is delivered by the same person – consistently, personally, and with full accountability.</p>
 
-          <!-- Lenny mini profile -->
-          <div class="rounded-xl overflow-hidden shadow-soft" style="border: 1px solid var(--line); background: white;">
-            <img
-              src="/team-lenny.webp"
-              alt="Cathal (Lenny) Leonard – Senior English Teacher"
-              class="w-full object-cover"
-              style="aspect-ratio: 4/3; object-position: center top;"
-              loading="lazy"
-            />
-            <div class="p-5">
-              <p class="font-heading font-bold text-ink text-[1.05rem] mb-1">Cathal (Lenny) Leonard</p>
-              <p class="text-[0.82rem] font-semibold mb-3" style="color: #1a85d6;">Founder · Senior English Teacher</p>
-              <ul class="flex flex-col gap-1 text-[0.82rem] text-ink-soft">
-                {[
-                  'Native English speaker from Ireland',
-                  'CELTA-qualified (Cambridge Certificate in Teaching English to Speakers of Other Languages)',
-                  '10+ years teaching adults & professionals',
-                  'General English & Business English teacher at the British Council Sofia (10 years)',
-                  'Founder, Immersion English',
-                  'BA in History, Sociology & Politics – NUI Galway, Ireland',
-                  'MA in International Relations – Queen\'s University Belfast',
-                  'Led international summer programmes in Oxford & Cambridge',
-                ].map(item => (
-                  <li class="flex items-start gap-2">
-                    <span class="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+          <!-- Lenny mini profile — float layout so text wraps around photo -->
+          <div style="border: 1px solid var(--line); background: white; border-radius: 12px; padding: 24px; overflow: hidden;">
+            <div style="float: left; width: 140px; margin: 0 20px 12px 0; border-radius: 8px; overflow: hidden; flex-shrink: 0;">
+              <img
+                src="/team-lenny.webp"
+                alt="Cathal (Lenny) Leonard – Senior English Teacher"
+                class="w-full object-cover"
+                style="aspect-ratio: 3/4; object-position: center top; display: block;"
+                loading="lazy"
+              />
             </div>
+            <p class="font-heading font-bold text-ink text-[1.05rem] mb-1">Cathal (Lenny) Leonard</p>
+            <p class="text-[0.82rem] font-semibold mb-3" style="color: #1a85d6;">Founder · Senior English Teacher</p>
+            <ul class="flex flex-col gap-1 text-[0.82rem] text-ink-soft">
+              {[
+                'Native English speaker from Ireland',
+                'CELTA-qualified (Cambridge Certificate in Teaching English to Speakers of Other Languages)',
+                '10+ years teaching adults & professionals',
+                'General English & Business English teacher at the British Council Sofia (10 years)',
+                'Founder, Immersion English',
+                'BA in History, Sociology & Politics – NUI Galway, Ireland',
+                'MA in International Relations – Queen's University Belfast',
+                'Led international summer programmes in Oxford & Cambridge',
+              ].map(item => (
+                <li class="flex items-start gap-2">
+                  <span class="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div style="clear: both;"></div>
           </div>
         </div>
 
