@@ -57,13 +57,19 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     <link rel="apple-touch-icon" href="/ie-logo.png" />
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JCEKWZWT87');
-      gtag('config', 'G-G193KE10LZ');
+      // Load GA only if consent given
+      if (localStorage.getItem('ie_cookie_consent') === 'accepted') {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87';
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){dataLayer.push(arguments);}
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-JCEKWZWT87');
+        window.gtag('config', 'G-G193KE10LZ');
+      }
     </script>
     <!-- Bulgarian language keywords for SEO -->
     <meta name="keywords" content="английски език София, летен езиков курс Дъблин, английски за тийнейджъри, езикова програма Ирландия, летен езиков лагер Дъблин, IELTS подготовка София, Cambridge CAE София, English summer school Dublin Bulgaria, английски уроци онлайн София" />
@@ -182,5 +188,39 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
       update();
     })();
   </script>
+
+    <!-- Cookie consent banner -->
+    <div id="cookie-banner" style="display:none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--ink); padding: 16px 24px; box-shadow: 0 -4px 24px rgba(0,0,0,0.25);">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+        <p style="margin: 0; font-size: 0.88rem; color: rgba(255,255,255,0.8); max-width: 640px; line-height: 1.5;">We use cookies to understand how visitors use our site (Google Analytics). No personal data is sold or shared.</p>
+        <div style="display: flex; gap: 10px; flex-shrink: 0;">
+          <button id="cookie-decline" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.7); padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.82rem;">Decline</button>
+          <button id="cookie-accept" style="background: var(--orange); border: none; color: white; padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 0.82rem;">Accept</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        var b = document.getElementById('cookie-banner');
+        if (!localStorage.getItem('ie_cookie_consent') && b) b.style.display = 'block';
+        document.getElementById('cookie-accept') && document.getElementById('cookie-accept').addEventListener('click', function() {
+          localStorage.setItem('ie_cookie_consent', 'accepted');
+          b.style.display = 'none';
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87';
+          s.async = true;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function(){dataLayer.push(arguments);}
+          window.gtag('js', new Date());
+          window.gtag('config', 'G-JCEKWZWT87');
+          window.gtag('config', 'G-G193KE10LZ');
+        });
+        document.getElementById('cookie-decline') && document.getElementById('cookie-decline').addEventListener('click', function() {
+          localStorage.setItem('ie_cookie_consent', 'declined');
+          b.style.display = 'none';
+        });
+      })();
+    </script>
 </body>
 </html>
