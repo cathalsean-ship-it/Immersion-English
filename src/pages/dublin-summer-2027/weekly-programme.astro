@@ -1,12 +1,26 @@
 ---
+/**
+ * HOLDING PAGE.
+ *
+ * The previous version was a full seven-day timetable for the cancelled UCD
+ * programme: check-in at Belgrove Residences, lunches at the UCD food hall,
+ * named half-day trips (Trinity College & Book of Kells, Dublin Castle &
+ * St Patrick's Cathedral, Howth, Grafton Street, Dundrum), a Kilkenny /
+ * Wicklow / Glendalough full day, and a "6 day trips" stat.
+ *
+ * The 2027 timetable is set by MLA at the NCI centre and has not been supplied.
+ * Only the lesson volume below is confirmed in dublin-overview-copy.md.
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProviderBlock from '../../components/ProviderBlock.astro';
+import { dublin } from '../../data/dublin';
+
+const { lessonsPerWeek, hoursPerWeek } = dublin;
 ---
 
 <BaseLayout
-  title="Weekly Programme – Dublin English Summer School for Teens 2027 | Immersion English"
-  description="Day-by-day timetable for the Immersion English Dublin summer school 2027. English lessons, city trips, evening activities, and free time for teenagers aged 13–17."
-
-  ogImage="/st-stephens-green.webp"
+  title={`Weekly Programme – Dublin Summer ${dublin.year} | Immersion English`}
+  description={`${lessonsPerWeek} lessons a week (${hoursPerWeek} hours) with qualified native-speaker teachers at MLA's summer centre in Dublin, plus evening and weekend activities. Timetable for Summer ${dublin.year} coming soon.`}
 >
 
   <!-- HERO -->
@@ -15,272 +29,48 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
-        ← Dublin Summer 2027
+        ← Dublin Summer {dublin.year}
       </a>
       <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-5" style="color: var(--orange-text);">
         <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
         Weekly programme
       </p>
       <h1 class="text-white mb-5 max-w-[16ch]">
-        Students are busy<br />all day
-        <span style="color: var(--orange-text);">long.</span>
+        Classes every <span style="color: var(--orange-text);">morning.</span>
       </h1>
-      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[50ch] leading-[1.55]">
-        A carefully balanced timetable of English lessons, daily trips, and evening activities – with free time built in. Every day is structured, purposeful, and full of energy.
+      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[48ch] leading-[1.55]">
+        {lessonsPerWeek} lessons every week – {hoursPerWeek} hours – with qualified
+        native-speaker teachers at the centre, plus evening and weekend activities.
       </p>
     </div>
   </section>
 
-  <!-- AT A GLANCE -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">A week at a glance</span>
-        <h2>Learning in <span style="color: var(--orange-text);">every moment</span> of the day.</h2>
-        <p>English is the language of every interaction – inside and outside the classroom.</p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-        {[
-          { label: 'English lessons', value: '15h', sublabel: 'CELTA-qualified teaching', color: 'var(--green)' },
-          { label: 'Day trips', value: '6', sublabel: '1 full day + 5 half-day', color: 'var(--orange)' },
-          { label: 'Evening activities', value: '7', sublabel: 'social events & sports', color: '#7b6cf0' },
-          { label: 'Group size', value: '13', sublabel: 'students per group', color: '#b0b8b4' },
-        ].map(({ label, value, sublabel, color }) => (
-          <div class="bg-white border border-line rounded-md p-6 flex flex-col gap-2">
-            <span class="w-3 h-3 rounded-full flex-shrink-0" style={`background: ${color};`}></span>
-            <span class="font-heading font-bold text-[1.8rem] text-ink tracking-[-0.02em] leading-none">{value}</span>
-            <span class="font-heading font-semibold text-ink text-[0.92rem]">{label}</span>
-            <span class="text-ink-soft text-[0.8rem]">{sublabel}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- DAY BY DAY TIMETABLE -->
+  <!-- HOLDING -->
   <section class="section">
     <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Sample timetable</span>
-        <h2>A typical week in Dublin.</h2>
-        <p>Exact dates and the final detailed schedule will be confirmed in September 2026. The structure below is representative of a typical programme week.</p>
-      </div>
-      <!-- Colour key -->
-      <div class="flex flex-wrap gap-4 mb-5">
-        {[
-          { color: 'var(--green)', label: 'Lessons + trip' },
-          { color: 'var(--orange)', label: 'Full day trip' },
-          { color: 'var(--ink)', label: 'Arrival / departure' },
-        ].map(({ color, label }) => (
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-sm flex-shrink-0" style={`background: ${color};`}></span>
-            <span class="text-[0.8rem] font-heading font-semibold text-ink-soft">{label}</span>
-          </div>
-        ))}
-      </div>
-      <div class="flex justify-end mb-4">
-        <button id="expand-all" class="text-[0.85rem] font-heading font-semibold flex items-center gap-2 transition-colors no-underline" style="color: var(--green); background: none; border: none; cursor: pointer;">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-          Expand all days
-        </button>
-      </div>
+      <div class="max-w-[62ch] mx-auto">
+        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-4">
+          Students take <strong class="text-ink">{lessonsPerWeek} lessons every week</strong>
+          ({hoursPerWeek} hours) with the centre's qualified native-speaker teachers.
+          Evening and weekend activities are run by the centre's own activity team.
+        </p>
 
-      <div class="flex flex-col gap-2" id="timetable">
-        {[
-          {
-            day: 'Sunday',
-            label: 'Arrival day',
-            color: 'var(--ink)',
-            slots: [
-              { time: 'Afternoon', activity: 'Arrival at Dublin Airport – met by the Immersion English team' },
-              { time: 'Late afternoon', activity: 'Check-in at Belgrove Residences, UCD – tour of campus and rooms' },
-              { time: 'Evening', activity: 'Welcome dinner and introductory activities – meet the group' },
-            ],
-          },
-          {
-            day: 'Monday',
-            label: 'Lessons + city trip',
-            color: 'var(--green)',
-            slots: [
-              { time: '09:00 – 12:00', activity: 'English lesson – level placement and speaking warm-up' },
-              { time: '12:00 – 13:00', activity: 'Lunch (free time at UCD food hall)' },
-              { time: '13:00 – 17:00', activity: 'Half-day trip – Trinity College & Book of Kells' },
-              { time: '17:00 – 19:00', activity: 'Free time on campus' },
-              { time: '19:00 – 21:00', activity: 'Evening activity – Sports night' },
-            ],
-          },
-          {
-            day: 'Tuesday',
-            label: 'Lessons + city trip',
-            color: 'var(--green)',
-            slots: [
-              { time: '09:00 – 12:00', activity: 'English lesson – speaking skills and fluency' },
-              { time: '12:00 – 13:00', activity: 'Lunch (free time)' },
-              { time: '13:00 – 17:00', activity: 'Half-day trip – Dublin Castle & St Patrick\'s Cathedral' },
-              { time: '17:00 – 19:00', activity: 'Free time' },
-              { time: '19:00 – 21:00', activity: 'Evening activity – Talent show' },
-            ],
-          },
-          {
-            day: 'Wednesday',
-            label: 'Full day trip',
-            color: 'var(--orange)',
-            slots: [
-              { time: '08:00', activity: 'Depart UCD – full day trip begins' },
-              { time: 'Morning', activity: 'Kilkenny – medieval streets, castle, and local culture' },
-              { time: 'Midday', activity: 'Wicklow Mountains National Park – scenic drive and stops' },
-              { time: 'Afternoon', activity: 'Glendalough – monastic site, twin lakes, guided walk' },
-              { time: 'Evening', activity: 'Return to UCD – free time' },
-            ],
-          },
-          {
-            day: 'Thursday',
-            label: 'Lessons + city trip',
-            color: 'var(--green)',
-            slots: [
-              { time: '09:00 – 12:00', activity: 'English lesson – real-world communication tasks' },
-              { time: '12:00 – 13:00', activity: 'Lunch (free time)' },
-              { time: '13:00 – 17:00', activity: 'Half-day trip – Howth Cliff Walk' },
-              { time: '17:00 – 19:00', activity: 'Free time' },
-              { time: '19:00 – 21:00', activity: 'Evening activity – Quiz night' },
-            ],
-          },
-          {
-            day: 'Friday',
-            label: 'Lessons + city trip',
-            color: 'var(--green)',
-            slots: [
-              { time: '09:00 – 12:00', activity: 'English lesson – exam skills or fluency focus' },
-              { time: '12:00 – 13:00', activity: 'Lunch (free time)' },
-              { time: '13:00 – 17:00', activity: 'Half-day trip – Grafton Street, St Stephen\'s Green & city centre' },
-              { time: '17:00 – 19:00', activity: 'Free time' },
-              { time: '19:00 – 21:00', activity: 'Evening activity – Games evening' },
-            ],
-          },
-          {
-            day: 'Saturday',
-            label: 'Lessons + farewell',
-            color: 'var(--green)',
-            slots: [
-              { time: 'Morning', activity: 'English lesson – end-of-week review and reflection' },
-              { time: 'Afternoon', activity: 'Half-day trip – Dundrum Town Centre' },
-              { time: 'Evening', activity: 'Farewell dinner – certificates presented, group photos' },
-            ],
-          },
-          {
-            day: 'Sunday',
-            label: 'Departure day',
-            color: 'var(--ink)',
-            slots: [
-              { time: 'Morning', activity: 'Check-out from UCD – luggage and final preparations' },
-              { time: 'Midday', activity: 'Depart for Dublin Airport with the Immersion English team' },
-              { time: 'Afternoon', activity: 'Flight back to Sofia – accompanied by staff' },
-            ],
-          },
-        ].map(({ day, label, color, slots }) => (
-          <div class="day-item rounded-lg overflow-hidden border border-line">
-            <!-- Day header – clickable -->
-            <button class="day-trigger w-full flex items-center justify-between gap-4 px-5 py-3 cursor-pointer border-0 text-left" style={`background: ${color}; color: white;`} aria-expanded="false">
-              <div class="flex items-center gap-3">
-                <span class="font-heading font-bold text-[1.05rem]">{day}</span>
-                <span class="text-[0.8rem] opacity-80 font-heading font-semibold uppercase tracking-wider">{label}</span>
-              </div>
-              <svg class="day-chevron flex-shrink-0 transition-transform duration-300" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </button>
-            <!-- Slots – hidden by default -->
-            <div class="day-body" style="display: none;">
-              <div class="divide-y divide-line bg-white">
-                {slots.map(({ time, activity }) => (
-                  <div class="flex gap-0 items-start">
-                    <div class="flex-shrink-0 w-[140px] md:w-[180px] px-4 md:px-5 py-3 border-r border-line">
-                      <span class="font-heading font-semibold text-[0.78rem] text-ink-soft">{time}</span>
-                    </div>
-                    <div class="px-4 md:px-6 py-3 flex-1">
-                      <span class="text-[0.92rem] text-ink">{activity}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
+          The day-by-day timetable for Summer {dublin.year} is coming soon.
+        </p>
 
-      <!-- Notes -->
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="rounded-lg p-5" style="background: var(--cream); border: 1px solid var(--line);">
-          <p class="font-heading font-semibold text-ink text-[0.9rem] mb-2">About mobile phones</p>
-          <p class="text-ink-soft text-[0.88rem] leading-relaxed">Students may bring mobile phones. During classes, activities, and lights-out they must be turned off. Students can call and message families freely during free time.</p>
-        </div>
-        <div class="rounded-lg p-5" style="background: var(--cream); border: 1px solid var(--line);">
-          <p class="font-heading font-semibold text-ink text-[0.9rem] mb-2">End-of-programme certificate</p>
-          <p class="text-ink-soft text-[0.88rem] leading-relaxed">Every student receives a personalised certificate on the final evening recording hours studied, CEFR level, strengths, and a recommendation for the next level.</p>
-        </div>
-        <div class="rounded-lg p-5" style="background: var(--cream); border: 1px solid var(--line);">
-          <p class="font-heading font-semibold text-ink text-[0.9rem] mb-2">Exact dates</p>
-          <p class="text-ink-soft text-[0.88rem] leading-relaxed">Exact programme dates for July 2027 will be confirmed in September 2026. All enrolled families will receive the full schedule at least two weeks before departure.</p>
-        </div>
-        <div class="rounded-lg p-5" style="background: var(--cream); border: 1px solid var(--line);">
-          <p class="font-heading font-semibold text-ink text-[0.9rem] mb-2">Supervision</p>
-          <p class="text-ink-soft text-[0.88rem] leading-relaxed">Students are supervised at all times – during lessons, trips, activities, and at night. Group leaders sleep in adjacent rooms and are on call throughout.</p>
+        {/* TODO: awaiting MLA 2027 confirmation — daily timetable, lesson times,
+            excursion scheduling and evening activity programme for the NCI centre.
+            The UCD-era timetable has been removed and must not be restored. */}
+
+        <div class="flex gap-3 flex-wrap">
+          <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
+          <a href="/contact" class="btn btn-ghost">Book a free consultation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-dark">
-    <div class="container-x text-center">
-      <span class="eyebrow eyebrow-dot" style="color: var(--orange-text);">Reserve a place</span>
-      <h2 class="mt-4 mb-5">Ready for Dublin Summer 2027?</h2>
-      <p class="max-w-[44ch] mx-auto mb-8 text-[1.05rem]" style="color: rgba(254,255,254,0.74);">
-        Places are limited to 13 students. Book a free consultation and we'll walk you through everything.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
-        <a href="/contact" class="btn btn-primary">Book a free consultation</a>
-        <a href="/dublin-summer-2027/faqs" class="btn btn-ghost text-white border-white/30 hover:border-white">Read the FAQs</a>
-      </div>
-    </div>
-  </section>
+  <ProviderBlock />
 
 </BaseLayout>
-
-<script>
-  // Individual day accordions
-  document.querySelectorAll('.day-trigger').forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const item = trigger.closest('.day-item');
-      const body = item.querySelector('.day-body');
-      const chevron = item.querySelector('.day-chevron');
-      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-      body.style.display = isOpen ? 'none' : 'block';
-      trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-      chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-    });
-  });
-
-  // Expand / collapse all
-  const expandBtn = document.getElementById('expand-all');
-  let allOpen = false;
-  if (expandBtn) {
-    expandBtn.addEventListener('click', () => {
-      allOpen = !allOpen;
-      document.querySelectorAll('.day-item').forEach(item => {
-        const body = item.querySelector('.day-body');
-        const chevron = item.querySelector('.day-chevron');
-        const trigger = item.querySelector('.day-trigger');
-        body.style.display = allOpen ? 'block' : 'none';
-        trigger.setAttribute('aria-expanded', allOpen ? 'true' : 'false');
-        chevron.style.transform = allOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-      });
-      expandBtn.innerHTML = `
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="${allOpen ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'}"/>
-        </svg>
-        ${allOpen ? 'Collapse all days' : 'Expand all days'}
-      `;
-    });
-  }
-</script>

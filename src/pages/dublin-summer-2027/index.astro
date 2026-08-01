@@ -1,46 +1,49 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProviderBlock from '../../components/ProviderBlock.astro';
 import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
+import { dublin } from '../../data/dublin';
+
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, included, notIncluded, excursions, groupLeader } = dublin;
+
+const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsWeeks[durationsWeeks.length - 1]} weeks`;
+
+// JSON-LD. Provider is MLA, not Immersion English. No `offers` block until the
+// 2027 retail price is confirmed — a stale figure is worse than no figure.
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: `English Summer Programme for Teens – Dublin ${dublin.year}`,
+  description: `Summer English programme at the ${venue.name}, ${venue.city}, for students aged ${ages.min}–${ages.max}. ${lessonsPerWeek} lessons per week. Provided by ${provider.brand}. Immersion English accompanies a group from Sofia as booking agent.`,
+  provider: {
+    '@type': 'Organization',
+    name: provider.brand,
+    legalName: provider.legalEntity,
+  },
+  courseMode: 'onsite',
+  inLanguage: 'en',
+  audience: { '@type': 'Audience', audienceType: `Students aged ${ages.min}–${ages.max}` },
+  location: {
+    '@type': 'Place',
+    name: venue.name,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: venue.city,
+      addressRegion: venue.area,
+      addressCountry: 'IE',
+    },
+  },
+};
 ---
 
 <BaseLayout
-  title="Dublin Summer School for Teenagers 2027 | English Immersion Programme | Immersion English"
-  description="English summer school in Dublin, Ireland for teenagers aged 13–17. 1 week of immersive English lessons, city trips, and cultural activities. July 2027. Groups from Sofia, Bulgaria. Летен езиков лагер в Дъблин, Ирландия за тийнейджъри 13–17 години. Английски в Дъблин 2027."
-
+  title={`Dublin Summer ${dublin.year} | English Summer Centre at the National College of Ireland | Immersion English`}
+  description={`Immersion English takes a group from Sofia to MLA's international summer centre at the National College of Ireland, Dublin. Ages ${ages.min}–${ages.max}. ${lessonsPerWeek} lessons a week. Full board, en-suite campus accommodation. Летен езиков курс в Дъблин.`}
   ogImage="/teens-dublin.webp"
 >
 
-
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "English Summer Programme for Teens – Dublin 2027",
-    "description": "1-week English immersion programme in Dublin, Ireland for Bulgarian teenagers aged 13–17. CELTA-qualified teaching, city trips, full supervision. July 2027.",
-    "provider": {
-      "@type": "Organization",
-      "name": "Immersion English",
-      "url": "https://immersion-english.com"
-    },
-    "courseMode": "onsite",
-    "educationalLevel": "B2-C1",
-    "inLanguage": "en",
-    "offers": {
-      "@type": "Offer",
-      "price": "1350",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/LimitedAvailability"
-    },
-    "location": {
-      "@type": "Place",
-      "name": "University College Dublin",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Dublin",
-        "addressCountry": "IE"
-      }
-    }
-  })} />
+  <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} />
 
   <!-- HERO -->
   <section class="relative min-h-[88vh] flex items-stretch text-white overflow-hidden isolate pb-10">
@@ -51,77 +54,115 @@ import teensDublin from '../../assets/teens-dublin.jpg';
       <div class="max-w-[760px]">
         <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-7">
           <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
-          Dublin, Ireland · July 2027
+          Dublin, Ireland · Summer {dublin.year}
         </p>
 
         <h1 class="text-white">
-          English Summer<br />
-          Programme for<br />
-          <span style="color: var(--orange-text);">teens aged 13–17.</span>
+          Confidence comes from<br />
+          <span style="color: var(--orange-text);">being surrounded by it.</span><br />
+          Not sitting beside it.
         </h1>
 
         <p class="mt-4 text-[0.98rem] md:text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">
-          A 1-week English immersion experience in Dublin, Ireland for Bulgarian teenagers aged 13–17. Small groups, CELTA-qualified teaching, and full supervision – from arrival to departure. Your child doesn’t just learn English here. They <em style="color: var(--orange-text);">live</em> it.
+          Immersion English takes a group from Sofia to an international summer centre in Dublin,
+          at the {venue.name}. Students from across Europe. Classes every morning.
+          Your teacher on the plane beside you.
         </p>
 
         <div class="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
-          <a href="/contact" class="btn btn-primary">
-            Reserve a place
+          <a href="#included" class="btn btn-primary">
+            See what's included
           </a>
-          <a href="#programme" class="btn btn-ghost text-white border-white/30 hover:border-white">
-            See the programme
+          <a href="/contact" class="btn btn-ghost text-white border-white/30 hover:border-white">
+            Book a free consultation
           </a>
         </div>
 
-        <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-[680px]">
-          <div>
-            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">7</span>
-            <span class="block mt-2 text-[0.84rem] text-white/80">Days in Dublin</span>
-          </div>
-          <div>
-            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">13–17</span>
-            <span class="block mt-2 text-[0.84rem] text-white/80">Age range</span>
-          </div>
-          <div>
-            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">13</span>
-            <span class="block mt-2 text-[0.84rem] text-white/80">Group size</span>
-          </div>
-          <div>
-            <span class="block font-heading font-bold text-[1.7rem] text-white leading-none tracking-[-0.02em]">€1,350</span>
-            <span class="block mt-2 text-[0.84rem] text-white/80">Programme fee</span>
-          </div>
+        <!-- Trust strip -->
+        <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[680px]">
+          {[
+            'Cambridge CELTA-qualified group leader from Sofia',
+            'Bulgarian speaker available throughout',
+            'International centre, students from across Europe',
+            'Full board, en-suite campus accommodation',
+          ].map(item => (
+            <p class="flex items-start gap-2 text-[0.86rem] text-white/80 m-0">
+              <span class="flex-shrink-0 mt-[7px] w-[6px] h-[6px] rounded-full" style="background: var(--orange);"></span>
+              <span>{item}</span>
+            </p>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- VIDEO -->
-  <section class="section" style="background: linear-gradient(135deg, #008037 0%, #006a2d 100%);">
+  {/* TODO: awaiting review — the programme video was filmed at the cancelled UCD
+      programme and shows the old venue, group and excursions. Commented out
+      rather than deleted. Restore only with MLA/NCI footage. */}
+
+  <!-- WHY THIS CENTRE -->
+  <section class="section">
     <div class="container-x">
-      <div class="max-w-[860px] mx-auto">
-        <p class="eyebrow eyebrow-dot text-center mb-5" style="color: var(--orange-text);">See it for yourself</p>
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.5);">
-          <iframe
-            src="https://www.youtube.com/embed/4Uouprh7d1k?rel=0&color=white"
-            title="Immersion English Dublin Summer Programme"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-          ></iframe>
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Why Dublin Summer {dublin.year}</span>
+        <h2>The best English lesson is the one you didn't notice.</h2>
+        <p>
+          Most summer courses put Bulgarian teenagers in a room with other Bulgarian teenagers.
+          This one doesn't. Students come from across Europe and beyond, so English isn't the
+          subject – it's how you order lunch, argue about football, and make a friend by Wednesday.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="trust-card">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <h3 style="margin: 0;">Grouped by age and level</h3>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+          </div>
+          <p style="margin: 0;">
+            An online placement test before departure puts every student in the right class.
+            Students are grouped with others their own age.
+            {/* TODO: awaiting MLA 2027 confirmation — written confirmation requested that
+                age grouping applies to residence and evening activities as well as classes.
+                Do not extend this claim beyond classes until dublin.ts
+                ageGroupingScope.residence / .eveningActivities are true. */}
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <h3 style="margin: 0;">Small classes, big campus</h3>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+          </div>
+          <p style="margin: 0;">
+            Classes average {classSize.average} students, with a maximum of {classSize.maximum}.
+            Around them, a full international summer centre in {venue.area},
+            ten minutes' walk from the city centre.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <h3 style="margin: 0;">A teacher from home</h3>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+          </div>
+          <p style="margin: 0;">
+            {groupLeader.name} travels with the group from Sofia and back, and is there
+            for the whole stay.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROGRAMME OVERVIEW -->
-  <section id="programme" class="section">
+  <!-- WHAT'S INCLUDED -->
+  <section id="included" class="section section-tinted">
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-start">
         <div class="dublin-img-wrap" style="position: relative; border-radius: var(--radius-md); overflow: hidden; min-height: 520px;">
           <Image
             src={teensDublin}
-            alt="Teenagers enjoying Dublin"
+            alt="Teenagers in Dublin"
             class="img-greyscale"
             style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%;"
             fetchpriority="high"
@@ -129,134 +170,109 @@ import teensDublin from '../../assets/teens-dublin.jpg';
             widths={[640, 1024, 1440]}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <!-- Dark gradient -->
           <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,26,0) 45%, rgba(20,32,26,0.65) 100%); pointer-events: none;"></div>
-          <!-- Stat badge – bottom left -->
           <div style="position: absolute; bottom: 24px; left: 24px; right: 24px; display: flex; gap: 12px;">
             <div style="background: white; border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">13</p>
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Group size</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{classSize.average}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Average class</p>
             </div>
             <div style="background: white; border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">7</p>
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Days in Dublin</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{lessonsPerWeek}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Lessons a week</p>
             </div>
             <div style="background: var(--orange); border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: white; line-height: 1; margin: 0;">€1,350</p>
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: rgba(255,255,255,0.85); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Programme fee</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: white; line-height: 1; margin: 0;">{ages.min}–{ages.max}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: rgba(255,255,255,0.85); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Ages</p>
             </div>
           </div>
         </div>
-        <div>
-          <span class="eyebrow eyebrow-dot">What's included</span>
-          <h2 class="mt-4 mb-3"><span style="color: var(--orange-text);">One week</span> – a journey into Irish culture, connection and communication.</h2>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed mb-8">
-            A full week of English immersion, cultural adventures, and real friendships – in one of the world's most welcoming cities.
-          </p>
 
-          <ul class="list-none p-0 m-0 flex flex-col gap-3 mb-8">
-            {[
-              { label: '7 nights at UCD campus', detail: 'single-room accommodation at University College Dublin' },
-              { label: '15 hours of English lessons', detail: 'with Lenny, an Irish CELTA-qualified teacher with 10+ years of experience' },
-              { label: '1 full-day trip and 5 half-day trips', detail: 'Glendalough, Kilkenny, Trinity College, Dublin Castle and more' },
-              { label: '7 evening activities', detail: 'talent show, sports night, quiz night, games evening and more' },
-              { label: 'Level test and end-of-programme certificate', detail: 'with recommended next level aligned to the CEFR' },
-              { label: 'All transport within Dublin included', detail: 'no hidden costs for trips or transfers' },
-              { label: 'Full supervision from arrival to departure', detail: 'with a Bulgarian-speaking staff member available at all times' },
-            ].map(({ label, detail }) => (
-              <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
-                <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
-                <span class="text-[0.95rem]">
-                  <strong class="font-semibold text-ink">{label}</strong>
-                  <span class="text-ink-soft"> – {detail}</span>
-                </span>
-              </li>
-            ))}
+        <div>
+          <span class="eyebrow eyebrow-dot">Included in Dublin Summer {dublin.year}</span>
+          <h2 class="mt-4 mb-3">One price. Nothing left to book.</h2>
+
+          <dl class="grid grid-cols-2 gap-7 my-8 py-8 border-y border-line">
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Duration</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationLabel}</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{ages.min}–{ages.max}</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} average, {classSize.maximum} maximum</dd>
+            </div>
+            {/* TODO: awaiting MLA 2027 confirmation — retail price pending 2027 net rates.
+                The "Programme fee" cell is omitted entirely rather than rendered with an
+                empty value, so no dangling label appears. Restore when
+                dublin.ts price.fromAmount is set. */}
+            {price.fromAmount !== null && (
+              <div>
+                <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
+                <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€{price.fromAmount.toLocaleString('en-IE')}</dd>
+              </div>
+            )}
+          </dl>
+
+          <ul class="list-none p-0 m-0 flex flex-col gap-3 mb-6">
+            {included.map(item => {
+              const [lead, ...rest] = item.split(' – ');
+              return (
+                <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
+                  <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
+                  <span class="text-[0.95rem]">
+                    <strong class="font-semibold text-ink">{lead}</strong>
+                    {rest.length > 0 && <span class="text-ink-soft"> – {rest.join(' – ')}</span>}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
 
-          <div class="rounded-lg px-5 py-4 flex items-center justify-between gap-4" style="background: var(--green); color: white;">
-            <div>
-              <p class="font-heading font-semibold text-[0.75rem] uppercase tracking-[0.1em] opacity-80 mb-1">Programme fee</p>
-              <p class="font-heading font-bold text-[1.6rem] leading-none tracking-tight">€1,350</p>
-            </div>
-            <div style="border-left: 1px solid rgba(255,255,255,0.25); padding-left: 20px;">
-              <p class="text-[0.85rem] opacity-85 leading-snug max-w-[22ch]">Reserve a place with a €350 deposit. Balance due 31 May 2027.</p>
-            </div>
-          </div>
+          {/* TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
+              The "full excursion programme" bullet above deliberately names no
+              excursions. The six UCD-era trips were self-chosen by Immersion English
+              and must not be reinstated. Restore a named list only from
+              dublin.ts excursions. */}
 
-          <p class="text-ink-soft text-[0.85rem] italic mt-4">Flights not included – parents book direct Ryanair Sofia–Dublin. We send a step-by-step guide on registration.</p>
-
+          <p class="text-ink-soft text-[0.9rem] leading-relaxed">
+            Not included: {notIncluded.join(', ').toLowerCase()}. A refundable
+            €{dublin.securityDeposit.amount} security deposit is collected on arrival.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY JOIN -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Why join</span>
-        <h2><span style="color: var(--orange-text);">More</span> than a language course.</h2>
-        <p>A week that builds confidence, friendships, and real English for life.</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        {[
-          { title: 'Expert teaching', body: 'Study with Cathal (Lenny) Leonard – a native Irish English teacher with over 10 years of experience teaching English to teenagers and adults, including at the British Council Sofia.' },
-          { title: 'Speak English every day', body: 'Build real communicative confidence through interactive lessons, cultural activities, and daily real-world use – English inside and outside the classroom.' },
-          { title: 'Make lasting friendships', body: 'Meet like-minded teenagers, build connections that last beyond the week, and discover what it feels like to communicate freely in another language.' },
-          { title: 'Explore Dublin with a local', body: 'Experience Irish culture, music, and spirit with a local who knows the city. From Trinity College to the Wicklow Mountains – a city full of stories.' },
-          { title: 'Grow in real confidence', body: 'Students leave not just with better English, but with the genuine confidence to use it – in meetings, interviews, travel, and everyday life.' },
-          { title: 'Safe and fully supervised', body: 'From Sofia to Dublin and back. Bulgarian-speaking staff on hand throughout, 24/7 supervision, and a pre-departure evening in Sofia for parents.' },
-        ].map(({ title, body }) => (
-          <div class="trust-card">
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              <h3 style="margin: 0; min-height: 2.6em;">{title}</h3>
-              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-            </div>
-            <p style="margin: 0;">{body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- SAFETY -->
+  <!-- WHO TRAVELS WITH YOU -->
   <section class="section">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center" style="padding-bottom: 28px;">
+      <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center">
         <div>
-          <span class="eyebrow eyebrow-dot">Safety & supervision</span>
-          <h2 class="mt-4 mb-5">Your child is in <span style="color: var(--orange-text);">safe</span> hands – every step of the way.</h2>
+          <span class="eyebrow eyebrow-dot">Supervision</span>
+          <h2 class="mt-4 mb-5">Nobody gets handed over at the airport.</h2>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            Before departure, you'll meet Lenny and our Bulgarian-speaking team member at a pre-departure information evening in Sofia. During the programme, our team is available around the clock – and we maintain regular contact with parents throughout the week.
+            {groupLeader.name} travels as group leader for the full stay. The classes in Dublin
+            are taught by the centre's own teaching team – his job is everything around them.
+            Settling students in, checking in every day, sorting out whatever comes up, and
+            being the person parents can ring.
           </p>
-          <ul class="flex flex-col gap-3 mt-6">
-            {[
-              '24/7 supervision by Immersion English staff',
-              'Bulgarian-speaking staff member available throughout',
-              'Group leaders in rooms adjacent to student areas at night',
-              '24-hour security at UCD campus',
-              'Pre-departure information evening in Sofia',
-              'Regular updates and communication with parents during the programme',
-            ].map(item => (
-              <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
-                <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
-                <span class="text-ink text-[0.95rem]">{item}</span>
-              </li>
-            ))}
-          </ul>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
+            A Bulgarian speaker is available throughout.
+          </p>
+          {/* TODO: awaiting confirmation — if Lina or Liana travel, name them here. */}
         </div>
         <div style="position: relative;">
-          <!-- Main photo -->
           <div style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 8px 32px rgba(20,32,26,0.12);">
             <img
               src="/teens-cafe.webp"
               alt="Teenagers laughing together"
               class="img-greyscale w-full object-cover"
               style="aspect-ratio: 4/3; display: block;"
-            loading="lazy" />
+              loading="lazy" />
           </div>
-          <!-- Offset quote card -->
           <div style="position: absolute; bottom: -20px; left: -16px; background: var(--ink); color: white; border-radius: 10px; padding: 12px 16px; max-width: 220px; box-shadow: 0 6px 20px rgba(20,32,26,0.22);">
             <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange-text); margin: 0 0 5px;">From Sofia to Dublin</p>
             <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">A Bulgarian speaker on hand at every step. Your child is never alone.</p>
@@ -266,8 +282,50 @@ import teensDublin from '../../assets/teens-dublin.jpg';
     </div>
   </section>
 
-  <!-- SECTION LINKS -->
+  <!-- DATES AND PRICES -->
   <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Dates</span>
+        <h2>Pick your week.</h2>
+      </div>
+
+      <div class="max-w-[62ch] mx-auto">
+        {/* TODO: awaiting MLA 2027 confirmation — 2027 departure dates not yet published.
+            2026 dates must NOT be carried over. Restore the list when
+            dublin.ts startDates is set. */}
+        {startDates !== null && (
+          <ul class="list-none p-0 m-0 flex flex-wrap gap-2 mb-6 justify-center">
+            {startDates.map(d => (
+              <li class="rounded-lg px-4 py-2 text-[0.92rem]" style="background: var(--cream); border: 1px solid var(--line);">{d}</li>
+            ))}
+          </ul>
+        )}
+
+        {/* TODO: awaiting MLA 2027 confirmation — retail price pending 2027 net rates. */}
+
+        {startDates === null && price.fromAmount === null && (
+          <p class="text-center text-ink-soft text-[1.05rem] leading-relaxed mb-6">
+            Dates and prices for Summer {dublin.year} coming soon.
+          </p>
+        )}
+
+        <p class="text-center text-ink-soft text-[1.02rem] leading-relaxed mb-8">
+          Places are limited and confirmed first come, first served. A deposit holds the place;
+          the balance is due in the spring.
+          {/* TODO: awaiting MLA 2027 confirmation — deposit percentage and payment dates
+              against 2027 terms. Do not restate the old €350 / €1,000 / 31 May figures. */}
+        </p>
+
+        <div class="flex justify-center">
+          <a href="/contact" class="btn btn-primary">Book a free consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION LINKS -->
+  <section class="section">
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Explore the programme</span>
@@ -275,10 +333,10 @@ import teensDublin from '../../assets/teens-dublin.jpg';
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { href: '/dublin-summer-2027/accommodation', title: 'Accommodation', desc: 'Single-room accommodation at University College Dublin (UCD) – safe, comfortable, and at the heart of campus life.' },
-          { href: '/dublin-summer-2027/trips-and-activities', title: 'Trips & Activities', desc: 'Trinity College, Book of Kells, Howth Cliff Walk, Glendalough, Dublin Castle – 6 trips plus 7 evening activities.' },
-          { href: '/dublin-summer-2027/weekly-programme', title: 'Weekly Programme', desc: 'A balanced timetable of English lessons, afternoon trips, and evening social activities – every day structured and purposeful.' },
-          { href: '/dublin-summer-2027/faqs', title: 'FAQs', desc: 'Answers to the questions parents and students ask most – from booking and costs to safety and daily life in Dublin.' },
+          { href: '/dublin-summer-2027/accommodation', title: 'Accommodation', desc: `En-suite accommodation on campus at the ${venue.name}.` },
+          { href: '/dublin-summer-2027/trips-and-activities', title: 'Trips & Activities', desc: `Details for Summer ${dublin.year} coming soon.` },
+          { href: '/dublin-summer-2027/weekly-programme', title: 'Weekly Programme', desc: `Details for Summer ${dublin.year} coming soon.` },
+          { href: '/dublin-summer-2027/faqs', title: 'FAQs', desc: 'Answers to the questions parents and students ask most.' },
         ].map(({ href, title, desc }) => (
           <a href={href} class="trust-card group no-underline text-ink">
             <div style="display: flex; flex-direction: column; gap: 14px;">
@@ -295,41 +353,6 @@ import teensDublin from '../../assets/teens-dublin.jpg';
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-dark">
-    <div class="container-x text-center">
-      <span class="eyebrow eyebrow-dot" style="color: var(--orange-text);">Limited places</span>
-      <h2 class="mt-4 mb-5">Places are limited to 13 students.<br/>Reserve yours for July 2027.</h2>
-      <p class="max-w-[48ch] mx-auto mb-8 text-[1.05rem]" style="color: rgba(254,255,254,0.74);">
-        Secure your child's place with a €350 deposit. Balance of €1,000 due no later than 31 May 2027.
-      </p>
-      <div class="flex gap-4 justify-center flex-wrap">
-        <a href="/contact" class="btn btn-primary">
-          Reserve a place
-        </a>
-        <a href="/dublin-summer-2027/faqs" class="btn btn-ghost text-white border-white/30 hover:border-white">
-          Read the FAQs
-        </a>
-      </div>
-    </div>
-  </section>
+  <ProviderBlock />
 
-
-  <!-- STICKY CTA BAR – shows on scroll -->
-  <div id="sticky-cta" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 40; background: var(--ink); color: white; padding: 12px 24px; display: none; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 -4px 20px rgba(0,0,0,0.2);">
-    <div class="hidden sm:block">
-      <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.88rem; margin: 0;">Dublin Summer 2027</p>
-      <p style="font-size: 0.78rem; color: rgba(255,255,255,0.65); margin: 0;">€1,350 · 13 students · July 2027</p>
-    </div>
-    <a href="/contact" class="btn btn-primary" style="white-space: nowrap; flex-shrink: 0; font-size: 0.88rem; padding: 10px 20px;">Reserve a place</a>
-  </div>
-
-  <script>
-    const stickyCta = document.getElementById('sticky-cta');
-    if (stickyCta) {
-      window.addEventListener('scroll', () => {
-        stickyCta.style.display = window.scrollY > 600 ? 'flex' : 'none';
-      }, { passive: true });
-    }
-  </script>
 </BaseLayout>

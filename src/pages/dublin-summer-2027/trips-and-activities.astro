@@ -1,258 +1,88 @@
 ---
+/**
+ * HOLDING PAGE.
+ *
+ * The previous version listed nine self-chosen excursions (Trinity College, the
+ * Book of Kells, Dublin Castle, St Patrick's Cathedral, St Stephen's Green,
+ * Grafton Street, Dublin Zoo, Dundrum Town Centre, Howth Cliff Walk) plus
+ * Kilkenny, the Wicklow Mountains and Glendalough, and claimed "1 full-day and
+ * 5 half-day trips" and "seven evening activities".
+ *
+ * NONE of that is MLA's programme. Those excursions were chosen by Immersion
+ * English for the cancelled UCD programme. MLA's NCI excursion list has not been
+ * supplied (catalogue p.44). Nothing may be named on this page until it is.
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProviderBlock from '../../components/ProviderBlock.astro';
+import { dublin } from '../../data/dublin';
 
-const trips = [
-  {
-    title: 'Trinity College',
-    desc: "One of Ireland's most iconic universities – and one of the most filmed locations in Dublin. From Netflix's Normal People to countless historical dramas, Trinity's cobbled courtyards have appeared everywhere. We'll walk the same paths as Oscar Wilde, Samuel Beckett, and today's students who continue to shape Dublin's creative spirit.",
-    tag: 'Cultural',
-    img: '/trinity-college.webp',
-  },
-  {
-    title: 'The Book of Kells',
-    desc: "Ireland's greatest cultural treasure – a world-famous illuminated manuscript created by Celtic monks around 800 AD. Students explore the stunning Long Room library at Trinity College, bringing history, art, and storytelling to life in one of the world's most beautiful rooms.",
-    tag: 'Cultural',
-    img: '/book-of-kells.webp',
-  },
-  {
-    title: 'Dublin Castle',
-    desc: 'History meets imagination at Dublin Castle – the heart of the city for over 800 years. We discover the stories of kings, queens, and centuries of intrigue as we explore the grand halls and cobbled courtyards of this iconic site.',
-    tag: 'History',
-    img: '/dublin-castle.webp',
-  },
-  {
-    title: "St Patrick's Cathedral",
-    desc: "One of Ireland's most breathtaking landmarks. St Patrick's Cathedral is filled with beauty, history, and inspiration – a place where architecture, music, and storytelling come together to create a uniquely Irish experience.",
-    tag: 'History',
-    img: '/st-patricks-cathedral.webp',
-  },
-  {
-    title: "St Stephen's Green",
-    desc: "A quiet escape in the heart of Dublin. We relax by the pond, stroll through flower-filled paths, and enjoy a picnic between adventures. Dublin's most beautiful park – calm, green, and full of character.",
-    tag: 'Nature',
-    img: '/st-stephens-green.webp',
-  },
-  {
-    title: 'Grafton Street',
-    desc: "Right in the heart of Dublin – lined with cafés, flower stalls, and street performers. From talented buskers to the Molly Malone statue, Grafton Street captures the true spirit of Dublin: friendly, creative, and full of life.",
-    tag: 'City',
-    img: '/grafton-street.webp',
-  },
-  {
-    title: 'Dublin Zoo',
-    desc: 'A fun, educational experience in the heart of Phoenix Park – one of Europe\'s largest urban parks. Students explore wildlife from around the world while practising English naturally through observation, discussion, and shared discovery.',
-    tag: 'Fun',
-    img: '/dublin-zoo.webp',
-  },
-  {
-    title: 'Howth Cliff Walk',
-    desc: 'Fresh air, sea views, and endless photo moments! Just a short trip from the city, Howth offers stunning coastal cliffs, lighthouse views, and a real taste of Ireland\'s wild natural beauty. Keep an eye out for seals along the way!',
-    tag: 'Nature',
-    img: '/howth.webp',
-  },
-  {
-    title: 'Dundrum Town Centre',
-    desc: 'With over 160 stores across three floors, Dundrum has something for everyone. Grab a snack, browse the latest fashion, or find unique souvenirs and gifts. The perfect spot to unwind and practise real-world English in a relaxed setting.',
-    tag: 'Shopping',
-    img: '/dundrum-town-centre.webp',
-  },
-];
+const { excursions } = dublin;
 ---
 
 <BaseLayout
-  title="Dublin Trips & Activities for Teenagers | Immersion English Summer School 2027"
-  description="Explore Dublin with Immersion English – Trinity College, Glendalough, Howth Cliff Walk, Dublin Castle, and more. 1 full day and 5 half-day trips included for teens aged 13–17."
-
-  ogImage="/howth.webp"
+  title={`Trips & Activities – Dublin Summer ${dublin.year} | Immersion English`}
+  description={`The excursion and activity programme at MLA's summer centre in Dublin is run by the centre's own activity team, with transport and entry included. Details for Summer ${dublin.year} coming soon.`}
 >
 
   <!-- HERO -->
-  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 54vh;">
-    <div class="absolute inset-0 -z-[2]" style="overflow: hidden;">
-      <img src="/howth.webp" alt="Howth Cliff Walk – Dublin coastal views" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;" loading="lazy" />
-    </div>
-    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(10,20,15,0.4) 0%, rgba(10,20,15,0.85) 100%);"></div>
+  <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
-        ← Dublin Summer 2027
+        ← Dublin Summer {dublin.year}
       </a>
       <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-5" style="color: var(--orange-text);">
         <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
-        Trips & Activities
+        Trips & activities
       </p>
-      <h1 class="text-white mb-5" style="max-width: 18ch;">
-        Explore Ireland.<br/>
-        <span style="color: var(--orange-text);">Make memories.</span>
+      <h1 class="text-white mb-5 max-w-[16ch]">
+        Transport and tickets <span style="color: var(--orange-text);">included.</span>
       </h1>
-      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[52ch] leading-[1.55]">
-        Every afternoon brings a new adventure – from ancient castle walls to coastal cliff walks. 1 full-day trip and 5 half-day trips included in the programme fee.
+      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[48ch] leading-[1.55]">
+        The full excursion programme is included in the price, with nothing extra to pay.
+        Evening and weekend activities are run by the centre's own activity team.
       </p>
-      <!-- Quick stats -->
-      <div class="mt-10 pt-6 border-t border-white/20 grid grid-cols-3 gap-5 max-w-[440px]">
-        <div>
-          <span class="block font-heading font-bold text-[1.7rem] text-white leading-none">1</span>
-          <span class="block mt-1 text-[0.82rem] text-white/75">Full-day trip</span>
-        </div>
-        <div>
-          <span class="block font-heading font-bold text-[1.7rem] text-white leading-none">5</span>
-          <span class="block mt-1 text-[0.82rem] text-white/75">Half-day trips</span>
-        </div>
-        <div>
-          <span class="block font-heading font-bold text-[1.7rem] text-white leading-none">7</span>
-          <span class="block mt-1 text-[0.82rem] text-white/75">Evening activities</span>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- DUBLIN INTRO -->
+  <!-- HOLDING -->
   <section class="section">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center">
-        <div>
-          <span class="eyebrow eyebrow-dot">Dublin</span>
-          <h2 class="mt-4 mb-5">A city where every street feels like a story.</h2>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            Dublin – the heart of Ireland – is a city known for its warmth, charm, and character. Here, every conversation is a chance to connect, and every street corner holds a story waiting to be told.
-          </p>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            From the cobbled lanes of Temple Bar and the historic beauty of Trinity College to the peaceful green spaces of St Stephen's Green, Dublin offers the perfect balance of culture, history, and fun.
-          </p>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch]">
-            It's the birthplace of world-famous writers like James Joyce, Oscar Wilde, and Samuel Beckett – yet also a modern, creative city filled with festivals, street art, and stories around every corner. And when we need a break from the city buzz, Ireland's natural beauty is right on our doorstep.
-          </p>
-        </div>
-        <div class="rounded-md overflow-hidden shadow-lift">
-          <img
-            src="/dublin-street.webp"
-            alt="Dublin city – culture, history and adventure"
-            class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/3; object-position: center; display: block;"
-          loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FULL DAY TRIP -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Full day trip</span>
-        <h2>Kilkenny, the <span style="color: var(--orange-text);">Wicklow Mountains</span> & Glendalough.</h2>
-        <p>One full day away from Dublin – medieval streets, dramatic mountain landscapes, and 6th-century monastic history.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {[
-          { title: 'Kilkenny', desc: "One of Ireland's most charming medieval cities. We explore narrow streets, ancient castle walls, and local culture – real living history in one of Europe's best-preserved medieval towns.", img: '/kilkenny.webp', color: '#d6d2c5' },
-          { title: 'Wicklow Mountains', desc: "Travel through the dramatic landscapes of Wicklow Mountains National Park – sweeping valleys, ancient forests, and some of Ireland's most stunning scenery. A world away from the city.", img: '/wicklow-mountains.webp' },
-          { title: 'Glendalough', desc: "Discover the breathtaking 6th-century monastic site and twin glacial lakes of Glendalough. Ancient Ireland at its most awe-inspiring – a place that genuinely takes your breath away.", img: '/glendalough-lake.webp' },
-        ].map(({ title, desc, img, color }) => (
-          <div class="bg-white border border-line rounded-lg overflow-hidden shadow-soft flex flex-col">
-            <div style="overflow: hidden;">
-              {img
-                ? <img src={img} alt={title} class="img-greyscale w-full object-cover" style="aspect-ratio: 16/9; display: block;" loading="lazy" />
-                : <div style={`aspect-ratio: 16/9; background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
-              }
-            </div>
-            <div class="p-6 flex flex-col flex-1 gap-3">
-              <div>
-                <h3 class="text-[1.05rem] mb-2">{title}</h3>
-                <div style="width: 28px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-              </div>
-              <p class="text-ink-soft text-[0.9rem] leading-relaxed">{desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- HALF-DAY TRIPS -->
-  <section class="section">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Half-day trips & city visits</span>
-        <h2>Something new <span style="color: var(--orange-text);">every day.</span></h2>
-        <p>Five half-day trips covering the best of Dublin's landmarks, culture, nature, and city life.</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        {trips.map(({ title, desc, tag, img, color }) => (
-          <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col trip-card-link group">
-            <div style="overflow: hidden;">
-              {img
-                ? <img src={img} alt={title} class="trip-card-img w-full object-cover" style="aspect-ratio: 16/9; display: block;" loading="lazy" />
-                : <div style={`aspect-ratio: 16/9; background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
-              }
-            </div>
-            <div class="p-6 flex flex-col flex-1 gap-3">
-              <div class="flex items-center justify-between gap-3">
-                <h3 class="text-[1.05rem]">{title}</h3>
-                <span class="trip-tag text-[0.65rem] font-heading font-semibold uppercase tracking-[0.1em] px-[8px] py-[3px] rounded-full flex-shrink-0">{tag}</span>
-              </div>
-              <p class="text-ink-soft text-[0.9rem] leading-relaxed flex-1">{desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- EVENING ACTIVITIES -->
-  <section class="section" style="background: var(--ink);">
-    <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-10 md:gap-16 items-center">
-        <div>
-          <span class="eyebrow eyebrow-dot" style="color: var(--orange-text);">Evenings</span>
-          <h2 class="mt-4 mb-5 text-white">The fun doesn't stop <span style="color: var(--orange-text);">at 5pm.</span></h2>
-          <p class="text-[1.05rem] leading-relaxed max-w-[52ch] mb-8" style="color: rgba(255,255,255,0.7);">
-            Seven evening activities mix students, build friendships, and keep English flowing naturally in a social, relaxed setting.
-          </p>
-          <ul class="flex flex-col gap-0" style="border-top: 1px solid rgba(255,255,255,0.1);">
-            {[
-              { title: 'Talent show', desc: 'Students perform, vote, and cheer – always a highlight of the week.' },
-              { title: 'Sports night', desc: 'Football, basketball, volleyball. Teams are mixed for maximum fun.' },
-              { title: 'Quiz night', desc: 'General knowledge quiz in English – competitive, funny, and great for language.' },
-              { title: 'Games evening', desc: 'Board games, team challenges, and social mixing – full of laughter.' },
-              { title: 'Cultural evening', desc: 'Students share their own culture, music, and stories with the group.' },
-              { title: 'Movie night', desc: 'A relaxed end to a busy day – English-language film with discussion.' },
-              { title: 'Dublin by night', desc: 'A supervised evening walk through Dublin city centre as the city lights up.' },
-            ].map(({ title, desc }) => (
-              <li class="flex gap-4 items-start py-4" style="border-bottom: 1px solid rgba(255,255,255,0.08);">
-                <span class="flex-shrink-0 mt-[5px] w-[8px] h-[8px] rounded-full" style="background: var(--orange);"></span>
-                <div>
-                  <p class="font-heading font-semibold text-white text-[0.97rem] mb-[2px]">{title}</p>
-                  <p class="text-[0.88rem] leading-relaxed" style="color: rgba(255,255,255,0.6);">{desc}</p>
+      <div class="max-w-[62ch] mx-auto">
+        {/* TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
+            Render the named list ONLY from dublin.ts excursions. The UCD-era trips
+            were self-chosen by Immersion English and must never be reinstated here,
+            nor may trip counts ("6 trips", "7 evening activities") be restated. */}
+        {excursions !== null && excursions.length > 0 && (
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+            {excursions.map(({ title, description, image }) => (
+              <div class="bg-white border border-line rounded-lg overflow-hidden flex flex-col h-full">
+                {image && <img src={image} alt={title} class="w-full aspect-video object-cover" loading="lazy" />}
+                <div class="p-6 flex flex-col flex-1">
+                  <h3 class="text-[1.05rem] mb-3">{title}</h3>
+                  <p class="text-ink-soft text-[0.9rem] leading-relaxed flex-1">{description}</p>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
-        </div>
-        <div class="rounded-md overflow-hidden shadow-lift">
-          <img
-            src="/teens-cafe.webp"
-            alt="Students socialising during evening activities"
-            class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/5; object-position: center; display: block;"
-          loading="lazy" />
+          </div>
+        )}
+
+        {excursions === null && (
+          <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
+            The excursion programme for Summer {dublin.year} is set by the centre.
+            Details coming soon.
+          </p>
+        )}
+
+        <div class="flex gap-3 flex-wrap">
+          <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
+          <a href="/contact" class="btn btn-ghost">Book a free consultation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-dark" style="background: var(--green);">
-    <div class="container-x text-center">
-      <span class="eyebrow eyebrow-dot" style="color: rgba(255,255,255,0.7);">Ready?</span>
-      <h2 class="mt-4 mb-5 text-white">See the full weekly schedule.</h2>
-      <p class="max-w-[44ch] mx-auto mb-8 text-[1.05rem]" style="color: rgba(255,255,255,0.75);">
-        View the day-by-day timetable or reserve a place for Dublin Summer 2027.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
-        <a href="/dublin-summer-2027/weekly-programme" class="btn btn-primary">View weekly programme</a>
-        <a href="/contact" class="btn btn-ghost text-white border-white/40 hover:border-white">Reserve a place</a>
-      </div>
-    </div>
-  </section>
+  <ProviderBlock />
 
 </BaseLayout>
