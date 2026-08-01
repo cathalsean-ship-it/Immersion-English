@@ -3,6 +3,7 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://immersion-english.com',
+  trailingSlash: 'never',
   integrations: [
     tailwind(),
   ],
