@@ -2,9 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import studentsWalking from '../assets/students-walking.jpg';
+import { dublin } from '../data/dublin';
+
+const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, price, excursions } = dublin;
+const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsWeeks[durationsWeeks.length - 1]} weeks`;
 ---
 
-<BaseLayout title="Immersion English | English Lessons in Sofia & Dublin Summer School for Teens" description="CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults and an immersive summer school in Dublin for teenagers aged 13–17. Летен езиков курс в Дъблин за тийнейджъри от България.">
+<BaseLayout title="Immersion English | English Lessons in Sofia & a Summer Group to Dublin" description={`CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults, and a summer group to an international centre in Dublin for students aged ${ages.min}–${ages.max}. Летен езиков курс в Дъблин за тийнейджъри от България.`}>
   <!-- HERO -->
   <section class="relative min-h-[80vh] flex items-stretch text-white overflow-hidden isolate pb-10">
     <div
@@ -22,7 +26,7 @@ import studentsWalking from '../assets/students-walking.jpg';
       <div class="max-w-[760px]">
         <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
           <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
-          Dublin, Ireland · July 2027
+          Dublin, Ireland · Summer {dublin.year}
         </p>
 
         <h1 class="text-white">
@@ -32,7 +36,7 @@ import studentsWalking from '../assets/students-walking.jpg';
         </h1>
 
         <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
-          Immersion English is a speaking-focused English school in Sofia. We offer individual and corporate English lessons online, and an immersive summer programme in Dublin for teens aged 13–17.
+          Immersion English is a speaking-focused English school in Sofia. We offer individual and corporate English lessons online, and take a group each summer to an international English centre in Dublin for students aged {ages.min}–{ages.max}.
         </p>
 
         <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
@@ -144,42 +148,47 @@ import studentsWalking from '../assets/students-walking.jpg';
       <div style="padding: 40px 24px 40px 24px;" class="programme-content md-pad-programme">
 
         <div>
-          <span class="eyebrow eyebrow-dot">Dublin Summer 2027</span>
+          <span class="eyebrow eyebrow-dot">Dublin Summer {dublin.year}</span>
           <h2 class="mt-4 mb-2">English. Beyond the classroom.</h2>
           <p class="text-ink-soft text-[1.08rem] max-w-[56ch] mb-3">
-            Our flagship summer programme takes Bulgarian teenagers to Dublin, Ireland – where English stops being a subject and starts being part of daily life.
+            Each summer we take a group from Sofia to an international summer centre in Dublin, at the {venue.name} – where English stops being a subject and starts being part of daily life.
           </p>
           <p class="font-heading font-semibold text-[1.18rem] leading-snug mb-0" style="color: #c05c00;">
-            Real conversations.<br/>Real confidence.<br/>One unforgettable week.
+            Real conversations.<br/>Real confidence.<br/>Students from across Europe.
           </p>
 
           <dl class="grid grid-cols-2 gap-7 my-10 py-8 border-y border-line">
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Duration</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">7 days</dd>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationLabel}</dd>
             </div>
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">13–17</dd>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{ages.min}–{ages.max}</dd>
             </div>
             <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Small groups</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">13 students</dd>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} avg, {classSize.maximum} max</dd>
             </div>
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€1,350</dd>
-            </div>
+            {/* TODO: awaiting MLA 2027 confirmation — retail price pending 2027 net rates.
+                The "Programme fee" cell is omitted rather than rendered empty, so no
+                dangling label appears. Restore from dublin.ts price.fromAmount. */}
+            {price.fromAmount !== null && (
+              <div>
+                <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
+                <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€{price.fromAmount.toLocaleString('en-IE')}</dd>
+              </div>
+            )}
           </dl>
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3">
             {[
-              { label: 'Engaging daily guided English practice', detail: 'with a native, experienced Cambridge CELTA-qualified teacher' },
-              { label: 'Accommodation at UCD campus', detail: 'experience real university life in Dublin' },
-              { label: 'Real-world communication skills', detail: 'through cultural activities and city trips across Dublin' },
-              { label: 'Small groups of up to 13 students', detail: 'structured days with clear daily schedule' },
-              { label: 'Full supervision from arrival to departure', detail: 'with a Bulgarian speaker available at all times' },
-              { label: '6 half-day trips + 1 full-day excursion', detail: 'exploring Dublin\'s history, culture, and coastline – included in the price' },
+              { label: `${lessonsPerWeek} lessons every week`, detail: `${hoursPerWeek} hours with qualified native-speaker teachers at the centre` },
+              { label: 'En-suite accommodation on campus', detail: `at the ${venue.name}, in the heart of Dublin` },
+              { label: 'Full board', detail: 'from dinner on the day of arrival to breakfast on the day of departure' },
+              { label: 'An international centre', detail: 'students come from across Europe and beyond, so English is how you make friends' },
+              { label: 'The full excursion programme', detail: 'transport and entry tickets included, nothing extra to pay' },
+              { label: 'An Immersion English group leader', detail: 'with the group from the gate in Sofia to the arrivals hall home' },
             ].map(({ label, detail }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
                 <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
@@ -207,25 +216,32 @@ import studentsWalking from '../assets/students-walking.jpg';
   <section class="section section-tinted">
     <div class="container-x">
       <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Included in Dublin Summer 2027</span>
+        <span class="eyebrow eyebrow-dot">Included in Dublin Summer {dublin.year}</span>
         <h2>Explore Dublin and beyond.</h2>
-        <p><strong>Six guided trips and cultural experiences</strong> are built into the programme – from ancient castles to coastal cliff walks. No extras to book.</p>
+        <p>The <strong>full excursion programme</strong> is built into the price – transport and entry tickets included, nothing extra to pay.</p>
       </div>
+
+      {/* TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
+          These cards render ONLY from dublin.ts excursions. The six cards previously
+          here (Trinity College, Dublin Castle, the Book of Kells, Howth Cliff Walk,
+          St Stephen's Green, Glendalough) were self-chosen by Immersion English for
+          the cancelled UCD programme and are NOT MLA's excursion list. Do not
+          reinstate them, and do not restate a trip count. */}
+
+      {excursions === null && (
+        <p class="text-center text-ink-soft text-[1.05rem] leading-relaxed">
+          The excursion programme for Summer {dublin.year} is set by the centre. Details coming soon.
+        </p>
+      )}
+
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        {[
-          { title: 'Trinity College', desc: "Walk the same paths as Oscar Wilde and Samuel Beckett at one of Ireland's most iconic universities.", tag: 'Cultural', color: '#c8d5dd', img: '/trinity-college.webp' },
-          { title: 'Dublin Castle', desc: 'History meets imagination at Dublin Castle – the heart of the city for over 800 years.', tag: 'History', color: '#c8d8cc', img: '/dublin-castle.webp' },
-          { title: 'The Book of Kells', desc: "Ireland's greatest cultural treasure – a world-famous illuminated manuscript and the stunning Long Room library.", tag: 'Cultural', color: '#d6d2c5', img: '/book-of-kells.webp' },
-          { title: 'Howth Cliff Walk', desc: 'Fresh air, sea views, and endless photo moments! Stunning coastal cliffs, a lighthouse, and seals along the way.', tag: 'Nature', color: '#c2d0dc', img: '/howth.webp' },
-          { title: "St Stephen's Green", desc: "A quiet escape in the heart of the city – Dublin's most beautiful park, calm, green, and full of character.", tag: 'Nature', color: '#c8d8cc', img: '/st-stephens-green.webp' },
-          { title: 'Glendalough', desc: 'Discover the breathtaking 6th-century monastic site and twin lakes in the Wicklow Mountains. Ancient Ireland at its finest.', tag: 'History', color: '#d7c3b0', img: '/glendalough.webp' },
-        ].map(({ title, desc, tag, color, img = null }) => (
+        {(excursions ?? []).map(({ title, description: desc, duration: tag, image: img = null }) => (
           <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group trip-card-link">
             <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
               <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
                 {img
                   ? <img src={img} alt={title} class="trip-card-img w-full h-full object-cover" loading="lazy" />
-                  : <div class="w-full h-full" style={`background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), ${color};`}></div>
+                  : <div class="w-full h-full" style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), var(--cream);"></div>
                 }
               </div>
               <div class="p-6 flex flex-col flex-1">

@@ -1,0 +1,43 @@
+---
+/**
+ * "How this programme works" — provider disclosure.
+ *
+ * COMPLIANCE REQUIREMENT, NOT DECORATION.
+ * This block names who the parent actually contracts with. It must appear on the
+ * Dublin overview page and all four subpages. Do not collapse it behind an
+ * accordion, hide it on mobile, or render it smaller than the footer content.
+ */
+import { dublin } from '../data/dublin';
+
+const { provider, venue } = dublin;
+---
+
+<section class="section" style="background: var(--cream); border-top: 1px solid var(--line);">
+  <div class="container-x">
+    <div class="max-w-[68ch] mx-auto">
+      <h2 class="text-[1.25rem] md:text-[1.4rem] mb-4">How this programme works</h2>
+
+      <p class="text-[0.95rem] md:text-[1rem] leading-relaxed mb-4" style="color: var(--ink);">
+        Immersion English is a booking agent for {provider.brand}, and accompanies its own
+        group to MLA's summer centre at the {venue.name}, {venue.city}. The programme,
+        teaching, accommodation and on-site supervision are provided by MLA.
+      </p>
+
+      <p class="text-[0.95rem] md:text-[1rem] leading-relaxed mb-0" style="color: var(--ink);">
+        Your booking contract is with {provider.legalEntity}, MLA's Irish operating company,
+        under MLA's terms and conditions. Immersion English handles enrolment, documentation,
+        pre-departure support, and accompanies the group.
+      </p>
+
+      {/* TODO: awaiting MLA 2027 confirmation — terms and safeguarding policy URLs not supplied.
+          The sentence below renders only once dublin.ts provider.termsUrl and
+          provider.safeguardingUrl are set. Do not hardcode URLs here. */}
+      {provider.termsUrl && provider.safeguardingUrl && (
+        <p class="text-[0.95rem] md:text-[1rem] leading-relaxed mt-4 mb-0" style="color: var(--ink);">
+          Read <a href={provider.termsUrl} target="_blank" rel="noopener noreferrer">MLA's terms and conditions</a>
+          {' '}and <a href={provider.safeguardingUrl} target="_blank" rel="noopener noreferrer">MLA's safeguarding policy</a>.
+        </p>
+      )}
+    </div>
+  </div>
+</section>

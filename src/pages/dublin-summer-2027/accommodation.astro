@@ -1,252 +1,79 @@
 ---
+/**
+ * HOLDING PAGE.
+ *
+ * The previous version of this page was entirely about UCD Belfield and Belgrove
+ * Residences — a UCD campus hero photo, an "About UCD" institutional section,
+ * campus amenities, and food-hall budgets. All of it described the cancelled
+ * programme, and the meals copy contradicted the new full-board arrangement.
+ *
+ * No replacement copy for this page has been approved. The only accommodation
+ * facts confirmed in dublin-overview-copy.md are stated below; everything else
+ * is held. Do not reinstate the UCD content.
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProviderBlock from '../../components/ProviderBlock.astro';
+import { dublin } from '../../data/dublin';
+
+const { venue } = dublin;
 ---
 
 <BaseLayout
-  title="Student Accommodation Dublin – UCD Belgrove Residences | Immersion English Summer School"
-  description="Students on the Immersion English Dublin summer school stay at Belgrove Residences, University College Dublin. Private single rooms, 24/7 supervision, safe and central."
+  title={`Accommodation – Dublin Summer ${dublin.year} | Immersion English`}
+  description={`Students travelling with Immersion English to Dublin stay in en-suite accommodation on campus at the ${venue.name}, with full board. Full details for Summer ${dublin.year} coming soon.`}
 >
 
-  <!-- HERO with UCD campus photo -->
+  <!-- HERO -->
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 50vh;">
-    <div class="absolute inset-0 -z-[2]" style="overflow:hidden;">
-      <img src="/ucd-campus-clean.webp" alt="University College Dublin campus" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;" loading="lazy" />
-    </div>
-    <!-- Gradient stronger on left so text is readable, fades to transparent on right -->
-    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(10,20,15,0.4) 0%, rgba(10,20,15,0.78) 100%);"></div>
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
-        ← Dublin Summer 2027
+        ← Dublin Summer {dublin.year}
       </a>
       <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-5" style="color: var(--orange-text);">
         <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
         Accommodation
       </p>
-      <h1 class="text-white mb-5" style="max-width: 14ch;">
-        Staying at University College <span style="color: var(--orange-text);">Dublin.</span>
+      <h1 class="text-white mb-5" style="max-width: 16ch;">
+        On campus at the <span style="color: var(--orange-text);">{venue.shortName}.</span>
       </h1>
-      <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55]" style="max-width: 38ch;">
-        Students stay at Belgrove Residences on the UCD campus – private single rooms, shared apartments, and 24/7 supervision in one of Dublin's most beautiful settings.
+      <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55]" style="max-width: 46ch;">
+        En-suite accommodation on campus at the {venue.name}, in the heart of Dublin,
+        with full board throughout the stay.
       </p>
     </div>
   </section>
 
-  <!-- UCD -->
+  <!-- HOLDING -->
   <section class="section">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-center">
-        <div class="rounded-md overflow-hidden shadow-lift">
-          <img
-            src="/belgrove-night.webp"
-            alt="Belgrove Residences at UCD at night"
-            class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/3; object-position: center; display: block;"
-          loading="lazy" />
-        </div>
-        <div>
-          <span class="eyebrow eyebrow-dot">About UCD</span>
-          <h2 class="mt-4 mb-5">One of Europe's great university campuses.</h2>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            Founded over 160 years ago, University College Dublin is Ireland's largest and most internationally connected university. Ranked among the top 1% of universities worldwide (QS World University Rankings), UCD is home to over 38,000 students from 152 countries.
-          </p>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            The beautiful 1.33 km² campus combines parkland, modern facilities, and world-class learning spaces – restaurants, sports facilities, libraries, and green spaces all within walking distance.
-          </p>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch]">
-            For our students, staying at UCD isn't just about having a bed – it's about living and learning in an environment that feels genuinely academic, international, and inspiring.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <div class="max-w-[62ch] mx-auto">
+        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-4">
+          Students stay in <strong class="text-ink">en-suite accommodation on campus</strong> at the
+          {venue.name}, in {venue.area}, ten minutes' walk from the city centre.
+          <strong class="text-ink">Full board</strong> is included – from dinner on the day of
+          arrival to breakfast on the day of departure.
+        </p>
 
-  <!-- BELGROVE -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 md:gap-20 items-start">
-        <div>
-          <span class="eyebrow eyebrow-dot">Where students stay</span>
-          <h2 class="mt-4 mb-3">Belgrove Residences at UCD.</h2>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            Belgrove Residences are a collection of three-storey apartment buildings on the UCD campus, set around landscaped grassed areas. Each student has their own <strong class="text-ink">private single bedroom</strong> within a shared apartment of 4–5 bedrooms and 2 bathrooms.
-          </p>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-8">
-            The residences are within walking distance of campus restaurants, the university gym, and the Dublin Bus terminus – which serves 16 different routes connecting the campus directly to the city centre and beyond.
-          </p>
-          <dl class="grid grid-cols-2 gap-5 pt-7 border-t border-line">
-            {[
-              { label: 'Room type', value: 'Private single bedroom' },
-              { label: 'Bathrooms', value: '2 shared per apartment' },
-              { label: 'Per apartment', value: '4–5 students' },
-              { label: 'Boys & girls', value: 'Separate areas' },
-              { label: 'Wi-Fi', value: 'Free across campus' },
-              { label: 'Security', value: '24/7 on-site' },
-            ].map(({ label, value }) => (
-              <div>
-                <dt class="font-heading text-[0.72rem] uppercase tracking-[0.12em] text-ink-soft mb-1 font-semibold">{label}</dt>
-                <dd class="m-0 font-heading font-semibold text-ink text-[0.98rem]">{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
+          Further details for Summer {dublin.year} coming soon.
+        </p>
 
-        <!-- Photo carousel -->
-        <div>
-          <div class="carousel rounded-md overflow-hidden shadow-lift" style="position: relative;">
-            <div class="carousel-track" style="display: flex; transition: transform 0.4s ease;">
-              {[
-                { src: '/belgrove-1.webp', caption: 'Belgrove Residences exterior' },
-                { src: '/belgrove-night.webp', caption: 'Belgrove Residences at night' },
-                { src: '/belgrove-room.webp', caption: 'Private single bedroom' },
-                { src: '/belgrove-kitchen.webp', caption: 'Shared kitchen and living space' },
-              ].map(({ src, caption }) => (
-                <div class="carousel-slide" style="min-width: 100%; position: relative;">
-                  <img
-                    src={src}
-                    alt={caption}
-                    class="w-full object-cover"
-                    style="aspect-ratio: 4/3; display: block;"
-                  loading="lazy" />
-                  <p class="text-[0.78rem] font-heading font-semibold text-ink-soft px-3 py-2" style="background: var(--cream);">{caption}</p>
-                </div>
-              ))}
-            </div>
-            <!-- Prev / Next -->
-            <button class="carousel-prev" aria-label="Previous" style="position:absolute;top:40%;left:10px;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-            </button>
-            <button class="carousel-next" aria-label="Next" style="position:absolute;top:40%;right:10px;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-            </button>
-            <!-- Dots -->
-            <div class="carousel-dots" style="display:flex;gap:6px;justify-content:center;padding:10px 0 4px;background:var(--cream);">
-              {[0,1,2,3].map((i) => (
-                <button class="carousel-dot" data-index={i} aria-label={`Slide ${i+1}`} style={`width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;background:${i===0 ? 'var(--orange)' : 'var(--line)'};padding:0;`}></button>
-              ))}
-            </div>
-          </div>
+        {/* TODO: awaiting MLA 2027 confirmation — residence details, room configuration,
+            night supervision arrangements, and written confirmation of whether age
+            grouping applies in the residence as well as in classes (see
+            dublin.ts ageGroupingScope.residence). The previous UCD / Belgrove
+            Residences copy has been removed and must not be restored. */}
+
+        <div class="flex gap-3 flex-wrap">
+          <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
+          <a href="/contact" class="btn btn-ghost">Book a free consultation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHAT'S INCLUDED -->
-  <section class="section">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">What's included</span>
-        <h2>Everything your child needs – <span style="color: var(--orange-text);">taken care of.</span></h2>
-        <p>The programme fee of €1,350 covers accommodation and all activities. Food is not included – see below. Flights are not included either; parents book direct Ryanair Sofia–Dublin – we send a full step-by-step guide to make it simple.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {[
-          { label: 'Private single bedroom', detail: 'your own room in a shared apartment at Belgrove Residences, UCD' },
-          { label: 'Free Wi-Fi', detail: 'across the entire UCD campus' },
-          { label: '24/7 security', detail: 'on-site reception and security at the residence' },
-          { label: 'Night supervision', detail: 'group leaders in rooms adjacent to student areas throughout the night' },
-          { label: 'Airport transfers', detail: 'supervised transport on arrival and departure days' },
-          { label: 'Bulgarian speaker on hand', detail: 'at every stage of the programme – from Sofia to Dublin and back' },
-          { label: 'All trips and activities', detail: 'full-day and half-day trips across Dublin and beyond' },
-          { label: 'English lessons', detail: '15 hours with a CELTA-qualified native teacher' },
-          { label: 'Laundry facilities', detail: 'on-site at UCD campus (at additional cost)' },
-        ].map(({ label, detail }) => (
-          <div class="flex items-start gap-3 rounded-lg px-4 py-4" style="background: var(--cream); border: 1px solid var(--line);">
-            <span class="flex-shrink-0 mt-[5px] w-[8px] h-[8px] rounded-full" style="background: var(--orange);"></span>
-            <span class="text-[0.92rem]">
-              <strong class="font-semibold text-ink">{label}</strong>
-              <span class="text-ink-soft"> – {detail}</span>
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <!-- Trips link -->
-      <div class="mt-6 mb-2">
-        <a href="/dublin-summer-2027/trips-and-activities" class="inline-flex items-center gap-3 no-underline group" style="color: var(--ink-soft);">
-          <span class="w-8 h-[1.5px] inline-block" style="background: var(--orange);"></span>
-          <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">Want to see where you'll be going? View all trips & activities</span>
-        </a>
-      </div>
-
-      <!-- Food note – positive spin -->
-      <div class="mt-8 rounded-lg p-6 flex items-start gap-4" style="background: var(--ink); color: white;">
-        <span class="flex-shrink-0 mt-[5px] w-[8px] h-[8px] rounded-full" style="background: var(--orange);"></span>
-        <div>
-          <p class="font-heading font-semibold text-[0.95rem] text-white mb-1">Food – chosen by your child, not us</p>
-          <p class="text-[0.88rem] leading-relaxed" style="color: rgba(255,255,255,0.7);">
-            Every teenager has different tastes, preferences, and nutritional needs – and we think choosing your own meals is part of learning to be independent. The UCD food hall has plenty of options for every appetite. We recommend a daily food budget of €20–25, plus around €50 per week for souvenirs and personal extras.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GETTING THERE -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Getting there</span>
-        <h2>Flights: simple, direct, and stress-free.</h2>
-        <p>Parents book direct Ryanair flights Sofia–Dublin independently. We make the process easy – and we'll be there waiting when your child lands.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {[
-          { n: '01', title: 'Direct Ryanair flight', body: 'Ryanair fly direct between Sofia (SOF) and Dublin (DUB). The journey takes around 3 hours 30 minutes – no connections, no complications.' },
-          { n: '02', title: 'We send you everything', body: 'On registration, we send a full step-by-step flight booking guide with exact travel dates, luggage requirements, and all the information you need.' },
-          { n: '03', title: 'We travel together – all the way', body: 'Our team meets every student at Sofia Airport on departure day. We fly together, arrive together, and accompany the group all the way to UCD campus. Your child is with us from the moment they leave Sofia.' },
-        ].map(({ n, title, body }) => (
-          <div class="trust-card">
-            <div style="display: flex; flex-direction: column; gap: 12px;">
-              <span class="font-heading font-bold text-[1.5rem] leading-none" style="color: var(--orange-text);">{n}</span>
-              <h3 style="margin: 0;">{title}</h3>
-              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-            </div>
-            <p style="margin: 0;">{body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section section-dark">
-    <div class="container-x text-center">
-      <span class="eyebrow eyebrow-dot" style="color: var(--orange-text);">Questions?</span>
-      <h2 class="mt-4 mb-5">We're happy to answer anything.</h2>
-      <p class="max-w-[44ch] mx-auto mb-8 text-[1.05rem]" style="color: rgba(254,255,254,0.74);">
-        From room allocation to what to pack – get in touch and we'll reply within one working day.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
-        <a href="/contact" class="btn btn-primary">Get in touch</a>
-        <a href="/dublin-summer-2027/faqs" class="btn btn-ghost text-white border-white/30 hover:border-white">Read the FAQs</a>
-      </div>
-    </div>
-  </section>
+  <ProviderBlock />
 
 </BaseLayout>
-
-<script>
-  const carousel = document.querySelector('.carousel');
-  if (carousel) {
-    const track = carousel.querySelector('.carousel-track');
-    const slides = carousel.querySelectorAll('.carousel-slide');
-    const dots = carousel.querySelectorAll('.carousel-dot');
-    let current = 0;
-
-    function goTo(index) {
-      current = (index + slides.length) % slides.length;
-      track.style.transform = `translateX(-${current * 100}%)`;
-      dots.forEach((d, i) => {
-        d.style.background = i === current ? 'var(--orange)' : 'var(--line)';
-      });
-    }
-
-    carousel.querySelector('.carousel-prev').addEventListener('click', () => goTo(current - 1));
-    carousel.querySelector('.carousel-next').addEventListener('click', () => goTo(current + 1));
-    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-
-    // Auto-advance every 4 seconds
-    setInterval(() => goTo(current + 1), 4000);
-  }
-</script>
