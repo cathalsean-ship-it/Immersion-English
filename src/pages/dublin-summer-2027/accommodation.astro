@@ -21,6 +21,7 @@ const { venue } = dublin;
 <BaseLayout
   title={`Accommodation – Dublin Summer ${dublin.year} | Immersion English`}
   description={`Students travelling with Immersion English to Dublin stay in en-suite accommodation on campus at the ${venue.name}, with full board. Full details for Summer ${dublin.year} coming soon.`}
+  ogImage="/teens-dublin.webp"
 >
 
   <!-- HERO -->
@@ -59,6 +60,17 @@ const { venue } = dublin;
         <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
           Further details for Summer {dublin.year} coming soon.
         </p>
+
+        {/* Decorative only. Generic photography — deliberately NOT a picture of the
+            residence, which has not been supplied. Must never imply a specific room. */}
+        <div class="rounded-md overflow-hidden shadow-lift mb-8">
+          <img
+            src="/teens-dublin.webp"
+            alt="Students in Dublin"
+            class="img-greyscale w-full object-cover"
+            style="aspect-ratio: 16/9; display: block;"
+            loading="lazy" />
+        </div>
 
         {/* TODO: awaiting MLA 2027 confirmation — residence details, room configuration,
             night supervision arrangements, and written confirmation of whether age

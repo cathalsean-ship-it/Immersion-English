@@ -28,6 +28,7 @@ import { dublin } from '../../data/dublin';
 <BaseLayout
   title={`FAQs – Dublin Summer ${dublin.year} | Immersion English`}
   description={`Questions about the Immersion English group to MLA's summer centre in Dublin. Updated answers for Summer ${dublin.year} coming soon — book a free consultation in the meantime.`}
+  ogImage="/students-walking.webp"
 >
 
   <!-- HERO -->
@@ -57,9 +58,19 @@ import { dublin } from '../../data/dublin';
     <div class="container-x">
       <div class="max-w-[62ch] mx-auto">
         <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
-          Details for Summer {dublin.year} coming soon. If you have a question in the
-          meantime, book a free consultation and we'll answer it directly.
+          Updated answers for Summer {dublin.year} are on the way. If you have a question in
+          the meantime, book a free consultation and we'll answer it directly.
         </p>
+
+        {/* Decorative only. Generic photography — not the NCI centre. */}
+        <div class="rounded-md overflow-hidden shadow-lift mb-8">
+          <img
+            src="/students-walking.webp"
+            alt="Students walking together"
+            class="img-greyscale w-full object-cover"
+            style="aspect-ratio: 16/9; display: block;"
+            loading="lazy" />
+        </div>
 
         {/* TODO: awaiting MLA 2027 confirmation — rewrite the FAQ set against MLA's
             2027 terms and conditions once dates, net rates, deposit terms, the NCI

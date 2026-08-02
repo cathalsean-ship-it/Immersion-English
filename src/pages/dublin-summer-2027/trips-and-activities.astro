@@ -22,6 +22,7 @@ const { excursions } = dublin;
 <BaseLayout
   title={`Trips & Activities – Dublin Summer ${dublin.year} | Immersion English`}
   description={`The excursion and activity programme at MLA's summer centre in Dublin is run by the centre's own activity team, with transport and entry included. Details for Summer ${dublin.year} coming soon.`}
+  ogImage="/dublin-street.webp"
 >
 
   <!-- HERO -->
@@ -69,10 +70,22 @@ const { excursions } = dublin;
         )}
 
         {excursions === null && (
-          <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
-            The excursion programme for Summer {dublin.year} is set by the centre.
-            Details coming soon.
-          </p>
+          <>
+            <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
+              The excursion programme for Summer {dublin.year} is set by the centre.
+              Details coming soon.
+            </p>
+            {/* Decorative only. Generic Dublin street photography — deliberately NOT an
+                excursion location, since MLA's list is unconfirmed. */}
+            <div class="rounded-md overflow-hidden shadow-lift mb-8">
+              <img
+                src="/dublin-street.webp"
+                alt="A street in Dublin city centre"
+                class="img-greyscale w-full object-cover"
+                style="aspect-ratio: 16/9; display: block;"
+                loading="lazy" />
+            </div>
+          </>
         )}
 
         <div class="flex gap-3 flex-wrap">
