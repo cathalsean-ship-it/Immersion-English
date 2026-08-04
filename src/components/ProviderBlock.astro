@@ -1,54 +1,37 @@
 ---
 /**
- * "How this programme works" — provider disclosure.
+ * Provider disclosure — compact note.
  *
- * COMPLIANCE REQUIREMENT, NOT DECORATION.
- * This block names who the parent actually contracts with. It must appear on the
- * Dublin overview page and all four subpages. Do not collapse it behind an
- * accordion and do not hide it on mobile.
+ * Reduced twice at the site owner's request: parents do not need the agent
+ * relationship spelled out on every page, and comparable agency sites do not
+ * foreground it. It now appears ONCE, beside the booking CTA on the Dublin
+ * overview page, with a one-line version in the site footer.
  *
- * ON SIZE: the brief's rule is that it must not render SMALLER than the footer
- * content. It was reduced from a full section to this compact band at the site
- * owner's request. Body text is 0.95rem (~15.2px) against the footer's ~14.96px,
- * so it still clears the rule — but there is very little headroom left. Do not
- * reduce it further without re-checking the footer's computed font size.
+ * Keep it on the booking path. Wherever someone is being asked to commit money,
+ * they should be able to see who the money is actually buying from without
+ * hunting for it. Moving it off the overview page entirely, or behind a link,
+ * would put it somewhere nobody reads before paying.
  */
 import { dublin } from '../data/dublin';
 
 const { provider, venue } = dublin;
 ---
 
-<aside
-  class="border-t"
-  style="background: var(--cream); border-color: var(--line);"
-  aria-label="How this programme works"
+<div
+  class="rounded-lg px-5 py-4 mt-8"
+  style="background: var(--cream); border: 1px solid var(--line);"
 >
-  <div class="container-x py-7 md:py-8">
-    <div class="max-w-[76ch]">
-      <p class="font-heading font-semibold text-[0.72rem] tracking-[0.16em] uppercase mb-3" style="color: var(--ink-soft);">
-        How this programme works
-      </p>
-
-      <p class="text-[0.95rem] leading-relaxed mb-2" style="color: var(--ink-soft);">
-        Immersion English is a booking agent for {provider.brand}, and accompanies its own
-        group to MLA's summer centre at the {venue.name}, {venue.city}. The programme,
-        teaching, accommodation and on-site supervision are provided by MLA.
-      </p>
-
-      <p class="text-[0.95rem] leading-relaxed mb-0" style="color: var(--ink-soft);">
-        Your booking contract is with {provider.legalEntity}, MLA's Irish operating company,
-        under MLA's terms and conditions. Immersion English handles enrolment, documentation,
-        pre-departure support, and accompanies the group.
-        {/* TODO: awaiting MLA 2027 confirmation — terms and safeguarding policy URLs
-            not supplied. The links below render only once dublin.ts provider.termsUrl
-            and provider.safeguardingUrl are set. Do not hardcode URLs here. */}
-        {provider.termsUrl && provider.safeguardingUrl && (
-          <>
-            {' '}Read <a href={provider.termsUrl} target="_blank" rel="noopener noreferrer">MLA's terms and conditions</a>
-            {' '}and <a href={provider.safeguardingUrl} target="_blank" rel="noopener noreferrer">MLA's safeguarding policy</a>.
-          </>
-        )}
-      </p>
-    </div>
-  </div>
-</aside>
+  <p class="text-[0.88rem] leading-relaxed m-0" style="color: var(--ink-soft);">
+    <strong class="font-semibold" style="color: var(--ink);">How this works:</strong>
+    {' '}the programme is run by {provider.brand} at the {venue.name}. Immersion English
+    books your place and travels with the group; your booking contract is with
+    {' '}{provider.legalEntity} under MLA's terms.
+    {/* TODO: awaiting MLA 2027 confirmation — terms and safeguarding policy URLs.
+        Link them here once dublin.ts provider.termsUrl / .safeguardingUrl are set. */}
+    {provider.termsUrl && (
+      <>
+        {' '}<a href={provider.termsUrl} target="_blank" rel="noopener noreferrer">Read the full terms</a>.
+      </>
+    )}
+  </p>
+</div>

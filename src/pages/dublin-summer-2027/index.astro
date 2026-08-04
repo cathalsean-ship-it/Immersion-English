@@ -320,6 +320,11 @@ const courseSchema = {
         <div class="flex justify-center">
           <a href="/contact" class="btn btn-primary">Book a free consultation</a>
         </div>
+
+        {/* Provider disclosure sits on the booking path deliberately — this is the
+            point where someone is asked to commit. Do not move it further down the
+            page or behind a link. */}
+        <ProviderBlock />
       </div>
     </div>
   </section>
@@ -352,7 +357,5 @@ const courseSchema = {
       </div>
     </div>
   </section>
-
-  <ProviderBlock />
 
 </BaseLayout>

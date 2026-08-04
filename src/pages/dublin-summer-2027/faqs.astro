@@ -20,7 +20,6 @@
  * unrelated provider called ICE.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProviderBlock from '../../components/ProviderBlock.astro';
 import { dublin } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, airportTransferFrom } = dublin;
@@ -305,9 +304,6 @@ const sections = [
       </div>
     </div>
   </section>
-
-  <ProviderBlock />
-
 </BaseLayout>
 
 <script>
