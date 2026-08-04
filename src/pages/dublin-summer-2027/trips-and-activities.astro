@@ -47,54 +47,88 @@ const { excursions } = dublin;
     </div>
   </section>
 
-  <!-- HOLDING -->
-  <section class="section">
-    <div class="container-x">
-      <div class="max-w-[62ch] mx-auto">
-        {/* TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
-            Render the named list ONLY from dublin.ts excursions. The UCD-era trips
-            were self-chosen by Immersion English and must never be reinstated here,
-            nor may trip counts ("6 trips", "7 evening activities") be restated. */}
-        {excursions !== null && excursions.length > 0 && (
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-            {excursions.map(({ title, description, image }) => (
-              <div class="bg-white border border-line rounded-lg overflow-hidden flex flex-col h-full">
-                {image && <img src={image} alt={title} class="w-full aspect-video object-cover" loading="lazy" />}
-                <div class="p-6 flex flex-col flex-1">
-                  <h3 class="text-[1.05rem] mb-3">{title}</h3>
-                  <p class="text-ink-soft text-[0.9rem] leading-relaxed flex-1">{description}</p>
-                </div>
-              </div>
-            ))}
+  {/* Excursions render ONLY from dublin.ts, which transcribes MLA's published
+      Dublin programme (Junior Programmes 2026 catalogue, p.44). The UCD-era trips
+      were self-chosen by Immersion English and must never be reinstated here. */}
+  {excursions === null && (
+    <section class="section">
+      <div class="container-x">
+        <div class="max-w-[62ch] mx-auto">
+          <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
+            The excursion programme for Summer {dublin.year} is set by the centre.
+            Details coming soon.
+          </p>
+          <div class="rounded-md overflow-hidden shadow-lift mb-8">
+            <img
+              src="/dublin-street.webp"
+              alt="A street in Dublin city centre"
+              class="img-greyscale w-full object-cover"
+              style="aspect-ratio: 16/9; display: block;"
+              loading="lazy" />
           </div>
-        )}
-
-        {excursions === null && (
-          <>
-            <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
-              The excursion programme for Summer {dublin.year} is set by the centre.
-              Details coming soon.
-            </p>
-            {/* Decorative only. Generic Dublin street photography — deliberately NOT an
-                excursion location, since MLA's list is unconfirmed. */}
-            <div class="rounded-md overflow-hidden shadow-lift mb-8">
-              <img
-                src="/dublin-street.webp"
-                alt="A street in Dublin city centre"
-                class="img-greyscale w-full object-cover"
-                style="aspect-ratio: 16/9; display: block;"
-                loading="lazy" />
-            </div>
-          </>
-        )}
-
-        <div class="flex gap-3 flex-wrap">
-          <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
-          <a href="/contact" class="btn btn-ghost">Book a free consultation</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
+
+  {excursions !== null && (
+    <>
+      {[
+        { key: 'full-day', eyebrow: 'Full-day excursions', heading: 'Out of the city.' },
+        { key: 'half-day', eyebrow: 'Half-day excursions', heading: 'Dublin, properly.' },
+      ].map(({ key, eyebrow, heading }, groupIndex) => {
+        const items = excursions.filter(e => e.duration === key);
+        if (items.length === 0) return null;
+        return (
+          <section class={groupIndex === 1 ? 'section section-tinted' : 'section'}>
+            <div class="container-x">
+              <div class="section-head">
+                <span class="eyebrow eyebrow-dot">{eyebrow}</span>
+                <h2>{heading}</h2>
+                <p>
+                  {items.length} {key === 'full-day' ? 'full-day' : 'half-day'}
+                  {items.length === 1 ? ' excursion' : ' excursions'}, run by MLA's local staff.
+                  Transport and entry tickets included.
+                </p>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                {items.map(({ title, description, image }) => (
+                  <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
+                    <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
+                      {image
+                        ? <img src={image} alt={title} class="trip-card-img w-full h-full object-cover" loading="lazy" />
+                        : <div class="w-full h-full" style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), var(--cream);"></div>
+                      }
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                      <h3 class="text-[1.05rem] mb-3">{title}</h3>
+                      <p class="text-ink-soft text-[0.9rem] leading-relaxed flex-1">{description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+      <section class="section">
+        <div class="container-x">
+          <div class="max-w-[62ch] mx-auto text-center">
+            <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-8">
+              Excursions are set by the centre and confirmed before departure.
+              Evening and weekend activities run alongside them, organised by the
+              centre's own activity team.
+            </p>
+            <div class="flex gap-3 flex-wrap justify-center">
+              <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
+              <a href="/contact" class="btn btn-ghost">Book a free consultation</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )}
 
   <ProviderBlock />
 
