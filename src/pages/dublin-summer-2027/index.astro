@@ -179,9 +179,12 @@ const courseSchema = {
               <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{lessonsPerWeek}</p>
               <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Lessons a week</p>
             </div>
+            {/* Ink on orange, not white on orange. White on --orange is 2.23:1,
+                which fails accessibility contrast even for large text. Ink gives
+                7.52:1 — the same pairing .btn-primary already uses. */}
             <div style="background: var(--orange); border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: white; line-height: 1; margin: 0;">{ages.min}–{ages.max}</p>
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: rgba(255,255,255,0.85); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Ages</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--ink); line-height: 1; margin: 0;">{ages.min}–{ages.max}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: rgba(20,32,26,0.78); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Ages</p>
             </div>
           </div>
         </div>

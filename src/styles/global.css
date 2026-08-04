@@ -275,7 +275,12 @@
 .trip-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
-.trip-card-link:hover .trip-card {
+/* Two selectors on purpose. Cards inside a link (homepage) hover via the
+   wrapper; standalone cards (the trips page, where a card links nowhere)
+   need to respond to their own hover, or they sit dead and their images
+   stay permanently greyscale. */
+.trip-card-link:hover .trip-card,
+.trip-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(20,32,26,0.1);
   border-color: rgba(0,128,55,0.2);
@@ -284,7 +289,8 @@
   filter: grayscale(100%) contrast(1.05);
   transition: filter 0.66s ease;
 }
-.trip-card-link:hover .trip-card-img {
+.trip-card-link:hover .trip-card-img,
+.trip-card:hover .trip-card-img {
   filter: grayscale(0%) contrast(1);
 }
 .trip-tag {
@@ -292,7 +298,8 @@
   color: #666;
   transition: background 0.4s ease, color 0.4s ease;
 }
-.trip-card-link:hover .trip-tag {
+.trip-card-link:hover .trip-tag,
+.trip-card:hover .trip-tag {
   background: var(--green-soft);
   color: var(--green);
 }

@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { dublin } from '../data/dublin';
 ---
 
-<BaseLayout title="Contact Immersion English Sofia | Book a Free English Consultation" description="Book a free 20-minute consultation with Immersion English in Sofia. Online English lessons for adults, and a summer group to an international English centre in Dublin for students aged 12–20.">
+<BaseLayout title="Contact Immersion English Sofia | Book a Free English Consultation" description={`Book a free 20-minute consultation with Immersion English in Sofia. Online English lessons for adults, and a summer group to an international English centre in Dublin for students aged ${dublin.ages.min}–${dublin.ages.max}.`}>
 
   <!-- HERO (compact) -->
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 40vh;">
