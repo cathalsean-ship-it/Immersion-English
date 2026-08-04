@@ -12,6 +12,7 @@
  * is held. Do not reinstate the UCD content.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocationMap from '../../components/LocationMap.astro';
 import { dublin } from '../../data/dublin';
 
 const { venue } = dublin;
@@ -72,6 +73,44 @@ const { venue } = dublin;
             <p style="margin: 0;">{body}</p>
           </div>
         ))}
+      </div>
+
+      {/* Every factual claim in this section was verified against ncirl.ie, the IFSC
+          business directory, calatrava.com, libeskind.com, theccd.ie and Wikipedia's
+          Silicon Docks entry in August 2026. Note the deliberate split between "a few
+          minutes' walk" (Samuel Beckett Bridge, Convention Centre — both beside the
+          Spencer Dock building) and "across the river" (Bord Gáis Energy Theatre,
+          Google, Meta — Grand Canal, roughly 15 minutes on foot). Do not flatten that
+          into "next door". None of these companies is connected to the programme and
+          students do not visit them; this is neighbourhood context only. */}
+      <div class="max-w-[68ch] mx-auto mb-14">
+        <h3 class="text-[1.15rem] mb-4">The neighbourhood.</h3>
+        <p class="text-ink-soft text-[1.05rem] leading-relaxed mb-4">
+          The campus is in the IFSC, the part of Dublin rebuilt over the last
+          twenty-five years and now home to much of the city's modern architecture.
+          Santiago Calatrava's <strong class="text-ink">Samuel Beckett Bridge</strong> —
+          a cable-stayed span shaped like a harp turned on its side, after Ireland's
+          national emblem — is a few minutes' walk, as is the
+          {' '}<strong class="text-ink">Convention Centre Dublin</strong>, designed by the
+          Irish-born Pritzker Prize winner Kevin Roche and the first carbon-neutral
+          convention venue in the world. Across the river at Grand Canal Square stands
+          Daniel Libeskind's <strong class="text-ink">Bord Gáis Energy Theatre</strong>,
+          with its tilted glass façade.
+        </p>
+        <p class="text-ink-soft text-[1.05rem] leading-relaxed mb-4">
+          It is also where a large part of Europe's technology industry works. Google,
+          Meta, LinkedIn and Airbnb all run European operations from the surrounding
+          streets — which is how the area earned the nickname
+          {' '}<strong class="text-ink">Silicon Docks</strong> — and the IFSC itself houses
+          more than 300 financial institutions. The college even has its own Luas stop:
+          Mayor Square – NCI.
+        </p>
+        <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-8">
+          Students don't visit these offices; it's simply the city they'll be living in
+          for the summer, and it is a working, modern one rather than a postcard.
+        </p>
+
+        <LocationMap />
       </div>
 
       <div class="max-w-[62ch] mx-auto">

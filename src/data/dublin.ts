@@ -36,6 +36,13 @@ export interface DublinProgramme {
     shortName: string;
     city: string;
     area: string;
+    street: string;
+    postcode: string;
+    country: string;
+    /** Luas stop serving the campus. */
+    transit: string;
+    /** Query string for a Google Maps embed. No API key needed. */
+    mapsQuery: string;
   };
   ages: { min: number; max: number };
   classSize: { average: number; maximum: number };
@@ -87,11 +94,18 @@ export const dublin: DublinProgramme = {
     safeguardingUrl: null,
   },
 
+  // Address verified against ncirl.ie and the IFSC business directory, Aug 2026.
+  // The campus is two buildings — Mayor Square and Spencer Dock — about 300m apart.
   venue: {
     name: 'National College of Ireland',
     shortName: 'NCI',
     city: 'Dublin',
     area: 'Dublin Docklands',
+    street: 'Mayor Street, IFSC',
+    postcode: 'D01 K6W2',
+    country: 'Ireland',
+    transit: 'Mayor Square – NCI (Luas Red Line)',
+    mapsQuery: 'National College of Ireland, Mayor Street, IFSC, Dublin 1, D01 K6W2',
   },
 
   // This is the age range of the IMMERSION ENGLISH GROUP, not the centre's limit.

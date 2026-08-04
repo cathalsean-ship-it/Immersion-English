@@ -1,0 +1,83 @@
+---
+/**
+ * Google Maps embed for the NCI campus — click to load.
+ *
+ * PRIVACY: the iframe is NOT in the initial markup. Embedding Google Maps
+ * directly would contact Google and set cookies on page load, for every
+ * visitor, whether or not they consented — which would contradict this site's
+ * own cookie banner, where Analytics is gated behind `ie_cookie_consent`.
+ * Parents of minors in the EU are exactly the audience not to be casual with.
+ *
+ * So: a styled placeholder with a button. Nothing reaches Google until someone
+ * asks for the map. This also keeps a heavy third-party iframe off the critical
+ * path. Do not "simplify" this into a bare <iframe>.
+ */
+import { dublin } from '../data/dublin';
+
+const { venue } = dublin;
+const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(venue.mapsQuery)}&z=15&output=embed`;
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(venue.mapsQuery)}`;
+---
+
+<div class="rounded-md overflow-hidden" style="border: 1px solid var(--line);">
+  <div
+    id="map-shell"
+    data-map-src={mapSrc}
+    class="relative w-full"
+    style="aspect-ratio: 16/9; background: var(--cream); min-height: 260px;"
+  >
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-3 px-6">
+      <p class="font-heading font-semibold text-[1rem] m-0" style="color: var(--ink);">
+        {venue.name}
+      </p>
+      <p class="text-[0.92rem] leading-relaxed m-0 max-w-[34ch]" style="color: var(--ink-soft);">
+        {venue.street}, {venue.city} 1, {venue.postcode}<br />
+        {venue.transit}
+      </p>
+      <button
+        id="map-load"
+        type="button"
+        class="btn btn-primary"
+        style="font-size: 0.9rem; padding: 10px 20px; margin-top: 4px;"
+      >
+        Show map
+      </button>
+      <p class="text-[0.78rem] m-0 max-w-[36ch]" style="color: var(--ink-soft);">
+        Loads Google Maps, which sets its own cookies.
+      </p>
+    </div>
+  </div>
+
+  <div class="px-5 py-3 flex flex-wrap gap-x-5 gap-y-1 items-center" style="background: white; border-top: 1px solid var(--line);">
+    <a
+      href={directionsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[0.88rem] font-heading font-semibold no-underline hover:underline"
+      style="color: var(--green);"
+    >
+      Get directions →
+    </a>
+    <span class="text-[0.84rem]" style="color: var(--ink-soft);">
+      {venue.street}, {venue.city} 1, {venue.postcode}
+    </span>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('map-load');
+  const shell = document.getElementById('map-shell');
+  btn?.addEventListener('click', () => {
+    if (!shell) return;
+    const src = shell.dataset.mapSrc;
+    if (!src) return;
+    const frame = document.createElement('iframe');
+    frame.src = src;
+    frame.title = 'Map showing the National College of Ireland, Dublin';
+    frame.loading = 'lazy';
+    frame.referrerPolicy = 'no-referrer-when-downgrade';
+    frame.setAttribute('allowfullscreen', '');
+    frame.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+    shell.replaceChildren(frame);
+  });
+</script>
