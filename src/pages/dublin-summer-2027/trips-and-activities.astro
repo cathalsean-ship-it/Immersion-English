@@ -13,7 +13,6 @@
  * supplied (catalogue p.44). Nothing may be named on this page until it is.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProviderBlock from '../../components/ProviderBlock.astro';
 import { dublin } from '../../data/dublin';
 
 const { excursions } = dublin;
@@ -95,8 +94,10 @@ const { excursions } = dublin;
                 {items.map(({ title, description, image }) => (
                   <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
                     <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
+                      {/* alt="" — the card's own h3 names it immediately below, so
+                          repeating the title here makes a screen reader say it twice. */}
                       {image
-                        ? <img src={image} alt={title} class="trip-card-img w-full h-full object-cover" loading="lazy" />
+                        ? <img src={image} alt="" class="trip-card-img w-full h-full object-cover" loading="lazy" />
                         : <div class="w-full h-full" style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), var(--cream);"></div>
                       }
                     </div>
@@ -129,7 +130,5 @@ const { excursions } = dublin;
       </section>
     </>
   )}
-
-  <ProviderBlock />
 
 </BaseLayout>

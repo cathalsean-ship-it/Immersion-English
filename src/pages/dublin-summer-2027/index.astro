@@ -3,11 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProviderBlock from '../../components/ProviderBlock.astro';
 import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
-import { dublin } from '../../data/dublin';
+import { dublin, durationLabel } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, included, notIncluded, excursions, groupLeader } = dublin;
 
-const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsWeeks[durationsWeeks.length - 1]} weeks`;
 
 // JSON-LD. Provider is MLA, not Immersion English. No `offers` block until the
 // 2027 retail price is confirmed — a stale figure is worse than no figure.
@@ -194,7 +193,7 @@ const courseSchema = {
           <dl class="grid grid-cols-2 gap-7 my-8 py-8 border-y border-line">
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Duration</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationLabel}</dd>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationLabel(durationsWeeks)}</dd>
             </div>
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
@@ -320,6 +319,11 @@ const courseSchema = {
         <div class="flex justify-center">
           <a href="/contact" class="btn btn-primary">Book a free consultation</a>
         </div>
+
+        {/* Provider disclosure sits on the booking path deliberately — this is the
+            point where someone is asked to commit. Do not move it further down the
+            page or behind a link. */}
+        <ProviderBlock />
       </div>
     </div>
   </section>
@@ -352,7 +356,5 @@ const courseSchema = {
       </div>
     </div>
   </section>
-
-  <ProviderBlock />
 
 </BaseLayout>

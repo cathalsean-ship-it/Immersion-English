@@ -12,7 +12,6 @@
  * is held. Do not reinstate the UCD content.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProviderBlock from '../../components/ProviderBlock.astro';
 import { dublin } from '../../data/dublin';
 
 const { venue } = dublin;
@@ -49,24 +48,40 @@ const { venue } = dublin;
   <!-- HOLDING -->
   <section class="section">
     <div class="container-x">
-      <div class="max-w-[62ch] mx-auto">
-        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-4">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">On campus</span>
+        <h2>Everything under one roof.</h2>
+        <p>
           Students stay in <strong class="text-ink">en-suite accommodation on campus</strong> at the
-          {venue.name}, in {venue.area}, ten minutes' walk from the city centre.
-          <strong class="text-ink">Full board</strong> is included – from dinner on the day of
-          arrival to breakfast on the day of departure.
+          {venue.name}, in {venue.area}, ten minutes' walk from the city centre. Lessons,
+          meals and activities all happen on the same campus.
         </p>
+      </div>
 
-        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
-          Further details for Summer {dublin.year} coming soon.
-        </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+        {[
+          { title: 'En-suite rooms', body: 'Single or twin rooms with their own bathroom, on the campus itself.' },
+          { title: 'Full board', body: 'From dinner on the day of arrival to breakfast on the day of departure. A prepaid meal card covers excursion days.' },
+          { title: 'In the city', body: `${venue.area}, about ten minutes' walk from Temple Bar and the main attractions.` },
+        ].map(({ title, body }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0;">{body}</p>
+          </div>
+        ))}
+      </div>
 
+      <div class="max-w-[62ch] mx-auto">
         {/* Decorative only. Generic photography — deliberately NOT a picture of the
-            residence, which has not been supplied. Must never imply a specific room. */}
+            residence, which has not been supplied. Must never imply a specific room.
+            alt="" because the surrounding copy already describes it. */}
         <div class="rounded-md overflow-hidden shadow-lift mb-8">
           <img
             src="/teens-dublin.webp"
-            alt="Students in Dublin"
+            alt=""
             class="img-greyscale w-full object-cover"
             style="aspect-ratio: 16/9; display: block;"
             loading="lazy" />
@@ -77,6 +92,10 @@ const { venue } = dublin;
             grouping applies in the residence as well as in classes (see
             dublin.ts ageGroupingScope.residence). The previous UCD / Belgrove
             Residences copy has been removed and must not be restored. */}
+        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
+          Room allocation, supervision arrangements and the rest of the residence detail
+          come from MLA, and we will publish them here as soon as they confirm.
+        </p>
 
         <div class="flex gap-3 flex-wrap">
           <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
@@ -85,7 +104,5 @@ const { venue } = dublin;
       </div>
     </div>
   </section>
-
-  <ProviderBlock />
 
 </BaseLayout>

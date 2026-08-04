@@ -20,19 +20,17 @@
  * unrelated provider called ICE.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProviderBlock from '../../components/ProviderBlock.astro';
-import { dublin } from '../../data/dublin';
+import { dublin, durationLabel } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, airportTransferFrom } = dublin;
 
-const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsWeeks[durationsWeeks.length - 1]} weeks`;
 const fullDay = (excursions ?? []).filter(e => e.duration === 'full-day');
 const halfDay = (excursions ?? []).filter(e => e.duration === 'half-day');
 
 const sections = [
   {
     id: 'who-runs-it',
-    heading: 'Who runs the programme',
+    heading: 'Who Runs the Programme',
     faqs: [
       {
         q: 'Who actually runs this programme?',
@@ -54,7 +52,7 @@ const sections = [
   },
   {
     id: 'the-centre',
-    heading: 'The centre and the classes',
+    heading: 'The Centre and the Classes',
     faqs: [
       {
         q: 'Where is the centre?',
@@ -91,7 +89,7 @@ const sections = [
   },
   {
     id: 'accommodation-and-meals',
-    heading: 'Accommodation and meals',
+    heading: 'Accommodation and Meals',
     faqs: [
       {
         q: 'Where do students sleep?',
@@ -109,7 +107,7 @@ const sections = [
   },
   {
     id: 'trips-and-activities',
-    heading: 'Trips and activities',
+    heading: 'Trips and Activities',
     faqs: [
       {
         q: 'What excursions are included?',
@@ -128,7 +126,7 @@ const sections = [
   },
   {
     id: 'supervision-and-safety',
-    heading: 'Supervision and safety',
+    heading: 'Supervision and Safety',
     faqs: [
       {
         q: 'Who is looking after my child?',
@@ -146,7 +144,7 @@ const sections = [
   },
   {
     id: 'dates-prices-booking',
-    heading: 'Dates, prices and booking',
+    heading: 'Dates, Prices and Booking',
     faqs: [
       {
         q: 'How much does it cost?',
@@ -167,7 +165,7 @@ const sections = [
       },
       {
         q: 'How long can my child stay?',
-        a: `${durationLabel}. Other durations are sometimes available on request – ask us at the consultation.`,
+        a: `${durationLabel(durationsWeeks)}. Other durations are sometimes available on request – ask us at the consultation.`,
       },
       {
         q: 'How do I hold a place?',
@@ -305,9 +303,6 @@ const sections = [
       </div>
     </div>
   </section>
-
-  <ProviderBlock />
-
 </BaseLayout>
 
 <script>

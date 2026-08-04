@@ -64,6 +64,17 @@ export interface DublinProgramme {
   };
 }
 
+/**
+ * Human-readable duration label, e.g. "1, 2, 3 or 4 weeks".
+ * Derived here so templates never re-implement it. Previously duplicated in
+ * index.astro and faqs.astro.
+ */
+export function durationLabel(weeks: number[]): string {
+  if (weeks.length === 0) return '';
+  if (weeks.length === 1) return `${weeks[0]} week`;
+  return `${weeks.slice(0, -1).join(', ')} or ${weeks[weeks.length - 1]} weeks`;
+}
+
 export const dublin: DublinProgramme = {
   year: 2027,
 

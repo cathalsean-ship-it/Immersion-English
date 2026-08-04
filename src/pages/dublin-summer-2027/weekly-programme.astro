@@ -12,7 +12,6 @@
  * Only the lesson volume below is confirmed in dublin-overview-copy.md.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProviderBlock from '../../components/ProviderBlock.astro';
 import { dublin } from '../../data/dublin';
 
 const { lessonsPerWeek, hoursPerWeek } = dublin;
@@ -49,23 +48,40 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
   <!-- HOLDING -->
   <section class="section">
     <div class="container-x">
-      <div class="max-w-[62ch] mx-auto">
-        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-4">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">A week at the centre</span>
+        <h2>Mornings in class. Afternoons out.</h2>
+        <p>
           Students take <strong class="text-ink">{lessonsPerWeek} lessons every week</strong>
-          ({hoursPerWeek} hours) with the centre's qualified native-speaker teachers.
-          Evening and weekend activities are run by the centre's own activity team.
+          ({hoursPerWeek} hours) with the centre's qualified native-speaker teachers, with
+          excursions and activities built around them.
         </p>
+      </div>
 
-        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
-          The day-by-day timetable for Summer {dublin.year} is coming soon.
-        </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+        {[
+          { title: 'Lessons', body: `${lessonsPerWeek} lessons a week – ${hoursPerWeek} hours – after an online placement test puts every student in the right class.` },
+          { title: 'Excursions', body: "Full-day and half-day excursions run by MLA's local staff, with transport and entry tickets included." },
+          { title: 'Evenings and weekends', body: "Activities run by the centre's own team – quiz and games nights, discos, a talent show and a graduation ceremony." },
+        ].map(({ title, body }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0;">{body}</p>
+          </div>
+        ))}
+      </div>
 
+      <div class="max-w-[62ch] mx-auto">
         {/* Decorative only. Generic photography — not the NCI centre, and not an
-            excursion location, since neither is confirmed. */}
+            excursion location, since neither is confirmed. alt="" because the
+            surrounding copy already describes it. */}
         <div class="rounded-md overflow-hidden shadow-lift mb-8">
           <img
             src="/teens-cafe.webp"
-            alt="Teenagers talking together"
+            alt=""
             class="img-greyscale w-full object-cover"
             style="aspect-ratio: 16/9; display: block;"
             loading="lazy" />
@@ -74,6 +90,10 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
         {/* TODO: awaiting MLA 2027 confirmation — daily timetable, lesson times,
             excursion scheduling and evening activity programme for the NCI centre.
             The UCD-era timetable has been removed and must not be restored. */}
+        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
+          The day-by-day timetable is set by the centre. We will publish it here as soon
+          as MLA confirm the {dublin.year} programme.
+        </p>
 
         <div class="flex gap-3 flex-wrap">
           <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
@@ -82,7 +102,5 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
       </div>
     </div>
   </section>
-
-  <ProviderBlock />
 
 </BaseLayout>
