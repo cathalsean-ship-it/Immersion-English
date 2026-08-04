@@ -234,8 +234,9 @@ const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsW
         </p>
       )}
 
+      {excursions !== null && (
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        {(excursions ?? []).map(({ title, description: desc, duration: tag, image: img = null }) => (
+        {excursions.map(({ title, description: desc, duration: tag, image: img = null }) => (
           <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group trip-card-link">
             <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
               <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
@@ -255,7 +256,11 @@ const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsW
           </a>
         ))}
       </div>
+      )}
 
+      {/* The "See all trips" CTA renders only when there is a list to see. While
+          excursions is null it promised a page that lists nothing — a dead end. */}
+      {excursions !== null && (
       <div class="flex justify-center mt-10">
         <a
           href="/dublin-summer-2027/trips-and-activities"
@@ -271,6 +276,7 @@ const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsW
           </svg>
         </a>
       </div>
+      )}
 
     </div>
   </section>

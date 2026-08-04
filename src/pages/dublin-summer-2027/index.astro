@@ -333,9 +333,9 @@ const courseSchema = {
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { href: '/dublin-summer-2027/accommodation', title: 'Accommodation', desc: `En-suite accommodation on campus at the ${venue.name}.` },
-          { href: '/dublin-summer-2027/trips-and-activities', title: 'Trips & Activities', desc: `Details for Summer ${dublin.year} coming soon.` },
-          { href: '/dublin-summer-2027/weekly-programme', title: 'Weekly Programme', desc: `Details for Summer ${dublin.year} coming soon.` },
+          { href: '/dublin-summer-2027/accommodation', title: 'Accommodation', desc: `En-suite rooms on campus at the ${venue.name}, with full board.` },
+          { href: '/dublin-summer-2027/trips-and-activities', title: 'Trips & Activities', desc: `The full excursion programme, plus evening and weekend activities run by the centre's own team.` },
+          { href: '/dublin-summer-2027/weekly-programme', title: 'Weekly Programme', desc: `${lessonsPerWeek} lessons every week – ${hoursPerWeek} hours – with the centre's qualified teachers.` },
           { href: '/dublin-summer-2027/faqs', title: 'FAQs', desc: 'Answers to the questions parents and students ask most.' },
         ].map(({ href, title, desc }) => (
           <a href={href} class="trust-card group no-underline text-ink">

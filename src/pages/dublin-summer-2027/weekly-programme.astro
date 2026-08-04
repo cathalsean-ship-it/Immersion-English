@@ -21,6 +21,7 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
 <BaseLayout
   title={`Weekly Programme – Dublin Summer ${dublin.year} | Immersion English`}
   description={`${lessonsPerWeek} lessons a week (${hoursPerWeek} hours) with qualified native-speaker teachers at MLA's summer centre in Dublin, plus evening and weekend activities. Timetable for Summer ${dublin.year} coming soon.`}
+  ogImage="/teens-cafe.webp"
 >
 
   <!-- HERO -->
@@ -58,6 +59,17 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
         <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
           The day-by-day timetable for Summer {dublin.year} is coming soon.
         </p>
+
+        {/* Decorative only. Generic photography — not the NCI centre, and not an
+            excursion location, since neither is confirmed. */}
+        <div class="rounded-md overflow-hidden shadow-lift mb-8">
+          <img
+            src="/teens-cafe.webp"
+            alt="Teenagers talking together"
+            class="img-greyscale w-full object-cover"
+            style="aspect-ratio: 16/9; display: block;"
+            loading="lazy" />
+        </div>
 
         {/* TODO: awaiting MLA 2027 confirmation — daily timetable, lesson times,
             excursion scheduling and evening activity programme for the NCI centre.

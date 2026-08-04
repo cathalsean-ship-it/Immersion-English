@@ -124,10 +124,67 @@ export const dublin: DublinProgramme = {
     'Personal spending',
   ],
 
-  // TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
-  // The six UCD-era excursions were self-chosen by Immersion English and are NOT
-  // MLA's programme. They must not be reinstated here.
-  excursions: null,
+  // SOURCE: MLA "Move Language Ahead – Junior Programmes 2026" catalogue, p.44,
+  // the Dublin / National College of Ireland centre. This is MLA's own published
+  // excursion programme, transcribed — not invented, and not the UCD-era list.
+  //
+  // CAVEAT: taken from the 2026 catalogue because the 2027 edition is not out.
+  // MLA has not confirmed the 2027 programme in writing. Excursions at a centre
+  // are usually stable year to year, but treat this as "MLA's published Dublin
+  // programme" rather than a 2027 guarantee until they confirm.
+  //
+  // Note for anyone tempted to re-add the old cards: Trinity College, the Book of
+  // Kells, Dublin Castle, Glendalough, Kilkenny, the Wicklow Mountains, Dublin Zoo
+  // and Dundrum are NOT on MLA's list. Howth, St Patrick's Cathedral, St Stephen's
+  // Green and Grafton Street are — that overlap is a coincidence, not a carry-over.
+  excursions: [
+    {
+      title: 'Galway',
+      description:
+        'A walking tour of the charming city in western Ireland, travelling by private bus with MLA local staff.',
+      duration: 'full-day',
+    },
+    {
+      title: 'Howth',
+      description:
+        "A picturesque fishing village on the Irish cliffs, known for its traditional fish and chips.",
+      duration: 'full-day',
+      image: '/howth.webp',
+    },
+    {
+      title: 'Georgian Walking Tour',
+      description:
+        'Discover Georgian Dublin, with its well-preserved architectural heritage.',
+      duration: 'half-day',
+    },
+    {
+      title: "St Patrick's Cathedral",
+      description:
+        "Ireland's largest church, founded near the well where the patron saint of Ireland baptised converts around 450 AD. Entrance ticket included.",
+      duration: 'half-day',
+      image: '/st-patricks-cathedral.webp',
+    },
+    {
+      title: "St Stephen's Green & Temple Bar",
+      description:
+        "Relax in one of the city's green lungs, then Temple Bar by night – one of Dublin's oldest and most characterful neighbourhoods.",
+      duration: 'half-day',
+      image: '/st-stephens-green.webp',
+    },
+    {
+      title: "George's Street Arcade & Grafton Street",
+      description:
+        'The covered Victorian arcade, followed by shopping on Grafton Street.',
+      duration: 'half-day',
+      image: '/grafton-street.webp',
+    },
+    {
+      title: 'EPIC Museum',
+      description:
+        'The Irish Emigration Museum – step into what it truly means to be Irish. Entrance ticket included.',
+      duration: 'half-day',
+    },
+  ],
 
   groupLeader: {
     name: 'Lenny',
