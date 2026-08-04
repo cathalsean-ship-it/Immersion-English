@@ -94,7 +94,13 @@ export const dublin: DublinProgramme = {
     area: 'Dublin Docklands',
   },
 
-  ages: { min: 12, max: 20 },
+  // This is the age range of the IMMERSION ENGLISH GROUP, not the centre's limit.
+  // MLA's catalogue (Junior Programmes 2026, p.44) lists the NCI centre as taking
+  // ages 12-20, and the approved copy said 12-20 as well. Narrowed to 12-18 on the
+  // site owner's instruction — a narrower group inside a wider centre is a normal
+  // arrangement, but it means copy must describe OUR group and must not state this
+  // as the centre's own age limit, which would be false.
+  ages: { min: 12, max: 18 },
   classSize: { average: 13, maximum: 18 },
   lessonsPerWeek: 20,
   hoursPerWeek: 15,

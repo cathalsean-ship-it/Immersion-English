@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { dublin } from '../../data/dublin';
 ---
 
 <BaseLayout
@@ -109,7 +110,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="article-cta">
         <p class="eyebrow eyebrow-dot mb-3">Experience English in Dublin</p>
         <h3 style="margin-bottom: 12px;">Dublin Summer Programme 2027</h3>
-        <p style="color: var(--ink-soft); margin-bottom: 24px;">Full English immersion in Dublin for students aged 12–20. Daily lessons, real-world experiences, and cultural adventures.</p>
+        <p style="color: var(--ink-soft); margin-bottom: 24px;">Full English immersion in Dublin for students aged {dublin.ages.min}–{dublin.ages.max}. Daily lessons, real-world experiences, and cultural adventures.</p>
         <a href="/dublin-summer-2027" class="btn btn-primary">
           Explore the programme
         </a>

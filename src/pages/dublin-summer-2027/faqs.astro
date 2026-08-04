@@ -67,8 +67,11 @@ const sections = [
         a: `Classes average ${classSize.average} students, with a maximum of ${classSize.maximum}.`,
       },
       {
-        q: 'What ages does the centre take?',
-        a: `${ages.min} to ${ages.max}.`,
+        // Careful: ages here is OUR group's range, not the centre's. MLA's
+        // catalogue lists the NCI centre as 12-20. Do not reword this to claim
+        // the centre only takes our range — that would be false.
+        q: 'What ages is this for?',
+        a: `Our group is for students aged ${ages.min} to ${ages.max}. The centre itself takes a slightly wider range, so there will be some students older than ${ages.max} on site from other groups. Students are grouped with others their own age for classes.`,
       },
       {
         q: 'Are students grouped by age?',
