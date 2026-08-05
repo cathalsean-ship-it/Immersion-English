@@ -74,6 +74,14 @@ export interface DublinProgramme {
     name: string;
     fullName: string;
     role: string;
+    /** Confirmed: she is in Dublin with the group for the stay. */
+    travelsToDublin: boolean;
+    /**
+     * Whether she flies OUT from Sofia with the students is a separate question
+     * and is NOT confirmed. It matters: Ryanair requires an under-16 to be on the
+     * same booking and flight as an adult over 18. Leave false until confirmed.
+     */
+    fliesFromSofia: boolean;
   };
   /** Confirmed to cover classes. Residence + evening activities NOT yet confirmed. */
   ageGroupingScope: {
@@ -254,14 +262,17 @@ export const dublin: DublinProgramme = {
   },
 
   // Named rather than "a Bulgarian speaker" — parents should know who they get.
-  // NOTE: the claim is that Lina is AVAILABLE in Bulgarian throughout, which is
-  // what the copy said before she was named. It is not a claim that she is on
-  // site in Dublin. Do not upgrade "available" to "on site" without confirming
-  // she travels — that is still open, same as the group leader's flights.
+  // Confirmed she travels and is in Dublin with the group, so copy may now say
+  // she is WITH them rather than merely available.
+  //
+  // Still separate and still unconfirmed: whether she flies out from Sofia
+  // alongside the students. Do not write that until fliesFromSofia is true.
   bulgarianContact: {
     name: 'Lina',
     fullName: 'Lina Georgieva',
     role: 'co-founder',
+    travelsToDublin: true,
+    fliesFromSofia: false,
   },
 
   ageGroupingScope: {
