@@ -58,11 +58,17 @@ export interface DublinProgramme {
     balanceDue: string | null;
   };
   securityDeposit: { currency: string; amount: number };
-  airportTransferFrom: { currency: string; amount: number };
   included: string[];
   notIncluded: string[];
   excursions: Excursion[] | null;
-  groupLeader: { name: string; role: string; teaches: boolean };
+  groupLeader: {
+    name: string;
+    role: string;
+    teaches: boolean;
+    /** Not yet settled. While false, no page may say he flies out with the group. */
+    travelsFromSofia: boolean;
+    meetsAt: string;
+  };
   /** Confirmed to cover classes. Residence + evening activities NOT yet confirmed. */
   ageGroupingScope: {
     classes: boolean;
@@ -135,7 +141,6 @@ export const dublin: DublinProgramme = {
 
   // Confirmed in the approved copy.
   securityDeposit: { currency: 'EUR', amount: 50 },
-  airportTransferFrom: { currency: 'EUR', amount: 35 },
 
   included: [
     '20 lessons every week (15 hours) – with qualified native-speaker teachers at the centre',
@@ -143,14 +148,20 @@ export const dublin: DublinProgramme = {
     'Full board – from dinner on the day of arrival to breakfast on the day of departure',
     'The full excursion programme – transport and entry tickets included, nothing extra to pay',
     "Evening and weekend activities – run by the centre's own activity team",
-    'Free pre-departure online course – weekly lessons from the November before you fly',
     'Placement test, course eBook and student portfolio – so parents can see exactly what a week achieved',
-    'An Immersion English group leader – with the group from the gate in Sofia to the arrivals hall home',
+    'An Immersion English group leader – meeting the group at Dublin Airport and with them for the stay',
+    // REMOVED on instruction: 'Free pre-departure online course – weekly lessons from
+    // the November before you fly'. Note this one IS confirmed in MLA's catalogue
+    // (p.44, "Up to 8 months of live online lessons included") and appears in the
+    // approved copy. It was removed as an offer, not because it is untrue — restore
+    // this line if that decision changes.
   ],
 
   notIncluded: [
     'Flights',
-    'Airport transfers (from €35 each way)',
+    // Price removed on instruction. The €35 figure came from the approved copy;
+    // do not reinstate a transfer price without a current quote.
+    'Airport transfers',
     'Travel and medical insurance',
     'Personal spending',
   ],
@@ -223,6 +234,17 @@ export const dublin: DublinProgramme = {
     // Immersion English does not teach on this programme. MLA's centre staff do.
     // No template may render a teaching claim for Dublin. This is always false.
     teaches: false,
+    // Whether the group leader flies out with the students is NOT yet settled.
+    // Until it is, no page may say he travels with them from Sofia — he meets
+    // them at Dublin Airport.
+    //
+    // This has an operational consequence, not just a copy one. Ryanair carries
+    // no unaccompanied minors: since September 2024 an under-16 must be on the
+    // same booking and flight as an adult over 18, or is denied boarding at the
+    // gate. With ages set at 12-18, students under 16 therefore cannot fly
+    // Sofia-Dublin alone. Do not write copy implying they can.
+    travelsFromSofia: false,
+    meetsAt: 'Dublin Airport',
   },
 
   ageGroupingScope: {

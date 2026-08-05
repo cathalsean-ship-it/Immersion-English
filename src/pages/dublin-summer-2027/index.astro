@@ -146,7 +146,7 @@ const courseSchema = {
             <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
           </div>
           <p style="margin: 0;">
-            {groupLeader.name} travels with the group from Sofia and back, and is there
+            {groupLeader.name} meets the group at {groupLeader.meetsAt} and is there
             for the whole stay.
           </p>
         </div>
@@ -254,12 +254,16 @@ const courseSchema = {
       <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center">
         <div>
           <span class="eyebrow eyebrow-dot">Supervision</span>
-          <h2 class="mt-4 mb-5">Nobody gets handed over at the airport.</h2>
+          {/* The previous heading, "Nobody gets handed over at the airport.", was
+              approved copy but is no longer true: it promised accompanied travel
+              from Sofia, which is not settled. Replaced rather than left standing.
+              Needs sign-off. */}
+          <h2 class="mt-4 mb-5">Someone is waiting when they land.</h2>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            {groupLeader.name} travels as group leader for the full stay. The classes in Dublin
-            are taught by the centre's own teaching team – his job is everything around them.
-            Settling students in, checking in every day, sorting out whatever comes up, and
-            being the person parents can ring.
+            {groupLeader.name} meets the group at {groupLeader.meetsAt} and is group leader
+            for the full stay. The classes in Dublin are taught by the centre's own teaching
+            team – his job is everything around them. Settling students in, checking in every
+            day, sorting out whatever comes up, and being the person parents can ring.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
             A Bulgarian speaker is available throughout.
