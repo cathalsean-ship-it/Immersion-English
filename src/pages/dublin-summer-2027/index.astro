@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
 import { dublin, durationLabel } from '../../data/dublin';
 
-const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, included, notIncluded, excursions, groupLeader } = dublin;
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, included, notIncluded, excursions, groupLeader, bulgarianContact } = dublin;
 
 
 // JSON-LD. Provider is MLA, not Immersion English. No `offers` block until the
@@ -81,7 +81,7 @@ const courseSchema = {
         <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[680px]">
           {[
             'Cambridge CELTA-qualified group leader from Sofia',
-            'Bulgarian speaker available throughout',
+            `${bulgarianContact.name}, our ${bulgarianContact.role}, on hand in Bulgarian`,
             'International centre, students from across Europe',
             'Full board, en-suite campus accommodation',
           ].map(item => (
@@ -266,9 +266,9 @@ const courseSchema = {
             day, sorting out whatever comes up, and being the person parents can ring.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
-            A Bulgarian speaker is available throughout.
+            And if it's easier in Bulgarian, {bulgarianContact.fullName} – who co-founded
+            the programme – is available throughout, for you or for your child.
           </p>
-          {/* TODO: awaiting confirmation — if Lina or Liana travel, name them here. */}
         </div>
         <div style="position: relative;">
           <div style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 8px 32px rgba(20,32,26,0.12);">
@@ -281,7 +281,7 @@ const courseSchema = {
           </div>
           <div style="position: absolute; bottom: -20px; left: -16px; background: var(--ink); color: white; border-radius: 10px; padding: 12px 16px; max-width: 220px; box-shadow: 0 6px 20px rgba(20,32,26,0.22);">
             <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange-text); margin: 0 0 5px;">From Sofia to Dublin</p>
-            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">A Bulgarian speaker on hand at every step. Your child is never alone.</p>
+            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">{bulgarianContact.name} on hand in Bulgarian at every step. Your child is never alone.</p>
           </div>
         </div>
       </div>

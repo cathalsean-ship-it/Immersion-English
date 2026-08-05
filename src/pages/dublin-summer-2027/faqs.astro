@@ -22,7 +22,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { dublin, durationLabel } from '../../data/dublin';
 
-const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, notIncluded } = dublin;
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, notIncluded, bulgarianContact } = dublin;
 
 const fullDay = (excursions ?? []).filter(e => e.duration === 'full-day');
 const halfDay = (excursions ?? []).filter(e => e.duration === 'half-day');
@@ -86,7 +86,7 @@ const sections = [
       },
       {
         q: 'Will anyone there speak Bulgarian?',
-        a: 'Yes. A Bulgarian speaker is available throughout the stay.',
+        a: `Yes. ${bulgarianContact.fullName}, who co-founded the programme, is available in Bulgarian throughout – whether it's your child who needs something or you.`,
       },
     ],
   },
@@ -148,7 +148,7 @@ const sections = [
       },
       {
         q: 'Who do I call if something happens?',
-        a: `You call ${groupLeader.name} directly. Being the person parents can ring is a large part of the job, and a Bulgarian speaker is available throughout.`,
+        a: `You call ${groupLeader.name} directly – being the person parents can ring is a large part of the job. If you'd rather do it in Bulgarian, ring ${bulgarianContact.name}.`,
       },
     ],
   },

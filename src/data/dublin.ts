@@ -69,6 +69,12 @@ export interface DublinProgramme {
     travelsFromSofia: boolean;
     meetsAt: string;
   };
+  /** The named Bulgarian-speaking contact for parents and students. */
+  bulgarianContact: {
+    name: string;
+    fullName: string;
+    role: string;
+  };
   /** Confirmed to cover classes. Residence + evening activities NOT yet confirmed. */
   ageGroupingScope: {
     classes: boolean;
@@ -245,6 +251,17 @@ export const dublin: DublinProgramme = {
     // Sofia-Dublin alone. Do not write copy implying they can.
     travelsFromSofia: false,
     meetsAt: 'Dublin Airport',
+  },
+
+  // Named rather than "a Bulgarian speaker" — parents should know who they get.
+  // NOTE: the claim is that Lina is AVAILABLE in Bulgarian throughout, which is
+  // what the copy said before she was named. It is not a claim that she is on
+  // site in Dublin. Do not upgrade "available" to "on site" without confirming
+  // she travels — that is still open, same as the group leader's flights.
+  bulgarianContact: {
+    name: 'Lina',
+    fullName: 'Lina Georgieva',
+    role: 'co-founder',
   },
 
   ageGroupingScope: {
