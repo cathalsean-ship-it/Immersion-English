@@ -1,25 +1,38 @@
 ---
 /**
- * HOLDING PAGE.
- *
  * The previous version was a full seven-day timetable for the cancelled UCD
  * programme: check-in at Belgrove Residences, lunches at the UCD food hall,
  * named half-day trips (Trinity College & Book of Kells, Dublin Castle &
  * St Patrick's Cathedral, Howth, Grafton Street, Dundrum), a Kilkenny /
- * Wicklow / Glendalough full day, and a "6 day trips" stat.
+ * Wicklow / Glendalough full day, and a "6 day trips" stat. That is gone
+ * and must not be restored.
  *
- * The 2027 timetable is set by MLA at the NCI centre and has not been supplied.
- * Only the lesson volume below is confirmed in dublin-overview-copy.md.
+ * SOURCE for the sample day below: MLA's published Dublin/NCI programme
+ * flyer ("Programme-Dublin-NCI-2026-EFJ.pdf"), the "A SAMPLE SCHEDULE"
+ * table. This is the centre's own published typical day for this exact
+ * campus — not a UCD-era guess, not invented. MLA has not separately
+ * confirmed this for 2027; treat as "the centre's typical day" rather
+ * than a 2027 guarantee until they do, same caveat already applied to
+ * the excursions list in dublin.ts.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { dublin } from '../../data/dublin';
 
 const { lessonsPerWeek, hoursPerWeek } = dublin;
+
+const sampleDay = [
+  { time: '8:00 AM', activity: 'Wake up and breakfast' },
+  { time: '9:00 AM', activity: 'Lesson, or an excursion / activity' },
+  { time: '12:30 PM', activity: 'Lunch' },
+  { time: '2:00 PM', activity: 'Lesson, or an excursion / activity' },
+  { time: '6:30 PM', activity: 'Dinner' },
+  { time: '7:30–10:00 PM', activity: 'Evening activities' },
+];
 ---
 
 <BaseLayout
   title={`Weekly Programme – Dublin Summer ${dublin.year} | Immersion English`}
-  description={`${lessonsPerWeek} lessons a week (${hoursPerWeek} hours) with qualified native-speaker teachers at MLA's summer centre in Dublin, plus evening and weekend activities. Timetable for Summer ${dublin.year} coming soon.`}
+  description={`${lessonsPerWeek} lessons a week (${hoursPerWeek} hours) with qualified native-speaker teachers at an international summer centre in Dublin, plus daily excursions and evening activities.`}
   ogImage="/teens-cafe.webp"
 >
 
@@ -40,12 +53,12 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
       </h1>
       <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[48ch] leading-[1.55]">
         {lessonsPerWeek} lessons every week – {hoursPerWeek} hours – with qualified
-        native-speaker teachers at the centre, plus evening and weekend activities.
+        native-speaker teachers at the centre, plus daily excursions and evening activities.
       </p>
     </div>
   </section>
 
-  <!-- HOLDING -->
+  <!-- OVERVIEW CARDS -->
   <section class="section">
     <div class="container-x">
       <div class="section-head">
@@ -61,8 +74,8 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
         {[
           { title: 'Lessons', body: `${lessonsPerWeek} lessons a week – ${hoursPerWeek} hours – after an online placement test puts every student in the right class.` },
-          { title: 'Excursions', body: "Full-day and half-day excursions run by MLA's local staff, with transport and entry tickets included." },
-          { title: 'Evenings and weekends', body: "Activities run by the centre's own team – quiz and games nights, discos, a talent show and a graduation ceremony." },
+          { title: 'Excursions', body: "Full-day and half-day excursions run by the centre's local staff, with transport and entry tickets included." },
+          { title: 'Evenings and weekends', body: 'Cooking, art and games by day; talent shows, karaoke, themed discos and movie nights once the sun goes down.' },
         ].map(({ title, body }) => (
           <div class="trust-card">
             <div style="display: flex; flex-direction: column; gap: 14px;">
@@ -73,11 +86,31 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- SAMPLE DAY -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">A typical day</span>
+        <h2>Structured, but never idle.</h2>
+        <p>
+          Lessons in the morning or afternoon, excursions and activities filling the rest –
+          the centre's own published rhythm for a day at this campus.
+        </p>
+      </div>
 
       <div class="max-w-[62ch] mx-auto">
-        {/* Decorative only. Generic photography — not the NCI centre, and not an
-            excursion location, since neither is confirmed. alt="" because the
-            surrounding copy already describes it. */}
+        <ul class="list-none p-0 m-0 flex flex-col gap-3 mb-10">
+          {sampleDay.map(({ time, activity }) => (
+            <li class="flex items-center gap-4 rounded-lg px-5 py-4" style="background: var(--cream); border: 1px solid var(--line);">
+              <span class="font-heading font-semibold text-[0.92rem] flex-shrink-0 w-[110px]" style="color: var(--green);">{time}</span>
+              <span class="text-[0.95rem] text-ink">{activity}</span>
+            </li>
+          ))}
+        </ul>
+
         <div class="rounded-md overflow-hidden shadow-lift mb-8">
           <img
             src="/teens-cafe.webp"
@@ -86,14 +119,6 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
             style="aspect-ratio: 16/9; display: block;"
             loading="lazy" />
         </div>
-
-        {/* TODO: awaiting MLA 2027 confirmation — daily timetable, lesson times,
-            excursion scheduling and evening activity programme for the NCI centre.
-            The UCD-era timetable has been removed and must not be restored. */}
-        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
-          The day-by-day timetable is set by the centre. We will publish it here as soon
-          as MLA confirm the {dublin.year} programme.
-        </p>
 
         <div class="flex gap-3 flex-wrap">
           <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>

@@ -155,7 +155,7 @@ export const dublin: DublinProgramme = {
     'En-suite accommodation on campus – at the National College of Ireland, in the heart of Dublin',
     'Full board – from dinner on the day of arrival to breakfast on the day of departure',
     'The full excursion programme – transport and entry tickets included, nothing extra to pay',
-    "Evening and weekend activities – run by the centre's own activity team",
+    "Daytime and evening activities – cooking, art and games by day; talent shows, karaoke, discos and movie nights once the sun goes down",
     'Placement test, course eBook and student portfolio – so parents can see exactly what a week achieved',
     'An Immersion English group leader – with the group from the gate in Sofia to the arrivals hall home',
   ],
