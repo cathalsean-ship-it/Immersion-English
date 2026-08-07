@@ -117,8 +117,8 @@ const courseSchema = {
             desc: `${groupLeader.credential} and travelling with the group the whole way — from the gate in Sofia to the arrivals hall home.`,
           },
           {
-            title: `${secondChaperone?.name}, ${secondChaperone?.role}`,
-            desc: `A ${secondChaperone?.role.toLowerCase()} with the group throughout — the person parents can always reach directly, in Bulgarian.`,
+            title: secondChaperone?.role,
+            desc: `Travelling with the group throughout — the person parents can always reach directly, in Bulgarian.`,
           },
           {
             title: `${venue.shortName}, in the heart of Dublin`,
@@ -304,8 +304,8 @@ const courseSchema = {
             being the person parents can ring.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
-            {secondChaperone?.name} travels with the group too, as a Bulgarian speaker
-            throughout the stay.
+            A {secondChaperone?.role.replace('Native ', 'native ')} travels with the
+            group too, throughout the stay.
           </p>
         </div>
         <div style="position: relative;">
@@ -319,7 +319,7 @@ const courseSchema = {
           </div>
           <div style="position: absolute; bottom: -20px; left: -16px; background: var(--ink); color: white; border-radius: 10px; padding: 12px 16px; max-width: 220px; box-shadow: 0 6px 20px rgba(20,32,26,0.22);">
             <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange-text); margin: 0 0 5px;">From Sofia to Dublin</p>
-            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">{secondChaperone?.name}, a Bulgarian speaker, on hand at every step. Your child is never alone.</p>
+            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">A native Bulgarian speaker on hand at every step. Your child is never alone.</p>
           </div>
         </div>
       </div>

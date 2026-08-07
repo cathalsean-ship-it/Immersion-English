@@ -71,8 +71,9 @@ export interface DublinProgramme {
   notIncluded: string[];
   excursions: Excursion[] | null;
   groupLeader: { name: string; role: string; credential: string | null; teaches: boolean };
-  /** The second adult travelling with the group. Null if only one leader confirmed. */
-  secondChaperone: { name: string; role: string } | null;
+  /** The second adult travelling with the group. Name withheld by design —
+   *  described by role only. Null if no second chaperone is confirmed. */
+  secondChaperone: { name: string | null; role: string } | null;
   /** Confirmed to cover classes. Residence + evening activities NOT yet confirmed. */
   ageGroupingScope: {
     classes: boolean;
@@ -135,8 +136,9 @@ export const dublin: DublinProgramme = {
 
   price: {
     currency: 'EUR',
-    // TODO: awaiting MLA 2027 confirmation — retail price pending 2027 net rates.
-    fromAmount: null,
+    // Retail price is Immersion English's own decision — separate from MLA's
+    // net rate, which never appears publicly. Not contingent on MLA confirmation.
+    fromAmount: 1550,
     // TODO: awaiting MLA 2027 confirmation — deposit terms pending 2027 T&Cs.
     depositPercent: null,
     depositDue: null,
@@ -239,11 +241,10 @@ export const dublin: DublinProgramme = {
     teaches: false,
   },
 
-  // Resolves the earlier "if Lina or Liana travel, name them here" TODO —
-  // confirmed by the site owner as Lina for this programme.
+  // Name withheld by site owner's instruction — described by role only.
   secondChaperone: {
-    name: 'Lina',
-    role: 'Bulgarian speaker',
+    name: null,
+    role: 'Native Bulgarian speaker',
   },
 
   ageGroupingScope: {
