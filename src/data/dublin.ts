@@ -191,6 +191,7 @@ export const dublin: DublinProgramme = {
       description:
         'A walking tour of the charming city in western Ireland, travelling by private bus with MLA local staff.',
       duration: 'full-day',
+      image: '/galway.webp',
     },
     {
       title: 'Howth',
