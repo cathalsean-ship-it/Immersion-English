@@ -102,20 +102,36 @@ const nciGalleryImages = [
         {/* Genuine NCI campus photography supplied by MLA — bedrooms, communal
             residence spaces and teaching spaces. Replaces the earlier generic
             placeholder photo. Do not caption individual rooms as guaranteed —
-            room allocation is still pending MLA confirmation, see note below. */}
-        <div class="mb-8">
+            room allocation is still pending MLA confirmation (see TODO below). */}
+        <div class="mb-10">
           <PhotoCarousel images={nciGalleryImages} id="nci-accommodation-gallery" />
+        </div>
+
+        <h3 class="text-[1.15rem] mb-4">The area.</h3>
+        <p class="text-ink-soft text-[1.05rem] leading-relaxed mb-8">
+          The campus sits in Dublin's Docklands, the modern, waterside stretch of
+          the city along the Liffey known for its striking architecture and
+          buzzing café culture — all a short walk from Temple Bar and the
+          city centre.
+        </p>
+
+        <div class="rounded-md overflow-hidden shadow-lift mb-10" style="aspect-ratio: 16/9;">
+          <iframe
+            src="https://www.youtube.com/embed/1xoFnAmRRnk"
+            title="Dublin Docklands drone video"
+            style="width: 100%; height: 100%; display: block; border: 0;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
 
         {/* TODO: awaiting MLA 2027 confirmation — exact room configuration and
             night supervision arrangements, and written confirmation of whether age
             grouping applies in the residence as well as in classes (see
             dublin.ts ageGroupingScope.residence). The previous UCD / Belgrove
-            Residences copy has been removed and must not be restored. */}
-        <p class="text-ink-soft text-[1.08rem] leading-relaxed mb-8">
-          Room allocation and the remaining residence detail come from MLA, and
-          we will publish them here as soon as they confirm.
-        </p>
+            Residences copy has been removed and must not be restored. Once MLA
+            confirms, reinstate a short "room allocation" note here if needed. */}
 
         <div class="flex gap-3 flex-wrap">
           <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
