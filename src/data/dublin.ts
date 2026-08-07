@@ -67,6 +67,10 @@ export interface DublinProgramme {
    * nationals — do not imply it's relevant to our students.
    */
   visaRequired: boolean;
+  /** Sourced from MLA's price list T&Cs: "Medical Staff provided with a minimum
+   *  of 200 students on site." Applies to the centre overall, not exclusively
+   *  to our group — phrase copy accordingly. */
+  medicalStaff: string;
   included: string[];
   notIncluded: string[];
   excursions: Excursion[] | null;
@@ -149,6 +153,7 @@ export const dublin: DublinProgramme = {
   securityDeposit: { currency: 'EUR', amount: 50 },
   airportTransferFrom: { currency: 'EUR', amount: 35 },
   visaRequired: false,
+  medicalStaff: 'Qualified medical staff on site 24 hours a day.',
 
   included: [
     '20 lessons every week (15 hours) – with qualified native-speaker teachers at the centre',

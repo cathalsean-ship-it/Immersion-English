@@ -22,7 +22,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { dublin, durationLabel } from '../../data/dublin';
 
-const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, airportTransferFrom, visaRequired } = dublin;
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, airportTransferFrom, visaRequired, medicalStaff } = dublin;
 
 const fullDay = (excursions ?? []).filter(e => e.duration === 'full-day');
 const halfDay = (excursions ?? []).filter(e => e.duration === 'half-day');
@@ -133,7 +133,7 @@ const sections = [
     faqs: [
       {
         q: 'Who is looking after my child?',
-        a: `On site, MLA. Their centre staff run the residence, the classes and the activities, and MLA provide a welfare manager responsible for students' wellbeing and 24-hour on-site medical assistance. Travelling with the group, ${groupLeader.name} goes from the gate in Sofia to the arrivals hall on the way home and is there for the whole stay.`,
+        a: `On site, MLA. Their centre staff run the residence, the classes and the activities, and MLA provide a welfare manager responsible for students' wellbeing. ${medicalStaff} Travelling with the group, ${groupLeader.name} goes from the gate in Sofia to the arrivals hall on the way home and is there for the whole stay.`,
       },
       {
         q: 'Does my child travel alone?',
