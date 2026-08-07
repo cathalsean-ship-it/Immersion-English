@@ -1,0 +1,207 @@
+---
+export interface CarouselImage {
+  src: string;
+  alt: string;
+}
+
+export interface Props {
+  images: CarouselImage[];
+  id?: string;
+}
+
+const { images, id = 'photo-carousel' } = Astro.props;
+---
+
+<div class="photo-carousel" data-carousel-id={id}>
+  <div class="photo-carousel-viewport">
+    <div class="photo-carousel-track" data-track>
+      {images.map((img, i) => (
+        <div class="photo-carousel-slide">
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="img-greyscale no-hover-reveal"
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+        </div>
+      ))}
+    </div>
+
+    <button type="button" class="carousel-btn carousel-btn-prev" data-prev aria-label="Previous photo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button type="button" class="carousel-btn carousel-btn-next" data-next aria-label="Next photo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <div class="photo-carousel-counter" data-counter>1 / {images.length}</div>
+  </div>
+
+  <div class="photo-carousel-dots" data-dots>
+    {images.map((_, i) => (
+      <button
+        type="button"
+        class="carousel-dot"
+        data-dot={i}
+        aria-label={`Go to photo ${i + 1}`}
+      ></button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .photo-carousel {
+    width: 100%;
+  }
+
+  .photo-carousel-viewport {
+    position: relative;
+  }
+
+  .photo-carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0;
+    border-radius: var(--radius-md, 14px);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .photo-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .photo-carousel-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: var(--radius-md, 14px);
+  }
+
+  .photo-carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink, #14201a);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(20, 32, 26, 0.18);
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 2;
+  }
+  .carousel-btn:hover {
+    background: #ffffff;
+  }
+  .carousel-btn-prev { left: 12px; }
+  .carousel-btn-next { right: 12px; }
+
+  .photo-carousel-counter {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(20, 32, 26, 0.65);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    z-index: 2;
+  }
+
+  .photo-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 14px;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(20, 32, 26, 0.18);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .carousel-dot.is-active {
+    background: var(--orange, #FF914D);
+    transform: scale(1.25);
+  }
+
+  @media (max-width: 640px) {
+    .carousel-btn {
+      width: 34px;
+      height: 34px;
+    }
+  }
+</style>
+
+<script>
+  function initCarousels() {
+    document.querySelectorAll<HTMLElement>('[data-carousel-id]').forEach((root) => {
+      if (root.dataset.carouselInit === 'true') return;
+      root.dataset.carouselInit = 'true';
+
+      const track = root.querySelector<HTMLElement>('[data-track]');
+      const prevBtn = root.querySelector<HTMLButtonElement>('[data-prev]');
+      const nextBtn = root.querySelector<HTMLButtonElement>('[data-next]');
+      const counter = root.querySelector<HTMLElement>('[data-counter]');
+      const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+      if (!track) return;
+
+      const slideCount = track.children.length;
+
+      const setActive = (index: number) => {
+        dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+        if (counter) counter.textContent = `${index + 1} / ${slideCount}`;
+      };
+
+      const goTo = (index: number) => {
+        const clamped = Math.max(0, Math.min(index, slideCount - 1));
+        const slide = track.children[clamped] as HTMLElement;
+        if (slide) {
+          track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+        }
+      };
+
+      const currentIndex = () => {
+        const slideWidth = (track.children[0] as HTMLElement)?.offsetWidth || 1;
+        return Math.round(track.scrollLeft / slideWidth);
+      };
+
+      prevBtn?.addEventListener('click', () => goTo(currentIndex() - 1));
+      nextBtn?.addEventListener('click', () => goTo(currentIndex() + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+      let scrollTimeout: ReturnType<typeof setTimeout>;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => setActive(currentIndex()), 80);
+      });
+
+      setActive(0);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initCarousels);
+  document.addEventListener('astro:page-load', initCarousels);
+</script>
