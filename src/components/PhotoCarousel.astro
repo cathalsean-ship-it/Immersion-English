@@ -20,7 +20,6 @@ const { images, id = 'photo-carousel' } = Astro.props;
           <img
             src={img.src}
             alt={img.alt}
-            class="img-greyscale no-hover-reveal"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
         </div>
