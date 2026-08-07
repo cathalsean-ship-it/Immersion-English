@@ -22,7 +22,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { dublin, durationLabel } from '../../data/dublin';
 
-const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, airportTransferFrom } = dublin;
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, airportTransferFrom, visaRequired } = dublin;
 
 const fullDay = (excursions ?? []).filter(e => e.duration === 'full-day');
 const halfDay = (excursions ?? []).filter(e => e.duration === 'half-day');
@@ -179,6 +179,12 @@ const sections = [
       {
         q: 'What is not included?',
         a: `Flights, airport transfers (from €${airportTransferFrom.amount} each way), travel and medical insurance, and personal spending. A refundable €${securityDeposit.amount} security deposit is collected on arrival.`,
+      },
+      {
+        q: 'Do students need a visa?',
+        a: visaRequired
+          ? 'Yes — see below for what is required.'
+          : 'No. Bulgaria is an EU member state, and Ireland grants free movement to EU citizens for tourism and study stays like this one. No visa is required for Bulgarian passport holders.',
       },
       {
         q: 'Are flights included?',

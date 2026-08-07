@@ -59,10 +59,20 @@ export interface DublinProgramme {
   };
   securityDeposit: { currency: string; amount: number };
   airportTransferFrom: { currency: string; amount: number };
+  /**
+   * Applies to Bulgarian passport holders only. Bulgaria is an EU member
+   * state; Ireland grants free movement to EU citizens for tourism and
+   * short study stays, so no visa applies to this group. MLA's own T&Cs
+   * reference a C-Visa (Ireland) process, but that applies to non-EU
+   * nationals — do not imply it's relevant to our students.
+   */
+  visaRequired: boolean;
   included: string[];
   notIncluded: string[];
   excursions: Excursion[] | null;
-  groupLeader: { name: string; role: string; teaches: boolean };
+  groupLeader: { name: string; role: string; credential: string | null; teaches: boolean };
+  /** The second adult travelling with the group. Null if only one leader confirmed. */
+  secondChaperone: { name: string; role: string } | null;
   /** Confirmed to cover classes. Residence + evening activities NOT yet confirmed. */
   ageGroupingScope: {
     classes: boolean;
@@ -110,11 +120,11 @@ export const dublin: DublinProgramme = {
 
   // This is the age range of the IMMERSION ENGLISH GROUP, not the centre's limit.
   // MLA's catalogue (Junior Programmes 2026, p.44) lists the NCI centre as taking
-  // ages 12-20, and the approved copy said 12-20 as well. Narrowed to 12-18 on the
+  // ages 12-20, and the approved copy said 12-20 as well. Narrowed to 12-17 on the
   // site owner's instruction — a narrower group inside a wider centre is a normal
   // arrangement, but it means copy must describe OUR group and must not state this
   // as the centre's own age limit, which would be false.
-  ages: { min: 12, max: 18 },
+  ages: { min: 12, max: 17 },
   classSize: { average: 13, maximum: 18 },
   lessonsPerWeek: 20,
   hoursPerWeek: 15,
@@ -136,6 +146,7 @@ export const dublin: DublinProgramme = {
   // Confirmed in the approved copy.
   securityDeposit: { currency: 'EUR', amount: 50 },
   airportTransferFrom: { currency: 'EUR', amount: 35 },
+  visaRequired: false,
 
   included: [
     '20 lessons every week (15 hours) – with qualified native-speaker teachers at the centre',
@@ -143,7 +154,6 @@ export const dublin: DublinProgramme = {
     'Full board – from dinner on the day of arrival to breakfast on the day of departure',
     'The full excursion programme – transport and entry tickets included, nothing extra to pay',
     "Evening and weekend activities – run by the centre's own activity team",
-    'Free pre-departure online course – weekly lessons from the November before you fly',
     'Placement test, course eBook and student portfolio – so parents can see exactly what a week achieved',
     'An Immersion English group leader – with the group from the gate in Sofia to the arrivals hall home',
   ],
@@ -220,9 +230,20 @@ export const dublin: DublinProgramme = {
   groupLeader: {
     name: 'Lenny',
     role: 'Group leader',
+    // Trust/credibility signal only — see `teaches` below. He is Cambridge
+    // CELTA-qualified, but that is not the same claim as teaching this
+    // programme's classes, which belong to the centre's own teaching team.
+    credential: 'Cambridge CELTA-qualified',
     // Immersion English does not teach on this programme. MLA's centre staff do.
     // No template may render a teaching claim for Dublin. This is always false.
     teaches: false,
+  },
+
+  // Resolves the earlier "if Lina or Liana travel, name them here" TODO —
+  // confirmed by the site owner as Lina for this programme.
+  secondChaperone: {
+    name: 'Lina',
+    role: 'Bulgarian speaker',
   },
 
   ageGroupingScope: {

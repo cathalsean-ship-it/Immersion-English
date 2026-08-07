@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
 import { dublin, durationLabel } from '../../data/dublin';
 
-const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, included, notIncluded, excursions, groupLeader } = dublin;
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
 
 
 // JSON-LD. Provider is MLA, not Immersion English. No `offers` block until the
@@ -95,6 +95,48 @@ const courseSchema = {
     </div>
   </section>
 
+  <!-- HIGHLIGHTS -->
+  <section class="section" style="padding-top: 44px; padding-bottom: 44px;">
+    <div class="container-x">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {
+            title: 'Full board',
+            desc: 'Every meal covered, from dinner on arrival to breakfast on departure day. Nothing left to plan or pay for once you land.',
+          },
+          {
+            title: `Ages ${ages.min}–${ages.max}`,
+            desc: 'A group built for this age range specifically — not folded into a wider one that spans very different stages of teenage life.',
+          },
+          {
+            title: 'International, grouped by level',
+            desc: "A placement test before departure places every student by CEFR level, alongside students from across Europe — not just their own classmates from home.",
+          },
+          {
+            title: `${groupLeader.name}, ${groupLeader.credential}`,
+            desc: `${groupLeader.credential} and travelling with the group the whole way — from the gate in Sofia to the arrivals hall home.`,
+          },
+          {
+            title: `${secondChaperone?.name}, ${secondChaperone?.role}`,
+            desc: `A ${secondChaperone?.role.toLowerCase()} with the group throughout — the person parents can always reach directly, in Bulgarian.`,
+          },
+          {
+            title: `${venue.shortName}, in the heart of Dublin`,
+            desc: `Campus accommodation at the ${venue.name}, in ${venue.area} — a short walk from Temple Bar and the city centre.`,
+          },
+        ].map(({ title, desc }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0; font-size: 1.05rem;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0; font-size: 0.92rem;">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   {/* TODO: awaiting review — the programme video was filmed at the cancelled UCD
       programme and shows the old venue, group and excursions. Commented out
       rather than deleted. Restore only with MLA/NCI footage. */}
@@ -119,7 +161,7 @@ const courseSchema = {
             <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
           </div>
           <p style="margin: 0;">
-            An online placement test before departure puts every student in the right class.
+            An online placement test before departure places every student by CEFR level.
             Students are grouped with others their own age.
             {/* TODO: awaiting MLA 2027 confirmation — written confirmation requested that
                 age grouping applies to residence and evening activities as well as classes.
@@ -262,9 +304,9 @@ const courseSchema = {
             being the person parents can ring.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
-            A Bulgarian speaker is available throughout.
+            {secondChaperone?.name} travels with the group too, as a Bulgarian speaker
+            throughout the stay.
           </p>
-          {/* TODO: awaiting confirmation — if Lina or Liana travel, name them here. */}
         </div>
         <div style="position: relative;">
           <div style="border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 8px 32px rgba(20,32,26,0.12);">
@@ -277,7 +319,7 @@ const courseSchema = {
           </div>
           <div style="position: absolute; bottom: -20px; left: -16px; background: var(--ink); color: white; border-radius: 10px; padding: 12px 16px; max-width: 220px; box-shadow: 0 6px 20px rgba(20,32,26,0.22);">
             <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange-text); margin: 0 0 5px;">From Sofia to Dublin</p>
-            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">A Bulgarian speaker on hand at every step. Your child is never alone.</p>
+            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">{secondChaperone?.name}, a Bulgarian speaker, on hand at every step. Your child is never alone.</p>
           </div>
         </div>
       </div>
