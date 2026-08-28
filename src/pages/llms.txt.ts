@@ -105,7 +105,6 @@ ${notIncluded.map(i => `- ${i}`).join('\n')}
 - ${groupLeader.credential} ${groupLeader.role.toLowerCase()} who meets the group at ${groupLeader.meetsAt} and is with them throughout
 ${secondChaperone ? `- ${secondChaperone.role} with the group throughout\n` : ''}- Full board and en-suite campus accommodation included
 - One fixed programme of ${durationLabel(durationsWeeks)} — a single set of dates for the whole group
-- Pre-departure meeting in Sofia for parents and students
 - British Council credentials of both founders
 
 ## Contact

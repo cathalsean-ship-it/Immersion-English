@@ -79,9 +79,26 @@ import { dublin } from '../data/dublin';
             ))}
           </div>
 
+          {/* The box here promised a pre-departure evening in Sofia where parents meet
+              the team in person. That is a UCD-era claim, not in the approved 2027 copy,
+              and the offer was withdrawn — it survived on this page only because the
+              removal never reached it. Do not reinstate it without confirming the event
+              actually happens. It also duplicated supervision copy that the Dublin FAQs
+              maintain properly, so this now links there rather than restating it. */}
           <div class="mt-8 bg-cream border border-line rounded-lg p-6">
-            <p class="font-heading font-semibold text-ink mb-2">Pastoral support for Dublin Summer 2027</p>
-            <p class="text-ink-soft text-[0.92rem] leading-relaxed">Before departure, you'll meet Lenny and our Bulgarian-speaking team member in person at a pre-departure evening in Sofia. During the programme, our Bulgarian-speaking staff member is available throughout for any questions or concerns – from you or your child.</p>
+            <p class="font-heading font-semibold text-ink mb-2">Sending a child to Dublin?</p>
+            <p class="text-ink-soft text-[0.92rem] leading-relaxed mb-3">
+              A {dublin.secondChaperone?.role.replace('Native ', 'native ')} is with the group
+              throughout the stay, so there is always someone to talk to in Bulgarian – for you
+              or your child. Supervision, travel and who to ring are all covered in the Dublin FAQs.
+            </p>
+            <a
+              href="/dublin-summer-2027/faqs#supervision-and-safety"
+              class="text-[0.9rem] font-heading font-semibold no-underline hover:underline"
+              style="color: var(--green);"
+            >
+              Supervision and safety →
+            </a>
           </div>
         </div>
 
