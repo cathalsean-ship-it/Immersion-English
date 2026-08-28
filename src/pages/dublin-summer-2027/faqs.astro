@@ -172,9 +172,11 @@ const sections = [
       },
       {
         q: 'How long is the programme?',
-        // One fixed duration. Do NOT re-add "other durations on request" — the
-        // group travels together for a single two-week stay.
-        a: `${durationLabel(durationsWeeks)}. The group travels out together and comes home together, so there is one departure and one return.`,
+        // One fixed duration. Do NOT re-add "other durations on request".
+        // This answer is about DATES only. Do not say the group travels out or
+        // comes home together: flights are booked separately by each family and
+        // students may not travel on the same flight at all.
+        a: `${durationLabel(durationsWeeks)}. One fixed set of dates for the whole group, with no shorter or longer options.`,
       },
       {
         q: 'How do I hold a place?',
