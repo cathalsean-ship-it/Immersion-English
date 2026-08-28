@@ -17,29 +17,25 @@ import { dublin } from '../../data/dublin';
 
 const { venue } = dublin;
 
-// Genuine NCI campus photography, supplied by MLA. Ordered: building entrance,
-// student bedrooms, communal living/kitchen spaces, then teaching spaces.
+// Genuine NCI campus photography, supplied by MLA. Ordered as a walk-through:
+// entrance, bedrooms, shared living and kitchen, then teaching spaces.
+//
+// Trimmed from 18 to 9 in Aug 2026 — the set had six near-identical bedrooms and
+// duplicate living rooms, kitchens and lecture theatres, and cost the page 5.4MB.
+// Three alt texts were also describing the wrong photo (nci-07 is a bedroom, not
+// a living room; nci-11 is a kitchen, not a breakout room). Check the image
+// before writing alt text for it.
 const nciGalleryImages = [
-  { src: '/nci-gallery/nci-02.jpg', alt: 'Entrance to the National College of Ireland building' },
-  { src: '/nci-gallery/nci-04.jpg', alt: 'Student bedroom with desk and storage, NCI residence' },
-  { src: '/nci-gallery/nci-06.jpg', alt: 'Student bedroom with shelving and desk, NCI residence' },
-  { src: '/nci-gallery/nci-03.jpg', alt: 'Student bedroom with bookshelf, NCI residence' },
-  { src: '/nci-gallery/nci-05.jpg', alt: 'Student bedroom desk and shelving detail, NCI residence' },
+  { src: '/nci-gallery/nci-02.jpg', alt: 'The atrium at the National College of Ireland' },
   { src: '/nci-gallery/nci-01.jpg', alt: 'Student bedroom with en-suite bathroom, NCI residence' },
+  { src: '/nci-gallery/nci-04.jpg', alt: 'Student bedroom with desk, storage and window, NCI residence' },
+  { src: '/nci-gallery/nci-07.jpg', alt: 'Student bedroom with desk, shelving and mirror, NCI residence' },
   { src: '/nci-gallery/nci-08.jpg', alt: 'Shared living room with sofas, NCI residence' },
-  { src: '/nci-gallery/nci-07.jpg', alt: 'Shared living room, NCI residence' },
-  { src: '/nci-gallery/nci-10.jpg', alt: 'Shared kitchen and dining area, NCI residence' },
-  { src: '/nci-gallery/nci-09.jpg', alt: 'Shared kitchen and dining area with city view, NCI residence' },
-  { src: '/nci-gallery/nci-18.jpg', alt: 'Lecture theatre at the National College of Ireland' },
-  { src: '/nci-gallery/nci-16.jpg', alt: 'Large tiered lecture theatre at NCI' },
-  { src: '/nci-gallery/nci-14.jpg', alt: 'Meeting room with round tables at NCI' },
+  { src: '/nci-gallery/nci-11.jpg', alt: 'Shared kitchen and dining area, NCI residence' },
   { src: '/nci-gallery/nci-15.jpg', alt: 'Open collaborative learning space at NCI, overlooking Dublin' },
+  { src: '/nci-gallery/nci-16.jpg', alt: 'Large tiered lecture theatre at NCI' },
   { src: '/nci-gallery/nci-17.jpg', alt: 'Breakout teaching space at NCI' },
-  { src: '/nci-gallery/nci-11.jpg', alt: 'Breakout room with round tables at NCI' },
-  { src: '/nci-gallery/nci-12.jpg', alt: 'Classroom at the National College of Ireland' },
-  { src: '/nci-gallery/nci-13.jpg', alt: 'Classroom at the National College of Ireland' },
-];
----
+];---
 
 <BaseLayout
   title={`Accommodation – Dublin Summer ${dublin.year} | Immersion English`}
