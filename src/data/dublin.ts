@@ -52,7 +52,9 @@ export interface DublinProgramme {
   startDates: string[] | null;
   price: {
     currency: string;
-    fromAmount: number | null;
+    /** The single all-in price for the two-week stay. Not a "from" price:
+     *  there is only one duration and one figure. */
+    amount: number | null;
     depositPercent: number | null;
     depositDue: string | null;
     balanceDue: string | null;
@@ -93,7 +95,7 @@ export interface DublinProgramme {
  */
 export function durationLabel(weeks: number[]): string {
   if (weeks.length === 0) return '';
-  if (weeks.length === 1) return `${weeks[0]} week`;
+  if (weeks.length === 1) return `${weeks[0]} week${weeks[0] === 1 ? '' : 's'}`;
   return `${weeks.slice(0, -1).join(', ')} or ${weeks[weeks.length - 1]} weeks`;
 }
 
@@ -102,6 +104,8 @@ export const dublin: DublinProgramme = {
 
   provider: {
     brand: 'MLA – Move Language Ahead',
+    // Retained in the data only. Site owner's instruction, Aug 2026: the
+    // contracting-entity wording is off the site for now. Nothing renders this.
     legalEntity: 'Vision Language Academy Ltd',
     // TODO: awaiting MLA 2027 confirmation — no URL supplied in the approved copy.
     termsUrl: null,
@@ -133,7 +137,12 @@ export const dublin: DublinProgramme = {
   classSize: { average: 13, maximum: 18 },
   lessonsPerWeek: 20,
   hoursPerWeek: 15,
-  durationsWeeks: [1, 2, 3, 4],
+  // Site owner's instruction, Aug 2026: the Immersion English group travels for a
+  // single fixed two-week stay. MLA's centre sells 1-4 weeks; this array describes
+  // OUR group only, so copy must not present it as the centre's limit.
+  // price.amount below is the two-week figure. If this array ever changes, that
+  // price must be rechecked — the two move together.
+  durationsWeeks: [2],
 
   // TODO: awaiting MLA 2027 confirmation — 2027 departure dates not yet published.
   startDates: null,
@@ -142,7 +151,19 @@ export const dublin: DublinProgramme = {
     currency: 'EUR',
     // Retail price is Immersion English's own decision — separate from MLA's
     // net rate, which never appears publicly. Not contingent on MLA confirmation.
-    fromAmount: 1550,
+    //
+    // Set Aug 2026 from published 2026 competitor pricing for two-week Dublin
+    // junior programmes:
+    //   ATC at NCI (the same campus)          from €2,360
+    //   ATC at UCD                            from €2,640
+    //   Emerald, Alexandra College residence      €2,850
+    //   Emerald, Trinity Hall residence           €2,950
+    //   Emerald, intensive residence              €3,050
+    //   CES Dublin, homestay not residence        €1,930 + €85 + €190 transfer
+    // Positioned above ATC's NCI entry price and below Emerald, with headroom
+    // for 2027 inflation. NOT yet checked against MLA's 2027 net rate — do that
+    // before this goes anywhere near a parent.
+    amount: 2690,
     // TODO: awaiting MLA 2027 confirmation — deposit terms pending 2027 T&Cs.
     depositPercent: null,
     depositDue: null,

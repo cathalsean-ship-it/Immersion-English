@@ -343,7 +343,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
-                <input id="corp-email" name="email" type="email" placeholder="jana@company.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
+                <input id="corp-email" name="email" type="email" required placeholder="jana@company.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
               </div>
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-phone" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Phone</label>
@@ -399,11 +399,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       e.preventDefault();
       const data = new FormData(corpForm);
       try {
-        await fetch('/', {
+        const res = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(data).toString(),
         });
+        // fetch only rejects on network failure. Without this, a 404 or 500 from
+        // Netlify still showed the success message and the enquiry was lost.
+        if (!res.ok) throw new Error(`Form POST failed: ${res.status}`);
         corpForm.style.display = 'none';
         if (corpSuccess) corpSuccess.style.display = 'block';
       } catch (err) {

@@ -37,10 +37,6 @@ const sections = [
         a: `${provider.brand} runs it. Immersion English is a booking agent: we enrol your child, handle the documentation and pre-departure support, and travel with the group from Sofia and back. The teaching, accommodation, activities and on-site supervision in Dublin are all provided by MLA at their summer centre.`,
       },
       {
-        q: 'Who is my contract with?',
-        a: `Your booking contract is with ${provider.legalEntity}, MLA's Irish operating company, under MLA's terms and conditions. We will give you those terms in full before you pay anything.`,
-      },
-      {
         q: 'Does Immersion English teach the classes?',
         a: `No. Classes are taught by the centre's own qualified native-speaker teachers. ${groupLeader.name} travels as group leader, and his job is everything around the classes – settling students in, checking in every day, sorting out whatever comes up, and being the person parents can ring.`,
       },
@@ -151,11 +147,11 @@ const sections = [
     faqs: [
       {
         q: 'How much does it cost?',
-        // TODO: awaiting MLA 2027 confirmation — retail price pending 2027 net rates.
-        // Do NOT restate the old EUR 1,350, or quote a figure from the 2026 catalogue.
-        a: price.fromAmount === null
-          ? 'MLA have not yet published their 2027 rates, so we are not quoting a price we would have to change. Book a free consultation and we will tell you exactly where things stand, and contact you the moment the 2027 price is confirmed.'
-          : `From €${price.fromAmount.toLocaleString('en-IE')}.`,
+        // One duration, one figure. Do NOT reintroduce a "from" price or a
+        // per-week rate — there is only one product now.
+        a: price.amount === null
+          ? 'We are not quoting a price we would have to change. Book a free online meeting and we will tell you exactly where things stand.'
+          : `€${price.amount.toLocaleString('en-IE')} for the two weeks, covering tuition, en-suite campus accommodation, full board, the excursion programme and the activities. Flights, airport transfers, insurance and personal spending are separate.`,
         link: { href: '/contact', label: 'Book a free consultation →' },
       },
       {
@@ -167,8 +163,10 @@ const sections = [
           : `Departures begin ${startDates[0]}.`,
       },
       {
-        q: 'How long can my child stay?',
-        a: `${durationLabel(durationsWeeks)}. Other durations are sometimes available on request – ask us at the consultation.`,
+        q: 'How long is the programme?',
+        // One fixed duration. Do NOT re-add "other durations on request" — the
+        // group travels together for a single two-week stay.
+        a: `${durationLabel(durationsWeeks)}. The group travels out together and comes home together, so there is one departure and one return.`,
       },
       {
         q: 'How do I hold a place?',

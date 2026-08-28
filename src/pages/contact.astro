@@ -26,34 +26,24 @@ import { dublin } from '../data/dublin';
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Registration process</span>
-        <h2>Three steps to get started.</h2>
-        <p>Whether you're joining a course or enquiring about the Dublin Summer Programme, here's how it works.</p>
+        <h2>One step to get started.</h2>
+        <p>Whether you're joining a course or enquiring about the Dublin Summer Programme, it starts the same way.</p>
       </div>
-      <ol class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-        {[
-          {
-            n: '01',
-            title: 'Book a free online consultation',
-            body: 'Fill out the form below to book a 20-minute online consultation with one of our teachers to discuss your goals, experience, and the most suitable course options.',
-          },
-          {
-            n: '02',
-            title: 'Complete an online level check',
-            body: "For Exam Prep lessons only. After your consultation, we'll send you a link to a short level check to assess your current level accurately.",
-          },
-          {
-            n: '03',
-            title: 'Confirm your place',
-            body: "Once you've completed the consultation, we'll email you a registration form, full course details, and payment instructions. Your place is confirmed once both are received.",
-          },
-        ].map(({ n, title, body }) => (
-          <li class="trust-card">
-            <span class="font-heading font-bold text-[2rem] leading-none tracking-[-0.03em]" style="color: var(--orange-text);">{n}</span>
-            <h3>{title}</h3>
-            <p>{body}</p>
-          </li>
-        ))}
-      </ol>
+      <div class="max-w-[62ch] mx-auto">
+        <div class="trust-card">
+          <span class="font-heading font-bold text-[2rem] leading-none tracking-[-0.03em]" style="color: var(--orange-text);">01</span>
+          <h3>Book a free online consultation</h3>
+          <p>
+            Fill in the booking form below and we'll arrange a 20-minute online meeting to talk
+            through your goals, your experience and the options that suit you best. Everything
+            else – course details, the registration form and payment instructions – follows by
+            email afterwards. No tests, no paperwork before we've spoken.
+          </p>
+          <div class="mt-5">
+            <a href="#booking-form" class="btn btn-primary">Book a free consultation</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -96,9 +86,9 @@ import { dublin } from '../data/dublin';
         </div>
 
         <!-- RIGHT: form -->
-        <div class="bg-white border border-line rounded-lg p-5 md:p-9 shadow-lift">
+        <div id="booking-form" class="bg-white border border-line rounded-lg p-5 md:p-9 shadow-lift" style="scroll-margin-top: 100px;">
           <h3 class="text-[1.45rem] mb-1">Book a free consultation</h3>
-          <p class="text-ink-soft text-[0.95rem] mb-7">Tell us a bit about yourself and what you're looking for – we'll get back to you within one working day.</p>
+          <p class="text-ink-soft text-[0.95rem] mb-7">Tell us a bit about yourself and what you're looking for – we'll come back within one working day to arrange a time.</p>
 
           <div id="form-success" style="display:none; background: var(--green); color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">✓ Message sent! We'll be in touch within one working day.</div>
           <form name="individual-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
@@ -107,7 +97,7 @@ import { dublin } from '../data/dublin';
             <p class="hidden"><input name="bot-field" /></p>
             <div class="flex flex-col gap-[6px]">
               <label for="first-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
-              <input id="first-name" name="first-name" type="text" placeholder="Jana" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <input id="first-name" name="first-name" type="text" placeholder="Jana" required class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px]">
               <label for="last-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Last name</label>
@@ -115,7 +105,7 @@ import { dublin } from '../data/dublin';
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
               <label for="email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
-              <input id="email" name="email" type="email" placeholder="jana@example.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <input id="email" name="email" type="email" placeholder="jana@example.com" required class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
               <label for="interest" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">I'm interested in</label>
@@ -176,11 +166,14 @@ import { dublin } from '../data/dublin';
       e.preventDefault();
       const data = new FormData(form);
       try {
-        await fetch('/', {
+        const res = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(data).toString(),
         });
+        // fetch only rejects on network failure, so a 404 or 500 from Netlify
+        // would otherwise fall through and show "Message sent!" for a lost enquiry.
+        if (!res.ok) throw new Error(`Form POST failed: ${res.status}`);
         // Hide form, show success
         form.style.display = 'none';
         const success = form.previousElementSibling;

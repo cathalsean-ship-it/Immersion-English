@@ -125,14 +125,14 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
           {
             // Provider is MLA, not Immersion English. Immersion English is the
             // booking agent and accompanies the group.
-            // No `offers` block: the 2027 retail price is unconfirmed, and a stale
-            // figure is worse than no figure. Do not reinstate a price here — it is
-            // emitted on EVERY page of the site. Restore only from
-            // src/data/dublin.ts price.fromAmount.
+            // No `offers` block on purpose. This JSON-LD is emitted on EVERY page,
+            // so a price here is a price everywhere and goes stale everywhere at
+            // once. The figure lives in src/data/dublin.ts price.amount and is
+            // rendered on the Dublin page and the homepage only.
             "@type": "Course",
             "name": `Dublin Summer English Programme ${dublin.year}`,
             "description": `Summer English programme at the ${dublin.venue.name}, ${dublin.venue.city}, for students aged ${dublin.ages.min}–${dublin.ages.max}. ${dublin.lessonsPerWeek} lessons per week. Provided by ${dublin.provider.brand}; Immersion English accompanies a group from Sofia as booking agent.`,
-            "provider": { "@type": "Organization", "name": dublin.provider.brand, "legalName": dublin.provider.legalEntity },
+            "provider": { "@type": "Organization", "name": dublin.provider.brand },
             "courseMode": "onsite",
             "location": { "@type": "Place", "name": dublin.venue.name, "address": { "@type": "PostalAddress", "addressLocality": dublin.venue.city, "addressRegion": dublin.venue.area, "addressCountry": "IE" } },
             "educationalLevel": "secondary",

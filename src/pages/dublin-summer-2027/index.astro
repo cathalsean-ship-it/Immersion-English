@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProviderBlock from '../../components/ProviderBlock.astro';
 import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
 import { dublin, durationLabel } from '../../data/dublin';
@@ -18,10 +17,21 @@ const courseSchema = {
   provider: {
     '@type': 'Organization',
     name: provider.brand,
-    legalName: provider.legalEntity,
   },
   courseMode: 'onsite',
   inLanguage: 'en',
+  // Page-specific offer. Safe here because this schema is only emitted on the
+  // Dublin overview page, unlike the site-wide block in BaseLayout.
+  ...(dublin.price.amount !== null && {
+    offers: {
+      '@type': 'Offer',
+      price: String(dublin.price.amount),
+      priceCurrency: dublin.price.currency,
+      // Must be one of Free / Partially Free / Paid / Subscription per Google's
+      // Course guidance. Not free text.
+      category: 'Paid',
+    },
+  }),
   audience: { '@type': 'Audience', audienceType: `Students aged ${ages.min}–${ages.max}` },
   location: {
     '@type': 'Place',
@@ -245,14 +255,13 @@ const courseSchema = {
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
               <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} average, {classSize.maximum} maximum</dd>
             </div>
-            {/* TODO: awaiting MLA 2027 confirmation — retail price pending 2027 net rates.
-                The "Programme fee" cell is omitted entirely rather than rendered with an
-                empty value, so no dangling label appears. Restore when
-                dublin.ts price.fromAmount is set. */}
-            {price.fromAmount !== null && (
+            {/* One duration, one price. If price.amount is ever set back to null the
+                cell is omitted entirely rather than rendered empty, so no dangling
+                label appears. */}
+            {price.amount !== null && (
               <div>
                 <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-                <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€{price.fromAmount.toLocaleString('en-IE')}</dd>
+                <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€{price.amount.toLocaleString('en-IE')}</dd>
               </div>
             )}
           </dl>
@@ -332,10 +341,6 @@ const courseSchema = {
           <a href="/contact" class="btn btn-primary">Book a free consultation</a>
         </div>
 
-        {/* Provider disclosure sits on the booking path deliberately — this is the
-            point where someone is asked to commit. Do not move it further down the
-            page or behind a link. */}
-        <ProviderBlock />
       </div>
     </div>
   </section>

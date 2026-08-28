@@ -2,10 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import studentsWalking from '../assets/students-walking.jpg';
-import { dublin } from '../data/dublin';
+import { dublin, durationLabel } from '../data/dublin';
 
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, price, excursions } = dublin;
-const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsWeeks[durationsWeeks.length - 1]} weeks`;
 ---
 
 <BaseLayout title="Immersion English | English Lessons in Sofia & a Summer Group to Dublin" description={`CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults, and a summer group to an international centre in Dublin for students aged ${ages.min}–${ages.max}. Летен езиков курс в Дъблин за тийнейджъри от България.`}>
@@ -160,7 +159,7 @@ const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsW
           <dl class="grid grid-cols-2 gap-7 my-10 py-8 border-y border-line">
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Duration</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationLabel}</dd>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationLabel(durationsWeeks)}</dd>
             </div>
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
@@ -172,11 +171,11 @@ const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsW
             </div>
             {/* TODO: awaiting MLA 2027 confirmation — retail price pending 2027 net rates.
                 The "Programme fee" cell is omitted rather than rendered empty, so no
-                dangling label appears. Restore from dublin.ts price.fromAmount. */}
-            {price.fromAmount !== null && (
+                dangling label appears. Restore from dublin.ts price.amount. */}
+            {price.amount !== null && (
               <div>
                 <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-                <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€{price.fromAmount.toLocaleString('en-IE')}</dd>
+                <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€{price.amount.toLocaleString('en-IE')}</dd>
               </div>
             )}
           </dl>
@@ -344,7 +343,7 @@ const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsW
             </div>
             <div class="flex flex-col gap-[6px] sm:col-span-2">
               <label for="home-email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
-              <input id="home-email" name="email" type="email" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
+              <input id="home-email" name="email" type="email" required class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
             <div class="flex flex-col gap-[6px] sm:col-span-2">
               <label for="home-message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
@@ -365,11 +364,14 @@ const durationLabel = `${durationsWeeks.slice(0, -1).join(', ')} or ${durationsW
       e.preventDefault();
       const data = new FormData(form);
       try {
-        await fetch('/', {
+        const res = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(data as any).toString(),
         });
+        // fetch only rejects on network failure. Without this, a 404 or 500 from
+        // Netlify still showed the success message and the enquiry was lost.
+        if (!res.ok) throw new Error(`Form POST failed: ${res.status}`);
         form.style.display = 'none';
         const success = document.getElementById('home-form-success');
         if (success) success.style.display = 'block';
