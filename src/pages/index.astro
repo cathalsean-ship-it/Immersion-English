@@ -187,7 +187,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
               { label: 'Full board', detail: 'from dinner on the day of arrival to breakfast on the day of departure' },
               { label: 'An international centre', detail: 'students come from across Europe and beyond, so English is how you make friends' },
               { label: 'The full excursion programme', detail: 'transport and entry tickets included, nothing extra to pay' },
-              { label: 'An Immersion English group leader', detail: 'with the group from the gate in Sofia to the arrivals hall home' },
+              { label: 'An Immersion English group leader', detail: `meeting the group at ${dublin.groupLeader.meetsAt} and with them for the stay` },
             ].map(({ label, detail }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
                 <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>

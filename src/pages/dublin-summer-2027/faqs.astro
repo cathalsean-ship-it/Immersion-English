@@ -34,7 +34,7 @@ const sections = [
     faqs: [
       {
         q: 'Who actually runs this programme?',
-        a: `${provider.brand} runs it. Immersion English is a booking agent: we enrol your child, handle the documentation and pre-departure support, and travel with the group from Sofia and back. The teaching, accommodation, activities and on-site supervision in Dublin are all provided by MLA at their summer centre.`,
+        a: `${provider.brand} runs it. Immersion English is a booking agent: we enrol your child, handle the documentation and pre-departure support, and meet the group at ${groupLeader.meetsAt}. The teaching, accommodation, activities and on-site supervision in Dublin are all provided by MLA at their summer centre.`,
       },
       {
         q: 'Does Immersion English teach the classes?',
@@ -129,11 +129,19 @@ const sections = [
     faqs: [
       {
         q: 'Who is looking after my child?',
-        a: `On site, MLA. Their centre staff run the residence, the classes and the activities, and MLA provide a welfare manager responsible for students' wellbeing. ${medicalStaff} Travelling with the group, ${groupLeader.name} goes from the gate in Sofia to the arrivals hall on the way home and is there for the whole stay.`,
+        a: `On site, MLA. Their centre staff run the residence, the classes and the activities, and MLA provide a welfare manager responsible for students' wellbeing. ${medicalStaff} From Immersion English, ${groupLeader.name} meets the group at ${groupLeader.meetsAt} and is there for the whole stay.`,
       },
       {
-        q: 'Does my child travel alone?',
-        a: 'No. Nobody gets handed over at the airport. The group flies together from Sofia with the group leader and comes home together.',
+        // Do NOT restore "the group flies together from Sofia" or "nobody gets
+        // handed over at the airport" — the group leader does not fly out with
+        // them (dublin.ts groupLeader.travelsFromSofia). And do not imply younger
+        // students can fly unaccompanied: Ryanair carries no unaccompanied minors,
+        // and since September 2024 an under-16 must be on the same booking and
+        // flight as an adult over 18. With ages from 12, that rules most of the
+        // group out of flying alone.
+        q: 'How does my child get to Dublin?',
+        a: `Flights are booked separately, and ${groupLeader.name} meets the group at ${groupLeader.meetsAt}. Airlines set their own rules for younger passengers travelling without an adult, and those rules decide what is possible for your child — so we go through the travel arrangements with every family individually before anything is booked. Bring it up at the free consultation and we will tell you exactly where you stand.`,
+        link: { href: '/contact', label: 'Book a free consultation →' },
       },
       {
         q: 'Who do I call if something happens?',
@@ -186,7 +194,7 @@ const sections = [
       },
       {
         q: 'Are flights included?',
-        a: 'No. Flights are booked separately. We send a step-by-step guide with the exact travel dates once the 2027 dates are confirmed, and the group travels together with the group leader.',
+        a: `No. Flights are booked separately. We send a step-by-step guide with the exact travel dates once the 2027 dates are confirmed, and ${groupLeader.name} meets the group at ${groupLeader.meetsAt}.`,
       },
     ],
   },

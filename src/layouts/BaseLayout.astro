@@ -131,7 +131,7 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
             // rendered on the Dublin page and the homepage only.
             "@type": "Course",
             "name": `Dublin Summer English Programme ${dublin.year}`,
-            "description": `Summer English programme at the ${dublin.venue.name}, ${dublin.venue.city}, for students aged ${dublin.ages.min}–${dublin.ages.max}. ${dublin.lessonsPerWeek} lessons per week. Provided by ${dublin.provider.brand}; Immersion English accompanies a group from Sofia as booking agent.`,
+            "description": `Summer English programme at the ${dublin.venue.name}, ${dublin.venue.city}, for students aged ${dublin.ages.min}–${dublin.ages.max}. ${dublin.lessonsPerWeek} lessons per week. Provided by ${dublin.provider.brand}; Immersion English accompanies the group in Dublin as booking agent.`,
             "provider": { "@type": "Organization", "name": dublin.provider.brand },
             "courseMode": "onsite",
             "location": { "@type": "Place", "name": dublin.venue.name, "address": { "@type": "PostalAddress", "addressLocality": dublin.venue.city, "addressRegion": dublin.venue.area, "addressCountry": "IE" } },

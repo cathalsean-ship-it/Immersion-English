@@ -76,8 +76,18 @@ export interface DublinProgramme {
   included: string[];
   notIncluded: string[];
   excursions: Excursion[] | null;
-  groupLeader: { name: string; role: string; credential: string | null; teaches: boolean };
-  /** The second adult travelling with the group. Name withheld by design —
+  groupLeader: {
+    name: string;
+    role: string;
+    credential: string | null;
+    teaches: boolean;
+    /** Where the group leader joins the students. Render this rather than
+     *  hardcoding a location, so one edit here moves every page. */
+    meetsAt: string;
+    /** False until it is actually settled that he flies out with them. */
+    travelsFromSofia: boolean;
+  };
+  /** The second adult with the group in Dublin. Name withheld by design —
    *  described by role only. Null if no second chaperone is confirmed. */
   secondChaperone: { name: string | null; role: string } | null;
   /** Confirmed to cover classes. Residence + evening activities NOT yet confirmed. */
@@ -183,7 +193,7 @@ export const dublin: DublinProgramme = {
     'The full excursion programme – transport and entry tickets included, nothing extra to pay',
     "Daytime and evening activities – cooking, art and games by day; talent shows, karaoke, discos and movie nights once the sun goes down",
     'Placement test, course eBook and student portfolio – so parents can see exactly what a week achieved',
-    'An Immersion English group leader – with the group from the gate in Sofia to the arrivals hall home',
+    'An Immersion English group leader – meeting the group at Dublin Airport and with them for the stay',
   ],
 
   notIncluded: [
@@ -267,6 +277,12 @@ export const dublin: DublinProgramme = {
     // Immersion English does not teach on this programme. MLA's centre staff do.
     // No template may render a teaching claim for Dublin. This is always false.
     teaches: false,
+    // Site owner's instruction, Aug 2026: he does NOT fly out with the students.
+    // He joins them on arrival. No page may say he travels with them from Sofia,
+    // meets them at the gate in Sofia, or that the group flies out together with
+    // him — that is a safeguarding promise to parents and it is not the case.
+    travelsFromSofia: false,
+    meetsAt: 'Dublin Airport',
   },
 
   // Name withheld by site owner's instruction — described by role only.
