@@ -54,10 +54,18 @@
                              the one to solve for. Safe at any size, including the
                              0.72rem uppercase eyebrows it is actually used on.
                              (Was #E07010, 3.23, labelled "large text only".) */
-  --blue: #035B9E;        /* corporate accent. White on it 7.01; it on
-                             --blue-soft 6.12. Replaces #1A85D6 (3.91) and
-                             #3B5BDB — two near-identical blues hardcoded 38
-                             times across three pages. */
+  /* The corporate accent, and it is a DELIBERATE second accent, not a stray.
+     Site owner's decision, 29 Aug 2026: corporate training is meant to look
+     different from the rest of the site. It was raised as an inconsistency —
+     the corporate page is the only one that swaps orange for blue — and the
+     answer was "i want the corporate to be different. it stays".
+     Do not consolidate it into --orange to make the palette tidier. */
+  --blue: #035B9E;        /* White on it 7.01; it on --blue-soft 6.12.
+                             Replaces #1A85D6 (3.91) and #3B5BDB — two
+                             near-identical blues hardcoded 38 times across
+                             three pages. Consolidating those two was about
+                             contrast and duplication, not about removing the
+                             blue itself. */
   --blue-soft: #e8f0fe;   /* chip ground for --blue */
   --hero-top: #0E4B32;    /* first stop of the hero gradient. --orange on it
                              4.55; white 10.16. Was #1f6b4d, where the orange
