@@ -27,25 +27,22 @@ const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, duration
 const fullDay = (excursions ?? []).filter(e => e.duration === 'full-day');
 const halfDay = (excursions ?? []).filter(e => e.duration === 'half-day');
 
+// A "Who Runs the Programme" section was removed here on 29 Aug 2026, on the
+// site owner's instruction and after being told what it carried. It held three
+// questions: who actually runs the programme (MLA, with Immersion English as
+// booking agent), whether Immersion English teaches the classes (no), and
+// whether this is the previous UCD programme (no, cancelled).
+//
+// State of play after the removal, so nobody has to rediscover it: those were
+// the only places on the whole site where a visitor could READ that MLA runs the
+// programme. The same facts are still emitted in JSON-LD on every page and in
+// llms.txt, but structured data is for machines — no parent sees it. If visible
+// provider wording is ever added back, this is the context for it.
+//
+// dublin.ts still holds provider.brand and provider.legalEntity, and the rule
+// that no template may claim Immersion English teaches the Dublin programme
+// still stands: not claiming it is not the same as claiming the opposite.
 const sections = [
-  {
-    id: 'who-runs-it',
-    heading: 'Who Runs the Programme',
-    faqs: [
-      {
-        q: 'Who actually runs this programme?',
-        a: `${provider.brand} runs it. Immersion English is a booking agent: we enrol your child, handle the documentation and pre-departure support, and meet the group at ${groupLeader.meetsAt}. The teaching, accommodation, activities and on-site supervision in Dublin are all provided by MLA at their summer centre.`,
-      },
-      {
-        q: 'Does Immersion English teach the classes?',
-        a: `No. Classes are taught by the centre's own qualified native-speaker teachers. ${groupLeader.name} travels as group leader, and his job is everything around the classes – settling students in, checking in every day, sorting out whatever comes up, and being the person parents can ring.`,
-      },
-      {
-        q: 'Is this the same as the previous programme at UCD?',
-        a: 'No. That programme is cancelled. This is a different venue, a different provider, a different age range and a different format – an international summer centre rather than a group of Bulgarian students travelling on their own.',
-      },
-    ],
-  },
   {
     id: 'the-centre',
     heading: 'The Centre and the Classes',
@@ -205,7 +202,7 @@ const sections = [
 
 <BaseLayout
   title={`FAQs – Dublin Summer ${dublin.year} | Immersion English`}
-  description={`Questions parents ask about the Immersion English group to MLA's summer centre at the National College of Ireland, Dublin – who runs it, supervision, accommodation, excursions, and what is and is not confirmed for ${dublin.year}.`}
+  description={`Questions parents ask about the Immersion English group to MLA's summer centre at the National College of Ireland, Dublin – supervision, accommodation, excursions, and what is and is not confirmed for ${dublin.year}.`}
   ogImage="/students-walking.webp"
 >
 
