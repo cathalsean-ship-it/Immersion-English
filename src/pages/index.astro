@@ -23,11 +23,11 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
 
     <div class="container-x relative z-10 w-full flex items-start md:items-end pt-[72px] md:pt-[116px] pb-[28px] md:pb-[56px]">
       <div class="max-w-[760px]">
-        <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
-          <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
-          Dublin, Ireland · Summer {dublin.year}
-        </p>
-
+        {/* No eyebrow here on purpose. This hero was labelled "Dublin, Ireland ·
+            Summer 2027", which framed the whole homepage as the Dublin
+            programme when the headline and the paragraph beneath it are about
+            the school. Dublin still leads the calls to action and keeps its own
+            section further down the page. Owner's decision, 29 Aug 2026. */}
         <h1 class="text-white">
           Confident English<br />
           comes from <span style="color: var(--orange);">using</span> it.<br />
@@ -150,7 +150,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
         <!-- Badge – bottom left, small, unobtrusive -->
         <div style="position: absolute; bottom: 24px; left: 24px; z-index: 2; display: flex; align-items: center; gap: 8px;">
           <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; display: inline-block;"></span>
-          <span style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; color: white; letter-spacing: 0.06em; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">Dublin, Ireland · July 2027</span>
+          <span style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; color: white; letter-spacing: 0.06em; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">Dublin, Ireland · Summer {dublin.year}</span>
         </div>
       </div>
 
