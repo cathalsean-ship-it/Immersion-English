@@ -1,4 +1,26 @@
-[[redirects]]
-  from = "/*/"
-  to = "/:splat"
-  status = 301
+# No redirect rules on purpose.
+#
+# There used to be a single rule here meant to strip trailing slashes:
+#
+#   [[redirects]]
+#     from = "/*/"
+#     to = "/:splat"
+#     status = 301
+#
+# It made every URL that does not exist redirect to itself forever. Netlify
+# normalises the trailing slash off the `from` pattern, so the rule was really
+# `/*` -> `/:splat`, i.e. every path to itself. Real pages survived it because a
+# non-forced rule does not shadow a file that exists; missing pages had nothing
+# to shadow, so they looped until the browser gave up. Nobody ever saw a 404.
+#
+# Netlify already canonicalises trailing slashes on its own: /contact returns
+# 301 to /contact/, which returns 200. That is Netlify's pretty-URL handling,
+# not a rule of ours, and deleting the rule did not change it.
+#
+# Missing pages now fall through to src/pages/404.astro, which Astro builds to
+# dist/404.html and Netlify serves with a 404 status.
+#
+# If you are about to add a catch-all rule here: it will match real pages too,
+# and this file governs every URL on the site, so it is the one change in the
+# repo that can affect indexing. Curl a real page and a missing one, before and
+# after, and check the status AND the Location header on both.

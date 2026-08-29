@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Netlify serves this file automatically, with a 404 status, for any path that
+// does not match a built page. Do NOT add a catch-all redirect rule to
+// netlify.toml to do this job — see the comment in that file.
+---
+
+<BaseLayout
+  title="Page not found | Immersion English"
+  description="That page doesn't exist. Here are the places most people are looking for."
+  noindex={true}
+>
+  <section class="relative flex items-center justify-center text-white overflow-hidden isolate" style="min-height: 80vh;">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
+    <div class="container-x relative z-10 text-center py-20">
+      <p class="text-white/50 font-semibold tracking-[0.2em] text-sm mb-5">404</p>
+      <h1 class="text-white mb-5" style="max-width: 20ch; margin-left: auto; margin-right: auto;">That page doesn't exist.</h1>
+      <p class="text-white/75 text-[1.05rem] leading-relaxed mb-10" style="max-width: 46ch; margin-left: auto; margin-right: auto;">
+        The link may be out of date, or the address slightly wrong. These are the pages most people are looking for.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap mb-8">
+        <a href="/" class="btn btn-primary">Back to home</a>
+        <a href="/dublin-summer-2027" class="btn btn-ghost text-white border-white/30 hover:border-white">Dublin summer programme</a>
+      </div>
+      <p class="text-white/60 text-[0.92rem]">
+        Or try
+        <a href="/lessons" class="text-white underline underline-offset-4 hover:text-white/80">our courses</a>,
+        <a href="/blog" class="text-white underline underline-offset-4 hover:text-white/80">the blog</a>, or
+        <a href="/contact" class="text-white underline underline-offset-4 hover:text-white/80">get in touch</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
