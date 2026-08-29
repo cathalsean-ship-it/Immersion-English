@@ -37,8 +37,12 @@ const testimonials = [
         <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
         About us
       </p>
+      {/* No dash between the two lines. It read "Immersion English –" with a
+          <br /> after it, and at phone widths the line wrapped before the dash
+          got there, stranding it alone on its own line. The break and the
+          colour change already separate the name from the tagline. */}
       <h1 class="text-white mb-5 max-w-[16ch]">
-        Immersion English –<br />
+        Immersion English<br />
         <span style="color: var(--orange);">English. For Living.</span>
       </h1>
       <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[52ch] leading-[1.55]">
@@ -61,8 +65,12 @@ const testimonials = [
         </div>
         <div>
           <span class="eyebrow eyebrow-dot">Who we are</span>
-          <h2 class="mt-4 mb-5">Where learning connects with your life.</h2>
-          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
+          {/* No heading here on purpose. This section used to carry "Where
+              learning connects with your life." — a "where" sentence under a
+              "who" label — and the paragraph below already answers the eyebrow
+              directly and better than a heading did. The mt-5 on that paragraph
+              replaces the spacing the h2 used to provide. */}
+          <p class="mt-5 text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
             Immersion English was founded in Sofia by a CELTA-qualified Irish teacher and an international education expert with a shared belief: that real progress in English comes from using it, not memorising it.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch]">
