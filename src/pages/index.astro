@@ -9,7 +9,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
 
 <BaseLayout title="Immersion English | English Lessons in Sofia & a Summer Group to Dublin" description={`CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults, and a summer group to an international centre in Dublin for students aged ${ages.min}–${ages.max}. Летен езиков курс в Дъблин за тийнейджъри от България.`}>
   <!-- HERO -->
-  <section class="relative min-h-[80vh] flex items-stretch text-white overflow-hidden isolate pb-10">
+  <section class="relative min-h-0 md:min-h-[80vh] flex items-stretch text-white overflow-hidden isolate pb-6 md:pb-10">
     <div
       class="absolute inset-0 -z-[2] bg-[#1a2a20] bg-cover bg-[center_40%]"
       style="background-image: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"
@@ -21,7 +21,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
         linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"
     ></div>
 
-    <div class="container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[116px] pb-[48px] md:pb-[56px]">
+    <div class="container-x relative z-10 w-full flex items-start md:items-end pt-[72px] md:pt-[116px] pb-[28px] md:pb-[56px]">
       <div class="max-w-[760px]">
         <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
           <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
@@ -34,11 +34,22 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
           Not <span style="color: var(--orange);">memorising</span> it.
         </h1>
 
-        <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
+        {/*
+          Two wordings of the same claim, not two claims. The long one ran to six
+          lines at 375px and pushed both buttons past the fold once a phone
+          browser's own toolbars are showing; the short one is three lines and
+          costs nothing on desktop, where the long version still renders.
+          The age range interpolates in both — change the wording here, never the
+          numbers. If you edit one sentence, edit the other.
+        */}
+        <p class="md:hidden mt-5 text-[1rem] text-white/85 leading-[1.55]">
+          A speaking-focused English school in Sofia, and a summer group to Dublin for students aged {ages.min}–{ages.max}.
+        </p>
+        <p class="hidden md:block mt-5 text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
           Immersion English is a speaking-focused English school in Sofia. We offer individual and corporate English lessons online, and take a group each summer to an international English centre in Dublin for students aged {ages.min}–{ages.max}.
         </p>
 
-        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+        <div class="mt-5 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
           <a href="/dublin-summer-2027" class="btn btn-primary">
             Explore Dublin Summer 2027
           </a>
