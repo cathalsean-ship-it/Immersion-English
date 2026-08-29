@@ -13,11 +13,9 @@ const courseSchema = {
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: `English Summer Programme for Teens – Dublin ${dublin.year}`,
-  description: `Summer English programme at the ${venue.name}, ${venue.city}, for students aged ${ages.min}–${ages.max}. ${lessonsPerWeek} lessons per week. Provided by ${provider.brand}. Immersion English accompanies the group in Dublin as booking agent.`,
-  provider: {
-    '@type': 'Organization',
-    name: provider.brand,
-  },
+  description: `Summer English programme at the ${venue.name}, ${venue.city}, for students aged ${ages.min}–${ages.max}. ${lessonsPerWeek} lessons per week. Immersion English accompanies the group in Dublin as booking agent.`,
+  // No provider named — see the note in BaseLayout.astro. Leaving this out is
+  // deliberate; do not point it at Immersion English.
   courseMode: 'onsite',
   inLanguage: 'en',
   // Page-specific offer. Safe here because this schema is only emitted on the
@@ -48,7 +46,7 @@ const courseSchema = {
 
 <BaseLayout
   title={`Dublin Summer ${dublin.year} | English Summer Centre at the National College of Ireland | Immersion English`}
-  description={`Immersion English takes a group from Sofia to MLA's international summer centre at the National College of Ireland, Dublin. Ages ${ages.min}–${ages.max}. ${lessonsPerWeek} lessons a week. Full board, en-suite campus accommodation. Летен езиков курс в Дъблин.`}
+  description={`Immersion English takes a group from Sofia to an international summer centre at the National College of Ireland, Dublin. Ages ${ages.min}–${ages.max}. ${lessonsPerWeek} lessons a week. Full board, en-suite campus accommodation. Летен езиков курс в Дъблин.`}
   ogImage="/teens-dublin.webp"
 >
 

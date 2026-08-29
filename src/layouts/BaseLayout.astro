@@ -92,7 +92,7 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
       "name": "Immersion English",
       "url": "https://immersion-english.com",
       "logo": "https://immersion-english.com/ie-logo.png",
-      "description": `Sofia-based English language school offering online English courses for adults, and a summer group to Dublin for students aged ${dublin.ages.min}–${dublin.ages.max} as booking agent for ${dublin.provider.brand}. Courses include speaking, exam preparation (IELTS, Cambridge CAE), General English and Business English - all with a strong focus on real communication. Taught by Cathal (Lenny) Leonard - a CELTA-qualified native Irish teacher with over 10 years experience, including at the British Council. Small groups (max 8), real conversation from day one.`,
+      "description": `Sofia-based English language school offering online English courses for adults, and a summer group to Dublin for students aged ${dublin.ages.min}–${dublin.ages.max} as booking agent. Courses include speaking, exam preparation (IELTS, Cambridge CAE), General English and Business English - all with a strong focus on real communication. Taught by Cathal (Lenny) Leonard - a CELTA-qualified native Irish teacher with over 10 years experience, including at the British Council. Small groups (max 8), real conversation from day one.`,
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Sofia",
@@ -143,8 +143,11 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
             // rendered on the Dublin page and the homepage only.
             "@type": "Course",
             "name": `Dublin Summer English Programme ${dublin.year}`,
-            "description": `Summer English programme at the ${dublin.venue.name}, ${dublin.venue.city}, for students aged ${dublin.ages.min}–${dublin.ages.max}. ${dublin.lessonsPerWeek} lessons per week. Provided by ${dublin.provider.brand}; Immersion English accompanies the group in Dublin as booking agent.`,
-            "provider": { "@type": "Organization", "name": dublin.provider.brand },
+            "description": `Summer English programme at the ${dublin.venue.name}, ${dublin.venue.city}, for students aged ${dublin.ages.min}–${dublin.ages.max}. ${dublin.lessonsPerWeek} lessons per week; Immersion English accompanies the group in Dublin as booking agent.`,
+            // No provider named. The programme is not provided by Immersion
+            // English, so this must not fall back to the page's own
+            // organisation — an omitted provider says nothing, whereas naming
+            // the wrong one is a claim. See dublin.ts provider.
             "courseMode": "onsite",
             "location": { "@type": "Place", "name": dublin.venue.name, "address": { "@type": "PostalAddress", "addressLocality": dublin.venue.city, "addressRegion": dublin.venue.area, "addressCountry": "IE" } },
             "educationalLevel": "secondary",

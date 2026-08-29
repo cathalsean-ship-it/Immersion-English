@@ -97,7 +97,7 @@ const sections = [
       },
       {
         q: 'What if my child has a dietary requirement or an allergy?',
-        a: 'Tell us at the point of enrolment and we will pass it to MLA in writing before departure so the centre can cater for it. Bring it up at the free consultation and we will make sure nothing gets lost.',
+        a: 'Bring it up at the free consultation and we will make sure nothing gets lost.',
       },
     ],
   },
@@ -107,7 +107,7 @@ const sections = [
     faqs: [
       {
         q: 'What excursions are included?',
-        a: `MLA's published Dublin programme includes ${fullDay.length} full-day excursions – ${fullDay.map(e => e.title).join(' and ')} – and ${halfDay.length} half-day excursions in Dublin: ${halfDay.map(e => e.title).join('; ')}. Transport and entry tickets are included, with nothing extra to pay on the day. Excursions are run by MLA's local staff.`,
+        a: `The centre's published Dublin programme includes ${fullDay.length} full-day excursions – ${fullDay.map(e => e.title).join(' and ')} – and ${halfDay.length} half-day excursions in Dublin: ${halfDay.map(e => e.title).join('; ')}. Transport and entry tickets are included, with nothing extra to pay on the day. Excursions are run by local centre staff.`,
         link: { href: '/dublin-summer-2027/trips-and-activities', label: 'See the full excursion programme →' },
       },
       {
@@ -126,7 +126,7 @@ const sections = [
     faqs: [
       {
         q: 'Who is looking after my child?',
-        a: `On site, MLA. Their centre staff run the residence, the classes and the activities, and MLA provide a welfare manager responsible for students' wellbeing. ${medicalStaff} From Immersion English, ${groupLeader.name} meets the group at ${groupLeader.meetsAt} and is there for the whole stay.`,
+        a: `On site, the centre. Their staff run the residence, the classes and the activities, and provide a welfare manager responsible for students' wellbeing. ${medicalStaff} From Immersion English, ${groupLeader.name} meets the group at ${groupLeader.meetsAt} and is there for the whole stay.`,
       },
       {
         // Do NOT restore "the group flies together from Sofia" or "nobody gets
@@ -164,7 +164,7 @@ const sections = [
         // TODO: awaiting MLA 2027 confirmation — 2027 start dates not published.
         // The 2026 dates must NOT be presented as 2027 dates.
         a: startDates === null
-          ? 'MLA have not published their 2027 start dates yet. As soon as they do we will publish them here and contact anyone who has registered an interest.'
+          ? 'The centre has not published its 2027 start dates yet. As soon as they do we will publish them here and contact anyone who has registered an interest.'
           : `Departures begin ${startDates[0]}.`,
       },
       {
@@ -179,7 +179,7 @@ const sections = [
         q: 'How do I hold a place?',
         // TODO: awaiting MLA 2027 confirmation — deposit percentage and payment
         // dates against 2027 terms. Do not restate the old EUR 350 / EUR 1,000 / 31 May.
-        a: 'Places are limited and confirmed first come, first served. A deposit holds the place and the balance is due in the spring. The exact deposit and payment dates come from MLA\'s 2027 terms, which are not published yet, so we will confirm them in writing before you pay anything.',
+        a: 'Places are limited and confirmed first come, first served. A deposit holds the place and the balance is due in the spring. The exact deposit and payment dates come from the centre\'s 2027 terms, which are not published yet, so we will confirm them in writing before you pay anything.',
       },
       {
         q: 'What is not included?',
@@ -202,7 +202,7 @@ const sections = [
 
 <BaseLayout
   title={`FAQs – Dublin Summer ${dublin.year} | Immersion English`}
-  description={`Questions parents ask about the Immersion English group to MLA's summer centre at the National College of Ireland, Dublin – supervision, accommodation, excursions, and what is and is not confirmed for ${dublin.year}.`}
+  description={`Questions parents ask about the Immersion English group to the summer centre at the National College of Ireland, Dublin – supervision, accommodation, excursions, and what is and is not confirmed for ${dublin.year}.`}
   ogImage="/students-walking.webp"
 >
 

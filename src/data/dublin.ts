@@ -228,7 +228,7 @@ export const dublin: DublinProgramme = {
     {
       title: 'Galway',
       description:
-        'A walking tour of the charming city in western Ireland, travelling by private bus with MLA local staff.',
+        'A walking tour of the charming city in western Ireland, travelling by private bus with local centre staff.',
       duration: 'full-day',
       image: '/galway.webp',
     },

@@ -57,7 +57,7 @@ const pages: [string, string][] = [
 
 const body = `# Immersion English
 
-> A Sofia-based English language school offering speaking-focused online lessons for adults, and a summer group to an international English centre in Dublin, Ireland for students aged ${ages.min}–${ages.max} as booking agent for ${provider.brand}.
+> A Sofia-based English language school offering speaking-focused online lessons for adults, and a summer group to an international English centre in Dublin, Ireland for students aged ${ages.min}–${ages.max} as booking agent.
 
 Immersion English was founded by Cathal (Lenny) Leonard and Lina Georgieva. Lenny is a native Irish English speaker, CELTA-qualified, with over 10 years of experience teaching General English and Business English — including at the British Council Sofia and international summer programmes in Oxford and Cambridge. Lina has a background in international education with the British Council.
 
@@ -74,9 +74,8 @@ ${courseList
 
 ## Dublin Summer ${dublin.year}
 
-Immersion English is a booking agent for ${provider.brand}, and accompanies its own group at MLA's international summer centre at the ${venue.name} (${venue.shortName}), ${venue.city}. The programme, teaching, accommodation and on-site supervision are provided by MLA.
+Immersion English is a booking agent, and accompanies its own group at an international summer centre at the ${venue.name} (${venue.shortName}), ${venue.city}. The programme, teaching, accommodation and on-site supervision are provided by the centre.
 
-- **Provider:** ${provider.brand}
 - **Role of Immersion English:** Booking agent and group leader — enrolment, documentation, pre-departure support, and accompanying the group in Dublin. Immersion English does not teach on this programme.
 - **Location:** ${venue.name} (${venue.shortName}), ${venue.area}, ${venue.city}, ${venue.country}
 - **Dates:** ${datesLine}
@@ -87,8 +86,8 @@ Immersion English is a booking agent for ${provider.brand}, and accompanies its 
 - **Class size:** ${classSize.average} average, ${classSize.maximum} maximum
 - **Lessons:** ${lessonsPerWeek} lessons per week (${hoursPerWeek} hours), taught by the centre's qualified native-speaker teachers
 - **Nationality mix:** International — students from across Europe and beyond
-- **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is MLA's published Dublin programme from their 2026 catalogue; the 2027 edition is not out and MLA have not confirmed 2027 in writing.
-- **Supervision:** ${groupLeader.credential} ${groupLeader.role.toLowerCase()} meets the group at ${groupLeader.meetsAt} and is with them throughout${secondChaperone ? `, alongside a ${secondChaperone.role.replace('Native ', 'native ')}` : ''}. On-site supervision is provided by MLA.
+- **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is the centre's published Dublin programme from their 2026 catalogue; the 2027 edition is not out and the centre has not confirmed 2027 in writing.
+- **Supervision:** ${groupLeader.credential} ${groupLeader.role.toLowerCase()} meets the group at ${groupLeader.meetsAt} and is with them throughout${secondChaperone ? `, alongside a ${secondChaperone.role.replace('Native ', 'native ')}` : ''}. On-site supervision is provided by the centre.
 
 ### Included
 
