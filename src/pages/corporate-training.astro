@@ -12,8 +12,8 @@ const corpBundle = corp.bundles[0];
 ---
 
 <style>
-  .eyebrow { color: #1a85d6; }
-  .eyebrow-dot::before { background: #1a85d6; }
+  .eyebrow { color: var(--blue); }
+  .eyebrow-dot::before { background: var(--blue); }
 </style>
 
 <script type="application/ld+json" set:html={JSON.stringify({
@@ -67,17 +67,17 @@ const corpBundle = corp.bundles[0];
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
         <div>
-          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-6" style="color: #1a85d6;">
-            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: #1a85d6;"></span>
+          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-6" style="color: var(--blue-on-dark);">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--blue-on-dark);"></span>
             Corporate English Training
           </p>
           <h1 class="text-white mb-5" style="max-width: 20ch;">
-            <span style="color: var(--orange-text);">Corporate English</span> training your team will actually <span style="color: var(--orange-text);">use.</span>
+            <span style="color: var(--orange);">Corporate English</span> training your team will actually <span style="color: var(--orange);">use.</span>
           </h1>
           <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55] mb-8">
             Tailored Business English programmes for companies and teams in Sofia. Built around your industry, your goals, and the real situations your people face every day.
           </p>
-          <a href="#enquiry" class="btn btn-primary" style="background: #1a85d6; border-color: #1a85d6; box-shadow: 0 6px 20px rgba(255,255,255,0.25);">Make an enquiry</a>
+          <a href="#enquiry" class="btn btn-primary" style="background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 6px 20px rgba(255,255,255,0.25);">Make an enquiry</a>
         </div>
         <div class="hidden md:grid grid-cols-2 gap-4">
           {[
@@ -101,7 +101,7 @@ const corpBundle = corp.bundles[0];
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-12 md:gap-20 items-center">
         <div>
-          <span class="eyebrow eyebrow-dot" style="color: #1a85d6;">Why it matters</span>
+          <span class="eyebrow eyebrow-dot" style="color: var(--blue);">Why it matters</span>
           <h2 class="mt-4 mb-5">Your team's English is a business asset – and a competitive advantage.</h2>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed mb-5">
             In international meetings, client calls, and written correspondence, the way your team communicates in English shapes how your company is perceived – and how deals are won.
@@ -145,7 +145,7 @@ const corpBundle = corp.bundles[0];
   <section class="section">
     <div class="container-x">
       <div class="section-head">
-        <span class="eyebrow eyebrow-dot" style="color: #1a85d6;">Our programmes</span>
+        <span class="eyebrow eyebrow-dot" style="color: var(--blue);">Our programmes</span>
         <h2>Business English Training in Sofia – Tailored programmes for professionals and teams.</h2>
         <p>Whether you need targeted coaching for one employee or a structured programme for a whole team, we build it around you.</p>
       </div>
@@ -157,7 +157,7 @@ const corpBundle = corp.bundles[0];
           <div style="background: var(--orange); height: 4px;"></div>
           <div class="p-7 flex flex-col flex-1">
             <div class="flex items-center justify-between mb-4">
-              <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #1a85d6;">Individual</span>
+              <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--blue-soft); color: var(--blue);">Individual</span>
               <span class="text-[0.72rem] font-heading font-semibold text-ink-soft">1 employee</span>
             </div>
             <h3 class="text-[1.2rem] mb-1">1:1 Communication & English Coaching</h3>
@@ -165,8 +165,8 @@ const corpBundle = corp.bundles[0];
             <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-4">
               More than English lessons – this is <strong class="text-ink">professional communication coaching</strong> for high-performers. Built around the employee's role, goals, and the specific situations where they need to perform at their best.
             </p>
-            <div class="rounded-lg px-4 py-3 mb-5" style="background: #f0f4ff; border-left: 3px solid #1a85d6; min-height: 80px;">
-              <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-wide mb-1" style="color: #1a85d6;">Best for</p>
+            <div class="rounded-lg px-4 py-3 mb-5" style="background: #f0f4ff; border-left: 3px solid var(--blue); min-height: 80px;">
+              <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-wide mb-1" style="color: var(--blue);">Best for</p>
               <p class="text-[0.85rem] text-ink-soft">Senior managers, executives, and high-performers who represent the company externally and need to project confidence, clarity, and authority in English.</p>
             </div>
             <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
@@ -189,17 +189,17 @@ const corpBundle = corp.bundles[0];
             </ul>
             <div class="pt-5 border-t border-line">
               <p class="font-heading font-bold text-ink text-[1.3rem]">€{corp.perLesson}{' '}<span class="text-[0.85rem] font-normal text-ink-soft">per {corpUnit}</span></p>
-              <p class="text-[0.82rem] text-ink-soft mt-1">{corpBundle.lessons} sessions: <strong class="text-ink">€{corpBundle.price}</strong> <span style="color: #1a85d6;" class="font-semibold">&nbsp;– save {corpBundle.savePercent}%</span></p>
+              <p class="text-[0.82rem] text-ink-soft mt-1">{corpBundle.lessons} sessions: <strong class="text-ink">€{corpBundle.price}</strong> <span style="color: var(--blue);" class="font-semibold">&nbsp;– save {corpBundle.savePercent}%</span></p>
             </div>
           </div>
         </div>
 
         <!-- Small Group Team Training -->
-        <div class="rounded-xl overflow-hidden flex flex-col shadow-soft" style="border: 2px solid #1a85d6; background: white;">
-          <div style="background: #1a85d6; height: 4px;"></div>
+        <div class="rounded-xl overflow-hidden flex flex-col shadow-soft" style="border: 2px solid var(--blue); background: white;">
+          <div style="background: var(--blue); height: 4px;"></div>
           <div class="p-7 flex flex-col flex-1">
             <div class="flex items-center justify-between mb-4">
-              <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #1a85d6;">Team</span>
+              <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--blue-soft); color: var(--blue);">Team</span>
               <span class="text-[0.72rem] font-heading font-semibold text-ink-soft">Up to 6 people</span>
             </div>
             <h3 class="text-[1.2rem] mb-1">Small Group Business English Training</h3>
@@ -207,8 +207,8 @@ const corpBundle = corp.bundles[0];
             <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-4">
               Structured sessions for <strong class="text-ink">teams who work together</strong> – built around your shared context, your industry, and the real situations your people face every day.
             </p>
-            <div class="rounded-lg px-4 py-3 mb-5" style="background: #f0f4ff; border-left: 3px solid #1a85d6; min-height: 80px;">
-              <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-wide mb-1" style="color: #1a85d6;">Best for</p>
+            <div class="rounded-lg px-4 py-3 mb-5" style="background: #f0f4ff; border-left: 3px solid var(--blue); min-height: 80px;">
+              <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-wide mb-1" style="color: var(--blue);">Best for</p>
               <p class="text-[0.85rem] text-ink-soft">Sales teams, client services, operations – any group with shared communication goals who need to perform in English together.</p>
             </div>
             <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
@@ -244,7 +244,7 @@ const corpBundle = corp.bundles[0];
 
         <!-- Sticky left: heading + Lenny profile -->
         <div>
-          <span class="eyebrow eyebrow-dot" style="color: #1a85d6;">Why choose us</span>
+          <span class="eyebrow eyebrow-dot" style="color: var(--blue);">Why choose us</span>
           <h2 class="mt-4 mb-5">Why choose a native English teacher for your corporate training in Sofia.</h2>
           <p class="text-ink-soft leading-relaxed mb-8">We're not a language school with a roster of teachers. Every corporate programme is delivered by the same person – consistently, personally, and with full accountability.</p>
 
@@ -260,7 +260,7 @@ const corpBundle = corp.bundles[0];
               />
             </div>
             <p class="font-heading font-bold text-ink text-[1.05rem] mb-1">Cathal (Lenny) Leonard</p>
-            <p class="text-[0.82rem] font-semibold mb-3" style="color: #1a85d6;">Founder · Senior English Teacher</p>
+            <p class="text-[0.82rem] font-semibold mb-3" style="color: var(--blue);">Founder · Senior English Teacher</p>
             <ul class="flex flex-col gap-1 text-[0.82rem] text-ink-soft">
               {[
                 'From Dublin, Ireland – native English speaker',
@@ -308,7 +308,7 @@ const corpBundle = corp.bundles[0];
 
         <!-- Left: context -->
         <div>
-          <span class="eyebrow eyebrow-dot" style="color: #1a85d6;">Corporate enquiry</span>
+          <span class="eyebrow eyebrow-dot" style="color: var(--blue-on-dark);">Corporate enquiry</span>
           <h2 class="mt-4 mb-5 text-white">Start your corporate English training programme today.</h2>
           <p style="color: rgba(254,255,254,0.74);" class="text-[1.05rem] leading-relaxed mb-8">
             Fill in the form and we'll get back to you within one working day to arrange a call about your team's needs.
@@ -320,7 +320,7 @@ const corpBundle = corp.bundles[0];
               { n: '03', text: 'We design a programme and finalise with you' },
             ].map(({ n, text }) => (
               <div class="flex gap-4 items-center">
-                <span class="font-heading font-bold text-[1.3rem] leading-none flex-shrink-0" style="color: var(--orange-text);">{n}</span>
+                <span class="font-heading font-bold text-[1.3rem] leading-none flex-shrink-0" style="color: var(--orange);">{n}</span>
                 <p class="text-[0.95rem]" style="color: rgba(254,255,254,0.74);">{text}</p>
               </div>
             ))}
@@ -328,8 +328,8 @@ const corpBundle = corp.bundles[0];
         </div>
 
         <!-- Right: form -->
-        <div class="bg-white border border-line rounded-xl p-7 md:p-9 shadow-lift">
-          <div id="corp-form-success" style="display:none; background: #1a85d6; color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">✓ Enquiry sent! We'll be in touch within one working day to arrange a call.</div>
+        <div class="surface-light bg-white border border-line rounded-xl p-7 md:p-9 shadow-lift">
+          <div id="corp-form-success" style="display:none; background: var(--blue); color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">✓ Enquiry sent! We'll be in touch within one working day to arrange a call.</div>
           <h3 class="text-[1.3rem] mb-1">Corporate Enquiry</h3>
           <p class="text-ink-soft text-[0.93rem] mb-6">We reply within one working day.</p>
 
@@ -341,28 +341,28 @@ const corpBundle = corp.bundles[0];
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Full name</label>
-                <input id="corp-name" name="full-name" type="text" placeholder="Jana Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
+                <input id="corp-name" name="full-name" type="text" placeholder="Jana Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[var(--blue)] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
               </div>
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-company" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Company</label>
-                <input id="corp-company" name="company" type="text" placeholder="Acme Ltd." class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
+                <input id="corp-company" name="company" type="text" placeholder="Acme Ltd." class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[var(--blue)] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
-                <input id="corp-email" name="email" type="email" required placeholder="jana@company.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
+                <input id="corp-email" name="email" type="email" required placeholder="jana@company.com" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[var(--blue)] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
               </div>
               <div class="flex flex-col gap-[6px]">
                 <label for="corp-phone" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Phone</label>
-                <input id="corp-phone" name="phone" type="tel" placeholder="+359 88 000 0000" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
+                <input id="corp-phone" name="phone" type="tel" placeholder="+359 88 000 0000" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[var(--blue)] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition" />
               </div>
             </div>
 
             <div class="flex flex-col gap-[6px]">
               <label for="corp-team-size" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Team size</label>
-              <select id="corp-team-size" name="team-size" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition appearance-none cursor-pointer">
+              <select id="corp-team-size" name="team-size" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[var(--blue)] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition appearance-none cursor-pointer">
                 <option value="">Select team size…</option>
                 <option>1 person (individual coaching)</option>
                 <option>2–3 people</option>
@@ -373,7 +373,7 @@ const corpBundle = corp.bundles[0];
 
             <div class="flex flex-col gap-[6px]">
               <label for="corp-goals" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Primary goal</label>
-              <select id="corp-goals" name="primary-goal" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition appearance-none cursor-pointer">
+              <select id="corp-goals" name="primary-goal" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[var(--blue)] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition appearance-none cursor-pointer">
                 <option value="">Select primary goal…</option>
                 <option>Meetings & presentations</option>
                 <option>Client communication & negotiations</option>
@@ -386,10 +386,10 @@ const corpBundle = corp.bundles[0];
 
             <div class="flex flex-col gap-[6px]">
               <label for="corp-message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Anything else we should know?</label>
-              <textarea id="corp-message" name="message" rows="3" placeholder="Industry, current English level, preferred schedule, budget…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[#1a85d6] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition resize-none"></textarea>
+              <textarea id="corp-message" name="message" rows="3" placeholder="Industry, current English level, preferred schedule, budget…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-[var(--blue)] focus:shadow-[0_0_0_3px_rgba(26,133,214,0.18)] transition resize-none"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary w-full justify-center mt-1" style="background: #1a85d6; border-color: #1a85d6; box-shadow: 0 6px 20px rgba(255,255,255,0.25);">Submit enquiry</button>
+            <button type="submit" class="btn btn-primary w-full justify-center mt-1" style="background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 6px 20px rgba(255,255,255,0.25);">Submit enquiry</button>
             <p class="text-center text-ink-soft text-[0.82rem]">We reply within one working day.</p>
 
           </form>

@@ -12,7 +12,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
   <section class="relative min-h-[80vh] flex items-stretch text-white overflow-hidden isolate pb-10">
     <div
       class="absolute inset-0 -z-[2] bg-[#1a2a20] bg-cover bg-[center_40%]"
-      style="background-image: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"
+      style="background-image: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"
     ></div>
     <div
       class="absolute inset-0 -z-[1] pointer-events-none"
@@ -30,8 +30,8 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
 
         <h1 class="text-white">
           Confident English<br />
-          comes from <span style="color: var(--orange-text);">using</span> it.<br />
-          Not <span style="color: var(--orange-text);">memorising</span> it.
+          comes from <span style="color: var(--orange);">using</span> it.<br />
+          Not <span style="color: var(--orange);">memorising</span> it.
         </h1>
 
         <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
@@ -152,7 +152,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
           <p class="text-ink-soft text-[1.08rem] max-w-[56ch] mb-3">
             Each summer we take a group from Sofia to an international summer centre in Dublin, at the {venue.name} – where English stops being a subject and starts being part of daily life.
           </p>
-          <p class="font-heading font-semibold text-[1.18rem] leading-snug mb-0" style="color: #c05c00;">
+          <p class="font-heading font-semibold text-[1.18rem] leading-snug mb-0" style="color: var(--orange-text);">
             Real conversations.<br/>Real confidence.<br/>Students from across Europe.
           </p>
 
@@ -282,7 +282,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
   </section>
 
   <!-- PULL QUOTE -->
-  <section class="section" style="background: linear-gradient(135deg, #008037 0%, #006a2d 100%);">
+  <section class="section" style="background: linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);">
     <div class="container-x">
       <div class="max-w-[840px] mx-auto text-center">
         <span class="block font-heading font-bold text-[3.5rem] leading-none text-brand-orange">&ldquo;</span>
@@ -303,8 +303,8 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
         <div>
-          <span class="eyebrow eyebrow-dot" style="color: #00a84a;">Contact</span>
-          <h2 class="mt-4 mb-4"><span class="text-white">Got a </span><span style="color: var(--orange-text);">question?</span><span class="text-white"> We're here.</span></h2>
+          <span class="eyebrow eyebrow-dot" style="color: var(--green-on-dark);">Contact</span>
+          <h2 class="mt-4 mb-4"><span class="text-white">Got a </span><span style="color: var(--orange);">question?</span><span class="text-white"> We're here.</span></h2>
           <p>Book a free consultation and we'll help you find the right programme or course.</p>
 
           <div class="flex flex-col gap-6 mt-8">
@@ -314,7 +314,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
               { label: 'Phone (Bulgarian)', value: '+359 889 178 100', icon: '📞' },
             ].map(({ label, value, icon }) => (
               <div class="flex gap-4 items-start py-4 border-b border-white/10">
-                <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green grid place-items-center flex-shrink-0">{icon}</div>
+                <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green-on-dark grid place-items-center flex-shrink-0">{icon}</div>
                 <div>
                   <div class="font-heading text-[0.78rem] uppercase tracking-[0.12em] text-white/55 mb-[2px] font-semibold">{label}</div>
                   <div class="font-heading font-medium text-white text-[1.02rem]">{value}</div>

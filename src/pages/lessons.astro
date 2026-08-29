@@ -13,7 +13,7 @@ import { courses } from '../data/courses';
 
   <!-- HERO -->
   <section class="relative flex items-center text-white overflow-hidden isolate" style="min-height: 54vh;">
-    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1f6b4d 0%, #14201a 60%, #0a3f25 100%);"></div>
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
@@ -23,7 +23,7 @@ import { courses } from '../data/courses';
             Online English lessons
           </p>
           <h1 class="text-white mb-5" style="max-width: 18ch;">
-            English lessons that make you <span style="color: var(--orange-text);">speak</span> – from day one.
+            English lessons that make you <span style="color: var(--orange);">speak</span> – from day one.
           </h1>
           <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55] mb-8">
             Taught online by a CELTA-qualified native teacher. Small groups or 1:1. Every lesson is built around real communication – not grammar drills.
@@ -65,7 +65,7 @@ import { courses } from '../data/courses';
       <!-- Featured card: Speak Up! -->
       <div class="mb-6 rounded-xl overflow-hidden shadow-lift" style="border: 2px solid var(--orange); background: white;">
         <div style="background: var(--orange); padding: 8px 20px; display: flex; align-items: center; gap: 10px;">
-          <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: white;">★ Most popular</span>
+          <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink);">★ Most popular</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-8 p-8 md:p-10 items-start">
           <!-- Left: title + desc -->
@@ -115,7 +115,7 @@ import { courses } from '../data/courses';
         <!-- Personal Speaking Coach -->
         <div class="bg-white border border-line rounded-xl p-7 flex flex-col shadow-soft">
           <div class="flex items-center gap-2 mb-4">
-            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #3b5bdb;">Individual</span>
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--blue-soft); color: var(--blue);">Individual</span>
           </div>
           <h3 class="text-[1.2rem] mb-2">Personal Speaking Coach</h3>
           <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
@@ -151,7 +151,7 @@ import { courses } from '../data/courses';
         <!-- Exam Prep -->
         <div class="bg-white border border-line rounded-xl p-7 flex flex-col shadow-soft">
           <div class="flex items-center gap-2 mb-4">
-            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #3b5bdb;">Individual</span>
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--blue-soft); color: var(--blue);">Individual</span>
             <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--green-soft); color: var(--green);">Group</span>
           </div>
           <h3 class="text-[1.2rem] mb-2">Exam Preparation</h3>
@@ -199,7 +199,7 @@ import { courses } from '../data/courses';
         <!-- General English -->
         <div class="bg-white border border-line rounded-xl p-7 flex flex-col shadow-soft">
           <div class="flex items-center gap-2 mb-4">
-            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #3b5bdb;">Individual</span>
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--blue-soft); color: var(--blue);">Individual</span>
           </div>
           <h3 class="text-[1.2rem] mb-2">General English</h3>
           <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
@@ -268,9 +268,9 @@ import { courses } from '../data/courses';
         </div>
 
         <!-- Business English — Corporate -->
-        <div class="bg-white rounded-xl p-7 flex flex-col shadow-soft" style="border: 1.5px solid #1a85d6;">
+        <div class="bg-white rounded-xl p-7 flex flex-col shadow-soft" style="border: 1.5px solid var(--blue);">
           <div class="flex items-center gap-2 mb-4">
-            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: #e8f0fe; color: #1a85d6;">Corporate</span>
+            <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--blue-soft); color: var(--blue);">Corporate</span>
           </div>
           <h3 class="text-[1.2rem] mb-2">Business English for Teams</h3>
           <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
@@ -295,7 +295,7 @@ import { courses } from '../data/courses';
           <div class="pt-5 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.3rem]">Custom pricing</p>
             <p class="text-[0.82rem] text-ink-soft mt-1">Based on format, group size, and programme length.</p>
-            <a href="/corporate-training" class="btn mt-4 inline-flex" style="background: #1a85d6; color: white; border: none; font-size: 0.88rem; padding: 10px 20px; border-radius: 8px; font-family: Montserrat, sans-serif; font-weight: 700; text-decoration: none;">View corporate training</a>
+            <a href="/corporate-training" class="btn mt-4 inline-flex" style="background: var(--blue); color: white; border: none; font-size: 0.88rem; padding: 10px 20px; border-radius: 8px; font-family: Montserrat, sans-serif; font-weight: 700; text-decoration: none;">View corporate training</a>
           </div>
         </div>
 
@@ -412,10 +412,10 @@ import { courses } from '../data/courses';
   <!-- CORPORATE TEASER -->
   <section class="section section-tinted">
     <div class="container-x">
-      <div class="rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #1a85d6 0%, #0f5fa3 100%); box-shadow: 0 4px 24px rgba(26,133,214,0.25);">
+      <div class="rounded-xl overflow-hidden" style="background: linear-gradient(135deg, var(--blue) 0%, #0f5fa3 100%); box-shadow: 0 4px 24px rgba(26,133,214,0.25);">
         <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-0">
           <div class="p-8 md:p-10">
-            <span class="eyebrow" style="color: rgba(255,255,255,0.7); letter-spacing: 0.18em; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; font-family: 'Montserrat', sans-serif;">
+            <span class="eyebrow" style="color: rgba(255,255,255,0.92); letter-spacing: 0.18em; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; font-family: 'Montserrat', sans-serif;">
               <span style="display:inline-block; width:6px; height:6px; background: rgba(255,255,255,0.7); border-radius:50%; margin-right:0.7em; vertical-align:middle; transform:translateY(-2px);"></span>
               Corporate Training
             </span>

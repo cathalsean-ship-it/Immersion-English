@@ -33,12 +33,65 @@
 }
 
 :root {
-  --green: #008037;
-  --green-deep: #006a2d;
-  --green-soft: #e8f1ea;
-  --orange: #FF914D;
-  --orange-deep: #e87a36;
-  --orange-text: #E07010; /* AA-compliant orange for large text use */
+  /* Contrast, Aug 2026. Every pair below was measured to WCAG 2.1 and the
+     failures corrected. Where a value changed, the hue was held and the
+     lightness reduced until the target was met, so each colour is the same
+     colour it was — deeper. If you change one, measure it: the ratios in these
+     comments are the reason for the values. */
+  --green: #00682C;       /* white on it 7.00 (was #008037, 5.07) */
+  --green-deep: #005224;  /* hover partner, a step below --green */
+  --green-soft: #e8f1ea;  /* --green on it 6.03 (was 4.39 with the old green) */
+  --orange: #FF914D;      /* brand anchor — unchanged. Pair with --ink (7.52),
+                             never with white (2.23). */
+  --orange-deep: #e87a36; /* --orange hover. --ink on it 5.81; white 2.89. */
+  /* TWO oranges, and the ground decides which. --orange-text used to be the
+     only one, used both on white sections and on the dark hero gradients, so
+     no single value could work: darkening it far enough for white grounds
+     dropped it to 2.10 on the heroes. Light ground -> --orange-text.
+     Dark ground -> --orange, which is 4.50 on --hero-top and 7.52 on --ink. */
+  --orange-text: #B85500; /* orange for TEXT on light grounds: 4.83 on white,
+                             4.55 on --cream — cream is the harder ground and
+                             the one to solve for. Safe at any size, including the
+                             0.72rem uppercase eyebrows it is actually used on.
+                             (Was #E07010, 3.23, labelled "large text only".) */
+  --blue: #035B9E;        /* corporate accent. White on it 7.01; it on
+                             --blue-soft 6.12. Replaces #1A85D6 (3.91) and
+                             #3B5BDB — two near-identical blues hardcoded 38
+                             times across three pages. */
+  --blue-soft: #e8f0fe;   /* chip ground for --blue */
+  --hero-top: #0E4B32;    /* first stop of the hero gradient. --orange on it
+                             4.55; white 10.16. Was #1f6b4d, where the orange
+                             headline accent measured 2.88 — under even the 3:1
+                             large-text floor, on every hero on the site. */
+  --ink-mute: #6b7570;    /* quietest text, footer only. 4.77 on --off-white. */
+  --blue-on-dark: #2AA1FB;  /* --blue is for LIGHT grounds; on --ink it is 2.39
+                             and on the corporate hero 1.78. This is the same
+                             blue lightened for dark grounds: 6.04 on --ink,
+                             4.50 on the corporate hero's lightest stop. */
+  --green-on-dark: #00C152; /* --green is for LIGHT grounds. On --ink it drops
+                             to 2.41 and fails, and darkening it for
+                             white-on-green made that worse, not better. Use
+                             this on dark sections: 7.01 on --ink. Same hue,
+                             lightened instead of darkened. */
+
+  /* Same colours as RGB triplets. tailwind.config.mjs builds its palette from
+     these as rgb(var(--x-rgb) / <alpha-value>), so utilities like
+     bg-brand-green/20 still work AND there is only one place a brand colour is
+     defined. Change the hex above and the triplet here together — they are the
+     same colour written twice, which is the one duplication this file allows.
+     Nothing else should hardcode a brand colour. */
+  --green-rgb:         0 104 44;
+  --green-on-dark-rgb: 0 193 82;
+  --green-deep-rgb:  0 82 36;
+  --green-soft-rgb:  232 241 234;
+  --orange-rgb:      255 145 77;
+  --orange-deep-rgb: 232 122 54;
+  --cream-rgb:       250 248 243;
+  --off-white-rgb:   254 255 254;
+  --ink-rgb:         20 32 26;
+  --ink-soft-rgb:    74 87 80;
+  --line-rgb:        230 226 216;
+  --line-strong-rgb: 212 206 191;
   --off-white: #FEFFFE;
   --cream: #FAF8F3;
   --ink: #14201a;
@@ -205,6 +258,19 @@
   .section-dark .eyebrow { color: var(--orange); }
   .section-dark p { color: rgba(254,255,254,0.74); }
 
+  /* A white card inside a dark section. Without this the rules above win on
+     specificity — .section-dark p is 0,1,1 and beats .text-ink-soft at 0,1,0 —
+     so the heading and body text inside the card render white on white and
+     vanish. That was live on the corporate page. Mark any light surface inside
+     a dark section with this class rather than patching each element inline. */
+  .section-dark .surface-light,
+  .section-dark .surface-light h1,
+  .section-dark .surface-light h2,
+  .section-dark .surface-light h3,
+  .section-dark .surface-light h4,
+  .section-dark .surface-light label { color: var(--ink); }
+  .section-dark .surface-light p { color: var(--ink-soft); }
+
   .trust-card {
     padding: 40px 36px 32px;
     background: white;
@@ -256,9 +322,12 @@
     letter-spacing: -0.02em;
   }
 
+  /* --ink, not white. White on --orange is 2.23 and fails at every size, and
+     this is the most-clicked control on the site. --ink on the same orange is
+     7.52 — which is what .btn-primary has always used. Do not put it back. */
   .nav-cta {
     background: var(--orange);
-    color: white !important;
+    color: var(--ink) !important;
     padding: 10px 18px;
     border-radius: 999px;
     font-weight: 600;

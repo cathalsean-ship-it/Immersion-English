@@ -3,20 +3,26 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
   theme: {
     extend: {
+      // Built from the custom properties in src/styles/global.css rather than
+      // repeated here. The palette used to exist as hex in both files, so a
+      // contrast fix in one left the other behind — text-brand-green and
+      // --green would quietly disagree. The rgb(... / <alpha-value>) form is
+      // what keeps modifiers like bg-brand-green/20 working.
       colors: {
         brand: {
-          green: '#008037',
-          'green-deep': '#006a2d',
-          'green-soft': '#e8f1ea',
-          orange: '#FF914D',
-          'orange-deep': '#e87a36',
+          green: 'rgb(var(--green-rgb) / <alpha-value>)',
+          'green-on-dark': 'rgb(var(--green-on-dark-rgb) / <alpha-value>)',
+          'green-deep': 'rgb(var(--green-deep-rgb) / <alpha-value>)',
+          'green-soft': 'rgb(var(--green-soft-rgb) / <alpha-value>)',
+          orange: 'rgb(var(--orange-rgb) / <alpha-value>)',
+          'orange-deep': 'rgb(var(--orange-deep-rgb) / <alpha-value>)',
         },
-        cream: '#FAF8F3',
-        'off-white': '#FEFFFE',
-        ink: '#14201a',
-        'ink-soft': '#4a5750',
-        line: '#e6e2d8',
-        'line-strong': '#d4cebf',
+        cream: 'rgb(var(--cream-rgb) / <alpha-value>)',
+        'off-white': 'rgb(var(--off-white-rgb) / <alpha-value>)',
+        ink: 'rgb(var(--ink-rgb) / <alpha-value>)',
+        'ink-soft': 'rgb(var(--ink-soft-rgb) / <alpha-value>)',
+        line: 'rgb(var(--line-rgb) / <alpha-value>)',
+        'line-strong': 'rgb(var(--line-strong-rgb) / <alpha-value>)',
       },
       fontFamily: {
         heading: ['Montserrat', 'system-ui', 'sans-serif'],
