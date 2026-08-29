@@ -170,10 +170,18 @@ export const dublin: DublinProgramme = {
     //   Emerald, Trinity Hall residence           €2,950
     //   Emerald, intensive residence              €3,050
     //   CES Dublin, homestay not residence        €1,930 + €85 + €190 transfer
-    // Positioned above ATC's NCI entry price and below Emerald, with headroom
-    // for 2027 inflation. NOT yet checked against MLA's 2027 net rate — do that
-    // before this goes anywhere near a parent.
-    amount: 2690,
+    // Raised from €2,690 to €2,950 by the owner, 29 Aug 2026. That places it
+    // level with Emerald's Trinity Hall residence and below their intensive —
+    // no longer "below Emerald" as the note above described the old figure.
+    // Still ABOVE every ATC price on the same campus, so the positioning
+    // argument now rests on what the group leader and the Sofia group add, not
+    // on being cheaper.
+    //
+    // STILL NOT checked against MLA's 2027 net rate. The margin question is
+    // easier at this price, not answered by it: if MLA's net rate lands above
+    // roughly €2,300 a head the twelve-student threshold and the owner's own
+    // travel still eat it. This remains a phone call, not a commit.
+    amount: 2950,
     // TODO: awaiting MLA 2027 confirmation — deposit terms pending 2027 T&Cs.
     depositPercent: null,
     depositDue: null,

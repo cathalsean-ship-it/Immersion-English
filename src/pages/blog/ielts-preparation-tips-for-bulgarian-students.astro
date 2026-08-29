@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+// The Dublin duration is read from the data, never typed. This post claimed
+// "seven days" long after the programme became a fixed two weeks.
+import { dublin, durationLabel } from '../../data/dublin';
 ---
 
 <BaseLayout
@@ -134,7 +137,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
         <p>This is one reason why students who spend time in English-speaking countries consistently outperform those who prepare exclusively from textbooks. The experience does not replace targeted exam preparation, but it builds the fluency and confidence that no grammar exercise can.</p>
 
-        <p>If you are a teenager preparing for IELTS in the coming years, our <a href="/dublin-summer-2027">Dublin Summer 2027 Programme</a> is designed precisely for this. Seven days of full English immersion in Dublin – real conversation, real culture, real confidence-building – is exactly the kind of communicative experience that makes the difference when you sit down with an IELTS speaking examiner.</p>
+        <p>If you are a teenager preparing for IELTS in the coming years, our <a href="/dublin-summer-2027">Dublin Summer 2027 Programme</a> is designed precisely for this. {durationLabel(dublin.durationsWeeks)} of full English immersion in Dublin – real conversation, real culture, real confidence-building – is exactly the kind of communicative experience that makes the difference when you sit down with an IELTS speaking examiner.</p>
 
         <h2>A note on band score targets</h2>
 
