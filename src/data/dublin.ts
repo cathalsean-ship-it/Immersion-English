@@ -293,9 +293,14 @@ export const dublin: DublinProgramme = {
     meetsAt: 'Dublin Airport',
   },
 
-  // Name withheld by site owner's instruction — described by role only.
+  // Name added by site owner's instruction, 29 Aug 2026, superseding the earlier
+  // "withheld — described by role only". Everywhere except the "who do I call"
+  // FAQ still renders .role rather than .name, so filling this in changed
+  // exactly one sentence. dublin-summer-2027/index.astro also hardcodes "Lenny
+  // and Lina" and now agrees with this data; that literal could be interpolated
+  // from here rather than typed.
   secondChaperone: {
-    name: null,
+    name: 'Lina',
     role: 'Native Bulgarian speaker',
   },
 

@@ -87,7 +87,7 @@ Immersion English is a booking agent, and accompanies its own group at an intern
 - **Lessons:** ${lessonsPerWeek} lessons per week (${hoursPerWeek} hours), taught by the centre's qualified native-speaker teachers
 - **Nationality mix:** International — students from across Europe and beyond
 - **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is the centre's published Dublin programme from their 2026 catalogue; the 2027 edition is not out and the centre has not confirmed 2027 in writing.
-- **Supervision:** ${groupLeader.credential} ${groupLeader.role.toLowerCase()} meets the group at ${groupLeader.meetsAt} and is with them throughout${secondChaperone ? `, alongside a ${secondChaperone.role.replace('Native ', 'native ')}` : ''}. On-site supervision is provided by the centre.
+- **Supervision:** ${groupLeader.name} (${groupLeader.credential} ${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` and ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} meet the group at ${groupLeader.meetsAt} and are with them throughout. On-site supervision is provided by the centre.
 
 ### Included
 
@@ -101,7 +101,7 @@ ${notIncluded.map(i => `- ${i}`).join('\n')}
 ## Key differentiators
 
 - International centre — students from across Europe, not a single-nationality group
-- ${groupLeader.credential} ${groupLeader.role.toLowerCase()} who meets the group at ${groupLeader.meetsAt} and is with them throughout
+- ${groupLeader.name} (${groupLeader.credential} ${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` and ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} meet the group at ${groupLeader.meetsAt} and are with them throughout
 ${secondChaperone ? `- ${secondChaperone.role} with the group throughout\n` : ''}- Full board and en-suite campus accommodation included
 - One fixed programme of ${durationLabel(durationsWeeks)} — a single set of dates for the whole group
 - British Council credentials of both founders
