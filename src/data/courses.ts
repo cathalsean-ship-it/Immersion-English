@@ -7,8 +7,14 @@
  * Personal Speaking Coach at €45 with the wrong bundles when the page said €50.
  * Both files now render these values, so a price can only be wrong in one place.
  *
- * Add a price here before rendering it anywhere. Do not type a figure into a
- * template.
+ * The same applies to lesson length. Every course runs 90 minutes, but the site
+ * used to say so only in a bullet on three of six cards, so visitors read the
+ * per-lesson prices as hourly rates and the courses looked dearer than they are.
+ * lessonMinutes is rendered into the price label itself on every card, in
+ * llms.txt and in the JSON-LD.
+ *
+ * Add a price or a duration here before rendering it anywhere. Do not type a
+ * figure into a template.
  */
 
 export interface CourseBundle {
@@ -30,6 +36,14 @@ export interface Course {
   perLesson: number | null;
   /** Null unless the course is sold as one fixed block, like Speak Up!. */
   total: number | null;
+  /** Length of one lesson or session, in minutes. Required, not optional: a
+   *  price without a duration is what caused this whole problem. Every course
+   *  is currently 90. */
+  lessonMinutes: number;
+  /** The noun in customer-facing labels — "per 90-minute lesson" vs "per
+   *  90-minute session". Corporate training has always said "session" and the
+   *  corporate page keeps that wording. */
+  unitNoun: 'lesson' | 'session';
   bundles: CourseBundle[];
 }
 
@@ -42,6 +56,8 @@ export const courses = {
       'structured group speaking programme, 12 lessons over 6 weeks, max 8 students, online, B1 and above',
     perLesson: 24,
     total: 290,
+    lessonMinutes: 90,
+    unitNoun: 'lesson',
     bundles: [],
   },
   personalSpeakingCoach: {
@@ -49,6 +65,8 @@ export const courses = {
     summary: '1:1 online coaching, flexible schedule, B1 and above',
     perLesson: 50,
     total: null,
+    lessonMinutes: 90,
+    unitNoun: 'lesson',
     bundles: [
       { lessons: 5, price: 237, savePercent: 5 },
       { lessons: 10, price: 450, savePercent: 10 },
@@ -59,6 +77,8 @@ export const courses = {
     summary: 'individual lessons',
     perLesson: 45,
     total: null,
+    lessonMinutes: 90,
+    unitNoun: 'lesson',
     bundles: [
       { lessons: 5, price: 213, savePercent: 5 },
       { lessons: 10, price: 405, savePercent: 10 },
@@ -69,28 +89,40 @@ export const courses = {
     summary: 'tailored to professional goals',
     perLesson: 45,
     total: null,
+    lessonMinutes: 90,
+    unitNoun: 'lesson',
     bundles: [
       { lessons: 5, price: 213, savePercent: 5 },
       { lessons: 10, price: 405, savePercent: 10 },
     ],
   },
   // Note: sold at the same per-lesson rate as General and Business English but
-  // with no bundle, and the lessons page does not say how long a lesson is.
-  // Flagged Aug 2026, left as-is pending a decision.
+  // with no bundle. The missing duration was fixed in Aug 2026; the absent
+  // bundle is still deliberate-or-not and unresolved.
   examPreparation: {
     name: 'Exam Preparation',
     summary: 'IELTS and Cambridge CAE, 1:1 online',
     perLesson: 45,
     total: null,
+    lessonMinutes: 90,
+    unitNoun: 'lesson',
     bundles: [],
   },
+  // €60 is deliberately above the €45 individual rate, for the same 90 minutes.
+  // These figures lived as literals in corporate-training.astro — once in the
+  // visible price block and again in that page's JSON-LD, so the two could
+  // disagree with each other without anyone noticing. They render from here now.
   corporateTraining: {
     name: 'Corporate Training',
     summary:
       'tailored Business English programmes for companies in Sofia, 1:1 and small group sessions',
-    perLesson: null,
+    perLesson: 60,
     total: null,
-    bundles: [],
+    lessonMinutes: 90,
+    unitNoun: 'session',
+    bundles: [
+      { lessons: 10, price: 540, savePercent: 10 },
+    ],
   },
 } satisfies Record<string, Course>;
 
@@ -105,20 +137,26 @@ export const courseList: Course[] = [
 ];
 
 /**
- * "€45/lesson (bundle: 5 lessons €213, 10 lessons €405)" — the price half of an
- * llms.txt course line. Empty string when a course has no published price.
+ * "€45/90-minute lesson (bundle: 5 lessons €213, 10 lessons €405)" — the price
+ * half of an llms.txt course line. Empty string when a course has no published
+ * price.
+ *
+ * The duration is in the rate itself, not appended as a note. llms.txt is what
+ * an AI assistant reads when someone asks it about the school, and it has no
+ * layout to carry the information anywhere else.
  */
 export function priceSummary(course: Course): string {
+  const unit = `${course.lessonMinutes}-minute ${course.unitNoun}`;
   const parts: string[] = [];
   if (course.total !== null) {
     parts.push(`€${course.total} total`);
-    if (course.perLesson !== null) parts.push(`€${course.perLesson}/lesson`);
+    if (course.perLesson !== null) parts.push(`€${course.perLesson}/${unit}`);
   } else if (course.perLesson !== null) {
-    parts.push(`€${course.perLesson}/lesson`);
+    parts.push(`€${course.perLesson}/${unit}`);
   }
   if (course.bundles.length > 0) {
     const bundles = course.bundles
-      .map(b => `${b.lessons} lessons €${b.price}`)
+      .map(b => `${b.lessons} ${course.unitNoun}s €${b.price}`)
       .join(', ');
     parts.push(`bundle: ${bundles}`);
   }

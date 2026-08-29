@@ -2,6 +2,11 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { dublin } from '../data/dublin';
+// This JSON-LD is emitted on every page, so a figure typed in here is a figure
+// on the whole site. It carried "price": "45" for the Personal Speaking Coach
+// while courses.ts and the lessons page said €50 — Google was being told a
+// different price from the one visitors saw. Render, never retype.
+import { courses } from '../data/courses';
 import '../styles/global.css';
 
 interface Props {
@@ -111,21 +116,23 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
         "itemListElement": [
           {
             "@type": "Course",
-            "name": "Speak Up! Group English Course",
-            "description": "Structured group speaking programme. 12 lessons over 6 weeks, maximum 8 students, online. Level B2 and above.",
+            "name": courses.speakUp.name,
+            "description": `Structured group speaking programme. 12 lessons over 6 weeks, each ${courses.speakUp.lessonMinutes} minutes, maximum 8 students, online. Level B2 and above.`,
             "provider": { "@type": "EducationalOrganization", "name": "Immersion English" },
             "courseMode": "online",
             "educationalLevel": "B2-C1",
-            "offers": { "@type": "Offer", "price": "290", "priceCurrency": "EUR" }
+            "timeRequired": `PT${courses.speakUp.lessonMinutes}M`,
+            "offers": { "@type": "Offer", "price": String(courses.speakUp.total), "priceCurrency": "EUR" }
           },
           {
             "@type": "Course",
-            "name": "Personal Speaking Coach",
-            "description": "1:1 online English coaching tailored to your goals. Flexible schedule, targeted feedback every session. Level B2 and above.",
+            "name": courses.personalSpeakingCoach.name,
+            "description": `1:1 online English coaching tailored to your goals. ${courses.personalSpeakingCoach.lessonMinutes}-minute sessions. Flexible schedule, targeted feedback every session. Level B2 and above.`,
             "provider": { "@type": "EducationalOrganization", "name": "Immersion English" },
             "courseMode": "online",
             "educationalLevel": "B2-C1",
-            "offers": { "@type": "Offer", "price": "45", "priceCurrency": "EUR" }
+            "timeRequired": `PT${courses.personalSpeakingCoach.lessonMinutes}M`,
+            "offers": { "@type": "Offer", "price": String(courses.personalSpeakingCoach.perLesson), "priceCurrency": "EUR" }
           },
           {
             // Provider is MLA, not Immersion English. Immersion English is the

@@ -1,5 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+// Corporate rates come from the data file. They used to be literals on this
+// page — once in the visible price block and again in the JSON-LD below — so
+// the page could quote one figure to visitors and a different one to Google
+// with nothing to catch it.
+import { courses } from '../data/courses';
+
+const corp = courses.corporateTraining;
+const corpUnit = `${corp.lessonMinutes}-minute ${corp.unitNoun}`;
+const corpBundle = corp.bundles[0];
 ---
 
 <style>
@@ -7,8 +16,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .eyebrow-dot::before { background: #1a85d6; }
 </style>
 
-<script type="application/ld+json">
-{
+<script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   "name": "Immersion English",
@@ -21,29 +29,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       {
         "@type": "Course",
         "name": "1:1 Business English Coaching Sofia",
-        "description": "Personalised Business English coaching for professionals and senior employees in Sofia. Native CELTA-qualified teacher with British Council experience. Meetings, presentations, negotiations, emails, CV and interview preparation.",
+        "description": `Personalised Business English coaching for professionals and senior employees in Sofia. Native CELTA-qualified teacher with British Council experience. Meetings, presentations, negotiations, emails, CV and interview preparation. Sessions are ${corp.lessonMinutes} minutes.`,
         "provider": { "@type": "EducationalOrganization", "name": "Immersion English", "url": "https://immersion-english.com" },
         "courseMode": ["online", "onsite"],
         "educationalLevel": "B2-C2",
+        "timeRequired": `PT${corp.lessonMinutes}M`,
         "audience": { "@type": "Audience", "audienceType": "Business professionals, corporate teams, Sofia-based companies" },
         "inLanguage": "en",
-        "offers": { "@type": "Offer", "price": "60", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "description": "€60 per session. 10-session package €540." }
+        "offers": { "@type": "Offer", "price": String(corp.perLesson), "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "description": `€${corp.perLesson} per ${corpUnit}. ${corpBundle.lessons}-${corp.unitNoun} package €${corpBundle.price}.` }
       },
       {
         "@type": "Course",
         "name": "Small Group Business English Training Sofia",
-        "description": "Structured group Business English training for corporate teams in Sofia. Up to 6 participants per group. Built around your team's industry, roles and communication goals. Native teacher with British Council background.",
+        "description": `Structured group Business English training for corporate teams in Sofia. Up to 6 participants per group. Built around your team's industry, roles and communication goals. Native teacher with British Council background. Sessions are ${corp.lessonMinutes} minutes.`,
         "provider": { "@type": "EducationalOrganization", "name": "Immersion English", "url": "https://immersion-english.com" },
         "courseMode": ["online", "onsite"],
         "educationalLevel": "B2-C2",
+        "timeRequired": `PT${corp.lessonMinutes}M`,
         "audience": { "@type": "Audience", "audienceType": "Corporate teams, HR managers, Sofia-based companies" },
         "inLanguage": "en",
         "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "description": "Custom pricing based on group size and programme length." }
       }
     ]
   }
-}
-</script>
+}, null, 2)} />
 
 <BaseLayout
   title="Corporate English Training Sofia | Бизнес английски за екипи | Immersion English"
@@ -179,8 +188,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               ))}
             </ul>
             <div class="pt-5 border-t border-line">
-              <p class="font-heading font-bold text-ink text-[1.3rem]">€60 <span class="text-[0.85rem] font-normal text-ink-soft">per session</span></p>
-              <p class="text-[0.82rem] text-ink-soft mt-1">10 sessions: <strong class="text-ink">€540</strong> <span style="color: #1a85d6;" class="font-semibold">&nbsp;– save 10%</span></p>
+              <p class="font-heading font-bold text-ink text-[1.3rem]">€{corp.perLesson}{' '}<span class="text-[0.85rem] font-normal text-ink-soft">per {corpUnit}</span></p>
+              <p class="text-[0.82rem] text-ink-soft mt-1">{corpBundle.lessons} sessions: <strong class="text-ink">€{corpBundle.price}</strong> <span style="color: #1a85d6;" class="font-semibold">&nbsp;– save {corpBundle.savePercent}%</span></p>
             </div>
           </div>
         </div>

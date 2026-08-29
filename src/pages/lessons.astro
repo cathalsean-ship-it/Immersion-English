@@ -124,7 +124,7 @@ import { courses } from '../data/courses';
           </p>
           <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
             {[
-              '90-minute online sessions',
+              'Online sessions',
               'Flexible schedule – book around your availability',
               'Targeted feedback every session',
               'Focus areas: confidence, fluency, business English, interviews',
@@ -140,7 +140,7 @@ import { courses } from '../data/courses';
             </li>
           </ul>
           <div class="pt-5 border-t border-line">
-            <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.personalSpeakingCoach.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
+            <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.personalSpeakingCoach.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per {courses.personalSpeakingCoach.lessonMinutes}-minute lesson</span></p>
             <div class="flex gap-4 mt-2 flex-wrap">
               <p class="text-[0.82rem] text-ink-soft">5 lessons: <strong class="text-ink">€{courses.personalSpeakingCoach.bundles[0].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.personalSpeakingCoach.bundles[0].savePercent}%</span></p>
               <p class="text-[0.82rem] text-ink-soft">10 lessons: <strong class="text-ink">€{courses.personalSpeakingCoach.bundles[1].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.personalSpeakingCoach.bundles[1].savePercent}%</span></p>
@@ -177,7 +177,7 @@ import { courses } from '../data/courses';
             </li>
           </ul>
           <div class="pt-5 border-t border-line">
-            <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.examPreparation.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
+            <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.examPreparation.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per {courses.examPreparation.lessonMinutes}-minute lesson</span></p>
           </div>
         </div>
 
@@ -208,7 +208,7 @@ import { courses } from '../data/courses';
           </p>
           <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
             {[
-              '90-minute online sessions',
+              'Online sessions',
               'All skills: speaking, listening, reading, writing',
               'Grammar and vocabulary in context – not in isolation',
               'Flexible schedule – book around your availability',
@@ -225,7 +225,7 @@ import { courses } from '../data/courses';
             </li>
           </ul>
           <div class="pt-5 border-t border-line">
-            <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.generalEnglish.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
+            <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.generalEnglish.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per {courses.generalEnglish.lessonMinutes}-minute lesson</span></p>
             <div class="flex gap-4 mt-2 flex-wrap">
               <p class="text-[0.82rem] text-ink-soft">5 lessons: <strong class="text-ink">€{courses.generalEnglish.bundles[0].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.generalEnglish.bundles[0].savePercent}%</span></p>
               <p class="text-[0.82rem] text-ink-soft">10 lessons: <strong class="text-ink">€{courses.generalEnglish.bundles[1].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.generalEnglish.bundles[1].savePercent}%</span></p>
@@ -259,7 +259,7 @@ import { courses } from '../data/courses';
             ))}
           </ul>
           <div class="pt-5 border-t border-line">
-            <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.businessEnglish.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per lesson</span></p>
+            <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.businessEnglish.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per {courses.businessEnglish.lessonMinutes}-minute lesson</span></p>
             <div class="flex gap-4 mt-2 flex-wrap">
               <p class="text-[0.82rem] text-ink-soft">5 lessons: <strong class="text-ink">€{courses.businessEnglish.bundles[0].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.businessEnglish.bundles[0].savePercent}%</span></p>
               <p class="text-[0.82rem] text-ink-soft">10 lessons: <strong class="text-ink">€{courses.businessEnglish.bundles[1].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.businessEnglish.bundles[1].savePercent}%</span></p>
