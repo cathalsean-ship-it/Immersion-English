@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
+import studentsWalking from '../../assets/students-walking.jpg';
+import StudentVideo from '../../components/StudentVideo.astro';
 import { dublin, durationLabel } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
@@ -152,50 +154,53 @@ const courseSchema = {
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Why Dublin Summer {dublin.year}</span>
         <h2>They won't just study English. They'll live it.</h2>
-        <p>
-          The right class level, a group small enough to actually be heard in,
-          and someone they know close by the whole time. That's what makes a
-          week abroad turn into real immersion.
-        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="trust-card">
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <h3 style="margin: 0;">A city built for immersion</h3>
-            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-          </div>
-          <p style="margin: 0;">
-            Not just a classroom – a real English-speaking capital, known for
-            its warm, welcoming people. Weekly excursions in Dublin, the
-            harbour village of Howth, and a full day trip to Galway keep the
-            English going long after the lesson ends.
-          </p>
-        </div>
+      <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-8 md:gap-11 items-start">
+        <StudentVideo
+          videoId="4Uouprh7d1k"
+          title="Immersion English Summer Programme for Teens in Dublin"
+          poster={studentsWalking}
+        />
 
-        <div class="trust-card">
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <h3 style="margin: 0;">An international experience</h3>
-            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-          </div>
-          <p style="margin: 0;">
-            Small classes, averaging {classSize.average} students, with peers from
-            across Europe and beyond – not just other Bulgarian teenagers. A full
-            international summer centre in {venue.area}, ten minutes' walk from
-            the city centre.
+        <div style="display: flex; flex-direction: column; gap: 28px;">
+          <p style="margin: 0; font-size: 1.08rem; color: var(--ink-soft);">
+            The right class level, a group small enough to actually be heard in,
+            and someone they know close by the whole time. That's what makes a
+            week abroad turn into real immersion.
           </p>
-        </div>
 
-        <div class="trust-card">
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <h3 style="margin: 0;">Supported every step of the way</h3>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
             <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            <h3 style="margin: 0; font-size: 1.05rem;">A city built for immersion</h3>
+            <p style="margin: 0; font-size: 0.95rem;">
+              Not just a classroom – a real English-speaking capital, known for
+              its warm, welcoming people. Weekly excursions in Dublin, the
+              harbour village of Howth, and a full day trip to Galway keep the
+              English going long after the lesson ends.
+            </p>
           </div>
-          <p style="margin: 0;">
-            {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} meet
-            the group at {groupLeader.meetsAt} and are there for the whole stay. Qualified
-            medical staff are on site 24 hours a day.
-          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            <h3 style="margin: 0; font-size: 1.05rem;">An international experience</h3>
+            <p style="margin: 0; font-size: 0.95rem;">
+              Small classes, averaging {classSize.average} students, with peers from
+              across Europe and beyond – not just other Bulgarian teenagers. A full
+              international summer centre in {venue.area}, ten minutes' walk from
+              the city centre.
+            </p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            <h3 style="margin: 0; font-size: 1.05rem;">Supported every step of the way</h3>
+            <p style="margin: 0; font-size: 0.95rem;">
+              {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} meet
+              the group at {groupLeader.meetsAt} and are there for the whole stay. Qualified
+              medical staff are on site 24 hours a day.
+            </p>
+          </div>
         </div>
       </div>
     </div>
