@@ -181,7 +181,11 @@ export const dublin: DublinProgramme = {
     // easier at this price, not answered by it: if MLA's net rate lands above
     // roughly €2,300 a head the twelve-student threshold and the owner's own
     // travel still eat it. This remains a phone call, not a commit.
-    amount: 2950,
+    // Unset until MLA confirm their 2027 net rate. The retail figure we had
+    // pencilled in was EUR 2,950, derived from 2026 competitor pricing and never
+    // checked against MLA's actual cost. Templates render "To be confirmed" for
+    // null and the JSON-LD offer block drops out, so nothing quotes a number.
+    amount: null,
     // TODO: awaiting MLA 2027 confirmation — deposit terms pending 2027 T&Cs.
     depositPercent: null,
     depositDue: null,

@@ -253,16 +253,22 @@ const courseSchema = {
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
               <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} average, {classSize.maximum} maximum</dd>
             </div>
-            {/* One duration, one price. If price.amount is ever set back to null the
-                cell is omitted entirely rather than rendered empty, so no dangling
-                label appears. */}
-            {price.amount !== null && (
-              <div>
-                <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-                <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€{price.amount.toLocaleString('en-IE')}</dd>
-              </div>
-            )}
+            {/* An unconfirmed fee is shown as "To be confirmed", never hidden. A
+                details list that quietly omits the price reads as evasive to a parent
+                comparing programmes, and they leave to find one that states it. */}
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{price.amount !== null ? `€${price.amount.toLocaleString('en-IE')}` : 'To be confirmed'}</dd>
+            </div>
           </dl>
+
+          {price.amount === null && (
+            <p class="text-ink-soft text-[0.9rem] leading-relaxed -mt-4 mb-6">
+              The 2027 fee is set once MLA publish their rates for next summer. Ask us
+              to keep you posted and you will have it before we announce it publicly,
+              with nothing to pay and no obligation.
+            </p>
+          )}
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3 mb-6">
             {included.map(item => {

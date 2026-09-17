@@ -180,15 +180,12 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
               <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} avg, {classSize.maximum} max</dd>
             </div>
-            {/* TODO: awaiting MLA 2027 confirmation — retail price pending 2027 net rates.
-                The "Programme fee" cell is omitted rather than rendered empty, so no
-                dangling label appears. Restore from dublin.ts price.amount. */}
-            {price.amount !== null && (
-              <div>
-                <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-                <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">€{price.amount.toLocaleString('en-IE')}</dd>
-              </div>
-            )}
+            {/* Shown as "To be confirmed" while the 2027 fee is unset, rather than
+                omitted — see the note on the Dublin overview page. */}
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{price.amount !== null ? `€${price.amount.toLocaleString('en-IE')}` : 'To be confirmed'}</dd>
+            </div>
           </dl>
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3">
