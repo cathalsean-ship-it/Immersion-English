@@ -1,0 +1,35 @@
+# Line endings.
+#
+# Git stores every text file in this repo with Unix (LF) endings. Editors and
+# tools on Windows tend to write files back with Windows (CRLF) endings, which
+# made every file show up as modified in `git status` even when nothing in it
+# had actually changed. That hides real work and turns `git add .` into a way
+# to commit hundreds of lines of nothing.
+#
+# `text=auto eol=lf` tells git to convert CRLF to LF when staging and to check
+# files out as LF. Working files on Windows may still end up CRLF on disk, and
+# that is fine: git now ignores the difference instead of reporting it.
+* text=auto eol=lf
+
+# Binary files must never be passed through line-ending conversion, which would
+# corrupt them. `text=auto` detects most of these on its own; listing them is
+# belt and braces.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.eot   binary
+*.pdf   binary
+*.mp4   binary
+*.webm  binary
+
+# SVG is text, so it benefits from the same normalisation.
+*.svg text eol=lf
+
+# desktop.ini is a Windows system file and Windows expects it as it is.
+desktop.ini -text
