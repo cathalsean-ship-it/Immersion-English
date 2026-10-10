@@ -210,7 +210,6 @@ export const dublin: DublinProgramme = {
 
   notIncluded: [
     'Flights',
-    'Airport transfers (from €35 each way)',
     'Travel and medical insurance',
     'Personal spending',
   ],

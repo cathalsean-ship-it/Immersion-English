@@ -22,7 +22,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { dublin, durationLabel } from '../../data/dublin';
 
-const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, airportTransferFrom, visaRequired, medicalStaff, secondChaperone} = dublin;
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, visaRequired, medicalStaff, secondChaperone} = dublin;
 
 const fullDay = (excursions ?? []).filter(e => e.duration === 'full-day');
 const halfDay = (excursions ?? []).filter(e => e.duration === 'half-day');
@@ -183,7 +183,7 @@ const sections = [
       },
       {
         q: 'What is not included?',
-        a: `Flights, airport transfers (from €${airportTransferFrom.amount} each way), travel and medical insurance, and personal spending. A refundable €${securityDeposit.amount} security deposit is collected on arrival.`,
+        a: `Flights, travel and medical insurance, and personal spending. A refundable €${securityDeposit.amount} security deposit is collected on arrival.`,
       },
       {
         q: 'Do students need a visa?',
