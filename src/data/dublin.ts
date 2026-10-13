@@ -216,29 +216,30 @@ export const dublin: DublinProgramme = {
   // schedule also included 17/06, 24/06 (14-day only) and 03/08, 10/08
   // (7/10/14-day) — dropped here, not MLA's full offering.
   //
-  // Narrowed again, same day, to 01/07, 13/07 and 22/07 only — while the site
-  // owner thinks through the group-leader flight schedule. 14-day has only
-  // 01/07 from that set: MLA's confirmed 2027 14-day start dates are 01/07,
-  // 07/07, 14/07, 15/07, 21/07, 28/07 — 13/07 and 22/07 were never valid
-  // 14-day starts, so they're not available here, not just unoffered.
+  // Narrowed to 01/07, 14/07 and 21/07 by site owner's instruction, 13 Oct
+  // 2026, superseding an intermediate 01/07, 13/07, 22/07 set from earlier
+  // the same day — still while the group-leader flight schedule is worked
+  // out. 10-day has only 01/07 from this set: MLA's confirmed 2027 10-day
+  // start dates are 01/07, 13/07, 22/07 only — 14/07 and 21/07 were never
+  // valid 10-day starts, so they're not available here, not just unoffered.
   durations: [
     {
       days: 7,
       nights: 6,
       price: 1580,
-      startDates: ['01/07', '13/07', '22/07'],
+      startDates: ['01/07', '14/07', '21/07'],
     },
     {
       days: 10,
       nights: 9,
       price: 2290,
-      startDates: ['01/07', '13/07', '22/07'],
+      startDates: ['01/07'],
     },
     {
       days: 14,
       nights: 13,
       price: 3150,
-      startDates: ['01/07'],
+      startDates: ['01/07', '14/07', '21/07'],
     },
   ],
 
