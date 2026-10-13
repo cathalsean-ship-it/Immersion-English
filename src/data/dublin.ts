@@ -87,10 +87,14 @@ export interface DublinProgramme {
     role: string;
     credential: string | null;
     teaches: boolean;
-    /** Where the group leader joins the students. Render this rather than
-     *  hardcoding a location, so one edit here moves every page. */
+    /** Where the group leader joins the students, when travelsFromSofia is
+     *  false. Unused while travelsFromSofia is true — kept for if that ever
+     *  changes back. */
     meetsAt: string;
-    /** False until it is actually settled that he flies out with them. */
+    /** True: the group leader(s) fly out from Sofia with the students and
+     *  fly home with them too. Confirmed by the site owner, 13 Oct 2026 —
+     *  this is how the trip actually runs. Render via groupLeaderTravelPhrase
+     *  / groupLeaderTravelPhraseGerund rather than hardcoding either claim. */
     travelsFromSofia: boolean;
   };
   /** The second adult with the group in Dublin. Name withheld by design —
@@ -126,6 +130,28 @@ export function priceRangeLabel(durations: DurationOption[]): string {
   const hi = Math.max(...prices);
   const fmt = (n: number) => `€${n.toLocaleString('en-IE')}`;
   return lo === hi ? fmt(lo) : `${fmt(lo)}–${fmt(hi)}`;
+}
+
+type GroupLeader = DublinProgramme['groupLeader'];
+
+/**
+ * How the group leader(s) get the students to Dublin and back, as a finite
+ * verb phrase — e.g. "travel with the group from Sofia to Dublin and back".
+ * Base form throughout (not "travels"/"meets"), matching the site's existing
+ * voice when a second chaperone's name is appended before this phrase.
+ */
+export function groupLeaderTravelPhrase(groupLeader: GroupLeader): string {
+  return groupLeader.travelsFromSofia
+    ? 'travel with the group from Sofia to Dublin and back'
+    : `meet the group at ${groupLeader.meetsAt}`;
+}
+
+/** Gerund form of the above, e.g. "travelling with the group from Sofia to
+ *  Dublin and back" — for use mid-sentence ("X, travelling with... and..."). */
+export function groupLeaderTravelPhraseGerund(groupLeader: GroupLeader): string {
+  return groupLeader.travelsFromSofia
+    ? 'travelling with the group from Sofia to Dublin and back'
+    : `meeting the group at ${groupLeader.meetsAt}`;
 }
 
 export const dublin: DublinProgramme = {
@@ -183,24 +209,30 @@ export const dublin: DublinProgramme = {
   // DATES: MLA's confirmed NCI start-date schedule for Summer 2027, supplied
   // 13 Oct 2026. The 14-day dates are shared with MLA's 21-day option, which
   // Immersion English does not offer.
+  //
+  // Narrowed to July-only dates by site owner's instruction, 13 Oct 2026, to
+  // keep the group leaders' own flight bookings to one cost-effective month
+  // rather than scattering trips across June and August too. MLA's full
+  // schedule also included 17/06, 24/06 (14-day only) and 03/08, 10/08
+  // (7/10/14-day) — dropped here, not MLA's full offering.
   durations: [
     {
       days: 7,
       nights: 6,
       price: 1580,
-      startDates: ['01/07', '07/07', '13/07', '14/07', '21/07', '22/07', '28/07', '03/08', '10/08'],
+      startDates: ['01/07', '07/07', '13/07', '14/07', '21/07', '22/07', '28/07'],
     },
     {
       days: 10,
       nights: 9,
       price: 2290,
-      startDates: ['01/07', '13/07', '22/07', '03/08', '10/08'],
+      startDates: ['01/07', '13/07', '22/07'],
     },
     {
       days: 14,
       nights: 13,
       price: 3150,
-      startDates: ['17/06', '24/06', '01/07', '07/07', '14/07', '15/07', '21/07', '28/07', '03/08'],
+      startDates: ['01/07', '07/07', '14/07', '15/07', '21/07', '28/07'],
     },
   ],
 
@@ -225,7 +257,7 @@ export const dublin: DublinProgramme = {
     'The full excursion programme – transport and entry tickets included, nothing extra to pay',
     "Daytime and evening activities – cooking, art and games by day; talent shows, karaoke, discos and movie nights once the sun goes down",
     'Placement test, course eBook and student portfolio – so parents can see exactly what a week achieved',
-    'An Immersion English group leader – meeting the group at Dublin Airport and with them for the stay',
+    'An Immersion English group leader – travelling with the group from Sofia to Dublin and back, and with them for the whole stay',
   ],
 
   notIncluded: [
@@ -310,11 +342,12 @@ export const dublin: DublinProgramme = {
     // Immersion English does not teach on this programme. MLA's centre staff do.
     // No template may render a teaching claim for Dublin. This is always false.
     teaches: false,
-    // Site owner's instruction, Aug 2026: he does NOT fly out with the students.
-    // He joins them on arrival. No page may say he travels with them from Sofia,
-    // meets them at the gate in Sofia, or that the group flies out together with
-    // him — that is a safeguarding promise to parents and it is not the case.
-    travelsFromSofia: false,
+    // CORRECTED 13 Oct 2026, site owner's instruction: he and the second
+    // chaperone DO fly out with the students from Sofia and fly home with
+    // them too. This reverses the Aug 2026 note that used to be here — that
+    // was wrong. Render via groupLeaderTravelPhrase / groupLeaderTravelPhraseGerund.
+    travelsFromSofia: true,
+    // Unused while travelsFromSofia is true.
     meetsAt: 'Dublin Airport',
   },
 

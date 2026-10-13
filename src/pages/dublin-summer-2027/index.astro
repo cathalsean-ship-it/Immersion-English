@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
 import studentsWalking from '../../assets/students-walking.jpg';
 import StudentVideo from '../../components/StudentVideo.astro';
-import { dublin, durationOptionsLabel, priceRangeLabel } from '../../data/dublin';
+import { dublin, durationOptionsLabel, priceRangeLabel, groupLeaderTravelPhrase, groupLeaderTravelPhraseGerund } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
 
@@ -123,7 +123,7 @@ const courseSchema = {
           },
           {
             title: `${groupLeader.name}, ${groupLeader.credential}`,
-            desc: `${groupLeader.credential}, meeting the group at ${groupLeader.meetsAt} and with them for the whole stay.`,
+            desc: `${groupLeader.credential}, ${groupLeaderTravelPhraseGerund(groupLeader)} and with them for the whole stay.`,
           },
           {
             title: secondChaperone?.role,
@@ -151,7 +151,7 @@ const courseSchema = {
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Choose your stay</span>
-        <h2>7, 10 or 14 days – one price, nothing extra to book.</h2>
+        <h2>Choose your summer experience.</h2>
         <p>Return airport transfers are already included. Families book and pay for their own flights to and from Dublin.</p>
       </div>
 
@@ -231,8 +231,7 @@ const courseSchema = {
             <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
             <h3 style="margin: 0; font-size: 1.05rem;">Supported every step of the way</h3>
             <p style="margin: 0; font-size: 0.95rem;">
-              {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} meet
-              the group at {groupLeader.meetsAt} and are there for the whole stay. Qualified
+              {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} {groupLeaderTravelPhrase(groupLeader)} and are there for the whole stay. Qualified
               medical staff are on site 24 hours a day.
             </p>
           </div>
@@ -278,7 +277,7 @@ const courseSchema = {
 
         <div>
           <span class="eyebrow eyebrow-dot">Included in Dublin Summer {dublin.year}</span>
-          <h2 class="mt-4 mb-3">One price. Everything except the flight.</h2>
+          <h2 class="mt-4 mb-3">Everything included, per length.</h2>
 
           <dl class="grid grid-cols-2 gap-7 my-8 py-8 border-y border-line">
             <div>
@@ -337,7 +336,7 @@ const courseSchema = {
           <span class="eyebrow eyebrow-dot">Supervision</span>
           <h2 class="mt-4 mb-5"><span style="color: var(--orange-text);">Supported</span>, every step of the way.</h2>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} meet the group at {groupLeader.meetsAt} and are with them for the
+            {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} {groupLeaderTravelPhrase(groupLeader)} and are with them for the
             full stay – settling students in, staying on top of daily check-ins, and being the
             people parents can always ring.
             Classes are taught by the centre's own teaching team, so their focus stays entirely
