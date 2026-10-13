@@ -4,9 +4,11 @@ import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
 import studentsWalking from '../../assets/students-walking.jpg';
 import StudentVideo from '../../components/StudentVideo.astro';
-import { dublin, durationOptionsLabel, priceRangeLabel, groupLeaderTravelPhrase, groupLeaderTravelPhraseGerund } from '../../data/dublin';
+import { dublin, durationOptionsLabel, priceRangeLabel, groupLeaderTravelPhrase, groupLeaderTravelPhraseGerund, formatStartDate, bestValueDuration } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
+
+const bestValue = bestValueDuration(durations);
 
 
 // JSON-LD. Provider is MLA, not Immersion English. AggregateOffer spans the
@@ -151,25 +153,32 @@ const courseSchema = {
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Choose your stay</span>
-        <h2><span style="color: var(--orange-text);">Choose</span> your summer experience.</h2>
+        <h2>One destination, many <span style="color: var(--orange-text);">options</span>.</h2>
         <p>Return airport transfers are already included. Families book and pay for their own flights to and from Dublin.</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {durations.map(({ days, nights, price: optionPrice, startDates: optionDates }) => (
-          <div class="trust-card" style="display: flex; flex-direction: column; gap: 16px;">
-            <div>
-              <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-[0.1em] text-ink-soft m-0 mb-1">{days} days / {nights} nights</p>
-              <p class="font-heading font-bold text-[1.9rem] text-ink m-0">€{optionPrice.toLocaleString('en-IE')}</p>
-              <p class="text-[0.82rem] text-ink-soft m-0 mt-1">per student</p>
+        {durations.map(({ days, nights, price: optionPrice, startDates: optionDates }) => {
+          const isFeatured = bestValue !== null && days === bestValue.days;
+          return (
+            <div
+              class={`pricing-card${isFeatured ? ' pricing-card-featured' : ''}`}
+              style="display: flex; flex-direction: column; gap: 16px; position: relative;"
+            >
+              {isFeatured && <span class="pricing-card-badge">Best value</span>}
+              <div>
+                <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-[0.1em] text-ink-soft m-0 mb-1">{days} days / {nights} nights</p>
+                <p class="font-heading font-bold text-[1.9rem] text-ink m-0">€{optionPrice.toLocaleString('en-IE')}</p>
+                <p class="text-[0.82rem] text-ink-soft m-0 mt-1">per student + flights</p>
+              </div>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+              <div>
+                <p class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">{dublin.year} start dates</p>
+                <p class="text-[0.88rem] text-ink-soft leading-relaxed m-0">{optionDates.map(formatStartDate).join(' · ')}</p>
+              </div>
             </div>
-            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-            <div>
-              <p class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">{dublin.year} start dates</p>
-              <p class="text-[0.88rem] text-ink-soft leading-relaxed m-0">{optionDates.join(' · ')}</p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div class="flex justify-center mt-8">
@@ -230,14 +239,10 @@ const courseSchema = {
             </p>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-            <h3 style="margin: 0; font-size: 1.05rem;">Supported every step of the way</h3>
-            <p style="margin: 0; font-size: 0.95rem;">
-              {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} {groupLeaderTravelPhrase(groupLeader)} and are there for the whole stay. Qualified
-              medical staff are on site 24 hours a day.
-            </p>
-          </div>
+          {/* The group-leader/supervision message used to repeat a third time
+              here. Trimmed per site owner's instruction, 13 Oct 2026 — the
+              dedicated "Who Travels With You" section below already covers
+              this in full, so this block would only restate it. */}
         </div>
       </div>
     </div>

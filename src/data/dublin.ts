@@ -132,6 +132,31 @@ export function priceRangeLabel(durations: DurationOption[]): string {
   return lo === hi ? fmt(lo) : `${fmt(lo)}–${fmt(hi)}`;
 }
 
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+/** Formats a "DD/MM" start date as "D Month", e.g. "01/07" -> "1 July". */
+export function formatStartDate(date: string): string {
+  const [day, month] = date.split('/').map(Number);
+  const monthName = MONTH_NAMES[month - 1];
+  return monthName ? `${day} ${monthName}` : date;
+}
+
+/**
+ * Which duration option is the best deal per day — also the one with the
+ * strongest margin for us (see the MLA pricing calculator: price-per-day and
+ * profit margin both increase with duration under MLA's 2027 net rates, so
+ * this one figure honestly serves both purposes). Used to highlight a single
+ * card on the pricing section rather than presenting three undifferentiated
+ * options.
+ */
+export function bestValueDuration(durations: DurationOption[]): DurationOption | null {
+  if (durations.length === 0) return null;
+  return durations.reduce((best, d) => (d.price / d.days < best.price / best.days ? d : best));
+}
+
 type GroupLeader = DublinProgramme['groupLeader'];
 
 /**
