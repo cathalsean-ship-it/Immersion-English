@@ -20,9 +20,9 @@
  * unrelated provider called ICE.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { dublin, durationLabel } from '../../data/dublin';
+import { dublin, durationOptionsLabel } from '../../data/dublin';
 
-const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, excursions, groupLeader, securityDeposit, visaRequired, medicalStaff, secondChaperone} = dublin;
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions, groupLeader, securityDeposit, visaRequired, medicalStaff, secondChaperone} = dublin;
 
 const fullDay = (excursions ?? []).filter(e => e.duration === 'full-day');
 const halfDay = (excursions ?? []).filter(e => e.duration === 'half-day');
@@ -152,28 +152,25 @@ const sections = [
     faqs: [
       {
         q: 'How much does it cost?',
-        // One duration, one figure. Do NOT reintroduce a "from" price or a
-        // per-week rate — there is only one product now.
-        a: price.amount === null
-          ? 'The fee is confirmed once the 2027 rates are set, and we would rather tell you nothing than tell you a figure that moves. Ask us to keep you posted and you will have it first. The fee covers tuition, en-suite campus accommodation, full board, the excursions and the activities; flights, airport transfers, insurance and personal spending are separate.'
-          : `€${price.amount.toLocaleString('en-IE')} for the two weeks, covering tuition, en-suite campus accommodation, full board, the excursion programme and the activities. Flights, airport transfers, insurance and personal spending are separate.`,
+        // Three fixed lengths, each with its own price. List them explicitly
+        // rather than a vague "from" figure — a parent comparing programmes
+        // wants the actual numbers.
+        a: `${durations.map(d => `€${d.price.toLocaleString('en-IE')} for ${d.days} days`).join(', ')}. Every price covers tuition, en-suite campus accommodation, full board, return airport transfers, the excursion programme and the activities. Flights, insurance and personal spending are separate.`,
         link: { href: '/contact', label: 'Book a free consultation →' },
       },
       {
         q: 'When are the 2027 dates?',
-        // TODO: awaiting MLA 2027 confirmation — 2027 start dates not published.
-        // The 2026 dates must NOT be presented as 2027 dates.
-        a: startDates === null
-          ? 'The centre has not published its 2027 start dates yet. As soon as they do we will publish them here and contact anyone who has registered an interest.'
-          : `Departures begin ${startDates[0]}.`,
+        // Dates are per duration now — list each length's own start dates.
+        a: durations.map(d => `${d.days} days: ${d.startDates.join(', ')}`).join('. ') + '.',
       },
       {
         q: 'How long is the programme?',
-        // One fixed duration. Do NOT re-add "other durations on request".
-        // This answer is about DATES only. Do not say the group travels out or
-        // comes home together: flights are booked separately by each family and
-        // students may not travel on the same flight at all.
-        a: `${durationLabel(durationsWeeks)}. One fixed set of dates for the whole group, with no shorter or longer options.`,
+        // Three fixed lengths. Do NOT say "other durations on request" beyond
+        // what's listed here. This answer is about DATES only. Do not say the
+        // group travels out or comes home together: flights are booked
+        // separately by each family and students may not travel on the same
+        // flight at all.
+        a: `${durationOptionsLabel(durations)}. Each length has its own fixed set of 2027 start dates, shown above.`,
       },
       {
         q: 'How do I hold a place?',

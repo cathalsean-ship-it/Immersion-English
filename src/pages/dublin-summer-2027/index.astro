@@ -4,13 +4,13 @@ import { Image } from 'astro:assets';
 import teensDublin from '../../assets/teens-dublin.jpg';
 import studentsWalking from '../../assets/students-walking.jpg';
 import StudentVideo from '../../components/StudentVideo.astro';
-import { dublin, durationLabel } from '../../data/dublin';
+import { dublin, durationOptionsLabel, priceRangeLabel } from '../../data/dublin';
 
-const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
 
 
-// JSON-LD. Provider is MLA, not Immersion English. No `offers` block until the
-// 2027 retail price is confirmed — a stale figure is worse than no figure.
+// JSON-LD. Provider is MLA, not Immersion English. AggregateOffer spans the
+// three duration options — each has its own fixed price, not a single figure.
 const courseSchema = {
   '@context': 'https://schema.org',
   '@type': 'Course',
@@ -22,11 +22,13 @@ const courseSchema = {
   inLanguage: 'en',
   // Page-specific offer. Safe here because this schema is only emitted on the
   // Dublin overview page, unlike the site-wide block in BaseLayout.
-  ...(dublin.price.amount !== null && {
+  ...(durations.length > 0 && {
     offers: {
-      '@type': 'Offer',
-      price: String(dublin.price.amount),
-      priceCurrency: dublin.price.currency,
+      '@type': 'AggregateOffer',
+      lowPrice: String(Math.min(...durations.map(d => d.price))),
+      highPrice: String(Math.max(...durations.map(d => d.price))),
+      offerCount: String(durations.length),
+      priceCurrency: price.currency,
       // Must be one of Free / Partially Free / Paid / Subscription per Google's
       // Course guidance. Not free text.
       category: 'Paid',
@@ -72,7 +74,7 @@ const courseSchema = {
         </h1>
 
         <p class="mt-4 text-[0.98rem] md:text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">
-          {durationLabel(durationsWeeks)} in Dublin. A summer your teenager won't stop talking about.
+          {durationOptionsLabel(durations)} in Dublin. A summer your teenager won't stop talking about.
         </p>
 
         <div class="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
@@ -144,6 +146,35 @@ const courseSchema = {
     </div>
   </section>
 
+  <!-- PRICING -->
+  <section class="section" style="padding-top: 8px;">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Choose your stay</span>
+        <h2>7, 10 or 14 days – one price, nothing extra to book.</h2>
+        <p>Return airport transfers are already included. Families book and pay for their own flights to and from Dublin.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {durations.map(({ days, nights, price: optionPrice, startDates: optionDates }) => (
+          <div class="trust-card" style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-[0.1em] text-ink-soft m-0 mb-1">{days} days / {nights} nights</p>
+              <p class="font-heading font-bold text-[1.9rem] text-ink m-0">€{optionPrice.toLocaleString('en-IE')}</p>
+              <p class="text-[0.82rem] text-ink-soft m-0 mt-1">per student</p>
+            </div>
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            <div>
+              <p class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">{dublin.year} start dates</p>
+              <p class="text-[0.88rem] text-ink-soft leading-relaxed m-0">{optionDates.join(' · ')}</p>
+            </div>
+            <a href="/contact" class="btn btn-primary" style="margin-top: auto;">Book a free consultation</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   {/* TODO: awaiting review — the programme video was filmed at the cancelled UCD
       programme and shows the old venue, group and excursions. Commented out
       rather than deleted. Restore only with MLA/NCI footage. */}
@@ -180,7 +211,7 @@ const courseSchema = {
             <p style="margin: 0; font-size: 0.95rem;">
               Not just a classroom – a real English-speaking capital, known for
               its warm, welcoming people. Weekly excursions in Dublin, the
-              harbour village of Howth, and a full day trip to Galway keep the
+              harbour village of Howth, and a full day trip to Kilkenny keep the
               English going long after the lesson ends.
             </p>
           </div>
@@ -251,8 +282,8 @@ const courseSchema = {
 
           <dl class="grid grid-cols-2 gap-7 my-8 py-8 border-y border-line">
             <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Duration</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationLabel(durationsWeeks)}</dd>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Lengths available</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationOptionsLabel(durations)}</dd>
             </div>
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
@@ -262,22 +293,11 @@ const courseSchema = {
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
               <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} average, {classSize.maximum} maximum</dd>
             </div>
-            {/* An unconfirmed fee is shown as "To be confirmed", never hidden. A
-                details list that quietly omits the price reads as evasive to a parent
-                comparing programmes, and they leave to find one that states it. */}
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{price.amount !== null ? `€${price.amount.toLocaleString('en-IE')}` : 'To be confirmed'}</dd>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">From {priceRangeLabel(durations)}</dd>
             </div>
           </dl>
-
-          {price.amount === null && (
-            <p class="text-ink-soft text-[0.9rem] leading-relaxed -mt-4 mb-6">
-              The 2027 fee is set once next summer's rates are confirmed. Ask us
-              to keep you posted and you will have it before we announce it publicly,
-              with nothing to pay and no obligation.
-            </p>
-          )}
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3 mb-6">
             {included.map(item => {

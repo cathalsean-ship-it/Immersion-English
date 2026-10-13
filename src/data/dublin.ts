@@ -48,19 +48,25 @@ export interface DublinProgramme {
   classSize: { average: number; maximum: number };
   lessonsPerWeek: number;
   hoursPerWeek: number;
-  durationsWeeks: number[];
-  startDates: string[] | null;
+  /** Three fixed-length options, replacing the old single two-week stay.
+   *  Each carries its own retail price and its own 2027 start dates — MLA
+   *  prices and dates both vary by length, so they can't be shared fields. */
+  durations: {
+    days: number;
+    nights: number;
+    /** Retail price per student, EUR. Immersion English's own decision —
+     *  separate from MLA's net rate, which never appears publicly. */
+    price: number;
+    /** DD/MM, 2027. Source: MLA's NCI centre start-date schedule, Oct 2026. */
+    startDates: string[];
+  }[];
   price: {
     currency: string;
-    /** The single all-in price for the two-week stay. Not a "from" price:
-     *  there is only one duration and one figure. */
-    amount: number | null;
     depositPercent: number | null;
     depositDue: string | null;
     balanceDue: string | null;
   };
   securityDeposit: { currency: string; amount: number };
-  airportTransferFrom: { currency: string; amount: number };
   /**
    * Applies to Bulgarian passport holders only. Bulgaria is an EU member
    * state; Ireland grants free movement to EU citizens for tourism and
@@ -98,15 +104,28 @@ export interface DublinProgramme {
   };
 }
 
+/** Shape of one entry in `dublin.durations`. */
+export type DurationOption = DublinProgramme['durations'][number];
+
 /**
- * Human-readable duration label, e.g. "1, 2, 3 or 4 weeks".
- * Derived here so templates never re-implement it. Previously duplicated in
- * index.astro and faqs.astro.
+ * Human-readable list of the available lengths, e.g. "7, 10 or 14 days".
+ * Derived here so templates never re-implement it.
  */
-export function durationLabel(weeks: number[]): string {
-  if (weeks.length === 0) return '';
-  if (weeks.length === 1) return `${weeks[0]} week${weeks[0] === 1 ? '' : 's'}`;
-  return `${weeks.slice(0, -1).join(', ')} or ${weeks[weeks.length - 1]} weeks`;
+export function durationOptionsLabel(durations: DurationOption[]): string {
+  const days = durations.map(d => d.days);
+  if (days.length === 0) return '';
+  if (days.length === 1) return `${days[0]} days`;
+  return `${days.slice(0, -1).join(', ')} or ${days[days.length - 1]} days`;
+}
+
+/** Lowest and highest retail price across the duration options, e.g. "€1,580–€3,150". */
+export function priceRangeLabel(durations: DurationOption[]): string {
+  if (durations.length === 0) return '';
+  const prices = durations.map(d => d.price);
+  const lo = Math.min(...prices);
+  const hi = Math.max(...prices);
+  const fmt = (n: number) => `€${n.toLocaleString('en-IE')}`;
+  return lo === hi ? fmt(lo) : `${fmt(lo)}–${fmt(hi)}`;
 }
 
 export const dublin: DublinProgramme = {
@@ -147,45 +166,46 @@ export const dublin: DublinProgramme = {
   classSize: { average: 13, maximum: 18 },
   lessonsPerWeek: 20,
   hoursPerWeek: 15,
-  // Site owner's instruction, Aug 2026: the Immersion English group travels for a
-  // single fixed two-week stay. MLA's centre sells 1-4 weeks; this array describes
-  // OUR group only, so copy must not present it as the centre's limit.
-  // price.amount below is the two-week figure. If this array ever changes, that
-  // price must be rechecked — the two move together.
-  durationsWeeks: [2],
-
-  // TODO: awaiting MLA 2027 confirmation — 2027 departure dates not yet published.
-  startDates: null,
+  // Replaces the old single fixed two-week stay. MLA's NCI centre sells 1-4
+  // weeks; Immersion English offers three of those lengths as fixed packages.
+  // Each option's price and 2027 start dates are set here — the two line up
+  // with each other, so check both together if either changes.
+  //
+  // PRICING: retail prices are Immersion English's own cost-plus decision —
+  // MLA's 2027 Standard (non-early-bird) net rate per student, plus the paid
+  // group-leader surcharge (one of two leaders, 70% of net rate — MLA gives
+  // one free place at 12+ students) and return airport transfers for the
+  // whole travelling party, marked up to a ~26% target margin at 12 students.
+  // Set 13 Oct 2026. Families book and pay for their own flights — not
+  // included in these prices; only the two group leaders' flights are an
+  // Immersion English cost, already folded into the margin above.
+  //
+  // DATES: MLA's confirmed NCI start-date schedule for Summer 2027, supplied
+  // 13 Oct 2026. The 14-day dates are shared with MLA's 21-day option, which
+  // Immersion English does not offer.
+  durations: [
+    {
+      days: 7,
+      nights: 6,
+      price: 1580,
+      startDates: ['01/07', '07/07', '13/07', '14/07', '21/07', '22/07', '28/07', '03/08', '10/08'],
+    },
+    {
+      days: 10,
+      nights: 9,
+      price: 2290,
+      startDates: ['01/07', '13/07', '22/07', '03/08', '10/08'],
+    },
+    {
+      days: 14,
+      nights: 13,
+      price: 3150,
+      startDates: ['17/06', '24/06', '01/07', '07/07', '14/07', '15/07', '21/07', '28/07', '03/08'],
+    },
+  ],
 
   price: {
     currency: 'EUR',
-    // Retail price is Immersion English's own decision — separate from MLA's
-    // net rate, which never appears publicly. Not contingent on MLA confirmation.
-    //
-    // Set Aug 2026 from published 2026 competitor pricing for two-week Dublin
-    // junior programmes:
-    //   ATC at NCI (the same campus)          from €2,360
-    //   ATC at UCD                            from €2,640
-    //   Emerald, Alexandra College residence      €2,850
-    //   Emerald, Trinity Hall residence           €2,950
-    //   Emerald, intensive residence              €3,050
-    //   CES Dublin, homestay not residence        €1,930 + €85 + €190 transfer
-    // Raised from €2,690 to €2,950 by the owner, 29 Aug 2026. That places it
-    // level with Emerald's Trinity Hall residence and below their intensive —
-    // no longer "below Emerald" as the note above described the old figure.
-    // Still ABOVE every ATC price on the same campus, so the positioning
-    // argument now rests on what the group leader and the Sofia group add, not
-    // on being cheaper.
-    //
-    // STILL NOT checked against MLA's 2027 net rate. The margin question is
-    // easier at this price, not answered by it: if MLA's net rate lands above
-    // roughly €2,300 a head the twelve-student threshold and the owner's own
-    // travel still eat it. This remains a phone call, not a commit.
-    // Unset until MLA confirm their 2027 net rate. The retail figure we had
-    // pencilled in was EUR 2,950, derived from 2026 competitor pricing and never
-    // checked against MLA's actual cost. Templates render "To be confirmed" for
-    // null and the JSON-LD offer block drops out, so nothing quotes a number.
-    amount: null,
     // TODO: awaiting MLA 2027 confirmation — deposit terms pending 2027 T&Cs.
     depositPercent: null,
     depositDue: null,
@@ -194,7 +214,6 @@ export const dublin: DublinProgramme = {
 
   // Confirmed in the approved copy.
   securityDeposit: { currency: 'EUR', amount: 50 },
-  airportTransferFrom: { currency: 'EUR', amount: 35 },
   visaRequired: false,
   medicalStaff: 'Qualified medical staff on site 24 hours a day.',
 
@@ -202,6 +221,7 @@ export const dublin: DublinProgramme = {
     '20 lessons every week (15 hours) – with qualified native-speaker teachers at the centre',
     'En-suite accommodation on campus – at the National College of Ireland, in the heart of Dublin',
     'Full board – from dinner on the day of arrival to breakfast on the day of departure',
+    'Return airport transfers – between Dublin Airport and the centre, arranged directly by your group leaders',
     'The full excursion programme – transport and entry tickets included, nothing extra to pay',
     "Daytime and evening activities – cooking, art and games by day; talent shows, karaoke, discos and movie nights once the sun goes down",
     'Placement test, course eBook and student portfolio – so parents can see exactly what a week achieved',
@@ -214,26 +234,28 @@ export const dublin: DublinProgramme = {
     'Personal spending',
   ],
 
-  // SOURCE: MLA "Move Language Ahead – Junior Programmes 2026" catalogue, p.44,
-  // the Dublin / National College of Ireland centre. This is MLA's own published
-  // excursion programme, transcribed — not invented, and not the UCD-era list.
+  // SOURCE: MLA "Center Profile – National College of Ireland" brochure, Summer
+  // 2027 edition, supplied 13 Oct 2026. This is MLA's own published excursion
+  // programme for the NCI centre, transcribed — not invented, and not the
+  // UCD-era list.
   //
-  // CAVEAT: taken from the 2026 catalogue because the 2027 edition is not out.
-  // MLA has not confirmed the 2027 programme in writing. Excursions at a centre
-  // are usually stable year to year, but treat this as "MLA's published Dublin
-  // programme" rather than a 2027 guarantee until they confirm.
+  // CORRECTION 13 Oct 2026: the 2027 brochure names Kilkenny (Walking Tour &
+  // Kilkenny Castle, entrance ticket included) as the full-day private-bus
+  // excursion, replacing Galway, which was sourced from the 2026 catalogue and
+  // is not on the 2027 list. The rest of the programme is unchanged between
+  // the two editions.
   //
   // Note for anyone tempted to re-add the old cards: Trinity College, the Book of
-  // Kells, Dublin Castle, Glendalough, Kilkenny, the Wicklow Mountains, Dublin Zoo
-  // and Dundrum are NOT on MLA's list. Howth, St Patrick's Cathedral, St Stephen's
-  // Green and Grafton Street are — that overlap is a coincidence, not a carry-over.
+  // Kells, Dublin Castle, Glendalough, the Wicklow Mountains, Dublin Zoo and
+  // Dundrum are NOT on MLA's list. Howth, Kilkenny, St Patrick's Cathedral, St
+  // Stephen's Green and Grafton Street are.
   excursions: [
     {
-      title: 'Galway',
+      title: 'Kilkenny',
       description:
-        'A walking tour of the charming city in western Ireland, travelling by private bus with local centre staff.',
+        'A walking tour of Kilkenny city and Kilkenny Castle, travelling by private bus with local centre staff. Castle entrance ticket included.',
       duration: 'full-day',
-      image: '/galway.webp',
+      image: '/kilkenny.webp',
     },
     {
       title: 'Howth',

@@ -2,9 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import studentsWalking from '../assets/students-walking.jpg';
-import { dublin, durationLabel } from '../data/dublin';
+import { dublin, durationOptionsLabel, priceRangeLabel } from '../data/dublin';
 
-const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, price, excursions } = dublin;
+const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
 ---
 
 <BaseLayout title="Immersion English | English Lessons in Sofia & a Summer Group to Dublin" description={`CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults, and a summer group to an international centre in Dublin for students aged ${ages.min}–${ages.max}. Летен езиков курс в Дъблин за тийнейджъри от България.`}>
@@ -169,8 +169,8 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
 
           <dl class="grid grid-cols-2 gap-7 my-10 py-8 border-y border-line">
             <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Duration</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationLabel(durationsWeeks)}</dd>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Lengths available</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationOptionsLabel(durations)}</dd>
             </div>
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
@@ -180,11 +180,9 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
               <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} avg, {classSize.maximum} max</dd>
             </div>
-            {/* Shown as "To be confirmed" while the 2027 fee is unset, rather than
-                omitted — see the note on the Dublin overview page. */}
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{price.amount !== null ? `€${price.amount.toLocaleString('en-IE')}` : 'To be confirmed'}</dd>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">From {priceRangeLabel(durations)}</dd>
             </div>
           </dl>
 
@@ -193,6 +191,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, pr
               { label: `${lessonsPerWeek} lessons every week`, detail: `${hoursPerWeek} hours with qualified native-speaker teachers at the centre` },
               { label: 'En-suite accommodation on campus', detail: `at the ${venue.name}, in the heart of Dublin` },
               { label: 'Full board', detail: 'from dinner on the day of arrival to breakfast on the day of departure' },
+              { label: 'Return airport transfers', detail: 'between Dublin Airport and the centre, arranged directly by your group leaders' },
               { label: 'An international centre', detail: 'students come from across Europe and beyond, so English is how you make friends' },
               { label: 'The full excursion programme', detail: 'transport and entry tickets included, nothing extra to pay' },
               { label: 'An Immersion English group leader', detail: `meeting the group at ${dublin.groupLeader.meetsAt} and with them for the stay` },

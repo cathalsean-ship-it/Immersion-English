@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { dublin, durationLabel } from '../data/dublin';
+import { dublin, durationOptionsLabel } from '../data/dublin';
 import { courseList, priceSummary } from '../data/courses';
 
 /**
@@ -21,7 +21,7 @@ import { courseList, priceSummary } from '../data/courses';
  * this file: put it in the data file instead and interpolate it.
  */
 
-const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durationsWeeks, startDates, price, provider, excursions, groupLeader, secondChaperone, securityDeposit, included, notIncluded } = dublin;
+const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, price, provider, excursions, groupLeader, secondChaperone, securityDeposit, included, notIncluded } = dublin;
 
 const SITE = 'https://immersion-english.com';
 
@@ -31,15 +31,9 @@ const fullDay = (excursions ?? []).filter(e => e.duration === 'full-day');
 const halfDay = (excursions ?? []).filter(e => e.duration === 'half-day');
 const titles = (list: typeof fullDay) => list.map(e => e.title).join('; ');
 
-const priceLine =
-  price.amount === null
-    ? `Not yet confirmed for ${dublin.year}`
-    : `${euros(price.amount)} for the full ${durationLabel(durationsWeeks)}`;
+const priceLine = durations.map(d => `${euros(d.price)} for ${d.days} days`).join(', ');
 
-const datesLine =
-  startDates === null
-    ? `Not yet confirmed for ${dublin.year}`
-    : startDates.join('; ');
+const datesLine = durations.map(d => `${d.days} days: ${d.startDates.join('; ')}`).join(' | ');
 
 const pages: [string, string][] = [
   ['Home', '/'],
@@ -81,12 +75,12 @@ Immersion English is a booking agent, and accompanies its own group at an intern
 - **Dates:** ${datesLine}
 - **Price:** ${priceLine}
 - **Deposit:** ${price.depositPercent === null ? `Not yet confirmed for ${dublin.year}` : `${price.depositPercent}%`}
-- **Duration:** ${durationLabel(durationsWeeks)}, one fixed set of programme dates for the whole group — no shorter or longer options
+- **Duration:** ${durationOptionsLabel(durations)} — three fixed lengths, each with its own 2027 start dates
 - **Ages:** ${ages.min}–${ages.max} (our group; the centre itself takes a wider range)
 - **Class size:** ${classSize.average} average, ${classSize.maximum} maximum
 - **Lessons:** ${lessonsPerWeek} lessons per week (${hoursPerWeek} hours), taught by the centre's qualified native-speaker teachers
 - **Nationality mix:** International — students from across Europe and beyond
-- **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is the centre's published Dublin programme from their 2026 catalogue; the 2027 edition is not out and the centre has not confirmed 2027 in writing.
+- **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is the centre's published Dublin programme from MLA's Summer 2027 NCI centre brochure.
 - **Supervision:** ${groupLeader.name} (${groupLeader.credential} ${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` and ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} meet the group at ${groupLeader.meetsAt} and are with them throughout. On-site supervision is provided by the centre.
 
 ### Included
@@ -103,7 +97,7 @@ ${notIncluded.map(i => `- ${i}`).join('\n')}
 - International centre — students from across Europe, not a single-nationality group
 - ${groupLeader.name} (${groupLeader.credential} ${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` and ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} meet the group at ${groupLeader.meetsAt} and are with them throughout
 ${secondChaperone ? `- ${secondChaperone.role} with the group throughout\n` : ''}- Full board and en-suite campus accommodation included
-- One fixed programme of ${durationLabel(durationsWeeks)} — a single set of dates for the whole group
+- Three fixed lengths — ${durationOptionsLabel(durations)} — each with its own set of 2027 dates
 - British Council credentials of both founders
 
 ## Contact
