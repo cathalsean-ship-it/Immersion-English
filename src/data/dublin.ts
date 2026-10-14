@@ -287,7 +287,7 @@ export const dublin: DublinProgramme = {
     'Full board and a Prepaid Meal Card – all meals included, and on excursions every student gets a prepaid card to choose where they eat, plus a Hard Rock Cafe meal',
     'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff on site 24 hours a day, with student coordinators on hand to keep every day active and friendly',
     'Your group leaders, all the way – Lenny and Lina travel with your child from Sofia to Dublin and back and stay for the whole programme. Lina is a native Bulgarian speaker parents can always reach',
-    'Excursions that teach – the excursion programme for your stay, with transport and entry tickets included, plus a free interactive app that turns every outing into quizzes, missions and badges',
+    'Explore. Play. Learn. – the excursion programme for your stay, with transport and tickets included and a free app of quizzes, missions and badges',
     'Activities, day and night – art, sports, kitchen and magic by day; karaoke, talent shows, discos and an Irish céilí dance by night',
     'Return airport transfers – between Dublin Airport and the centre, arranged directly by your group leaders',
     'Progress you can see – placement test, eBooks and student portfolio, plus an end-of-course report, certificate of attendance and graduation ceremony',
