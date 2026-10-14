@@ -188,19 +188,19 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursi
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3">
             {[
-              { label: `${lessonsPerWeek} lessons every week`, detail: `${hoursPerWeek} hours with qualified native-speaker teachers at the centre` },
+              { label: `${lessonsPerWeek} lessons every week`, detail: '', detailHtml: `${hoursPerWeek} hours with qualified native-speaker teachers at our partner centre – accredited by the <a href="https://www.britishcouncil.org/" target="_blank" rel="noopener" class="underline">British Council</a> Partner Schools Network` },
               { label: 'En-suite accommodation on campus', detail: `at the ${venue.name}, in the heart of Dublin` },
               { label: 'Full board', detail: 'from dinner on the day of arrival to breakfast on the day of departure' },
               { label: 'Return airport transfers', detail: 'between Dublin Airport and the centre, arranged directly by your group leaders' },
               { label: 'An international centre', detail: 'students come from across Europe and beyond, so English becomes the language of connection and cultural exchange' },
               { label: 'The full excursion programme', detail: 'transport and entry tickets included, nothing extra to pay' },
               { label: 'An Immersion English group leader', detail: `${groupLeaderTravelPhraseGerund(dublin.groupLeader)} and with them for the stay` },
-            ].map(({ label, detail }) => (
+            ].map(({ label, detail, detailHtml }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
                 <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
                 <span class="text-[0.88rem] md:text-[0.95rem]">
                   <strong class="font-semibold text-ink">{label}</strong>
-                  <span class="text-ink-soft"> – {detail}</span>
+                  {detailHtml ? <span class="text-ink-soft"> – <Fragment set:html={detailHtml} /></span> : <span class="text-ink-soft"> – {detail}</span>}
                 </span>
               </li>
             ))}
