@@ -314,17 +314,17 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursi
 
           <div class="flex flex-col gap-6 mt-8">
             {[
-              { label: 'Email', value: 'immersionenglish.ie@gmail.com', icon: '✉' },
-              { label: 'Phone (English)', value: '+359 893 387 464', icon: '📞' },
-              { label: 'Phone (Bulgarian)', value: '+359 889 178 100', icon: '📞' },
-            ].map(({ label, value, icon }) => (
-              <div class="flex gap-4 items-start py-4 border-b border-white/10">
+              { label: 'Email', value: 'immersionenglish.ie@gmail.com', icon: '✉', href: 'mailto:immersionenglish.ie@gmail.com' },
+              { label: 'Phone (English)', value: '+359 893 387 464', icon: '📞', href: 'tel:+359893387464' },
+              { label: 'Phone (Bulgarian)', value: '+359 889 178 100', icon: '📞', href: 'tel:+359889178100' },
+            ].map(({ label, value, icon, href }) => (
+              <a href={href} class="flex gap-4 items-start py-4 border-b border-white/10 no-underline group">
                 <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green-on-dark grid place-items-center flex-shrink-0">{icon}</div>
                 <div>
                   <div class="font-heading text-[0.78rem] uppercase tracking-[0.12em] text-white/55 mb-[2px] font-semibold">{label}</div>
-                  <div class="font-heading font-medium text-white text-[1.02rem]">{value}</div>
+                  <div class="font-heading font-medium text-white text-[1.02rem] group-hover:text-brand-green-on-dark transition-colors">{value}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
