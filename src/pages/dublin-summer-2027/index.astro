@@ -60,11 +60,9 @@ const courseSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} />
 
   <!-- HERO -->
-  <section class="relative flex items-stretch text-white overflow-hidden isolate">
+  <section class="relative flex flex-col md:flex-row items-stretch text-white overflow-hidden isolate">
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
-    <img src="/dublin-welcome-group.webp" alt="A group of teenagers in front of the Welcome to Dublin sign" class="absolute inset-0 -z-[2] w-full h-full object-cover md:inset-auto md:right-0 md:bottom-0 md:w-[62%] md:h-auto md:max-h-full md:object-bottom" style="object-position: center 55%;" fetchpriority="high" />
-    <!-- Mobile: photo is full-bleed, so darken it for legibility. -->
-    <div class="absolute inset-0 -z-[1] pointer-events-none md:hidden" style="background: linear-gradient(180deg, rgba(20,32,26,0.3) 0%, rgba(20,32,26,0.5) 45%, rgba(20,32,26,0.92) 100%);"></div>
+    <img src="/dublin-welcome-group.webp" alt="A group of teenagers in front of the Welcome to Dublin sign" class="order-last w-full h-auto md:absolute md:-z-[2] md:inset-auto md:right-0 md:bottom-0 md:w-[62%] md:max-h-full md:object-cover md:object-bottom" fetchpriority="high" />
     <!-- Desktop: photo sits to the right with its own light touch, fading into the dark panel behind the text, so the Dublin sign stays bright and readable. -->
     <div class="absolute inset-0 -z-[1] pointer-events-none hidden md:block" style="background: linear-gradient(90deg, #14201a 0%, #14201a 34%, rgba(20,32,26,0.8) 44%, rgba(20,32,26,0.2) 62%, rgba(20,32,26,0) 80%), linear-gradient(180deg, #14201a 0%, #14201a 24%, rgba(20,32,26,0.6) 34%, rgba(20,32,26,0) 52%, rgba(20,32,26,0.15) 100%);"></div>
 
