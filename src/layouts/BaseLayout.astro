@@ -48,6 +48,11 @@ const breadcrumbSchema = segs.length === 0 || ['404', 'thank-you'].includes(segs
 };
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://immersion-english.com');
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin}${ogImage}`;
+
+// Meta (Facebook) Pixel. Leave empty to keep it switched off. When set, it loads
+// ONLY after a visitor clicks Accept on the cookie banner, exactly like Google
+// Analytics, and the banner wording changes to name Meta.
+const META_PIXEL_ID = '';
 ---
 
 <!DOCTYPE html>
@@ -92,20 +97,34 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     <link rel="icon" type="image/png" href="/ie-logo.png" />
     <link rel="apple-touch-icon" href="/ie-logo.png" />
 
-    <!-- Google Analytics -->
-    <script>
-      // Load GA only if consent given
-      if (localStorage.getItem('ie_cookie_consent') === 'accepted') {
+    <!-- Analytics & advertising pixels: loaded only after cookie consent -->
+    <script is:inline define:vars={{ pixelId: META_PIXEL_ID }}>
+      window.__IE_PIXEL_ID = pixelId;
+      window.ieLoadTracking = function () {
+        if (window.__ieTrackingLoaded) return;
+        window.__ieTrackingLoaded = true;
+        // Google Analytics
         var s = document.createElement('script');
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87';
         s.async = true;
         document.head.appendChild(s);
         window.dataLayer = window.dataLayer || [];
-        window.gtag = function(){dataLayer.push(arguments);}
+        window.gtag = function(){dataLayer.push(arguments);};
         window.gtag('js', new Date());
         window.gtag('config', 'G-JCEKWZWT87');
         window.gtag('config', 'G-G193KE10LZ');
-      }
+        // Meta Pixel (only if an ID has been configured)
+        if (window.__IE_PIXEL_ID) {
+          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+          n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+          document,'script','https://connect.facebook.net/en_US/fbevents.js');
+          window.fbq('init', window.__IE_PIXEL_ID);
+          window.fbq('track', 'PageView');
+        }
+      };
+      try { if (localStorage.getItem('ie_cookie_consent') === 'accepted') window.ieLoadTracking(); } catch (e) {}
     </script>
     <!-- Bulgarian language keywords for SEO -->
     <meta name="keywords" content="английски език София, летен езиков курс Дъблин, английски за тийнейджъри, езикова програма Ирландия, летен езиков лагер Дъблин, IELTS подготовка София, Cambridge CAE София, English summer school Dublin Bulgaria, английски уроци онлайн София" />
@@ -249,7 +268,7 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
     <!-- Cookie consent banner -->
     <div id="cookie-banner" style="display:none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--ink); padding: 16px 24px; box-shadow: 0 -4px 24px rgba(0,0,0,0.25);">
       <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-        <p style="margin: 0; font-size: 0.88rem; color: rgba(255,255,255,0.8); max-width: 640px; line-height: 1.5;">We use cookies to understand how visitors use our site (Google Analytics). No personal data is sold or shared.</p>
+        <p style="margin: 0; font-size: 0.88rem; color: rgba(255,255,255,0.8); max-width: 640px; line-height: 1.5;">{META_PIXEL_ID ? 'We use cookies to understand how visitors use our site (Google Analytics) and to measure and improve our advertising (Meta). Nothing is loaded unless you accept.' : 'We use cookies to understand how visitors use our site (Google Analytics). No personal data is sold or shared.'}</p>
         <div style="display: flex; gap: 10px; flex-shrink: 0;">
           <button id="cookie-decline" style="background: transparent; border: 1px solid rgba(255,255,255,0.45); color: rgba(255,255,255,0.92); padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.82rem;">Decline</button>
           <button id="cookie-accept" style="background: var(--orange); border: none; color: var(--ink); padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 0.82rem;">Accept</button>
@@ -263,15 +282,7 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
         document.getElementById('cookie-accept') && document.getElementById('cookie-accept').addEventListener('click', function() {
           localStorage.setItem('ie_cookie_consent', 'accepted');
           b.style.display = 'none';
-          var s = document.createElement('script');
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JCEKWZWT87';
-          s.async = true;
-          document.head.appendChild(s);
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function(){dataLayer.push(arguments);}
-          window.gtag('js', new Date());
-          window.gtag('config', 'G-JCEKWZWT87');
-          window.gtag('config', 'G-G193KE10LZ');
+          if (window.ieLoadTracking) window.ieLoadTracking();
         });
         document.getElementById('cookie-decline') && document.getElementById('cookie-decline').addEventListener('click', function() {
           localStorage.setItem('ie_cookie_consent', 'declined');
