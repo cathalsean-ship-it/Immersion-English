@@ -47,6 +47,7 @@ const pages: [string, string][] = [
   ['About', '/about'],
   ['Blog', '/blog'],
   ['Contact', '/contact'],
+  ['Privacy & Cookie Policy', '/privacy'],
 ];
 
 const body = `# Immersion English

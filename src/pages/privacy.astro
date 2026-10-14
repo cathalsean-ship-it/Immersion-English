@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+/**
+ * Privacy & cookie policy. Plain-English draft written to match what the site
+ * actually does (see BaseLayout.astro: Google Analytics + Meta Pixel load only
+ * after Accept; Netlify Forms for enquiries; YouTube click-to-play).
+ * If the site's tracking or forms change, change this page in the same commit.
+ * Not legal advice – have it reviewed before relying on it.
+ */
+const updated = '14 October 2026';
+---
+
+<BaseLayout
+  title="Privacy & Cookie Policy | Immersion English"
+  description="How Immersion English handles your personal data and cookies: what we collect, why, who we share it with, and your rights."
+  ogImage="/og/home.jpg"
+>
+  <section class="relative flex items-center text-white overflow-hidden isolate">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
+      <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-5" style="color: var(--orange);">
+        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+        Legal
+      </p>
+      <h1 class="text-white mb-5 max-w-[18ch]">Privacy &amp; <span style="color: var(--orange);">cookies.</span></h1>
+      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[52ch] leading-[1.55]">
+        What we collect, why, who sees it, and the choices you have. Last updated {updated}.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-x">
+      <div class="max-w-[72ch] mx-auto privacy-body">
+
+        <h2>Who we are</h2>
+        <p>
+          Immersion English is an English language school based in Sofia, Bulgaria. We are
+          responsible for the personal data described on this page. You can reach us at
+          <a href="mailto:immersionenglish.ie@gmail.com">immersionenglish.ie@gmail.com</a>.
+        </p>
+
+        <h2>What we collect, and why</h2>
+        <ul>
+          <li>
+            <strong>Enquiries.</strong> When you send an enquiry form we receive your name, email
+            address, your message and the topic you chose. We use it to reply to you and, if you go
+            ahead, to arrange lessons or a place on the Dublin summer programme.
+          </li>
+          <li>
+            <strong>Bookings.</strong> If you enrol a child on the Dublin programme we need the
+            details required to book and run it, such as the student's and parent's contact details.
+            We share these with the partner centre that runs the programme only as far as needed to
+            arrange the place.
+          </li>
+          <li>
+            <strong>Website usage (only if you accept cookies).</strong> Which pages are visited,
+            roughly where from and on what device, so we can improve the site and understand
+            what is useful.
+          </li>
+          <li>
+            <strong>Advertising measurement (only if you accept cookies).</strong> A Meta (Facebook)
+            pixel records that a visit happened, so we can measure our adverts and show relevant
+            ones to people who visited the site.
+          </li>
+        </ul>
+        <p>
+          We do not sell your personal data. We do not use the contact details you type into our
+          forms for advertising matching: the Meta pixel's automatic form-data matching is switched off.
+        </p>
+
+        <h2>Cookies and similar technologies</h2>
+        <p>
+          When you first visit, a banner asks whether you accept cookies. Until you click
+          <em>Accept</em>, the services in the table below are not loaded and nothing is sent to them.
+          If you click <em>Decline</em>, they stay off.
+        </p>
+        <div class="privacy-table-wrap">
+          <table class="privacy-table">
+            <thead><tr><th>Service</th><th>Purpose</th><th>Loaded</th></tr></thead>
+            <tbody>
+              <tr><td>Google Analytics (Google)</td><td>Website statistics</td><td>Only after Accept</td></tr>
+              <tr><td>Meta Pixel (Meta Platforms)</td><td>Measure and improve advertising; build audiences of site visitors</td><td>Only after Accept</td></tr>
+              <tr><td>Your cookie choice (stored in your browser)</td><td>Remembers whether you accepted or declined</td><td>Always, stored only on your device</td></tr>
+              <tr><td>YouTube videos (privacy-enhanced mode)</td><td>Plays embedded videos</td><td>Only when you press play</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <button type="button" id="change-cookie-choice" class="btn btn-ghost" style="border-color: var(--line-strong);">Change my cookie choice</button>
+        </p>
+
+        <h2>Who processes your data</h2>
+        <ul>
+          <li><strong>Netlify</strong> hosts the website and receives enquiry-form submissions on our behalf.</li>
+          <li><strong>Google</strong> (Analytics) and <strong>Meta Platforms</strong> (Pixel) receive usage data, but only if you accept cookies. Their servers may be outside the EU/EEA; they rely on recognised transfer safeguards.</li>
+          <li><strong>The partner centre</strong> running the Dublin programme, as described under Bookings.</li>
+        </ul>
+
+        <h2>How long we keep it</h2>
+        <p>
+          Enquiries are kept only as long as needed to answer you and for any resulting booking
+          or lessons, and are then deleted. Analytics and advertising data are held by Google and
+          Meta under their own retention settings, which we keep to the shortest practical period.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          Under the EU General Data Protection Regulation you can ask us for a copy of your data,
+          to correct or delete it, to restrict or object to how we use it, and to receive it in a
+          portable format. Where we rely on your consent (cookies), you can withdraw it at any time
+          with the button above. Email us and we will reply within a month.
+        </p>
+        <p>
+          You also have the right to complain to the Bulgarian data protection authority, the
+          <a href="https://cpdp.bg" rel="noopener noreferrer" target="_blank">Commission for Personal Data Protection (CPDP)</a>,
+          or to the authority in your own country.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          Our Dublin programme is for teenagers aged 12–17, but our website and advertising are
+          aimed at parents and guardians. We ask parents to make enquiries and bookings on a child's
+          behalf and do not knowingly collect data directly from children through the site.
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          If we change how the site works we will update this page and the date at the top.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    .privacy-body h2 { margin: 40px 0 14px; font-size: 1.35rem; }
+    .privacy-body h2:first-child { margin-top: 0; }
+    .privacy-body p, .privacy-body li { font-size: 1rem; line-height: 1.7; color: var(--ink-soft); }
+    .privacy-body p { margin: 0 0 14px; }
+    .privacy-body ul { margin: 0 0 14px; padding-left: 1.2rem; list-style: disc; }
+    .privacy-body li { margin-bottom: 10px; }
+    .privacy-body a { color: var(--green); text-decoration: underline; }
+    .privacy-body strong { color: var(--ink); }
+    .privacy-table-wrap { overflow-x: auto; margin: 0 0 18px; }
+    .privacy-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .privacy-table th, .privacy-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
+    .privacy-table th { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
+  </style>
+
+  <script is:inline>
+    document.getElementById('change-cookie-choice')?.addEventListener('click', function () {
+      try { localStorage.removeItem('ie_cookie_consent'); } catch (e) {}
+      location.reload();
+    });
+  </script>
+</BaseLayout>
