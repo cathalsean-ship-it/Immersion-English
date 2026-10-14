@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { dublin, durationOptionsLabel, groupLeaderTravelPhrase } from '../data/dublin';
+import { dublin, durationOptionsLabel, groupLeaderTravelPhrase, formatStartDate } from '../data/dublin';
 import { courseList, priceSummary } from '../data/courses';
 
 /**
@@ -33,7 +33,7 @@ const titles = (list: typeof fullDay) => list.map(e => e.title).join('; ');
 
 const priceLine = durations.map(d => `${euros(d.price)} for ${d.days} days`).join(', ');
 
-const datesLine = durations.map(d => `${d.days} days: ${d.startDates.join('; ')}`).join(' | ');
+const datesLine = durations.map(d => `${d.days} days: ${d.startDates.map(formatStartDate).join('; ')}`).join(' | ');
 
 const pages: [string, string][] = [
   ['Home', '/'],
@@ -79,6 +79,7 @@ Immersion English is a booking agent, and accompanies its own group at an intern
 - **Ages:** ${ages.min}–${ages.max} (our group; the centre itself takes a wider range)
 - **Class size:** ${classSize.average} average, ${classSize.maximum} maximum
 - **Lessons:** ${lessonsPerWeek} lessons per week (${hoursPerWeek} hours), taught by the centre's qualified English teachers
+- **Centre:** Our Dublin partner is a member of the British Council Partner Schools Network (https://partner-schools.english.britishcouncil.org/)
 - **Nationality mix:** International — students from across Europe and beyond
 - **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is the centre's published Dublin programme from MLA's Summer 2027 NCI centre brochure.
 - **Supervision:** ${groupLeader.name} (${groupLeader.credential} ${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` and ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} ${groupLeaderTravelPhrase(groupLeader)} and are with them throughout. On-site supervision is provided by the centre.
@@ -91,6 +92,15 @@ ${included.map(i => `- ${i}`).join('\n')}
 
 ${notIncluded.map(i => `- ${i}`).join('\n')}
 - A refundable ${euros(securityDeposit.amount)} security deposit is collected on arrival
+
+## Quick answers
+
+- **What is Immersion English?** A Sofia, Bulgaria-based English school offering speaking-focused online English lessons for adults and an immersive summer programme in Dublin (${durationOptionsLabel(durations)}) for teens aged ${ages.min}–${ages.max}.
+- **Who runs the Dublin programme?** The programme, teaching, accommodation and on-site care are provided by the partner centre. Immersion English is the booking agent and group leader: Lenny and Lina handle enrolment, pre-departure support and accompany the group.
+- **How much does it cost?** ${priceLine}, per student, flights not included.
+- **Where do students stay?** En-suite rooms on campus at the ${venue.name}, ${venue.city}, on a full-board basis with all meals included.
+- **Is there medical cover on site?** Qualified medical staff and a Welfare Manager are on site 24 hours a day.
+- **How do I book or ask a question?** Book a free consultation at ${SITE}/contact or email immersionenglish.ie@gmail.com.
 
 ## Key differentiators
 

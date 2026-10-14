@@ -25,6 +25,27 @@ const {
   noindex = false,
 } = Astro.props;
 
+// WebPage + BreadcrumbList for every indexable page, built from the URL so it
+// can never drift from the real structure. Skipped for 404 / thank-you.
+const LABELS: Record<string, string> = {
+  'about': 'About', 'lessons': 'Lessons', 'corporate-training': 'Corporate Training',
+  'contact': 'Contact', 'blog': 'Blog', 'dublin-summer-2027': 'Dublin Summer 2027',
+  'accommodation': 'Accommodation', 'trips-and-activities': 'Trips & Activities',
+  'weekly-programme': 'Weekly Programme', 'faqs': 'FAQs',
+};
+const segs = Astro.url.pathname.split('/').filter(Boolean);
+const origin = (Astro.site?.toString() || 'https://immersion-english.com').replace(/\/$/, '');
+const crumbs = [{ name: 'Home', url: origin + '/' }, ...segs.map((s, i) => ({
+  name: LABELS[s] ?? title.split('|')[0].trim(),
+  url: origin + '/' + segs.slice(0, i + 1).join('/'),
+}))];
+const breadcrumbSchema = segs.length === 0 || ['404', 'thank-you'].includes(segs[0]) ? null : {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebPage', '@id': origin + Astro.url.pathname + '#webpage', url: origin + Astro.url.pathname, name: title, description, inLanguage: 'en', isPartOf: { '@type': 'WebSite', name: 'Immersion English', url: origin + '/' } },
+    { '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })) },
+  ],
+};
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://immersion-english.com');
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin}${ogImage}`;
 ---
@@ -104,12 +125,21 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
         "contactType": "customer service",
         "availableLanguage": ["English", "Bulgarian"]
       },
-      "founder": {
-        "@type": "Person",
-        "name": "Cathal Leonard",
-        "jobTitle": "English Language Teacher",
-        "description": "CELTA-qualified native Irish English teacher with over 10 years experience teaching adults and teenagers, including at the British Council."
-      },
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "Cathal Leonard",
+          "alternateName": "Lenny",
+          "jobTitle": "English Language Teacher and Co-founder",
+          "description": "CELTA-qualified native Irish English teacher with over 10 years experience teaching adults and teenagers, including at the British Council."
+        },
+        {
+          "@type": "Person",
+          "name": "Lina Georgieva",
+          "jobTitle": "Co-founder",
+          "description": "Co-founder of Immersion English, with a background in international education with the British Council. Native Bulgarian speaker."
+        }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "English Language Courses",
@@ -161,6 +191,8 @@ const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin
       ]
     })} />
 
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable summary of this site" />
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">
