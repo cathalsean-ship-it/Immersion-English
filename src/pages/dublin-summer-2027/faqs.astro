@@ -20,7 +20,7 @@
  * unrelated provider called ICE.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { dublin, durationOptionsLabel, groupLeaderTravelPhrase } from '../../data/dublin';
+import { dublin, durationOptionsLabel, groupLeaderTravelPhrase, formatStartDate } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions, groupLeader, securityDeposit, visaRequired, medicalStaff, secondChaperone} = dublin;
 
@@ -162,7 +162,7 @@ const sections = [
       {
         q: 'When are the 2027 dates?',
         // Dates are per duration now — list each length's own start dates.
-        a: durations.map(d => `${d.days} days: ${d.startDates.join(', ')}`).join('. ') + '.',
+        a: durations.map(d => `${d.days} days: ${d.startDates.map(formatStartDate).join(', ')}`).join('. ') + '.',
       },
       {
         q: 'How long is the programme?',
