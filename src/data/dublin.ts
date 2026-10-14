@@ -361,6 +361,7 @@ export const dublin: DublinProgramme = {
       title: 'EPIC Museum',
       description:
         'The Irish Emigration Museum – step into what it truly means to be Irish. Entrance ticket included.',
+      image: '/epic-museum.webp',
       duration: 'half-day',
     },
   ],
