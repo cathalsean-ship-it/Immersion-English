@@ -17,6 +17,7 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { dublin } from '../../data/dublin';
+import ProgrammeTimetable from '../../components/ProgrammeTimetable.astro';
 
 const { lessonsPerWeek, hoursPerWeek } = dublin;
 
@@ -32,8 +33,8 @@ const sampleDay = [
 
 <BaseLayout
   title={`Weekly Programme – Dublin Summer ${dublin.year} | Immersion English`}
-  description={`${lessonsPerWeek} lessons a week (${hoursPerWeek} hours) with qualified English teachers at an international summer centre in Dublin, plus daily excursions and evening activities.`}
-  ogImage="/teens-cafe.webp"
+  description={`${lessonsPerWeek} lessons a week (${hoursPerWeek} hours) with qualified English teachers at an international summer centre in Dublin, plus regular excursions and a different activity every evening.`}
+  ogImage="/howth.webp"
 >
 
   <!-- HERO -->
@@ -49,40 +50,58 @@ const sampleDay = [
         Weekly programme
       </p>
       <h1 class="text-white mb-5 max-w-[16ch]">
-        Classes every <span style="color: var(--orange);">morning.</span>
+        Something new <span style="color: var(--orange);">every day.</span>
       </h1>
       <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[48ch] leading-[1.55]">
         {lessonsPerWeek} lessons every week – {hoursPerWeek} hours – with qualified
-        English teachers at the centre, plus daily excursions and evening activities.
+        English teachers at the centre, plus regular excursions and a different
+        activity every evening.
       </p>
     </div>
   </section>
 
-  <!-- OVERVIEW CARDS -->
-  <section class="section">
+  <!-- TIMETABLE -->
+  <section class="section" style="padding-bottom: 44px;">
     <div class="container-x">
       <div class="section-head">
-        <span class="eyebrow eyebrow-dot">A week at the centre</span>
-        <h2>Mornings in class. Afternoons out.</h2>
+        <span class="eyebrow eyebrow-dot">Sample programme</span>
+        <h2>Lessons, excursions and activities, <span style="color: var(--orange-text);">day by day.</span></h2>
         <p>
           Students take <strong class="text-ink">{lessonsPerWeek} lessons every week</strong>
           ({hoursPerWeek} hours) with the centre's qualified English teachers, with
-          excursions and activities built around them.
+          excursions and activities built around them. Sample 14-day / 13-night
+          programme; shorter stays follow a shorter schedule.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+      <ProgrammeTimetable />
+    </div>
+  </section>
+
+  <!-- WHAT FILLS THE DAY -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">What fills the day</span>
+        <h2>Learning, exploring and <span style="color: var(--orange-text);">having fun.</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
           { title: 'Lessons', body: `${lessonsPerWeek} lessons a week – ${hoursPerWeek} hours – after an online placement test puts every student in the right class.` },
-          { title: 'Excursions', body: "Full-day and half-day excursions run by the centre's local staff, with transport and entry tickets included." },
-          { title: 'Evenings and weekends', body: 'Cooking, art and games by day; talent shows, karaoke, themed discos and movie nights once the sun goes down.' },
-        ].map(({ title, body }) => (
+          { title: 'Excursions', body: "Full-day and half-day excursions with the centre's local staff, transport and entry tickets included.", href: '/dublin-summer-2027/trips-and-activities', cta: 'See the trips' },
+          { title: 'Daytime activities', body: 'Kitchen, where students practise English while learning to cook easy, tasty local dishes; plus art, sports and magic.' },
+          { title: 'Evenings', body: 'Karaoke, trivia, themed discos, a scavenger hunt, Kahoot night, an Irish céilí dance and a talent show to finish.' },
+        ].map(({ title, body, href, cta }) => (
           <div class="trust-card">
             <div style="display: flex; flex-direction: column; gap: 14px;">
               <h3 style="margin: 0;">{title}</h3>
               <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
             </div>
             <p style="margin: 0;">{body}</p>
+            {href && (
+              <a href={href} class="inline-flex items-center gap-2 text-[0.88rem] font-heading font-semibold no-underline mt-auto pt-2" style="color: var(--green);">{cta} →</a>
+            )}
           </div>
         ))}
       </div>
@@ -90,7 +109,7 @@ const sampleDay = [
   </section>
 
   <!-- SAMPLE DAY -->
-  <section class="section section-tinted">
+  <section class="section">
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">A typical day</span>
@@ -113,8 +132,8 @@ const sampleDay = [
 
         <div class="rounded-md overflow-hidden shadow-lift mb-8">
           <img
-            src="/teens-cafe.webp"
-            alt=""
+            src="/howth.webp"
+            alt="Howth, a fishing village on the Irish coast"
             class="img-greyscale w-full object-cover"
             style="aspect-ratio: 16/9; display: block;"
             loading="lazy" />
