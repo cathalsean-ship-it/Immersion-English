@@ -90,7 +90,7 @@ const META_PIXEL_ID = '4098945000240922';
     {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Preload critical fonts -->
-    <link rel="preload" href="/fonts/montserrat-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/montserrat-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Favicon -->
@@ -261,7 +261,8 @@ const META_PIXEL_ID = '4098945000240922';
         }
       }, { passive: true });
 
-      update();
+      // Run after first paint so reading layout doesn't force a synchronous reflow.
+      requestAnimationFrame(update);
     })();
   </script>
 
