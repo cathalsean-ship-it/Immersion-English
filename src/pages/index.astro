@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import studentsWalking from '../assets/students-walking.jpg';
-import { dublin, durationOptionsLabel, priceRangeLabel, groupLeaderTravelPhraseGerund } from '../data/dublin';
+import { dublin, durationOptionsLabel, priceRangeLabel } from '../data/dublin';
 
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
 ---
@@ -194,7 +194,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursi
               { label: 'Return airport transfers', detail: 'between Dublin Airport and the centre, arranged directly by your group leaders' },
               { label: 'An international centre', detail: 'students come from across Europe and beyond, so English becomes the language of connection and cultural exchange' },
               { label: 'The full excursion programme', detail: 'transport and entry tickets included, nothing extra to pay' },
-              { label: 'An Immersion English group leader', detail: `${groupLeaderTravelPhraseGerund(dublin.groupLeader)} and with them for the stay` },
+              { label: 'An Immersion English group leader', detail: 'the same people, the whole time – every step of the way' },
             ].map(({ label, detail, detailHtml }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
                 <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
