@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
-import studentsWalking from '../assets/students-walking.jpg';
+import studentsWalking from '../assets/dublin-welcome-group.jpg';
 import { dublin, durationOptionsLabel, priceRangeLabel } from '../data/dublin';
 
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
@@ -137,9 +137,9 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursi
       <div class="homepage-hero-img-wrap relative" style="overflow: hidden; min-height: 480px;">
         <Image
           src={studentsWalking}
-          alt="Students exploring Dublin"
+          alt="A group of teenagers in front of the Welcome to Dublin sign"
           class="homepage-hero-img w-full h-full object-cover"
-          style="position: absolute; inset: 0;"
+          style="position: absolute; inset: 0; object-position: center 60%;"
           loading="eager"
           fetchpriority="high"
           widths={[480, 768, 900]}
