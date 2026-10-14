@@ -74,8 +74,8 @@ const { excursions } = dublin;
   {excursions !== null && (
     <>
       {[
-        { key: 'full-day', eyebrow: 'Full-day excursions', heading: 'Out of the city.' },
-        { key: 'half-day', eyebrow: 'Half-day excursions', heading: 'Dublin, properly.' },
+        { key: 'full-day', eyebrow: 'Full-day excursions', heading: '<span style="color: var(--orange-text);">Out</span> of the city.' },
+        { key: 'half-day', eyebrow: 'Half-day excursions', heading: '<span style="color: var(--orange-text);">Dublin</span>, properly.' },
       ].map(({ key, eyebrow, heading }, groupIndex) => {
         const items = excursions.filter(e => e.duration === key);
         if (items.length === 0) return null;
@@ -84,7 +84,7 @@ const { excursions } = dublin;
             <div class="container-x">
               <div class="section-head">
                 <span class="eyebrow eyebrow-dot">{eyebrow}</span>
-                <h2>{heading}</h2>
+                <h2 set:html={heading} />
                 <p>
                   {items.length} {key === 'full-day' ? 'full-day' : 'half-day'}
                   {items.length === 1 ? ' excursion' : ' excursions'}, run by the centre's local staff.
