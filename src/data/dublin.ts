@@ -282,7 +282,7 @@ export const dublin: DublinProgramme = {
   medicalStaff: 'Qualified medical staff on site 24 hours a day.',
 
   included: [
-    '20 lessons every week (15 hours) – with qualified native-speaker teachers at the centre',
+    '20 lessons every week (15 hours) – with qualified English teachers at the centre',
     'En-suite accommodation on campus – at the National College of Ireland, in the heart of Dublin',
     'Full board – from dinner on the day of arrival to breakfast on the day of departure',
     'Return airport transfers – between Dublin Airport and the centre, arranged directly by your group leaders',

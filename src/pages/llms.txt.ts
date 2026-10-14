@@ -78,7 +78,7 @@ Immersion English is a booking agent, and accompanies its own group at an intern
 - **Duration:** ${durationOptionsLabel(durations)} — three fixed lengths, each with its own 2027 start dates
 - **Ages:** ${ages.min}–${ages.max} (our group; the centre itself takes a wider range)
 - **Class size:** ${classSize.average} average, ${classSize.maximum} maximum
-- **Lessons:** ${lessonsPerWeek} lessons per week (${hoursPerWeek} hours), taught by the centre's qualified native-speaker teachers
+- **Lessons:** ${lessonsPerWeek} lessons per week (${hoursPerWeek} hours), taught by the centre's qualified English teachers
 - **Nationality mix:** International — students from across Europe and beyond
 - **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is the centre's published Dublin programme from MLA's Summer 2027 NCI centre brochure.
 - **Supervision:** ${groupLeader.name} (${groupLeader.credential} ${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` and ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} ${groupLeaderTravelPhrase(groupLeader)} and are with them throughout. On-site supervision is provided by the centre.
