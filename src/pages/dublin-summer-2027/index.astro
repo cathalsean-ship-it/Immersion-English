@@ -414,16 +414,15 @@ const courseSchema = {
           <span class="eyebrow eyebrow-dot">Supervision</span>
           <h2 class="mt-4 mb-5"><span style="color: var(--orange-text);">Supported</span>, every step of the way.</h2>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} {groupLeaderTravelPhrase(groupLeader)} and are with them for the
-            full stay – settling students in, staying on top of daily check-ins, and being the
-            people parents can always ring.
-            Classes are taught by the centre's own teaching team, so their focus stays entirely
-            on wellbeing.
+            For many teenagers this is the first time away from home without their parents, and
+            we know that's a big moment for you too. We give them real independence, with
+            supervision always close by, and we stay in touch with you throughout.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
-            {secondChaperone?.name ?? 'A native Bulgarian speaker'}, a {secondChaperone?.role.replace('Native ', 'native ')}, is with the group throughout. On site, a welfare
-            manager and qualified medical staff are on call around the clock – someone is always
-            looking after your teenager, day or night.
+            {groupLeader.name}{secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} {groupLeader.travelsFromSofia ? 'travel with the group from Sofia and stay for the whole programme' : `meet the group at ${groupLeader.meetsAt} and stay for the whole programme`}.
+            With {secondChaperone?.name ?? 'a native Bulgarian speaker'} speaking Bulgarian, and a welfare manager
+            and medical staff on site around the clock, someone is always there for your child,
+            and for you.
           </p>
         </div>
         <div style="position: relative;">
