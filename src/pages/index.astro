@@ -188,10 +188,11 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursi
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3">
             {[
-              { label: `${lessonsPerWeek} lessons every week`, detail: '', detailHtml: `${hoursPerWeek} hours with qualified English teachers at the centre, run by our partner, a member of the <a href="https://partner-schools.english.britishcouncil.org/" target="_blank" rel="noopener" class="underline">British Council Partner Schools Network</a>` },
+              { label: `${lessonsPerWeek} lessons every week`, detail: `${hoursPerWeek} hours with qualified English teachers at the centre` },
               { label: 'En-suite accommodation', detail: `full board in single or twin rooms – a true college campus experience at the ${venue.name}, in the heart of Dublin` },
               { label: 'Meals included', detail: 'two Irish breakfasts, a prepaid meal card on excursions and a Hard Rock Cafe meal' },
               { label: 'Return airport transfers', detail: 'between Dublin Airport and the centre, arranged directly by your group leaders' },
+              { label: 'Our Dublin partner', detail: '', detailHtml: 'a member of the <a href="https://partner-schools.english.britishcouncil.org/" target="_blank" rel="noopener" class="underline">British Council Partner Schools Network</a>' },
               { label: 'An international centre', detail: 'students come from across Europe and beyond, so English becomes the language of connection and cultural exchange' },
               { label: 'The full excursion programme', detail: 'transport and entry tickets included, nothing extra to pay' },
               { label: 'Your Immersion English group leaders', detail: 'with your child every step of the way – from Sofia to Dublin and back' },
