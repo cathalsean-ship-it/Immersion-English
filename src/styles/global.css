@@ -771,3 +771,8 @@
     transform: none !important;
   }
 }
+
+/* Lenny & Lina photo cards link to /about – lift slightly on hover/focus */
+.team-photo-link { transition: transform .25s ease, box-shadow .25s ease; }
+.team-photo-link:hover, .team-photo-link:focus-visible { transform: translateY(-3px); box-shadow: 0 14px 38px rgba(20,32,26,0.2) !important; }
+.team-photo-link:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
