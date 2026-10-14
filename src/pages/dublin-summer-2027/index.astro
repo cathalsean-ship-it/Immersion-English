@@ -10,6 +10,31 @@ const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, duration
 
 const bestValue = bestValueDuration(durations);
 
+// Sample 14-day / 13-night timetable, transcribed from the centre's own Summer
+// 2027 profile (p.42) — not invented. Brand-prefixed activity names ("MLA Art",
+// "MLA's Got Talent") are shown without the provider name, consistent with the
+// rest of the site. Kinds drive the colour coding. rs = rowspan.
+type Cell = { t: string; k: 'lesson' | 'exc' | 'act' | 'eve' | 'travel'; rs?: number };
+const L: Cell = { t: 'Lesson', k: 'lesson' };
+const HD: Cell = { t: 'Half-day excursion', k: 'exc' };
+const FD: Cell = { t: 'Full-day excursion', k: 'exc', rs: 3 };
+const timetableMorning: Cell[] = [
+  { t: 'Arrival & check-in', k: 'travel', rs: 2 }, L, L, L, L, L, FD,
+  { t: 'Magic', k: 'act' }, HD, { t: 'Kitchen', k: 'act' }, HD, { t: 'Sports', k: 'act' }, FD,
+  { t: 'Graduation ceremony', k: 'travel' },
+];
+const timetableAfternoon: Cell[] = [
+  HD, { t: 'Art', k: 'act' }, HD, { t: 'Sports', k: 'act' }, HD,
+  L, L, L, L, L,
+  { t: 'Departure', k: 'travel', rs: 2 },
+];
+const timetableEvening: Cell[] = [
+  { t: 'Welcome disco', k: 'eve' }, { t: 'Karaoke', k: 'eve' }, { t: 'Trivia', k: 'eve' },
+  { t: 'Hawaiian disco', k: 'eve' }, { t: 'Fashion night', k: 'eve' }, { t: 'Scavenger hunt', k: 'eve' },
+  { t: 'Kahoot night', k: 'eve' }, { t: 'British disco', k: 'eve' }, { t: 'Amazing Race', k: 'eve' },
+  { t: 'Irish céilí dance', k: 'eve' }, { t: 'Talent show', k: 'eve' },
+];
+
 
 // JSON-LD. Provider is MLA, not Immersion English. AggregateOffer spans the
 // three duration options — each has its own fixed price, not a single figure.
@@ -332,6 +357,54 @@ const courseSchema = {
           </p>
         </div>
       </div>
+
+      <!-- SAMPLE TIMETABLE -->
+      <div class="mt-16 md:mt-20">
+        <span class="eyebrow eyebrow-dot">A typical stay</span>
+        <h3 class="mt-3 mb-2" style="font-size: 1.5rem;">Your fortnight at a glance.</h3>
+        <p class="text-ink-soft text-[0.95rem] leading-relaxed max-w-[62ch] mb-6">
+          Lessons in the mornings or afternoons, an excursion or activity in the other half of the day, and something different every evening. Sample 14-day / 13-night programme; shorter stays follow a shorter schedule.
+        </p>
+
+        <div class="timetable-scroll" tabindex="0" role="region" aria-label="Sample 14-day programme timetable">
+          <table class="timetable">
+            <thead>
+              <tr>
+                <th scope="col">Day</th>
+                {Array.from({ length: 14 }, (_, i) => <th scope="col">{i + 1}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Morning</th>
+                {timetableMorning.map(c => (
+                  <td rowspan={c.rs} class={`tt-${c.k}${c.rs === 3 ? ' tt-full' : ''}`}>
+                    {c.rs === 3 ? <span class="tt-vertical">{c.t}</span> : c.t}
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <th scope="row">Afternoon</th>
+                {timetableAfternoon.slice(0, 5).map(c => <td class={`tt-${c.k}`}>{c.t}</td>)}
+                {timetableAfternoon.slice(5, 10).map(c => <td class={`tt-${c.k}`}>{c.t}</td>)}
+                {(() => { const d = timetableAfternoon[10]; return <td rowspan={d.rs} class={`tt-${d.k}`}>{d.t}</td>; })()}
+              </tr>
+              <tr>
+                <th scope="row">Evening</th>
+                {timetableEvening.slice(0, 6).map(c => <td class={`tt-${c.k}`}>{c.t}</td>)}
+                {timetableEvening.slice(6).map(c => <td class={`tt-${c.k}`}>{c.t}</td>)}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <ul class="timetable-legend list-none p-0 m-0 mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[0.8rem] text-ink-soft">
+          <li><span class="tt-key tt-lesson"></span>Lessons</li>
+          <li><span class="tt-key tt-exc"></span>Excursions</li>
+          <li><span class="tt-key tt-act"></span>Daytime activities</li>
+          <li><span class="tt-key tt-eve"></span>Evening activities</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -378,7 +451,7 @@ const courseSchema = {
     <div class="container-x">
       <div class="max-w-[62ch] mx-auto">
         <div class="flex justify-center">
-          <a href="/contact" class="btn btn-primary">Book a free consultation</a>
+          <a href="/about" class="btn btn-primary">More about us</a>
         </div>
 
       </div>
@@ -415,3 +488,80 @@ const courseSchema = {
   </section>
 
 </BaseLayout>
+
+<style>
+  .timetable-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: white;
+    -webkit-overflow-scrolling: touch;
+  }
+  .timetable-scroll:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .timetable {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    min-width: 980px;
+    table-layout: fixed;
+    font-size: 0.78rem;
+    line-height: 1.25;
+    text-align: center;
+  }
+  .timetable th, .timetable td {
+    padding: 10px 6px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .timetable th:last-child, .timetable td:last-child { border-right: 0; }
+  .timetable tbody tr:last-child th, .timetable tbody tr:last-child td { border-bottom: 0; }
+  .timetable thead th {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    background: var(--ink);
+    color: white;
+  }
+  .timetable thead th:first-child, .timetable tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: 108px;
+    text-align: left;
+    padding-left: 14px;
+  }
+  .timetable tbody th {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    background: var(--cream);
+  }
+  .timetable thead th:nth-child(8), .timetable thead th:nth-child(14) { width: 38px; }
+  .timetable td { color: var(--ink); }
+  .tt-lesson { background: white; }
+  .tt-exc { background: rgba(255, 145, 77, 0.2); font-weight: 600; }
+  .tt-act { background: rgba(0, 128, 55, 0.1); }
+  .tt-eve { background: var(--cream); }
+  .tt-travel { background: var(--ink); color: white !important; font-weight: 600; }
+  .tt-full { width: 38px; padding: 8px 0; }
+  .tt-vertical {
+    display: inline-block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .timetable-legend li { display: inline-flex; align-items: center; gap: 8px; }
+  .tt-key {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+</style>
