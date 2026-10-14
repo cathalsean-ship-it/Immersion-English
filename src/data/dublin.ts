@@ -334,7 +334,7 @@ export const dublin: DublinProgramme = {
       description:
         'Discover Georgian Dublin, with its well-preserved architectural heritage.',
       duration: 'half-day',
-      image: '/georgian-walking-tour.webp',
+      image: '/georgian-doors.webp',
     },
     {
       title: "St Patrick's Cathedral",
