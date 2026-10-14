@@ -282,14 +282,15 @@ export const dublin: DublinProgramme = {
   medicalStaff: 'Qualified medical staff on site 24 hours a day.',
 
   included: [
-    '20 lessons every week (15 hours) – with qualified English teachers at the centre',
-    'En-suite accommodation on campus – at the National College of Ireland, in the heart of Dublin',
-    'Full board – from dinner on the day of arrival to breakfast on the day of departure',
+    '20 lessons a week – 15 hours with qualified English teachers, in classes placed by level after an online placement test',
+    'En-suite rooms on a real college campus – single or twin rooms at the National College of Ireland, in the heart of Dublin',
+    'Full board and a Prepaid Meal Card – all meals included, and on excursions every student gets a prepaid card to choose where they eat, plus a Hard Rock Cafe meal',
+    'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff on site 24 hours a day, with student coordinators on hand to keep every day active and friendly',
+    'Your group leaders, all the way – Lenny and Lina travel with your child from Sofia to Dublin and back and stay for the whole programme. Lina is a native Bulgarian speaker parents can always reach',
+    'Excursions that teach – the excursion programme for your stay, with transport and entry tickets included, plus a free interactive app that turns every outing into quizzes, missions and badges',
+    'Activities, day and night – art, sports, kitchen and magic by day; karaoke, talent shows, discos and an Irish céilí dance by night',
     'Return airport transfers – between Dublin Airport and the centre, arranged directly by your group leaders',
-    'The full excursion programme – transport and entry tickets included, nothing extra to pay',
-    "Daytime and evening activities – cooking, art and games by day; talent shows, karaoke, discos and movie nights once the sun goes down",
-    'Placement test, course eBook and student portfolio – so parents can see exactly what a week achieved',
-    'An Immersion English group leader – travelling with the group from Sofia to Dublin and back, and with them for the whole stay',
+    'Progress you can see – placement test, eBooks and student portfolio, plus an end-of-course report, certificate of attendance and graduation ceremony',
   ],
 
   notIncluded: [
