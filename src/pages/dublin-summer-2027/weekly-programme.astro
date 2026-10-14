@@ -7,34 +7,24 @@
  * Wicklow / Glendalough full day, and a "6 day trips" stat. That is gone
  * and must not be restored.
  *
- * SOURCE for the sample day below: MLA's published Dublin/NCI programme
- * flyer ("Programme-Dublin-NCI-2026-EFJ.pdf"), the "A SAMPLE SCHEDULE"
- * table. This is the centre's own published typical day for this exact
- * campus — not a UCD-era guess, not invented. MLA has not separately
- * confirmed this for 2027; treat as "the centre's typical day" rather
- * than a 2027 guarantee until they do, same caveat already applied to
- * the excursions list in dublin.ts.
+ * The timetable is the shared ProgrammeTimetable component, transcribed
+ * from the centre's Summer 2027 profile (p.42) — a 14-day / 13-night
+ * sample. A clock-time "typical day" list (8:00 breakfast ... 10:00 PM) used
+ * to follow it; it came from MLA's 2026 flyer, not the 2027 brochure, and
+ * was removed at the site owner's request (14 Oct 2026). Don't restore it
+ * without 2027 confirmation.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { dublin } from '../../data/dublin';
 import ProgrammeTimetable from '../../components/ProgrammeTimetable.astro';
 
 const { lessonsPerWeek, hoursPerWeek } = dublin;
-
-const sampleDay = [
-  { time: '8:00 AM', activity: 'Wake up and breakfast' },
-  { time: '9:00 AM', activity: 'Lesson, or an excursion / activity' },
-  { time: '12:30 PM', activity: 'Lunch' },
-  { time: '2:00 PM', activity: 'Lesson, or an excursion / activity' },
-  { time: '6:30 PM', activity: 'Dinner' },
-  { time: '7:30–10:00 PM', activity: 'Evening activities' },
-];
 ---
 
 <BaseLayout
   title={`Weekly Programme – Dublin Summer ${dublin.year} | Immersion English`}
   description={`${lessonsPerWeek} lessons a week (${hoursPerWeek} hours) with qualified English teachers at an international summer centre in Dublin, plus regular excursions and a different activity every evening.`}
-  ogImage="/howth.webp"
+  ogImage="/teens-cafe.webp"
 >
 
   <!-- HERO -->
@@ -108,41 +98,12 @@ const sampleDay = [
     </div>
   </section>
 
-  <!-- SAMPLE DAY -->
+  <!-- CTA -->
   <section class="section">
     <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">A typical day</span>
-        <h2>Structured, but never idle.</h2>
-        <p>
-          Lessons in the morning or afternoon, excursions and activities filling the rest –
-          the centre's own published rhythm for a day at this campus.
-        </p>
-      </div>
-
-      <div class="max-w-[62ch] mx-auto">
-        <ul class="list-none p-0 m-0 flex flex-col gap-3 mb-10">
-          {sampleDay.map(({ time, activity }) => (
-            <li class="flex items-center gap-4 rounded-lg px-5 py-4" style="background: var(--cream); border: 1px solid var(--line);">
-              <span class="font-heading font-semibold text-[0.92rem] flex-shrink-0 w-[110px]" style="color: var(--green);">{time}</span>
-              <span class="text-[0.95rem] text-ink">{activity}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div class="rounded-md overflow-hidden shadow-lift mb-8">
-          <img
-            src="/howth.webp"
-            alt="Howth, a fishing village on the Irish coast"
-            class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 16/9; display: block;"
-            loading="lazy" />
-        </div>
-
-        <div class="flex gap-3 flex-wrap">
-          <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
-          <a href="/contact" class="btn btn-ghost">Book a free consultation</a>
-        </div>
+      <div class="flex gap-3 flex-wrap justify-center">
+        <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
+        <a href="/contact" class="btn btn-ghost">Book a free consultation</a>
       </div>
     </div>
   </section>
