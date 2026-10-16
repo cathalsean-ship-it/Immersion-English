@@ -1,0 +1,39 @@
+name: url-check (temporary)
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  pull-requests: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Netlify preview of this commit
+        run: sleep 30
+      - name: Check status codes and redirects
+        env:
+          BASE: https://immersion-english.com
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          paths="/ /about /lessons /corporate-training /contact /blog /privacy /thank-you
+          /dublin-summer-2027 /dublin-summer-2027/accommodation /dublin-summer-2027/trips-and-activities
+          /dublin-summer-2027/weekly-programme /dublin-summer-2027/faqs
+          /blog/ielts-preparation-tips-for-bulgarian-students /blog/why-speaking-english-feels-harder-than-reading-or-listening
+          /blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt /blog/why-ireland-is-one-of-the-best-places-in-the-world-to-learn-english
+          /blog/ai-and-the-human-touch-in-language-learning /blog/the-power-of-conversation-how-small-talk-builds-big-confidence
+          /about/ /lessons/ /dublin-summer-2027/ /blog/ /dublin-summer-2027/faqs/ /blog/ielts-preparation-tips-for-bulgarian-students/
+          /lessons.html /dublin-summer-2027.html /about/index.html
+          /does-not-exist /dublin-summer-2027/nope
+          /sitemap.xml /robots.txt /llms.txt /og/home.jpg /team-lenny.jpg /0f8cd5f276341daf7a3342b399b48d8c.txt"
+          {
+            echo "URL-CHECK-RESULTS"
+            echo '```'
+            for p in $paths; do
+              r=$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$BASE$p")
+              f=$(curl -sL -o /dev/null -w '%{http_code} %{url_effective}' "$BASE$p")
+              echo "$p -> $r | final: $f"
+            done
+            echo '```'
+          } > out.md
+          cat out.md
+          gh api repos/${{ github.repository }}/issues/${{ github.event.number }}/comments -f body="$(cat out.md)"
