@@ -9,6 +9,8 @@ import { dublin } from '../data/dublin';
 import { courses } from '../data/courses';
 import { keywordsFor } from '../data/keywords';
 import '../styles/global.css';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 interface Props {
   title: string;
@@ -59,7 +61,17 @@ const breadcrumbSchema = segs.length === 0 || ['404', 'thank-you'].includes(segs
   ],
 };
 const canonicalURL = new URL(pagePath, Astro.site || 'https://immersion-english.com');
-const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin}${ogImage}`;
+// Facebook caches a share image by its URL, so a redrawn card under the same
+// URL keeps showing the old picture even after "Scrape Again". Add a short
+// fingerprint of the file, so the URL changes whenever the image does.
+const ogVersion = (() => {
+  if (ogImage.startsWith('http')) return '';
+  try {
+    const buf = readFileSync(new URL(`../../public${ogImage}`, import.meta.url));
+    return '?v=' + createHash('md5').update(buf).digest('hex').slice(0, 8);
+  } catch { return ''; }
+})();
+const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin}${ogImage}${ogVersion}`;
 
 // Meta (Facebook) Pixel. Leave empty to keep it switched off. When set, it loads
 // ONLY after a visitor clicks Accept on the cookie banner, exactly like Google
