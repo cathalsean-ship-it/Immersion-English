@@ -6,13 +6,26 @@ import { dublin, durationOptionsLabel, priceRangeLabel } from '../data/dublin';
 
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
 
-// Homepage shows a teaser of three trips; the full list lives on
-// /dublin-summer-2027/trips-and-activities. Picked by title so a reorder in
-// dublin.ts can't swap them; if any title stops matching, fall back to the
-// first three so the section never renders short.
-const TEASER_TRIPS = ['Kilkenny', 'Howth', "St Stephen's Green & Temple Bar"];
-const teaserPicks = excursions === null ? null : TEASER_TRIPS.map(t => excursions.find(e => e.title === t)).filter(Boolean);
-const teaserTrips = excursions === null ? null : (teaserPicks!.length === TEASER_TRIPS.length ? teaserPicks! : excursions.slice(0, 3));
+// Homepage teaser: the two full-day trips, plus one card that sums up the
+// half-day Dublin city trips. The full list lives on
+// /dublin-summer-2027/trips-and-activities. Everything renders from dublin.ts,
+// so the city card follows the data. No trip count, on purpose (see the note
+// in the section below).
+const teaserTrips = (() => {
+  if (excursions === null) return null;
+  const fullDays = excursions.filter(e => e.duration === 'full-day');
+  const city = excursions.filter(e => e.duration === 'half-day');
+  if (city.length === 0) return excursions.slice(0, 3);
+  const names = city.map(e => e.title);
+  const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0];
+  const cityCard = {
+    title: 'Dublin city trips',
+    description: `Half-day trips around the city: ${list}.`,
+    duration: 'half-days',
+    image: city.find(e => e.title.includes('Grafton'))?.image ?? city[0].image ?? null,
+  };
+  return [...fullDays.slice(0, 2), cityCard];
+})();
 ---
 
 <BaseLayout title="Immersion English | English Lessons & Dublin Summer for Teens" description={`CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults, and a summer group to an international centre in Dublin for students aged ${ages.min}–${ages.max}. Летен езиков курс в Дъблин за тийнейджъри от България.`}>
