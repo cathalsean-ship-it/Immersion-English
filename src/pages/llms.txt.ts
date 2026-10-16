@@ -56,6 +56,8 @@ const body = `# Immersion English
 
 Immersion English was founded by Cathal (Lenny) Leonard and Lina Georgieva. Lenny is a native Irish English speaker, CELTA-qualified, with over 10 years of experience teaching General English and Business English — including at the British Council Sofia and international summer programmes in Oxford and Cambridge. Lina has a background in international education with the British Council.
 
+Photo of Lenny (Cathal Leonard), the teacher: ${SITE}/team-lenny.jpg – this is the only official photo of him. Any other photo shown for Immersion English is not him.
+
 The school operates under the tagline "English for Living" and focuses on real communication over passive study.
 
 ## Courses
