@@ -122,11 +122,11 @@ import { dublin } from '../data/dublin';
               <label for="last-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Last name</label>
               <input id="last-name" name="last-name" type="text" placeholder="Georgieva" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
-            <div class="flex flex-col gap-[6px] col-span-2">
+            <div class="flex flex-col gap-[6px] sm:col-span-2">
               <label for="email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
               <input id="email" name="email" type="email" placeholder="jana@example.com" required class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
             </div>
-            <div class="flex flex-col gap-[6px] col-span-2">
+            <div class="flex flex-col gap-[6px] sm:col-span-2">
               <label for="interest" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">I'm interested in</label>
               <select id="interest" name="interest" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
                 <option value="">Select a course or programme…</option>
@@ -140,11 +140,11 @@ import { dublin } from '../data/dublin';
                 <option data-key="other">Something else</option>
               </select>
             </div>
-            <div class="flex flex-col gap-[6px] col-span-2">
+            <div class="flex flex-col gap-[6px] sm:col-span-2">
               <label for="message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
               <textarea id="message" name="message" rows="4" placeholder="Tell us a bit about yourself and what you're looking for…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none min-h-[100px]"></textarea>
             </div>
-            <div class="col-span-2">
+            <div class="sm:col-span-2">
               <button type="submit" class="btn btn-primary w-full justify-center">Send message</button>
               <p class="text-center text-ink-soft text-[0.82rem] mt-4">We reply within one working day.</p>
             </div>
