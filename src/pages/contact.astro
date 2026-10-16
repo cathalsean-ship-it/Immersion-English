@@ -97,7 +97,7 @@ import { dublin } from '../data/dublin';
               class="text-[0.9rem] font-heading font-semibold no-underline hover:underline"
               style="color: var(--green);"
             >
-              Supervision and safety →
+              Supervision and safety
             </a>
           </div>
         </div>
@@ -111,6 +111,8 @@ import { dublin } from '../data/dublin';
           <form name="individual-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
             <input type="hidden" name="form-name" value="individual-enquiry" />
             <input type="hidden" name="subject" value="[Immersion English] New Individual Enquiry" />
+            <!-- Filled from ?from= on the link that brought the visitor here, so each enquiry shows which page and button it came from. -->
+            <input type="hidden" name="came-from" value="" />
             <p class="hidden"><input name="bot-field" /></p>
             <div class="flex flex-col gap-[6px]">
               <label for="first-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
@@ -128,14 +130,14 @@ import { dublin } from '../data/dublin';
               <label for="interest" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">I'm interested in</label>
               <select id="interest" name="interest" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition appearance-none cursor-pointer">
                 <option value="">Select a course or programme…</option>
-                <option>Speak Up! (group speaking course)</option>
-                <option>General English (1:1)</option>
-                <option>Business English (1:1)</option>
-                <option>Personal Speaking Coach (1:1)</option>
-                <option>Exam Prep (CAE / IELTS)</option>
-                <option>Dublin Summer 2027</option>
-                <option>Corporate Training</option>
-                <option>Something else</option>
+                <option data-key="speak-up">Speak Up! (group speaking course)</option>
+                <option data-key="general-english">General English (1:1)</option>
+                <option data-key="business-english">Business English (1:1)</option>
+                <option data-key="speaking-coach">Personal Speaking Coach (1:1)</option>
+                <option data-key="exam-prep">Exam Prep (CAE / IELTS)</option>
+                <option data-key="dublin">Dublin Summer 2027</option>
+                <option data-key="corporate">Corporate Training</option>
+                <option data-key="other">Something else</option>
               </select>
             </div>
             <div class="flex flex-col gap-[6px] col-span-2">
@@ -177,6 +179,22 @@ import { dublin } from '../data/dublin';
   </section>
 
 <script>
+  // Pre-fill the enquiry from the button that brought the visitor here.
+  // Links look like /contact?interest=exam-prep&from=lessons-exam-card#booking-form
+  // `interest` matches an <option data-key>; `from` is stored in a hidden field.
+  // Anything unrecognised is ignored, so the form always works without it.
+  (function () {
+    const params = new URLSearchParams(location.search);
+    const interest = params.get('interest');
+    if (interest) {
+      const opt = document.querySelector(`#interest option[data-key="${CSS.escape(interest)}"]`);
+      if (opt) opt.selected = true;
+    }
+    const from = params.get('from');
+    const field = document.querySelector('input[name="came-from"]');
+    if (field && from && /^[a-z0-9-]{1,60}$/.test(from)) field.value = from;
+  })();
+
   // Handle all netlify forms on this page – prevent redirect, show success message
   document.querySelectorAll('form[data-netlify]').forEach(form => {
     form.addEventListener('submit', async (e) => {

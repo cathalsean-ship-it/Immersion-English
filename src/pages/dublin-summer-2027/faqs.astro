@@ -108,7 +108,7 @@ const sections = [
       {
         q: 'What excursions are included?',
         a: `The centre's published Dublin programme includes ${fullDay.length} full-day excursions – ${fullDay.map(e => e.title).join(' and ')} – and ${halfDay.length} half-day excursions in Dublin: ${halfDay.map(e => e.title).join('; ')}. Transport and entry tickets are included, with nothing extra to pay on the day. Excursions are run by local centre staff.`,
-        link: { href: '/dublin-summer-2027/trips-and-activities', label: 'See the full excursion programme →' },
+        link: { href: '/dublin-summer-2027/trips-and-activities', label: 'See the full excursion programme' },
       },
       {
         q: 'Do I have to pay extra for trips?',
@@ -139,7 +139,7 @@ const sections = [
         // alone — which is exactly why the leaders travel with them.
         q: 'How does my child get to Dublin?',
         a: `${groupLeader.name}${secondChaperone?.name ? ` and ${secondChaperone.name}` : ''} ${groupLeaderTravelPhrase(groupLeader)}, so your child is accompanied by an adult from Sofia the whole way. Airlines set their own rules for younger passengers travelling without an adult, and those rules decide what is possible for your child — so we go through the travel arrangements with every family individually before anything is booked. Bring it up at the free consultation and we will tell you exactly where you stand.`,
-        link: { href: '/contact', label: 'Book a free consultation →' },
+        link: { href: '/contact?interest=dublin&from=faqs-answer#booking-form', label: 'Ask about Dublin 2027' },
       },
       {
         q: 'Who do I call if something happens?',
@@ -157,7 +157,7 @@ const sections = [
         // rather than a vague "from" figure — a parent comparing programmes
         // wants the actual numbers.
         a: `${durations.map(d => `€${d.price.toLocaleString('en-IE')} for ${d.days} days`).join(', ')}. Every price covers tuition, en-suite campus accommodation, full board, return airport transfers, the excursion programme and the activities. Flights, insurance and personal spending are separate.`,
-        link: { href: '/contact', label: 'Book a free consultation →' },
+        link: { href: '/contact?interest=dublin&from=faqs-answer#booking-form', label: 'Ask about Dublin 2027' },
       },
       {
         q: 'When are the 2027 dates?',
@@ -251,8 +251,8 @@ const sections = [
             </a>
           ))}
           <div class="mt-6 pt-6 border-t border-line">
-            <a href="/contact" class="btn btn-primary text-[0.88rem] py-3 px-5 justify-center w-full">
-              Still have questions?
+            <a href="/contact?interest=dublin&from=faqs-sidebar#booking-form" class="btn btn-primary text-[0.88rem] py-3 px-5 justify-center w-full">
+              Ask about Dublin 2027
             </a>
           </div>
         </nav>
@@ -308,7 +308,7 @@ const sections = [
         We're happy to answer anything, big or small. Get in touch and we'll reply within one working day.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
-        <a href="/contact" class="btn btn-primary">Contact us</a>
+        <a href="/contact?interest=dublin&from=faqs-bottom#booking-form" class="btn btn-primary">Ask about Dublin 2027</a>
         <a href="/dublin-summer-2027" class="btn btn-ghost text-white border-white/30 hover:border-white">
           Back to programme
         </a>

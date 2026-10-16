@@ -1,4 +1,5 @@
 ---
+import RelatedReading from '../../components/RelatedReading.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 // The Dublin duration is read from the data, never typed. This post claimed
 // "seven days" long after the programme became a fixed two weeks, and later
@@ -156,7 +157,7 @@ import { dublin, durationOptionsLabel } from '../../data/dublin';
 
         <p>Groups of 8 students mean you get individual attention, real speaking practice in every lesson, and feedback that is specific to your needs – not generic exam tips.</p>
 
-        <p>If you are ready to start preparing seriously, <a href="/contact">get in touch</a> and we will help you find the right course for your level and timeline.</p>
+        <p>If you are ready to start preparing seriously, <a href="/contact?interest=exam-prep&from=blog-ielts#booking-form">get in touch</a> and we will help you find the right course for your level and timeline.</p>
 
       </div>
 
@@ -165,8 +166,10 @@ import { dublin, durationOptionsLabel } from '../../data/dublin';
         <p class="eyebrow mb-3">Ready to start?</p>
         <h3 style="margin-bottom: 1rem;">Prepare for IELTS with a native teacher</h3>
         <p style="color: var(--ink-soft); margin-bottom: 1.5rem;">Groups of 8, real speaking practice, individual feedback. B2 level and above.</p>
-        <a href="/contact" class="btn btn-primary">Get in touch</a>
+        <a href="/lessons#exam-prep" class="btn btn-primary">See exam prep</a>
       </div>
+
+      <RelatedReading slug="ielts-preparation-tips-for-bulgarian-students" />
 
     </div>
   </section>

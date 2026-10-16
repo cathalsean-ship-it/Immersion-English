@@ -1,0 +1,47 @@
+---
+// "Related reading" at the end of a blog post. Each post passes its own slug;
+// the pairs below decide what it links to. Keeps readers moving between
+// articles and gives every post more than one internal link pointing at it.
+interface Props { slug: string }
+
+const POSTS: Record<string, string> = {
+  'ielts-preparation-tips-for-bulgarian-students': 'IELTS Preparation Tips for Bulgarian Students',
+  'why-speaking-english-feels-harder-than-reading-or-listening': 'Why Speaking English Feels Harder Than Reading or Listening',
+  'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt': "CEFR: What Your English Level Really Tells You – and What It Doesn't",
+  'why-ireland-is-one-of-the-best-places-in-the-world-to-learn-english': 'Why Ireland Is One of the Best Places in the World to Learn English',
+  'ai-and-the-human-touch-in-language-learning': 'AI and the Human Touch: Why Teachers Matter More Than Ever',
+  'the-power-of-conversation-how-small-talk-builds-big-confidence': 'The Power of Conversation: How Small Talk Builds Big Confidence',
+};
+
+const RELATED: Record<string, string[]> = {
+  'ielts-preparation-tips-for-bulgarian-students': ['cefr-what-your-english-level-really-tells-you-and-what-it-doesnt', 'why-speaking-english-feels-harder-than-reading-or-listening'],
+  'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt': ['ielts-preparation-tips-for-bulgarian-students', 'why-speaking-english-feels-harder-than-reading-or-listening'],
+  'why-speaking-english-feels-harder-than-reading-or-listening': ['the-power-of-conversation-how-small-talk-builds-big-confidence', 'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt'],
+  'the-power-of-conversation-how-small-talk-builds-big-confidence': ['why-speaking-english-feels-harder-than-reading-or-listening', 'ai-and-the-human-touch-in-language-learning'],
+  'ai-and-the-human-touch-in-language-learning': ['the-power-of-conversation-how-small-talk-builds-big-confidence', 'why-speaking-english-feels-harder-than-reading-or-listening'],
+  'why-ireland-is-one-of-the-best-places-in-the-world-to-learn-english': ['the-power-of-conversation-how-small-talk-builds-big-confidence', 'why-speaking-english-feels-harder-than-reading-or-listening'],
+};
+
+const { slug } = Astro.props;
+const items = (RELATED[slug] ?? []).filter((s) => POSTS[s]);
+---
+
+{items.length > 0 && (
+  <nav aria-label="Related reading" style="margin-top: 40px;">
+    <p class="eyebrow eyebrow-dot mb-4">Related reading</p>
+    <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 12px;">
+      {items.map((s) => (
+        <li>
+          <a href={`/blog/${s}`} class="related-link" style="display: block; padding: 16px 20px; border: 1px solid var(--line); border-radius: 12px; background: white; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.98rem; color: var(--ink); text-decoration: none;">
+            {POSTS[s]}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .related-link { transition: border-color 0.15s ease; }
+  .related-link:hover { border-color: var(--green); }
+</style>
