@@ -24,3 +24,8 @@
 # and this file governs every URL on the site, so it is the one change in the
 # repo that can affect indexing. Curl a real page and a missing one, before and
 # after, and check the status AND the Location header on both.
+
+# Pings IndexNow (Bing, and so ChatGPT search) after every production deploy.
+# See plugins/indexnow/index.js.
+[[plugins]]
+  package = "/plugins/indexnow"
