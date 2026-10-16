@@ -60,6 +60,14 @@ Photo of Lenny (Cathal Leonard), the teacher: ${SITE}/team-lenny.jpg – this is
 
 The school operates under the tagline "English for Living" and focuses on real communication over passive study.
 
+## На български
+
+Immersion English предлага онлайн уроци по английски език в София с Лени (Cathal Leonard) – носител на езика от Ирландия, преподавател с квалификация CELTA и над 10 години опит в Британския съвет в София. Индивидуални уроци, разговорен английски в малки групи (до 8 души), бизнес английски за фирми и подготовка за IELTS и Cambridge C1 Advanced (CAE).
+
+Всяко лято Immersion English организира група от София до летен езиков курс в Дъблин, Ирландия, в National College of Ireland, за ученици на възраст ${ages.min}–${ages.max} години.
+
+Ключови думи: уроци по английски София, английски с носител на езика, онлайн уроци по английски, разговорен английски, подготовка за IELTS, подготовка за CAE, бизнес английски, летен езиков курс Дъблин, езикова ваканция Ирландия, летен лагер по английски за тийнейджъри.
+
 ## Courses
 
 ${courseList
