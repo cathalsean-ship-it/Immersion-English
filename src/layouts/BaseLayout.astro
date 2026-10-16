@@ -7,6 +7,7 @@ import { dublin } from '../data/dublin';
 // while courses.ts and the lessons page said €50 — Google was being told a
 // different price from the one visitors saw. Render, never retype.
 import { courses } from '../data/courses';
+import { keywordsFor } from '../data/keywords';
 import '../styles/global.css';
 
 interface Props {
@@ -36,6 +37,7 @@ const LABELS: Record<string, string> = {
   'weekly-programme': 'Weekly Programme', 'faqs': 'FAQs', 'privacy': 'Privacy & Cookie Policy',
 };
 const segs = Astro.url.pathname.split('/').filter(Boolean);
+const keywords = keywordsFor(Astro.url.pathname);
 const origin = (Astro.site?.toString() || 'https://immersion-english.com').replace(/\/$/, '');
 const crumbs = [{ name: 'Home', url: origin + '/' }, ...segs.map((s, i) => ({
   name: LABELS[s] ?? title.split('|')[0].trim(),
@@ -44,7 +46,7 @@ const crumbs = [{ name: 'Home', url: origin + '/' }, ...segs.map((s, i) => ({
 const breadcrumbSchema = segs.length === 0 || ['404', 'thank-you'].includes(segs[0]) ? null : {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'WebPage', '@id': origin + Astro.url.pathname + '#webpage', url: origin + Astro.url.pathname, name: title, description, inLanguage: 'en', isPartOf: { '@type': 'WebSite', name: 'Immersion English', url: origin + '/' } },
+    { '@type': 'WebPage', '@id': origin + Astro.url.pathname + '#webpage', url: origin + Astro.url.pathname, name: title, description, inLanguage: 'en', ...(keywords ? { keywords: keywords.join(', ') } : {}), isPartOf: { '@type': 'WebSite', name: 'Immersion English', url: origin + '/' } },
     { '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })) },
   ],
 };
@@ -128,8 +130,8 @@ const META_PIXEL_ID = '4098945000240922';
       };
       try { if (localStorage.getItem('ie_cookie_consent') === 'accepted') window.ieLoadTracking(); } catch (e) {}
     </script>
-    <!-- Bulgarian language keywords for SEO -->
-    <meta name="keywords" content="английски език София, летен езиков курс Дъблин, английски за тийнейджъри, езикова програма Ирландия, летен езиков лагер Дъблин, IELTS подготовка София, Cambridge CAE София, English summer school Dublin Bulgaria, английски уроци онлайн София" />
+    <!-- Page-specific search terms, EN + BG. See src/data/keywords.ts -->
+    {keywords && <meta name="keywords" content={keywords.join(', ')} />}
     <!-- JSON-LD structured data: Organisation (all pages) -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
