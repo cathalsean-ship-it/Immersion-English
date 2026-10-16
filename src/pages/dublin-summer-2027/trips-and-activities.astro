@@ -75,7 +75,7 @@ const { excursions } = dublin;
     <>
       {[
         { key: 'full-day', eyebrow: 'Full-day excursions', heading: '<span style="color: var(--orange-text);">Out</span> of the city.' },
-        { key: 'half-day', eyebrow: 'Half-day excursions', heading: '<span style="color: var(--orange-text);">Dublin</span>, properly.' },
+        { key: 'half-day', eyebrow: 'Half-day excursions', heading: 'In the city.' },
       ].map(({ key, eyebrow, heading }, groupIndex) => {
         const items = excursions.filter(e => e.duration === key);
         if (items.length === 0) return null;
