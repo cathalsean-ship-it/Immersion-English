@@ -40,8 +40,12 @@ const LABELS: Record<string, string> = {
   'accommodation': 'Accommodation', 'trips-and-activities': 'Trips & Activities',
   'weekly-programme': 'Weekly Programme', 'faqs': 'FAQs', 'privacy': 'Privacy & Cookie Policy',
 };
-const segs = Astro.url.pathname.split('/').filter(Boolean);
-const keywords = keywordsFor(Astro.url.pathname);
+// The site builds as lessons.html (astro.config build.format 'file'), so
+// Astro.url.pathname ends in ".html". Public addresses never do: Netlify
+// serves /lessons from lessons.html. Every URL below is built from this.
+const pagePath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
+const segs = pagePath.split('/').filter(Boolean);
+const keywords = keywordsFor(pagePath);
 const origin = (Astro.site?.toString() || 'https://immersion-english.com').replace(/\/$/, '');
 const crumbs = [{ name: 'Home', url: origin + '/' }, ...segs.map((s, i) => ({
   name: LABELS[s] ?? title.split('|')[0].trim(),
@@ -50,11 +54,11 @@ const crumbs = [{ name: 'Home', url: origin + '/' }, ...segs.map((s, i) => ({
 const breadcrumbSchema = segs.length === 0 || ['404', 'thank-you'].includes(segs[0]) ? null : {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'WebPage', '@id': origin + Astro.url.pathname + '#webpage', url: origin + Astro.url.pathname, name: title, description, inLanguage: 'en', ...(keywords ? { keywords: keywords.join(', ') } : {}), isPartOf: { '@type': 'WebSite', name: 'Immersion English', url: origin + '/' } },
+    { '@type': 'WebPage', '@id': origin + pagePath + '#webpage', url: origin + pagePath, name: title, description, inLanguage: 'en', ...(keywords ? { keywords: keywords.join(', ') } : {}), isPartOf: { '@type': 'WebSite', name: 'Immersion English', url: origin + '/' } },
     { '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })) },
   ],
 };
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://immersion-english.com');
+const canonicalURL = new URL(pagePath, Astro.site || 'https://immersion-english.com');
 const ogImageURL = ogImage.startsWith('http') ? ogImage : `${canonicalURL.origin}${ogImage}`;
 
 // Meta (Facebook) Pixel. Leave empty to keep it switched off. When set, it loads
