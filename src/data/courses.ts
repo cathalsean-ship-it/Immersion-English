@@ -101,7 +101,7 @@ export const courses = {
   // bundle is still deliberate-or-not and unresolved.
   examPreparation: {
     name: 'Exam Preparation',
-    summary: 'IELTS and Cambridge CAE, 1:1 online',
+    summary: 'IELTS and Cambridge CAE, 1:1 or small group, online',
     perLesson: 45,
     total: null,
     lessonMinutes: 90,
