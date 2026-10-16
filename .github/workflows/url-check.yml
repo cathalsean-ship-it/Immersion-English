@@ -1,0 +1,32 @@
+name: url-check (temporary)
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  pull-requests: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 150
+      - env:
+          BASE: https://deploy-preview-${{ github.event.number }}--immersionenglish.netlify.app
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          paths="/ /about /about/ /lessons /lessons/ /contact /contact/ /corporate-training /corporate-training/ /blog /blog/ /privacy/ /thank-you/
+          /dublin-summer-2027 /dublin-summer-2027/ /dublin-summer-2027/accommodation /dublin-summer-2027/accommodation/
+          /dublin-summer-2027/trips-and-activities /dublin-summer-2027/trips-and-activities/ /dublin-summer-2027/weekly-programme /dublin-summer-2027/weekly-programme/
+          /dublin-summer-2027/faqs /dublin-summer-2027/faqs/
+          /blog/ielts-preparation-tips-for-bulgarian-students /blog/ielts-preparation-tips-for-bulgarian-students/
+          /blog/ai-and-the-human-touch-in-language-learning/ /does-not-exist /does-not-exist/ /sitemap.xml /llms.txt /og/lessons.jpg"
+          {
+            echo "URL-CHECK-RESULTS"; echo '```'
+            for p in $paths; do
+              r=$(curl -s -o /tmp/b -w '%{http_code} %{redirect_url}' "$BASE$p")
+              c=$(grep -o '<link rel="canonical" href="[^"]*"' /tmp/b | sed 's/.*href="//;s/"//')
+              echo "$p -> $r | canonical: $c"
+            done
+            echo '```'
+          } > out.md
+          cat out.md
+          gh api repos/${{ github.repository }}/issues/${{ github.event.number }}/comments -f body="$(cat out.md)"
