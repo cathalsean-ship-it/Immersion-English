@@ -30,7 +30,7 @@ import { courses } from '../data/courses';
           <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55] mb-8">
             Taught online by a CELTA-qualified native teacher. Small groups or 1:1. Every lesson is built around real communication – not grammar drills.
           </p>
-          <a href="/contact?from=lessons-hero#booking-form" class="btn btn-primary">Book a free consultation</a>
+          <a href="/contact/?from=lessons-hero#booking-form" class="btn btn-primary">Book a free consultation</a>
         </div>
         <!-- Quick stats -->
         <div class="hidden md:grid grid-cols-2 gap-4">
@@ -48,7 +48,7 @@ import { courses } from '../data/courses';
           </div>
           <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
             <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">B1+</p>
-            <p class="text-[0.82rem] text-white/65 font-heading font-semibold"><a href="/blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt" style="color: rgba(255,255,255,0.65); text-decoration: underline; text-underline-offset: 2px;">on the CEFR scale</a></p>
+            <p class="text-[0.82rem] text-white/65 font-heading font-semibold"><a href="/blog/cefr-what-your-english-level-really-tells-you-and-what-it-doesnt/" style="color: rgba(255,255,255,0.65); text-decoration: underline; text-underline-offset: 2px;">on the CEFR scale</a></p>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@ import { courses } from '../data/courses';
               <p class="text-ink-soft text-[0.82rem] mt-1">per course</p>
               <p class="text-ink-soft text-[0.75rem] mt-1">€{courses.speakUp.perLesson} per lesson</p>
             </div>
-            <a href="/contact?interest=speak-up&from=lessons-speak-up#booking-form" class="btn btn-primary text-center justify-center">Reserve a spot</a>
+            <a href="/contact/?interest=speak-up&from=lessons-speak-up#booking-form" class="btn btn-primary text-center justify-center">Reserve a spot</a>
             <p class="text-[0.75rem] text-ink-soft text-center">All materials included</p>
           </div>
         </div>
@@ -147,7 +147,7 @@ import { courses } from '../data/courses';
               <p class="text-[0.82rem] text-ink-soft">5 lessons: <strong class="text-ink">€{courses.personalSpeakingCoach.bundles[0].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.personalSpeakingCoach.bundles[0].savePercent}%</span></p>
               <p class="text-[0.82rem] text-ink-soft">10 lessons: <strong class="text-ink">€{courses.personalSpeakingCoach.bundles[1].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.personalSpeakingCoach.bundles[1].savePercent}%</span></p>
             </div>
-            <a href="/contact?interest=speaking-coach&from=lessons-coach-card#booking-form" class="btn btn-ghost mt-4 text-[0.88rem] py-[10px] px-5">Ask about this course</a>
+            <a href="/contact/?interest=speaking-coach&from=lessons-coach-card#booking-form" class="btn btn-ghost mt-4 text-[0.88rem] py-[10px] px-5">Ask about this course</a>
           </div>
         </div>
 
@@ -181,7 +181,7 @@ import { courses } from '../data/courses';
           </ul>
           <div class="pt-5 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.3rem]">€{courses.examPreparation.perLesson} <span class="text-[0.85rem] font-normal text-ink-soft">per {courses.examPreparation.lessonMinutes}-minute lesson</span></p>
-            <a href="/contact?interest=exam-prep&from=lessons-exam-card#booking-form" class="btn btn-ghost mt-4 text-[0.88rem] py-[10px] px-5">Ask about this course</a>
+            <a href="/contact/?interest=exam-prep&from=lessons-exam-card#booking-form" class="btn btn-ghost mt-4 text-[0.88rem] py-[10px] px-5">Ask about this course</a>
           </div>
         </div>
 
@@ -234,7 +234,7 @@ import { courses } from '../data/courses';
               <p class="text-[0.82rem] text-ink-soft">5 lessons: <strong class="text-ink">€{courses.generalEnglish.bundles[0].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.generalEnglish.bundles[0].savePercent}%</span></p>
               <p class="text-[0.82rem] text-ink-soft">10 lessons: <strong class="text-ink">€{courses.generalEnglish.bundles[1].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.generalEnglish.bundles[1].savePercent}%</span></p>
             </div>
-            <a href="/contact?interest=general-english&from=lessons-general-card#booking-form" class="btn btn-ghost mt-4 text-[0.88rem] py-[10px] px-5">Ask about this course</a>
+            <a href="/contact/?interest=general-english&from=lessons-general-card#booking-form" class="btn btn-ghost mt-4 text-[0.88rem] py-[10px] px-5">Ask about this course</a>
           </div>
         </div>
 
@@ -269,7 +269,7 @@ import { courses } from '../data/courses';
               <p class="text-[0.82rem] text-ink-soft">5 lessons: <strong class="text-ink">€{courses.businessEnglish.bundles[0].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.businessEnglish.bundles[0].savePercent}%</span></p>
               <p class="text-[0.82rem] text-ink-soft">10 lessons: <strong class="text-ink">€{courses.businessEnglish.bundles[1].price}</strong> <span style="color: var(--green);" class="font-semibold text-[0.78rem]"> save {courses.businessEnglish.bundles[1].savePercent}%</span></p>
             </div>
-            <a href="/contact?interest=business-english&from=lessons-business-card#booking-form" class="btn btn-ghost mt-4 text-[0.88rem] py-[10px] px-5">Ask about this course</a>
+            <a href="/contact/?interest=business-english&from=lessons-business-card#booking-form" class="btn btn-ghost mt-4 text-[0.88rem] py-[10px] px-5">Ask about this course</a>
           </div>
         </div>
 
@@ -301,7 +301,7 @@ import { courses } from '../data/courses';
           <div class="pt-5 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.3rem]">Custom pricing</p>
             <p class="text-[0.82rem] text-ink-soft mt-1">Based on format, group size, and programme length.</p>
-            <a href="/corporate-training" class="btn mt-4 inline-flex" style="background: var(--blue); color: white; border: none; font-size: 0.88rem; padding: 10px 20px; border-radius: 8px; font-family: Montserrat, sans-serif; font-weight: 700; text-decoration: none;">View corporate training</a>
+            <a href="/corporate-training/" class="btn mt-4 inline-flex" style="background: var(--blue); color: white; border: none; font-size: 0.88rem; padding: 10px 20px; border-radius: 8px; font-family: Montserrat, sans-serif; font-weight: 700; text-decoration: none;">View corporate training</a>
           </div>
         </div>
 
@@ -337,7 +337,7 @@ import { courses } from '../data/courses';
             ))}
           </ol>
           <div class="mt-10">
-            <a href="/contact?from=lessons-how-it-works#booking-form" class="btn btn-primary">Book a free consultation</a>
+            <a href="/contact/?from=lessons-how-it-works#booking-form" class="btn btn-primary">Book a free consultation</a>
           </div>
         </div>
 
@@ -367,7 +367,7 @@ import { courses } from '../data/courses';
           <span class="eyebrow eyebrow-dot">Why choose us</span>
           <h2 class="mt-4 mb-5">Not another English course.</h2>
           <p class="text-ink-soft leading-relaxed mb-6">Every lesson is built around real communication – because that's the only way to build real confidence.</p>
-          <a href="/about" class="inline-flex items-center gap-3 no-underline group" style="color: var(--ink-soft);">
+          <a href="/about/" class="inline-flex items-center gap-3 no-underline group" style="color: var(--ink-soft);">
             <span class="w-8 h-[1.5px] inline-block" style="background: var(--orange);"></span>
             <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">Meet the teacher</span>
           </a>
@@ -431,7 +431,7 @@ import { courses } from '../data/courses';
             </p>
           </div>
           <div class="flex items-center p-8 md:p-10 md:border-l" style="border-color: rgba(255,255,255,0.2);">
-            <a href="/corporate-training" class="btn whitespace-nowrap" style="background: white; color: #0f5fa3; border-color: white; font-weight: 700;">See corporate programmes</a>
+            <a href="/corporate-training/" class="btn whitespace-nowrap" style="background: white; color: #0f5fa3; border-color: white; font-weight: 700;">See corporate programmes</a>
           </div>
         </div>
       </div>
@@ -448,8 +448,8 @@ import { courses } from '../data/courses';
           <p style="color: rgba(254,255,254,0.74);">Book a free 20-minute online consultation with Lenny. We'll listen, ask the right questions, and recommend the best fit – no obligation, no pressure.</p>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 md:justify-end">
-          <a href="/contact?from=lessons-bottom#booking-form" class="btn btn-primary">Book a free consultation</a>
-          <a href="/dublin-summer-2027" class="btn btn-ghost text-white border-white/30 hover:border-white">Dublin Summer 2027</a>
+          <a href="/contact/?from=lessons-bottom#booking-form" class="btn btn-primary">Book a free consultation</a>
+          <a href="/dublin-summer-2027/" class="btn btn-ghost text-white border-white/30 hover:border-white">Dublin Summer 2027</a>
         </div>
       </div>
     </div>

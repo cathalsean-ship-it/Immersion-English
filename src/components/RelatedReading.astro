@@ -32,7 +32,7 @@ const items = (RELATED[slug] ?? []).filter((s) => POSTS[s]);
     <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 12px;">
       {items.map((s) => (
         <li>
-          <a href={`/blog/${s}`} class="related-link" style="display: block; padding: 16px 20px; border: 1px solid var(--line); border-radius: 12px; background: white; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.98rem; color: var(--ink); text-decoration: none;">
+          <a href={`/blog/${s}/`} class="related-link" style="display: block; padding: 16px 20px; border: 1px solid var(--line); border-radius: 12px; background: white; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.98rem; color: var(--ink); text-decoration: none;">
             {POSTS[s]}
           </a>
         </li>

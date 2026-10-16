@@ -80,7 +80,7 @@ const articles = [
       <div class="blog-grid">
         {articles.map((article, i) => (
           <a
-            href={`/blog/${article.slug}`}
+            href={`/blog/${article.slug}/`}
             class="no-underline group trip-card-link blog-card"
             style="display: flex; flex-direction: column; background: white; border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;"
           >
@@ -113,10 +113,10 @@ const articles = [
       <h2 class="mb-5">Confident English comes from using it</h2>
       <p style="color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 32px;">Speaking-focused lessons in Sofia, and a summer group to an international English centre in Dublin for students aged {dublin.ages.min}–{dublin.ages.max}.</p>
       <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-        <a href="/lessons" class="btn btn-primary">
+        <a href="/lessons/" class="btn btn-primary">
           View our lessons
         </a>
-        <a href="/dublin-summer-2027" class="btn btn-ghost">Dublin Summer 2027</a>
+        <a href="/dublin-summer-2027/" class="btn btn-ghost">Dublin Summer 2027</a>
       </div>
     </div>
   </section>

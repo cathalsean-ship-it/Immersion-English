@@ -32,7 +32,7 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
     <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
     <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.25) 0%, rgba(20,32,26,0.7) 100%);"></div>
     <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
-      <a href="/dublin-summer-2027" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
+      <a href="/dublin-summer-2027/" class="inline-flex items-center gap-2 text-white/60 hover:text-white text-[0.88rem] font-heading font-semibold tracking-wide mb-6 transition-colors no-underline">
         ← Dublin Summer {dublin.year}
       </a>
       <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-5" style="color: var(--orange);">
@@ -83,7 +83,7 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
           { title: 'Lessons', body: `${lessonsPerWeek} lessons a week – ${hoursPerWeek} hours – after an online placement test puts every student in the right class.` },
-          { title: 'Excursions', body: "Full-day and half-day excursions with the centre's local staff, transport and entry tickets included.", href: '/dublin-summer-2027/trips-and-activities', cta: 'See the trips' },
+          { title: 'Excursions', body: "Full-day and half-day excursions with the centre's local staff, transport and entry tickets included.", href: '/dublin-summer-2027/trips-and-activities/', cta: 'See the trips' },
           { title: 'Daytime activities', body: 'Kitchen, where students practise English while learning to cook easy, tasty local dishes; plus art, sports and magic.' },
           { title: 'Evenings', body: 'Karaoke, trivia, themed discos, a scavenger hunt, Kahoot night, an Irish céilí dance and a talent show to finish.' },
         ].map(({ title, body, href, cta }) => (
@@ -106,8 +106,8 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
   <section class="section">
     <div class="container-x">
       <div class="flex gap-3 flex-wrap justify-center">
-        <a href="/dublin-summer-2027" class="btn btn-primary">Back to the programme</a>
-        <a href="/contact?interest=dublin&from=weekly-programme#booking-form" class="btn btn-ghost">Ask about Dublin 2027</a>
+        <a href="/dublin-summer-2027/" class="btn btn-primary">Back to the programme</a>
+        <a href="/contact/?interest=dublin&from=weekly-programme#booking-form" class="btn btn-ghost">Ask about Dublin 2027</a>
       </div>
     </div>
   </section>

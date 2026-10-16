@@ -86,7 +86,7 @@ const courseSchema = {
           <a href="#included" class="btn btn-primary">
             See what's included
           </a>
-          <a href="/contact?interest=dublin&from=dublin-hero#booking-form" class="btn btn-ghost text-white border-white/30 hover:border-white">
+          <a href="/contact/?interest=dublin&from=dublin-hero#booking-form" class="btn btn-ghost text-white border-white/30 hover:border-white">
             Ask about Dublin 2027
           </a>
         </div>
@@ -185,7 +185,7 @@ const courseSchema = {
       </div>
 
       <div class="flex justify-center mt-8">
-        <a href="/contact?interest=dublin&from=dublin-included#booking-form" class="btn btn-primary">Ask about Dublin 2027</a>
+        <a href="/contact/?interest=dublin&from=dublin-included#booking-form" class="btn btn-primary">Ask about Dublin 2027</a>
       </div>
     </div>
   </section>
@@ -372,7 +372,7 @@ const courseSchema = {
               { src: '/team-lenny.webp', name: groupLeader.name, role: 'Group leader', pos: 'center 25%' },
               { src: '/team-lina.webp', name: secondChaperone?.name ?? 'Lina', role: 'Group leader · Bulgarian speaker', pos: 'center 20%' },
             ].map(({ src, name, role, pos }) => (
-              <a href="/about" aria-label={`Meet ${name} – more about us`} class="team-photo-link" style={`display: block; position: relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 8px 32px rgba(20,32,26,0.12); aspect-ratio: 3/4; text-decoration: none;`}>
+              <a href="/about/" aria-label={`Meet ${name} – more about us`} class="team-photo-link" style={`display: block; position: relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 8px 32px rgba(20,32,26,0.12); aspect-ratio: 3/4; text-decoration: none;`}>
                 <img
                   src={src}
                   alt={`${name}, Immersion English group leader`}
@@ -401,7 +401,7 @@ const courseSchema = {
     <div class="container-x">
       <div class="max-w-[62ch] mx-auto">
         <div class="flex justify-center">
-          <a href="/about" class="btn btn-primary">More about us</a>
+          <a href="/about/" class="btn btn-primary">More about us</a>
         </div>
 
       </div>
@@ -417,10 +417,10 @@ const courseSchema = {
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { href: '/dublin-summer-2027/accommodation', title: 'Accommodation', desc: `En-suite rooms on campus at the ${venue.name}, with full board.` },
-          { href: '/dublin-summer-2027/trips-and-activities', title: 'Trips & Activities', desc: `The full excursion programme, plus evening and weekend activities run by the centre's own team.` },
-          { href: '/dublin-summer-2027/weekly-programme', title: 'Weekly Programme', desc: `${lessonsPerWeek} lessons every week – ${hoursPerWeek} hours – with the centre's qualified teachers.` },
-          { href: '/dublin-summer-2027/faqs', title: 'FAQs', desc: 'Answers to the questions parents and students ask most.' },
+          { href: '/dublin-summer-2027/accommodation/', title: 'Accommodation', desc: `En-suite rooms on campus at the ${venue.name}, with full board.` },
+          { href: '/dublin-summer-2027/trips-and-activities/', title: 'Trips & Activities', desc: `The full excursion programme, plus evening and weekend activities run by the centre's own team.` },
+          { href: '/dublin-summer-2027/weekly-programme/', title: 'Weekly Programme', desc: `${lessonsPerWeek} lessons every week – ${hoursPerWeek} hours – with the centre's qualified teachers.` },
+          { href: '/dublin-summer-2027/faqs/', title: 'FAQs', desc: 'Answers to the questions parents and students ask most.' },
         ].map(({ href, title, desc }) => (
           <a href={href} class="trust-card group no-underline text-ink">
             <div style="display: flex; flex-direction: column; gap: 14px;">

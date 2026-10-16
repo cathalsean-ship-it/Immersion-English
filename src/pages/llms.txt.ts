@@ -37,17 +37,17 @@ const datesLine = durations.map(d => `${d.days} days: ${d.startDates.map(formatS
 
 const pages: [string, string][] = [
   ['Home', '/'],
-  ['Lessons', '/lessons'],
-  ['Corporate Training', '/corporate-training'],
-  [`Dublin Summer ${dublin.year}`, '/dublin-summer-2027'],
-  ['Accommodation', '/dublin-summer-2027/accommodation'],
-  ['Trips & Activities', '/dublin-summer-2027/trips-and-activities'],
-  ['Weekly Programme', '/dublin-summer-2027/weekly-programme'],
-  ['FAQs', '/dublin-summer-2027/faqs'],
-  ['About', '/about'],
-  ['Blog', '/blog'],
-  ['Contact', '/contact'],
-  ['Privacy & Cookie Policy', '/privacy'],
+  ['Lessons', '/lessons/'],
+  ['Corporate Training', '/corporate-training/'],
+  [`Dublin Summer ${dublin.year}`, '/dublin-summer-2027/'],
+  ['Accommodation', '/dublin-summer-2027/accommodation/'],
+  ['Trips & Activities', '/dublin-summer-2027/trips-and-activities/'],
+  ['Weekly Programme', '/dublin-summer-2027/weekly-programme/'],
+  ['FAQs', '/dublin-summer-2027/faqs/'],
+  ['About', '/about/'],
+  ['Blog', '/blog/'],
+  ['Contact', '/contact/'],
+  ['Privacy & Cookie Policy', '/privacy/'],
 ];
 
 const body = `# Immersion English

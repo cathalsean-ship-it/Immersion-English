@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://immersion-english.com',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   // Inline the (small) stylesheet so it doesn't block first paint.
   build: { inlineStylesheets: 'always' },
   integrations: [
