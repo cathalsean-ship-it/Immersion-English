@@ -5,6 +5,14 @@ import studentsWalking from '../assets/dublin-welcome-group.jpg';
 import { dublin, durationOptionsLabel, priceRangeLabel } from '../data/dublin';
 
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
+
+// Homepage shows a teaser of three trips; the full list lives on
+// /dublin-summer-2027/trips-and-activities. Picked by title so a reorder in
+// dublin.ts can't swap them; if any title stops matching, fall back to the
+// first three so the section never renders short.
+const TEASER_TRIPS = ['Kilkenny', 'Howth', "St Stephen's Green & Temple Bar"];
+const teaserPicks = excursions === null ? null : TEASER_TRIPS.map(t => excursions.find(e => e.title === t)).filter(Boolean);
+const teaserTrips = excursions === null ? null : (teaserPicks!.length === TEASER_TRIPS.length ? teaserPicks! : excursions.slice(0, 3));
 ---
 
 <BaseLayout title="Immersion English | English Lessons & Dublin Summer for Teens" description={`CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults, and a summer group to an international centre in Dublin for students aged ${ages.min}–${ages.max}. Летен езиков курс в Дъблин за тийнейджъри от България.`}>
@@ -240,7 +248,7 @@ const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursi
 
       {excursions !== null && (
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        {excursions.map(({ title, description: desc, duration: tag, image: img = null }) => (
+        {teaserTrips!.map(({ title, description: desc, duration: tag, image: img = null }) => (
           <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group trip-card-link">
             <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
               <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
