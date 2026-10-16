@@ -15,6 +15,9 @@ interface Props {
   description?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  // Title shown on Facebook / WhatsApp / X previews only. Leaves <title>,
+  // which Google uses, untouched.
+  ogTitle?: string;
   // Only the 404 page sets this. It is served at every missing URL, so it must
   // not be indexed under any of them.
   noindex?: boolean;
@@ -25,6 +28,7 @@ const {
   description = 'Immersion English – English language school in Sofia, Bulgaria',
   ogImage = '/og/home.jpg',
   ogImageAlt,
+  ogTitle,
   noindex = false,
 } = Astro.props;
 
@@ -69,7 +73,7 @@ const META_PIXEL_ID = '4098945000240922';
     <meta name="theme-color" content="#00682C" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={ogTitle ?? title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:width" content="1200" />
@@ -83,7 +87,7 @@ const META_PIXEL_ID = '4098945000240922';
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={ogTitle ?? title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
     <meta name="twitter:image:alt" content={ogImageAlt ?? title} />
