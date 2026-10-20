@@ -2,14 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import studentsWalking from '../assets/dublin-welcome-group.jpg';
-import { dublin, durationOptionsLabel, priceFromLabel } from '../data/dublin';
+import { dublin, durationOptionsLabel, priceFromLabel, startMonthsLabel } from '../data/dublin';
 
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
-// Month(s) the 2027 start dates fall in, e.g. "July 2027" — derived from the
-// date schedule in dublin.ts so the card can't drift from the real dates.
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const startMonths = [...new Set(durations.flatMap(d => d.startDates).map(sd => Number(sd.split('/')[1])))].sort((a, b) => a - b);
-const datesLabel = `${startMonths.map(m => MONTHS[m - 1]).join(' & ')} ${dublin.year}`;
+const datesLabel = `${startMonthsLabel(durations)} ${dublin.year}`;
 
 // Homepage teaser: the two full-day trips, plus one card that sums up the
 // half-day Dublin city trips. The full list lives on

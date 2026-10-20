@@ -143,6 +143,12 @@ const MONTH_NAMES = [
   'July', 'August', 'September', 'October', 'November', 'December',
 ];
 
+/** Month name(s) the start dates fall in, e.g. "July" or "July & August". */
+export function startMonthsLabel(durations: DurationOption[]): string {
+  const months = [...new Set(durations.flatMap(d => d.startDates).map(sd => Number(sd.split('/')[1])))].sort((a, b) => a - b);
+  return months.map(m => MONTH_NAMES[m - 1]).filter(Boolean).join(' & ');
+}
+
 /** Formats a "DD/MM" start date as "D Month", e.g. "01/07" -> "1 July". */
 export function formatStartDate(date: string): string {
   const [day, month] = date.split('/').map(Number);
