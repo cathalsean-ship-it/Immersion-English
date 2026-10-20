@@ -21,49 +21,49 @@ const corpBundle = corp.bundles[0];
   .eyebrow-dot::before { background: var(--blue); }
 </style>
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "Immersion English",
-  "url": "https://immersion-english.com",
-  "address": { "@type": "PostalAddress", "addressLocality": "Sofia", "addressCountry": "BG" },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Corporate English Training Sofia – Корпоративно обучение по английски",
-    "itemListElement": [
-      {
-        "@type": "Course",
-        "name": "1:1 Business English Coaching Sofia",
-        "description": `Personalised Business English coaching for professionals and senior employees in Sofia. Native CELTA-qualified teacher with British Council experience. Meetings, presentations, negotiations, emails, CV and interview preparation. Sessions are ${corp.lessonMinutes} minutes.`,
-        "provider": { "@type": "EducationalOrganization", "name": "Immersion English", "url": "https://immersion-english.com" },
-        "courseMode": ["online", "onsite"],
-        "educationalLevel": "B2-C2",
-        "timeRequired": `PT${corp.lessonMinutes}M`,
-        "audience": { "@type": "Audience", "audienceType": "Business professionals, corporate teams, Sofia-based companies" },
-        "inLanguage": "en",
-        "offers": { "@type": "Offer", "price": String(corp.perLesson), "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "description": `€${corp.perLesson} per ${corpUnit}. ${corpBundle.lessons}-${corp.unitNoun} package €${corpBundle.price}.` }
-      },
-      {
-        "@type": "Course",
-        "name": "Small Group Business English Training Sofia",
-        "description": `Structured group Business English training for corporate teams in Sofia. Up to 6 participants per group. Built around your team's industry, roles and communication goals. Native teacher with British Council background. Sessions are ${corp.lessonMinutes} minutes.`,
-        "provider": { "@type": "EducationalOrganization", "name": "Immersion English", "url": "https://immersion-english.com" },
-        "courseMode": ["online", "onsite"],
-        "educationalLevel": "B2-C2",
-        "timeRequired": `PT${corp.lessonMinutes}M`,
-        "audience": { "@type": "Audience", "audienceType": "Corporate teams, HR managers, Sofia-based companies" },
-        "inLanguage": "en",
-        "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "description": "Custom pricing based on group size and programme length." }
-      }
-    ]
-  }
-}, null, 2)} />
-
 <BaseLayout
   title="Corporate English Training in Sofia | Immersion English"
   description="Tailored Business English training for companies and teams in Sofia. Корпоративно обучение по английски за екипи – CELTA-qualified native teacher, British Council background. 1:1 and small group programmes built around your industry and goals."
   ogImage="/og/corporate-training.jpg"
 >
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Immersion English",
+    "url": "https://immersion-english.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Sofia", "addressCountry": "BG" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Corporate English Training Sofia – Корпоративно обучение по английски",
+      "itemListElement": [
+        {
+          "@type": "Course",
+          "name": "1:1 Business English Coaching Sofia",
+          "description": `Personalised Business English coaching for professionals and senior employees in Sofia. Native CELTA-qualified teacher with British Council experience. Meetings, presentations, negotiations, emails, CV and interview preparation. Sessions are ${corp.lessonMinutes} minutes.`,
+          "provider": { "@type": "EducationalOrganization", "name": "Immersion English", "url": "https://immersion-english.com" },
+          "courseMode": ["online", "onsite"],
+          "educationalLevel": "B2-C2",
+          "timeRequired": `PT${corp.lessonMinutes}M`,
+          "audience": { "@type": "Audience", "audienceType": "Business professionals, corporate teams, Sofia-based companies" },
+          "inLanguage": "en",
+          "offers": { "@type": "Offer", "price": String(corp.perLesson), "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "description": `€${corp.perLesson} per ${corpUnit}. ${corpBundle.lessons}-${corp.unitNoun} package €${corpBundle.price}.` }
+        },
+        {
+          "@type": "Course",
+          "name": "Small Group Business English Training Sofia",
+          "description": `Structured group Business English training for corporate teams in Sofia. Up to 6 participants per group. Built around your team's industry, roles and communication goals. Native teacher with British Council background. Sessions are ${corp.lessonMinutes} minutes.`,
+          "provider": { "@type": "EducationalOrganization", "name": "Immersion English", "url": "https://immersion-english.com" },
+          "courseMode": ["online", "onsite"],
+          "educationalLevel": "B2-C2",
+          "timeRequired": `PT${corp.lessonMinutes}M`,
+          "audience": { "@type": "Audience", "audienceType": "Corporate teams, HR managers, Sofia-based companies" },
+          "inLanguage": "en",
+          "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "description": "Custom pricing based on group size and programme length." }
+        }
+      ]
+    }
+  }, null, 2)} />
 
   <!-- HERO -->
   <section class="relative flex items-center text-white overflow-hidden isolate">
