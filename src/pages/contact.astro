@@ -58,18 +58,17 @@ import { dublin } from '../data/dublin';
           <h2 class="mt-4 mb-6 text-[1.9rem]">We reply within one working day.</h2>
 
           <div class="flex flex-col gap-0 border-t border-line">
-            <a href="mailto:immersionenglish.ie@gmail.com" class="flex gap-4 items-start py-5 border-b border-line no-underline group">
+            <a href="mailto:immersionenglish.ie@gmail.com" class="flex gap-4 items-center py-5 border-b border-line no-underline group">
               <div class="w-9 h-9 rounded-full grid place-items-center flex-shrink-0 group-hover:opacity-80 transition-opacity" style="background: var(--green-soft); color: var(--green);"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
               <div>
-                <div class="font-heading text-[0.72rem] uppercase tracking-[0.12em] mb-[3px] font-semibold text-ink-soft">Email</div>
                 <div class="text-ink font-medium text-[0.98rem] group-hover:text-brand-green transition-colors">immersionenglish.ie@gmail.com</div>
               </div>
             </a>
 
             {/* Phone — label + outlined WhatsApp / Viber buttons, same as the homepage */}
             {[
-              { label: 'Phone (English)', raw: '359893387464' },
-              { label: 'Phone (Български)', raw: '359889178100' },
+              { label: 'English', raw: '359893387464' },
+              { label: 'Български', raw: '359889178100' },
             ].map(({ label, raw }) => (
               <div class="flex gap-4 items-center py-5 border-b border-line">
                 <div class="w-9 h-9 rounded-full grid place-items-center flex-shrink-0" style="background: var(--green-soft); color: var(--green);">

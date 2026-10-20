@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import studentsWalking from '../assets/dublin-welcome-group.jpg';
-import { dublin, durationOptionsLabel, priceRangeLabel } from '../data/dublin';
+import { dublin, durationOptionsLabel, priceFromLabel } from '../data/dublin';
 
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
 
@@ -147,8 +147,8 @@ const teaserTrips = (() => {
             {[
               { label: 'Lengths available', value: durationOptionsLabel(durations), wide: true },
               { label: 'Ages', value: `${ages.min}–${ages.max}` },
-              { label: 'Class size', value: `${classSize.average} avg, ${classSize.maximum} max` },
-              { label: 'Programme fee', value: `From ${priceRangeLabel(durations)}`, accent: true },
+              { label: 'Av. class size', value: `${classSize.average}` },
+              { label: 'Programme fee', value: `From ${priceFromLabel(durations)}`, accent: true },
             ].map(({ label, value, accent, wide }) => (
               <div class={`px-4 py-5 md:px-7 md:py-6 ${accent || wide ? 'col-span-2' : ''}`} style="background: var(--ink);">
                 <dt class="font-heading text-[0.64rem] md:text-[0.74rem] uppercase tracking-[0.1em] md:tracking-[0.14em] mb-2 font-semibold" style="color: var(--green-on-dark);">{label}</dt>
@@ -325,18 +325,17 @@ const teaserTrips = (() => {
 
         <div class="flex flex-col gap-6 mt-8">
           {/* Email — plain link */}
-          <a href="mailto:immersionenglish.ie@gmail.com" class="flex gap-4 items-start py-4 border-b border-white/10 no-underline group">
+          <a href="mailto:immersionenglish.ie@gmail.com" class="flex gap-4 items-center py-4 border-b border-white/10 no-underline group">
             <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green-on-dark grid place-items-center flex-shrink-0"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
             <div>
-              <div class="font-heading text-[0.78rem] uppercase tracking-[0.12em] text-white/55 mb-[2px] font-semibold">Email</div>
               <div class="font-heading font-medium text-white text-[1.02rem] group-hover:text-brand-green-on-dark transition-colors">immersionenglish.ie@gmail.com</div>
             </div>
           </a>
 
           {/* Phone — label + WhatsApp / Viber icon buttons (no number shown) */}
           {[
-            { label: 'Phone (English)', raw: '359893387464' },
-            { label: 'Phone (Български)', raw: '359889178100' },
+            { label: 'English', raw: '359893387464' },
+            { label: 'Български', raw: '359889178100' },
           ].map(({ label, raw }) => (
             <div class="flex gap-4 items-center py-4 border-b border-white/10">
               <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green-on-dark grid place-items-center flex-shrink-0">

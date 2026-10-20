@@ -132,6 +132,12 @@ export function priceRangeLabel(durations: DurationOption[]): string {
   return lo === hi ? fmt(lo) : `${fmt(lo)}–${fmt(hi)}`;
 }
 
+/** Lowest retail price across the duration options, e.g. "€1,580". */
+export function priceFromLabel(durations: DurationOption[]): string {
+  if (durations.length === 0) return '';
+  return `€${Math.min(...durations.map(d => d.price)).toLocaleString('en-IE')}`;
+}
+
 const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
