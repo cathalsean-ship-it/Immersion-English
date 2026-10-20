@@ -458,6 +458,15 @@
   }
 }
 @media (min-width: 768px) {
+  /* Homepage Dublin photo: top aligns with the heading and stays in view
+     while the long text column scrolls, instead of floating mid-column. */
+  .programme-img-sticky {
+    position: sticky !important;
+    top: 96px;
+    margin-top: 64px;
+    height: min(560px, calc(100vh - 140px));
+    border-radius: 0 12px 12px 0;
+  }
   .md-pad-programme {
     padding: 64px 5vw !important;
   }
