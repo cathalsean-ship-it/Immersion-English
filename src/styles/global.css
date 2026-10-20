@@ -374,17 +374,22 @@
   /* --ink, not white. White on --orange is 2.23 and fails at every size, and
      this is the most-clicked control on the site. --ink on the same orange is
      7.52 — which is what .btn-primary has always used. Do not put it back. */
+  /* Contact: quiet green outline while the Dublin push is on, so the orange
+     Dublin Summer link is the single loudest item in the nav. To revert,
+     restore background: var(--orange); color: var(--ink); no border. */
   .nav-cta {
-    background: var(--orange);
-    color: var(--ink) !important;
-    padding: 10px 18px;
+    background: transparent;
+    color: var(--green) !important;
+    border: 1.5px solid var(--green);
+    padding: 8.5px 18px;
     border-radius: 999px;
     font-weight: 600;
     font-size: 0.88rem;
-    transition: background 0.15s ease, transform 0.15s ease;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
   }
   .nav-cta:hover {
-    background: var(--orange-deep);
+    background: var(--green);
+    color: #fff !important;
     transform: translateY(-1px);
   }
 }

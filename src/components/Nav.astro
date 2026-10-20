@@ -25,8 +25,10 @@ const dublinSub = [
         <div class="relative group">
           <a
             href="/dublin-summer-2027"
-            class="flex items-center gap-1 text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors group-focus-within:text-brand-green"
+            class="flex items-center gap-[6px] no-underline whitespace-nowrap text-[0.94rem] font-semibold transition-opacity hover:opacity-80"
+            style="color: var(--orange-text);"
           >
+            <span aria-hidden="true" class="w-[7px] h-[7px] rounded-full flex-shrink-0" style="background: var(--orange);"></span>
             Dublin Summer 2027
             <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
@@ -70,19 +72,16 @@ const dublinSub = [
     <!-- MOBILE MENU -->
     <div id="mobile-menu" class="hidden md:hidden pb-5">
       <div class="flex flex-col gap-1 border-t border-line pt-4">
-        <a href="/about" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">About</a>
-        <a href="/lessons" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Lessons</a>
-        <a href="/corporate-training" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Corporate Training</a>
-
         <!-- Mobile dropdown — link + separate chevron -->
         <div>
           <div class="flex items-center justify-between">
-            <a href="/dublin-summer-2027" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors flex-1">
+            <a href="/dublin-summer-2027" class="py-2 no-underline text-[0.98rem] font-semibold flex-1 flex items-center gap-2" style="color: var(--orange-text);">
+              <span aria-hidden="true" class="w-[7px] h-[7px] rounded-full flex-shrink-0" style="background: var(--orange);"></span>
               Dublin Summer 2027
             </a>
             <button
               id="mobile-dublin-toggle"
-              class="w-10 h-10 flex items-center justify-center bg-transparent border-0 cursor-pointer text-ink-soft hover:text-brand-green transition-colors"
+              class="w-10 h-10 flex items-center justify-center bg-transparent border-0 cursor-pointer transition-colors" style="color: var(--orange-text);"
               aria-expanded="false"
               aria-controls="mobile-dublin-sub"
               aria-label="Toggle Dublin Summer submenu"
@@ -102,6 +101,10 @@ const dublinSub = [
             ))}
           </ul>
         </div>
+
+        <a href="/about" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">About</a>
+        <a href="/lessons" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Lessons</a>
+        <a href="/corporate-training" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Corporate Training</a>
 
         <a href="/blog" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Blog</a>
         <a href="/contact" class="nav-cta no-underline text-center mt-2">Contact</a>
