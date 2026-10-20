@@ -86,9 +86,10 @@ const { excursions } = dublin;
                 <span class="eyebrow eyebrow-dot">{eyebrow}</span>
                 <h2 set:html={heading} />
                 <p>
-                  {items.length} {key === 'full-day' ? 'full-day' : 'half-day'}
-                  {items.length === 1 ? ' excursion' : ' excursions'}, run by the centre's local staff.
-                  Transport and entry tickets included.
+                  {key === 'half-day'
+                    ? `${items.length} half-day ${items.length === 1 ? 'excursion' : 'excursions'} throughout Dublin's most notable locations – transport and entry tickets included.`
+                    : `${items.length} full-day ${items.length === 1 ? 'excursion' : 'excursions'} – transport and entry tickets included.`
+                  }
                 </p>
               </div>
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
