@@ -105,50 +105,6 @@ const teaserTrips = (() => {
     </div>
   </section>
 
-  <!-- TRUST -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Why Immersion English</span>
-        <h2>English is <span style="color: var(--orange-text);">learned</span> best when it's used <span style="color: var(--orange-text);">meaningfully</span>.</h2>
-        <p>
-          Our lessons are built for adults and teenagers who want to speak – not just study. Whether you're preparing for a job interview, a presentation, an exam, or everyday life in English, we focus on what actually moves you forward.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {[
-          { title: 'Speaking-first teaching', body: 'Every lesson prioritises active speaking and real communication over passive learning. You leave each class having used English, not just studied it.' },
-          { title: 'A personal approach', body: 'Individual lessons are built entirely around you – your goals, your schedule, your level. No fixed syllabus, no shared pace. Just focused, one-to-one attention from the first session.' },
-          { title: 'Small groups, big attention', body: '8 students per group in our online Speak Up! courses. You get individual feedback, more time to speak, and a teacher who knows your goals.' },
-          { title: 'Experience that counts', body: 'Lenny is a native English speaker from Ireland, Cambridge CELTA-qualified, and the founder of Immersion English – with 10 years teaching General English and Business English at the British Council Sofia, and experience with international summer programmes in Oxford and Cambridge.' },
-        ].map(({ title, body }) => (
-          <div class="trust-card">
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              <h3 style="margin: 0; min-height: 2.6em;">{title}</h3>
-              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-            </div>
-            <p style="margin: 0;">{body}</p>
-          </div>
-        ))}
-      </div>
-
-      <div class="flex justify-center mt-10">
-        <a
-          href="/about"
-          class="inline-flex items-center gap-3 no-underline group"
-          style="color: var(--ink-soft);"
-        >
-          <span class="w-8 h-[1.5px]" style="background: var(--orange); display: inline-block; transition: width 0.2s ease;"></span>
-          <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">
-            Learn more about how we teach
-          </span>
-        </a>
-      </div>
-
-    </div>
-  </section>
-
   <!-- PROGRAMME -->
   <section class="section" style="padding-left: 0; padding-right: 0; overflow: hidden;">
     <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; align-items: center;" class="programme-grid">
@@ -302,6 +258,50 @@ const teaserTrips = (() => {
     </div>
   </section>
 
+  <!-- TRUST -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Why Immersion English</span>
+        <h2>English is <span style="color: var(--orange-text);">learned</span> best when it's used <span style="color: var(--orange-text);">meaningfully</span>.</h2>
+        <p>
+          Our lessons are built for adults and teenagers who want to speak – not just study. Whether you're preparing for a job interview, a presentation, an exam, or everyday life in English, we focus on what actually moves you forward.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {[
+          { title: 'Speaking-first teaching', body: 'Every lesson prioritises active speaking and real communication over passive learning. You leave each class having used English, not just studied it.' },
+          { title: 'A personal approach', body: 'Individual lessons are built entirely around you – your goals, your schedule, your level. No fixed syllabus, no shared pace. Just focused, one-to-one attention from the first session.' },
+          { title: 'Small groups, big attention', body: '8 students per group in our online Speak Up! courses. You get individual feedback, more time to speak, and a teacher who knows your goals.' },
+          { title: 'Experience that counts', body: 'Lenny is a native English speaker from Ireland, Cambridge CELTA-qualified, and the founder of Immersion English – with 10 years teaching General English and Business English at the British Council Sofia, and experience with international summer programmes in Oxford and Cambridge.' },
+        ].map(({ title, body }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0; min-height: 2.6em;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0;">{body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="flex justify-center mt-10">
+        <a
+          href="/about"
+          class="inline-flex items-center gap-3 no-underline group"
+          style="color: var(--ink-soft);"
+        >
+          <span class="w-8 h-[1.5px]" style="background: var(--orange); display: inline-block; transition: width 0.2s ease;"></span>
+          <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">
+            Learn more about how we teach
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- PULL QUOTE -->
   <section class="section" style="background: linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);">
     <div class="container-x">
@@ -322,83 +322,32 @@ const teaserTrips = (() => {
   <!-- CONTACT -->
   <section class="section section-dark">
     <div class="container-x">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
-        <div>
-          <span class="eyebrow eyebrow-dot" style="color: var(--green-on-dark);">Contact</span>
-          <h2 class="mt-4 mb-4"><span class="text-white">Got a </span><span style="color: var(--orange);">question?</span><span class="text-white"> We're here.</span></h2>
-          <p>Book a free consultation and we'll help you find the right programme or course.</p>
+      <div class="max-w-[540px]">
+        <span class="eyebrow eyebrow-dot" style="color: var(--green-on-dark);">Contact</span>
+        <h2 class="mt-4 mb-4"><span class="text-white">Got a </span><span style="color: var(--orange);">question?</span><span class="text-white"> We're here.</span></h2>
+        <p>Reach out and we'll help you find the right programme or course.</p>
 
-          <div class="flex flex-col gap-6 mt-8">
-            {[
-              { label: 'Email', value: 'immersionenglish.ie@gmail.com', icon: '✉', href: 'mailto:immersionenglish.ie@gmail.com' },
-              { label: 'Phone (English)', value: '+359 893 387 464', icon: '📞', href: 'tel:+359893387464' },
-              { label: 'Phone (Bulgarian)', value: '+359 889 178 100', icon: '📞', href: 'tel:+359889178100' },
-            ].map(({ label, value, icon, href }) => (
-              <a href={href} class="flex gap-4 items-start py-4 border-b border-white/10 no-underline group">
-                <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green-on-dark grid place-items-center flex-shrink-0">{icon}</div>
-                <div>
-                  <div class="font-heading text-[0.78rem] uppercase tracking-[0.12em] text-white/55 mb-[2px] font-semibold">{label}</div>
-                  <div class="font-heading font-medium text-white text-[1.02rem] group-hover:text-brand-green-on-dark transition-colors">{value}</div>
-                </div>
-              </a>
-            ))}
-          </div>
+        <div class="flex flex-col gap-6 mt-8">
+          {[
+            { label: 'Email', value: 'immersionenglish.ie@gmail.com', icon: '✉', href: 'mailto:immersionenglish.ie@gmail.com' },
+            { label: 'Phone (English)', value: '+359 893 387 464', icon: '📞', href: 'tel:+359893387464' },
+            { label: 'Phone (Bulgarian)', value: '+359 889 178 100', icon: '📞', href: 'tel:+359889178100' },
+          ].map(({ label, value, icon, href }) => (
+            <a href={href} class="flex gap-4 items-start py-4 border-b border-white/10 no-underline group">
+              <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green-on-dark grid place-items-center flex-shrink-0">{icon}</div>
+              <div>
+                <div class="font-heading text-[0.78rem] uppercase tracking-[0.12em] text-white/55 mb-[2px] font-semibold">{label}</div>
+                <div class="font-heading font-medium text-white text-[1.02rem] group-hover:text-brand-green-on-dark transition-colors">{value}</div>
+              </div>
+            </a>
+          ))}
         </div>
 
-        <div class="bg-white text-ink rounded-lg p-6 md:p-9 shadow-lift">
-          <h3 class="text-[1.35rem] mb-[6px]" style="color: var(--ink);">Book a free consultation</h3>
-          <p class="text-[0.95rem] mb-6" style="color: var(--ink-soft);">Tell us about your goals and we'll help you find the right course or programme. We reply within one working day.</p>
-
-          <div id="home-form-success" style="display:none; background: var(--green); color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">✓ Message sent! We'll be in touch within one working day.</div>
-
-          <form name="homepage-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
-            <input type="hidden" name="form-name" value="homepage-enquiry" />
-            <p class="hidden"><input name="bot-field" /></p>
-            <div class="flex flex-col gap-[6px]">
-              <label for="home-first-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">First name</label>
-              <input id="home-first-name" name="first-name" type="text" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
-            </div>
-            <div class="flex flex-col gap-[6px]">
-              <label for="home-last-name" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Last name</label>
-              <input id="home-last-name" name="last-name" type="text" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
-            </div>
-            <div class="flex flex-col gap-[6px] sm:col-span-2">
-              <label for="home-email" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Email</label>
-              <input id="home-email" name="email" type="email" required class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition" />
-            </div>
-            <div class="flex flex-col gap-[6px] sm:col-span-2">
-              <label for="home-message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
-              <textarea id="home-message" name="message" rows="3" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-y min-h-[90px]"></textarea>
-            </div>
-            <div class="sm:col-span-2">
-              <button type="submit" class="btn btn-primary w-full justify-center">Send message</button>
-            </div>
-          </form>
+        <div class="mt-10">
+          <a href="/contact" class="btn btn-primary">Contact us</a>
         </div>
       </div>
     </div>
   </section>
 
-  <script>
-    const form = document.querySelector('form[name="homepage-enquiry"]') as HTMLFormElement | null;
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      try {
-        const res = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(data as any).toString(),
-        });
-        // fetch only rejects on network failure. Without this, a 404 or 500 from
-        // Netlify still showed the success message and the enquiry was lost.
-        if (!res.ok) throw new Error(`Form POST failed: ${res.status}`);
-        form.style.display = 'none';
-        const success = document.getElementById('home-form-success');
-        if (success) success.style.display = 'block';
-      } catch {
-        alert('Something went wrong. Please email us directly at immersionenglish.ie@gmail.com');
-      }
-    });
-  </script>
 </BaseLayout>
