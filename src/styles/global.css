@@ -463,12 +463,15 @@
   .programme-img-sticky {
     position: sticky !important;
     top: 96px;
-    margin-top: 64px;
+    margin-top: 0;
     height: min(560px, calc(100vh - 140px));
     border-radius: 0 12px 12px 0;
   }
   .md-pad-programme {
     padding: 64px 5vw !important;
+  }
+  .home-programme-content.md-pad-programme {
+    padding-top: 0 !important;
   }
 }
 

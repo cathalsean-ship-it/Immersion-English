@@ -112,6 +112,12 @@ const teaserTrips = (() => {
 
   <!-- PROGRAMME -->
   <section class="section" style="padding-left: 0; padding-right: 0; overflow: clip;">
+    {/* Desktop: eyebrow + heading sit above the photo/text row, so the photo's
+        top lines up with the first paragraph. Mobile keeps them in the column. */}
+    <div class="container-x hidden md:block mb-10">
+          <span class="eyebrow eyebrow-dot">Dublin Summer for Teens <span aria-hidden="true" style="display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; margin: 0 0.7em 0 0.3em; vertical-align: middle; transform: translateY(-2px);"></span>{dublin.year}</span>
+          <h2 class="mt-4 mb-0">English. <span style="color: var(--orange-text);">Beyond the classroom.</span></h2>
+    </div>
     <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; align-items: start;" class="programme-grid">
       <!-- Image: bleeds to left edge -->
       <div class="homepage-hero-img-wrap programme-img-sticky relative" style="overflow: hidden; min-height: 480px;">
@@ -134,11 +140,13 @@ const teaserTrips = (() => {
       </div>
 
       <!-- Content: normal container padding on right side -->
-      <div style="padding: 40px 24px 40px 24px;" class="programme-content md-pad-programme">
+      <div style="padding: 40px 24px 40px 24px;" class="programme-content md-pad-programme home-programme-content">
 
         <div>
+          <div class="md:hidden">
           <span class="eyebrow eyebrow-dot">Dublin Summer for Teens <span aria-hidden="true" style="display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; margin: 0 0.7em 0 0.3em; vertical-align: middle; transform: translateY(-2px);"></span>{dublin.year}</span>
           <h2 class="mt-4 mb-2">English. <span style="color: var(--orange-text);">Beyond the classroom.</span></h2>
+          </div>
           <p class="text-ink-soft text-[1.08rem] max-w-[56ch] mb-3">
             Each summer we take a group from Sofia to an international summer centre in Dublin, at the {venue.name} – where English stops being a subject and starts being part of daily life.
           </p>
