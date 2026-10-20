@@ -237,6 +237,17 @@ import { dublin } from '../data/dublin';
         // fetch only rejects on network failure, so a 404 or 500 from Netlify
         // would otherwise fall through and show "Message sent!" for a lost enquiry.
         if (!res.ok) throw new Error(`Form POST failed: ${res.status}`);
+        // Count the enquiry in Google Analytics as "generate_lead" (mark it as a
+        // key event in GA4). Only fires if the visitor accepted cookies – gtag
+        // doesn't exist otherwise. Sends WHAT they asked about and which button
+        // brought them here, never their name, email or message.
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', {
+            form_name: form.getAttribute('name') || 'enquiry',
+            interest: String(data.get('interest') || 'not-set').slice(0, 60),
+            came_from: String(data.get('came-from') || 'direct').slice(0, 60),
+          });
+        }
         // Hide form, show success
         form.style.display = 'none';
         const success = form.previousElementSibling;
