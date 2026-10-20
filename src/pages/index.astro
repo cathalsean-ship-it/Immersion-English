@@ -141,23 +141,20 @@ const teaserTrips = (() => {
             Real conversations.<br/>Real confidence.<br/>Students from across Europe.
           </p>
 
-          <dl class="grid grid-cols-2 gap-7 my-10 py-8 border-y border-line">
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Lengths available</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationOptionsLabel(durations)}</dd>
-            </div>
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{ages.min}–{ages.max}</dd>
-            </div>
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} avg, {classSize.maximum} max</dd>
-            </div>
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">From {priceRangeLabel(durations)}</dd>
-            </div>
+          {/* Key facts panel — dark ground so it reads as the at-a-glance summary,
+              distinct from the cream bullet cards below. */}
+          <dl class="grid grid-cols-2 my-10 rounded-xl overflow-hidden shadow-lift" style="background: var(--ink); gap: 1px; background-image: linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10));">
+            {[
+              { label: 'Lengths available', value: durationOptionsLabel(durations), wide: true },
+              { label: 'Ages', value: `${ages.min}–${ages.max}` },
+              { label: 'Class size', value: `${classSize.average} avg, ${classSize.maximum} max` },
+              { label: 'Programme fee', value: `From ${priceRangeLabel(durations)}`, accent: true },
+            ].map(({ label, value, accent, wide }) => (
+              <div class={`px-4 py-5 md:px-7 md:py-6 ${accent || wide ? 'col-span-2' : ''}`} style="background: var(--ink);">
+                <dt class="font-heading text-[0.64rem] md:text-[0.74rem] uppercase tracking-[0.1em] md:tracking-[0.14em] mb-2 font-semibold" style="color: var(--green-on-dark);">{label}</dt>
+                <dd class={`m-0 font-heading font-bold leading-tight tracking-[-0.01em] ${accent ? 'text-[1.4rem] md:text-[1.75rem]' : 'text-[1.08rem] md:text-[1.45rem]'}`} style={`color: ${accent ? 'var(--orange)' : '#fff'};`}>{value}</dd>
+              </div>
+            ))}
           </dl>
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3">
