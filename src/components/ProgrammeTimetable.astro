@@ -3,6 +3,23 @@
 // 2027 profile (p.42) — not invented. Brand-prefixed activity names ("MLA Art",
 // "MLA's Got Talent") are shown without the provider name, consistent with the
 // rest of the site. Kinds drive the colour coding. rs = rowspan.
+import type { Lang } from '../data/i18n';
+interface Props { lang?: Lang }
+const { lang = 'en' } = Astro.props;
+// Bulgarian labels for the Bulgarian Dublin page. Keys are the English labels
+// used below, so the grid itself is defined once.
+const BG: Record<string, string> = {
+  'Lesson': 'Урок', 'Half-day excursion': 'Полудневна екскурзия', 'Full-day excursion': 'Еднодневна екскурзия',
+  'Arrival & check-in': 'Пристигане и настаняване', 'Magic': 'Магия', 'Kitchen': 'Кулинария', 'Sports': 'Спорт',
+  'Graduation ceremony': 'Церемония по завършване', 'Art': 'Изкуство', 'Departure': 'Отпътуване',
+  'Welcome disco': 'Дискотека за добре дошли', 'Karaoke': 'Караоке', 'Trivia': 'Викторина', 'Hawaiian disco': 'Хавайска дискотека',
+  'Fashion night': 'Модна вечер', 'Scavenger hunt': 'Търсене на съкровища', 'Kahoot night': 'Вечер с Kahoot',
+  'British disco': 'Британска дискотека', 'Amazing Race': 'Amazing Race', 'Irish céilí dance': 'Ирландски танци céilí',
+  'Talent show': 'Шоу на талантите', 'Day': 'Ден', 'Morning': 'Сутрин', 'Afternoon': 'Следобед', 'Evening': 'Вечер',
+  'Lessons': 'Уроци', 'Excursions': 'Екскурзии', 'Daytime activities': 'Дневни занимания', 'Evening activities': 'Вечерни занимания',
+  'Sample 14-day programme timetable': 'Примерна програма за 14 дни',
+};
+const tr = (x: string) => (lang === 'bg' ? BG[x] ?? x : x);
 type Cell = { t: string; k: 'lesson' | 'exc' | 'act' | 'eve' | 'travel'; rs?: number };
 const L: Cell = { t: 'Lesson', k: 'lesson' };
 const HD: Cell = { t: 'Half-day excursion', k: 'exc' };
@@ -25,43 +42,43 @@ const timetableEvening: Cell[] = [
 ];
 ---
 
-<div class="timetable-scroll" tabindex="0" role="region" aria-label="Sample 14-day programme timetable">
+<div class="timetable-scroll" tabindex="0" role="region" aria-label={tr("Sample 14-day programme timetable")}>
   <table class="timetable">
     <thead>
       <tr>
-        <th scope="col">Day</th>
+        <th scope="col">{tr("Day")}</th>
         {Array.from({ length: 14 }, (_, i) => <th scope="col">{i + 1}</th>)}
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row">Morning</th>
+        <th scope="row">{tr("Morning")}</th>
         {timetableMorning.map(c => (
           <td rowspan={c.rs} class={`tt-${c.k}${c.rs === 3 ? ' tt-full' : ''}`}>
-            {c.rs === 3 ? <span class="tt-vertical">{c.t}</span> : c.t}
+            {c.rs === 3 ? <span class="tt-vertical">{tr(c.t)}</span> : tr(c.t)}
           </td>
         ))}
       </tr>
       <tr>
-        <th scope="row">Afternoon</th>
-        {timetableAfternoon.slice(0, 5).map(c => <td class={`tt-${c.k}`}>{c.t}</td>)}
-        {timetableAfternoon.slice(5, 10).map(c => <td class={`tt-${c.k}`}>{c.t}</td>)}
-        {(() => { const d = timetableAfternoon[10]; return <td rowspan={d.rs} class={`tt-${d.k}`}>{d.t}</td>; })()}
+        <th scope="row">{tr("Afternoon")}</th>
+        {timetableAfternoon.slice(0, 5).map(c => <td class={`tt-${c.k}`}>{tr(c.t)}</td>)}
+        {timetableAfternoon.slice(5, 10).map(c => <td class={`tt-${c.k}`}>{tr(c.t)}</td>)}
+        {(() => { const d = timetableAfternoon[10]; return <td rowspan={d.rs} class={`tt-${d.k}`}>{tr(d.t)}</td>; })()}
       </tr>
       <tr>
-        <th scope="row">Evening</th>
-        {timetableEvening.slice(0, 6).map(c => <td class={`tt-${c.k}`}>{c.t}</td>)}
-        {timetableEvening.slice(6).map(c => <td class={`tt-${c.k}`}>{c.t}</td>)}
+        <th scope="row">{tr("Evening")}</th>
+        {timetableEvening.slice(0, 6).map(c => <td class={`tt-${c.k}`}>{tr(c.t)}</td>)}
+        {timetableEvening.slice(6).map(c => <td class={`tt-${c.k}`}>{tr(c.t)}</td>)}
       </tr>
     </tbody>
   </table>
 </div>
 
 <ul class="timetable-legend list-none p-0 m-0 mt-4 flex flex-wrap gap-x-6 gap-y-2 text-[0.8rem] text-ink-soft">
-  <li><span class="tt-key tt-lesson"></span>Lessons</li>
-  <li><span class="tt-key tt-exc"></span>Excursions</li>
-  <li><span class="tt-key tt-act"></span>Daytime activities</li>
-  <li><span class="tt-key tt-eve"></span>Evening activities</li>
+  <li><span class="tt-key tt-lesson"></span>{tr("Lessons")}</li>
+  <li><span class="tt-key tt-exc"></span>{tr("Excursions")}</li>
+  <li><span class="tt-key tt-act"></span>{tr("Daytime activities")}</li>
+  <li><span class="tt-key tt-eve"></span>{tr("Evening activities")}</li>
 </ul>
 
 <style>

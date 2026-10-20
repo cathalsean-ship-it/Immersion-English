@@ -8,6 +8,7 @@ import { dublin } from '../data/dublin';
 // different price from the one visitors saw. Render, never retype.
 import { courses } from '../data/courses';
 import { keywordsFor } from '../data/keywords';
+import { langOf, alternatesOf } from '../data/i18n';
 import '../styles/global.css';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -48,15 +49,23 @@ const LABELS: Record<string, string> = {
 const pagePath = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '') || '/';
 const segs = pagePath.split('/').filter(Boolean);
 const keywords = keywordsFor(pagePath);
+const lang = langOf(pagePath);
+const isBg = lang === 'bg';
+const alternates = alternatesOf(pagePath);
 const origin = (Astro.site?.toString() || 'https://immersion-english.com').replace(/\/$/, '');
-const crumbs = [{ name: 'Home', url: origin + '/' }, ...segs.map((s, i) => ({
-  name: LABELS[s] ?? title.split('|')[0].trim(),
-  url: origin + '/' + segs.slice(0, i + 1).join('/'),
+const LABELS_BG: Record<string, string> = { 'dublin-summer-2027': 'Лято в Дъблин 2027' };
+// Bulgarian pages live under /bg, so their trail starts at /bg ("Начало"),
+// not at the English homepage, and the "bg" segment itself is not a step.
+const crumbSegs = isBg ? segs.slice(1) : segs;
+const crumbBase = isBg ? origin + '/bg' : origin;
+const crumbs = [{ name: isBg ? 'Начало' : 'Home', url: isBg ? crumbBase : origin + '/' }, ...crumbSegs.map((s, i) => ({
+  name: (isBg ? LABELS_BG[s] : LABELS[s]) ?? title.split('|')[0].trim(),
+  url: crumbBase + '/' + crumbSegs.slice(0, i + 1).join('/'),
 }))];
-const breadcrumbSchema = segs.length === 0 || ['404', 'thank-you'].includes(segs[0]) ? null : {
+const breadcrumbSchema = crumbSegs.length === 0 || ['404', 'thank-you'].includes(segs[0]) ? null : {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'WebPage', '@id': origin + pagePath + '#webpage', url: origin + pagePath, name: title, description, inLanguage: 'en', ...(keywords ? { keywords: keywords.join(', ') } : {}), isPartOf: { '@type': 'WebSite', name: 'Immersion English', url: origin + '/' } },
+    { '@type': 'WebPage', '@id': origin + pagePath + '#webpage', url: origin + pagePath, name: title, description, inLanguage: lang, ...(keywords ? { keywords: keywords.join(', ') } : {}), isPartOf: { '@type': 'WebSite', name: 'Immersion English', url: origin + '/' } },
     { '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })) },
   ],
 };
@@ -80,7 +89,7 @@ const META_PIXEL_ID = '4098945000240922';
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta name="google-site-verification" content="l7434Tgntc6NGtIY8T4JRlbAiD-kgJ9T9JGCAuPi9iw" />
     <meta charset="UTF-8" />
@@ -98,7 +107,8 @@ const META_PIXEL_ID = '4098945000240922';
     <meta property="og:image:alt" content={ogImageAlt ?? title} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale" content={isBg ? 'bg_BG' : 'en_GB'} />
+    {alternates && <meta property="og:locale:alternate" content={isBg ? 'en_GB' : 'bg_BG'} />}
     <meta property="og:site_name" content="Immersion English" />
 
     <!-- Twitter -->
@@ -111,11 +121,18 @@ const META_PIXEL_ID = '4098945000240922';
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
+    {/* Language versions: tells Google which page to show English and
+        Bulgarian searchers. x-default (anyone else) gets English. */}
+    {alternates && <link rel="alternate" hreflang="en" href={origin + alternates.en} />}
+    {alternates && <link rel="alternate" hreflang="bg" href={origin + alternates.bg} />}
+    {alternates && <link rel="alternate" hreflang="x-default" href={origin + alternates.en} />}
     {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Preload critical fonts -->
     <link rel="preload" href="/fonts/montserrat-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/lato-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    {isBg && <link rel="preload" href="/fonts/montserrat-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin />}
+    {isBg && <link rel="preload" href="/fonts/lato-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin />}
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/ie-logo-192.png" />
@@ -261,11 +278,11 @@ const META_PIXEL_ID = '4098945000240922';
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">
-    <Nav />
+    <Nav lang={lang} path={pagePath} />
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
     <script>
     // Greyscale reveal — only the image whose centre is closest to screen midpoint gets colour
     (function () {
@@ -328,10 +345,12 @@ const META_PIXEL_ID = '4098945000240922';
     <!-- Cookie consent banner -->
     <div id="cookie-banner" style="display:none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: var(--ink); padding: 16px 24px; box-shadow: 0 -4px 24px rgba(0,0,0,0.25);">
       <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
-        <p style="margin: 0; font-size: 0.88rem; color: rgba(255,255,255,0.8); max-width: 640px; line-height: 1.5;">{META_PIXEL_ID ? 'We use cookies to understand how visitors use our site (Google Analytics) and to measure and improve our advertising (Meta). Nothing is loaded unless you accept.' : 'We use cookies to understand how visitors use our site (Google Analytics). No personal data is sold or shared.'} <a href="/privacy" style="color: var(--orange); text-decoration: underline;">Privacy &amp; cookies</a></p>
+        <p style="margin: 0; font-size: 0.88rem; color: rgba(255,255,255,0.8); max-width: 640px; line-height: 1.5;">{isBg
+          ? (META_PIXEL_ID ? 'Използваме бисквитки, за да разберем как посетителите използват сайта (Google Analytics) и да измерваме и подобряваме рекламите си (Meta). Нищо не се зарежда, преди да приемете.' : 'Използваме бисквитки, за да разберем как посетителите използват сайта (Google Analytics). Не продаваме и не споделяме лични данни.')
+          : (META_PIXEL_ID ? 'We use cookies to understand how visitors use our site (Google Analytics) and to measure and improve our advertising (Meta). Nothing is loaded unless you accept.' : 'We use cookies to understand how visitors use our site (Google Analytics). No personal data is sold or shared.')} <a href="/privacy" style="color: var(--orange); text-decoration: underline;">{isBg ? 'Поверителност и бисквитки' : 'Privacy & cookies'}</a></p>
         <div style="display: flex; gap: 10px; flex-shrink: 0;">
-          <button id="cookie-decline" style="background: transparent; border: 1px solid rgba(255,255,255,0.45); color: rgba(255,255,255,0.92); padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.82rem;">Decline</button>
-          <button id="cookie-accept" style="background: var(--orange); border: none; color: var(--ink); padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 0.82rem;">Accept</button>
+          <button id="cookie-decline" style="background: transparent; border: 1px solid rgba(255,255,255,0.45); color: rgba(255,255,255,0.92); padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.82rem;">{isBg ? 'Отказвам' : 'Decline'}</button>
+          <button id="cookie-accept" style="background: var(--orange); border: none; color: var(--ink); padding: 8px 18px; border-radius: 8px; cursor: pointer; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 0.82rem;">{isBg ? 'Приемам' : 'Accept'}</button>
         </div>
       </div>
     </div>

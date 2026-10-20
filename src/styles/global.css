@@ -31,6 +31,48 @@
   font-weight: 700;
   src: url('/fonts/lato-latin-700-normal.woff2') format('woff2');
 }
+/* Cyrillic, for the Bulgarian pages. The unicode-range means browsers fetch
+   these only when a page actually contains Cyrillic text, so English pages are
+   unaffected. Declared after the Latin faces on purpose: for a Cyrillic
+   character the browser tries these first. Montserrat from @fontsource;
+   Lato from Lato 2.0 (the version with Cyrillic), cut down to Cyrillic only.
+   Both are SIL Open Font Licence.
+   Montserrat's Bulgarian letter forms (the 'locl' feature: д like g, т like m)
+   are stripped from these files, so headings use the same standard Cyrillic
+   shapes as the Lato body text. To bring them back, re-copy the two files from
+   node_modules/@fontsource/montserrat unchanged. */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('/fonts/montserrat-cyrillic-600-normal.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('/fonts/montserrat-cyrillic-700-normal.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('/fonts/lato-cyrillic-400-normal.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('/fonts/lato-cyrillic-700-normal.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
 
 :root {
   /* Contrast, Aug 2026. Every pair below was measured to WCAG 2.1 and the
@@ -794,3 +836,9 @@
 .team-photo-link { transition: transform .25s ease, box-shadow .25s ease; }
 .team-photo-link:hover, .team-photo-link:focus-visible { transform: translateY(-3px); box-shadow: 0 14px 38px rgba(20,32,26,0.2) !important; }
 .team-photo-link:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+/* Bulgarian pages: Bulgarian runs ~25% longer than English, so hero headings
+   step down slightly and get more width to keep the English line shape
+   (three lines on desktop) instead of breaking into six. */
+html[lang="bg"] h1 { font-size: clamp(1.9rem, 3.9vw, 3.4rem); }
+html[lang="bg"] .bg-hero-wide { max-width: 940px; }

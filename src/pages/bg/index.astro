@@ -1,0 +1,400 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import studentsWalking from '../../assets/dublin-welcome-group.jpg';
+import { dublin } from '../../data/dublin';
+import { durationOptionsLabelBg, startMonthsLabelBg, priceFromLabelBg, excursionsBg } from '../../data/dublin-bg';
+
+// DRAFT – Bulgarian homepage. Mirrors src/pages/index.astro section for
+// section; if the English page changes layout, change this one too.
+
+const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
+const datesLabel = `${startMonthsLabelBg(durations)} ${dublin.year}`;
+
+// Homepage teaser: the two full-day trips, plus one card that sums up the
+// half-day Dublin city trips. The full list lives on
+// /dublin-summer-2027/trips-and-activities. Everything renders from dublin.ts,
+// so the city card follows the data. No trip count, on purpose (see the note
+// in the section below).
+const teaserTrips = (() => {
+  if (excursions === null) return null;
+  // Bulgarian wording, paired with the English data by position.
+  const all = excursions.map((e, i) => ({ ...e, title: excursionsBg[i].title, description: excursionsBg[i].description, en: e.title, duration: e.duration === 'full-day' ? 'еднодневна' : 'полудневна', kind: e.duration }));
+  const fullDays = all.filter(e => e.kind === 'full-day');
+  const city = all.filter(e => e.kind === 'half-day');
+  if (city.length === 0) return all.slice(0, 3);
+  const names = city.map(e => e.title);
+  const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} и ${names[names.length - 1]}` : names[0];
+  const cityCard = {
+    title: 'Обиколки на Дъблин',
+    description: `Полудневни обиколки на града: ${list}.`,
+    duration: 'полудневни',
+    image: city.find(e => e.en.includes('Grafton'))?.image ?? city[0].image ?? null,
+  };
+  return [...fullDays.slice(0, 2), cityCard];
+})();
+---
+
+<BaseLayout
+  title="Immersion English | Уроци по английски и лятна програма в Дъблин за тийнейджъри"
+  description={`Преподавател по английски с квалификация Cambridge CELTA в София. Онлайн уроци с фокус върху говоренето за възрастни и лятна програма в международен център в Дъблин за ученици на ${ages.min}–${ages.max} години.`}
+  noindex
+>
+  {/* DRAFT: noindex until approved. On approval remove it and add /bg to public/sitemap.xml. */}
+  <!-- HERO -->
+  <section class="relative flex items-stretch text-white overflow-hidden isolate">
+    <div
+      class="absolute inset-0 -z-[2] bg-[#1a2a20] bg-cover bg-[center_40%]"
+      style="background-image: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"
+    ></div>
+    <div
+      class="absolute inset-0 -z-[1] pointer-events-none"
+      style="background:
+        linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%),
+        linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"
+    ></div>
+
+    <div class="container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
+      <div class="max-w-[760px] bg-hero-wide">
+        {/* No eyebrow here on purpose. This hero was labelled "Dublin, Ireland ·
+            Summer 2027", which framed the whole homepage as the Dublin
+            programme when the headline and the paragraph beneath it are about
+            the school. Dublin still leads the calls to action and keeps its own
+            section further down the page. Owner's decision, 29 Aug 2026. */}
+        <h1 class="text-white">
+          Увереният английски<br />
+          идва от <span style="color: var(--orange);">използването</span> му.<br />
+          Не от <span style="color: var(--orange);">наизустяването</span>.
+        </h1>
+
+        {/*
+          Two wordings of the same claim, not two claims. The long one ran to six
+          lines at 375px and pushed both buttons past the fold once a phone
+          browser's own toolbars are showing; the short one is three lines and
+          costs nothing on desktop, where the long version still renders.
+          The age range interpolates in both — change the wording here, never the
+          numbers. If you edit one sentence, edit the other.
+        */}
+        <p class="md:hidden mt-5 text-[1rem] text-white/85 leading-[1.55]">
+          Уроци по английски с фокус върху говоренето за възрастни и тийнейджъри и лятна програма в Дъблин с пълно потапяне в езика за {ages.min}–{ages.max} години.
+        </p>
+        <p class="hidden md:block mt-5 text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
+          Immersion English предлага уроци по английски с фокус върху говоренето за възрастни и тийнейджъри, както и лятна програма в Дъблин с пълно потапяне в езика за деца на {ages.min}–{ages.max} години.
+        </p>
+
+        <div class="mt-5 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+          <a href="/bg/dublin-summer-2027" class="btn btn-primary">
+            Разгледайте Дъблин 2027
+          </a>
+          <a href="/lessons" class="btn btn-ghost text-white border-white/30 hover:border-white">
+            Изберете своите уроци
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </section>
+
+  <!-- CREDENTIALS BAND -->
+  <section style="background: var(--ink); border-bottom: none;">
+    <div class="container-x py-5">
+      <div class="flex flex-wrap items-center justify-start md:justify-center gap-x-5 gap-y-3">
+        {[
+          'Преподавател с Cambridge CELTA',
+          '10+ години опит',
+          'Комуникативни уроци',
+          'Подготовка за Cambridge и IELTS',
+        ].map((item) => (
+          <span class="flex items-center gap-2" style="flex-shrink: 0; white-space: nowrap;">
+            <span class="w-[7px] h-[7px] rounded-full" style="background: var(--orange); flex-shrink: 0; display: inline-block; min-width: 7px;"></span>
+            <span class="font-heading font-semibold text-[0.88rem] text-white tracking-wide">{item}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="section" style="padding-left: 0; padding-right: 0; overflow: clip;">
+    {/* Desktop: eyebrow + heading sit above the photo/text row, so the photo's
+        top lines up with the first paragraph. Mobile keeps them in the column. */}
+    <div class="container-x hidden md:block mb-10">
+          <span class="eyebrow eyebrow-dot">Лято в Дъблин за тийнейджъри <span aria-hidden="true" style="display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; margin: 0 0.7em 0 0.3em; vertical-align: middle; transform: translateY(-2px);"></span>{dublin.year}</span>
+          <h2 class="mt-4 mb-0">Английски. <span style="color: var(--orange-text);">Отвъд класната стая.</span></h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; align-items: start;" class="programme-grid">
+      <!-- Image: bleeds to left edge -->
+      <div class="homepage-hero-img-wrap programme-img-sticky relative" style="overflow: hidden; min-height: 480px;">
+        <Image
+          src={studentsWalking}
+          alt="Група тийнейджъри пред надписа Welcome to Dublin"
+          class="homepage-hero-img w-full h-full object-cover"
+          style="position: absolute; inset: 0; object-position: center 60%;"
+          loading="lazy"
+          widths={[480, 768, 900]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        <!-- Gradient overlay -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,26,0) 50%, rgba(20,32,26,0.55) 100%); pointer-events: none; z-index: 1;"></div>
+        <!-- Badge – bottom left, small, unobtrusive -->
+        <div style="position: absolute; bottom: 24px; left: 24px; z-index: 2; display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; display: inline-block;"></span>
+          <span style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; color: white; letter-spacing: 0.06em; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">Дъблин, Ирландия · Лято {dublin.year}</span>
+        </div>
+      </div>
+
+      <!-- Content: normal container padding on right side -->
+      <div style="padding: 40px 24px 40px 24px;" class="programme-content md-pad-programme home-programme-content">
+
+        <div>
+          <div class="md:hidden">
+          <span class="eyebrow eyebrow-dot">Лято в Дъблин за тийнейджъри <span aria-hidden="true" style="display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; margin: 0 0.7em 0 0.3em; vertical-align: middle; transform: translateY(-2px);"></span>{dublin.year}</span>
+          <h2 class="mt-4 mb-2">Английски. <span style="color: var(--orange-text);">Отвъд класната стая.</span></h2>
+          </div>
+          <p class="text-ink-soft text-[1.08rem] max-w-[56ch] mb-3">
+            Всяко лято водим група от София в международен летен център в Дъблин, в {venue.name} – където английският престава да бъде учебен предмет и става част от ежедневието.
+          </p>
+          <p class="font-heading font-semibold text-[1.18rem] leading-snug mb-0" style="color: var(--orange-text);">
+            Истински разговори.<br/>Истинска увереност.<br/>Ученици от цяла Европа.
+          </p>
+
+          {/* Key facts panel — soft green ground so it reads as the at-a-glance summary,
+              distinct from the cream bullet cards below. */}
+          <dl class="grid grid-cols-[1.3fr_1fr] my-10 rounded-xl overflow-hidden" style="gap: 1px; background: rgb(var(--green-rgb) / 0.18); border: 1px solid rgb(var(--green-rgb) / 0.25);">
+            {[
+              { label: 'Дати', value: datesLabel },
+              { label: 'Възраст', value: `${ages.min}–${ages.max}` },
+              { label: 'Продължителност', value: durationOptionsLabelBg(durations) },
+              { label: 'Ср. брой в клас', value: `${classSize.average}` },
+              { label: 'Цена на програмата', value: `От ${priceFromLabelBg(durations)}`, accent: true },
+            ].map(({ label, value, accent, wide }) => (
+              <div class={`px-4 py-5 md:px-7 md:py-6 ${accent || wide ? 'col-span-2' : ''}`} style="background: var(--green-soft);">
+                <dt class="font-heading text-[0.64rem] md:text-[0.74rem] uppercase tracking-[0.1em] md:tracking-[0.14em] mb-2 font-semibold" style="color: var(--green);">{label}</dt>
+                <dd class={`m-0 font-heading font-bold leading-tight tracking-[-0.01em] ${accent ? 'text-[1.4rem] md:text-[1.75rem]' : 'text-[1rem] md:text-[1.45rem] whitespace-nowrap'}`} style={`color: ${accent ? 'var(--orange-text)' : 'var(--ink)'};`}>{value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <ul class="list-none p-0 m-0 flex flex-col gap-3">
+            {[
+              { label: 'Вашите групови ръководители през цялото време', detail: 'с детето ви от София до Дъблин и обратно, летищните трансфери са включени' },
+              { label: 'Грижа на място', detail: 'отговорник за благосъстоянието на учениците и медицински персонал денонощно' },
+              { label: 'Кампус със самостоятелни бани, пълен пансион', detail: `истинско студентско преживяване в ${venue.name}, в сърцето на Дъблин, с включени всички хранения и предплатена карта за храна по време на екскурзиите` },
+              { label: `${lessonsPerWeek} урока седмично`, detail: `${hoursPerWeek} часа с квалифицирани преподаватели по английски` },
+              { label: 'Международно преживяване', detail: 'ученици от цяла Европа, така че английският става език на общуването, културния обмен и приятелството' },
+              { label: 'Нашият партньор в Дъблин', detail: '', detailHtml: 'член на мрежата <a href="https://partner-schools.english.britishcouncil.org/" target="_blank" rel="noopener" class="underline">British Council Partner Schools Network</a>' },
+            ].map(({ label, detail, detailHtml }) => (
+              <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
+                <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
+                <span class="text-[0.88rem] md:text-[0.95rem]">
+                  <strong class="font-semibold text-ink">{label}</strong>
+                  {detailHtml ? <span class="text-ink-soft"> – <Fragment set:html={detailHtml} /></span> : <span class="text-ink-soft"> – {detail}</span>}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="flex gap-3 mt-8 flex-wrap">
+            <a href="/bg/dublin-summer-2027" class="btn btn-primary">
+              Вижте цялата програма
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DUBLIN TRIPS -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Включено в Лято в Дъблин {dublin.year}</span>
+        <h2>Цяло лято в <span style="color: var(--orange-text);">Дъблин</span>, изцяло на английски.</h2>
+        <p>Уроци по английски, културни екскурзии и истински ирландски живот – всичко е включено в цената. Транспорт, входни билети, настаняване и пълен надзор от пристигането до заминаването.</p>
+      </div>
+
+      {/* TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
+          These cards render ONLY from dublin.ts excursions. The six cards previously
+          here (Trinity College, Dublin Castle, the Book of Kells, Howth Cliff Walk,
+          St Stephen's Green, Glendalough) were self-chosen by Immersion English for
+          the cancelled UCD programme and are NOT MLA's excursion list. Do not
+          reinstate them, and do not restate a trip count. */}
+
+      {excursions === null && (
+        <p class="text-center text-ink-soft text-[1.05rem] leading-relaxed">
+          Програмата от екскурзии за лято {dublin.year} се определя от центъра. Очаквайте подробности скоро.
+        </p>
+      )}
+
+      {excursions !== null && (
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {teaserTrips!.map(({ title, description: desc, duration: tag, image: img = null }) => (
+          <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group trip-card-link">
+            <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
+              <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
+                {/* alt="" — the card's own h3 names it immediately below. */}
+                {img
+                  ? <img src={img} alt="" class="trip-card-img w-full h-full object-cover" loading="lazy" />
+                  : <div class="w-full h-full" style="background: repeating-linear-gradient(135deg, rgba(20,32,26,0.05) 0 2px, transparent 2px 14px), var(--cream);"></div>
+                }
+              </div>
+              <div class="p-6 flex flex-col flex-1">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="text-[1.05rem]">{title}</h3>
+                  <span class="trip-tag text-[0.65rem] font-heading font-semibold uppercase tracking-[0.1em] px-[8px] py-[3px] rounded-full flex-shrink-0">{tag}</span>
+                </div>
+                <p class="text-ink-soft text-[0.9rem] leading-relaxed flex-1">{desc}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      )}
+
+      {/* The "See all trips" CTA renders only when there is a list to see. While
+          excursions is null it promised a page that lists nothing — a dead end. */}
+      {excursions !== null && (
+      <div class="flex justify-center mt-10">
+        <a
+          href="/dublin-summer-2027/trips-and-activities"
+          class="inline-flex items-center gap-3 no-underline group"
+          style="color: var(--ink-soft);"
+        >
+          <span class="w-8 h-[1.5px]" style="background: var(--orange); display: inline-block;"></span>
+          <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">
+            Вижте всички екскурзии в програмата (на английски)
+          </span>
+        </a>
+      </div>
+      )}
+
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Защо Immersion English</span>
+        <h2>Английският се <span style="color: var(--orange-text);">научава</span> най-добре, когато се използва <span style="color: var(--orange-text);">смислено</span>.</h2>
+        <p>
+          Нашите уроци са за възрастни и тийнейджъри, които искат да говорят – а не само да учат. Независимо дали се подготвяте за интервю за работа, презентация, изпит или ежедневието на английски, ние се фокусираме върху това, което наистина ви придвижва напред.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {[
+          { title: 'Говоренето на първо място', body: 'Във всеки урок приоритет са активното говорене и истинската комуникация, а не пасивното учене. Излизате от всеки час, след като сте използвали английския, а не просто сте го учили.' },
+          { title: 'Личен подход', body: 'Индивидуалните уроци са изградени изцяло около вас – вашите цели, вашия график, вашето ниво. Без фиксирана учебна програма и без общо темпо. Само фокусирано внимание един на един още от първия час.' },
+          { title: 'Малки групи, много внимание', body: 'До 8 участници в група в онлайн курсовете ни Speak Up!. Получавате индивидуална обратна връзка, повече време да говорите и преподавател, който познава целите ви.' },
+          { title: 'Опит, който има значение', body: 'Лени е роден говорител на английски от Ирландия, с квалификация Cambridge CELTA и основател на Immersion English – с 10 години преподаване на общ и бизнес английски в Британски съвет – София и опит в международни летни програми в Оксфорд и Кеймбридж.' },
+        ].map(({ title, body }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0; min-height: 2.6em;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0;">{body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="flex justify-center mt-10">
+        <a
+          href="/about"
+          class="inline-flex items-center gap-3 no-underline group"
+          style="color: var(--ink-soft);"
+        >
+          <span class="w-8 h-[1.5px]" style="background: var(--orange); display: inline-block; transition: width 0.2s ease;"></span>
+          <span class="font-heading font-semibold text-[0.9rem] tracking-wide group-hover:text-brand-green transition-colors">
+            Научете повече за това как преподаваме (на английски)
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="section" style="background: linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);">
+    <div class="container-x">
+      <div class="max-w-[840px] mx-auto text-center">
+        <span class="block font-heading font-bold text-[3.5rem] leading-none text-brand-orange">&ldquo;</span>
+        <p class="text-white text-[1.25rem] md:text-[1.95rem] font-heading font-semibold leading-[1.35] tracking-[-0.01em] -mt-2 mb-7 text-balance">
+          Lenny is the most motivational English teacher I've ever met – fun, professional, and focused on exactly what I needed.
+        </p>
+        <p class="text-white/75 font-heading font-semibold text-[0.92rem] tracking-[0.04em]">– Наталия Балева</p>
+        <a href="/about#testimonials" class="inline-flex items-center gap-2 mt-7 text-white/90 hover:text-white font-heading font-semibold text-[0.9rem] no-underline border-b border-white/30 hover:border-white pb-[2px] transition-colors">
+          Прочетете още отзиви (на английски)
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="section section-dark">
+    <div class="container-x">
+      <div class="max-w-[540px]">
+        <span class="eyebrow eyebrow-dot" style="color: var(--green-on-dark);">Контакти</span>
+        <h2 class="mt-4 mb-4"><span class="text-white">Имате </span><span style="color: var(--orange);">въпрос?</span><span class="text-white"> Тук сме.</span></h2>
+        <p>Пишете ни и ще ви помогнем да изберете подходящата програма или курс.</p>
+
+        <div class="flex flex-col gap-6 mt-8">
+          {/* Email — plain link */}
+          <a href="mailto:immersionenglish.ie@gmail.com" class="flex gap-4 items-center py-4 border-b border-white/10 no-underline group">
+            <div class="w-9 h-9 rounded-full bg-brand-green/20 text-brand-green-on-dark grid place-items-center flex-shrink-0"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+            <div>
+              <div class="font-heading font-medium text-white text-[1.02rem] group-hover:text-brand-green-on-dark transition-colors">immersionenglish.ie@gmail.com</div>
+            </div>
+          </a>
+
+          {/* Phone — label + WhatsApp / Viber icon buttons (no number shown) */}
+          {[
+            { label: 'English', raw: '359893387464' },
+            { label: 'Български', raw: '359889178100' },
+          ].map(({ label, raw }) => (
+            <div class="flex gap-4 items-center py-4 border-b border-white/10">
+              <div class="flex-1 min-w-0">
+                <div class="font-heading text-[0.78rem] uppercase tracking-[0.12em] text-white/55 font-semibold">{label}</div>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0">
+                  <a href={`tel:+${raw}`} aria-label={`Обаждане – ${label}`} title="Обаждане"
+                     class="w-10 h-10 rounded-full grid place-items-center no-underline transition-opacity hover:opacity-80"
+                     style="border: 1.5px solid var(--green-on-dark); background: transparent;">
+                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="var(--green-on-dark)"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                  </a>
+                {/* WhatsApp — outlined */}
+                <a href={`https://wa.me/${raw}`} target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"
+                   class="w-10 h-10 rounded-full grid place-items-center no-underline transition-opacity hover:opacity-80"
+                   style="border: 1.5px solid #25d366; background: transparent;">
+                  <svg class="w-[18px] h-[18px]" viewBox="0 0 16 16" fill="#25d366">
+                    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                  </svg>
+                </a>
+                {/* Viber — outlined */}
+                <a href={`viber://chat?number=%2B${raw}`} aria-label="Viber" title="Viber"
+                   class="w-10 h-10 rounded-full grid place-items-center no-underline transition-opacity hover:opacity-80"
+                   style="border: 1.5px solid #7360f2; background: transparent;">
+                  <svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="#7360f2">
+                    <path d="M11.4 0C9.473.028 5.333.344 3.02 2.467 1.302 4.187.696 6.7.633 9.817.57 12.933.488 18.776 6.12 20.36h.003l-.004 2.416s-.037.977.61 1.177c.777.242 1.234-.5 1.98-1.302.407-.44.972-1.084 1.397-1.58 3.85.326 6.812-.416 7.15-.525.776-.252 5.176-.816 5.892-6.657.74-6.02-.36-9.83-2.34-11.546-.596-.55-3.006-2.3-8.375-2.323 0 0-.395-.025-1.037-.017zm.058 1.693c.545-.004.88.017.88.017 4.542.02 6.717 1.388 7.222 1.846 1.675 1.435 2.53 4.868 1.906 9.897v.002c-.604 4.878-4.174 5.184-4.832 5.395-.28.09-2.882.737-6.153.524 0 0-2.436 2.94-3.197 3.704-.12.12-.26.167-.352.144-.13-.033-.166-.188-.165-.414l.02-4.018c-4.762-1.32-4.485-6.292-4.43-8.895.054-2.604.543-4.738 1.996-6.173 1.96-1.773 5.474-2.018 7.11-2.03zm.38 2.602c-.167 0-.303.135-.304.302 0 .167.133.303.3.305 1.624.01 2.946.537 4.028 1.592 1.073 1.046 1.62 2.468 1.633 4.334.002.167.14.3.307.3.166-.002.3-.138.3-.304-.014-1.984-.618-3.596-1.816-4.764-1.19-1.16-2.692-1.753-4.447-1.765zm-3.96.695c-.19-.032-.4.005-.616.117l-.01.002c-.43.247-.816.562-1.146.932-.002.004-.006.004-.008.008-.267.323-.42.638-.46.948-.008.046-.01.093-.007.14 0 .136.022.27.065.4l.013.01c.135.48.473 1.276 1.205 2.604.42.768.903 1.5 1.446 2.186.27.344.56.673.87.984l.132.132c.31.308.64.6.984.87.686.543 1.418 1.027 2.186 1.447 1.328.733 2.126 1.07 2.604 1.206l.01.014c.13.042.265.064.402.063.046.002.092 0 .138-.008.31-.036.627-.19.948-.46.004 0 .003-.002.008-.005.37-.33.683-.72.93-1.148l.003-.01c.225-.432.15-.842-.18-1.12-.004 0-.698-.58-1.037-.83-.36-.255-.73-.492-1.113-.71-.51-.285-1.032-.106-1.248.174l-.447.564c-.23.283-.657.246-.657.246-3.12-.796-3.955-3.955-3.955-3.955s-.037-.426.248-.656l.563-.448c.277-.215.456-.737.17-1.248-.217-.383-.454-.756-.71-1.115-.25-.34-.826-1.033-.83-1.035-.137-.165-.31-.265-.502-.297zm4.49.88c-.158.002-.29.124-.3.282-.01.167.115.312.282.324 1.16.085 2.017.466 2.645 1.15.63.688.93 1.524.906 2.57-.002.168.13.306.3.31.166.003.305-.13.31-.297.025-1.175-.334-2.193-1.067-2.994-.74-.81-1.777-1.253-3.05-1.346h-.024zm.463 1.63c-.16.002-.29.127-.3.287-.008.167.12.31.288.32.523.028.875.175 1.113.422.24.245.388.62.416 1.164.01.167.15.295.318.287.167-.008.295-.15.287-.317-.03-.644-.215-1.178-.58-1.557-.367-.378-.893-.574-1.52-.607h-.018z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-10">
+          <a href="/contact" class="btn btn-primary">Свържете се с нас</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</BaseLayout>

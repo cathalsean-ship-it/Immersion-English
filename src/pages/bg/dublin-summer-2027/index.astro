@@ -1,0 +1,448 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import teensDublin from '../../../assets/teens-dublin.jpg';
+import studentsWalking from '../../../assets/students-walking.jpg';
+import StudentVideo from '../../../components/StudentVideo.astro';
+import ProgrammeTimetable from '../../../components/ProgrammeTimetable.astro';
+import { dublin, bestValueDuration } from '../../../data/dublin';
+import { durationOptionsLabelBg, startMonthsLabelBg, formatStartDateBg, euroBg, includedBg, notIncludedBg, nameBg } from '../../../data/dublin-bg';
+
+// DRAFT – Bulgarian Dublin page. Mirrors src/pages/dublin-summer-2027/index.astro
+// section for section; if the English page changes layout, change this one too.
+
+const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
+
+const bestValue = bestValueDuration(durations);
+
+
+// JSON-LD. Provider is MLA, not Immersion English. AggregateOffer spans the
+// three duration options — each has its own fixed price, not a single figure.
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: `Лятна програма с потапяне в английския език за тийнейджъри – Дъблин, Ирландия ${dublin.year}`,
+  description: `Лятна програма по английски в ${venue.name}, Дъблин, за ученици на ${ages.min}–${ages.max} години. ${lessonsPerWeek} урока седмично. Immersion English придружава групата в Дъблин.`,
+  // No provider named — see the note in BaseLayout.astro. Leaving this out is
+  // deliberate; do not point it at Immersion English.
+  courseMode: 'onsite',
+  inLanguage: 'en',
+  // Page-specific offer. Safe here because this schema is only emitted on the
+  // Dublin overview page, unlike the site-wide block in BaseLayout.
+  ...(durations.length > 0 && {
+    offers: {
+      '@type': 'AggregateOffer',
+      lowPrice: String(Math.min(...durations.map(d => d.price))),
+      highPrice: String(Math.max(...durations.map(d => d.price))),
+      offerCount: String(durations.length),
+      priceCurrency: price.currency,
+      // Must be one of Free / Partially Free / Paid / Subscription per Google's
+      // Course guidance. Not free text.
+      category: 'Paid',
+    },
+  }),
+  audience: { '@type': 'Audience', audienceType: `Ученици на ${ages.min}–${ages.max} години` },
+  location: {
+    '@type': 'Place',
+    name: venue.name,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: venue.city,
+      addressRegion: venue.area,
+      addressCountry: 'IE',
+    },
+  },
+};
+---
+
+<BaseLayout
+  title={`Лятна езикова програма в Дъблин за тийнейджъри ${dublin.year} | Immersion English`}
+  description={`Лятна програма с пълно потапяне в английския език в Дъблин, Ирландия, за тийнейджъри на ${ages.min}–${ages.max} години: ${durationOptionsLabelBg(durations)} през ${startMonthsLabelBg(durations)}, ${lessonsPerWeek} урока седмично, пълен пансион и стаи със самостоятелна баня в кампус, с нашите групови ръководители от София.`}
+  noindex
+  ogImage="/og/dublin-summer-2027.jpg"
+>
+
+  {/* DRAFT: noindex until approved. On approval remove it and add this page to public/sitemap.xml. */}
+  <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} />
+
+  <!-- HERO -->
+  <section class="relative flex flex-col md:flex-row items-stretch text-white overflow-hidden isolate">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, #1a3d5c 0%, #14201a 55%, #0d2d1a 100%);"></div>
+    <img src="/dublin-welcome-group.webp" alt="Група тийнейджъри пред надписа Welcome to Dublin" class="order-last w-full h-auto md:absolute md:-z-[2] md:inset-auto md:right-0 md:bottom-0 md:w-[62%] md:max-h-full md:object-cover md:object-bottom" fetchpriority="high" />
+    <!-- Desktop: photo sits to the right with its own light touch, fading into the dark panel behind the text, so the Dublin sign stays bright and readable. -->
+    <div class="absolute inset-0 -z-[1] pointer-events-none hidden md:block" style="background: linear-gradient(90deg, #14201a 0%, #14201a 34%, rgba(20,32,26,0.8) 44%, rgba(20,32,26,0.2) 62%, rgba(20,32,26,0) 80%), linear-gradient(180deg, #14201a 0%, #14201a 24%, rgba(20,32,26,0.6) 34%, rgba(20,32,26,0) 52%, rgba(20,32,26,0.15) 100%);"></div>
+
+    <div class="container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
+      <div class="max-w-[760px]">
+        <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-7">
+          <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+          Дъблин, Ирландия · Лято {dublin.year}
+        </p>
+
+        <h1 class="text-white">
+          Това не е езиков курс.<br />
+          <span style="color: var(--orange);">Това е преживяване.</span>
+        </h1>
+
+        <p class="mt-4 text-[0.98rem] md:text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">
+          Лято с пълно потапяне в английския език за тийнейджъри в Дъблин, Ирландия – {durationOptionsLabelBg(durations)} през {startMonthsLabelBg(durations)}. Лято, за което детето ви ще разказва още дълго.
+        </p>
+
+        <div class="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+          <a href="#included" class="btn btn-primary">
+            Вижте какво е включено
+          </a>
+          <a href="/contact?interest=dublin&from=dublin-hero-bg#booking-form" class="btn btn-ghost text-white border-white/30 hover:border-white">
+            Попитайте за Дъблин 2027
+          </a>
+        </div>
+
+        <!-- Trust strip -->
+        <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[680px]">
+          {[
+            'Групов ръководител с Cambridge CELTA, от София',
+            'Ръководител, който говори български, през цялото време',
+            'Международен център с ученици от цяла Европа',
+            'Пълен пансион, кампус със самостоятелни бани',
+          ].map(item => (
+            <p class="flex items-start gap-2 text-[0.86rem] text-white/80 m-0">
+              <span class="flex-shrink-0 mt-[7px] w-[6px] h-[6px] rounded-full" style="background: var(--orange);"></span>
+              <span>{item}</span>
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section" style="padding-top: 44px; padding-bottom: 44px;">
+    <div class="container-x">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {
+            title: 'Пълен пансион',
+            desc: 'Всяко хранене е включено – от вечерята в деня на пристигане до закуската в деня на заминаване. Щом кацнете, няма какво да планирате или да плащате.',
+          },
+          {
+            title: `Възраст ${ages.min}–${ages.max}`,
+            desc: 'Достатъчно големи, за да опознават града, и достатъчно малки, за да имат нужда от грижа – затова ние като ръководители сме винаги наблизо, независимо от възрастта.',
+          },
+          {
+            title: 'Международни групи по ниво',
+            desc: 'Тест преди заминаването определя нивото на всеки ученик по CEFR, а в класа той е заедно с ученици от цяла Европа – не само със съучениците си от България.',
+          },
+          {
+            title: `${nameBg(groupLeader.name)}, с квалификация Cambridge CELTA`,
+            desc: groupLeader.travelsFromSofia
+              ? 'Пътува с групата от София до Дъблин и обратно и е с учениците през целия престой.'
+              : 'Посреща групата в Дъблин и е с учениците през целия престой.',
+          },
+          {
+            title: `${nameBg(secondChaperone?.name)} – говори български`,
+            desc: 'С групата през целия престой – човекът, с когото родителите винаги могат да се свържат директно, на български.',
+          },
+          {
+            title: `${venue.shortName}, в сърцето на Дъблин`,
+            desc: `Настаняване в кампуса на ${venue.name}, в ${venue.area} – на кратка разходка от Temple Bar и центъра на града.`,
+          },
+        ].map(({ title, desc }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0; font-size: 1.05rem;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0; font-size: 0.92rem;">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" style="padding-top: 8px;">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Изберете престой</span>
+        <h2>Една дестинация, много <span style="color: var(--orange-text);">възможности</span>.</h2>
+        <p>Летищните трансфери в двете посоки са включени. Семействата сами резервират и заплащат полетите си до и от Дъблин.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {durations.map(({ days, nights, price: optionPrice, startDates: optionDates }) => {
+          const isFeatured = bestValue !== null && days === bestValue.days;
+          return (
+            <div
+              class={`pricing-card${isFeatured ? ' pricing-card-featured' : ''}`}
+              style="display: flex; flex-direction: column; gap: 16px; position: relative;"
+            >
+              {isFeatured && <span class="pricing-card-badge">Най-изгодно</span>}
+              <div>
+                <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-[0.1em] text-ink-soft m-0 mb-1">{days} дни / {nights} нощувки</p>
+                <p class="font-heading font-bold text-[1.9rem] text-ink m-0">{euroBg(optionPrice)}</p>
+                <p class="text-[0.82rem] text-ink-soft m-0 mt-1">на ученик + полети</p>
+              </div>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+              <div>
+                <p class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Начални дати {dublin.year}</p>
+                <p class="text-[0.88rem] text-ink-soft leading-relaxed m-0">{optionDates.map(formatStartDateBg).join(' · ')}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div class="flex justify-center mt-8">
+        <a href="/contact?interest=dublin&from=dublin-included-bg#booking-form" class="btn btn-primary">Попитайте за Дъблин 2027</a>
+      </div>
+    </div>
+  </section>
+
+  {/* TODO: awaiting review — the programme video was filmed at the cancelled UCD
+      programme and shows the old venue, group and excursions. Commented out
+      rather than deleted. Restore only with MLA/NCI footage. */}
+
+  <!-- WHY THIS CENTRE -->
+  <section class="section">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Защо Лято в Дъблин {dublin.year}</span>
+        <h2>Няма просто да учат английски. Ще го <span style="color: var(--orange-text);">живеят</span>.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-8 md:gap-11">
+        <div>
+          <div class="md:sticky md:top-[90px]">
+            <StudentVideo
+              videoId="4Uouprh7d1k"
+              title="Лятната програма на Immersion English за тийнейджъри в Дъблин"
+              poster={studentsWalking}
+            />
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 28px;">
+          <p style="margin: 0; font-size: 1.08rem; color: var(--ink-soft);">
+            Правилното ниво, група, достатъчно малка, за да бъдеш чут,
+            и познат човек наблизо през цялото време. Точно това превръща
+            престоя в чужбина в истинско потапяне в езика.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            <h3 style="margin: 0; font-size: 1.05rem;">Град, създаден за потапяне в езика</h3>
+            <p style="margin: 0; font-size: 0.95rem;">
+              Не просто класна стая – истинска англоговоряща столица, известна
+              с топлите и гостоприемни хора. Екскурзиите из Дъблин, до
+              пристанищното селище Хаут и целодневното пътуване до Килкени
+              поддържат английския жив дълго след края на урока.
+            </p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            <h3 style="margin: 0; font-size: 1.05rem;">Международно преживяване</h3>
+            <p style="margin: 0; font-size: 0.95rem;">
+              Малки класове със средно {classSize.average} ученици, с връстници от
+              цяла Европа и света – не само с други български тийнейджъри. Цял
+              международен летен център в {venue.area}, на десет минути пеша от
+              центъра на града.
+            </p>
+          </div>
+
+          {/* The group-leader/supervision message used to repeat a third time
+              here. Trimmed per site owner's instruction, 13 Oct 2026 — the
+              dedicated "Who Travels With You" section below already covers
+              this in full, so this block would only restate it. */}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section id="included" class="section section-tinted">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-start">
+        <div class="dublin-img-wrap" style="position: relative; border-radius: var(--radius-md); overflow: hidden; min-height: 520px;">
+          <Image
+            src={teensDublin}
+            alt="Тийнейджъри в Дъблин"
+            class="img-greyscale"
+            style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%;"
+            fetchpriority="high"
+            loading="eager"
+            widths={[640, 1024, 1440]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,26,0) 45%, rgba(20,32,26,0.65) 100%); pointer-events: none;"></div>
+          <div style="position: absolute; bottom: 24px; left: 24px; right: 24px; display: flex; gap: 12px;">
+            <div style="background: white; border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{classSize.average}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Ср. брой в клас</p>
+            </div>
+            <div style="background: white; border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{lessonsPerWeek}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Урока седмично</p>
+            </div>
+            {/* Ink on orange, not white on orange. White on --orange is 2.23:1,
+                which fails accessibility contrast even for large text. Ink gives
+                7.52:1 — the same pairing .btn-primary already uses. */}
+            <div style="background: var(--orange); border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--ink); line-height: 1; margin: 0;">{ages.min}–{ages.max}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: rgba(20,32,26,0.78); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Възраст</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow eyebrow-dot">Включено в Лято в Дъблин {dublin.year}</span>
+
+          <dl class="grid grid-cols-2 gap-7 mt-6 mb-8 py-8 border-y border-line">
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Продължителност</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationOptionsLabelBg(durations)}</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Възраст</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{ages.min}–{ages.max}</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Брой в клас</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} средно, до {classSize.maximum}</dd>
+            </div>
+            <div>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Цена на програмата</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">от {euroBg(Math.min(...durations.map(d => d.price)))} до {euroBg(Math.max(...durations.map(d => d.price)))}</dd>
+            </div>
+          </dl>
+
+          <ul class="list-none p-0 m-0 flex flex-col gap-3 mb-6">
+            {includedBg.map(item => {
+              const [lead, ...rest] = item.split(' – ');
+              return (
+                <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
+                  <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
+                  <span class="text-[0.95rem]">
+                    <strong class="font-semibold text-ink">{lead}</strong>
+                    {rest.length > 0 && <span class="text-ink-soft"> – {rest.join(' – ')}</span>}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
+              The "full excursion programme" bullet above deliberately names no
+              excursions. The six UCD-era trips were self-chosen by Immersion English
+              and must not be reinstated. Restore a named list only from
+              dublin.ts excursions. */}
+
+          <p class="text-ink-soft text-[0.9rem] leading-relaxed">
+            Не са включени: {notIncludedBg.join(', ')}. При пристигане се събира
+            възстановим депозит от €{dublin.securityDeposit.amount}.
+          </p>
+        </div>
+      </div>
+
+      <!-- SAMPLE TIMETABLE -->
+      <div class="mt-16 md:mt-20">
+        <p class="text-ink-soft text-[0.95rem] leading-relaxed max-w-[62ch] mb-6">
+          Уроци сутрин или следобед, екскурзия или занимание през другата половина на деня и нещо различно всяка вечер. Примерна програма за 14 дни / 13 нощувки; по-кратките престои следват по-кратък график.
+        </p>
+
+        <ProgrammeTimetable lang="bg" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO TRAVELS WITH YOU -->
+  <section class="section">
+    <div class="container-x">
+      <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center">
+        <div>
+          <span class="eyebrow eyebrow-dot">Грижа и надзор</span>
+          <h2 class="mt-4 mb-5"><span style="color: var(--orange-text);">Подкрепа</span> на всяка стъпка.</h2>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
+            За много тийнейджъри това е първото пътуване без родителите им и знаем, че
+            това е важен момент и за вас. Даваме им истинска самостоятелност, с надзор
+            винаги наблизо, и поддържаме връзка с вас през цялото време.
+          </p>
+          <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
+            {nameBg(groupLeader.name)}{secondChaperone?.name ? ` и ${nameBg(secondChaperone.name)}` : ''} {groupLeader.travelsFromSofia ? 'пътуват с групата от София и остават през цялата програма' : 'посрещат групата в Дъблин и остават през цялата програма'}.
+            {nameBg(secondChaperone?.name) || 'Ръководител'} говори български, а отговорник за благосъстоянието
+            и медицински персонал са на място денонощно – винаги има кой да се погрижи за детето ви,
+            и за вас.
+          </p>
+        </div>
+        <div style="position: relative;">
+          <div class="grid grid-cols-2 gap-3">
+            {[
+              { src: '/team-lenny.webp', name: nameBg(groupLeader.name), role: 'Групов ръководител', pos: 'center 25%' },
+              { src: '/team-lina.webp', name: nameBg(secondChaperone?.name) || 'Лина', role: 'Групов ръководител · говори български', pos: 'center 20%' },
+            ].map(({ src, name, role, pos }) => (
+              <a href="/about" aria-label={`Запознайте се с ${name} – повече за нас`} class="team-photo-link" style={`display: block; position: relative; border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 8px 32px rgba(20,32,26,0.12); aspect-ratio: 3/4; text-decoration: none;`}>
+                <img
+                  src={src}
+                  alt={`${name}, групов ръководител в Immersion English`}
+                  class="img-greyscale"
+                  style={`position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: ${pos};`}
+                  loading="lazy" />
+                <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,26,0) 55%, rgba(20,32,26,0.78) 100%); pointer-events: none;"></div>
+                <div style="position: absolute; left: 14px; right: 14px; bottom: 12px; color: white;">
+                  <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; margin: 0; color: white;">{name}</p>
+                  <p style="font-size: 0.74rem; line-height: 1.3; margin: 2px 0 0; color: rgba(255,255,255,0.82);">{role}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div style="margin-top: 14px; background: var(--ink); color: white; border-radius: 10px; padding: 14px 18px; box-shadow: 0 6px 20px rgba(20,32,26,0.22);">
+            <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin: 0 0 5px;">От София до Дъблин</p>
+            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">Човек, който говори български, е до групата през целия престой. Детето ви никога не е само.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING CTA -->
+  <section class="section section-tinted">
+    <div class="container-x">
+      <div class="max-w-[62ch] mx-auto">
+        <div class="flex justify-center">
+          <a href="/about" class="btn btn-primary">Повече за нас (на английски)</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION LINKS -->
+  <section class="section">
+    <div class="container-x">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dot">Разгледайте програмата</span>
+        <h2><span style="color: var(--orange-text);">Всичко</span>, което трябва да знаете.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {[
+          { href: '/dublin-summer-2027/accommodation', title: 'Настаняване', desc: `Стаи със самостоятелна баня в кампуса на ${venue.name}, с пълен пансион.` },
+          { href: '/dublin-summer-2027/trips-and-activities', title: 'Екскурзии и занимания', desc: 'Цялата програма от екскурзии, плюс вечерни занимания и занимания през уикенда, организирани от екипа на центъра.' },
+          { href: '/dublin-summer-2027/weekly-programme', title: 'Седмична програма', desc: `${lessonsPerWeek} урока всяка седмица – ${hoursPerWeek} часа – с квалифицираните преподаватели на центъра.` },
+          { href: '/dublin-summer-2027/faqs', title: 'Въпроси и отговори', desc: 'Отговори на въпросите, които родителите и учениците задават най-често.' },
+        ].map(({ href, title, desc }) => (
+          <a href={href} class="trust-card group no-underline text-ink">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0; color: var(--ink-soft); font-size: 0.96rem;">{desc}</p>
+            <span class="inline-flex items-center gap-2 text-[0.88rem] font-heading font-semibold mt-auto pt-4 border-t border-line group-hover:gap-3 transition-all" style="color: var(--green);">
+              Научете повече (на английски)
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

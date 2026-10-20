@@ -1,34 +1,49 @@
 ---
+import { type Lang, switchTarget, bgHref } from '../data/i18n';
+
+interface Props { lang?: Lang; path?: string }
+const { lang = 'en', path = '/' } = Astro.props;
+const bg = lang === 'bg';
+
+// On Bulgarian pages, labels are Bulgarian and links go to the Bulgarian
+// version where one exists (see BG_PAGES in i18n.ts); otherwise to English.
+const t = bg
+  ? { about: 'За нас', lessons: 'Уроци', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', sub: 'Покажи подменюто за Лято в Дъблин' }
+  : { about: 'About', lessons: 'Lessons', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', sub: 'Toggle Dublin Summer submenu' };
+const href = (h: string) => (bg ? bgHref(h) : h);
+const homeHref = bg ? '/bg' : '/';
+const switchHref = switchTarget(path);
+
 const dublinSub = [
-  { href: '/dublin-summer-2027/accommodation', label: 'Accommodation' },
-  { href: '/dublin-summer-2027/trips-and-activities', label: 'Trips & Activities' },
-  { href: '/dublin-summer-2027/weekly-programme', label: 'Weekly Programme' },
-  { href: '/dublin-summer-2027/faqs', label: 'FAQs' },
-];
+  { href: '/dublin-summer-2027/accommodation', label: bg ? 'Настаняване' : 'Accommodation' },
+  { href: '/dublin-summer-2027/trips-and-activities', label: bg ? 'Екскурзии и занимания' : 'Trips & Activities' },
+  { href: '/dublin-summer-2027/weekly-programme', label: bg ? 'Седмична програма' : 'Weekly Programme' },
+  { href: '/dublin-summer-2027/faqs', label: bg ? 'Въпроси и отговори' : 'FAQs' },
+].map(i => ({ ...i, href: href(i.href) }));
 ---
 
 <header class="sticky top-0 z-50 border-b border-ink/5 bg-off-white/70 backdrop-blur-md backdrop-saturate-150">
   <nav class="container-x">
     <div class="flex items-center justify-between gap-6 h-[72px]">
-      <a href="/" class="flex items-center gap-3 no-underline" aria-label="Immersion English – home">
+      <a href={homeHref} class="flex items-center gap-3 no-underline" aria-label={t.home}>
         <img src="/ie-logo-80.png" alt="Immersion English" width="40" height="40" class="h-10 w-auto block" loading="eager" />
         <span class="block text-[0.72rem] font-heading font-semibold tracking-wide leading-tight" style="color: var(--ink-soft);">English.<br>For Living.</span>
       </a>
 
       <!-- DESKTOP NAV -->
       <div class="hidden md:flex items-center gap-7">
-        <a href="/about" class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">About</a>
-        <a href="/lessons" class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">Lessons</a>
-        <a href="/corporate-training" class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">Corporate Training</a>
+        <a href={href("/about")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.about}</a>
+        <a href={href("/lessons")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.lessons}</a>
+        <a href={href("/corporate-training")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.corporate}</a>
 
         <!-- Dropdown -->
         <div class="relative group">
           <a
-            href="/dublin-summer-2027"
+            href={href("/dublin-summer-2027")}
             class="flex items-center gap-1 no-underline whitespace-nowrap text-[0.94rem] font-semibold transition-opacity hover:opacity-80"
             style="color: var(--orange-text);"
           >
-            Dublin Summer 2027
+            {t.dublin}
             <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
             </svg>
@@ -50,15 +65,20 @@ const dublinSub = [
           </div>
         </div>
 
-        <a href="/blog" class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">Blog</a>
-        <a href="/contact" class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">Contact</a>
+        <a href={href("/blog")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.blog}</a>
+        <a href={href("/contact")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.contact}</a>
+        <span class="flex items-center gap-1 text-[0.82rem] font-heading font-semibold pl-5 border-l border-line" aria-label="Language">
+          {bg ? <a href={switchHref} hreflang="en" lang="en" class="text-ink-soft no-underline hover:text-brand-green transition-colors">EN</a> : <span class="text-ink" aria-current="true">EN</span>}
+          <span class="text-ink-mute" aria-hidden="true">|</span>
+          {bg ? <span class="text-ink" aria-current="true">БГ</span> : <a href={switchHref} hreflang="bg" lang="bg" class="text-ink-soft no-underline hover:text-brand-green transition-colors">БГ</a>}
+        </span>
       </div>
 
       <!-- MOBILE TOGGLE -->
       <button
         id="nav-toggle"
         class="md:hidden w-10 h-10 p-2 bg-transparent border-0 flex flex-col justify-center items-stretch gap-[5px] cursor-pointer"
-        aria-label="Open menu"
+        aria-label={t.open}
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
@@ -74,15 +94,15 @@ const dublinSub = [
         <!-- Mobile dropdown — link + separate chevron -->
         <div>
           <div class="flex items-center justify-between">
-            <a href="/dublin-summer-2027" class="py-2 no-underline text-[0.98rem] font-semibold flex-1" style="color: var(--orange-text);">
-                Dublin Summer 2027
+            <a href={href("/dublin-summer-2027")} class="py-2 no-underline text-[0.98rem] font-semibold flex-1" style="color: var(--orange-text);">
+                {t.dublin}
             </a>
             <button
               id="mobile-dublin-toggle"
               class="w-10 h-10 flex items-center justify-center bg-transparent border-0 cursor-pointer transition-colors" style="color: var(--orange-text);"
               aria-expanded="false"
               aria-controls="mobile-dublin-sub"
-              aria-label="Toggle Dublin Summer submenu"
+              aria-label={t.sub}
             >
               <svg id="mobile-dublin-chevron" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
@@ -100,12 +120,17 @@ const dublinSub = [
           </ul>
         </div>
 
-        <a href="/about" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">About</a>
-        <a href="/lessons" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Lessons</a>
-        <a href="/corporate-training" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Corporate Training</a>
+        <a href={href("/about")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.about}</a>
+        <a href={href("/lessons")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.lessons}</a>
+        <a href={href("/corporate-training")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.corporate}</a>
 
-        <a href="/blog" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Blog</a>
-        <a href="/contact" class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">Contact</a>
+        <a href={href("/blog")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.blog}</a>
+        <a href={href("/contact")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.contact}</a>
+        <div class="flex items-center gap-2 pt-3 mt-2 border-t border-line text-[0.9rem] font-heading font-semibold" aria-label="Language">
+          {bg ? <a href={switchHref} hreflang="en" lang="en" class="text-ink-soft no-underline">English</a> : <span class="text-ink" aria-current="true">English</span>}
+          <span class="text-ink-mute" aria-hidden="true">|</span>
+          {bg ? <span class="text-ink" aria-current="true">Български</span> : <a href={switchHref} hreflang="bg" lang="bg" class="text-ink-soft no-underline">Български</a>}
+        </div>
       </div>
     </div>
   </nav>
