@@ -74,13 +74,13 @@ const { excursions } = dublin;
   {excursions !== null && (
     <>
       {[
+        { key: 'half-day', eyebrow: 'Half-day excursions', heading: '<span style="color: var(--orange-text);">In</span> the city.' },
         { key: 'full-day', eyebrow: 'Full-day excursions', heading: '<span style="color: var(--orange-text);">Out</span> of the city.' },
-        { key: 'half-day', eyebrow: 'Half-day excursions', heading: 'In the city.' },
       ].map(({ key, eyebrow, heading }, groupIndex) => {
         const items = excursions.filter(e => e.duration === key);
         if (items.length === 0) return null;
         return (
-          <section class={groupIndex === 1 ? 'section section-tinted' : 'section'}>
+          <section class={groupIndex === 0 ? 'section section-tinted' : 'section'}>
             <div class="container-x">
               <div class="section-head">
                 <span class="eyebrow eyebrow-dot">{eyebrow}</span>
