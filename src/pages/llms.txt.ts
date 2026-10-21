@@ -95,7 +95,7 @@ Immersion English is a booking agent, and accompanies its own group at an intern
 - **Centre:** Our Dublin partner is a member of the British Council Partner Schools Network (https://partner-schools.english.britishcouncil.org/)
 - **Nationality mix:** International — students from across Europe and beyond
 - **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is the centre's published Dublin programme from MLA's Summer 2027 NCI centre brochure.
-- **Supervision:** ${groupLeader.name} (${groupLeader.credential} ${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` and ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} ${groupLeaderTravelPhrase(groupLeader)} and are with them throughout. On-site supervision is provided by the centre.
+- **Supervision:** ${groupLeader.name} (${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` or ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} ${groupLeaderTravelPhrase(groupLeader)} and is with them throughout. On-site supervision is provided by the centre.
 
 ### Included
 
@@ -118,7 +118,7 @@ ${notIncluded.map(i => `- ${i}`).join('\n')}
 ## Key differentiators
 
 - International centre — students from across Europe, not a single-nationality group
-- ${groupLeader.name} (${groupLeader.credential} ${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` and ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} ${groupLeaderTravelPhrase(groupLeader)} and are with them throughout
+- ${groupLeader.name} (${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` or ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} ${groupLeaderTravelPhrase(groupLeader)} and is with them throughout
 ${secondChaperone ? `- ${secondChaperone.role} with the group throughout\n` : ''}- Full board and en-suite campus accommodation included
 - Three fixed lengths — ${durationOptionsLabel(durations)} — each with its own set of 2027 dates
 - British Council credentials of both founders

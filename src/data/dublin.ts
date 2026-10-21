@@ -179,8 +179,8 @@ type GroupLeader = DublinProgramme['groupLeader'];
  */
 export function groupLeaderTravelPhrase(groupLeader: GroupLeader): string {
   return groupLeader.travelsFromSofia
-    ? 'travel with the group from Sofia to Dublin and back'
-    : `meet the group at ${groupLeader.meetsAt}`;
+    ? 'travels with the group from Sofia to Dublin and back'
+    : `meets the group at ${groupLeader.meetsAt}`;
 }
 
 /** Gerund form of the above, e.g. "travelling with the group from Sofia to
