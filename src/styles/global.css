@@ -413,7 +413,8 @@
   transition: filter 0.66s ease;
 }
 .trip-card-link:hover .trip-card-img,
-.trip-card:hover .trip-card-img {
+.trip-card:hover .trip-card-img,
+.trip-card-img-wrap:hover .trip-card-img {
   filter: grayscale(0%) contrast(1);
 }
 .trip-tag {
