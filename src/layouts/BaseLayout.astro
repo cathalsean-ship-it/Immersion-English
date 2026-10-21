@@ -273,17 +273,29 @@ const META_PIXEL_ID = '4098945000240922';
       if (!targets.length) return;
 
       let ticking = false;
+      // Touch screens only. With a mouse, hover is the reveal: running this on
+      // desktop coloured the first of any photos sitting side by side (e.g. the
+      // homepage trip cards, leaving the others grey) and coloured photos that
+      // weren't even on screen yet.
+      const touch = window.matchMedia('(hover: none)');
 
       function update() {
+        if (!touch.matches) {
+          targets.forEach((el) => el.classList.remove('in-view'));
+          ticking = false;
+          return;
+        }
         const mid = window.innerHeight / 2;
         let closest = null;
         let closestDist = Infinity;
         targets.forEach((el) => {
           const rect = el.getBoundingClientRect();
-          // Skip photos that aren't actually on screen sideways – carousel
-          // slides share one height, so without this the first slide would
-          // win even after the visitor swipes to another – or are hidden.
+          // Skip photos that aren't actually on screen – off to the side
+          // (carousel slides share one height, so without this the first slide
+          // would win even after the visitor swipes to another), above or
+          // below the screen, or hidden.
           if (rect.width === 0 || rect.right <= 0 || rect.left >= window.innerWidth) return;
+          if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
           const elMid = rect.top + rect.height / 2;
           const dist = Math.abs(elMid - mid);
           if (dist < closestDist) {
