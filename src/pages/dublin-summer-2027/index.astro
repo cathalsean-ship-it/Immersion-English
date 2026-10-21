@@ -127,8 +127,8 @@ const courseSchema = {
             desc: "A placement test before departure places every student by CEFR level, alongside students from across Europe – not just their own classmates from home.",
           },
           {
-            title: `${groupLeader.name}, ${groupLeader.credential}`,
-            desc: `${groupLeader.credential}, ${groupLeaderTravelPhraseGerund(groupLeader)} and with them for the whole stay.`,
+            title: `${groupLeader.name}, ${groupLeader.role.toLowerCase()}`,
+            desc: 'An Irish native with years of Dublin life behind him. A familiar face for students and a reassuring one for parents.',
           },
           {
             title: secondChaperone?.role,
