@@ -280,6 +280,10 @@ const META_PIXEL_ID = '4098945000240922';
         let closestDist = Infinity;
         targets.forEach((el) => {
           const rect = el.getBoundingClientRect();
+          // Skip photos that aren't actually on screen sideways – carousel
+          // slides share one height, so without this the first slide would
+          // win even after the visitor swipes to another – or are hidden.
+          if (rect.width === 0 || rect.right <= 0 || rect.left >= window.innerWidth) return;
           const elMid = rect.top + rect.height / 2;
           const dist = Math.abs(elMid - mid);
           if (dist < closestDist) {

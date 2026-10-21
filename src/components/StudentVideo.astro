@@ -40,12 +40,13 @@ const posterStyle =
     style="aspect-ratio: 16/9; border: 1px solid var(--line); box-shadow: var(--shadow-md); background: var(--cream);"
   >
     {typeof poster === 'string'
-      ? <img src={poster} alt="" style={posterStyle} loading="lazy" decoding="async" />
+      ? <img src={poster} alt="" class="img-greyscale" style={posterStyle} loading="lazy" decoding="async" />
       : <Image
           src={poster}
           alt=""
           widths={[480, 760, 1140]}
           sizes="(max-width: 767px) 92vw, 620px"
+          class="img-greyscale"
           style={posterStyle}
           loading="lazy"
         />}
