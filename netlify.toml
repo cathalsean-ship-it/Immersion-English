@@ -1,4 +1,5 @@
-# No redirect rules on purpose.
+# No catch-all redirect rules on purpose. Only exact, single-path short links
+# (see the bottom of this file).
 #
 # There used to be a single rule here meant to strip trailing slashes:
 #
@@ -29,3 +30,12 @@
 # See plugins/indexnow/index.js.
 [[plugins]]
   package = "/plugins/indexnow"
+
+# Short link printed on the business cards for the Sofia private schools fair
+# (Oct 2026). Exact path only, no splat, so it cannot touch real pages.
+# 302 so search engines never index /dublin2027 in place of the real page.
+# Every visit here is counted as the fair in GA4, so use it on fair materials only.
+[[redirects]]
+  from = "/dublin2027"
+  to = "/dublin-summer-2027?utm_source=private-schools-fair&utm_medium=print&utm_campaign=dublin-2027&utm_content=business-card"
+  status = 302
