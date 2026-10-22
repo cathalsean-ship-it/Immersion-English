@@ -8,7 +8,7 @@ import ProgrammeTimetable from '../../../components/ProgrammeTimetable.astro';
 import { dublin, bestValueDuration } from '../../../data/dublin';
 import { durationOptionsLabelBg, startMonthsLabelBg, formatStartDateBg, euroBg, includedBg, notIncludedBg, nameBg } from '../../../data/dublin-bg';
 
-// DRAFT – Bulgarian Dublin page. Mirrors src/pages/dublin-summer-2027/index.astro
+// Bulgarian Dublin page (live since 22 Oct 2026). Mirrors src/pages/dublin-summer-2027/index.astro
 // section for section; if the English page changes layout, change this one too.
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
@@ -58,11 +58,9 @@ const courseSchema = {
 <BaseLayout
   title={`Лятна езикова програма в Дъблин за тийнейджъри ${dublin.year} | Immersion English`}
   description={`Лятна програма с пълно потапяне в английския в Дъблин за тийнейджъри на ${ages.min}–${ages.max} г.: ${durationOptionsLabelBg(durations)} през ${startMonthsLabelBg(durations)}, ${lessonsPerWeek} урока седмично, пълен пансион и групов ръководител, който е с тях през цялото време.`}
-  noindex
   ogImage="/og/dublin-summer-2027.jpg"
 >
 
-  {/* DRAFT: noindex until approved. On approval remove it and add this page to public/sitemap.xml. */}
   <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} />
 
   <!-- HERO -->

@@ -5,7 +5,7 @@ import studentsWalking from '../../assets/dublin-welcome-group.jpg';
 import { dublin } from '../../data/dublin';
 import { durationOptionsLabelBg, startMonthsLabelBg, priceFromLabelBg, excursionsBg } from '../../data/dublin-bg';
 
-// DRAFT – Bulgarian homepage. Mirrors src/pages/index.astro section for
+// Bulgarian homepage (live since 22 Oct 2026). Mirrors src/pages/index.astro section for
 // section; if the English page changes layout, change this one too.
 
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
@@ -38,9 +38,7 @@ const teaserTrips = (() => {
 <BaseLayout
   title="Immersion English | Уроци по английски и лятна програма в Дъблин за тийнейджъри"
   description={`Носител на езика с Cambridge CELTA, опитен преподавател по английски в София. Онлайн разговорни уроци за възрастни и лятна програма в Дъблин за ${ages.min}–${ages.max} години.`}
-  noindex
 >
-  {/* DRAFT: noindex until approved. On approval remove it and add /bg to public/sitemap.xml. */}
   <!-- HERO -->
   <section class="relative flex items-stretch text-white overflow-hidden isolate">
     <div
