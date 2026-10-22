@@ -11,10 +11,10 @@ const year = new Date().getFullYear();
 
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-line">
       <!-- Logo + strapline -->
-      <div class="flex items-center gap-3">
-        <img src="/ie-logo-80.png" alt="Immersion English" width="40" height="40" class="h-10 w-auto block" loading="lazy" />
-        <p class="text-[0.88rem] font-heading font-semibold tracking-wide" style="color: var(--ink);">English. For Living.</p>
-      </div>
+      <a href={bg ? '/bg' : '/'} class="flex items-center gap-3 no-underline self-start transition-opacity hover:opacity-80" aria-label={bg ? 'Immersion English – начало' : 'Immersion English – home'}>
+        <img src="/ie-logo-80.png" alt="" width="40" height="40" class="h-10 w-auto block" loading="lazy" />
+        <span class="text-[0.88rem] font-heading font-semibold tracking-wide" style="color: var(--ink);">English. For Living.</span>
+      </a>
 
       <!-- Social icons — grey -->
       <div class="flex items-center gap-3">
