@@ -346,7 +346,7 @@ import { courses } from '../data/courses';
           <img
             src="/lessons-hero.webp"
             alt="English lesson in progress"
-            class="img-greyscale no-hover-reveal w-full h-full object-cover"
+            class="img-greyscale w-full h-full object-cover"
             id="lessons-hero-img"
             style="min-height: 400px;"
             loading="lazy"
@@ -457,27 +457,4 @@ import { courses } from '../data/courses';
 
 </BaseLayout>
 
-<script>
-  const img = document.getElementById('lessons-hero-img');
-  if (img) {
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    if (isMobile) {
-      // Mobile: reveal on scroll into view
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            img.classList.add('in-view');
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.6 }
-      );
-      observer.observe(img);
-    } else {
-      // Desktop: reveal on hover, grey on mouse leave
-      img.addEventListener('mouseenter', () => img.classList.add('in-view'));
-      img.addEventListener('mouseleave', () => img.classList.remove('in-view'));
-    }
-  }
-</script>
 
