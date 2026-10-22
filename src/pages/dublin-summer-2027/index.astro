@@ -237,6 +237,8 @@ const courseSchema = {
   <!-- WHAT'S INCLUDED -->
   <section id="included" class="section section-tinted">
     <div class="container-x">
+      {/* Eyebrow above the photo/text row, like the other sections' eyebrows. */}
+      <span class="eyebrow eyebrow-dot block mb-6">Included in Dublin Summer {dublin.year}</span>
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-start">
         <div class="dublin-img-wrap" style="position: relative; border-radius: var(--radius-md); overflow: hidden; min-height: 520px;">
           <Image
@@ -270,9 +272,8 @@ const courseSchema = {
         </div>
 
         <div>
-          <span class="eyebrow eyebrow-dot">Included in Dublin Summer {dublin.year}</span>
 
-          <dl class="grid grid-cols-2 gap-7 mt-6 mb-8 py-8 border-y border-line">
+          <dl class="grid grid-cols-2 gap-7 mt-0 mb-8 py-8 border-y border-line">
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Lengths available</dt>
               <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationOptionsLabel(durations)}</dd>
