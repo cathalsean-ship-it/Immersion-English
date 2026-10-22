@@ -841,4 +841,4 @@
    step down slightly and get more width to keep the English line shape
    (three lines on desktop) instead of breaking into six. */
 html[lang="bg"] h1 { font-size: clamp(1.9rem, 3.9vw, 3.4rem); }
-html[lang="bg"] .bg-hero-wide { max-width: 940px; }
+html[lang="bg"] .bg-hero-wide { max-width: 1040px; }
