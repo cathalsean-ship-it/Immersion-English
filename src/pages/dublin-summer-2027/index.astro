@@ -109,50 +109,8 @@ const courseSchema = {
     </div>
   </section>
 
-  <!-- HIGHLIGHTS -->
-  <section class="section" style="padding-top: 44px; padding-bottom: 44px;">
-    <div class="container-x">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {[
-          {
-            title: 'Full board',
-            desc: 'Every meal covered, from dinner on arrival to breakfast on departure day. Nothing left to plan or pay for once you land.',
-          },
-          {
-            title: `Ages ${ages.min}–${ages.max}`,
-            desc: 'Old enough to explore, young enough to need looking after – so we as leaders stay close, whatever the age.',
-          },
-          {
-            title: 'International, grouped by level',
-            desc: "A placement test before departure places every student by CEFR level, alongside students from across Europe – not just their own classmates from home.",
-          },
-          {
-            title: `${groupLeader.name}, ${groupLeader.role.toLowerCase()}`,
-            desc: 'An Irish native with years of Dublin life behind him. A familiar face for students and a reassuring one for parents.',
-          },
-          {
-            title: secondChaperone?.role,
-            desc: `With the group throughout the stay – the person parents can always reach directly, in Bulgarian.`,
-          },
-          {
-            title: `${venue.shortName}, in the heart of Dublin`,
-            desc: `Campus accommodation at the ${venue.name}, in ${venue.area} – a short walk from Temple Bar and the city centre.`,
-          },
-        ].map(({ title, desc }) => (
-          <div class="trust-card">
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              <h3 style="margin: 0; font-size: 1.05rem;">{title}</h3>
-              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-            </div>
-            <p style="margin: 0; font-size: 0.92rem;">{desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- PRICING -->
-  <section class="section" style="padding-top: 8px;">
+  <section class="section">
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Choose your stay</span>
@@ -417,6 +375,48 @@ const courseSchema = {
             <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">A native Bulgarian speaker on hand throughout the stay. Your child is never alone.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS – sit under Supervision, owner's request 22 Oct 2026 -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container-x">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {
+            title: 'Full board',
+            desc: 'Every meal covered, from dinner on arrival to breakfast on departure day. Nothing left to plan or pay for once you land.',
+          },
+          {
+            title: `Ages ${ages.min}–${ages.max}`,
+            desc: 'Old enough to explore, young enough to need looking after – so we as leaders stay close, whatever the age.',
+          },
+          {
+            title: 'International, grouped by level',
+            desc: "A placement test before departure places every student by CEFR level, alongside students from across Europe – not just their own classmates from home.",
+          },
+          {
+            title: `${groupLeader.name}, ${groupLeader.role.toLowerCase()}`,
+            desc: 'An Irish native with years of Dublin life behind him. A familiar face for students and a reassuring one for parents.',
+          },
+          {
+            title: secondChaperone?.role,
+            desc: `With the group throughout the stay – the person parents can always reach directly, in Bulgarian.`,
+          },
+          {
+            title: `${venue.shortName}, in the heart of Dublin`,
+            desc: `Campus accommodation at the ${venue.name}, in ${venue.area} – a short walk from Temple Bar and the city centre.`,
+          },
+        ].map(({ title, desc }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0; font-size: 1.05rem;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0; font-size: 0.92rem;">{desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
