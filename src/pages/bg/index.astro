@@ -37,7 +37,7 @@ const teaserTrips = (() => {
 
 <BaseLayout
   title="Immersion English | Уроци по английски и лятна програма в Дъблин за тийнейджъри"
-  description={`Преподавател по английски с квалификация Cambridge CELTA в София. Онлайн уроци с фокус върху говоренето за възрастни и лятна програма в международен център в Дъблин за ученици на ${ages.min}–${ages.max} години.`}
+  description={`Носител на езика с Cambridge CELTA, опитен преподавател по английски в София. Онлайн разговорни уроци за възрастни и лятна програма в Дъблин за ${ages.min}–${ages.max} години.`}
   noindex
 >
   {/* DRAFT: noindex until approved. On approval remove it and add /bg to public/sitemap.xml. */}
@@ -76,15 +76,15 @@ const teaserTrips = (() => {
           numbers. If you edit one sentence, edit the other.
         */}
         <p class="md:hidden mt-5 text-[1rem] text-white/85 leading-[1.55]">
-          Уроци по английски с фокус върху говоренето за възрастни и тийнейджъри и лятна програма в Дъблин с пълно потапяне в езика за {ages.min}–{ages.max} години.
+          Уроци по английски за възрастни и тийнейджъри, с фокус върху говоренето, и лятна програма в Дъблин с пълно потапяне в английския за {ages.min}–{ages.max} години.
         </p>
         <p class="hidden md:block mt-5 text-[1.18rem] text-white/85 max-w-[56ch] leading-[1.55]">
-          Immersion English предлага уроци по английски с фокус върху говоренето за възрастни и тийнейджъри, както и лятна програма в Дъблин с пълно потапяне в езика за деца на {ages.min}–{ages.max} години.
+          Immersion English провежда уроци по английски за възрастни и тийнейджъри, с фокус върху говоренето и използването на езика, както и лятна програма в Дъблин с пълно потапяне в английския за ученици на възраст {ages.min}–{ages.max} години.
         </p>
 
         <div class="mt-5 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
           <a href="/bg/dublin-summer-2027" class="btn btn-primary">
-            Разгледайте Дъблин 2027
+            Разгледайте лятната програма в Дъблин 2027
           </a>
           <a href="/lessons" class="btn btn-ghost text-white border-white/30 hover:border-white">
             Изберете своите уроци
@@ -155,7 +155,7 @@ const teaserTrips = (() => {
           <h2 class="mt-4 mb-2">Английски. <span style="color: var(--orange-text);">Отвъд класната стая.</span></h2>
           </div>
           <p class="text-ink-soft text-[1.08rem] max-w-[56ch] mb-3">
-            Всяко лято водим група от София в международен летен център в Дъблин, в {venue.name} – където английският престава да бъде учебен предмет и става част от ежедневието.
+            Всяко лято водим група от София в международен летен център в сърцето на Дъблин, в {venue.name} – където английският престава да бъде учебен предмет и става част от ежедневния живот на децата.
           </p>
           <p class="font-heading font-semibold text-[1.18rem] leading-snug mb-0" style="color: var(--orange-text);">
             Истински разговори.<br/>Истинска увереност.<br/>Ученици от цяла Европа.
@@ -169,7 +169,7 @@ const teaserTrips = (() => {
               { label: 'Възраст', value: `${ages.min}–${ages.max}` },
               { label: 'Продължителност', value: durationOptionsLabelBg(durations) },
               { label: 'Ср. брой в клас', value: `${classSize.average}` },
-              { label: 'Цена на програмата', value: `От ${priceFromLabelBg(durations)}`, accent: true },
+              { label: 'Цена', value: `От ${priceFromLabelBg(durations)}`, accent: true },
             ].map(({ label, value, accent, wide }) => (
               <div class={`px-4 py-5 md:px-7 md:py-6 ${accent || wide ? 'col-span-2' : ''}`} style="background: var(--green-soft);">
                 <dt class="font-heading text-[0.64rem] md:text-[0.74rem] uppercase tracking-[0.1em] md:tracking-[0.14em] mb-2 font-semibold" style="color: var(--green);">{label}</dt>
@@ -180,11 +180,11 @@ const teaserTrips = (() => {
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3">
             {[
-              { label: 'Вашите групови ръководители през цялото време', detail: 'с детето ви от София до Дъблин и обратно, летищните трансфери са включени' },
-              { label: 'Грижа на място', detail: 'отговорник за благосъстоянието на учениците и медицински персонал денонощно' },
-              { label: 'Кампус със самостоятелни бани, пълен пансион', detail: `истинско студентско преживяване в ${venue.name}, в сърцето на Дъблин, с включени всички хранения и предплатена карта за храна по време на екскурзиите` },
+              { label: 'Групови ръководители, които познавате', detail: 'ще пътуваме с детето ви от София до Дъблин и обратно и ще сме с тях през целия престой. Летищните трансфери са включени в цената.' },
+              { label: 'Грижа на място', detail: 'отговорник за благосъстоянието на учениците и денонощен медицински персонал.' },
+              { label: 'Стаи със самостоятелни бани, пълен пансион', detail: `истинско студентско преживяване в ${venue.name}, в сърцето на Дъблин. Храната е включена в таксата, а по време на екскурзиите детето ви ще използва предплатена карта за храна.` },
               { label: `${lessonsPerWeek} урока седмично`, detail: `${hoursPerWeek} часа с квалифицирани преподаватели по английски` },
-              { label: 'Международно преживяване', detail: 'ученици от цяла Европа, така че английският става език на общуването, културния обмен и приятелството' },
+              { label: 'Международно преживяване', detail: 'ученици от цяла Европа, така че английският става език на общуването, културен обмен и приятелство' },
               { label: 'Нашият партньор в Дъблин', detail: '', detailHtml: 'член на мрежата <a href="https://partner-schools.english.britishcouncil.org/" target="_blank" rel="noopener" class="underline">British Council Partner Schools Network</a>' },
             ].map(({ label, detail, detailHtml }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
@@ -213,8 +213,8 @@ const teaserTrips = (() => {
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Включено в Лято в Дъблин {dublin.year}</span>
-        <h2>Цяло лято в <span style="color: var(--orange-text);">Дъблин</span>, изцяло на английски.</h2>
-        <p>Уроци по английски, културни екскурзии и истински ирландски живот – всичко е включено в цената. Транспорт, входни билети, настаняване и пълен надзор от пристигането до заминаването.</p>
+        <h2>Лятна програма в <span style="color: var(--orange-text);">Дъблин</span>, изцяло на английски.</h2>
+        <p>Уроци по английски, образователни екскурзии и потапяне в истинския ирландски живот – всичко е включено в цената. Транспорт, входни билети, настаняване и пълен надзор от момента на пристигането до заминаването.</p>
       </div>
 
       {/* TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
@@ -280,18 +280,18 @@ const teaserTrips = (() => {
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Защо Immersion English</span>
-        <h2>Английският се <span style="color: var(--orange-text);">научава</span> най-добре, когато се използва <span style="color: var(--orange-text);">смислено</span>.</h2>
+        <h2>Английският се <span style="color: var(--orange-text);">учи</span> най-добре, когато се използва <span style="color: var(--orange-text);">смислено</span>.</h2>
         <p>
-          Нашите уроци са за възрастни и тийнейджъри, които искат да говорят – а не само да учат. Независимо дали се подготвяте за интервю за работа, презентация, изпит или ежедневието на английски, ние се фокусираме върху това, което наистина ви придвижва напред.
+          Нашите уроци са за възрастни и тийнейджъри, които искат да говорят – а не само да учат. Независимо дали се подготвяте за интервю за работа, презентация, изпит или ежедневие на английски, ние се фокусираме върху това, което наистина ви придвижва напред.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
           { title: 'Говоренето на първо място', body: 'Във всеки урок приоритет са активното говорене и истинската комуникация, а не пасивното учене. Излизате от всеки час, след като сте използвали английския, а не просто сте го учили.' },
-          { title: 'Личен подход', body: 'Индивидуалните уроци са изградени изцяло около вас – вашите цели, вашия график, вашето ниво. Без фиксирана учебна програма и без общо темпо. Само фокусирано внимание един на един още от първия час.' },
-          { title: 'Малки групи, много внимание', body: 'До 8 участници в група в онлайн курсовете ни Speak Up!. Получавате индивидуална обратна връзка, повече време да говорите и преподавател, който познава целите ви.' },
-          { title: 'Опит, който има значение', body: 'Лени е роден говорител на английски от Ирландия, с квалификация Cambridge CELTA и основател на Immersion English – с 10 години преподаване на общ и бизнес английски в Британски съвет – София и опит в международни летни програми в Оксфорд и Кеймбридж.' },
+          { title: 'Личен подход', body: 'Индивидуалните уроци са изградени изцяло около вас – вашите цели, вашия график, вашето ниво. Без фиксирана учебна програма и без общо темпо. Само фокусирано персонално внимание още от първия урок.' },
+          { title: 'Малки групи, голямо внимание', body: 'До 8 човека в онлайн групите Speak Up!. Получавате индивидуална обратна връзка, повече време да говорите и преподавател, който знае целите ви.' },
+          { title: 'Опит, който има значение', body: 'Лени е от Ирландия, с квалификация Cambridge CELTA и основател на Immersion English – с 10 години опит в преподаването на общ и бизнес английски в Британски съвет в България и опит в международни летни програми в Оксфорд и Кеймбридж.' },
         ].map(({ title, body }) => (
           <div class="trust-card">
             <div style="display: flex; flex-direction: column; gap: 14px;">
@@ -341,7 +341,7 @@ const teaserTrips = (() => {
     <div class="container-x">
       <div class="max-w-[540px]">
         <span class="eyebrow eyebrow-dot" style="color: var(--green-on-dark);">Контакти</span>
-        <h2 class="mt-4 mb-4"><span class="text-white">Имате </span><span style="color: var(--orange);">въпрос?</span><span class="text-white"> Тук сме.</span></h2>
+        <h2 class="mt-4 mb-4"><span class="text-white">Имате </span><span style="color: var(--orange);">въпрос?</span><span class="text-white"> Ще ни намерите тук.</span></h2>
         <p>Пишете ни и ще ви помогнем да изберете подходящата програма или курс.</p>
 
         <div class="flex flex-col gap-6 mt-8">

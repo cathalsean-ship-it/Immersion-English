@@ -57,7 +57,7 @@ const courseSchema = {
 
 <BaseLayout
   title={`Лятна езикова програма в Дъблин за тийнейджъри ${dublin.year} | Immersion English`}
-  description={`Лятна програма с пълно потапяне в английския език в Дъблин, Ирландия, за тийнейджъри на ${ages.min}–${ages.max} години: ${durationOptionsLabelBg(durations)} през ${startMonthsLabelBg(durations)}, ${lessonsPerWeek} урока седмично, пълен пансион и стаи със самостоятелна баня в кампус, с нашите групови ръководители от София.`}
+  description={`Лятна програма с пълно потапяне в английския в Дъблин за тийнейджъри на ${ages.min}–${ages.max} г.: ${durationOptionsLabelBg(durations)} през ${startMonthsLabelBg(durations)}, ${lessonsPerWeek} урока седмично, пълен пансион и групов ръководител, който е с тях през цялото време.`}
   noindex
   ogImage="/og/dublin-summer-2027.jpg"
 >
@@ -85,7 +85,7 @@ const courseSchema = {
         </h1>
 
         <p class="mt-4 text-[0.98rem] md:text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">
-          Лято с пълно потапяне в английския език за тийнейджъри в Дъблин, Ирландия – {durationOptionsLabelBg(durations)} през {startMonthsLabelBg(durations)}. Лято, за което детето ви ще разказва още дълго.
+          Лято с цялостно потапяне в английския език за тийнейджъри в Дъблин, Ирландия – за {durationOptionsLabelBg(durations)} през месец {startMonthsLabelBg(durations)}. Лято, за което детето ви ще разказва още дълго.
         </p>
 
         <div class="mt-7 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
@@ -101,7 +101,7 @@ const courseSchema = {
         <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[680px]">
           {[
             'Групов ръководител с Cambridge CELTA, от София',
-            'Ръководител, който говори български, през цялото време',
+            'Ръководител, който говори български, е с групата през цялото време',
             'Международен център с ученици от цяла Европа',
             'Пълен пансион, кампус със самостоятелни бани',
           ].map(item => (
@@ -162,7 +162,7 @@ const courseSchema = {
   <section class="section">
     <div class="container-x">
       <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Защо Лято в Дъблин {dublin.year}</span>
+        <span class="eyebrow eyebrow-dot">Защо да изберете лятната програма в Дъблин през {dublin.year}</span>
         <h2>Няма просто да учат английски. Ще го <span style="color: var(--orange-text);">живеят</span>.</h2>
       </div>
 
@@ -194,7 +194,7 @@ const courseSchema = {
             <p style="margin: 0; font-size: 0.95rem;">
               Не просто класна стая – истинска англоговоряща столица, където
               дружелюбните местни хора винаги са готови за разговор. Екскурзиите из Дъблин, до
-              пристанищното селище Хаут и целодневното пътуване до Килкени
+              пристанищното селище Хоут и целодневното пътуване до Килкени
               поддържат английския жив дълго след края на урока.
             </p>
           </div>
@@ -203,7 +203,7 @@ const courseSchema = {
             <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
             <h3 style="margin: 0; font-size: 1.05rem;">Международно преживяване</h3>
             <p style="margin: 0; font-size: 0.95rem;">
-              Малки класове със средно {classSize.average} ученици, с връстници от
+              Малки групи със средно {classSize.average} ученици и връстници от
               цяла Европа и света – не само с други български тийнейджъри. Цял
               международен летен център в {venue.area}, на десет минути пеша от
               центъра на града.
@@ -278,8 +278,8 @@ const courseSchema = {
               <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{ages.min}–{ages.max}</dd>
             </div>
             <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Брой в клас</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} средно, до {classSize.maximum}</dd>
+              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Размер на групите</dt>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">средно {classSize.average} ученика</dd>
             </div>
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Цена на програмата</dt>
@@ -318,7 +318,7 @@ const courseSchema = {
       <!-- SAMPLE TIMETABLE -->
       <div class="mt-16 md:mt-20">
         <p class="text-ink-soft text-[0.95rem] leading-relaxed max-w-[62ch] mb-6">
-          Уроци сутрин или следобед, екскурзия или занимание през другата половина на деня и нещо различно всяка вечер. Примерна програма за 14 дни / 13 нощувки; по-кратките престои следват по-кратък график.
+          Уроци сутрин или следобед, екскурзия или занимание през другата половина на деня и различни забавления всяка вечер. Примерна програма за 14 дни / 13 нощувки; по-кратките престои следват по-кратък график.
         </p>
 
         <ProgrammeTimetable lang="bg" />
@@ -332,17 +332,18 @@ const courseSchema = {
       <div class="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 md:gap-20 items-center">
         <div>
           <span class="eyebrow eyebrow-dot">Грижа и надзор</span>
-          <h2 class="mt-4 mb-5"><span style="color: var(--orange-text);">Подкрепа</span> на всяка стъпка.</h2>
+          <h2 class="mt-4 mb-5"><span style="color: var(--orange-text);">Подкрепа</span> по всяко време от престоя им.</h2>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-5">
-            За много тийнейджъри това е първото пътуване без родителите им и знаем, че
-            това е важен момент и за вас. Даваме им истинска самостоятелност, с надзор
-            винаги наблизо, и поддържаме връзка с вас през цялото време.
+            За много тийнейджъри това ще бъде първото пътуване без родителите им и знаем,
+            че това е важен момент както за тях, така и за вас. Даваме им истинска
+            самостоятелност, с надзор като винаги сме наблизо, поддържайки връзка с вас
+            през цялото време.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
             {nameBg(groupLeader.name)}{secondChaperone?.name ? ` или ${nameBg(secondChaperone.name)}` : ''} {groupLeader.travelsFromSofia ? 'пътува с групата от София, а двамата остават през цялата програма' : 'посреща групата в Дъблин, а двамата остават през цялата програма'}.
             {nameBg(secondChaperone?.name) || 'Ръководител'} говори български, а отговорник за благосъстоянието
-            и медицински персонал са на място денонощно – винаги има кой да се погрижи за детето ви,
-            и за вас.
+            и медицински персонал са на място денонощно – винаги има кой да се погрижи за детето ви
+            и да поддържа контакт с вас.
           </p>
         </div>
         <div style="position: relative;">
@@ -386,14 +387,14 @@ const courseSchema = {
           },
           {
             title: `Възраст ${ages.min}–${ages.max}`,
-            desc: 'Достатъчно големи, за да опознават града, и достатъчно малки, за да имат нужда от грижа – затова ние като ръководители сме винаги наблизо, независимо от възрастта.',
+            desc: 'Достатъчно големи за приключения и достатъчно малки, за да имат нужда от грижа и надзор – затова ние като ръководители сме винаги наблизо, независимо от тяхната възраст.',
           },
           {
-            title: 'Международни групи по ниво',
-            desc: 'Тест преди заминаването определя нивото на всеки ученик по CEFR, а в класа той е заедно с ученици от цяла Европа – не само със съучениците си от България.',
+            title: 'Международни групи, разпределени по ниво',
+            desc: 'Тест преди заминаването определя CEFR нивото на всеки ученик, а в класа той е заедно с ученици от цяла Европа – не само със съучениците си от България.',
           },
           {
-            title: `${nameBg(groupLeader.name)}, групов ръководител`,
+            title: `${nameBg(groupLeader.name)} – групов ръководител`,
             desc: 'Ирландец, живял години наред в Дъблин. Познато лице за учениците и успокояващо присъствие за родителите.',
           },
           {
@@ -438,8 +439,8 @@ const courseSchema = {
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { href: '/dublin-summer-2027/accommodation', title: 'Настаняване', desc: `Стаи със самостоятелна баня в кампуса на ${venue.name}, с пълен пансион.` },
-          { href: '/dublin-summer-2027/trips-and-activities', title: 'Екскурзии и занимания', desc: 'Цялата програма от екскурзии, плюс вечерни занимания и занимания през уикенда, организирани от екипа на центъра.' },
+          { href: '/dublin-summer-2027/accommodation', title: 'Настаняване', desc: `Пълен пансион и стаи със самостоятелна баня в кампуса на ${venue.name}.` },
+          { href: '/dublin-summer-2027/trips-and-activities', title: 'Екскурзии и занимания', desc: 'Цялата програма от екскурзии, плюс вечерни занимания и уикенд програма, организирани от екипа на центъра.' },
           { href: '/dublin-summer-2027/weekly-programme', title: 'Седмична програма', desc: `${lessonsPerWeek} урока всяка седмица – ${hoursPerWeek} часа – с квалифицираните преподаватели на центъра.` },
           { href: '/dublin-summer-2027/faqs', title: 'Въпроси и отговори', desc: 'Отговори на въпросите, които родителите и учениците задават най-често.' },
         ].map(({ href, title, desc }) => (
