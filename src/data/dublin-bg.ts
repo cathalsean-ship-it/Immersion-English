@@ -45,7 +45,8 @@ const { venue, lessonsPerWeek, hoursPerWeek, groupLeader, secondChaperone } = du
 /** Bulgarian spelling of a team name from dublin.ts; falls back to the name as written. */
 const NAMES_BG: Record<string, string> = { Lenny: 'Лени', Lina: 'Лина' };
 export const nameBg = (n?: string | null) => (n ? NAMES_BG[n] ?? n : '');
-const leaders = [nameBg(groupLeader.name), nameBg(secondChaperone?.name)].filter(Boolean).join(' и ');
+// One leader flies with the group (either), both stay for the whole programme.
+const leaders = [nameBg(groupLeader.name), nameBg(secondChaperone?.name)].filter(Boolean).join(' или ');
 
 // Same order as dublin.included. Lead – detail, split on " – " by the page.
 export const includedBg: string[] = [
@@ -53,7 +54,7 @@ export const includedBg: string[] = [
   `Стаи със самостоятелна баня в истински университетски кампус – единични или двойни стаи в ${venue.name}, в сърцето на Дъблин`,
   'Пълен пансион и предплатена карта за храна – всички хранения са включени, а по време на екскурзиите всеки ученик получава предплатена карта, с която сам избира къде да се нахрани, плюс обяд в Hard Rock Cafe',
   'Грижа на място – отговорник за благосъстоянието на учениците и квалифициран медицински персонал денонощно, както и координатори, които правят всеки ден активен и приятен',
-  `Вашите групови ръководители през цялото време – ${leaders} пътуват с детето ви от София до Дъблин и обратно и остават през цялата програма. ${nameBg(secondChaperone?.name)} говори български и винаги е на разположение за родителите`,
+  `Вашите групови ръководители през цялото време – ${leaders} пътува с детето ви от София до Дъблин и обратно, а двамата остават през цялата програма. ${nameBg(secondChaperone?.name)} говори български и винаги е на разположение за родителите`,
   'Разгледай. Играй. Учи. – програмата от екскурзии за вашия престой, с включен транспорт и билети и безплатно приложение с куизове, мисии и значки',
   'Занимания ден и нощ – изкуство, спорт, кулинария и магия през деня; караоке, шоу на талантите, дискотеки и ирландски танци céilí вечер',
   'Летищни трансфери в двете посоки – между летище Дъблин и центъра, организирани лично от груповите ръководители',

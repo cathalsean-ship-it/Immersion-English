@@ -133,10 +133,8 @@ const courseSchema = {
             desc: 'Тест преди заминаването определя нивото на всеки ученик по CEFR, а в класа той е заедно с ученици от цяла Европа – не само със съучениците си от България.',
           },
           {
-            title: `${nameBg(groupLeader.name)}, с квалификация Cambridge CELTA`,
-            desc: groupLeader.travelsFromSofia
-              ? 'Пътува с групата от София до Дъблин и обратно и е с учениците през целия престой.'
-              : 'Посреща групата в Дъблин и е с учениците през целия престой.',
+            title: `${nameBg(groupLeader.name)}, групов ръководител`,
+            desc: 'Ирландец, живял години наред в Дъблин. Познато лице за учениците и успокояващо присъствие за родителите.',
           },
           {
             title: `${nameBg(secondChaperone?.name)} – говори български`,
@@ -368,7 +366,7 @@ const courseSchema = {
             винаги наблизо, и поддържаме връзка с вас през цялото време.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
-            {nameBg(groupLeader.name)}{secondChaperone?.name ? ` и ${nameBg(secondChaperone.name)}` : ''} {groupLeader.travelsFromSofia ? 'пътуват с групата от София и остават през цялата програма' : 'посрещат групата в Дъблин и остават през цялата програма'}.
+            {nameBg(groupLeader.name)}{secondChaperone?.name ? ` или ${nameBg(secondChaperone.name)}` : ''} {groupLeader.travelsFromSofia ? 'пътува с групата от София, а двамата остават през цялата програма' : 'посреща групата в Дъблин, а двамата остават през цялата програма'}.
             {nameBg(secondChaperone?.name) || 'Ръководител'} говори български, а отговорник за благосъстоянието
             и медицински персонал са на място денонощно – винаги има кой да се погрижи за детето ви,
             и за вас.
