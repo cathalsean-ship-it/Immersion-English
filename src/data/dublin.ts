@@ -122,7 +122,7 @@ export function durationOptionsLabel(durations: DurationOption[]): string {
   return `${days.slice(0, -1).join(', ')} or ${days[days.length - 1]} days`;
 }
 
-/** Lowest and highest retail price across the duration options, e.g. "€1,580–€3,150". */
+/** Lowest and highest retail price across the duration options, e.g. "€1,680–€3,150". */
 export function priceRangeLabel(durations: DurationOption[]): string {
   if (durations.length === 0) return '';
   const prices = durations.map(d => d.price);
@@ -132,7 +132,7 @@ export function priceRangeLabel(durations: DurationOption[]): string {
   return lo === hi ? fmt(lo) : `${fmt(lo)}–${fmt(hi)}`;
 }
 
-/** Lowest retail price across the duration options, e.g. "€1,580". */
+/** Lowest retail price across the duration options, e.g. "€1,680". */
 export function priceFromLabel(durations: DurationOption[]): string {
   if (durations.length === 0) return '';
   return `€${Math.min(...durations.map(d => d.price)).toLocaleString('en-IE')}`;
@@ -239,7 +239,8 @@ export const dublin: DublinProgramme = {
   // group-leader surcharge (one of two leaders, 70% of net rate — MLA gives
   // one free place at 12+ students) and return airport transfers for the
   // whole travelling party, marked up to a ~26% target margin at 12 students.
-  // Set 13 Oct 2026. Families book and pay for their own flights — not
+  // Set 13 Oct 2026; 7-day and 10-day raised to €1,680 and €2,390 on
+  // 22 Oct 2026 (14-day unchanged at €3,150). Families book and pay for their own flights — not
   // included in these prices; only the two group leaders' flights are an
   // Immersion English cost, already folded into the margin above.
   //
@@ -263,13 +264,13 @@ export const dublin: DublinProgramme = {
     {
       days: 7,
       nights: 6,
-      price: 1580,
+      price: 1680,
       startDates: ['01/07', '14/07', '21/07'],
     },
     {
       days: 10,
       nights: 9,
-      price: 2290,
+      price: 2390,
       startDates: ['01/07'],
     },
     {
