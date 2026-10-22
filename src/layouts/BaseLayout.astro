@@ -313,7 +313,16 @@ const META_PIXEL_ID = '4098945000240922';
           // below the screen, or hidden.
           if (rect.width === 0 || rect.right <= 0 || rect.left >= window.innerWidth) return;
           if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+          // Only colour a photo once its own centre has reached the middle
+          // band of the screen (35%–65% of the height). Checking for any
+          // overlap with the band coloured photos while only their top edge
+          // had scrolled into view. A photo taller than the band counts once
+          // it covers the whole band, so very tall images still colour.
+          const band = window.innerHeight * 0.15;
           const elMid = rect.top + rect.height / 2;
+          const centred = elMid >= mid - band && elMid <= mid + band;
+          const coversBand = rect.top <= mid - band && rect.bottom >= mid + band;
+          if (!centred && !coversBand) return;
           const dist = Math.abs(elMid - mid);
           if (dist < closestDist) {
             closestDist = dist;
