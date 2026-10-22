@@ -296,9 +296,9 @@ export const dublin: DublinProgramme = {
   included: [
     '20 lessons a week – 15 hours with qualified English teachers, in classes placed by level after an online placement test',
     'En-suite rooms on a real college campus – single or twin rooms at the National College of Ireland, in the heart of Dublin',
-    'Full board and a Prepaid Meal Card – all meals included, and on excursions every student gets a prepaid card to choose where they eat, plus a Hard Rock Cafe meal',
+    'Full board and a Prepaid Meal Card – all meals included, and on excursions every student gets a prepaid card to choose where they eat',
     'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff on site 24 hours a day, with student coordinators on hand to keep every day active and friendly',
-    'Your group leaders, all the way – Lenny and Lina travel with your child from Sofia to Dublin and back and stay for the whole programme. Lina is a native Bulgarian speaker parents can always reach',
+    'Your group leaders, all the way – Lenny or Lina travels with your child from Sofia to Dublin and back, and both stay for the whole programme. Lina is a native Bulgarian speaker parents can always reach',
     'Explore. Play. Learn. – the excursion programme for your stay, with transport and tickets included and a free app of quizzes, missions and badges',
     'Activities, day and night – art, sports, kitchen and magic by day; karaoke, talent shows, discos and an Irish céilí dance by night',
     'Return airport transfers – between Dublin Airport and the centre, arranged directly by your group leaders',
@@ -330,7 +330,7 @@ export const dublin: DublinProgramme = {
     {
       title: 'Kilkenny',
       description:
-        'A walking tour of Kilkenny city and Kilkenny Castle, travelling by private bus with local centre staff. Castle entrance ticket included.',
+        'A walking tour of Kilkenny city and Kilkenny Castle, travelling by private bus. Castle entrance ticket included.',
       duration: 'full-day',
       image: '/kilkenny.webp',
     },
