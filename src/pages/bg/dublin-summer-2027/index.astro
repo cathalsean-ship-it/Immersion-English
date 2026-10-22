@@ -115,50 +115,8 @@ const courseSchema = {
     </div>
   </section>
 
-  <!-- HIGHLIGHTS -->
-  <section class="section" style="padding-top: 44px; padding-bottom: 44px;">
-    <div class="container-x">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {[
-          {
-            title: 'Пълен пансион',
-            desc: 'Всяко хранене е включено – от вечерята в деня на пристигане до закуската в деня на заминаване. Щом кацнете, няма какво да планирате или да плащате.',
-          },
-          {
-            title: `Възраст ${ages.min}–${ages.max}`,
-            desc: 'Достатъчно големи, за да опознават града, и достатъчно малки, за да имат нужда от грижа – затова ние като ръководители сме винаги наблизо, независимо от възрастта.',
-          },
-          {
-            title: 'Международни групи по ниво',
-            desc: 'Тест преди заминаването определя нивото на всеки ученик по CEFR, а в класа той е заедно с ученици от цяла Европа – не само със съучениците си от България.',
-          },
-          {
-            title: `${nameBg(groupLeader.name)}, групов ръководител`,
-            desc: 'Ирландец, живял години наред в Дъблин. Познато лице за учениците и успокояващо присъствие за родителите.',
-          },
-          {
-            title: `${nameBg(secondChaperone?.name)} – говори български`,
-            desc: 'С групата през целия престой – човекът, с когото родителите винаги могат да се свържат директно, на български.',
-          },
-          {
-            title: `${venue.shortName}, в сърцето на Дъблин`,
-            desc: `Настаняване в кампуса на ${venue.name}, в ${venue.area} – на кратка разходка от Temple Bar и центъра на града.`,
-          },
-        ].map(({ title, desc }) => (
-          <div class="trust-card">
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              <h3 style="margin: 0; font-size: 1.05rem;">{title}</h3>
-              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
-            </div>
-            <p style="margin: 0; font-size: 0.92rem;">{desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- PRICING -->
-  <section class="section" style="padding-top: 8px;">
+  <section class="section">
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Изберете престой</span>
@@ -415,6 +373,48 @@ const courseSchema = {
             <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">Човек, който говори български, е до групата през целия престой. Детето ви никога не е само.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container-x">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {
+            title: 'Пълен пансион',
+            desc: 'Всяко хранене е включено – от вечерята в деня на пристигане до закуската в деня на заминаване. Щом кацнете, няма какво да планирате или да плащате.',
+          },
+          {
+            title: `Възраст ${ages.min}–${ages.max}`,
+            desc: 'Достатъчно големи, за да опознават града, и достатъчно малки, за да имат нужда от грижа – затова ние като ръководители сме винаги наблизо, независимо от възрастта.',
+          },
+          {
+            title: 'Международни групи по ниво',
+            desc: 'Тест преди заминаването определя нивото на всеки ученик по CEFR, а в класа той е заедно с ученици от цяла Европа – не само със съучениците си от България.',
+          },
+          {
+            title: `${nameBg(groupLeader.name)}, групов ръководител`,
+            desc: 'Ирландец, живял години наред в Дъблин. Познато лице за учениците и успокояващо присъствие за родителите.',
+          },
+          {
+            title: `${nameBg(secondChaperone?.name)} – говори български`,
+            desc: 'С групата през целия престой – човекът, с когото родителите винаги могат да се свържат директно, на български.',
+          },
+          {
+            title: `${venue.shortName}, в сърцето на Дъблин`,
+            desc: `Настаняване в кампуса на ${venue.name}, в ${venue.area} – на кратка разходка от Temple Bar и центъра на града.`,
+          },
+        ].map(({ title, desc }) => (
+          <div class="trust-card">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0; font-size: 1.05rem;">{title}</h3>
+              <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            </div>
+            <p style="margin: 0; font-size: 0.92rem;">{desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
