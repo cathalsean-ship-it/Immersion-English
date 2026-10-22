@@ -252,6 +252,21 @@ const courseSchema = {
             </p>
           </div>
 
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange);"></div>
+            <h3 style="margin: 0; font-size: 1.05rem;">In partnership with MLA</h3>
+            <p style="margin: 0; font-size: 0.95rem;">
+              {/* Wording approved by site owner, 22 Oct 2026. One mention of MLA on
+                  purpose. "In partnership" – never "we run the programme" alone:
+                  the centre's staff teach and run the residence. */}
+              We run Dublin Summer in partnership with {provider.brand.replace(' – ', '\u00A0– ')}, an
+              international organisation that has been running summer language
+              programmes for young people for almost 50 years. They look after
+              the centre, the teaching and the activities. We look after your
+              child, from Sofia to Dublin and back.
+            </p>
+          </div>
+
           {/* The group-leader/supervision message used to repeat a third time
               here. Trimmed per site owner's instruction, 13 Oct 2026 — the
               dedicated "Who Travels With You" section below already covers
