@@ -210,11 +210,17 @@ const courseSchema = {
 
       <div class="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-8 md:gap-11">
         <div>
-          <div class="md:sticky md:top-[90px]">
+          <div style="display: flex; flex-direction: column; gap: 28px;">
             <StudentVideo
               videoId="4Uouprh7d1k"
               title="Лятната програма на Immersion English за тийнейджъри в Дъблин"
               poster={studentsWalking}
+            />
+            <StudentVideo
+              videoId="2Zg84TuQ71E"
+              title={`Центърът за ${dublin.year}: ${venue.name}, Дъблин`}
+              poster="/nci-gallery/nci-15.jpg"
+              caption="Видео: MLA – Move Language Ahead"
             />
           </div>
         </div>
