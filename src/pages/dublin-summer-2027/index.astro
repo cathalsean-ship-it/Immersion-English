@@ -386,7 +386,7 @@ const courseSchema = {
        (overnight residential staff confirmed by owner 23 Oct 2026). Parent-contact channel deliberately kept vague. -->
   <section class="section" style="padding-top: 0;">
     <div class="container-x">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {[
           {
             title: 'Door to door',
@@ -396,7 +396,7 @@ const courseSchema = {
           },
           {
             title: 'On site, around the clock',
-            desc: 'A dedicated Welfare Manager and qualified medical staff are on campus 24 hours a day.',
+            desc: 'A dedicated Welfare Manager and qualified medical staff are on campus 24 hours a day, with staff in the residence overnight.',
           },
           {
             title: 'Always in touch, in Bulgarian',
@@ -405,14 +405,6 @@ const courseSchema = {
           {
             title: 'Someone on hand, every day',
             desc: "Student coordinators are around every day, and the centre's own team runs every activity and excursion.",
-          },
-          {
-            title: `Ages ${ages.min}–${ages.max}`,
-            desc: 'Old enough to explore, young enough to need looking after – so we stay close, whatever their age.',
-          },
-          {
-            title: 'A safe home base',
-            desc: `Students live together in en-suite rooms on the ${venue.shortName} campus, with staff in the residence overnight and the welfare and medical team on site.`,
           },
         ].map(({ title, desc }) => (
           <div class="trust-card">
