@@ -303,7 +303,7 @@ export const dublin: DublinProgramme = {
     'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff, on site 24 hours a day, plus student coordinators to keep every day active and friendly',
     'En-suite rooms on a real college campus – single or twin rooms at the National College of Ireland, in the heart of Dublin',
     'Full board – every meal included, plus a prepaid meal card on excursions so they can choose where to eat',
-    'Excursions included – the full excursion programme for your stay, with transport and tickets covered, plus a free app of quizzes, missions and badges',
+    'Excursions included – the full excursion programme, with transfers, transport and tickets covered',
     'Activities, day and night – art, sports, kitchen and magic by day; karaoke, talent shows, discos and an Irish céilí dance by night',
   ],
 
