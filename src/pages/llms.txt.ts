@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { dublin, durationOptionsLabel, groupLeaderTravelPhrase, formatStartDate } from '../data/dublin';
+import { dublin, durationOptionsLabel, groupLeaderTravelPhrase, formatStartDate, paymentPlan, formatIsoDate } from '../data/dublin';
 import { courseList, priceSummary } from '../data/courses';
 
 /**
@@ -87,7 +87,7 @@ Immersion English is a booking agent, and accompanies its own group at an intern
 - **Location:** ${venue.name} (${venue.shortName}), ${venue.area}, ${venue.city}, ${venue.country}
 - **Dates:** ${datesLine}
 - **Price:** ${priceLine}
-- **Deposit:** ${price.depositPercent === null ? `Not yet confirmed for ${dublin.year}` : `${price.depositPercent}%`}
+- **Payment plan:** ${durations.map(d => { const p = paymentPlan(d); return `${d.days} days: ${euros(p.deposit)} non-refundable deposit at booking, ${euros(p.secondInstalment)} by ${formatIsoDate(price.secondInstalmentDue)}, ${euros(p.balance)} balance by ${formatIsoDate(price.balanceDue)}`; }).join('; ')}
 - **Duration:** ${durationOptionsLabel(durations)} — two fixed lengths, each with its own 2027 start dates
 - **Ages:** ${ages.min}–${ages.max} (our group; the centre itself takes a wider range)
 - **Class size:** ${classSize.average} average, ${classSize.maximum} maximum

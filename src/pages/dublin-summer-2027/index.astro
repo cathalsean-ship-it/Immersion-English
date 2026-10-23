@@ -5,7 +5,7 @@ import teensDublin from '../../assets/teens-dublin.jpg';
 import studentsWalking from '../../assets/students-walking.jpg';
 import StudentVideo from '../../components/StudentVideo.astro';
 import ProgrammeTimetable from '../../components/ProgrammeTimetable.astro';
-import { dublin, durationOptionsLabel, startMonthsLabel, priceRangeLabel, groupLeaderTravelPhrase, groupLeaderTravelPhraseGerund, formatStartDate, bestValueDuration } from '../../data/dublin';
+import { dublin, durationOptionsLabel, startMonthsLabel, priceRangeLabel, groupLeaderTravelPhrase, groupLeaderTravelPhraseGerund, formatStartDate, bestValueDuration, paymentPlan, formatIsoDate } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, price, included, notIncluded, excursions, groupLeader, secondChaperone } = dublin;
 
@@ -118,8 +118,10 @@ const courseSchema = {
         <p>Return airport transfers are already included. Families book and pay for their own flights to and from Dublin.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {durations.map(({ days, nights, price: optionPrice, startDates: optionDates }) => {
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-[760px] mx-auto">
+        {durations.map((option) => {
+          const { days, nights, price: optionPrice, startDates: optionDates } = option;
+          const plan = paymentPlan(option);
           const isFeatured = bestValue !== null && days === bestValue.days;
           return (
             <div
@@ -137,10 +139,20 @@ const courseSchema = {
                 <p class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">{dublin.year} start dates</p>
                 <p class="text-[0.88rem] text-ink-soft leading-relaxed m-0">{optionDates.map(formatStartDate).join(' · ')}</p>
               </div>
+              <div>
+                <p class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Payment plan</p>
+                <dl class="pay-plan">
+                  <dt>Deposit, at booking</dt><dd>€{plan.deposit.toLocaleString('en-IE')}</dd>
+                  <dt>By {formatIsoDate(price.secondInstalmentDue)}</dt><dd>€{plan.secondInstalment.toLocaleString('en-IE')}</dd>
+                  <dt>Balance by {formatIsoDate(price.balanceDue)}</dt><dd>€{plan.balance.toLocaleString('en-IE')}</dd>
+                </dl>
+              </div>
             </div>
           );
         })}
       </div>
+
+      <p class="text-center text-[0.88rem] text-ink-soft mt-6 mb-0">The deposit secures your child's place and is non-refundable.</p>
 
       <div class="flex justify-center mt-8">
         <a href="/contact?interest=dublin&from=dublin-included#booking-form" class="btn btn-primary">Ask about Dublin 2027</a>
@@ -287,7 +299,7 @@ const courseSchema = {
             </div>
             <div>
               <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">From {priceRangeLabel(durations)}</dd>
+              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{priceRangeLabel(durations)}</dd>
             </div>
           </dl>
 

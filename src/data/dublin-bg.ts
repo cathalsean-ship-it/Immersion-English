@@ -31,6 +31,12 @@ export function formatStartDateBg(date: string): string {
   return MONTHS_BG[month - 1] ? `${day} ${MONTHS_BG[month - 1]}` : date;
 }
 
+/** "2027-03-01" -> "1 март 2027 г." */
+export function formatIsoDateBg(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${MONTHS_BG[m - 1]} ${y} г.`;
+}
+
 /** "€1580", "€12 500" – Bulgarian convention: no separator in 4-digit numbers, a space from 5 digits. */
 export function euroBg(n: number): string {
   return `€${n.toLocaleString('bg-BG')}`;

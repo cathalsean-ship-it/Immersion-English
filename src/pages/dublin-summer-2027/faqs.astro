@@ -20,7 +20,7 @@
  * unrelated provider called ICE.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { dublin, durationOptionsLabel, groupLeaderTravelPhrase, formatStartDate } from '../../data/dublin';
+import { dublin, durationOptionsLabel, groupLeaderTravelPhrase, formatStartDate, paymentPlan, formatIsoDate } from '../../data/dublin';
 
 const { provider, venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions, groupLeader, securityDeposit, visaRequired, medicalStaff, secondChaperone} = dublin;
 
@@ -179,9 +179,9 @@ const sections = [
       },
       {
         q: 'How do I hold a place?',
-        // TODO: awaiting MLA 2027 confirmation — deposit percentage and payment
-        // dates against 2027 terms. Do not restate the old EUR 350 / EUR 1,000 / 31 May.
-        a: 'Places are limited and confirmed first come, first served. A deposit holds the place and the balance is due in the spring. The exact deposit and payment dates come from the centre\'s 2027 terms, which are not published yet, so we will confirm them in writing before you pay anything.',
+        // Rendered from dublin.ts durations + price, so it can't drift from the
+        // Dublin page. Do not restate the old EUR 350 / EUR 1,000 / 31 May.
+        a: `Places are limited and confirmed first come, first served. A non-refundable deposit secures the place: ${durations.map(d => `€${d.deposit.toLocaleString('en-IE')} for ${d.days} days`).join(', ')}. The second instalment is due by ${formatIsoDate(dublin.price.secondInstalmentDue)} (${durations.map(d => `€${d.secondInstalment.toLocaleString('en-IE')}`).join(' / ')}) and the balance by ${formatIsoDate(dublin.price.balanceDue)} (${durations.map(d => `€${paymentPlan(d).balance.toLocaleString('en-IE')}`).join(' / ')}).`,
       },
       {
         q: 'What is not included?',

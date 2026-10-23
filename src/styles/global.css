@@ -359,6 +359,16 @@
   .pricing-card-featured:hover {
     box-shadow: 0 16px 40px rgba(255,145,77,0.28);
   }
+  /* Deposit / instalment / balance rows on the Dublin pricing cards. */
+  .pay-plan {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    margin: 0;
+    font-size: 0.88rem;
+  }
+  .pay-plan dt { color: var(--ink-soft); margin: 0; }
+  .pay-plan dd { margin: 0; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--ink); text-align: right; }
   .pricing-card-badge {
     position: absolute;
     top: -14px;

@@ -59,12 +59,16 @@ export interface DublinProgramme {
     price: number;
     /** DD/MM, 2027. Source: MLA's NCI centre start-date schedule, Oct 2026. */
     startDates: string[];
+    /** Family payment schedule, EUR. Deposit (non-refundable, at booking) and
+     *  second instalment; the balance is price minus both (see paymentPlan). */
+    deposit: number;
+    secondInstalment: number;
   }[];
   price: {
     currency: string;
-    depositPercent: number | null;
-    depositDue: string | null;
-    balanceDue: string | null;
+    /** ISO dates. Deposit is due at booking. */
+    secondInstalmentDue: string;
+    balanceDue: string;
   };
   securityDeposit: { currency: string; amount: number };
   /**
@@ -120,6 +124,20 @@ export function durationOptionsLabel(durations: DurationOption[]): string {
   if (days.length === 0) return '';
   if (days.length === 1) return `${days[0]} days`;
   return `${days.slice(0, -1).join(', ')} or ${days[days.length - 1]} days`;
+}
+
+/** Deposit, second instalment and balance for one duration option. */
+export function paymentPlan(d: DurationOption) {
+  const balance = d.price - d.deposit - d.secondInstalment;
+  if (balance <= 0) throw new Error(`dublin.ts: payment plan for ${d.days} days does not add up`);
+  return { deposit: d.deposit, secondInstalment: d.secondInstalment, balance };
+}
+
+const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+/** "2027-03-01" -> "1 March 2027" */
+export function formatIsoDate(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${d} ${MONTHS_EN[m - 1]} ${y}`;
 }
 
 /** Lowest and highest retail price across the duration options, e.g. "€1,680–€3,150". */
@@ -268,21 +286,27 @@ export const dublin: DublinProgramme = {
       nights: 9,
       price: 2390,
       startDates: ['01/07'],
+      deposit: 500,
+      secondInstalment: 700,
     },
     {
       days: 14,
       nights: 13,
       price: 3150,
       startDates: ['01/07', '14/07', '21/07'],
+      deposit: 600,
+      secondInstalment: 1000,
     },
   ],
 
   price: {
     currency: 'EUR',
-    // TODO: awaiting MLA 2027 confirmation — deposit terms pending 2027 T&Cs.
-    depositPercent: null,
-    depositDue: null,
-    balanceDue: null,
+    // Agreed with Lina, 23 Oct 2026. The deposit covers MLA's 20% deposit plus
+    // Immersion English's own non-refundable commitments (leader place share,
+    // leader flights) even for a small group of 8. 1 May leaves about three
+    // weeks before MLA's own final-payment deadlines (20 May / 2 June 2027).
+    secondInstalmentDue: '2027-03-01',
+    balanceDue: '2027-05-01',
   },
 
   // Confirmed in the approved copy.

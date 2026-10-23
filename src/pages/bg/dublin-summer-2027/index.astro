@@ -5,8 +5,8 @@ import teensDublin from '../../../assets/teens-dublin.jpg';
 import studentsWalking from '../../../assets/students-walking.jpg';
 import StudentVideo from '../../../components/StudentVideo.astro';
 import ProgrammeTimetable from '../../../components/ProgrammeTimetable.astro';
-import { dublin, bestValueDuration } from '../../../data/dublin';
-import { durationOptionsLabelBg, startMonthsLabelBg, formatStartDateBg, euroBg, includedBg, notIncludedBg, nameBg } from '../../../data/dublin-bg';
+import { dublin, bestValueDuration, paymentPlan } from '../../../data/dublin';
+import { durationOptionsLabelBg, startMonthsLabelBg, formatStartDateBg, formatIsoDateBg, euroBg, includedBg, notIncludedBg, nameBg } from '../../../data/dublin-bg';
 
 // Bulgarian Dublin page (live since 22 Oct 2026). Mirrors src/pages/dublin-summer-2027/index.astro
 // section for section; if the English page changes layout, change this one too.
@@ -122,8 +122,10 @@ const courseSchema = {
         <p>Летищните трансфери в двете посоки са включени. Семействата сами резервират и заплащат полетите си до и от Дъблин.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {durations.map(({ days, nights, price: optionPrice, startDates: optionDates }) => {
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-[760px] mx-auto">
+        {durations.map((option) => {
+          const { days, nights, price: optionPrice, startDates: optionDates } = option;
+          const plan = paymentPlan(option);
           const isFeatured = bestValue !== null && days === bestValue.days;
           return (
             <div
@@ -141,10 +143,20 @@ const courseSchema = {
                 <p class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Начални дати {dublin.year}</p>
                 <p class="text-[0.88rem] text-ink-soft leading-relaxed m-0">{optionDates.map(formatStartDateBg).join(' · ')}</p>
               </div>
+              <div>
+                <p class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">План за плащане</p>
+                <dl class="pay-plan">
+                  <dt>Депозит при записване</dt><dd>{euroBg(plan.deposit)}</dd>
+                  <dt>До {formatIsoDateBg(dublin.price.secondInstalmentDue)}</dt><dd>{euroBg(plan.secondInstalment)}</dd>
+                  <dt>Остатък до {formatIsoDateBg(dublin.price.balanceDue)}</dt><dd>{euroBg(plan.balance)}</dd>
+                </dl>
+              </div>
             </div>
           );
         })}
       </div>
+
+      <p class="text-center text-[0.88rem] text-ink-soft mt-6 mb-0">Депозитът запазва мястото на детето ви и не се възстановява.</p>
 
       <div class="flex justify-center mt-8">
         <a href="/contact?interest=dublin&from=dublin-included-bg#booking-form" class="btn btn-primary">Попитайте за Дъблин 2027</a>
