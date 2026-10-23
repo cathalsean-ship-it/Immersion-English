@@ -294,16 +294,17 @@ export const dublin: DublinProgramme = {
   visaRequired: false,
   medicalStaff: 'Qualified medical staff on site 24 hours a day.',
 
+  // Order and wording reworked 23 Oct 2026 (owner approved): grouped by theme –
+  // learning, care, living, fun. Airport transfers folded into group leaders.
   included: [
     '20 lessons a week – 15 hours with qualified English teachers, in classes placed by level after an online placement test',
-    'En-suite rooms on a real college campus – single or twin rooms at the National College of Ireland, in the heart of Dublin',
-    'Full board and a Prepaid Meal Card – all meals included, and on excursions every student gets a prepaid card to choose where they eat',
-    'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff on site 24 hours a day, with student coordinators on hand to keep every day active and friendly',
-    'Your group leaders, all the way – Lenny or Lina travels with your child from Sofia to Dublin and back, and both stay for the whole programme. Lina is a native Bulgarian speaker parents can always reach',
-    'Explore. Play. Learn. – the excursion programme for your stay, with transport and tickets included and a free app of quizzes, missions and badges',
-    'Activities, day and night – art, sports, kitchen and magic by day; karaoke, talent shows, discos and an Irish céilí dance by night',
-    'Return airport transfers – between Dublin Airport and the centre, arranged directly by your group leaders',
     'Progress you can see – placement test, eBooks and student portfolio, plus an end-of-course report, certificate of attendance and graduation ceremony',
+    'Your group leaders, all the way – one of us flies with every group from Sofia, and both of us stay for the whole programme, with return airport transfers included. Lina speaks Bulgarian and is always a message away',
+    'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff, on site 24 hours a day, plus student coordinators to keep every day active and friendly',
+    'En-suite rooms on a real college campus – single or twin rooms at the National College of Ireland, in the heart of Dublin',
+    'Full board – every meal included, plus a prepaid meal card on excursions so they can choose where to eat',
+    'Excursions included – the full excursion programme for your stay, with transport and tickets covered, plus a free app of quizzes, missions and badges',
+    'Activities, day and night – art, sports, kitchen and magic by day; karaoke, talent shows, discos and an Irish céilí dance by night',
   ],
 
   notIncluded: [
