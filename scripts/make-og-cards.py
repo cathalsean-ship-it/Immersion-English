@@ -89,7 +89,7 @@ lenny(['Individual','Corporate','Teens'],[[('Speaking-focused',ORANGE)],[('Engli
 
 # Dublin
 img=shade(cover(os.path.join(ROOT,'src/assets/dublin-welcome-group.jpg'),scale=0.782,x0=0,y0=170),left=235,right=35,start=0.25,end=0.8)
-text(img,['Dublin, Ireland','7, 10 or 14 days'],[[('Dublin Summer ',WHITE),('2027',ORANGE)],[('for teens aged 12–17',WHITE)]],y_kicker=216)
+text(img,['Dublin, Ireland','10 or 14 days'],[[('Dublin Summer ',WHITE),('2027',ORANGE)],[('for teens aged 12–17',WHITE)]],y_kicker=216)
 img.save(f'{R}/og/dublin-summer-2027.jpg','JPEG',quality=86,optimize=True,progressive=True)
 
 

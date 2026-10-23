@@ -48,7 +48,7 @@ export interface DublinProgramme {
   classSize: { average: number; maximum: number };
   lessonsPerWeek: number;
   hoursPerWeek: number;
-  /** Three fixed-length options, replacing the old single two-week stay.
+  /** Fixed-length options (10 and 14 days since 23 Oct 2026; a 7-day option was dropped).
    *  Each carries its own retail price and its own 2027 start dates — MLA
    *  prices and dates both vary by length, so they can't be shared fields. */
   durations: {
@@ -230,7 +230,7 @@ export const dublin: DublinProgramme = {
   lessonsPerWeek: 20,
   hoursPerWeek: 15,
   // Replaces the old single fixed two-week stay. MLA's NCI centre sells 1-4
-  // weeks; Immersion English offers three of those lengths as fixed packages.
+  // weeks; Immersion English offers two of those lengths as fixed packages.
   // Each option's price and 2027 start dates are set here — the two line up
   // with each other, so check both together if either changes.
   //
@@ -239,8 +239,10 @@ export const dublin: DublinProgramme = {
   // group-leader surcharge (one of two leaders, 70% of net rate — MLA gives
   // one free place at 12+ students) and return airport transfers for the
   // whole travelling party, marked up to a ~26% target margin at 12 students.
-  // Set 13 Oct 2026; 7-day and 10-day raised to €1,680 and €2,390 on
-  // 22 Oct 2026 (14-day unchanged at €3,150). Families book and pay for their own flights — not
+  // Set 13 Oct 2026; 10-day raised to €2,390 on 22 Oct 2026 (14-day
+  // unchanged at €3,150). The 7-day option (€1,680) was dropped by site
+  // owner's instruction, 23 Oct 2026.
+  // Families book and pay for their own flights — not
   // included in these prices; only the two group leaders' flights are an
   // Immersion English cost, already folded into the margin above.
   //
@@ -261,12 +263,6 @@ export const dublin: DublinProgramme = {
   // start dates are 01/07, 13/07, 22/07 only — 14/07 and 21/07 were never
   // valid 10-day starts, so they're not available here, not just unoffered.
   durations: [
-    {
-      days: 7,
-      nights: 6,
-      price: 1680,
-      startDates: ['01/07', '14/07', '21/07'],
-    },
     {
       days: 10,
       nights: 9,

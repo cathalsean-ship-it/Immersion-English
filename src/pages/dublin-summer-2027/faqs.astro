@@ -157,7 +157,7 @@ const sections = [
     faqs: [
       {
         q: 'How much does it cost?',
-        // Three fixed lengths, each with its own price. List them explicitly
+        // Fixed lengths, each with its own price. List them explicitly
         // rather than a vague "from" figure — a parent comparing programmes
         // wants the actual numbers.
         a: `${durations.map(d => `€${d.price.toLocaleString('en-IE')} for ${d.days} days`).join(', ')}. Every price covers tuition, en-suite campus accommodation, full board, return airport transfers, the excursion programme and the activities. Flights, insurance and personal spending are separate.`,
@@ -170,7 +170,7 @@ const sections = [
       },
       {
         q: 'How long is the programme?',
-        // Three fixed lengths. Do NOT say "other durations on request" beyond
+        // Fixed lengths. Do NOT say "other durations on request" beyond
         // what's listed here. This answer is about DATES only. Do not say the
         // group travels out or comes home together: flights are booked
         // separately by each family and students may not travel on the same

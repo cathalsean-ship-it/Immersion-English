@@ -88,7 +88,7 @@ Immersion English is a booking agent, and accompanies its own group at an intern
 - **Dates:** ${datesLine}
 - **Price:** ${priceLine}
 - **Deposit:** ${price.depositPercent === null ? `Not yet confirmed for ${dublin.year}` : `${price.depositPercent}%`}
-- **Duration:** ${durationOptionsLabel(durations)} — three fixed lengths, each with its own 2027 start dates
+- **Duration:** ${durationOptionsLabel(durations)} — two fixed lengths, each with its own 2027 start dates
 - **Ages:** ${ages.min}–${ages.max} (our group; the centre itself takes a wider range)
 - **Class size:** ${classSize.average} average, ${classSize.maximum} maximum
 - **Lessons:** ${lessonsPerWeek} lessons per week (${hoursPerWeek} hours), taught by the centre's qualified English teachers
@@ -120,7 +120,7 @@ ${notIncluded.map(i => `- ${i}`).join('\n')}
 - International centre — students from across Europe, not a single-nationality group
 - ${groupLeader.name} (${groupLeader.role.toLowerCase()})${secondChaperone?.name ? ` or ${secondChaperone.name} (${secondChaperone.role.replace('Native ', 'native ')})` : ''} ${groupLeaderTravelPhrase(groupLeader)}, and both are with them throughout
 ${secondChaperone ? `- ${secondChaperone.role} with the group throughout\n` : ''}- Full board and en-suite campus accommodation included
-- Three fixed lengths — ${durationOptionsLabel(durations)} — each with its own set of 2027 dates
+- Two fixed lengths — ${durationOptionsLabel(durations)} — each with its own set of 2027 dates
 - British Council credentials of both founders
 
 ## Contact
