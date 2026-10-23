@@ -343,10 +343,9 @@ const courseSchema = {
             supervision always close by, and we stay in touch with you throughout.
           </p>
           <p class="text-ink-soft text-[1.05rem] leading-relaxed max-w-[54ch] mb-0">
-            {groupLeader.name}{secondChaperone?.name ? ` or ${secondChaperone.name}` : ''} {groupLeader.travelsFromSofia ? 'travels with the group from Sofia, and both stay for the whole programme' : `meets the group at ${groupLeader.meetsAt}, and both stay for the whole programme`}.
-            With {secondChaperone?.name ?? 'a native Bulgarian speaker'} speaking Bulgarian, and a welfare manager
-            and medical staff on site around the clock, someone is always there for your child,
-            and for you.
+            {groupLeader.travelsFromSofia
+              ? 'One of us flies with every group from Sofia, and both of us stay in Dublin for the whole programme.'
+              : `We meet the group at ${groupLeader.meetsAt}, and both of us stay in Dublin for the whole programme.`}
           </p>
         </div>
         <div style="position: relative;">
@@ -371,42 +370,49 @@ const courseSchema = {
             ))}
           </div>
           <div style="margin-top: 14px; background: var(--ink); color: white; border-radius: 10px; padding: 14px 18px; box-shadow: 0 6px 20px rgba(20,32,26,0.22);">
-            <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin: 0 0 5px;">From Sofia to Dublin</p>
-            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">A native Bulgarian speaker on hand throughout the stay. Your child is never alone.</p>
+            <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin: 0 0 5px;">Irish and Bulgarian</p>
+            <p style="font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.8); margin: 0;">{groupLeader.name} knows Dublin inside out. {secondChaperone?.name ?? 'Lina'} speaks your language. Your child is never alone.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HIGHLIGHTS – sit under Supervision, owner's request 22 Oct 2026 -->
+  <!-- SUPERVISION CARDS – sit under Supervision, owner's request 22 Oct 2026.
+       Reworked 23 Oct 2026: every card answers a parent's safety question, using
+       only facts already confirmed in dublin.ts. Full board, NCI and level
+       grouping moved out (already in Included and Why Dublin). Still to confirm
+       with MLA before adding: parent updates, free-time/curfew rules by age,
+       overnight residential staff. -->
   <section class="section" style="padding-top: 0;">
     <div class="container-x">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {[
           {
-            title: 'Full board',
-            desc: 'Every meal covered, from dinner on arrival to breakfast on departure day. Nothing left to plan or pay for once you land.',
+            title: 'Door to door',
+            desc: groupLeader.travelsFromSofia
+              ? 'We fly with the group from Sofia, transfers in Dublin are included, and we bring everyone home together.'
+              : `We meet the group at ${groupLeader.meetsAt}, and return transfers in Dublin are included.`,
+          },
+          {
+            title: 'On site, around the clock',
+            desc: 'A dedicated Welfare Manager and qualified medical staff are on campus 24 hours a day.',
+          },
+          {
+            title: 'Always in touch, in Bulgarian',
+            desc: `We stay in touch with you throughout the stay. ${secondChaperone?.name ?? 'Lina'} is with the group the whole time, and you can reach her directly, in Bulgarian.`,
+          },
+          {
+            title: 'Someone on hand, every day',
+            desc: "Student coordinators are around every day, and the centre's own team runs every activity and excursion.",
           },
           {
             title: `Ages ${ages.min}–${ages.max}`,
-            desc: 'Old enough to explore, young enough to need looking after – so we as leaders stay close, whatever the age.',
+            desc: 'Old enough to explore, young enough to need looking after – so we stay close, whatever their age.',
           },
           {
-            title: 'International, grouped by level',
-            desc: "A placement test before departure places every student by CEFR level, alongside students from across Europe – not just their own classmates from home.",
-          },
-          {
-            title: `${groupLeader.name} – ${groupLeader.role.toLowerCase()}`,
-            desc: 'An Irish native with years of Dublin life behind him. A familiar face for students and a reassuring one for parents.',
-          },
-          {
-            title: secondChaperone?.role,
-            desc: `With the group throughout the stay – the person parents can always reach directly, in Bulgarian.`,
-          },
-          {
-            title: `${venue.shortName}, in the heart of Dublin`,
-            desc: `Campus accommodation at the ${venue.name}, in ${venue.area} – a short walk from Temple Bar and the city centre.`,
+            title: 'A safe home base',
+            desc: `Students live together in en-suite rooms on the ${venue.shortName} campus, with the welfare and medical team on site.`,
           },
         ].map(({ title, desc }) => (
           <div class="trust-card">
