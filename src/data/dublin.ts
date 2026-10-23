@@ -299,7 +299,7 @@ export const dublin: DublinProgramme = {
   included: [
     '20 lessons a week – 15 hours with qualified English teachers, in classes placed by level after an online placement test',
     'Progress you can see – placement test, eBooks and student portfolio, plus an end-of-course report, certificate of attendance and graduation ceremony',
-    'Your group leaders, all the way – one of us flies with every group from Sofia, and both of us stay for the whole programme, with return airport transfers included. Lina speaks Bulgarian and is always a message away',
+    'Your group leaders, all the way – one of us flies with every group from Sofia, and both of us stay for the whole programme, with return airport transfers included. Lenny is a Dublin local, and Lina speaks Bulgarian and is always a message away',
     'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff, on site 24 hours a day, plus student coordinators to keep every day active and friendly',
     'En-suite rooms on a real college campus – single or twin rooms at the National College of Ireland, in the heart of Dublin',
     'Full board – every meal included, plus a prepaid meal card on excursions so they can choose where to eat',
