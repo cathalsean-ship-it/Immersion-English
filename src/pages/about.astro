@@ -57,12 +57,14 @@ const testimonials = [
   <section class="section">
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-center">
-        <div class="rounded-md overflow-hidden shadow-lift">
+        {/* Decorative only: hidden on phones so the team bios come up sooner,
+            and cropped wide on larger screens to match the text height. */}
+        <div class="hidden md:block rounded-md overflow-hidden shadow-lift">
           <img
             src="/about-who-we-are.webp"
             alt="Abstract composition – where learning connects with life"
             class="img-greyscale w-full object-cover"
-            style="aspect-ratio: 4/3; object-position: center; display: block;"
+            style="aspect-ratio: 16/9; object-position: center; display: block;"
           loading="lazy" />
         </div>
         <div>
