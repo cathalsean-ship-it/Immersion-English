@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { dublin, paymentPlan, formatIsoDate, cancellationSchedule } from '../../data/dublin';
+
+/**
+ * Booking & cancellation terms for Dublin Summer 2027. Every figure and date
+ * comes from dublin.ts (prices, deposits, payment dates, cancellation day
+ * counts), so this page can't drift from the pricing cards. Wording agreed
+ * with Lina, 24 Oct 2026. The Bulgarian version is /bg/dublin-summer-2027/terms
+ * – if you edit one, edit the other.
+ * Not legal advice – have it reviewed before relying on it.
+ */
+const { durations, price, cancellation: c, ages, year } = dublin;
+const updated = '24 October 2026';
+const eur = (n: number) => `€${n.toLocaleString('en-IE')}`;
+const depositList = durations.map(d => `${eur(d.deposit)} for ${d.days} days`).join(', ');
+const schedule = cancellationSchedule();
+---
+
+<BaseLayout
+  title={`Booking & Cancellation Terms | Dublin Summer ${year} | Immersion English`}
+  description={`Payment plan, deposit and cancellation terms for the Immersion English Dublin Summer ${year} programme for teenagers.`}
+  ogImage="/og/dublin-summer-2027.jpg"
+>
+  <section class="relative flex items-center text-white overflow-hidden isolate">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
+      <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide mb-5" style="color: var(--orange);">
+        <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+        Dublin Summer {year}
+      </p>
+      <h1 class="text-white mb-5 max-w-[20ch]">Booking &amp; <span style="color: var(--orange);">cancellation.</span></h1>
+      <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[52ch] leading-[1.55]">
+        How payment works, and what happens if plans change. Last updated {updated}.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-x">
+      <div class="max-w-[72ch] mx-auto privacy-body">
+
+        <h2>Payment plan</h2>
+        <div class="terms-table-wrap">
+          <table class="terms-table">
+            <thead>
+              <tr><th>Payment</th>{durations.map(d => <th>{d.days} days</th>)}<th>Due</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Deposit (non-refundable)</td>{durations.map(d => <td>{eur(paymentPlan(d).deposit)}</td>)}<td>At booking</td></tr>
+              <tr><td>Second instalment</td>{durations.map(d => <td>{eur(paymentPlan(d).secondInstalment)}</td>)}<td>{formatIsoDate(price.secondInstalmentDue)}</td></tr>
+              <tr><td>Balance, plus forms and flight details</td>{durations.map(d => <td>{eur(paymentPlan(d).balance)}</td>)}<td>{formatIsoDate(price.balanceDue)}</td></tr>
+              <tr class="terms-total"><td>Total</td>{durations.map(d => <td>{eur(d.price)}</td>)}<td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The deposit secures your child's place.</p>
+
+        <h2>1. How to cancel</h2>
+        <p>
+          To cancel, email us at <a href="mailto:immersionenglish.ie@gmail.com">immersionenglish.ie@gmail.com</a>.
+          A cancellation takes effect on the date we receive your email, and charges are counted
+          back from your child's programme start date.
+        </p>
+
+        <h2>2. Cancellation charges</h2>
+        <div class="terms-table-wrap">
+          <table class="terms-table">
+            <thead><tr><th>When we receive your cancellation</th><th>What you pay</th></tr></thead>
+            <tbody>
+              <tr><td>Any time after booking</td><td>The deposit ({depositList}), which is non-refundable</td></tr>
+              <tr><td>{c.halfChargeFromDays} to {c.fullChargeFromDays + 1} days before the start date</td><td>50% of the programme price</td></tr>
+              <tr><td>{c.fullChargeFromDays} days or fewer before the start date, or if your child doesn't travel</td><td>100% of the programme price</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>We refund anything you've paid above these amounts within {c.refundWithinDays} days.</p>
+        <p>For each start date, that means:</p>
+        <div class="terms-table-wrap">
+          <table class="terms-table">
+            <thead><tr><th>Start date</th><th>50% applies from</th><th>100% applies from</th></tr></thead>
+            <tbody>
+              {schedule.map(s => (
+                <tr><td>{formatIsoDate(s.start)}</td><td>{formatIsoDate(s.halfFrom)}</td><td>{formatIsoDate(s.fullFrom)}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>3. Sending someone in your child's place</h2>
+        <p>
+          If your child can't go, another student aged {ages.min}–{ages.max} can take the place at no
+          extra charge, as long as you tell us by {formatIsoDate(c.substitutionBy)}. After that date
+          we'll do our best to arrange it, but it depends on our partner's approval.
+        </p>
+
+        <h2>4. Missed payments</h2>
+        <p>
+          If a payment is more than {c.latePaymentGraceDays} days late and we haven't agreed a new
+          date, we may cancel the booking. The cancellation charges above then apply.
+        </p>
+
+        <h2>5. Leaving early or missing part of the programme</h2>
+        <p>
+          We don't refund days your child misses, whether they arrive late, leave early or miss
+          activities.
+        </p>
+
+        <h2>6. Behaviour</h2>
+        <p>
+          If a student breaks the programme's code of conduct or the law and has to be sent home,
+          the family pays the travel costs. Nothing is refunded.
+        </p>
+
+        <h2>7. If we have to cancel</h2>
+        <p>
+          If we cancel the programme, for example because there aren't enough students or because
+          of events beyond our control, we'll refund everything you've paid us in full. We aren't
+          responsible for flights or other costs you've booked separately.
+        </p>
+
+        <h2>8. Insurance</h2>
+        <p>
+          Every student must have travel and medical insurance, and we strongly recommend cover for
+          cancellation. That way, if illness or another emergency stops your child travelling, you
+          can claim back what you lose.
+        </p>
+
+        <p class="mt-10">
+          Questions about these terms? <a href="/contact?interest=dublin&from=dublin-terms#booking-form">Get in touch</a>
+          or read the <a href="/dublin-summer-2027/faqs">Dublin FAQs</a>.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    .privacy-body h2 { margin: 40px 0 14px; font-size: 1.35rem; }
+    .privacy-body h2:first-child { margin-top: 0; }
+    .privacy-body p, .privacy-body li { font-size: 1rem; line-height: 1.7; color: var(--ink-soft); }
+    .privacy-body p { margin: 0 0 14px; }
+    .privacy-body a { color: var(--green); text-decoration: underline; }
+    .privacy-body strong { color: var(--ink); }
+    .terms-table-wrap { overflow-x: auto; margin: 0 0 16px; }
+    .terms-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .terms-table th, .terms-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); }
+    .terms-table th { font-family: var(--font-heading, Montserrat, sans-serif); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); font-weight: 600; }
+    .terms-table .terms-total td { font-weight: 700; color: var(--ink); }
+  </style>
+</BaseLayout>

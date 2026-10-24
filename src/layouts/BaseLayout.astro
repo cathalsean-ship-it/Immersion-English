@@ -41,7 +41,7 @@ const LABELS: Record<string, string> = {
   'about': 'About', 'lessons': 'Lessons', 'corporate-training': 'Corporate Training',
   'contact': 'Contact', 'blog': 'Blog', 'dublin-summer-2027': 'Dublin Summer 2027',
   'accommodation': 'Accommodation', 'trips-and-activities': 'Trips & Activities',
-  'weekly-programme': 'Weekly Programme', 'faqs': 'FAQs', 'privacy': 'Privacy & Cookie Policy',
+  'weekly-programme': 'Weekly Programme', 'faqs': 'FAQs', 'privacy': 'Privacy & Cookie Policy', 'terms': 'Booking & Cancellation Terms',
 };
 // The site builds as lessons.html (astro.config build.format 'file'), so
 // Astro.url.pathname ends in ".html". Public addresses never do: Netlify
@@ -53,7 +53,7 @@ const lang = langOf(pagePath);
 const isBg = lang === 'bg';
 const alternates = alternatesOf(pagePath);
 const origin = (Astro.site?.toString() || 'https://immersion-english.com').replace(/\/$/, '');
-const LABELS_BG: Record<string, string> = { 'dublin-summer-2027': 'Лято в Дъблин 2027' };
+const LABELS_BG: Record<string, string> = { 'dublin-summer-2027': 'Лято в Дъблин 2027', 'terms': 'Условия за записване и анулиране' };
 // Bulgarian pages live under /bg, so their trail starts at /bg ("Начало"),
 // not at the English homepage, and the "bg" segment itself is not a step.
 const crumbSegs = isBg ? segs.slice(1) : segs;

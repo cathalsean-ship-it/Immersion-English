@@ -184,6 +184,13 @@ const sections = [
         a: `Places are limited and confirmed first come, first served. A non-refundable deposit secures the place: ${durations.map(d => `€${d.deposit.toLocaleString('en-IE')} for ${d.days} days`).join(', ')}. The second instalment is due by ${formatIsoDate(dublin.price.secondInstalmentDue)} (${durations.map(d => `€${d.secondInstalment.toLocaleString('en-IE')}`).join(' / ')}) and the balance by ${formatIsoDate(dublin.price.balanceDue)} (${durations.map(d => `€${paymentPlan(d).balance.toLocaleString('en-IE')}`).join(' / ')}).`,
       },
       {
+        q: 'What if we need to cancel?',
+        // Day counts and deposits come from dublin.ts (cancellation, durations),
+        // the same source as the full terms page.
+        a: `Let us know by email. The deposit (${durations.map(d => `€${d.deposit.toLocaleString('en-IE')} for ${d.days} days`).join(', ')}) is non-refundable. From ${dublin.cancellation.halfChargeFromDays} to ${dublin.cancellation.fullChargeFromDays + 1} days before the start date the charge is 50% of the price, and from ${dublin.cancellation.fullChargeFromDays} days it is 100%. If your child can't go, another student can take the place free of charge if you tell us by ${formatIsoDate(dublin.cancellation.substitutionBy)}. If we cancel the programme, you get everything you've paid us back in full. We strongly recommend travel insurance with cancellation cover.`,
+        link: { href: '/dublin-summer-2027/terms', label: 'Read the full booking & cancellation terms' },
+      },
+      {
         q: 'What is not included?',
         a: `Flights, travel and medical insurance, and personal spending. A refundable €${securityDeposit.amount} security deposit is collected on arrival.`,
       },

@@ -8,6 +8,7 @@
 export const BG_PAGES: Record<string, string> = {
   '/': '/bg',
   '/dublin-summer-2027': '/bg/dublin-summer-2027',
+  '/dublin-summer-2027/terms': '/bg/dublin-summer-2027/terms',
 };
 
 export type Lang = 'en' | 'bg';

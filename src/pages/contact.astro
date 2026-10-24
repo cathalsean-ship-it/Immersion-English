@@ -172,6 +172,19 @@ import { dublin } from '../data/dublin';
               <label for="message" class="font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold">Message</label>
               <textarea id="message" name="message" rows="4" placeholder="Tell us a bit about yourself and what you're looking for…" class="font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition resize-none min-h-[100px]"></textarea>
             </div>
+            {/* Shown, and required, only when "Dublin Summer 2027" is selected
+                (see the script below). It stays in the HTML either way so
+                Netlify Forms registers the field at build time. */}
+            <div id="dublin-terms-row" class="sm:col-span-2" hidden>
+              <label class="flex items-start gap-3 text-[0.9rem] text-ink-soft leading-snug cursor-pointer">
+                <input type="checkbox" id="dublin-terms" name="dublin-terms" value="accepted" class="mt-[3px] w-[18px] h-[18px] flex-shrink-0 accent-[var(--green)]" />
+                <span>
+                  I've read the Dublin Summer 2027
+                  <a href="/dublin-summer-2027/terms" target="_blank" rel="noopener" class="underline underline-offset-2 text-ink-soft hover:text-brand-green">booking &amp; cancellation terms</a>
+                  <span class="whitespace-nowrap">(<a href="/bg/dublin-summer-2027/terms" target="_blank" rel="noopener" lang="bg" class="underline underline-offset-2 text-ink-soft hover:text-brand-green">на български</a>)</span>.
+                </span>
+              </label>
+            </div>
             <div class="sm:col-span-2">
               <button type="submit" class="btn btn-primary w-full justify-center">Send message</button>
               <p class="text-center text-ink-soft text-[0.82rem] mt-4">We reply within one working day.</p>
@@ -218,6 +231,19 @@ import { dublin } from '../data/dublin';
       const opt = document.querySelector(`#interest option[data-key="${CSS.escape(interest)}"]`);
       if (opt) opt.selected = true;
     }
+    // Dublin enquiries must tick the booking & cancellation terms box.
+    const select = document.getElementById('interest');
+    const termsRow = document.getElementById('dublin-terms-row');
+    const termsBox = document.getElementById('dublin-terms');
+    const syncTerms = () => {
+      if (!select || !termsRow || !termsBox) return;
+      const isDublin = select.selectedOptions[0]?.dataset.key === 'dublin';
+      termsRow.hidden = !isDublin;
+      termsBox.required = isDublin;
+      if (!isDublin) termsBox.checked = false;
+    };
+    select?.addEventListener('change', syncTerms);
+    syncTerms();
     const from = params.get('from');
     const field = document.querySelector('input[name="came-from"]');
     if (field && from && /^[a-z0-9-]{1,60}$/.test(from)) field.value = from;

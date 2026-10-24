@@ -71,6 +71,16 @@ export interface DublinProgramme {
     balanceDue: string;
   };
   securityDeposit: { currency: string; amount: number };
+  /** Family cancellation terms. Day counts are before the student's start
+   *  date, set five days earlier than MLA's own 60/30-day charges so a
+   *  cancellation can be passed on to MLA before its charge rises. */
+  cancellation: {
+    halfChargeFromDays: number;
+    fullChargeFromDays: number;
+    substitutionBy: string;      // ISO
+    refundWithinDays: number;
+    latePaymentGraceDays: number;
+  };
   /**
    * Applies to Bulgarian passport holders only. Bulgaria is an EU member
    * state; Ireland grants free movement to EU citizens for tourism and
@@ -138,6 +148,28 @@ const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July
 export function formatIsoDate(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
   return `${d} ${MONTHS_EN[m - 1]} ${y}`;
+}
+
+/**
+ * For each 2027 start date: the first day the 50% and the 100% cancellation
+ * charges apply. Derived from dublin.cancellation so the terms page can never
+ * disagree with the day counts.
+ */
+export function cancellationSchedule(p: DublinProgramme = dublin) {
+  const iso = (dt: Date) => dt.toISOString().slice(0, 10);
+  const starts = [...new Set(p.durations.flatMap(d => d.startDates))]
+    .map(sd => { const [d, m] = sd.split('/').map(Number); return new Date(Date.UTC(p.year, m - 1, d)); })
+    .sort((a, b) => a.getTime() - b.getTime());
+  const minus = (dt: Date, n: number) => new Date(dt.getTime() - n * 86400000);
+  return starts.map(start => ({
+    start: iso(start),
+    halfFrom: iso(minus(start, p.cancellation.halfChargeFromDays)),
+    fullFrom: iso(minus(start, p.cancellation.fullChargeFromDays)),
+    days: p.durations.filter(d => d.startDates.some(sd => {
+      const [dd, mm] = sd.split('/').map(Number);
+      return dd === start.getUTCDate() && mm === start.getUTCMonth() + 1;
+    })).map(d => d.days),
+  }));
 }
 
 /** Lowest and highest retail price across the duration options, e.g. "€1,680–€3,150". */
@@ -311,6 +343,17 @@ export const dublin: DublinProgramme = {
 
   // Confirmed in the approved copy.
   securityDeposit: { currency: 'EUR', amount: 50 },
+
+  // Agreed with Lina, 24 Oct 2026. MLA 2027 T&Cs: 20% deposit non-refundable,
+  // 50% charge 60–31 days before departure, 100% from 30 days. Ours run five
+  // days ahead of MLA's so a cancellation reaches MLA before its charge rises.
+  cancellation: {
+    halfChargeFromDays: 65,
+    fullChargeFromDays: 35,
+    substitutionBy: '2027-05-01',
+    refundWithinDays: 14,
+    latePaymentGraceDays: 7,
+  },
   visaRequired: false,
   medicalStaff: 'Qualified medical staff on site 24 hours a day.',
 
