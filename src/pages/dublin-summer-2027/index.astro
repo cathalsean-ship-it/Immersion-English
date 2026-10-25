@@ -91,6 +91,10 @@ const courseSchema = {
           </a>
         </div>
 
+        <a href="#timetable" class="inline-flex items-center gap-2 mt-5 text-[0.9rem] font-heading font-semibold text-white/85 hover:text-white">
+          See a sample timetable <span aria-hidden="true">&darr;</span>
+        </a>
+
         <!-- Trust strip -->
         <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[680px]">
           {[
@@ -203,9 +207,9 @@ const courseSchema = {
             <h3 style="margin: 0; font-size: 1.05rem;">A city made for conversation</h3>
             <p style="margin: 0; font-size: 0.95rem;">
               Not just a classroom – a real English-speaking capital, where
-              friendly locals are always happy to chat. Weekly excursions in Dublin, the
-              harbour village of Howth, and a full day trip to Kilkenny keep the
-              English going long after the lesson ends.
+              friendly locals are always happy to chat. Excursions in and around Dublin, from
+              city walking tours to full-day trips, keep the English going long
+              after the lesson ends.
             </p>
           </div>
 
@@ -250,6 +254,16 @@ const courseSchema = {
     <div class="container-x">
       {/* Eyebrow above the photo/text row, like the other sections' eyebrows. */}
       <span class="eyebrow eyebrow-dot block mb-6">Included in Dublin Summer {dublin.year}</span>
+      <!-- SAMPLE TIMETABLE: first thing in this section, and the target of the
+           banner's "sample timetable" link. -->
+      <div id="timetable" class="mb-16 md:mb-20" style="scroll-margin-top: 80px;">
+        <p class="text-ink-soft text-[0.95rem] leading-relaxed max-w-[62ch] mb-6">
+          Lessons in the mornings or afternoons, an excursion or activity in the other half of the day, and something different every evening. Sample 14-day / 13-night programme; shorter stays follow a shorter schedule.
+        </p>
+
+        <ProgrammeTimetable />
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-start">
         <div class="dublin-img-wrap" style="position: relative; border-radius: var(--radius-md); overflow: hidden; min-height: 520px;">
           <Image
@@ -331,14 +345,6 @@ const courseSchema = {
         </div>
       </div>
 
-      <!-- SAMPLE TIMETABLE -->
-      <div class="mt-16 md:mt-20">
-        <p class="text-ink-soft text-[0.95rem] leading-relaxed max-w-[62ch] mb-6">
-          Lessons in the mornings or afternoons, an excursion or activity in the other half of the day, and something different every evening. Sample 14-day / 13-night programme; shorter stays follow a shorter schedule.
-        </p>
-
-        <ProgrammeTimetable />
-      </div>
     </div>
   </section>
 

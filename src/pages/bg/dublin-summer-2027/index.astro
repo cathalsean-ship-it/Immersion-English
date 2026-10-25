@@ -95,6 +95,10 @@ const courseSchema = {
           </a>
         </div>
 
+        <a href="#timetable" class="inline-flex items-center gap-2 mt-5 text-[0.9rem] font-heading font-semibold text-white/85 hover:text-white">
+          Вижте примерна програма <span aria-hidden="true">&darr;</span>
+        </a>
+
         <!-- Trust strip -->
         <div class="mt-10 pt-6 border-t border-white/[.18] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 max-w-[680px]">
           {[
@@ -203,8 +207,8 @@ const courseSchema = {
             <h3 style="margin: 0; font-size: 1.05rem;">Град, създаден за разговори</h3>
             <p style="margin: 0; font-size: 0.95rem;">
               Не просто класна стая – истинска англоговоряща столица, където
-              дружелюбните местни хора винаги са готови за разговор. Екскурзиите из Дъблин, до
-              пристанищното селище Хоут и целодневното пътуване до Килкени
+              дружелюбните местни хора винаги са готови за разговор. Екскурзиите в Дъблин и
+              околностите – от обиколки на града до целодневни пътувания –
               поддържат английския жив дълго след края на урока.
             </p>
           </div>
@@ -244,6 +248,16 @@ const courseSchema = {
   <section id="included" class="section section-tinted">
     <div class="container-x">
       <span class="eyebrow eyebrow-dot block mb-6">Включено в Лято в Дъблин {dublin.year}</span>
+      <!-- SAMPLE TIMETABLE: first thing in this section, and the target of the
+           banner's "sample timetable" link. -->
+      <div id="timetable" class="mb-16 md:mb-20" style="scroll-margin-top: 80px;">
+        <p class="text-ink-soft text-[0.95rem] leading-relaxed max-w-[62ch] mb-6">
+          Уроци сутрин или следобед, екскурзия или занимание през другата половина на деня и различни забавления всяка вечер. Примерна програма за 14 дни / 13 нощувки; по-кратките престои следват по-кратък график.
+        </p>
+
+        <ProgrammeTimetable lang="bg" />
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1.1fr] gap-10 md:gap-20 items-start">
         <div class="dublin-img-wrap" style="position: relative; border-radius: var(--radius-md); overflow: hidden; min-height: 520px;">
           <Image
@@ -325,14 +339,6 @@ const courseSchema = {
         </div>
       </div>
 
-      <!-- SAMPLE TIMETABLE -->
-      <div class="mt-16 md:mt-20">
-        <p class="text-ink-soft text-[0.95rem] leading-relaxed max-w-[62ch] mb-6">
-          Уроци сутрин или следобед, екскурзия или занимание през другата половина на деня и различни забавления всяка вечер. Примерна програма за 14 дни / 13 нощувки; по-кратките престои следват по-кратък график.
-        </p>
-
-        <ProgrammeTimetable lang="bg" />
-      </div>
     </div>
   </section>
 
