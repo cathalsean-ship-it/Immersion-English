@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import studentsWalking from '../../assets/dublin-welcome-group.jpg';
 import { dublin } from '../../data/dublin';
-import { durationOptionsLabelBg, startMonthsLabelBg, priceFromLabelBg, excursionsBg } from '../../data/dublin-bg';
+import { durationOptionsLabelBg, startMonthsLabelBg, priceFromLabelBg } from '../../data/dublin-bg';
 
 // Bulgarian homepage (live since 22 Oct 2026). Mirrors src/pages/index.astro section for
 // section; if the English page changes layout, change this one too.
@@ -11,27 +11,34 @@ import { durationOptionsLabelBg, startMonthsLabelBg, priceFromLabelBg, excursion
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
 const datesLabel = `${startMonthsLabelBg(durations)} ${dublin.year}`;
 
-// Homepage teaser: the two full-day trips, plus one card that sums up the
-// half-day Dublin city trips. The full list lives on
-// /dublin-summer-2027/trips-and-activities. Everything renders from dublin.ts,
-// so the city card follows the data. No trip count, on purpose (see the note
-// in the section below).
+// Homepage teaser: three equal cards about what the fortnight is made of
+// (lessons, trips, evenings), not a list of places. Mirrors the English
+// homepage. The full trip list lives on the trips page. No trip count.
 const teaserTrips = (() => {
   if (excursions === null) return null;
-  // Bulgarian wording, paired with the English data by position.
-  const all = excursions.map((e, i) => ({ ...e, title: excursionsBg[i].title, description: excursionsBg[i].description, en: e.title, duration: e.duration === 'full-day' ? 'еднодневна' : 'полудневна', kind: e.duration }));
-  const fullDays = all.filter(e => e.kind === 'full-day');
-  const city = all.filter(e => e.kind === 'half-day');
-  if (city.length === 0) return all.slice(0, 3);
-  const names = city.map(e => e.title);
-  const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} и ${names[names.length - 1]}` : names[0];
-  const cityCard = {
-    title: 'Обиколки на Дъблин',
-    description: `Полудневни обиколки на града: ${list}.`,
-    duration: 'полудневни',
-    image: city.find(e => e.en.includes('Grafton'))?.image ?? city[0].image ?? null,
-  };
-  return [...fullDays.slice(0, 2), cityCard];
+  return [
+    {
+      title: 'Уроци',
+      description: 'Малки групи с квалифицираните преподаватели на центъра, заедно с ученици от цяла Европа.',
+      duration: `${lessonsPerWeek} на седмица`,
+      image: '/students-walking.webp',
+      href: '/bg/dublin-summer-2027#timetable',
+    },
+    {
+      title: 'Екскурзии',
+      description: 'Замък, разходка по скалите и старите улици на града. Транспортът и входните билети са включени.',
+      duration: 'включени',
+      image: '/howth-cliff-walk.webp',
+      href: '/dublin-summer-2027/trips-and-activities',
+    },
+    {
+      title: 'Вечери',
+      description: 'Дискотеки, караоке, шоу на талантите и ирландски танци céilí, под постоянен надзор.',
+      duration: 'всяка вечер',
+      image: '/christ-church-group-2.webp',
+      href: '/bg/dublin-summer-2027#timetable',
+    },
+  ];
 })();
 ---
 
@@ -230,8 +237,8 @@ const teaserTrips = (() => {
 
       {excursions !== null && (
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        {teaserTrips!.map(({ title, description: desc, duration: tag, image: img = null }) => (
-          <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group trip-card-link">
+        {teaserTrips!.map(({ title, description: desc, duration: tag, image: img = null, href }) => (
+          <a href={href} class="no-underline group trip-card-link">
             <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
               <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
                 {/* alt="" — the card's own h3 names it immediately below. */}

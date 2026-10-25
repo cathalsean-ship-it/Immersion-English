@@ -7,25 +7,36 @@ import { dublin, durationOptionsLabel, priceFromLabel, startMonthsLabel } from '
 const { venue, ages, classSize, lessonsPerWeek, hoursPerWeek, durations, excursions } = dublin;
 const datesLabel = `${startMonthsLabel(durations)} ${dublin.year}`;
 
-// Homepage teaser: the two full-day trips, plus one card that sums up the
-// half-day Dublin city trips. The full list lives on
-// /dublin-summer-2027/trips-and-activities. Everything renders from dublin.ts,
-// so the city card follows the data. No trip count, on purpose (see the note
-// in the section below).
+// Homepage teaser: three equal cards about what the fortnight is made of
+// (lessons, trips, evenings), not a list of places. Parents care about the
+// shape of the day more than which trip goes where, and no trip should
+// outrank the others here. The full trip list lives on
+// /dublin-summer-2027/trips-and-activities. No trip count, on purpose.
 const teaserTrips = (() => {
   if (excursions === null) return null;
-  const fullDays = excursions.filter(e => e.duration === 'full-day');
-  const city = excursions.filter(e => e.duration === 'half-day');
-  if (city.length === 0) return excursions.slice(0, 3);
-  const names = city.map(e => e.title);
-  const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}` : names[0];
-  const cityCard = {
-    title: 'Dublin city trips',
-    description: `Half-day trips around the city: ${list}.`,
-    duration: 'half-days',
-    image: city.find(e => e.title.includes('Grafton'))?.image ?? city[0].image ?? null,
-  };
-  return [...fullDays.slice(0, 2), cityCard];
+  return [
+    {
+      title: 'Lessons',
+      description: "Small classes with the centre's qualified teachers, alongside students from across Europe.",
+      duration: `${lessonsPerWeek} a week`,
+      image: '/students-walking.webp',
+      href: '/dublin-summer-2027/weekly-programme',
+    },
+    {
+      title: 'Trips',
+      description: "A castle, a cliff walk and the city's old streets. Transport and entry tickets included.",
+      duration: 'included',
+      image: '/howth-cliff-walk.webp',
+      href: '/dublin-summer-2027/trips-and-activities',
+    },
+    {
+      title: 'Evenings',
+      description: 'Discos, karaoke, a talent show and an Irish céilí, with supervision throughout.',
+      duration: 'every night',
+      image: '/christ-church-group-2.webp',
+      href: '/dublin-summer-2027/weekly-programme',
+    },
+  ];
 })();
 ---
 
@@ -221,8 +232,8 @@ const teaserTrips = (() => {
 
       {excursions !== null && (
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        {teaserTrips!.map(({ title, description: desc, duration: tag, image: img = null }) => (
-          <a href="/dublin-summer-2027/trips-and-activities" class="no-underline group trip-card-link">
+        {teaserTrips!.map(({ title, description: desc, duration: tag, image: img = null, href }) => (
+          <a href={href} class="no-underline group trip-card-link">
             <div class="bg-white border border-line rounded-lg overflow-hidden trip-card flex flex-col h-full">
               <div class="trip-card-img-wrap aspect-video w-full overflow-hidden">
                 {/* alt="" — the card's own h3 names it immediately below. */}
