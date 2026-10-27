@@ -402,7 +402,7 @@ export const dublin: DublinProgramme = {
     {
       title: 'Howth',
       description:
-        "A picturesque fishing village on the Irish cliffs, known for its traditional fish and chips.",
+        "Sea cliffs and a working fishing harbour north of Dublin, known for its traditional fish and chips.",
       duration: 'full-day',
       image: '/howth-cliff-walk.webp', // Lina's own photo – Baily Lighthouse from the Howth Cliff Walk
     },
