@@ -91,7 +91,7 @@ Immersion English is a booking agent, and accompanies its own group at an intern
 - **Duration:** ${durationOptionsLabel(durations)} — two fixed lengths, each with its own 2027 start dates
 - **Ages:** ${ages.min}–${ages.max} (our group; the centre itself takes a wider range)
 - **Class size:** ${classSize.average} average, ${classSize.maximum} maximum
-- **Lessons:** ${hoursPerWeek} hours of English classes a week (${lessonsPerWeek} lessons of ${Math.round(hoursPerWeek * 60 / lessonsPerWeek)} minutes), taught by the centre's qualified English teachers
+- **Lessons:** ${hoursPerWeek} hours of English classes a week, taught by the centre's qualified English teachers
 - **Centre:** Our Dublin partner is a member of the British Council Partner Schools Network (https://partner-schools.english.britishcouncil.org/)
 - **Nationality mix:** International — students from across Europe and beyond
 - **Excursions:** ${fullDay.length} full-day (${titles(fullDay)}) and ${halfDay.length} half-day in Dublin (${titles(halfDay)}), with transport and entry tickets included. This is the centre's published Dublin programme from MLA's Summer 2027 NCI centre brochure.
