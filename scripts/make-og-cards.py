@@ -103,7 +103,7 @@ photo_card('teens-dublin.jpg',['Dublin Summer 2027','Accommodation'],[[('En-suit
 photo_card('dublin-street.webp',['Dublin Summer 2027','Excursions'],[[('Trips & activities:',W_)],[('Dublin, properly.',O_)]],'trips-and-activities.jpg',size=64)
 photo_card('teens-cafe.jpg',['Dublin Summer 2027','Weekly programme'],[[('Something new',W_)],[('every day.',O_)]],'weekly-programme.jpg',size=64)
 photo_card('students-walking.jpg',['Dublin Summer 2027','FAQs'],[[('Questions parents ask',W_)],[('about ',W_),('Dublin Summer',O_)],[('2027',O_)]],'faqs.jpg',size=56)
-photo_card('teens-cafe.jpg',['Contact','Immersion English'],[[('Book a ',W_),('free',O_)],[('consultation',W_)]],'contact.jpg',size=64)
+photo_card('teens-cafe.jpg',['Contact','Immersion English'],[[('Talk',W_)],[('to ',W_),('us',O_)]],'contact.jpg',size=64)
 photo_card('corporate-hero.jpg',['Corporate training','Sofia'],[[('Corporate English',W_)],[('training for ',W_),('teams',O_)]],'corporate-training.jpg',size=64)
 photo_card('dublin-street.webp',['English learning','Insights'],[[('The Immersion',W_)],[('English ',W_),('blog',O_)]],'blog.jpg',size=64)
 photo_card('blog-ai.jpg',['Blog'],[[('AI and the ',W_),('human touch',O_)],[('in language learning',W_)]],'blog-ai.jpg',size=56)
