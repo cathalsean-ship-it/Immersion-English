@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { dublin } from '../data/dublin';
 ---
 
-<BaseLayout ogImage="/og/contact.jpg" title="Contact Us | Free English Consultation | Immersion English" description={`Book a free 20-minute consultation with Immersion English in Sofia. Online English lessons for adults, and a summer group to an international English centre in Dublin for students aged ${dublin.ages.min}–${dublin.ages.max}.`}>
+<BaseLayout ogImage="/og/contact.jpg" title="Contact Us | Talk to Immersion English" description={`Talk to Immersion English in Sofia about lessons, the Dublin programme or anything else. Online English lessons for adults, and a summer group to an international English centre in Dublin for students aged ${dublin.ages.min}–${dublin.ages.max}.`}>
 
   <!-- HERO (compact) -->
   <section class="relative flex items-center text-white overflow-hidden isolate">
@@ -25,22 +25,21 @@ import { dublin } from '../data/dublin';
   <section class="section section-tinted">
     <div class="container-x">
       <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Registration process</span>
-        <h2>One step to get started.</h2>
+        <span class="eyebrow eyebrow-dot">Getting started</span>
+        <h2>It starts with a chat.</h2>
         <p>Whether you're joining a course or enquiring about the Dublin Summer Programme, it starts the same way.</p>
       </div>
       <div class="max-w-[62ch] mx-auto">
         <div class="trust-card">
-          <span class="font-heading font-bold text-[2rem] leading-none tracking-[-0.03em]" style="color: var(--orange-text);">01</span>
-          <h3>Book a free online consultation</h3>
+          <h3>Talk to us about whatever you need</h3>
           <p>
-            Fill in the booking form below and we'll arrange a 20-minute online meeting to talk
-            through your goals, your experience and the options that suit you best. Everything
-            else – course details, the registration form and payment instructions – follows by
-            email afterwards. No tests, no paperwork before we've spoken.
+            Lessons, the Dublin programme, or just a question: send us a message below and we'll
+            come back within one working day. If it helps, we'll set up a short call. Course
+            details, the registration form and payment instructions follow by email afterwards.
+            No tests, no paperwork before we've spoken.
           </p>
           <div class="mt-5">
-            <a href="#booking-form" class="btn btn-primary">Book a free consultation</a>
+            <a href="#booking-form" class="btn btn-primary">Send us a message</a>
           </div>
         </div>
       </div>
@@ -132,8 +131,8 @@ import { dublin } from '../data/dublin';
 
         <!-- RIGHT: form -->
         <div id="booking-form" class="bg-white border border-line rounded-lg p-5 md:p-9 shadow-lift" style="scroll-margin-top: 100px;">
-          <h3 class="text-[1.45rem] mb-1">Book a free consultation</h3>
-          <p class="text-ink-soft text-[0.95rem] mb-7">Tell us a bit about yourself and what you're looking for – we'll come back within one working day to arrange a time.</p>
+          <h3 class="text-[1.45rem] mb-1">Talk to us</h3>
+          <p class="text-ink-soft text-[0.95rem] mb-7">Tell us what's on your mind – we'll come back within one working day.</p>
 
           <div id="form-success" style="display:none; background: var(--green); color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">✓ Message sent! We'll be in touch within one working day.</div>
           <form name="individual-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">

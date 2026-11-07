@@ -49,6 +49,10 @@ const courseSchema = {
     },
   },
 };
+// The group-leader and wellbeing points are covered in full by the
+// "Supported, every step of the way" section, so the Included list skips them
+// (owner decision, 7 Nov 2026). Data in dublin.ts is unchanged.
+const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
 ---
 
 <BaseLayout
@@ -297,27 +301,8 @@ const courseSchema = {
 
         <div>
 
-          <dl class="grid grid-cols-2 gap-7 mt-0 mb-8 py-8 border-y border-line">
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Lengths available</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{durationOptionsLabel(durations)}</dd>
-            </div>
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Ages</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{ages.min}–{ages.max}</dd>
-            </div>
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Class size</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{classSize.average} average, {classSize.maximum} maximum</dd>
-            </div>
-            <div>
-              <dt class="font-heading text-[0.74rem] uppercase tracking-[0.14em] text-ink-soft mb-2 font-semibold">Programme fee</dt>
-              <dd class="m-0 font-heading font-semibold text-[1.08rem] text-ink tracking-[-0.01em]">{priceRangeLabel(durations)}</dd>
-            </div>
-          </dl>
-
           <ul class="list-none p-0 m-0 flex flex-col gap-3 mb-6">
-            {included.map(item => {
+            {included.filter(item => !HIDDEN_INCLUDED.test(item)).map(item => {
               const [lead, ...rest] = item.split(' – ');
               return (
                 <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
@@ -431,14 +416,19 @@ const courseSchema = {
     </div>
   </section>
 
-  <!-- BOOKING CTA -->
+  <!-- BOOKING CTA – the page's closing ask (7 Nov 2026) -->
   <section class="section section-tinted">
     <div class="container-x">
-      <div class="max-w-[62ch] mx-auto">
-        <div class="flex justify-center">
-          <a href="/about" class="btn btn-primary">More about us</a>
+      <div class="max-w-[56ch] mx-auto text-center">
+        <span class="eyebrow eyebrow-dot">Ready when you are</span>
+        <h2 class="mt-4 mb-4">Ask us about Dublin {dublin.year}.</h2>
+        <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-8">
+          Tell us your child's age and the dates you're thinking of, and we'll come back within one working day. No obligation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+          <a href="/contact?interest=dublin&from=dublin-bottom#booking-form" class="btn btn-primary">Ask about Dublin {dublin.year}</a>
+          <a href="/about" class="btn btn-ghost">More about us</a>
         </div>
-
       </div>
     </div>
   </section>

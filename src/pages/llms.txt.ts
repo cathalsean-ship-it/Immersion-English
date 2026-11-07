@@ -113,7 +113,7 @@ ${notIncluded.map(i => `- ${i}`).join('\n')}
 - **How much does it cost?** ${priceLine}, per student, flights not included.
 - **Where do students stay?** En-suite rooms on campus at the ${venue.name}, ${venue.city}, on a full-board basis with all meals included.
 - **Is there medical cover on site?** Qualified medical staff and a Welfare Manager are on site 24 hours a day.
-- **How do I book or ask a question?** Book a free consultation at ${SITE}/contact or email immersionenglish.ie@gmail.com.
+- **How do I book or ask a question?** Get in touch at ${SITE}/contact or email immersionenglish.ie@gmail.com.
 
 ## Key differentiators
 
