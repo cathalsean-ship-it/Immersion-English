@@ -23,7 +23,7 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
 
 <BaseLayout
   title={`Weekly Programme – Dublin Summer ${dublin.year} | Immersion English`}
-  description={`${lessonsPerWeek} lessons a week (${hoursPerWeek} hours) with qualified English teachers at an international summer centre in Dublin, plus regular excursions and a different activity every evening.`}
+  description={`${hoursPerWeek} hours of English classes a week with qualified English teachers at an international summer centre in Dublin, plus regular excursions and a different activity every evening.`}
   ogImage="/og/weekly-programme.jpg"
 >
 
@@ -43,7 +43,7 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
         Something new <span style="color: var(--orange);">every day.</span>
       </h1>
       <p class="text-white/80 text-[1rem] md:text-[1.15rem] max-w-[48ch] leading-[1.55]">
-        {lessonsPerWeek} lessons every week – {hoursPerWeek} hours – with qualified
+        {hoursPerWeek} hours of English classes every week with qualified
         English teachers at the centre, plus regular excursions and a different
         activity every evening.
       </p>
@@ -57,8 +57,8 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
         <span class="eyebrow eyebrow-dot">Sample programme</span>
         <h2>Lessons, excursions and activities, <span style="color: var(--orange-text);">day by day.</span></h2>
         <p>
-          Students take <strong class="text-ink">{lessonsPerWeek} lessons every week</strong>
-          ({hoursPerWeek} hours) with the centre's qualified English teachers, with
+          Students have <strong class="text-ink">{hoursPerWeek} hours of classes every week</strong>
+          ({lessonsPerWeek} lessons of {Math.round(hoursPerWeek * 60 / lessonsPerWeek)} minutes) with the centre's qualified English teachers, with
           excursions and activities built around them. Sample 14-day / 13-night
           programme; shorter stays follow a shorter schedule.
         </p>
@@ -82,7 +82,7 @@ const { lessonsPerWeek, hoursPerWeek } = dublin;
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { title: 'Lessons', body: `${lessonsPerWeek} lessons a week – ${hoursPerWeek} hours – after an online placement test puts every student in the right class.` },
+          { title: 'Lessons', body: `${hoursPerWeek} hours of classes a week, after an online placement test puts every student in the right class.` },
           { title: 'Excursions', body: "Full-day and half-day excursions with the centre's local staff, transport and entry tickets included.", href: '/dublin-summer-2027/trips-and-activities', cta: 'See the trips' },
           { title: 'Daytime activities', body: 'Kitchen, where students practise English while learning to cook easy, tasty local dishes; plus art, sports and magic.' },
           { title: 'Evenings', body: 'Karaoke, trivia, themed discos, a scavenger hunt, Kahoot night, an Irish céilí dance and a talent show to finish.' },

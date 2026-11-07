@@ -18,7 +18,7 @@ const teaserTrips = (() => {
     {
       title: 'Lessons',
       description: "Small classes with the centre's qualified teachers, alongside students from across Europe.",
-      duration: `${lessonsPerWeek} a week`,
+      duration: `${hoursPerWeek} hours a week`,
       image: '/lessons-class.webp', // MLA centre classroom photo, wristband recoloured to brand green
       href: '/dublin-summer-2027/weekly-programme',
     },
@@ -184,7 +184,7 @@ const teaserTrips = (() => {
               { label: 'Wellbeing on site', detail: 'a welfare manager and medical staff on site 24 hours a day' },
               { label: 'A trusted partner in Dublin', detail: '', detailHtml: 'decades of experience welcoming young people from around the world, and a member of the <a href="https://partner-schools.english.britishcouncil.org/" target="_blank" rel="noopener" class="underline">British Council Partner Schools Network</a>' },
               { label: 'En-suite campus living, full board', detail: `a true college campus experience at the ${venue.name}, in the heart of Dublin, with all meals included and a Prepaid Meal Card on excursions` },
-              { label: `${lessonsPerWeek} lessons a week`, detail: `${hoursPerWeek} hours with qualified English teachers` },
+              { label: `${hoursPerWeek} hours of English a week`, detail: 'classes with qualified English teachers' },
               { label: 'An international experience', detail: 'students from across Europe, so English becomes the language of connection, cultural exchange and friendship' },
             ].map(({ label, detail, detailHtml }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">

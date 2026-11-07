@@ -49,15 +49,15 @@ const sections = [
     faqs: [
       {
         q: 'What makes this an English immersion programme?',
-        a: `Your teenager lives, studies and spends their free time in English for the whole stay. That's ${lessonsPerWeek} lessons a week with the centre's qualified teachers, then excursions, activities and meals alongside students from across Europe. English stops being a subject and becomes the language of the day.`,
+        a: `Your teenager lives, studies and spends their free time in English for the whole stay. That's ${hoursPerWeek} hours of classes a week with the centre's qualified teachers, then excursions, activities and meals alongside students from across Europe. English stops being a subject and becomes the language of the day.`,
       },
       {
         q: 'Where is the centre?',
         a: `The ${venue.name} in ${venue.area}, right in the heart of the city and about ten minutes' walk from Temple Bar and the main attractions. Lessons, accommodation and activities all take place on the campus.`,
       },
       {
-        q: 'How many lessons are there each week?',
-        a: `${lessonsPerWeek} lessons every week, which is ${hoursPerWeek} hours of classroom instruction, taught by the centre's qualified English teachers. An online placement test before departure puts every student in the right class.`,
+        q: 'How many hours of lessons are there each week?',
+        a: `${hoursPerWeek} hours of classes every week, as ${lessonsPerWeek} lessons of ${Math.round(hoursPerWeek * 60 / lessonsPerWeek)} minutes, taught by the centre's qualified English teachers. An online placement test before departure puts every student in the right class.`,
       },
       {
         q: 'How big are the classes?',

@@ -360,7 +360,7 @@ export const dublin: DublinProgramme = {
   // Order and wording reworked 23 Oct 2026 (owner approved): grouped by theme –
   // learning, care, living, fun. Airport transfers folded into group leaders.
   included: [
-    '20 lessons a week – 15 hours with qualified English teachers, in classes placed by level after an online placement test',
+    '15 hours of English classes a week – with qualified English teachers, in classes placed by level after an online placement test',
     'Progress you can see – placement test, eBooks and student portfolio, plus an end-of-course report, certificate of attendance and graduation ceremony',
     'Your group leaders, all the way – one of us flies with every group from Sofia, and both of us stay for the whole programme, with return airport transfers included. A Dubliner who speaks the city’s language, a Bulgarian who speaks yours',
     'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff, on site 24 hours a day, plus student coordinators to keep every day active and friendly',

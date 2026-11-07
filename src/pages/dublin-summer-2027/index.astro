@@ -18,7 +18,7 @@ const courseSchema = {
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: `English Immersion Summer Programme for Teenagers – Dublin, Ireland ${dublin.year}`,
-  description: `Summer English programme at the ${venue.name}, ${venue.city}, for students aged ${ages.min}–${ages.max}. ${lessonsPerWeek} lessons per week. Immersion English accompanies the group in Dublin as booking agent.`,
+  description: `Summer English programme at the ${venue.name}, ${venue.city}, for students aged ${ages.min}–${ages.max}. ${hoursPerWeek} hours of English classes a week. Immersion English accompanies the group in Dublin as booking agent.`,
   // No provider named — see the note in BaseLayout.astro. Leaving this out is
   // deliberate; do not point it at Immersion English.
   courseMode: 'onsite',
@@ -57,7 +57,7 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
 
 <BaseLayout
   title={`English Immersion for Teenagers – Dublin, Ireland, Summer ${dublin.year} | Immersion English`}
-  description={`A ${startMonthsLabel(durations)} English immersion programme in Dublin, Ireland for teenagers aged ${ages.min}–${ages.max}: ${durationOptionsLabel(durations)}, ${lessonsPerWeek} lessons a week, full board and en-suite campus rooms, travelling with our group leaders from Sofia.`}
+  description={`A ${startMonthsLabel(durations)} English immersion programme in Dublin, Ireland for teenagers aged ${ages.min}–${ages.max}: ${durationOptionsLabel(durations)}, ${hoursPerWeek} hours of English classes a week, full board and en-suite campus rooms, travelling with our group leaders from Sofia.`}
   ogImage="/og/dublin-summer-2027.jpg"
 >
 
@@ -286,8 +286,8 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
               <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Average class</p>
             </div>
             <div style="background: white; border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{lessonsPerWeek}</p>
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Lessons a week</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{hoursPerWeek}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Hours a week</p>
             </div>
             {/* Ink on orange, not white on orange. White on --orange is 2.23:1,
                 which fails accessibility contrast even for large text. Ink gives
@@ -444,7 +444,7 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
         {[
           { href: '/dublin-summer-2027/accommodation', title: 'Accommodation', desc: `En-suite rooms on campus at the ${venue.name}, with full board.` },
           { href: '/dublin-summer-2027/trips-and-activities', title: 'Trips & Activities', desc: `The full excursion programme, plus evening and weekend activities run by the centre's own team.` },
-          { href: '/dublin-summer-2027/weekly-programme', title: 'Weekly Programme', desc: `${lessonsPerWeek} lessons every week – ${hoursPerWeek} hours – with the centre's qualified teachers.` },
+          { href: '/dublin-summer-2027/weekly-programme', title: 'Weekly Programme', desc: `${hoursPerWeek} hours of English classes a week with the centre's qualified teachers.` },
           { href: '/dublin-summer-2027/faqs', title: 'FAQs', desc: 'Answers to the questions parents and students ask most.' },
         ].map(({ href, title, desc }) => (
           <a href={href} class="trust-card group no-underline text-ink">

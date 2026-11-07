@@ -22,7 +22,7 @@ const courseSchema = {
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: `Лятна програма с потапяне в английския език за тийнейджъри – Дъблин, Ирландия ${dublin.year}`,
-  description: `Лятна програма по английски в ${venue.name}, Дъблин, за ученици на ${ages.min}–${ages.max} години. ${lessonsPerWeek} урока седмично. Immersion English придружава групата в Дъблин.`,
+  description: `Лятна програма по английски в ${venue.name}, Дъблин, за ученици на ${ages.min}–${ages.max} години. ${hoursPerWeek} часа английски седмично. Immersion English придружава групата в Дъблин.`,
   // No provider named — see the note in BaseLayout.astro. Leaving this out is
   // deliberate; do not point it at Immersion English.
   courseMode: 'onsite',
@@ -61,7 +61,7 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
 
 <BaseLayout
   title={`Лятна езикова програма в Дъблин за тийнейджъри ${dublin.year} | Immersion English`}
-  description={`Лятна програма с пълно потапяне в английския в Дъблин за тийнейджъри на ${ages.min}–${ages.max} г.: ${durationOptionsLabelBg(durations)} през ${startMonthsLabelBg(durations)}, ${lessonsPerWeek} урока седмично, пълен пансион и групов ръководител, който е с тях през цялото време.`}
+  description={`Лятна програма с пълно потапяне в английския в Дъблин за тийнейджъри на ${ages.min}–${ages.max} г.: ${durationOptionsLabelBg(durations)} през ${startMonthsLabelBg(durations)}, ${hoursPerWeek} часа английски седмично, пълен пансион и групов ръководител, който е с тях през цялото време.`}
   ogImage="/og/dublin-summer-2027.jpg"
 >
 
@@ -280,8 +280,8 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
               <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Ср. брой в клас</p>
             </div>
             <div style="background: white; border-radius: 10px; padding: 14px 18px; flex: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{lessonsPerWeek}</p>
-              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Урока седмично</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--green); line-height: 1; margin: 0;">{hoursPerWeek}</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.72rem; color: var(--ink-soft); margin: 3px 0 0; text-transform: uppercase; letter-spacing: 0.06em;">Часа седмично</p>
             </div>
             {/* Ink on orange, not white on orange. White on --orange is 2.23:1,
                 which fails accessibility contrast even for large text. Ink gives
@@ -434,7 +434,7 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
         {[
           { href: '/dublin-summer-2027/accommodation', title: 'Настаняване', desc: `Пълен пансион и стаи със самостоятелна баня в кампуса на ${venue.name}.` },
           { href: '/dublin-summer-2027/trips-and-activities', title: 'Екскурзии и занимания', desc: 'Цялата програма от екскурзии, плюс вечерни занимания и уикенд програма, организирани от екипа на центъра.' },
-          { href: '/dublin-summer-2027/weekly-programme', title: 'Седмична програма', desc: `${lessonsPerWeek} урока всяка седмица – ${hoursPerWeek} часа – с квалифицираните преподаватели на центъра.` },
+          { href: '/dublin-summer-2027/weekly-programme', title: 'Седмична програма', desc: `${hoursPerWeek} часа английски всяка седмица с квалифицираните преподаватели на центъра.` },
           { href: '/dublin-summer-2027/faqs', title: 'Въпроси и отговори', desc: 'Отговори на въпросите, които родителите и учениците задават най-често.' },
         ].map(({ href, title, desc }) => (
           <a href={href} class="trust-card group no-underline text-ink">

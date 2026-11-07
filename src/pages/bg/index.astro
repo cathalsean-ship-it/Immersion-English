@@ -20,7 +20,7 @@ const teaserTrips = (() => {
     {
       title: 'Уроци',
       description: 'Малки групи с квалифицираните преподаватели на центъра, заедно с ученици от цяла Европа.',
-      duration: `${lessonsPerWeek} на седмица`,
+      duration: `${hoursPerWeek} часа седмично`,
       image: '/lessons-class.webp', // MLA centre classroom photo, wristband recoloured to brand green
       href: '/bg/dublin-summer-2027#timetable',
     },
@@ -189,7 +189,7 @@ const teaserTrips = (() => {
               { label: 'Грижа на място', detail: 'отговорник за благосъстоянието на учениците и денонощен медицински персонал.' },
               { label: 'Доверен партньор в Дъблин', detail: '', detailHtml: 'десетилетия опит с млади хора от цял свят и член на <a href="https://partner-schools.english.britishcouncil.org/" target="_blank" rel="noopener" class="underline">партньорската мрежа на Британския съвет</a>' },
               { label: 'Стаи със самостоятелни бани, пълен пансион', detail: `истинско студентско преживяване в ${venue.name}, в сърцето на Дъблин. Храната е включена в таксата, а по време на екскурзиите детето ви ще използва предплатена карта за храна.` },
-              { label: `${lessonsPerWeek} урока седмично`, detail: `${hoursPerWeek} часа с квалифицирани преподаватели по английски` },
+              { label: `${hoursPerWeek} часа английски седмично`, detail: 'занятия с квалифицирани преподаватели по английски' },
               { label: 'Международно преживяване', detail: 'ученици от цяла Европа, така че английският става език на общуването, културен обмен и приятелство' },
             ].map(({ label, detail, detailHtml }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
