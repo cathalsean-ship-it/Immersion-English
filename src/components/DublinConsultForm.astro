@@ -1,0 +1,176 @@
+---
+/**
+ * Dublin Summer consultation request – the closing ask on both Dublin pages
+ * (EN and BG), added 10 Nov 2026 for the Facebook video campaign.
+ *
+ * One Netlify form ("dublin-consultation") shared by both languages; the
+ * hidden "page-language" field says which page it came from. On success the
+ * visitor goes to a thank-you page with its own address, which is where the
+ * Meta "Lead" and GA4 "generate_lead" events fire (see DublinThankYou.astro).
+ * Nothing typed into the form is ever sent to Meta or Google.
+ */
+import { dublin } from '../data/dublin';
+
+interface Props { lang?: 'en' | 'bg' }
+const { lang = 'en' } = Astro.props;
+const bg = lang === 'bg';
+const { ages, durations, year } = dublin;
+const ageOptions = Array.from({ length: ages.max - ages.min + 1 }, (_, i) => ages.min + i);
+const thankYou = bg ? '/bg/dublin-summer-2027/thank-you' : '/dublin-summer-2027/thank-you';
+// Bulgarian-speaking line on the Bulgarian page, English-speaking line on the English one.
+const chatNumber = bg ? '359889178100' : '359893387464';
+
+const t = bg ? {
+  eyebrow: 'Готови ли сте?',
+  title: 'Запазете онлайн консултация.',
+  intro: 'Разкажете ни малко за детето си и ще се свържем с вас до един работен ден, за да уговорим удобно време. Без ангажимент.',
+  name: 'Вашето име', namePh: 'Мария Иванова',
+  phone: 'Телефон', phonePh: '+359 88 123 4567',
+  email: 'Имейл (по желание)', emailPh: 'maria@example.com',
+  age: 'Възраст на детето', agePh: 'Изберете…', years: 'г.',
+  stay: 'Продължителност', stayUnsure: 'Още не сме решили', days: 'дни',
+  reach: 'Как да се свържем с вас?', byPhone: 'По телефона', byEmail: 'По имейл',
+  submit: 'Запазете консултация',
+  reply: 'Отговаряме до един работен ден.',
+  chat: 'Предпочитате да пишете? Пишете ни във',
+  or: 'или',
+  privacy: 'Използваме данните ви само за да ви отговорим.',
+  privacyLink: 'Поверителност и бисквитки (на английски)',
+  error: 'Нещо се обърка. Моля, пишете ни на immersionenglish.ie@gmail.com',
+} : {
+  eyebrow: 'Ready when you are',
+  title: 'Book an online consultation.',
+  intro: "Tell us a little about your child and we'll be in touch within one working day to arrange a time. No obligation.",
+  name: 'Your name', namePh: 'Maria Ivanova',
+  phone: 'Phone', phonePh: '+359 88 123 4567',
+  email: 'Email (optional)', emailPh: 'maria@example.com',
+  age: "Child's age", agePh: 'Select…', years: '',
+  stay: 'Length of stay', stayUnsure: 'Not sure yet', days: 'days',
+  reach: 'Best way to reach you', byPhone: 'Phone call', byEmail: 'Email',
+  submit: 'Book a consultation',
+  reply: 'We reply within one working day.',
+  chat: 'Prefer to chat? Message us on',
+  or: 'or',
+  privacy: 'We use your details only to reply to you.',
+  privacyLink: 'Privacy & cookies',
+  error: 'Something went wrong. Please email us directly at immersionenglish.ie@gmail.com',
+};
+
+const label = 'font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold';
+const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition';
+---
+
+<section id="consultation" class="section section-tinted" style="scroll-margin-top: 80px;">
+  <div class="container-x">
+    <div class="max-w-[60ch] mx-auto text-center">
+      <span class="eyebrow eyebrow-dot">{t.eyebrow}</span>
+      <h2 class="mt-4 mb-4">{t.title}</h2>
+      <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-8">{t.intro}</p>
+    </div>
+
+    <div class="max-w-[640px] mx-auto bg-white border border-line rounded-lg p-5 md:p-9 shadow-lift">
+      <form name="dublin-consultation" method="POST" action={thankYou} data-netlify="true" netlify-honeypot="bot-field"
+            data-thank-you={thankYou} data-error={t.error} class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
+        <input type="hidden" name="form-name" value="dublin-consultation" />
+        <input type="hidden" name="subject" value={`[Immersion English] Dublin ${year} consultation request`} />
+        <input type="hidden" name="page-language" value={lang} />
+        <!-- Filled from ?from= or the advert's utm tags, so each request shows where it came from. -->
+        <input type="hidden" name="came-from" value="" />
+        <p class="hidden"><input name="bot-field" /></p>
+
+        <div class="flex flex-col gap-[6px] sm:col-span-2">
+          <label for="dc-name" class={label}>{t.name}</label>
+          <input id="dc-name" name="name" type="text" autocomplete="name" placeholder={t.namePh} required class={field} />
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label for="dc-phone" class={label}>{t.phone}</label>
+          <input id="dc-phone" name="phone" type="tel" autocomplete="tel" placeholder={t.phonePh} required class={field} />
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label for="dc-email" class={label}>{t.email}</label>
+          <input id="dc-email" name="email" type="email" autocomplete="email" placeholder={t.emailPh} class={field} />
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label for="dc-age" class={label}>{t.age}</label>
+          <select id="dc-age" name="child-age" required class={`${field} appearance-none cursor-pointer`}>
+            <option value="">{t.agePh}</option>
+            {ageOptions.map(a => <option value={String(a)}>{a}{t.years ? ` ${t.years}` : ''}</option>)}
+          </select>
+        </div>
+        <div class="flex flex-col gap-[6px]">
+          <label for="dc-stay" class={label}>{t.stay}</label>
+          <select id="dc-stay" name="stay" class={`${field} appearance-none cursor-pointer`}>
+            <option value="not sure">{t.stayUnsure}</option>
+            {durations.map(d => <option value={`${d.days} days`}>{d.days} {t.days}</option>)}
+          </select>
+        </div>
+        <div class="flex flex-col gap-[6px] sm:col-span-2">
+          <label for="dc-reach" class={label}>{t.reach}</label>
+          <select id="dc-reach" name="preferred-contact" class={`${field} appearance-none cursor-pointer`}>
+            <option value="phone">{t.byPhone}</option>
+            <option value="viber">Viber</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="email">{t.byEmail}</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <button type="submit" class="btn btn-primary w-full justify-center">{t.submit}</button>
+          <p class="text-center text-ink-soft text-[0.82rem] mt-4 mb-0">{t.reply}</p>
+        </div>
+      </form>
+    </div>
+
+    <p class="text-center text-ink-soft text-[0.95rem] mt-7 mb-2">
+      {t.chat}
+      <a href={`viber://chat?number=%2B${chatNumber}`} class="underline underline-offset-2 font-semibold" style="color: #7360f2;">Viber</a>
+      {t.or}
+      <a href={`https://wa.me/${chatNumber}`} target="_blank" rel="noopener" class="underline underline-offset-2 font-semibold" style="color: #128c7e;">WhatsApp</a>.
+    </p>
+    <p class="text-center text-ink-soft text-[0.82rem] m-0">
+      {t.privacy} <a href="/privacy" class="underline underline-offset-2 text-ink-soft hover:text-brand-green">{t.privacyLink}</a>.
+    </p>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var form = document.querySelector('form[name="dublin-consultation"]');
+    if (!form) return;
+    // Where the request came from: ?from= on an internal link, else the advert's utm tags.
+    try {
+      var p = new URLSearchParams(location.search);
+      var from = p.get('from') || [p.get('utm_source'), p.get('utm_campaign'), p.get('utm_content')].filter(Boolean).join('_');
+      var f = form.querySelector('input[name="came-from"]');
+      if (f && from && /^[A-Za-z0-9_-]{1,80}$/.test(from)) f.value = from;
+    } catch (e) {}
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString(),
+      }).then(function (res) {
+        // fetch only rejects on network failure; a 404 or 500 must not look like success.
+        if (!res.ok) throw new Error('Form POST failed: ' + res.status);
+        // The thank-you page fires the Lead events once, and only for a real submission.
+        try { sessionStorage.setItem('ie_lead', 'dublin'); } catch (e) {}
+        location.href = form.getAttribute('data-thank-you');
+      }).catch(function () {
+        if (btn) btn.disabled = false;
+        var msg = form.querySelector('[data-form-error]');
+        if (!msg) {
+          msg = document.createElement('p');
+          msg.setAttribute('data-form-error', '');
+          msg.setAttribute('role', 'alert');
+          msg.className = 'sm:col-span-2 m-0 text-[0.92rem] font-semibold';
+          msg.style.color = '#b42318';
+          form.appendChild(msg);
+        }
+        msg.textContent = form.getAttribute('data-error');
+      });
+    });
+  })();
+</script>

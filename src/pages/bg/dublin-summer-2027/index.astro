@@ -5,6 +5,7 @@ import teensDublin from '../../../assets/teens-dublin.jpg';
 import studentsWalking from '../../../assets/students-walking.jpg';
 import StudentVideo from '../../../components/StudentVideo.astro';
 import ProgrammeTimetable from '../../../components/ProgrammeTimetable.astro';
+import DublinConsultForm from '../../../components/DublinConsultForm.astro';
 import { dublin, bestValueDuration, paymentPlan } from '../../../data/dublin';
 import { durationOptionsLabelBg, startMonthsLabelBg, formatStartDateBg, formatIsoDateBg, euroBg, includedBg, notIncludedBg, nameBg } from '../../../data/dublin-bg';
 
@@ -94,8 +95,8 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
           <a href="#included" class="btn btn-primary">
             Вижте какво е включено
           </a>
-          <a href="/contact?interest=dublin&from=dublin-hero-bg#booking-form" class="btn btn-ghost text-white border-white/30 hover:border-white">
-            Попитайте за Дъблин 2027
+          <a href="#consultation" class="btn btn-ghost text-white border-white/30 hover:border-white">
+            Запазете онлайн консултация
           </a>
         </div>
 
@@ -167,7 +168,7 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
       <p class="text-center text-[0.88rem] text-ink-soft mt-6 mb-0">Депозитът запазва мястото на детето ви и не се възстановява. При анулиране от {dublin.cancellation.halfChargeFromDays} дни преди началната дата се дължат такси – <a href="/bg/dublin-summer-2027/terms" class="underline underline-offset-2 text-ink-soft hover:text-brand-green">вижте условията за записване и анулиране</a>.</p>
 
       <div class="flex justify-center mt-8">
-        <a href="/contact?interest=dublin&from=dublin-included-bg#booking-form" class="btn btn-primary">Попитайте за Дъблин 2027</a>
+        <a href="#consultation" class="btn btn-primary">Запазете онлайн консултация</a>
       </div>
     </div>
   </section>
@@ -406,22 +407,8 @@ const HIDDEN_INCLUDED = /^(Your group leaders|Wellbeing on site)/;
     </div>
   </section>
 
-  <!-- BOOKING CTA – the page's closing ask (7 Nov 2026) -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="max-w-[70ch] mx-auto text-center">
-        <span class="eyebrow eyebrow-dot">Готови ли сте?</span>
-        <h2 class="mt-4 mb-4">Попитайте ни за Дъблин {dublin.year}.</h2>
-        <p class="text-ink-soft text-[1.02rem] leading-relaxed mb-8">
-          Кажете ни на колко години е детето и кои дати обмисляте, и ще ви отговорим до един работен ден. Без ангажимент.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-          <a href="/contact?interest=dublin&from=dublin-bottom-bg#booking-form" class="btn btn-primary">Попитайте за Дъблин {dublin.year}</a>
-          <a href="/about" class="btn btn-ghost">Повече за нас (на английски)</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- CONSULTATION FORM – the page's closing ask (10 Nov 2026, replaces the link to /contact) -->
+  <DublinConsultForm lang="bg" />
 
   <!-- SECTION LINKS – the subpages' "back to the programme" links land here (#explore) -->
   <section id="explore" class="section" style="scroll-margin-top: 80px;">
