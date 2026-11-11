@@ -154,8 +154,10 @@ const META_PIXEL_ID = '4098945000240922';
         window.dataLayer = window.dataLayer || [];
         window.gtag = function(){dataLayer.push(arguments);};
         window.gtag('js', new Date());
+        // One stream only. G-G193KE10LZ ("Immersion English (no www)") was a
+        // second stream in the SAME GA4 property, so every hit was counted
+        // twice. Removed 11 Nov 2026; do not add a second config line back.
         window.gtag('config', 'G-JCEKWZWT87');
-        window.gtag('config', 'G-G193KE10LZ');
         // Meta Pixel (only if an ID has been configured)
         if (window.__IE_PIXEL_ID) {
           !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
