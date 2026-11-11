@@ -1,0 +1,229 @@
+---
+/**
+ * The site's one enquiry form (Netlify form "individual-enquiry"), shared by
+ * /contact and /bg/contact.
+ *
+ * When "Dublin Summer" is the interest it becomes a "Let's meet" request:
+ * three extra fields appear (phone, child's age, online or in person), the
+ * terms box is required, and a successful send goes to the Dublin thank-you
+ * page, where the Meta "Lead" and GA4 "generate_lead" events fire (see
+ * DublinThankYou.astro). Every other enquiry shows the inline confirmation.
+ * Nothing typed into the form is ever sent to Meta or Google.
+ */
+import { dublin } from '../data/dublin';
+
+interface Props { lang?: 'en' | 'bg' }
+const { lang = 'en' } = Astro.props;
+const bg = lang === 'bg';
+const { ages, year } = dublin;
+const ageOptions = Array.from({ length: ages.max - ages.min + 1 }, (_, i) => ages.min + i);
+const thankYou = bg ? '/bg/dublin-summer-2027/thank-you' : '/dublin-summer-2027/thank-you';
+
+// `value` stays English on both pages so the enquiry emails read the same.
+const interests = [
+  { key: 'speak-up', value: 'Speak Up! (group speaking course)', bg: 'Speak Up! (групов разговорен курс)' },
+  { key: 'general-english', value: 'General English (1:1)', bg: 'Общ английски (1:1)' },
+  { key: 'business-english', value: 'Business English (1:1)', bg: 'Бизнес английски (1:1)' },
+  { key: 'speaking-coach', value: 'Personal Speaking Coach (1:1)', bg: 'Личен треньор по говорене (1:1)' },
+  { key: 'exam-prep', value: 'Exam Prep (CAE / IELTS)', bg: 'Подготовка за изпити (CAE / IELTS)' },
+  { key: 'dublin', value: `Dublin Summer ${year}`, bg: `Лято в Дъблин ${year}` },
+  { key: 'corporate', value: 'Corporate Training', bg: 'Корпоративно обучение' },
+  { key: 'other', value: 'Something else', bg: 'Друго' },
+];
+
+const t = bg ? {
+  title: 'Пишете ни', intro: 'Кажете ни какво ви интересува – ще ви отговорим до един работен ден.',
+  meetTitle: 'Да се запознаем', meetIntro: 'Онлайн или на живо в София. Разкажете ни малко за детето си и ще се свържем с вас до един работен ден, за да уговорим удобно време. Без ангажимент.',
+  success: '✓ Съобщението е изпратено! Ще се свържем с вас до един работен ден.',
+  first: 'Име', firstPh: 'Мария', last: 'Фамилия', lastPh: 'Иванова',
+  email: 'Имейл', emailPh: 'maria@example.com',
+  interest: 'Интересувам се от', interestPh: 'Изберете курс или програма…',
+  phone: 'Телефон', phonePh: '+359 88 123 4567',
+  age: 'Възраст на детето', agePh: 'Изберете…', years: ' г.',
+  meet: 'Как предпочитате да се срещнем?', meetOnline: 'Онлайн', meetPerson: 'На живо в София', meetUnsure: 'Още не съм решил/а',
+  message: 'Съобщение', messagePh: 'Разкажете ни малко за себе си и какво търсите…',
+  termsA: `Прочетох`, termsLink: `условията за записване и анулиране`, termsB: `за Лято в Дъблин ${year}`, termsHref: '/bg/dublin-summer-2027/terms',
+  submit: 'Изпратете', reply: 'Отговаряме до един работен ден.',
+  error: 'Нещо се обърка. Моля, пишете ни на immersionenglish.ie@gmail.com',
+} : {
+  title: 'Talk to us', intro: "Tell us what's on your mind – we'll come back within one working day.",
+  meetTitle: "Let's meet", meetIntro: "Online or in person in Sofia. Tell us a little about your child and we'll be in touch within one working day to arrange a time. No obligation.",
+  success: "✓ Message sent! We'll be in touch within one working day.",
+  first: 'First name', firstPh: 'Jana', last: 'Last name', lastPh: 'Georgieva',
+  email: 'Email', emailPh: 'jana@example.com',
+  interest: "I'm interested in", interestPh: 'Select a course or programme…',
+  phone: 'Phone', phonePh: '+359 88 123 4567',
+  age: "Child's age", agePh: 'Select…', years: '',
+  meet: 'How would you like to meet?', meetOnline: 'Online', meetPerson: 'In person in Sofia', meetUnsure: 'Not sure yet',
+  message: 'Message', messagePh: "Tell us a bit about yourself and what you're looking for…",
+  termsA: `I've read the Dublin Summer ${year}`, termsLink: 'booking & cancellation terms', termsB: '', termsHref: '/dublin-summer-2027/terms',
+  submit: 'Send message', reply: 'We reply within one working day.',
+  error: 'Something went wrong. Please email us directly at immersionenglish.ie@gmail.com',
+};
+
+const label = 'font-heading text-[0.75rem] uppercase tracking-[0.1em] text-ink-soft font-semibold';
+const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong rounded-[10px] bg-white text-ink focus:outline-none focus:border-brand-green focus:shadow-[0_0_0_3px_rgba(0,128,55,0.12)] transition';
+---
+
+<div id="booking-form" class="bg-white border border-line rounded-lg p-5 md:p-9 shadow-lift" style="scroll-margin-top: 100px;">
+  <div data-form-head="general">
+    <h3 class="text-[1.45rem] mb-1">{t.title}</h3>
+    <p class="text-ink-soft text-[0.95rem] mb-7">{t.intro}</p>
+  </div>
+  <div data-form-head="dublin" hidden>
+    <h3 class="text-[1.45rem] mb-1">{t.meetTitle}</h3>
+    <p class="text-ink-soft text-[0.95rem] mb-7">{t.meetIntro}</p>
+  </div>
+
+  <div id="form-success" style="display:none; background: var(--green); color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">{t.success}</div>
+  <form name="individual-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+        data-thank-you={thankYou} data-error={t.error} class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
+    <input type="hidden" name="form-name" value="individual-enquiry" />
+    <input type="hidden" name="subject" value="[Immersion English] New Individual Enquiry" />
+    <input type="hidden" name="page-language" value={lang} />
+    <!-- Filled from ?from= on the link that brought the visitor here (or an advert's utm tags), so each enquiry shows where it came from. -->
+    <input type="hidden" name="came-from" value="" />
+    <p class="hidden"><input name="bot-field" /></p>
+    <div class="flex flex-col gap-[6px]">
+      <label for="first-name" class={label}>{t.first}</label>
+      <input id="first-name" name="first-name" type="text" autocomplete="given-name" placeholder={t.firstPh} required class={field} />
+    </div>
+    <div class="flex flex-col gap-[6px]">
+      <label for="last-name" class={label}>{t.last}</label>
+      <input id="last-name" name="last-name" type="text" autocomplete="family-name" placeholder={t.lastPh} class={field} />
+    </div>
+    <div class="flex flex-col gap-[6px] sm:col-span-2">
+      <label for="email" class={label}>{t.email}</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder={t.emailPh} required class={field} />
+    </div>
+    <div class="flex flex-col gap-[6px] sm:col-span-2">
+      <label for="interest" class={label}>{t.interest}</label>
+      <select id="interest" name="interest" class={`${field} appearance-none cursor-pointer`}>
+        <option value="">{t.interestPh}</option>
+        {interests.map(o => <option data-key={o.key} value={o.value}>{bg ? o.bg : o.value}</option>)}
+      </select>
+    </div>
+    {/* The three rows below are shown only for Dublin Summer (see the script).
+        They stay in the HTML either way so Netlify Forms registers the fields. */}
+    <div data-dublin-row class="flex flex-col gap-[6px]" hidden>
+      <label for="phone" class={label}>{t.phone}</label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder={t.phonePh} class={field} />
+    </div>
+    <div data-dublin-row class="flex flex-col gap-[6px]" hidden>
+      <label for="child-age" class={label}>{t.age}</label>
+      <select id="child-age" name="child-age" class={`${field} appearance-none cursor-pointer`}>
+        <option value="">{t.agePh}</option>
+        {ageOptions.map(a => <option value={String(a)}>{a}{t.years}</option>)}
+      </select>
+    </div>
+    <div data-dublin-row class="flex flex-col gap-[6px] sm:col-span-2" hidden>
+      <label for="meeting" class={label}>{t.meet}</label>
+      <select id="meeting" name="meeting" class={`${field} appearance-none cursor-pointer`}>
+        <option value="online">{t.meetOnline}</option>
+        <option value="in person in Sofia">{t.meetPerson}</option>
+        <option value="not sure">{t.meetUnsure}</option>
+      </select>
+    </div>
+    <div class="flex flex-col gap-[6px] sm:col-span-2">
+      <label for="message" class={label}>{t.message}</label>
+      <textarea id="message" name="message" rows="4" placeholder={t.messagePh} class={`${field} resize-none min-h-[100px]`}></textarea>
+    </div>
+    {/* Shown, and required, only when Dublin Summer is selected. */}
+    <div id="dublin-terms-row" class="sm:col-span-2" hidden>
+      <label class="flex items-start gap-3 text-[0.9rem] text-ink-soft leading-snug cursor-pointer">
+        <input type="checkbox" id="dublin-terms" name="dublin-terms" value="accepted" class="mt-[3px] w-[18px] h-[18px] flex-shrink-0 accent-[var(--green)]" />
+        <span>
+          {t.termsA}
+          <a href={t.termsHref} target="_blank" rel="noopener" class="underline underline-offset-2 text-ink-soft hover:text-brand-green">{t.termsLink}</a>{t.termsB ? ` ${t.termsB}` : ''}{!bg && <span class="whitespace-nowrap"> (<a href="/bg/dublin-summer-2027/terms" target="_blank" rel="noopener" lang="bg" class="underline underline-offset-2 text-ink-soft hover:text-brand-green">на български</a>)</span>}.
+        </span>
+      </label>
+    </div>
+    <div class="sm:col-span-2">
+      <button type="submit" class="btn btn-primary w-full justify-center">{t.submit}</button>
+      <p class="text-center text-ink-soft text-[0.82rem] mt-4">{t.reply}</p>
+    </div>
+  </form>
+</div>
+
+<script is:inline>
+  (function () {
+    var form = document.querySelector('form[name="individual-enquiry"]');
+    if (!form) return;
+    // Pre-fill the enquiry from the button that brought the visitor here.
+    // Links look like /contact?interest=exam-prep&from=lessons-exam-card#booking-form
+    // `interest` matches an <option data-key>; `from` is stored in a hidden field.
+    // Anything unrecognised is ignored, so the form always works without it.
+    var params = new URLSearchParams(location.search);
+    var select = document.getElementById('interest');
+    var interest = params.get('interest');
+    if (interest && select) {
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].getAttribute('data-key') === interest) select.options[i].selected = true;
+      }
+    }
+    var isDublin = function () {
+      var o = select && select.selectedOptions[0];
+      return !!o && o.getAttribute('data-key') === 'dublin';
+    };
+    // Dublin enquiries become a "Let's meet" request: extra fields, phone
+    // required, and the booking & cancellation terms box must be ticked.
+    var termsRow = document.getElementById('dublin-terms-row');
+    var termsBox = document.getElementById('dublin-terms');
+    var phone = document.getElementById('phone');
+    var sync = function () {
+      var d = isDublin();
+      document.querySelectorAll('[data-dublin-row]').forEach(function (r) { r.hidden = !d; });
+      document.querySelectorAll('[data-form-head]').forEach(function (h) { h.hidden = (h.getAttribute('data-form-head') === 'dublin') !== d; });
+      if (termsRow) termsRow.hidden = !d;
+      if (termsBox) { termsBox.required = d; if (!d) termsBox.checked = false; }
+      if (phone) phone.required = d;
+    };
+    if (select) select.addEventListener('change', sync);
+    sync();
+    var from = params.get('from') || [params.get('utm_source'), params.get('utm_campaign'), params.get('utm_content')].filter(Boolean).join('_');
+    var fromField = form.querySelector('input[name="came-from"]');
+    if (fromField && from && /^[A-Za-z0-9_-]{1,80}$/.test(from)) fromField.value = from;
+
+    // Send without leaving the page, then confirm.
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      var dublin = isDublin();
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
+      }).then(function (res) {
+        // fetch only rejects on network failure, so a 404 or 500 from Netlify
+        // would otherwise fall through and show "Message sent!" for a lost enquiry.
+        if (!res.ok) throw new Error('Form POST failed: ' + res.status);
+        if (dublin) {
+          // The thank-you page fires the Lead events once, and only for a real send.
+          try { sessionStorage.setItem('ie_lead', 'dublin'); } catch (err) {}
+          location.href = form.getAttribute('data-thank-you');
+          return;
+        }
+        // Count the enquiry in Google Analytics as "generate_lead" (a key event
+        // in GA4). Only fires if the visitor accepted cookies – gtag doesn't
+        // exist otherwise. Sends WHAT they asked about and which button brought
+        // them here, never their name, email or message.
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', {
+            form_name: 'individual-enquiry',
+            interest: String(data.get('interest') || 'not-set').slice(0, 60),
+            came_from: String(data.get('came-from') || 'direct').slice(0, 60),
+          });
+        }
+        form.style.display = 'none';
+        document.querySelectorAll('[data-form-head]').forEach(function (h) { h.hidden = true; });
+        var success = document.getElementById('form-success');
+        if (success) success.style.display = 'block';
+      }).catch(function () {
+        if (btn) btn.disabled = false;
+        alert(form.getAttribute('data-error'));
+      });
+    });
+  })();
+</script>

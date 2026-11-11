@@ -1,8 +1,8 @@
 ---
 /**
- * Thank-you page body for a Dublin consultation request (EN and BG).
+ * Thank-you page body for a Dublin "Let's meet" request (EN and BG).
  * Having its own address lets Meta and GA4 count requests. The Lead events
- * fire once, only after a real submission (flag set by DublinConsultForm),
+ * fire once, only after a real submission (flag set by EnquiryForm),
  * and only if the visitor accepted cookies – fbq and gtag don't exist otherwise.
  */
 interface Props { lang?: 'en' | 'bg' }
@@ -10,12 +10,12 @@ const { lang = 'en' } = Astro.props;
 const bg = lang === 'bg';
 const t = bg ? {
   title: 'Благодарим ви – ще се свържем с вас.',
-  body: 'Получихме заявката ви за онлайн консултация. Ще се свържем с вас до един работен ден, за да уговорим удобно време.',
+  body: 'Получихме съобщението ви. Ще се свържем с вас до един работен ден, за да уговорим удобно време за среща – онлайн или на живо.',
   back: 'Обратно към програмата', backHref: '/bg/dublin-summer-2027',
   faq: 'Въпроси и отговори (на английски)', faqHref: '/dublin-summer-2027/faqs',
 } : {
   title: "Thank you – we'll be in touch.",
-  body: "We've received your request for an online consultation. We'll be in touch within one working day to arrange a time.",
+  body: "We've received your message. We'll be in touch within one working day to arrange a time to meet – online or in person.",
   back: 'Back to the programme', backHref: '/dublin-summer-2027',
   faq: 'Read the FAQs', faqHref: '/dublin-summer-2027/faqs',
 };
@@ -41,7 +41,7 @@ const t = bg ? {
     if (sessionStorage.getItem('ie_lead') === 'dublin') {
       sessionStorage.removeItem('ie_lead');
       if (typeof window.fbq === 'function') window.fbq('track', 'Lead', { content_name: 'Dublin Summer 2027', content_category: lang });
-      if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_name: 'dublin-consultation', interest: 'Dublin Summer 2027', language: lang });
+      if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_name: 'individual-enquiry', interest: 'Dublin Summer 2027', language: lang });
     }
   } catch (e) {}
 </script>
