@@ -224,6 +224,14 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
         // in GA4). Only fires if the visitor accepted cookies – gtag doesn't
         // exist otherwise. Sends WHAT they asked about and which button brought
         // them here, never their name, email or message.
+        // Meta "Lead" for every enquiry, labelled with what it was about (Dublin
+        // enquiries are counted on the thank-you page instead).
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', {
+            content_name: String(data.get('interest') || 'not-set').slice(0, 60),
+            content_category: form.querySelector('input[name="page-language"]').value,
+          });
+        }
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'generate_lead', {
             form_name: 'individual-enquiry',

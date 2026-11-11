@@ -163,6 +163,12 @@ const META_PIXEL_ID = '4098945000240922';
           document,'script','https://connect.facebook.net/en_US/fbevents.js');
           window.fbq('init', window.__IE_PIXEL_ID);
           window.fbq('track', 'PageView');
+          // "ViewContent" on the Dublin programme pages (EN and BG, not the
+          // thank-you pages), so ads can tell a Dublin visit from any other.
+          var p = location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+          if (/^(\/bg)?\/dublin-summer-2027(\/(accommodation|trips-and-activities|weekly-programme|faqs))?$/.test(p)) {
+            window.fbq('track', 'ViewContent', { content_name: 'Dublin Summer 2027', content_category: p.indexOf('/bg/') === 0 ? 'bg' : 'en' });
+          }
         }
       };
       try { if (localStorage.getItem('ie_cookie_consent') === 'accepted') window.ieLoadTracking(); } catch (e) {}
