@@ -3,9 +3,9 @@
  * The site's one enquiry form (Netlify form "individual-enquiry"), shared by
  * /contact and /bg/contact.
  *
- * When "Dublin Summer" is the interest it becomes a "Let's meet" request:
- * three extra fields appear (phone, child's age, online or in person), the
- * terms box is required, and a successful send goes to the Dublin thank-you
+ * One "Let's meet" form for every enquiry (lessons, exams, corporate, Dublin).
+ * When "Dublin Summer" is the interest, the child's age appears, phone and
+ * the terms box become required, and a successful send goes to the Dublin thank-you
  * page, where the Meta "Lead" and GA4 "generate_lead" events fire (see
  * DublinThankYou.astro). Every other enquiry shows the inline confirmation.
  * Nothing typed into the form is ever sent to Meta or Google.
@@ -32,30 +32,28 @@ const interests = [
 ];
 
 const t = bg ? {
-  title: 'Пишете ни', intro: 'Кажете ни какво ви интересува – ще ви отговорим до един работен ден.',
-  meetTitle: 'Да се запознаем', meetIntro: 'Онлайн или на живо в София. Разкажете ни малко за детето си и ще се свържем с вас до един работен ден, за да уговорим удобно време. Без ангажимент.',
+  title: 'Да се запознаем', intro: 'Кажете ни какво търсите и ще се свържем с вас до един работен ден, за да уговорим кратък разговор – онлайн или на живо в София. Без ангажимент.',
   success: '✓ Съобщението е изпратено! Ще се свържем с вас до един работен ден.',
   first: 'Име', firstPh: 'Мария', last: 'Фамилия', lastPh: 'Иванова',
   email: 'Имейл', emailPh: 'maria@example.com',
   interest: 'Интересувам се от', interestPh: 'Изберете курс или програма…',
-  phone: 'Телефон', phonePh: '+359 88 123 4567',
+  phone: 'Телефон', phoneOpt: 'Телефон (по желание)', phonePh: '+359 88 123 4567',
   age: 'Възраст на детето', agePh: 'Изберете…', years: ' г.',
-  meet: 'Как предпочитате да се срещнем?', meetOnline: 'Онлайн', meetPerson: 'На живо в София', meetUnsure: 'Още не съм решил/а',
-  message: 'Съобщение', messagePh: 'Разкажете ни малко за себе си и какво търсите…',
+  meet: 'Как предпочитате да се срещнем?', meetOnline: 'Онлайн', meetPerson: 'На живо в София', meetUnsure: 'Все едно',
+  message: 'Съобщение', messagePh: 'Какво търсите? Например ниво, цели или удобно време…',
   termsA: `Прочетох`, termsLink: `условията за записване и анулиране`, termsB: `за Лято в Дъблин ${year}`, termsHref: '/bg/dublin-summer-2027/terms',
   submit: 'Изпратете', reply: 'Отговаряме до един работен ден.',
   error: 'Нещо се обърка. Моля, пишете ни на immersionenglish.ie@gmail.com',
 } : {
-  title: 'Talk to us', intro: "Tell us what's on your mind – we'll come back within one working day.",
-  meetTitle: "Let's meet", meetIntro: "Online or in person in Sofia. Tell us a little about your child and we'll be in touch within one working day to arrange a time. No obligation.",
+  title: "Let's meet", intro: "Tell us what you're looking for and we'll be in touch within one working day to arrange a short chat – online or in person in Sofia. No obligation.",
   success: "✓ Message sent! We'll be in touch within one working day.",
   first: 'First name', firstPh: 'Jana', last: 'Last name', lastPh: 'Georgieva',
   email: 'Email', emailPh: 'jana@example.com',
   interest: "I'm interested in", interestPh: 'Select a course or programme…',
-  phone: 'Phone', phonePh: '+359 88 123 4567',
+  phone: 'Phone', phoneOpt: 'Phone (optional)', phonePh: '+359 88 123 4567',
   age: "Child's age", agePh: 'Select…', years: '',
-  meet: 'How would you like to meet?', meetOnline: 'Online', meetPerson: 'In person in Sofia', meetUnsure: 'Not sure yet',
-  message: 'Message', messagePh: "Tell us a bit about yourself and what you're looking for…",
+  meet: 'How would you like to meet?', meetOnline: 'Online', meetPerson: 'In person in Sofia', meetUnsure: 'Either is fine',
+  message: 'Message', messagePh: "What are you looking for? Your level, goals or times that suit you…",
   termsA: `I've read the Dublin Summer ${year}`, termsLink: 'booking & cancellation terms', termsB: '', termsHref: '/dublin-summer-2027/terms',
   submit: 'Send message', reply: 'We reply within one working day.',
   error: 'Something went wrong. Please email us directly at immersionenglish.ie@gmail.com',
@@ -66,13 +64,9 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
 ---
 
 <div id="booking-form" class="bg-white border border-line rounded-lg p-5 md:p-9 shadow-lift" style="scroll-margin-top: 100px;">
-  <div data-form-head="general">
+  <div data-form-head>
     <h3 class="text-[1.45rem] mb-1">{t.title}</h3>
     <p class="text-ink-soft text-[0.95rem] mb-7">{t.intro}</p>
-  </div>
-  <div data-form-head="dublin" hidden>
-    <h3 class="text-[1.45rem] mb-1">{t.meetTitle}</h3>
-    <p class="text-ink-soft text-[0.95rem] mb-7">{t.meetIntro}</p>
   </div>
 
   <div id="form-success" style="display:none; background: var(--green); color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">{t.success}</div>
@@ -103,20 +97,22 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
         {interests.map(o => <option data-key={o.key} value={o.value}>{bg ? o.bg : o.value}</option>)}
       </select>
     </div>
-    {/* The three rows below are shown only for Dublin Summer (see the script).
-        They stay in the HTML either way so Netlify Forms registers the fields. */}
-    <div data-dublin-row class="flex flex-col gap-[6px]" hidden>
-      <label for="phone" class={label}>{t.phone}</label>
+    <div class="flex flex-col gap-[6px]">
+      <label for="phone" class={label} data-opt={t.phoneOpt} data-req={t.phone}>{t.phoneOpt}</label>
       <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder={t.phonePh} class={field} />
     </div>
-    <div data-dublin-row class="flex flex-col gap-[6px]" hidden>
+    {/* Child's age is shown, and required, only for Dublin Summer (see the script).
+        It stays in the HTML either way so Netlify Forms registers the field. */}
+    <div data-dublin-row hidden>
+     <div class="flex flex-col gap-[6px]">
       <label for="child-age" class={label}>{t.age}</label>
       <select id="child-age" name="child-age" class={`${field} appearance-none cursor-pointer`}>
         <option value="">{t.agePh}</option>
         {ageOptions.map(a => <option value={String(a)}>{a}{t.years}</option>)}
       </select>
+     </div>
     </div>
-    <div data-dublin-row class="flex flex-col gap-[6px] sm:col-span-2" hidden>
+    <div class="flex flex-col gap-[6px] sm:col-span-2">
       <label for="meeting" class={label}>{t.meet}</label>
       <select id="meeting" name="meeting" class={`${field} appearance-none cursor-pointer`}>
         <option value="online">{t.meetOnline}</option>
@@ -165,18 +161,23 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
       var o = select && select.selectedOptions[0];
       return !!o && o.getAttribute('data-key') === 'dublin';
     };
-    // Dublin enquiries become a "Let's meet" request: extra fields, phone
-    // required, and the booking & cancellation terms box must be ticked.
+    // Dublin enquiries also ask for the child's age, make the phone number
+    // required and need the booking & cancellation terms box ticked.
     var termsRow = document.getElementById('dublin-terms-row');
     var termsBox = document.getElementById('dublin-terms');
     var phone = document.getElementById('phone');
     var sync = function () {
       var d = isDublin();
       document.querySelectorAll('[data-dublin-row]').forEach(function (r) { r.hidden = !d; });
-      document.querySelectorAll('[data-form-head]').forEach(function (h) { h.hidden = (h.getAttribute('data-form-head') === 'dublin') !== d; });
       if (termsRow) termsRow.hidden = !d;
       if (termsBox) { termsBox.required = d; if (!d) termsBox.checked = false; }
-      if (phone) phone.required = d;
+      if (phone) {
+        phone.required = d;
+        var pl = document.querySelector('label[for="phone"]');
+        if (pl) pl.textContent = pl.getAttribute(d ? 'data-req' : 'data-opt');
+      }
+      var age = document.getElementById('child-age');
+      if (age) { age.required = d; if (!d) age.value = ''; }
     };
     if (select) select.addEventListener('change', sync);
     sync();
