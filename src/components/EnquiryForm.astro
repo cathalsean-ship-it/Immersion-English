@@ -3,7 +3,8 @@
  * The site's one enquiry form (Netlify form "individual-enquiry"), shared by
  * /contact and /bg/contact.
  *
- * One "Let's meet" form for every enquiry (lessons, exams, corporate, Dublin).
+ * One form for every enquiry (lessons, exams, corporate, Dublin): headed
+ * "Let's talk about your goals", or "Let's meet" for Dublin Summer.
  * Other enquiries are offered an online consultation. When "Dublin Summer"
  * is the interest, the child's age and "online or in person in Sofia" appear,
  * phone and the terms box become required, and a successful send goes to the Dublin thank-you
@@ -33,7 +34,7 @@ const interests = [
 ];
 
 const t = bg ? {
-  title: 'Да се запознаем', intro: 'Кажете ни какво търсите и ще се свържем с вас до един работен ден, за да уговорим кратка онлайн консултация. Без ангажимент.',
+  title: 'Да поговорим за целите ви', dublinTitle: 'Да се запознаем', intro: 'Кажете ни какво търсите и ще се свържем с вас до един работен ден, за да уговорим кратка онлайн консултация. Без ангажимент.',
   dublinIntro: 'Кажете ни малко за детето си и ще се свържем с вас до един работен ден, за да уговорим среща – онлайн или на живо в София. Без ангажимент.',
   success: '✓ Съобщението е изпратено! Ще се свържем с вас до един работен ден.',
   first: 'Име', firstPh: 'Мария', last: 'Фамилия', lastPh: 'Иванова',
@@ -47,7 +48,7 @@ const t = bg ? {
   submit: 'Изпратете', reply: 'Отговаряме до един работен ден.',
   error: 'Нещо се обърка. Моля, пишете ни на immersionenglish.ie@gmail.com',
 } : {
-  title: "Let's meet", intro: "Tell us what you're looking for and we'll be in touch within one working day to arrange a short online consultation. No obligation.",
+  title: "Let's talk about your goals", dublinTitle: "Let's meet", intro: "Tell us what you're looking for and we'll be in touch within one working day to arrange a short online consultation. No obligation.",
   dublinIntro: "Tell us a little about your child and we'll be in touch within one working day to arrange a time to meet – online or in person in Sofia. No obligation.",
   success: "✓ Message sent! We'll be in touch within one working day.",
   first: 'First name', firstPh: 'Jana', last: 'Last name', lastPh: 'Georgieva',
@@ -68,7 +69,7 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
 
 <div id="booking-form" class="bg-white border border-line rounded-lg p-5 md:p-9 shadow-lift" style="scroll-margin-top: 100px;">
   <div data-form-head>
-    <h3 class="text-[1.45rem] mb-1">{t.title}</h3>
+    <h3 class="text-[1.45rem] mb-1" data-title={t.title} data-dublin-title={t.dublinTitle}>{t.title}</h3>
     <p class="text-ink-soft text-[0.95rem] mb-7" data-intro={t.intro} data-dublin-intro={t.dublinIntro}>{t.intro}</p>
   </div>
 
@@ -183,6 +184,8 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
         var pl = document.querySelector('label[for="phone"]');
         if (pl) pl.textContent = pl.getAttribute(d ? 'data-req' : 'data-opt');
       }
+      var title = document.querySelector('[data-dublin-title]');
+      if (title) title.textContent = title.getAttribute(d ? 'data-dublin-title' : 'data-title');
       var intro = document.querySelector('[data-dublin-intro]');
       if (intro) intro.textContent = intro.getAttribute(d ? 'data-dublin-intro' : 'data-intro');
       var meeting = document.getElementById('meeting');
