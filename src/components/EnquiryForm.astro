@@ -4,8 +4,9 @@
  * /contact and /bg/contact.
  *
  * One "Let's meet" form for every enquiry (lessons, exams, corporate, Dublin).
- * When "Dublin Summer" is the interest, the child's age appears, phone and
- * the terms box become required, and a successful send goes to the Dublin thank-you
+ * Other enquiries are offered an online consultation. When "Dublin Summer"
+ * is the interest, the child's age and "online or in person in Sofia" appear,
+ * phone and the terms box become required, and a successful send goes to the Dublin thank-you
  * page, where the Meta "Lead" and GA4 "generate_lead" events fire (see
  * DublinThankYou.astro). Every other enquiry shows the inline confirmation.
  * Nothing typed into the form is ever sent to Meta or Google.
@@ -32,7 +33,8 @@ const interests = [
 ];
 
 const t = bg ? {
-  title: 'Да се запознаем', intro: 'Кажете ни какво търсите и ще се свържем с вас до един работен ден, за да уговорим кратък разговор – онлайн или на живо в София. Без ангажимент.',
+  title: 'Да се запознаем', intro: 'Кажете ни какво търсите и ще се свържем с вас до един работен ден, за да уговорим кратка онлайн консултация. Без ангажимент.',
+  dublinIntro: 'Кажете ни малко за детето си и ще се свържем с вас до един работен ден, за да уговорим среща – онлайн или на живо в София. Без ангажимент.',
   success: '✓ Съобщението е изпратено! Ще се свържем с вас до един работен ден.',
   first: 'Име', firstPh: 'Мария', last: 'Фамилия', lastPh: 'Иванова',
   email: 'Имейл', emailPh: 'maria@example.com',
@@ -45,7 +47,8 @@ const t = bg ? {
   submit: 'Изпратете', reply: 'Отговаряме до един работен ден.',
   error: 'Нещо се обърка. Моля, пишете ни на immersionenglish.ie@gmail.com',
 } : {
-  title: "Let's meet", intro: "Tell us what you're looking for and we'll be in touch within one working day to arrange a short chat – online or in person in Sofia. No obligation.",
+  title: "Let's meet", intro: "Tell us what you're looking for and we'll be in touch within one working day to arrange a short online consultation. No obligation.",
+  dublinIntro: "Tell us a little about your child and we'll be in touch within one working day to arrange a time to meet – online or in person in Sofia. No obligation.",
   success: "✓ Message sent! We'll be in touch within one working day.",
   first: 'First name', firstPh: 'Jana', last: 'Last name', lastPh: 'Georgieva',
   email: 'Email', emailPh: 'jana@example.com',
@@ -66,7 +69,7 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
 <div id="booking-form" class="bg-white border border-line rounded-lg p-5 md:p-9 shadow-lift" style="scroll-margin-top: 100px;">
   <div data-form-head>
     <h3 class="text-[1.45rem] mb-1">{t.title}</h3>
-    <p class="text-ink-soft text-[0.95rem] mb-7">{t.intro}</p>
+    <p class="text-ink-soft text-[0.95rem] mb-7" data-intro={t.intro} data-dublin-intro={t.dublinIntro}>{t.intro}</p>
   </div>
 
   <div id="form-success" style="display:none; background: var(--green); color: white; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 20px; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 0.92rem;">{t.success}</div>
@@ -112,13 +115,16 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
       </select>
      </div>
     </div>
-    <div class="flex flex-col gap-[6px] sm:col-span-2">
+    {/* Meeting in person is offered for Dublin Summer only; everything else is an online consultation. */}
+    <div data-dublin-row class="sm:col-span-2" hidden>
+     <div class="flex flex-col gap-[6px]">
       <label for="meeting" class={label}>{t.meet}</label>
       <select id="meeting" name="meeting" class={`${field} appearance-none cursor-pointer`}>
         <option value="online">{t.meetOnline}</option>
         <option value="in person in Sofia">{t.meetPerson}</option>
         <option value="not sure">{t.meetUnsure}</option>
       </select>
+     </div>
     </div>
     <div class="flex flex-col gap-[6px] sm:col-span-2">
       <label for="message" class={label}>{t.message}</label>
@@ -161,8 +167,9 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
       var o = select && select.selectedOptions[0];
       return !!o && o.getAttribute('data-key') === 'dublin';
     };
-    // Dublin enquiries also ask for the child's age, make the phone number
-    // required and need the booking & cancellation terms box ticked.
+    // Dublin enquiries also ask for the child's age and whether to meet online
+    // or in person, make the phone number required and need the booking &
+    // cancellation terms box ticked. Everything else is an online consultation.
     var termsRow = document.getElementById('dublin-terms-row');
     var termsBox = document.getElementById('dublin-terms');
     var phone = document.getElementById('phone');
@@ -176,6 +183,10 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
         var pl = document.querySelector('label[for="phone"]');
         if (pl) pl.textContent = pl.getAttribute(d ? 'data-req' : 'data-opt');
       }
+      var intro = document.querySelector('[data-dublin-intro]');
+      if (intro) intro.textContent = intro.getAttribute(d ? 'data-dublin-intro' : 'data-intro');
+      var meeting = document.getElementById('meeting');
+      if (meeting && !d) meeting.value = 'online';
       var age = document.getElementById('child-age');
       if (age) { age.required = d; if (!d) age.value = ''; }
     };
