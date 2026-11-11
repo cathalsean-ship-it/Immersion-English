@@ -1,0 +1,46 @@
+---
+/**
+ * "Also in Bulgarian" bar, shown at the very top of ENGLISH pages, only to
+ * visitors whose browser lists Bulgarian among its languages (11 Nov 2026).
+ * Links to the Bulgarian version of the page if one exists (BG_PAGES in
+ * i18n.ts), otherwise to the Bulgarian homepage. Dismissing it is
+ * remembered in this browser (localStorage "ie_bg_bar", a preference, not
+ * tracking). Hidden in the HTML, so search engines and other visitors never
+ * see it; the inline script below reveals it before the page paints.
+ */
+import { alternatesOf } from '../data/i18n';
+
+interface Props { path: string }
+const { path } = Astro.props;
+const alt = alternatesOf(path);
+const target = alt?.bg ?? '/bg';
+const text = alt ? 'Тази страница е налична и на български.' : 'Сайтът е наличен и на български.';
+const cta = alt ? 'Към българската версия' : 'Към сайта на български';
+---
+
+<div id="bg-bar" lang="bg" hidden style="background: var(--green); color: #fff;">
+  <div class="container-x flex items-center justify-center gap-3 py-[9px] text-[0.9rem] leading-snug text-center">
+    <span>{text} <a href={target} class="font-semibold underline underline-offset-2" style="color: #fff;">{cta}</a></span>
+    <button type="button" id="bg-bar-close" aria-label="Затвори" title="Затвори"
+            class="flex-shrink-0 w-7 h-7 grid place-items-center rounded-full hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+            style="color: #fff; background: transparent; border: 0; cursor: pointer; font-size: 1.15rem; line-height: 1;">&times;</button>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var bar = document.getElementById('bg-bar');
+    if (!bar) return;
+    try {
+      if (localStorage.getItem('ie_bg_bar') === 'dismissed') return;
+      var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+      var wantsBg = false;
+      for (var i = 0; i < langs.length; i++) { if (/^bg\b/i.test(String(langs[i]))) { wantsBg = true; break; } }
+      if (!wantsBg) return;
+      bar.hidden = false;
+      document.getElementById('bg-bar-close').addEventListener('click', function () {
+        bar.hidden = true;
+        try { localStorage.setItem('ie_bg_bar', 'dismissed'); } catch (e) {}
+      });
+    } catch (e) {}
+  })();
+</script>
