@@ -53,7 +53,7 @@ const lang = langOf(pagePath);
 const isBg = lang === 'bg';
 const alternates = alternatesOf(pagePath);
 const origin = (Astro.site?.toString() || 'https://immersion-english.com').replace(/\/$/, '');
-const LABELS_BG: Record<string, string> = { 'dublin-summer-2027': 'Лято в Дъблин 2027', 'terms': 'Условия за записване и анулиране' };
+const LABELS_BG: Record<string, string> = { 'contact': 'Контакти', 'dublin-summer-2027': 'Лято в Дъблин 2027', 'terms': 'Условия за записване и анулиране' };
 // Bulgarian pages live under /bg, so their trail starts at /bg ("Начало"),
 // not at the English homepage, and the "bg" segment itself is not a step.
 const crumbSegs = isBg ? segs.slice(1) : segs;
@@ -62,7 +62,7 @@ const crumbs = [{ name: isBg ? 'Начало' : 'Home', url: isBg ? crumbBase : 
   name: (isBg ? LABELS_BG[s] : LABELS[s]) ?? title.split('|')[0].trim(),
   url: crumbBase + '/' + crumbSegs.slice(0, i + 1).join('/'),
 }))];
-const breadcrumbSchema = crumbSegs.length === 0 || ['404', 'thank-you'].includes(segs[0]) ? null : {
+const breadcrumbSchema = crumbSegs.length === 0 || (segs[0] === '404' || segs.includes('thank-you')) ? null : {
   '@context': 'https://schema.org',
   '@graph': [
     { '@type': 'WebPage', '@id': origin + pagePath + '#webpage', url: origin + pagePath, name: title, description, inLanguage: lang, ...(keywords ? { keywords: keywords.join(', ') } : {}), isPartOf: { '@type': 'WebSite', name: 'Immersion English', url: origin + '/' } },
@@ -166,6 +166,19 @@ const META_PIXEL_ID = '4098945000240922';
         }
       };
       try { if (localStorage.getItem('ie_cookie_consent') === 'accepted') window.ieLoadTracking(); } catch (e) {}
+      // Count taps on WhatsApp, Viber, phone and email links as a "Contact"
+      // (Meta) and "contact_click" (GA4). Records only WHICH kind of link was
+      // tapped, never a number or address. Fires only if the visitor accepted
+      // cookies: fbq and gtag don't exist otherwise.
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+        if (!a) return;
+        var h = a.getAttribute('href') || '';
+        var method = h.indexOf('https://wa.me/') === 0 ? 'whatsapp' : h.indexOf('viber:') === 0 ? 'viber' : h.indexOf('tel:') === 0 ? 'phone' : h.indexOf('mailto:') === 0 ? 'email' : '';
+        if (!method) return;
+        if (typeof window.fbq === 'function') window.fbq('track', 'Contact', { content_name: method });
+        if (typeof window.gtag === 'function') window.gtag('event', 'contact_click', { method: method });
+      });
     </script>
     <!-- Page-specific search terms, EN + BG. See src/data/keywords.ts -->
     {keywords && <meta name="keywords" content={keywords.join(', ')} />}

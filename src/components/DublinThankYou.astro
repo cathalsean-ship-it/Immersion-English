@@ -1,0 +1,47 @@
+---
+/**
+ * Thank-you page body for a Dublin "Let's meet" request (EN and BG).
+ * Having its own address lets Meta and GA4 count requests. The Lead events
+ * fire once, only after a real submission (flag set by EnquiryForm),
+ * and only if the visitor accepted cookies – fbq and gtag don't exist otherwise.
+ */
+interface Props { lang?: 'en' | 'bg' }
+const { lang = 'en' } = Astro.props;
+const bg = lang === 'bg';
+const t = bg ? {
+  title: 'Благодарим ви – ще се свържем с вас.',
+  body: 'Получихме съобщението ви. Ще се свържем с вас до един работен ден, за да уговорим удобно време за среща – онлайн или на живо.',
+  back: 'Обратно към програмата', backHref: '/bg/dublin-summer-2027',
+  faq: 'Въпроси и отговори (на английски)', faqHref: '/dublin-summer-2027/faqs',
+} : {
+  title: "Thank you – we'll be in touch.",
+  body: "We've received your message. We'll be in touch within one working day to arrange a time to meet – online or in person.",
+  back: 'Back to the programme', backHref: '/dublin-summer-2027',
+  faq: 'Read the FAQs', faqHref: '/dublin-summer-2027/faqs',
+};
+---
+
+<section class="relative flex items-center justify-center text-white overflow-hidden isolate" style="min-height: 80vh;">
+  <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
+  <div class="container-x relative z-10 text-center py-20">
+    <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <h1 class="text-white mb-5" style="max-width: 20ch; margin-left: auto; margin-right: auto;">{t.title}</h1>
+    <p class="text-white/75 text-[1.05rem] leading-relaxed mb-10" style="max-width: 46ch; margin-left: auto; margin-right: auto;">{t.body}</p>
+    <div class="flex gap-4 justify-center flex-wrap">
+      <a href={t.backHref} class="btn btn-primary">{t.back}</a>
+      <a href={t.faqHref} class="btn btn-ghost text-white border-white/30 hover:border-white">{t.faq}</a>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ lang }}>
+  try {
+    if (sessionStorage.getItem('ie_lead') === 'dublin') {
+      sessionStorage.removeItem('ie_lead');
+      if (typeof window.fbq === 'function') window.fbq('track', 'Lead', { content_name: 'Dublin Summer 2027', content_category: lang });
+      if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_name: 'individual-enquiry', interest: 'Dublin Summer 2027', language: lang });
+    }
+  } catch (e) {}
+</script>
