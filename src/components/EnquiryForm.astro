@@ -77,7 +77,7 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
   <form name="individual-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field"
         data-thank-you={thankYou} data-error={t.error} class="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
     <input type="hidden" name="form-name" value="individual-enquiry" />
-    <input type="hidden" name="subject" value="[Immersion English] New Individual Enquiry" />
+    <input type="hidden" name="subject" value="New enquiry" />
     <input type="hidden" name="page-language" value={lang} />
     <!-- Filled from ?from= on the link that brought the visitor here (or an advert's utm tags), so each enquiry shows where it came from. -->
     <input type="hidden" name="came-from" value="" />
@@ -204,6 +204,10 @@ const field = 'font-body text-[0.98rem] px-[14px] py-3 border border-line-strong
       e.preventDefault();
       var data = new FormData(form);
       var dublin = isDublin();
+      // Email subject shows what the enquiry is about and who sent it,
+      // e.g. "New enquiry – Dublin Summer 2027 – Maria Ivanova".
+      var who = [data.get('first-name'), data.get('last-name')].map(function (v) { return String(v || '').trim(); }).filter(Boolean).join(' ');
+      data.set('subject', ['New enquiry', String(data.get('interest') || '').trim(), who].filter(Boolean).join(' – '));
       var btn = form.querySelector('button[type="submit"]');
       if (btn) btn.disabled = true;
       fetch('/', {
