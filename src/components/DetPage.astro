@@ -101,7 +101,6 @@ const t = bg ? {
 
   endH2: 'Не сте сигурни кой изпит е подходящ за вас?',
   endP: 'Запишете безплатна консултация и ще ви помогнем да изберете – без ангажимент.',
-  endFb: `Обратна връзка – ${fb} €`,
 } : {
   eyebrow: 'Duolingo English Test',
   h1a: 'Certify your English ', h1b: 'anytime, anywhere.', h1c: '',
@@ -177,7 +176,6 @@ const t = bg ? {
 
   endH2: 'Not sure which test is right for you?',
   endP: 'Book a free consultation and we\'ll help you choose – no commitment.',
-  endFb: `Practice test feedback – €${fb}`,
 };
 
 // Service + Offer for the feedback product, so the price can show in search.
@@ -430,7 +428,7 @@ const faqSchema = {
     <p class="max-w-[46ch] mx-auto mb-8">{t.endP}</p>
     <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
       <a href={c('det', 'det-bottom')} class="btn btn-primary">{t.ctaMain}</a>
-      <a href={c('det-feedback', 'det-bottom')} class="btn btn-ghost text-white border-white/30 hover:border-white">{t.endFb}</a>
+      <a href={det.inviteUrl} target="_blank" rel="noopener" class="btn btn-ghost text-white border-white/30 hover:border-white">{t.ctaFb}</a>
     </div>
   </div>
 </section>
