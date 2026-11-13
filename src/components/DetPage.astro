@@ -54,7 +54,6 @@ const t = bg ? {
   scoreIntro: `Резултатите са от ${det.scoreMin} до ${det.scoreMax}. Ето как се сравняват с бандовете в IELTS и нивата по CEFR според официалното сравнение на Duolingo. Много университети изискват резултат ${det.typicalAsk}, а най-селективните – повече. Винаги проверявайте изискванията на вашата програма.`,
   scoreHead: ['Duolingo English Test', 'IELTS Academic', 'CEFR'],
   scoreKey: 'Диапазонът, който много университети изискват',
-  scoreLink: 'Вижте пълното сравнение, включително с TOEFL, на сайта на Duolingo',
   stepsH3: 'Как протича',
   steps: [
     { h: 'Говорете с нас', p: 'Безплатна консултация, за да проверим дали DET се приема там, където кандидатствате, и какъв резултат ви трябва.' },
@@ -146,7 +145,6 @@ const t = bg ? {
   scoreIntro: `Scores run from ${det.scoreMin} to ${det.scoreMax}. Here's how they compare with IELTS bands and CEFR levels, according to Duolingo's official comparison. Many universities ask for a score of ${det.typicalAsk}, and the most selective ask for more. Always check your own programme.`,
   scoreHead: ['Duolingo English Test', 'IELTS Academic', 'CEFR'],
   scoreKey: 'The range many universities ask for',
-  scoreLink: 'See the full comparison, including TOEFL, on Duolingo\'s site',
   stepsH3: 'How it works',
   steps: [
     { h: 'Talk to us', p: 'A free consultation to check the DET is accepted where you\'re applying, and what score you need.' },
@@ -353,7 +351,6 @@ const faqSchema = {
     <img src="/duo-graduate.webp" alt="" width="260" height="260" class="hidden lg:block flex-shrink-0" loading="lazy" />
     </div>
     <p class="flex items-center gap-2 text-[0.85rem] text-ink-soft mt-4"><span class="inline-block w-4 h-4 rounded" style="background: var(--green-soft); border: 1px solid var(--line);"></span>{t.scoreKey}</p>
-    <a href={det.scoresUrl} target="_blank" rel="noopener noreferrer" class="inline-block mt-5 text-[0.92rem] font-heading font-semibold no-underline hover:underline" style="color: var(--green);">{t.scoreLink}</a>
   </div>
 </section>
 
