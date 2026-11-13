@@ -65,7 +65,7 @@ const t = bg ? {
 
 
   cmpEyebrow: 'Сравнение', cmpH2a: 'Duolingo English Test, ', cmpH2b: 'IELTS или Cambridge?',
-  cmpHead: ['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'],
+  cmpHead: ['', 'Duolingo|English Test', 'IELTS|Academic', 'Cambridge|C1 Advanced'],
   cmpRows: [
     ['Цена', `около ${det.priceEurApprox} €, еднаква навсякъде`, `${otherTests.ieltsAcademicEur} €`, `${otherTests.cambridgeC1Eur} €`],
     ['Продължителност', 'около 1 час', 'около 2 часа и 45 минути', 'около 4 часа'],
@@ -141,7 +141,7 @@ const t = bg ? {
 
 
   cmpEyebrow: 'At a glance', cmpH2a: 'How does the Duolingo English Test compare ', cmpH2b: 'to other tests?',
-  cmpHead: ['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'],
+  cmpHead: ['', 'Duolingo|English Test', 'IELTS|Academic', 'Cambridge|C1 Advanced'],
   cmpRows: [
     ['Price', `about €${det.priceEurApprox}, the same everywhere`, `€${otherTests.ieltsAcademicEur}`, `€${otherTests.cambridgeC1Eur}`],
     ['Length', 'about 1 hour', 'about 2 hours 45 minutes', 'about 4 hours'],
@@ -328,7 +328,7 @@ const faqSchema = {
       <table class="w-full text-left text-[0.92rem] min-w-[680px]">
         <thead>
           <tr style="background: var(--green);">
-            {t.cmpHead.map((h, i) => <th scope="col" class={`font-heading font-semibold text-white px-4 py-3 ${i === 0 ? 'w-[18%] sticky left-0 z-10' : ''}`} style={i === 0 ? 'background: var(--green);' : ''}>{h}</th>)}
+            {t.cmpHead.map((h, i) => <th scope="col" class={`font-heading font-semibold text-white px-4 py-3 ${i === 0 ? 'w-[18%] sticky left-0 z-10' : ''}`} style={i === 0 ? 'background: var(--green);' : ''}>{h.split('|').map((l, k) => <>{k > 0 && <br />}<span class="whitespace-nowrap">{l}</span></>)}</th>)}
           </tr>
         </thead>
         <tbody>
