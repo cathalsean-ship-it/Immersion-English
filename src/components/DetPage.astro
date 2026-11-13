@@ -79,7 +79,7 @@ const t = bg ? {
   offers: [
     { h: 'Изберете правилния изпит', p: 'Не сте сигурни кой изпит е подходящ за вашите планове? Ще го обсъдим и ще ви кажем честно – DET, IELTS или Cambridge.', price: 'Безплатно', cta: 'Запишете консултация', href: c('det', 'det-offer-consultation') },
     { h: 'Подготовка 1:1', p: 'Индивидуални онлайн уроци, насочени към типовете задачи, времето и стратегията в DET.', price: `${prep.perLesson} € / ${prep.lessonMinutes} мин`, cta: 'Попитайте за уроците', href: c('det', 'det-offer-lessons') },
-    { h: 'Купете теста чрез нас', p: `Купете теста с нашия код за покана и получете приоритетни резултати до ${det.partnerResultsHours} часа – без допълнително заплащане.`, price: 'Попитайте ни за кода', cta: 'Поискайте кода', href: c('det', 'det-offer-code') },
+    { h: 'Купете теста чрез нас', p: `Купете теста с нашия код за покана и получете приоритетни резултати до ${det.partnerResultsHours} часа – без допълнително заплащане.`, price: `Код: ${det.inviteCode}`, cta: 'Регистрирайте се с този код', href: det.inviteUrl, ext: true },
   ],
 
   trainerEyebrow: 'Вашият преподавател',
@@ -155,7 +155,7 @@ const t = bg ? {
   offers: [
     { h: 'Choose the right test', p: 'Not sure which test fits your plans? We\'ll talk it through and tell you honestly – DET, IELTS or Cambridge.', price: 'Free', cta: 'Book a consultation', href: c('det', 'det-offer-consultation') },
     { h: 'Prepare 1:1', p: '1:1 online lessons focused on the DET\'s question types, timing and strategy.', price: `€${prep.perLesson} / ${prep.lessonMinutes} min`, cta: 'Ask about lessons', href: c('det', 'det-offer-lessons') },
-    { h: 'Book your test through us', p: `Buy your test with our invite code and get priority results within ${det.partnerResultsHours} hours, at no extra cost.`, price: 'Ask us for the code', cta: 'Get the code', href: c('det', 'det-offer-code') },
+    { h: 'Book your test through us', p: `Buy your test with our invite code and get priority results within ${det.partnerResultsHours} hours, at no extra cost.`, price: `Code: ${det.inviteCode}`, cta: 'Register with this code', href: det.inviteUrl, ext: true },
   ],
 
   trainerEyebrow: 'Your trainer',
@@ -361,7 +361,7 @@ const faqSchema = {
           <p class="text-ink-soft text-[0.93rem] leading-relaxed mb-5 flex-1">{o.p}</p>
           <div class="pt-4 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.15rem]">{o.price}</p>
-            <a href={o.href} class="btn btn-ghost mt-3 text-[0.86rem] py-[9px] px-4">{o.cta}</a>
+            <a href={o.href} {...(o.ext ? { target: '_blank', rel: 'noopener' } : {})} class="btn btn-ghost mt-3 text-[0.86rem] py-[9px] px-4">{o.cta}</a>
             {o.extra && (
               <a href={o.extra.href} target="_blank" rel="noopener" class="block mt-3 text-[0.88rem] font-heading font-semibold no-underline hover:underline" style="color: var(--green);">{o.extra.label}</a>
             )}

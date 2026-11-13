@@ -40,6 +40,9 @@ export const det = {
   ukUniversities: '130',
   /** Lenny's free DET practice test (a published Claude artifact). */
   practiceTestUrl: 'https://claude.ai/artifact/5JEvezW72S7JLnidVwN6pM',
+  /** Our DET Global Partner Network invite link. Tests bought through it count as our referrals. */
+  inviteCode: 'PI5DQQ5K',
+  inviteUrl: 'https://englishtest.duolingo.com/invite/PI5DQQ5K',
   appDownloadUrl: 'https://englishtest.duolingo.com/mdownload',
   partnerLevel: 'Member',
   /** Test structure, from Duolingo's official test taker guide (Nov 2026). */
