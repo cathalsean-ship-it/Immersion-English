@@ -72,7 +72,6 @@ const t = bg ? {
     { h: 'Упражнявайте се', p: 'Направете пробен тест, получете обратна връзка и добавете уроци, ако са ви нужни.' },
     { h: 'Положете изпита', p: `Купете теста с нашия код, положете го от вкъщи и получете приоритетни резултати до ${det.partnerResultsHours} часа.` },
   ],
-  quotesEyebrow: 'Отзиви', quotesH2a: 'Какво казват ', quotesH2b: 'учениците на Лени',
   stats: [
     { n: '~1 час', l: 'на собствения ви компютър, когато ви е удобно' },
     { n: det.institutionsBg, l: 'институции по света го признават' },
@@ -175,7 +174,6 @@ const t = bg ? {
     { h: 'Practise and get feedback', p: 'Take a practice test, get feedback, and add lessons if you need them.' },
     { h: 'Take the test', p: `Buy your test with our invite code, sit it at home and get priority results within ${det.partnerResultsHours} hours.` },
   ],
-  quotesEyebrow: 'In their words', quotesH2a: 'What Lenny\'s students ', quotesH2b: 'say',
   stats: [
     { n: '~1 hour', l: 'on your own computer, whenever suits you' },
     { n: det.institutions, l: 'institutions worldwide accept it' },
@@ -233,13 +231,6 @@ const t = bg ? {
   endP: 'Book a free consultation and we\'ll help you choose – no commitment.',
   endFb: `Practice test feedback – €${fb}`,
 };
-
-// Two of Lenny's existing student testimonials (also on /about). They are about
-// his teaching in general, not the DET, and the heading says so.
-const quotes = [
-  { quote: "Lenny is the most motivational English teacher I've ever met! His way of teaching involves so many kinds of innovative methods that you'll be studying in an atmosphere of fun, professionalism and individual attention on your own needs. I strongly recommend!", name: 'Natalya Baleva' },
-  { quote: "Lenny is a great teacher and he helped me to learn and start using English as I wanted. I like his style of teaching – he involves grammar, vocabulary and exercises while we are chatting, reading and discussing daily topics. Highly recommend!", name: 'Dobromira Kozhuharova' },
-];
 
 // Service + Offer for the feedback product, so the price can show in search.
 const serviceSchema = {
@@ -514,26 +505,8 @@ const faqSchema = {
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section section-tinted">
-  <div class="container-x">
-    <div class="section-head">
-      <span class="eyebrow eyebrow-dot">{t.quotesEyebrow}</span>
-      <h2>{t.quotesH2a}<span style="color: var(--orange-text);">{t.quotesH2b}</span></h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      {quotes.map(q => (
-        <figure class="bg-white border border-line rounded-xl p-6 shadow-soft m-0">
-          <blockquote class="text-ink-soft leading-relaxed m-0" lang="en">“{q.quote}”</blockquote>
-          <figcaption class="font-heading font-semibold text-ink text-[0.9rem] mt-4">{q.name}</figcaption>
-        </figure>
-      ))}
-    </div>
-  </div>
-</section>
-
 <!-- FAQS -->
-<section class="section">
+<section class="section section-tinted">
   <div class="container-x">
     <div class="section-head">
       <span class="eyebrow eyebrow-dot">{t.faqEyebrow}</span>
