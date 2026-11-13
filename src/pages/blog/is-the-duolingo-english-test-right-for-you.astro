@@ -119,8 +119,8 @@ const fb = services.detFeedback.price;
           <table style="width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.92rem; font-family: 'Lato', sans-serif;">
             <thead>
               <tr style="background: var(--ink); color: white;">
-                {['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'].map(h => (
-                  <th style="padding: 12px 16px; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700;">{h}</th>
+                {['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'].map((h, i) => (
+                  <th style={`${i === 0 ? 'position: sticky; left: 0; z-index: 1; background: var(--ink); ' : ''}padding: 12px 16px; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700;`}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -135,7 +135,7 @@ const fb = services.detFeedback.price;
                 ['Sending your score', 'free, to as many universities as you like', '5 free copies, then a fee per extra copy', 'free online verification for universities'],
               ].map(r => (
                 <tr style="border-top: 1px solid var(--line); vertical-align: top;">
-                  <th scope="row" style="padding: 12px 16px; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--ink);">{r[0]}</th>
+                  <th scope="row" style="position: sticky; left: 0; z-index: 1; background: white; box-shadow: 1px 0 0 var(--line); padding: 12px 16px; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--ink);">{r[0]}</th>
                   <td style="padding: 12px 16px; background: var(--green-soft); color: var(--ink); font-weight: 600;">{r[1]}</td>
                   <td style="padding: 12px 16px; color: var(--ink-soft);">{r[2]}</td>
                   <td style="padding: 12px 16px; color: var(--ink-soft);">{r[3]}</td>

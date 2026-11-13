@@ -328,13 +328,14 @@ const faqSchema = {
       <table class="w-full text-left text-[0.92rem] min-w-[680px]">
         <thead>
           <tr style="background: var(--green);">
-            {t.cmpHead.map((h, i) => <th scope="col" class={`font-heading font-semibold text-white px-4 py-3 ${i === 0 ? 'w-[18%]' : ''}`}>{h}</th>)}
+            {t.cmpHead.map((h, i) => <th scope="col" class={`font-heading font-semibold text-white px-4 py-3 ${i === 0 ? 'w-[18%] sticky left-0 z-10' : ''}`} style={i === 0 ? 'background: var(--green);' : ''}>{h}</th>)}
           </tr>
         </thead>
         <tbody>
           {t.cmpRows.map(row => (
             <tr class="border-t border-line align-top">
-              <th scope="row" class="font-heading font-semibold text-ink px-4 py-3">{row[0]}</th>
+              <!-- First column stays put when the table is scrolled sideways on mobile. -->
+              <th scope="row" class="font-heading font-semibold text-ink px-4 py-3 sticky left-0 z-10 bg-white" style="box-shadow: 1px 0 0 var(--line);">{row[0]}</th>
               <td class="px-4 py-3 text-ink font-semibold" style="background: var(--green-soft);">{row[1]}</td>
               <td class="px-4 py-3 text-ink-soft">{row[2]}</td>
               <td class="px-4 py-3 text-ink-soft">{row[3]}</td>
