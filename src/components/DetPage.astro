@@ -1,0 +1,380 @@
+---
+/**
+ * Duolingo English Test page body, in English or Bulgarian.
+ *
+ * Both /duolingo-english-test and /bg/duolingo-english-test render this, so
+ * the two versions share one layout and one set of figures (src/data/det.ts
+ * and src/data/courses.ts). Only the words differ. Do not type a price, a
+ * duration or a count into the copy below – interpolate it.
+ *
+ * Partner badge: /det-gpn-member.svg is Duolingo's "Member" Global Partner
+ * Network logo, unaltered except that the word MEMBER, which Duolingo ship as
+ * live text in a font browsers don't have, was converted to outlines in Nunito,
+ * the substitute font their brand guidelines name. Their guidelines also say:
+ * don't recolour, stretch or add effects, keep it on a background where it is
+ * legible, and don't show it too small to read. The clear space is built in.
+ */
+import { det, otherTests } from '../data/det';
+import { courses, services } from '../data/courses';
+
+interface Props { lang: 'en' | 'bg' }
+const { lang } = Astro.props;
+const bg = lang === 'bg';
+const contact = bg ? '/bg/contact' : '/contact';
+const c = (interest: string, from: string) => `${contact}?interest=${interest}&from=${from}#booking-form`;
+
+const fb = services.detFeedback.price;
+const prep = courses.examPreparation;
+
+const t = bg ? {
+  eyebrow: 'Duolingo English Test',
+  h1a: 'Сертификат по английски ', h1b: 'по всяко време, навсякъде.', h1c: '',
+  lead: `Duolingo English Test се признава от над ${det.institutionsBg} институции по света, струва около ${det.priceEurApprox} € и резултатите излизат до ${det.resultsDays} дни. Ще ви помогнем да прецените дали е подходящ за вас – и ще ви подготвим за него.`,
+  ctaMain: 'Безплатна консултация', ctaFb: `Обратна връзка – ${fb} €`,
+  badgeAlt: 'Duolingo English Test – Global Partner Network – Member',
+  badgeCaption: 'Член на глобалната партньорска мрежа на Duolingo English Test',
+
+  whatEyebrow: 'Тестът', whatH2a: 'Модерен изпит по английски, ', whatH2b: 'положен от вкъщи',
+  stats: [
+    { n: '~1 час', l: 'на собствения ви компютър, когато ви е удобно' },
+    { n: det.institutionsBg, l: 'институции по света го признават' },
+    { n: `${det.resultsDays} дни`, l: 'до резултатите' },
+    { n: 'Безплатно', l: 'изпращане на резултата до колкото университети пожелаете' },
+  ],
+  adaptH3: 'Адаптира се към вас',
+  adapt: 'Отговорите ли добре, следващият въпрос е по-труден; затрудните ли се – по-лесен. Така тестът открива нивото ви само за час и всеки е предизвикан според възможностите си.',
+  videoH3: 'Повече от една цифра',
+  video: 'Университетите получават не само резултата, но и видеозапис как говорите и образец от писането ви – така могат сами да ви видят и чуят.',
+
+  fitEyebrow: 'Подходящ ли е за вас?', fitH2a: 'Зависи къде ', fitH2b: 'искате да учите',
+  fit: [
+    { k: 'Ирландия', v: 'почти всички университети го приемат, а виза не ви е нужна.' },
+    { k: 'Великобритания', v: `над ${det.ukUniversities} университета го приемат за бакалавърски и магистърски програми. За подготвителна (foundation) или pre-sessional програма обаче ще ви трябва одобрен от UKVI тест, например IELTS for UKVI.` },
+    { k: 'САЩ и Канада', v: 'широко признат, включително от всички осем университета от Бръшляновата лига.' },
+    { k: 'Нидерландия', v: 'първо говорете с нас. Няколко от големите нидерландски университети все още не го приемат, затова там IELTS е по-сигурният избор.' },
+  ],
+  fitNote: 'Винаги проверявайте изискванията на конкретната програма – те се различават според специалността.',
+
+  cmpEyebrow: 'Сравнение', cmpH2a: 'Как се сравнява DET ', cmpH2b: 'с другите изпити?',
+  cmpHead: ['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'],
+  cmpRows: [
+    ['Цена', `около ${det.priceEurApprox} €, еднаква навсякъде`, `${otherTests.ieltsAcademicEur} €`, `${otherTests.cambridgeC1Eur} €`],
+    ['Продължителност', 'около 1 час', 'около 2 часа и 45 минути', 'около 4 часа'],
+    ['Къде и кога', 'от вкъщи, по всяко време', 'в изпитен център или онлайн от вкъщи, на определени дати', 'в изпитен център, на определени дати'],
+    ['Резултати', `до ${det.resultsDays} дни`, '1–5 дни (на компютър), 6–8 дни (онлайн), около 13 дни (на хартия)', '1–3 седмици (на компютър), 4–6 седмици (на хартия)'],
+    ['Оценяване', `${det.scoreMin}–${det.scoreMax} общо, плюс оценка за четене, писане, слушане и говорене`, 'бандове 0–9 общо, плюс оценка за всяко умение', 'Cambridge English Scale 160–210, оценка (A, B или C) и резултат за всяко умение'],
+    ['Изпращане на резултата', 'безплатно, до колкото университети пожелаете', '5 безплатни копия, след това такса за всяко следващо', 'безплатна онлайн проверка за университетите'],
+  ],
+
+  helpEyebrow: 'Как можем да помогнем', helpH2a: 'От първия въпрос ', helpH2b: 'до деня на изпита',
+  offers: [
+    { h: 'Безплатна консултация', p: 'Не сте сигурни кой изпит е подходящ за вашите планове? Ще го обсъдим и ще ви кажем честно – DET, IELTS или Cambridge.', price: 'Безплатно', cta: 'Запишете консултация', href: c('det', 'det-offer-consultation') },
+    { h: 'Обратна връзка по пробен тест', p: 'Направете пробен тест и получете лична обратна връзка за говоренето и писането си от обучен изпитващ по говорене – за да знаете точно върху какво да работите.', price: `${fb} €`, cta: 'Поискайте обратна връзка', href: c('det-feedback', 'det-offer-feedback') },
+    { h: 'Уроци за подготовка', p: 'Индивидуални онлайн уроци, насочени към типовете задачи, времето и стратегията в DET.', price: `${prep.perLesson} € за ${prep.lessonMinutes}-минутен урок`, cta: 'Попитайте за уроците', href: c('det', 'det-offer-lessons') },
+    { h: 'Купете теста чрез нас', p: `Купете теста с нашия код за покана и получете приоритетни резултати до ${det.partnerResultsHours} часа – без допълнително заплащане.`, price: 'Попитайте ни за кода', cta: 'Поискайте кода', href: c('det', 'det-offer-code') },
+  ],
+
+  trainerEyebrow: 'Вашият преподавател',
+  trainerCreds: `${det.trainerTitle.bg} · Изпитващ по говорене (British Council ESAT-J) · CELTA`,
+  trainerP: 'Лени е носител на езика от Ирландия с над десет години опит в подготовката на ученици за изпити, включително IELTS и Cambridge C1 Advanced. Като обучен изпитващ по говорене той знае какво търсят оценителите – и как да помогне на притеснените да покажат на какво са способни.',
+  photoAlt: 'Каъл (Лени) Леонард, преподавател в Immersion English',
+
+  faqEyebrow: 'Въпроси', faqH2a: 'Често задавани ', faqH2b: 'въпроси',
+  faqs: [
+    { q: 'Може ли да се вярва на изпит, положен от вкъщи?', a: 'Да. Цялата сесия се записва чрез компютъра, камерата на телефона, микрофона, клавиатурата и мишката. Обучени проктори, подпомагани от изкуствен интелект, преглеждат всеки тест в няколко независими кръга, преди резултатът да бъде издаден. Въпросите идват от огромна база, а тестът се прекратява автоматично, ако опитате да отворите друго приложение.' },
+    { q: 'Какво ми трябва, за да го положа?', a: 'Компютър с Windows или Mac с камера, микрофон и високоговорители, безплатното десктоп приложение на Duolingo English Test, смартфон (служи като втора камера, която записва екрана и клавиатурата ви), тиха стая, в която сте сами, и документ за самоличност.', link: { href: det.appDownloadUrl, label: 'Изтеглете приложението' } },
+    { q: 'Има ли изпитващ при говоренето?', a: 'Не. Виждате или чувате задачата на екрана, имате момент да помислите и отговаряте – само вие и камерата. Говоренето се оценява като отделно умение, а университетите могат да гледат видеото ви. Без изпитващ срещу вас обаче напрежението е много по-малко.' },
+    { q: 'Как се оценява?', a: `Получавате обща оценка от ${det.scoreMin} до ${det.scoreMax}, на стъпки от 5 точки, плюс отделни оценки за четене, писане, слушане и говорене.` },
+    { q: 'Колко време е валиден резултатът?', a: `${det.validityYears} години.` },
+    { q: 'Колко струва?', a: `${det.priceUsd} щатски долара (около ${det.priceEurApprox} €), еднаква цена навсякъде. Резултатите излизат до ${det.resultsDays} дни, а изпращането им до университети е безплатно. Ако купите теста с нашия код, получавате приоритетни резултати до ${det.partnerResultsHours} часа без допълнително заплащане.` },
+    { q: 'Трябва ли да го положа веднага след покупката?', a: `Не. Имате ${det.daysToTakeAfterPurchase} дни да го положите.` },
+  ],
+
+  endH2: 'Не сте сигурни кой изпит е подходящ за вас?',
+  endP: 'Запишете безплатна консултация и ще ви помогнем да изберете – без ангажимент.',
+  endFb: `Обратна връзка – ${fb} €`,
+} : {
+  eyebrow: 'Duolingo English Test',
+  h1a: 'Certify your English ', h1b: 'anytime, anywhere.', h1c: '',
+  lead: `The Duolingo English Test is accepted by more than ${det.institutions} institutions worldwide, costs about €${det.priceEurApprox} and gives results in ${det.resultsDays} days. We'll help you decide if it's right for you – and get you ready for it.`,
+  ctaMain: 'Book a free consultation', ctaFb: `Get practice test feedback – €${fb}`,
+  badgeAlt: 'Duolingo English Test – Global Partner Network – Member',
+  badgeCaption: 'Member of the Duolingo English Test Global Partner Network',
+
+  whatEyebrow: 'The test', whatH2a: 'A modern English test, ', whatH2b: 'taken from home',
+  stats: [
+    { n: '~1 hour', l: 'on your own computer, whenever suits you' },
+    { n: det.institutions, l: 'institutions worldwide accept it' },
+    { n: `${det.resultsDays} days`, l: 'for your results' },
+    { n: 'Free', l: 'to send your score to as many universities as you like' },
+  ],
+  adaptH3: 'It adapts to you',
+  adapt: 'Answer well and the next question gets harder; struggle and it gets easier. That\'s how it pins down your level in an hour – and why everyone is stretched, whatever their level.',
+  videoH3: 'More than a number',
+  video: 'Universities don\'t just get your score. They also receive a video of you speaking and a sample of your writing, so they can see and hear you for themselves.',
+
+  fitEyebrow: 'Is it right for you?', fitH2a: 'It depends where ', fitH2b: 'you want to study',
+  fit: [
+    { k: 'Ireland', v: 'nearly every university accepts it, and there\'s no visa to worry about.' },
+    { k: 'UK', v: `more than ${det.ukUniversities} universities accept it for degree courses. For a foundation or pre-sessional course, though, you'll need a UKVI-approved test such as IELTS for UKVI.` },
+    { k: 'US and Canada', v: 'widely accepted, including by all eight Ivy League universities.' },
+    { k: 'Netherlands', v: 'talk to us first. Several of the big Dutch universities don\'t accept it yet, so IELTS is still the safer choice there.' },
+  ],
+  fitNote: 'Always check your programme\'s own admissions page – requirements vary by course.',
+
+  cmpEyebrow: 'At a glance', cmpH2a: 'How does the DET compare ', cmpH2b: 'to other tests?',
+  cmpHead: ['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'],
+  cmpRows: [
+    ['Price', `about €${det.priceEurApprox}, the same everywhere`, `€${otherTests.ieltsAcademicEur}`, `€${otherTests.cambridgeC1Eur}`],
+    ['Length', 'about 1 hour', 'about 2 hours 45 minutes', 'about 4 hours'],
+    ['Where and when', 'at home, any time', 'at a test centre, or online from home, on booked dates', 'at an exam centre, on set dates'],
+    ['Results', `within ${det.resultsDays} days`, '1–5 days (computer), 6–8 days (online), about 13 days (paper)', '1–3 weeks (computer), 4–6 weeks (paper)'],
+    ['Scoring', `${det.scoreMin}–${det.scoreMax} overall, plus a score for reading, writing, listening and speaking`, 'bands 0–9 overall, plus a band for each skill', 'Cambridge English Scale 160–210, a grade (A, B or C) and a score for each skill'],
+    ['Sending your score', 'free, to as many universities as you like', '5 free copies, then a fee per extra copy', 'free online verification for universities'],
+  ],
+
+  helpEyebrow: 'How we can help', helpH2a: 'From your first question ', helpH2b: 'to test day',
+  offers: [
+    { h: 'Free consultation', p: 'Not sure which test fits your plans? We\'ll talk it through and tell you honestly – DET, IELTS or Cambridge.', price: 'Free', cta: 'Book a consultation', href: c('det', 'det-offer-consultation') },
+    { h: 'Practice test feedback', p: 'Take a practice test and get personal feedback on your speaking and writing from a trained speaking examiner – so you know exactly what to work on.', price: `€${fb}`, cta: 'Ask for feedback', href: c('det-feedback', 'det-offer-feedback') },
+    { h: 'Preparation lessons', p: '1:1 online lessons focused on the DET\'s question types, timing and strategy.', price: `€${prep.perLesson} per ${prep.lessonMinutes}-minute lesson`, cta: 'Ask about lessons', href: c('det', 'det-offer-lessons') },
+    { h: 'Book your test through us', p: `Buy your test with our invite code and get priority results within ${det.partnerResultsHours} hours, at no extra cost.`, price: 'Ask us for the code', cta: 'Get the code', href: c('det', 'det-offer-code') },
+  ],
+
+  trainerEyebrow: 'Your trainer',
+  trainerCreds: `${det.trainerTitle.en} · Trained speaking examiner (British Council ESAT-J) · CELTA-qualified`,
+  trainerP: 'Lenny is a native English speaker from Ireland with over ten years\' experience preparing students for exams, including IELTS and Cambridge C1 Advanced. As a trained speaking examiner, he knows what assessors listen for – and how to help nervous speakers show what they can really do.',
+  photoAlt: 'Cathal (Lenny) Leonard, Duolingo English Test trainer at Immersion English',
+
+  faqEyebrow: 'Questions', faqH2a: 'Frequently asked ', faqH2b: 'questions',
+  faqs: [
+    { q: 'Can you trust a test taken at home?', a: 'Yes. The whole session is recorded through your computer, phone camera, microphone, keyboard and mouse. Trained proctors, helped by AI, review every test in several independent rounds before the result is released. Questions come from a vast bank, and the test cancels itself if you try to open another app.' },
+    { q: 'What do I need to take it?', a: 'A Windows or Mac computer with a camera, microphone and speakers, the free Duolingo English Test desktop app, a smartphone (it acts as a second camera, recording your screen and keyboard), a quiet room to yourself and your ID.', link: { href: det.appDownloadUrl, label: 'Download the app' } },
+    { q: 'Is there an examiner for the speaking part?', a: 'No. You see or hear a prompt on screen, take a moment to think, and answer – just you and a camera. Speaking is still scored as a skill in its own right, and universities can watch your video. But without an examiner across the table, there\'s far less pressure.' },
+    { q: 'How is it scored?', a: `You get an overall score from ${det.scoreMin} to ${det.scoreMax}, in 5-point steps, plus separate scores for reading, writing, listening and speaking.` },
+    { q: 'How long are the results valid?', a: `${det.validityYears} years.` },
+    { q: 'How much does it cost?', a: `US$${det.priceUsd} (about €${det.priceEurApprox}), the same price everywhere. Results arrive within ${det.resultsDays} days, and sending them to universities is free. Buy your test with our invite code and you get priority results within ${det.partnerResultsHours} hours at no extra cost.` },
+    { q: 'Do I have to take it straight after buying it?', a: `No. You have ${det.daysToTakeAfterPurchase} days to take it.` },
+  ],
+
+  endH2: 'Not sure which test is right for you?',
+  endP: 'Book a free consultation and we\'ll help you choose – no commitment.',
+  endFb: `Practice test feedback – €${fb}`,
+};
+
+// FAQPage structured data for this page, from the same answers shown below.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: lang,
+  mainEntity: t.faqs.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<!-- HERO -->
+<section class="relative flex items-center text-white overflow-hidden isolate">
+  <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
+  <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
+    <div class="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-10 md:gap-16 items-center">
+      <div>
+        <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+          <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>
+          {t.eyebrow}
+        </p>
+        <h1 class="text-white mb-5" style="max-width: 18ch;">
+          {t.h1a}<span style="color: var(--orange);">{t.h1b}</span>{t.h1c}
+        </h1>
+        <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55] mb-8 max-w-[52ch]">{t.lead}</p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href={c('det', 'det-hero')} class="btn btn-primary">{t.ctaMain}</a>
+          <a href={c('det-feedback', 'det-hero')} class="btn btn-ghost text-white border-white/30 hover:border-white">{t.ctaFb}</a>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl p-6 md:p-8 shadow-lift">
+        <img src="/det-gpn-member.svg" alt={t.badgeAlt} width="1848" height="881" class="w-full h-auto block" style="min-width: 220px;" loading="eager" />
+        <p class="text-ink-soft text-[0.85rem] mt-4 text-center">{t.badgeCaption}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="section">
+  <div class="container-x">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-dot">{t.whatEyebrow}</span>
+      <h2>{t.whatH2a}<span style="color: var(--orange-text);">{t.whatH2b}</span></h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+      {t.stats.map(s => (
+        <div class="bg-white border border-line rounded-xl p-5 shadow-soft">
+          <p class="font-heading font-bold text-[1.6rem] text-ink leading-none mb-2">{s.n}</p>
+          <p class="text-[0.88rem] text-ink-soft leading-snug">{s.l}</p>
+        </div>
+      ))}
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-[1.2rem] mb-2">{t.adaptH3}</h3>
+        <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
+        <p class="text-ink-soft leading-relaxed">{t.adapt}</p>
+      </div>
+      <div>
+        <h3 class="text-[1.2rem] mb-2">{t.videoH3}</h3>
+        <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
+        <p class="text-ink-soft leading-relaxed">{t.video}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IS IT RIGHT FOR YOU -->
+<section class="section section-tinted">
+  <div class="container-x">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-dot">{t.fitEyebrow}</span>
+      <h2>{t.fitH2a}<span style="color: var(--orange-text);">{t.fitH2b}</span></h2>
+    </div>
+    <ul class="flex flex-col gap-4 max-w-[72ch]">
+      {t.fit.map(f => (
+        <li class="flex items-start gap-3 text-ink-soft leading-relaxed">
+          <span class="w-[8px] h-[8px] rounded-full flex-shrink-0 mt-[9px]" style="background: var(--orange);"></span>
+          <span><strong style="color: var(--ink);">{f.k}</strong> – {f.v}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="text-ink-soft text-[0.92rem] mt-6 max-w-[72ch]">{t.fitNote}</p>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section">
+  <div class="container-x">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-dot">{t.cmpEyebrow}</span>
+      <h2>{t.cmpH2a}<span style="color: var(--orange-text);">{t.cmpH2b}</span></h2>
+    </div>
+    <div class="overflow-x-auto rounded-xl border border-line shadow-soft bg-white">
+      <table class="w-full text-left text-[0.92rem] min-w-[680px]">
+        <thead>
+          <tr style="background: var(--green);">
+            {t.cmpHead.map((h, i) => <th scope="col" class={`font-heading font-semibold text-white px-4 py-3 ${i === 0 ? 'w-[18%]' : ''}`}>{h}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {t.cmpRows.map(row => (
+            <tr class="border-t border-line align-top">
+              <th scope="row" class="font-heading font-semibold text-ink px-4 py-3">{row[0]}</th>
+              <td class="px-4 py-3 text-ink font-semibold" style="background: var(--green-soft);">{row[1]}</td>
+              <td class="px-4 py-3 text-ink-soft">{row[2]}</td>
+              <td class="px-4 py-3 text-ink-soft">{row[3]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE CAN HELP -->
+<section class="section section-tinted" id="offer" style="scroll-margin-top: 90px;">
+  <div class="container-x">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-dot">{t.helpEyebrow}</span>
+      <h2>{t.helpH2a}<span style="color: var(--orange-text);">{t.helpH2b}</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {t.offers.map(o => (
+        <div class="bg-white border border-line rounded-xl p-6 flex flex-col shadow-soft">
+          <h3 class="text-[1.1rem] mb-2">{o.h}</h3>
+          <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
+          <p class="text-ink-soft text-[0.93rem] leading-relaxed mb-5 flex-1">{o.p}</p>
+          <div class="pt-4 border-t border-line">
+            <p class="font-heading font-bold text-ink text-[1.15rem]">{o.price}</p>
+            <a href={o.href} class="btn btn-ghost mt-3 text-[0.86rem] py-[9px] px-4">{o.cta}</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- TRAINER -->
+<section class="section">
+  <div class="container-x">
+    <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 md:gap-14 items-center">
+      <div class="rounded-lg overflow-hidden shadow-lift" style="border: 1px solid var(--line);">
+        <img src="/team-lenny.webp" alt={t.photoAlt} class="img-greyscale w-full object-cover" style="aspect-ratio: 3/4; object-position: center top; display: block;" loading="lazy" />
+      </div>
+      <div>
+        <span class="eyebrow eyebrow-dot">{t.trainerEyebrow}</span>
+        <p class="font-heading font-bold text-[1.5rem] text-ink mt-3 mb-1">Cathal (Lenny) Leonard</p>
+        <p class="text-[0.9rem] font-semibold mb-5" style="color: var(--green);">{t.trainerCreds}</p>
+        <div style="width: 40px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 20px;"></div>
+        <p class="text-ink-soft text-[1.02rem] leading-relaxed max-w-[62ch]">{t.trainerP}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQS -->
+<section class="section section-tinted">
+  <div class="container-x">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-dot">{t.faqEyebrow}</span>
+      <h2>{t.faqH2a}<span style="color: var(--orange-text);">{t.faqH2b}</span></h2>
+    </div>
+    <div class="flex flex-col max-w-[820px] bg-white border border-line rounded-xl px-6 shadow-soft">
+      {t.faqs.map(({ q, a, link }) => (
+        <div class="faq-item border-b border-line last:border-0">
+          <button class="faq-trigger w-full flex items-center justify-between gap-4 py-5 text-left bg-transparent border-0 cursor-pointer" aria-expanded="false">
+            <span class="font-heading font-semibold text-[1rem] text-ink leading-snug">{q}</span>
+            <span class="faq-icon flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200" style="background: var(--cream);">
+              <svg class="faq-chevron w-3.5 h-3.5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-body" style="display:none;">
+            <div class="pb-5 pr-2 md:pr-10">
+              <p class="text-ink-soft text-[0.97rem] leading-relaxed max-w-[66ch]">{a}</p>
+              {link && (
+                <a href={link.href} target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-[0.92rem] font-heading font-semibold no-underline hover:underline" style="color: var(--green);">{link.label}</a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-dark">
+  <div class="container-x text-center">
+    <h2 class="mb-5">{t.endH2}</h2>
+    <p class="max-w-[46ch] mx-auto mb-8">{t.endP}</p>
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center flex-wrap">
+      <a href={c('det', 'det-bottom')} class="btn btn-primary">{t.ctaMain}</a>
+      <a href={c('det-feedback', 'det-bottom')} class="btn btn-ghost text-white border-white/30 hover:border-white">{t.endFb}</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      const body = item.querySelector('.faq-body') as HTMLElement;
+      const icon = trigger.querySelector('.faq-icon') as HTMLElement;
+      const chevron = trigger.querySelector('.faq-chevron') as HTMLElement;
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      body.style.display = isOpen ? 'none' : 'block';
+      trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      icon.style.background = isOpen ? 'var(--cream)' : 'var(--green-soft)';
+      chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+  });
+</script>

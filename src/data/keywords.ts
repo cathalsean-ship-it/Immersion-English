@@ -47,6 +47,12 @@ export const keywordsBySection: Record<string, string[]> = {
     'преподавател по английски носител на езика', 'ирландски учител по английски',
     'Lenny English teacher', 'Cathal Leonard',
   ],
+  'duolingo-english-test': [
+    'Duolingo English Test', 'Duolingo English Test preparation', 'DET preparation Sofia',
+    'Duolingo English Test Bulgaria', 'English test for university abroad',
+    'Duolingo English Test България', 'подготовка за Duolingo English Test', 'тест по английски Duolingo',
+    'изпит по английски за университет в чужбина', 'Duolingo тест по английски',
+  ],
   contact: [
     'free English consultation Sofia', 'English level test',
     'безплатна консултация по английски', 'записване за курс по английски',

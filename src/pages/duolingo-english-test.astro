@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DetPage from '../components/DetPage.astro';
+import { det } from '../data/det';
+---
+
+<BaseLayout
+  title="Duolingo English Test Preparation in Sofia | Immersion English"
+  description={`Everything you need to know about the Duolingo English Test – accepted by ${det.institutions} institutions, about €${det.priceEurApprox}, results in ${det.resultsDays} days. Preparation, practice test feedback and advice from a Duolingo English Test partner in Sofia.`}
+  ogTitle="The Duolingo English Test – is it right for you?"
+>
+  <DetPage lang="en" />
+</BaseLayout>

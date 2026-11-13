@@ -8,8 +8,8 @@ const bg = lang === 'bg';
 // On Bulgarian pages, labels are Bulgarian and links go to the Bulgarian
 // version where one exists (see BG_PAGES in i18n.ts); otherwise to English.
 const t = bg
-  ? { about: 'За нас', lessons: 'Уроци', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', sub: 'Покажи подменюто за Лято в Дъблин' }
-  : { about: 'About', lessons: 'Lessons', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', sub: 'Toggle Dublin Summer submenu' };
+  ? { about: 'За нас', lessons: 'Уроци', det: 'Duolingo тест', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', sub: 'Покажи подменюто за Лято в Дъблин' }
+  : { about: 'About', lessons: 'Lessons', det: 'Duolingo Test', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', sub: 'Toggle Dublin Summer submenu' };
 const href = (h: string) => (bg ? bgHref(h) : h);
 const homeHref = bg ? '/bg' : '/';
 const switchHref = switchTarget(path);
@@ -34,6 +34,8 @@ const dublinSub = [
       <div class="hidden md:flex items-center gap-7">
         <a href={href("/about")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.about}</a>
         <a href={href("/lessons")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.lessons}</a>
+        <!-- Shown from 1100px: below that the desktop row has no room for it (it is in the mobile menu, and linked from Lessons). -->
+        <a href={href("/duolingo-english-test")} class="hidden min-[1100px]:inline text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.det}</a>
         <a href={href("/corporate-training")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.corporate}</a>
 
         <!-- Dropdown -->
@@ -122,6 +124,7 @@ const dublinSub = [
 
         <a href={href("/about")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.about}</a>
         <a href={href("/lessons")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.lessons}</a>
+        <a href={href("/duolingo-english-test")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.det}</a>
         <a href={href("/corporate-training")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.corporate}</a>
 
         <a href={href("/blog")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.blog}</a>

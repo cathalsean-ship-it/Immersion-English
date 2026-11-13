@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { dublin, durationOptionsLabel, groupLeaderTravelPhrase, formatStartDate, paymentPlan, formatIsoDate } from '../data/dublin';
-import { courseList, priceSummary } from '../data/courses';
+import { courseList, priceSummary, services } from '../data/courses';
+import { det } from '../data/det';
 
 /**
  * /llms.txt — generated, not hand-written.
@@ -38,6 +39,7 @@ const datesLine = durations.map(d => `${d.days} days: ${d.startDates.map(formatS
 const pages: [string, string][] = [
   ['Home', '/'],
   ['Lessons', '/lessons'],
+  ['Duolingo English Test', '/duolingo-english-test'],
   ['Corporate Training', '/corporate-training'],
   [`Dublin Summer ${dublin.year}`, '/dublin-summer-2027'],
   ['Accommodation', '/dublin-summer-2027/accommodation'],
@@ -78,6 +80,15 @@ ${courseList
     return `- **${c.name}** — ${c.summary}${p ? `, ${p}` : ''}`;
   })
   .join('\n')}
+- **${services.detFeedback.name}** — ${services.detFeedback.summary}, €${services.detFeedback.price}
+
+## Duolingo English Test
+
+Immersion English is a member of the Duolingo English Test Global Partner Network and prepares students for the test. Page: ${SITE}/duolingo-english-test
+
+- **The test:** online, taken at home, about an hour; US$${det.priceUsd} (about €${det.priceEurApprox}); results within ${det.resultsDays} days; accepted by ${det.institutions} institutions; scores sent to unlimited institutions free
+- **What Immersion English offers:** free consultation on which test to take; practice test feedback (€${services.detFeedback.price}); 1:1 preparation lessons; booking with our invite code for priority results within ${det.partnerResultsHours} hours at no extra cost
+- **Trainer:** Cathal (Lenny) Leonard – ${det.trainerTitle.en}, trained speaking examiner, CELTA-qualified
 
 ## Dublin Summer ${dublin.year}
 
