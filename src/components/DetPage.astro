@@ -67,11 +67,9 @@ const t = bg ? {
     { n: det.institutionsBg, l: 'институции по света го признават' },
     { n: `${det.resultsDays} дни`, l: 'до резултатите' },
     { n: 'Безплатно', l: 'изпращане на резултата до колкото университети пожелаете' },
+    { n: 'Адаптивен', l: 'въпросите стават по-трудни или по-лесни според отговорите ви, така че тестът бързо открива нивото ви' },
+    { n: 'Без изпитващ', l: 'при говоренето отговаряте на задачи на екрана – само вие и камерата' },
   ],
-  adaptH3: 'Адаптира се към вас',
-  adapt: 'Отговорите ли добре, следващият въпрос е по-труден; затрудните ли се – по-лесен. Така тестът открива нивото ви само за час и всеки е предизвикан според възможностите си.',
-  videoH3: 'Повече от една цифра',
-  video: 'Университетите получават не само резултата, но и видеозапис как говорите и образец от писането ви – така могат сами да ви видят и чуят.',
 
   fitEyebrow: 'Подходящ ли е за вас?', fitH2a: 'Кои университети приемат ', fitH2b: 'Duolingo English Test?',
   fit: [
@@ -161,11 +159,9 @@ const t = bg ? {
     { n: det.institutions, l: 'institutions worldwide accept it' },
     { n: `${det.resultsDays} days`, l: 'for your results' },
     { n: 'Free', l: 'to send your score to as many universities as you like' },
+    { n: 'Adaptive', l: 'questions get harder or easier as you answer, so the test finds your level fast' },
+    { n: 'No examiner', l: 'for speaking, you answer prompts on screen – just you and a camera' },
   ],
-  adaptH3: 'It adapts to you',
-  adapt: 'Answer well and the next question gets harder; struggle and it gets easier. That\'s how it pins down your level in an hour – and why everyone is stretched, whatever their level.',
-  videoH3: 'More than a number',
-  video: 'Universities don\'t just get your score. They also receive a video of you speaking and a sample of your writing, so they can see and hear you for themselves.',
 
   fitEyebrow: 'Is it right for you?', fitH2a: 'Which universities accept ', fitH2b: 'the Duolingo English Test?',
   fit: [
@@ -284,25 +280,13 @@ const faqSchema = {
       <h2>{t.whatH2a}<span style="color: var(--orange-text);">{t.whatH2b}</span></h2>
       <p>{t.whoLine}</p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
       {t.stats.map(s => (
         <div class="bg-white border border-line rounded-xl p-5 shadow-soft">
           <p class="font-heading font-bold text-[1.6rem] text-ink leading-none mb-2">{s.n}</p>
           <p class="text-[0.88rem] text-ink-soft leading-snug">{s.l}</p>
         </div>
       ))}
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div>
-        <h3 class="text-[1.2rem] mb-2">{t.adaptH3}</h3>
-        <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
-        <p class="text-ink-soft leading-relaxed">{t.adapt}</p>
-      </div>
-      <div>
-        <h3 class="text-[1.2rem] mb-2">{t.videoH3}</h3>
-        <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
-        <p class="text-ink-soft leading-relaxed">{t.video}</p>
-      </div>
     </div>
   </div>
 </section>
