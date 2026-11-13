@@ -94,7 +94,7 @@ const t = bg ? {
   helpEyebrow: 'Как можем да помогнем', helpH2a: 'Подгответе се ', helpH2b: 'с партньор и сертифициран обучител на DET',
   offers: [
     { h: 'Изберете правилния изпит', p: 'Не сте сигурни кой изпит е подходящ за вашите планове? Ще го обсъдим и ще ви кажем честно – DET, IELTS или Cambridge.', price: 'Безплатно', cta: 'Запишете консултация', href: c('det', 'det-offer-consultation') },
-    { h: 'Експертна обратна връзка', p: 'Направете пробен тест и получете лична обратна връзка за говоренето и писането си от обучен изпитващ по говорене – за да знаете точно върху какво да работите.', price: `${fb} €`, cta: 'Обратна връзка', href: c('det-feedback', 'det-offer-feedback') },
+    { h: 'Експертна обратна връзка', p: 'Направете пробен тест и получете лична обратна връзка за говоренето и писането си от обучен изпитващ по говорене – за да знаете точно върху какво да работите.', price: `${fb} €`, cta: 'Обратна връзка', href: c('det-feedback', 'det-offer-feedback'), extra: { label: 'Направете безплатния пробен тест', href: det.practiceTestUrl } },
     { h: 'Подготовка 1:1', p: 'Индивидуални онлайн уроци, насочени към типовете задачи, времето и стратегията в DET.', price: `${prep.perLesson} € / ${prep.lessonMinutes} мин`, cta: 'Попитайте за уроците', href: c('det', 'det-offer-lessons') },
     { h: 'Купете теста чрез нас', p: `Купете теста с нашия код за покана и получете приоритетни резултати до ${det.partnerResultsHours} часа – без допълнително заплащане.`, price: 'Попитайте ни за кода', cta: 'Поискайте кода', href: c('det', 'det-offer-code') },
   ],
@@ -186,7 +186,7 @@ const t = bg ? {
   helpEyebrow: 'How we can help', helpH2a: 'Prepare with ', helpH2b: 'a DET partner and certified trainer',
   offers: [
     { h: 'Choose the right test', p: 'Not sure which test fits your plans? We\'ll talk it through and tell you honestly – DET, IELTS or Cambridge.', price: 'Free', cta: 'Book a consultation', href: c('det', 'det-offer-consultation') },
-    { h: 'Get expert feedback', p: 'Take a practice test and get personal feedback on your speaking and writing from a trained speaking examiner – so you know exactly what to work on.', price: `€${fb}`, cta: 'Ask for feedback', href: c('det-feedback', 'det-offer-feedback') },
+    { h: 'Get expert feedback', p: 'Take a practice test and get personal feedback on your speaking and writing from a trained speaking examiner – so you know exactly what to work on.', price: `€${fb}`, cta: 'Ask for feedback', href: c('det-feedback', 'det-offer-feedback'), extra: { label: 'Take the free practice test', href: det.practiceTestUrl } },
     { h: 'Prepare 1:1', p: '1:1 online lessons focused on the DET\'s question types, timing and strategy.', price: `€${prep.perLesson} / ${prep.lessonMinutes} min`, cta: 'Ask about lessons', href: c('det', 'det-offer-lessons') },
     { h: 'Book your test through us', p: `Buy your test with our invite code and get priority results within ${det.partnerResultsHours} hours, at no extra cost.`, price: 'Ask us for the code', cta: 'Get the code', href: c('det', 'det-offer-code') },
   ],
@@ -329,7 +329,8 @@ const faqSchema = {
       <h2>{t.scoreH2a}<span style="color: var(--orange-text);">{t.scoreH2b}</span></h2>
       <p>{t.scoreIntro}</p>
     </div>
-    <div class="overflow-x-auto rounded-xl border border-line shadow-soft bg-white max-w-[760px]">
+    <div class="flex items-center gap-10">
+    <div class="flex-1 overflow-x-auto rounded-xl border border-line shadow-soft bg-white max-w-[760px]">
       <table class="w-full text-left text-[0.92rem]">
         <thead>
           <tr style="background: var(--green);">
@@ -346,6 +347,10 @@ const faqSchema = {
           ))}
         </tbody>
       </table>
+    </div>
+    <!-- Duolingo's own "Duo graduate" animation, from the partner brand pack.
+         Decorative, so empty alt. Desktop only, to keep the mobile page light. -->
+    <img src="/duo-graduate.webp" alt="" width="260" height="260" class="hidden lg:block flex-shrink-0" loading="lazy" />
     </div>
     <a href={det.scoresUrl} target="_blank" rel="noopener noreferrer" class="inline-block mt-5 text-[0.92rem] font-heading font-semibold no-underline hover:underline" style="color: var(--green);">{t.scoreLink}</a>
   </div>
@@ -415,6 +420,9 @@ const faqSchema = {
           <div class="pt-4 border-t border-line">
             <p class="font-heading font-bold text-ink text-[1.15rem]">{o.price}</p>
             <a href={o.href} class="btn btn-ghost mt-3 text-[0.86rem] py-[9px] px-4">{o.cta}</a>
+            {o.extra && (
+              <a href={o.extra.href} target="_blank" rel="noopener" class="block mt-3 text-[0.88rem] font-heading font-semibold no-underline hover:underline" style="color: var(--green);">{o.extra.label}</a>
+            )}
           </div>
         </div>
       ))}

@@ -38,6 +38,8 @@ export const det = {
   scoreMax: 160,
   validityYears: 2,
   ukUniversities: '130',
+  /** Lenny's free DET practice test (a published Claude artifact). */
+  practiceTestUrl: 'https://claude.ai/artifact/5JEvezW72S7JLnidVwN6pM',
   appDownloadUrl: 'https://englishtest.duolingo.com/mdownload',
   partnerLevel: 'Member',
   /** Test structure, from Duolingo's official test taker guide (Nov 2026). */
