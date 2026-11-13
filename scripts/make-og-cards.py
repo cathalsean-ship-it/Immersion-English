@@ -110,6 +110,7 @@ photo_card('dublin-street.webp',['English learning','Insights'],[[('The Immersio
 photo_card('blog-ai.jpg',['Blog'],[[('AI and the ',W_),('human touch',O_)],[('in language learning',W_)]],'blog-ai.jpg',size=56)
 photo_card('blog-cefr.jpg',['Blog'],[[('CEFR levels explained:',W_)],[('what ',W_),('B2 and C1',O_),(' really',W_)],[('mean',W_)]],'blog-cefr.jpg',size=56)
 photo_card('blog-conversation.jpg',['Blog'],[[('How small talk builds big',W_)],[('confidence',O_),(' in English',W_)]],'blog-conversation.jpg',size=56)
+photo_card('teens-cafe.jpg',['Blog'],[[('Is the ',W_),('Duolingo English',O_)],[('Test',O_),(' right for you?',W_)]],'blog-det.jpg',size=56)
 photo_card('blog-ielts.jpg',['Blog'],[[('IELTS',O_),(' preparation tips for',W_)],[('Bulgarian students',W_)]],'blog-ielts.jpg',size=56)
 photo_card('dublin-street.webp',['Blog'],[[('Why ',W_),('Ireland',O_),(' is one of the',W_)],[('best places to learn',W_)],[('English',W_)]],'blog-ireland.jpg',size=56)
 photo_card('blog-speaking-harder.jpg',['Blog'],[[('Why ',W_),('speaking',O_),(' feels',W_)],[('harder than reading or',W_)],[('listening',W_)]],'blog-speaking-harder.jpg',size=56)

@@ -5,6 +5,7 @@
 interface Props { slug: string }
 
 const POSTS: Record<string, string> = {
+  'is-the-duolingo-english-test-right-for-you': 'Is the Duolingo English Test Right for You?',
   'ielts-preparation-tips-for-bulgarian-students': 'IELTS Preparation Tips for Bulgarian Students',
   'why-speaking-english-feels-harder-than-reading-or-listening': 'Why Speaking English Feels Harder Than Reading or Listening',
   'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt': "CEFR: What Your English Level Really Tells You – and What It Doesn't",
@@ -14,7 +15,8 @@ const POSTS: Record<string, string> = {
 };
 
 const RELATED: Record<string, string[]> = {
-  'ielts-preparation-tips-for-bulgarian-students': ['cefr-what-your-english-level-really-tells-you-and-what-it-doesnt', 'why-speaking-english-feels-harder-than-reading-or-listening'],
+  'is-the-duolingo-english-test-right-for-you': ['ielts-preparation-tips-for-bulgarian-students', 'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt'],
+  'ielts-preparation-tips-for-bulgarian-students': ['is-the-duolingo-english-test-right-for-you', 'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt'],
   'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt': ['ielts-preparation-tips-for-bulgarian-students', 'why-speaking-english-feels-harder-than-reading-or-listening'],
   'why-speaking-english-feels-harder-than-reading-or-listening': ['the-power-of-conversation-how-small-talk-builds-big-confidence', 'cefr-what-your-english-level-really-tells-you-and-what-it-doesnt'],
   'the-power-of-conversation-how-small-talk-builds-big-confidence': ['why-speaking-english-feels-harder-than-reading-or-listening', 'ai-and-the-human-touch-in-language-learning'],

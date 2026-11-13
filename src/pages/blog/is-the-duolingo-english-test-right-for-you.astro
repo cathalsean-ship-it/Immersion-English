@@ -1,0 +1,175 @@
+---
+import RelatedReading from '../../components/RelatedReading.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+// Figures come from the same data files as /duolingo-english-test, so the post
+// and the landing page cannot disagree.
+import { det, otherTests } from '../../data/det';
+import { services } from '../../data/courses';
+const fb = services.detFeedback.price;
+---
+
+<BaseLayout
+  title="Is the Duolingo English Test Right for You?"
+  description={`What the Duolingo English Test is, how it compares with IELTS and Cambridge, whether you can trust a test taken at home, and which universities accept it. By Lenny Leonard, Immersion English.`}
+  ogImage="/og/blog-det.jpg"
+>
+
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Is the Duolingo English Test Right for You?",
+    "author": {
+      "@type": "Person",
+      "name": "Cathal Leonard",
+      "url": "https://immersion-english.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Immersion English",
+      "url": "https://immersion-english.com"
+    },
+    "datePublished": "2026-11-13",
+    "inLanguage": "en"
+  }</script>
+
+  <!-- HERO -->
+  <section class="relative flex items-center text-white overflow-hidden isolate">
+    <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
+    <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.2) 0%, rgba(20,32,26,0.65) 100%);"></div>
+    <div class="container-x relative z-10 pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
+      <a href="/blog" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; font-family: 'Montserrat', sans-serif; color: rgba(255,255,255,0.65); text-decoration: none; margin-bottom: 20px; transition: color 0.15s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">
+        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
+        All articles
+      </a>
+      <p class="eyebrow mb-4" style="color: var(--orange);">Blog</p>
+      <h1 class="text-white mb-5" style="max-width: 26ch; font-size: clamp(1.6rem, 5vw, 3rem);">Is the Duolingo English Test right for you? <span style="color: var(--orange);">Probably.</span></h1>
+      <p style="color: rgba(255,255,255,0.65); font-size: 0.88rem; font-family: 'Montserrat', sans-serif; font-weight: 500; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">13 November 2026 &middot; By Cathal Leonard <span style="opacity:0.5;">·</span> 6 min read</p>
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <section class="section">
+    <div class="container-x article-container">
+
+      <img
+        src="/teens-cafe.webp"
+        alt="Two students laughing at a café table with a laptop"
+        class="article-hero-img img-greyscale"
+        loading="lazy" />
+
+      <div class="prose-body">
+
+        <p>For years I've felt that English language testing hasn't kept pace with the world around it. Technology has transformed how we learn, work and communicate, yet the way students prove their English – formal, traditional high-stakes certificates like IELTS and Cambridge – has changed surprisingly little. More and more, it felt outdated.</p>
+
+        <p>They're rigorous, sure. But booking a place at a set centre on a specific date, paying a large fee and then waiting weeks for your results makes them a real inconvenience and expense. I used to ask: why can't you sit the test when it suits you? Why does marking take so long? Why does it cost so much?</p>
+
+        <p>Then I came across the <a href="/duolingo-english-test">Duolingo English Test (DET)</a>. I'll admit I was a little late to discover it, but after a lot of research, I've come to a simple conclusion: if you're about to book an IELTS or Cambridge test, look at the DET first.</p>
+
+        <h2>Why the DET?</h2>
+
+        <p>Firstly, more than {det.institutions.replace('+', '')} institutions worldwide accept the DET as equivalent to traditional tests like IELTS and TOEFL. That includes all eight Ivy League universities, MIT and Stanford in the US, more than {det.ukUniversities} UK universities and almost every university in Ireland.</p>
+
+        <p>Universities and colleges first took up the DET as a temporary fix during Covid. Since then it has become widely accepted and now challenges the big traditional names in testing head-on. AI has changed language testing, cutting costs and making tests far easier to access, and I'm convinced tests like the DET are the future.</p>
+
+        <h2>Take it anywhere, any time</h2>
+
+        <p>There is no test centre and no fixed date. You sit the DET at home on your own computer, whenever suits you, and it takes only about an hour.</p>
+
+        <p>All you need is a Windows or Mac laptop or desktop with a camera and microphone, the free <a href={det.appDownloadUrl} target="_blank" rel="noopener noreferrer">Duolingo English Test desktop app</a>, a smartphone (it acts as a second camera, recording your screen and keyboard), a quiet room to yourself and your ID. Once you've bought a test, you have {det.daysToTakeAfterPurchase} days to take it.</p>
+
+        <h2>It adapts to you</h2>
+
+        <p>This is what really sets it apart. IELTS and Cambridge give every candidate the same paper, whatever their level. The DET adjusts as you go: answer well and the next question gets harder; struggle and it gets easier.</p>
+
+        <p>Why does that matter? A fixed paper has to cater for everyone, so a strong student wastes time on questions that are far too easy, and a weaker one gets stuck on questions that are far too hard. An adaptive test spends its time where your level actually is, so every question tells it something new about you. That's how it can pin down your level in about an hour, rather than the three or four hours a traditional exam takes.</p>
+
+        <p>It's also why my first thought – that a test this quick and cheap must be easy – turned out to be wrong. If you're doing well, the questions keep getting harder until they find your limit. Everyone is stretched, whatever their level.</p>
+
+        <h2>Can you trust a test taken at home?</h2>
+
+        <p>It's a fair question, and security is built into every step:</p>
+
+        <ul>
+          <li><span><strong>Everything is recorded.</strong> Your computer, phone camera, microphone, keyboard and mouse all record the session.</span></li>
+          <li><span><strong>Every test is checked.</strong> Expert human proctors, helped by AI, review each session for more than 75 different behaviours, in several independent rounds.</span></li>
+          <li><span><strong>No repeat questions.</strong> The question bank is so vast you'd need over 1,000 attempts to see the same question twice.</span></li>
+          <li><span><strong>Total lockdown.</strong> The test cancels itself if you try to open another app or plugin.</span></li>
+        </ul>
+
+        <p>Universities also receive your video interview and writing sample, so they can see and hear you for themselves.</p>
+
+        <h2>Even more reasons to choose the DET</h2>
+
+        <ul>
+          <li><span><strong>No examiner staring back at you.</strong> For many students, the speaking test is the most nerve-racking part of any exam – sitting across from a stranger who is judging every word. With the DET there's no examiner in the room: you see or hear a prompt on screen, take a moment to think, and answer. Speaking still counts – it's scored as a skill in its own right, and universities can watch your video interview – but without the pressure, students can show what they can really do. Speaking is often where my students shine.</span></li>
+          <li><span><strong>You can send your score anywhere, free.</strong> Apply to ten universities or twenty – sending your results costs nothing extra.</span></li>
+          <li><span><strong>Results within 48 hours.</strong> Standard results arrive within two days – or pay about €34 extra and get them in around 12 hours.</span></li>
+          <li><span><strong>Two attempts still cost less than one traditional test.</strong> Buy two tests together and each works out at about €50 – far less than a single IELTS or Cambridge exam. See the table below for the full comparison.</span></li>
+          <li><span><strong>Free official practice.</strong> Duolingo's free practice test gives you an idea of your level, but no detailed feedback. For that, take <a href={det.practiceTestUrl} target="_blank" rel="noopener">my practice test</a> and, for €{fb}, I'll give you personal feedback on your results. As a Duolingo partner, I also use official preparation materials that aren't publicly available.</span></li>
+        </ul>
+
+        <h2>How does the DET compare to other tests?</h2>
+
+        <div style="overflow-x: auto; margin: 2rem 0; border-radius: 12px; border: 1px solid var(--line);">
+          <table style="width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.92rem; font-family: 'Lato', sans-serif;">
+            <thead>
+              <tr style="background: var(--ink); color: white;">
+                {['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'].map(h => (
+                  <th style="padding: 12px 16px; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 700;">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Price', `about €${det.priceEurApprox}, the same everywhere`, `€${otherTests.ieltsAcademicEur}`, `€${otherTests.cambridgeC1Eur}`],
+                ['Length', 'about 1 hour', 'about 2 hours 45 minutes', 'about 4 hours'],
+                ['Scoring', `${det.scoreMin}–${det.scoreMax} overall, plus a score for reading, writing, listening and speaking`, 'bands 0–9 overall, plus a band for each skill', 'Cambridge English Scale 160–210, a grade (A, B or C) and a score for each skill'],
+                ['What universities usually ask for', 'about 105–125', 'about 6.0–7.0', 'about 169–185'],
+                ['Where and when', 'at home, any time', 'at a test centre, or online from home, on booked dates', 'at an exam centre, on set dates'],
+                ['Results', `within ${det.resultsDays} days`, '1–5 days (computer), 6–8 days (online), about 13 days (paper)', '1–3 weeks (computer), 4–6 weeks (paper)'],
+                ['Sending your score', 'free, to as many universities as you like', '5 free copies, then a fee per extra copy', 'free online verification for universities'],
+              ].map(r => (
+                <tr style="border-top: 1px solid var(--line); vertical-align: top;">
+                  <th scope="row" style="padding: 12px 16px; text-align: left; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--ink);">{r[0]}</th>
+                  <td style="padding: 12px 16px; background: var(--green-soft); color: var(--ink); font-weight: 600;">{r[1]}</td>
+                  <td style="padding: 12px 16px; color: var(--ink-soft);">{r[2]}</td>
+                  <td style="padding: 12px 16px; color: var(--ink-soft);">{r[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>So, is it right for <em>you</em>?</h2>
+
+        <p>It depends on where you want to study.</p>
+
+        <ul>
+          <li><span><strong>Ireland: it's a no-brainer.</strong> Nearly every university accepts the DET.</span></li>
+          <li><span><strong>UK:</strong> more than {det.ukUniversities} universities accept the DET for degree courses. For a foundation or pre-sessional course, though, you'll need a UKVI-approved test such as IELTS for UKVI.</span></li>
+          <li><span><strong>US and Canada:</strong> widely accepted. Duolingo's own search tool lists every institution that takes it – it's an impressively long list.</span></li>
+          <li><span><strong>Netherlands:</strong> talk to me first. Several of the big Dutch universities don't recognise the DET yet, so IELTS is still the safer bet there.</span></li>
+        </ul>
+
+        <p>Whichever test you choose, always check your own programme's admissions page – requirements vary by course.</p>
+
+        <h2>Try it for yourself</h2>
+
+        <p>Curious? Try my <a href={det.practiceTestUrl} target="_blank" rel="noopener">free practice test for the Duolingo English Test</a>. And if you're still not sure which test to go for, send me a message or email and we can talk about it.</p>
+
+      </div>
+
+      <!-- CTA -->
+      <div style="background: var(--cream); border-radius: 16px; padding: 2.5rem; margin-top: 3rem; text-align: center;">
+        <p class="eyebrow mb-3">Ready to start?</p>
+        <h3 style="margin-bottom: 1rem;">Prepare for the Duolingo English Test</h3>
+        <p style="color: var(--ink-soft); margin-bottom: 1.5rem;">Format, scores, practice test and preparation with a Duolingo English Test partner.</p>
+        <a href="/duolingo-english-test" class="btn btn-primary">See how we can help</a>
+      </div>
+
+      <RelatedReading slug="is-the-duolingo-english-test-right-for-you" />
+
+    </div>
+  </section>
+
+</BaseLayout>
