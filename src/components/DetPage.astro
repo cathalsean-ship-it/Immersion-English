@@ -66,12 +66,6 @@ const t = bg ? {
   ptNeed: ['Компютър с клавиатура, не телефон', 'Микрофон за говоренето', 'Тиха стая и 45 минути без почивка', 'Без записки, преводач и чужда помощ'],
   ptCta: 'Започнете безплатния пробен тест',
   ptNote: 'Само за упражнение. Тестът не е създаден от Duolingo.',
-  stepsH3: 'Как протича',
-  steps: [
-    { h: 'Говорете с нас', p: 'Безплатна консултация, за да проверим дали DET се приема там, където кандидатствате, и какъв резултат ви трябва.' },
-    { h: 'Упражнявайте се', p: 'Направете пробен тест, получете обратна връзка и добавете уроци, ако са ви нужни.' },
-    { h: 'Положете изпита', p: `Купете теста с нашия код, положете го от вкъщи и получете приоритетни резултати до ${det.partnerResultsHours} часа.` },
-  ],
   stats: [
     { n: '~1 час', l: 'на собствения ви компютър, когато ви е удобно' },
     { n: det.institutionsBg, l: 'институции по света го признават' },
@@ -81,14 +75,6 @@ const t = bg ? {
     { n: '4 умения', l: 'четене, писане, слушане и говорене – в един изпит' },
   ],
 
-  fitEyebrow: 'Подходящ ли е за вас?', fitH2a: 'Кои университети приемат ', fitH2b: 'Duolingo English Test?',
-  fit: [
-    { k: 'Ирландия', v: 'почти всички университети го приемат, а виза не ви е нужна.' },
-    { k: 'Великобритания', v: `над ${det.ukUniversities} университета го приемат за бакалавърски и магистърски програми. За подготвителна (foundation) или pre-sessional програма обаче ще ви трябва одобрен от UKVI тест, например IELTS for UKVI.` },
-    { k: 'САЩ и Канада', v: 'широко признат, включително от всички осем университета от Бръшляновата лига.' },
-    { k: 'Нидерландия', v: 'първо говорете с нас. Няколко от големите нидерландски университети все още не го приемат, затова там IELTS е по-сигурният избор.' },
-  ],
-  fitNote: 'Винаги проверявайте изискванията на конкретната програма – те се различават според специалността.',
 
   cmpEyebrow: 'Сравнение', cmpH2a: 'Duolingo English Test, ', cmpH2b: 'IELTS или Cambridge?',
   cmpHead: ['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'],
@@ -116,6 +102,7 @@ const t = bg ? {
 
   faqEyebrow: 'Въпроси', faqH2a: 'Duolingo English Test – ', faqH2b: 'често задавани въпроси',
   faqs: [
+    { q: 'Кои университети приемат Duolingo English Test?', a: `Повече от ${det.institutionsBg} институции по света. В Ирландия почти всички университети го приемат, а виза не ви е нужна. Във Великобритания над ${det.ukUniversities} университета го приемат за бакалавърски и магистърски програми, но за подготвителна (foundation) или pre-sessional програма ще ви трябва одобрен от UKVI тест, например IELTS for UKVI. В САЩ и Канада е широко признат, включително от всички осем университета от Бръшляновата лига. За Нидерландия първо говорете с нас – няколко от големите университети там все още не го приемат. Винаги проверявайте изискванията на конкретната програма.` },
     { q: 'Може ли да се вярва на изпит, положен от вкъщи?', a: 'Да. Цялата сесия се записва чрез компютъра, камерата на телефона, микрофона, клавиатурата и мишката. Обучени проктори, подпомагани от изкуствен интелект, преглеждат всеки тест в няколко независими кръга, преди резултатът да бъде издаден. Въпросите идват от огромна база, а тестът се прекратява автоматично, ако опитате да отворите друго приложение.' },
     { q: 'Какво ми трябва, за да го положа?', a: 'Компютър с Windows или Mac с камера, микрофон и високоговорители, безплатното десктоп приложение на Duolingo English Test, смартфон (служи като втора камера, която записва екрана и клавиатурата ви), тиха стая, в която сте сами, и документ за самоличност.', link: { href: det.appDownloadUrl, label: 'Изтеглете приложението' } },
     { q: 'Има ли изпитващ при говоренето?', a: 'Не. Виждате или чувате задачата на екрана, имате момент да помислите и отговаряте – само вие и камерата. Говоренето се оценява като отделно умение, а университетите могат да гледат видеото ви. Без изпитващ срещу вас обаче напрежението е много по-малко.' },
@@ -168,12 +155,6 @@ const t = bg ? {
   ptNeed: ['A computer with a keyboard, not a phone', 'A microphone, for the speaking part', 'A quiet room and 45 minutes with no breaks', 'No notes, no translator, no help'],
   ptCta: 'Start the free practice test',
   ptNote: 'Practice only. Not made by Duolingo.',
-  stepsH3: 'How it works',
-  steps: [
-    { h: 'Talk to us', p: 'A free consultation to check the DET is accepted where you\'re applying, and what score you need.' },
-    { h: 'Practise and get feedback', p: 'Take a practice test, get feedback, and add lessons if you need them.' },
-    { h: 'Take the test', p: `Buy your test with our invite code, sit it at home and get priority results within ${det.partnerResultsHours} hours.` },
-  ],
   stats: [
     { n: '~1 hour', l: 'on your own computer, whenever suits you' },
     { n: det.institutions, l: 'institutions worldwide accept it' },
@@ -183,14 +164,6 @@ const t = bg ? {
     { n: '4 skills', l: 'reading, writing, listening and speaking, all in one test' },
   ],
 
-  fitEyebrow: 'Is it right for you?', fitH2a: 'Which universities accept ', fitH2b: 'the Duolingo English Test?',
-  fit: [
-    { k: 'Ireland', v: 'nearly every university accepts it, and there\'s no visa to worry about.' },
-    { k: 'UK', v: `more than ${det.ukUniversities} universities accept it for degree courses. For a foundation or pre-sessional course, though, you'll need a UKVI-approved test such as IELTS for UKVI.` },
-    { k: 'US and Canada', v: 'widely accepted, including by all eight Ivy League universities.' },
-    { k: 'Netherlands', v: 'talk to us first. Several of the big Dutch universities don\'t accept it yet, so IELTS is still the safer choice there.' },
-  ],
-  fitNote: 'Always check your programme\'s own admissions page – requirements vary by course.',
 
   cmpEyebrow: 'At a glance', cmpH2a: 'How does the Duolingo English Test compare ', cmpH2b: 'to other tests?',
   cmpHead: ['', 'Duolingo English Test', 'IELTS Academic', 'Cambridge C1 Advanced'],
@@ -218,6 +191,7 @@ const t = bg ? {
 
   faqEyebrow: 'Questions', faqH2a: 'Duolingo English Test: ', faqH2b: 'your questions answered',
   faqs: [
+    { q: 'Which universities accept the Duolingo English Test?', a: `More than ${det.institutions} institutions worldwide. In Ireland, nearly every university accepts it, and there\'s no visa to worry about. In the UK, more than ${det.ukUniversities} universities accept it for degree courses, but for a foundation or pre-sessional course you\'ll need a UKVI-approved test such as IELTS for UKVI. In the US and Canada it\'s widely accepted, including by all eight Ivy League universities. For the Netherlands, talk to us first – several of the big Dutch universities don\'t accept it yet. Always check your programme\'s own admissions page.` },
     { q: 'Can you trust a test taken at home?', a: 'Yes. The whole session is recorded through your computer, phone camera, microphone, keyboard and mouse. Trained proctors, helped by AI, review every test in several independent rounds before the result is released. Questions come from a vast bank, and the test cancels itself if you try to open another app.' },
     { q: 'What do I need to take it?', a: 'A Windows or Mac computer with a camera, microphone and speakers, the free Duolingo English Test desktop app, a smartphone (it acts as a second camera, recording your screen and keyboard), a quiet room to yourself and your ID.', link: { href: det.appDownloadUrl, label: 'Download the app' } },
     { q: 'Is there an examiner for the speaking part?', a: 'No. You see or hear a prompt on screen, take a moment to think, and answer – just you and a camera. Speaking is still scored as a skill in its own right, and universities can watch your video. But without an examiner across the table, there\'s far less pressure.' },
@@ -403,25 +377,6 @@ const faqSchema = {
   </div>
 </section>
 
-<!-- IS IT RIGHT FOR YOU -->
-<section class="section section-tinted">
-  <div class="container-x">
-    <div class="section-head">
-      <span class="eyebrow eyebrow-dot">{t.fitEyebrow}</span>
-      <h2>{t.fitH2a}<span style="color: var(--orange-text);">{t.fitH2b}</span></h2>
-    </div>
-    <ul class="flex flex-col gap-4 max-w-[72ch]">
-      {t.fit.map(f => (
-        <li class="flex items-start gap-3 text-ink-soft leading-relaxed">
-          <span class="w-[8px] h-[8px] rounded-full flex-shrink-0 mt-[9px]" style="background: var(--orange);"></span>
-          <span><strong style="color: var(--ink);">{f.k}</strong> – {f.v}</span>
-        </li>
-      ))}
-    </ul>
-    <p class="text-ink-soft text-[0.92rem] mt-6 max-w-[72ch]">{t.fitNote}</p>
-  </div>
-</section>
-
 <!-- COMPARISON -->
 <section class="section">
   <div class="container-x">
@@ -474,16 +429,6 @@ const faqSchema = {
         </div>
       ))}
     </div>
-    <h3 class="text-[1.2rem] mt-12 mb-2">{t.stepsH3}</h3>
-    <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 18px;"></div>
-    <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0">
-      {t.steps.map((st, i) => (
-        <li class="flex items-start gap-4">
-          <span class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center font-heading font-bold text-white text-[0.95rem]" style="background: var(--green);">{i + 1}</span>
-          <span><strong class="font-heading block text-ink mb-1">{st.h}</strong><span class="text-ink-soft text-[0.93rem] leading-relaxed">{st.p}</span></span>
-        </li>
-      ))}
-    </ol>
   </div>
 </section>
 
