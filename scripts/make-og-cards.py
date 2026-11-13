@@ -86,6 +86,7 @@ img.save(f'{R}/og/home.jpg','JPEG',quality=86,optimize=True,progressive=True)
 # About + Lessons (Lenny cards)
 lenny(['CELTA-qualified','10+ years','Native speaker'],[[('The teacher behind',WHITE)],[('Immersion',ORANGE),(' English',WHITE)]],f'{R}/og/about.jpg')
 lenny(['Individual','Corporate','Teens'],[[('Speaking-focused',ORANGE)],[('English lessons',WHITE)],[('with Lenny',WHITE)]],f'{R}/og/lessons.jpg')
+lenny(['Duolingo English Test','Partner network member'],[[('Certify your English',WHITE)],[('anytime, anywhere.',ORANGE)]],f'{R}/og/duolingo-english-test.jpg')
 
 # Dublin
 img=shade(cover(os.path.join(ROOT,'src/assets/dublin-welcome-group.jpg'),scale=0.782,x0=0,y0=170),left=235,right=35,start=0.25,end=0.8)

@@ -40,6 +40,25 @@ export const det = {
   ukUniversities: '130',
   appDownloadUrl: 'https://englishtest.duolingo.com/mdownload',
   partnerLevel: 'Member',
+  /** Test structure, from Duolingo's official test taker guide (Nov 2026). */
+  format: { setupMin: 5, adaptiveMin: 45, samplesMin: 10, writingSampleMin: '3–5', speakingSampleMin: '1–3' },
+  /** Question types by skill, as named in the official guide. English names on both pages – that is what students see on screen. */
+  questionTypes: {
+    reading: ['Read and Select', 'Fill in the Blanks', 'Read and Complete', 'Interactive Reading'],
+    listening: ['Listen and Type', 'Interactive Listening'],
+    writing: ['Write About the Photo', 'Interactive Writing', 'Writing Sample'],
+    speaking: ['Speak About the Photo', 'Read, Then Speak', 'Interactive Speaking', 'Speaking Sample'],
+  },
+  /** DET score ranges against CEFR levels, as on Duolingo's own score comparison chart. */
+  cefrBands: [
+    { range: '60–95', cefr: 'B1' },
+    { range: '100–125', cefr: 'B2' },
+    { range: '130–150', cefr: 'C1' },
+    { range: '155–160', cefr: 'C2' },
+  ],
+  /** Typical university requirement. A guide only – each programme sets its own. */
+  typicalAsk: '105–125',
+  scoresUrl: 'https://englishtest.duolingo.com/prepare/scores',
   // TODO: replace with the exact title on Lenny's DET trainer certificate once
   // Lina shares it. Until then this is the wording, on both language versions.
   trainerTitle: { en: 'Duolingo English Test trainer', bg: 'Обучител за Duolingo English Test' },

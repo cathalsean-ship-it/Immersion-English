@@ -110,12 +110,14 @@ const teaserTrips = (() => {
         {[
           'Преподавател с Cambridge CELTA',
           '10+ години опит',
-          'IELTS и Duolingo English Test',
+          { label: 'IELTS и Duolingo English Test', href: '/bg/duolingo-english-test' },
           'Опитен партньор в Дъблин',
         ].map((item) => (
           <span class="flex items-center gap-2" style="flex-shrink: 0; white-space: nowrap;">
             <span class="w-[7px] h-[7px] rounded-full" style="background: var(--orange); flex-shrink: 0; display: inline-block; min-width: 7px;"></span>
-            <span class="font-heading font-semibold text-[0.8rem] min-[360px]:text-[0.88rem] text-white tracking-wide">{item}</span>
+            {typeof item === 'string'
+              ? <span class="font-heading font-semibold text-[0.8rem] min-[360px]:text-[0.88rem] text-white tracking-wide">{item}</span>
+              : <a href={item.href} class="font-heading font-semibold text-[0.8rem] min-[360px]:text-[0.88rem] text-white tracking-wide underline underline-offset-4 decoration-white/40 hover:decoration-white">{item.label}</a>}
           </span>
         ))}
       </div>
