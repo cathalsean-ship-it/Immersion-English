@@ -79,7 +79,7 @@ const t = bg ? {
   offers: [
     { h: 'Изберете правилния изпит', p: 'Не сте сигурни кой изпит е подходящ за вашите планове? Ще го обсъдим и ще ви кажем честно – DET, IELTS или Cambridge.', price: 'Безплатно', cta: 'Запишете консултация', href: c('det', 'det-offer-consultation') },
     { h: 'Подготовка 1:1', p: 'Индивидуални онлайн уроци, насочени към типовете задачи, времето и стратегията в DET.', price: `${prep.perLesson} € / ${prep.lessonMinutes} мин`, cta: 'Попитайте за уроците', href: c('det', 'det-offer-lessons') },
-    { h: 'Купете теста чрез нас', p: `Купете теста с нашия код за покана и получете приоритетни резултати до ${det.partnerResultsHours} часа – без допълнително заплащане.`, price: `Код: ${det.inviteCode}`, cta: 'Регистрирайте се с този код', href: det.inviteUrl, ext: true },
+    { h: 'Купете теста чрез нас', p: 'Купете теста с нашия код за покана, за да виждаме резултата ви и оценките по отделните умения и да планираме заедно следващата стъпка.', price: `Код: ${det.inviteCode}`, cta: 'Регистрирайте се с този код', href: det.inviteUrl, ext: true },
   ],
 
   trainerEyebrow: 'Вашият преподавател',
@@ -95,7 +95,7 @@ const t = bg ? {
     { q: 'Има ли изпитващ при говоренето?', a: 'Не. Виждате или чувате задачата на екрана, имате момент да помислите и отговаряте – само вие и камерата. Говоренето се оценява като отделно умение, а университетите могат да гледат видеото ви. Без изпитващ срещу вас обаче напрежението е много по-малко.' },
     { q: 'Как се оценява?', a: `Получавате обща оценка от ${det.scoreMin} до ${det.scoreMax}, на стъпки от 5 точки, плюс отделни оценки за четене, писане, слушане и говорене.` },
     { q: 'Колко време е валиден резултатът?', a: `${det.validityYears} години.` },
-    { q: 'Колко струва?', a: `${det.priceUsd} щатски долара (около ${det.priceEurApprox} €), еднаква цена навсякъде. Резултатите излизат до ${det.resultsDays} дни, а изпращането им до университети е безплатно. Ако купите теста с нашия код, получавате приоритетни резултати до ${det.partnerResultsHours} часа без допълнително заплащане.` },
+    { q: 'Колко струва?', a: `${det.priceUsd} щатски долара (около ${det.priceEurApprox} €), еднаква цена навсякъде. Резултатите излизат до ${det.resultsDays} дни, а изпращането им до университети е безплатно.` },
     { q: 'Трябва ли да го положа веднага след покупката?', a: `Не. Имате ${det.daysToTakeAfterPurchase} дни да го положите.` },
   ],
 
@@ -155,7 +155,7 @@ const t = bg ? {
   offers: [
     { h: 'Choose the right test', p: 'Not sure which test fits your plans? We\'ll talk it through and tell you honestly – DET, IELTS or Cambridge.', price: 'Free', cta: 'Book a consultation', href: c('det', 'det-offer-consultation') },
     { h: 'Prepare 1:1', p: '1:1 online lessons focused on the DET\'s question types, timing and strategy.', price: `€${prep.perLesson} / ${prep.lessonMinutes} min`, cta: 'Ask about lessons', href: c('det', 'det-offer-lessons') },
-    { h: 'Book your test through us', p: `Buy your test with our invite code and get priority results within ${det.partnerResultsHours} hours, at no extra cost.`, price: `Code: ${det.inviteCode}`, cta: 'Register with this code', href: det.inviteUrl, ext: true },
+    { h: 'Book your test through us', p: 'Buy your test with our invite code, so we can see your results and skill scores and plan your next steps together.', price: `Code: ${det.inviteCode}`, cta: 'Register with this code', href: det.inviteUrl, ext: true },
   ],
 
   trainerEyebrow: 'Your trainer',
@@ -171,7 +171,7 @@ const t = bg ? {
     { q: 'Is there an examiner for the speaking part?', a: 'No. You see or hear a prompt on screen, take a moment to think, and answer – just you and a camera. Speaking is still scored as a skill in its own right, and universities can watch your video. But without an examiner across the table, there\'s far less pressure.' },
     { q: 'How is it scored?', a: `You get an overall score from ${det.scoreMin} to ${det.scoreMax}, in 5-point steps, plus separate scores for reading, writing, listening and speaking.` },
     { q: 'How long are the results valid?', a: `${det.validityYears} years.` },
-    { q: 'How much does it cost?', a: `US$${det.priceUsd} (about €${det.priceEurApprox}), the same price everywhere. Results arrive within ${det.resultsDays} days, and sending them to universities is free. Buy your test with our invite code and you get priority results within ${det.partnerResultsHours} hours at no extra cost.` },
+    { q: 'How much does it cost?', a: `US$${det.priceUsd} (about €${det.priceEurApprox}), the same price everywhere. Results arrive within ${det.resultsDays} days, and sending them to universities is free.` },
     { q: 'Do I have to take it straight after buying it?', a: `No. You have ${det.daysToTakeAfterPurchase} days to take it.` },
   ],
 

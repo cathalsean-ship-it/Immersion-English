@@ -7,10 +7,9 @@
  *
  * Sources, checked November 2026:
  *  - DET Global Partner Network brochure (Apr 2026): 6,300+ institutions,
- *    results within 2 days, unlimited free score sending, and – for partners at
- *    Member level and above – priority results within 24 hours at no extra cost
- *    for students who buy with the partner's invite code. Immersion English is
- *    at Member level (confirmed by Lina, 13 Nov 2026).
+ *    results within 2 days, unlimited free score sending. Free 24-hour priority
+ *    results for invite-code students start at Member level; Immersion English
+ *    is at Starter level (Lina, 13 Nov 2026), so the site does not promise them.
  *  - englishtest.duolingo.com security page: session recorded via computer,
  *    phone camera, microphone, keyboard and mouse; human proctors with AI
  *    review every session; test cancelled if another app is opened.
@@ -30,8 +29,6 @@ export const det = {
   institutions: '6,300+',
   institutionsBg: '6 300+',
   resultsDays: 2,
-  /** Priority results for students who buy with our invite code (Member level). */
-  partnerResultsHours: 24,
   testMinutes: 60,
   daysToTakeAfterPurchase: 21,
   scoreMin: 10,
@@ -44,7 +41,8 @@ export const det = {
   inviteCode: 'PI5DQQ5K',
   inviteUrl: 'https://englishtest.duolingo.com/invite/PI5DQQ5K',
   appDownloadUrl: 'https://englishtest.duolingo.com/mdownload',
-  partnerLevel: 'Member',
+  /** Our GPN tier is Starter (<10 referrals a year), so no free priority results or referral coupons – those start at Member. We may still use the Member network badge (Lina, 13 Nov 2026). */
+  partnerLevel: 'Starter',
   /** Test structure, from Duolingo's official test taker guide (Nov 2026). */
   format: { setupMin: 5, adaptiveMin: 45, samplesMin: 10, writingSampleMin: '3–5', speakingSampleMin: '1–3' },
   /** Question types by skill, as named in the official guide. English names on both pages – that is what students see on screen. */
