@@ -51,10 +51,10 @@ const t = bg ? {
     { k: 'Говорене', v: det.questionTypes.speaking.join(', ') },
   ],
   scoreEyebrow: 'Резултати', scoreH2a: 'Какъв резултат от Duolingo English Test ', scoreH2b: 'ви е нужен?',
-  scoreIntro: `Резултатите са от ${det.scoreMin} до ${det.scoreMax} и съответстват на нивата по CEFR. Много университети изискват резултат ${det.typicalAsk}, а най-селективните – повече. Винаги проверявайте изискванията на вашата програма.`,
-  scoreHead: ['Резултат от DET', 'Ниво по CEFR', 'Какво означава'],
-  scoreDesc: ['Средно ниво', 'Над средно ниво – диапазонът, който много университети изискват', 'Напреднало ниво – често се изисква от най-селективните програми', 'Свободно владеене'],
-  scoreLink: 'Вижте официалното сравнение на Duolingo с IELTS и TOEFL',
+  scoreIntro: `Резултатите са от ${det.scoreMin} до ${det.scoreMax}. Ето как се сравняват с бандовете в IELTS и нивата по CEFR според официалното сравнение на Duolingo. Много университети изискват резултат ${det.typicalAsk}, а най-селективните – повече. Винаги проверявайте изискванията на вашата програма.`,
+  scoreHead: ['Duolingo English Test', 'IELTS Academic', 'CEFR'],
+  scoreKey: 'Диапазонът, който много университети изискват',
+  scoreLink: 'Вижте пълното сравнение, включително с TOEFL, на сайта на Duolingo',
   stepsH3: 'Как протича',
   steps: [
     { h: 'Говорете с нас', p: 'Безплатна консултация, за да проверим дали DET се приема там, където кандидатствате, и какъв резултат ви трябва.' },
@@ -143,10 +143,10 @@ const t = bg ? {
     { k: 'Speaking', v: det.questionTypes.speaking.join(', ') },
   ],
   scoreEyebrow: 'Scores', scoreH2a: 'What Duolingo English Test score ', scoreH2b: 'do you need?',
-  scoreIntro: `Scores run from ${det.scoreMin} to ${det.scoreMax} and line up with the CEFR levels. Many universities ask for a score of ${det.typicalAsk}, and the most selective ask for more. Always check your own programme.`,
-  scoreHead: ['DET score', 'CEFR level', 'What it means'],
-  scoreDesc: ['Intermediate', 'Upper-intermediate – the range many universities ask for', 'Advanced – often needed for the most selective programmes', 'Proficient'],
-  scoreLink: 'See Duolingo\'s official score comparison with IELTS and TOEFL',
+  scoreIntro: `Scores run from ${det.scoreMin} to ${det.scoreMax}. Here's how they compare with IELTS bands and CEFR levels, according to Duolingo's official comparison. Many universities ask for a score of ${det.typicalAsk}, and the most selective ask for more. Always check your own programme.`,
+  scoreHead: ['Duolingo English Test', 'IELTS Academic', 'CEFR'],
+  scoreKey: 'The range many universities ask for',
+  scoreLink: 'See the full comparison, including TOEFL, on Duolingo\'s site',
   stepsH3: 'How it works',
   steps: [
     { h: 'Talk to us', p: 'A free consultation to check the DET is accepted where you\'re applying, and what score you need.' },
@@ -330,7 +330,7 @@ const faqSchema = {
       <p>{t.scoreIntro}</p>
     </div>
     <div class="flex items-center gap-10">
-    <div class="flex-1 overflow-x-auto rounded-xl border border-line shadow-soft bg-white max-w-[760px]">
+    <div class="flex-1 overflow-x-auto rounded-xl border border-line shadow-soft bg-white max-w-[620px]">
       <table class="w-full text-left text-[0.92rem]">
         <thead>
           <tr style="background: var(--green);">
@@ -338,11 +338,11 @@ const faqSchema = {
           </tr>
         </thead>
         <tbody>
-          {det.cefrBands.map((b, i) => (
-            <tr class="border-t border-line align-top">
-              <th scope="row" class="font-heading font-semibold text-ink px-4 py-3 whitespace-nowrap">{b.range}</th>
-              <td class="px-4 py-3 text-ink font-semibold">{b.cefr}</td>
-              <td class="px-4 py-3 text-ink-soft">{t.scoreDesc[i]}</td>
+          {det.concordance.map(r => (
+            <tr class="border-t border-line" style={r.typical ? 'background: var(--green-soft);' : ''}>
+              <th scope="row" class="font-heading font-semibold text-ink px-4 py-[9px] whitespace-nowrap">{r.det}</th>
+              <td class="px-4 py-[9px] text-ink">{r.ielts}</td>
+              <td class="px-4 py-[9px] text-ink-soft">{r.cefr}</td>
             </tr>
           ))}
         </tbody>
@@ -352,6 +352,7 @@ const faqSchema = {
          Decorative, so empty alt. Desktop only, to keep the mobile page light. -->
     <img src="/duo-graduate.webp" alt="" width="260" height="260" class="hidden lg:block flex-shrink-0" loading="lazy" />
     </div>
+    <p class="flex items-center gap-2 text-[0.85rem] text-ink-soft mt-4"><span class="inline-block w-4 h-4 rounded" style="background: var(--green-soft); border: 1px solid var(--line);"></span>{t.scoreKey}</p>
     <a href={det.scoresUrl} target="_blank" rel="noopener noreferrer" class="inline-block mt-5 text-[0.92rem] font-heading font-semibold no-underline hover:underline" style="color: var(--green);">{t.scoreLink}</a>
   </div>
 </section>

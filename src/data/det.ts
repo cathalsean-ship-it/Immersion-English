@@ -51,12 +51,25 @@ export const det = {
     writing: ['Write About the Photo', 'Interactive Writing', 'Writing Sample'],
     speaking: ['Speak About the Photo', 'Read, Then Speak', 'Interactive Speaking', 'Speaking Sample'],
   },
-  /** DET score ranges against CEFR levels, as on Duolingo's own score comparison chart. */
-  cefrBands: [
-    { range: '60–95', cefr: 'B1' },
-    { range: '100–125', cefr: 'B2' },
-    { range: '130–150', cefr: 'C1' },
-    { range: '155–160', cefr: 'C2' },
+  /**
+   * DET score against IELTS Academic and CEFR, from Duolingo's official score
+   * comparison chart (englishtest.duolingo.com/prepare/scores, Nov 2026).
+   * `typical` marks the range many universities ask for (105–125).
+   */
+  concordance: [
+    { det: '160', ielts: '8.5–9', cefr: 'C2' },
+    { det: '155', ielts: '8', cefr: 'C2' },
+    { det: '150', ielts: '8', cefr: 'C1' },
+    { det: '140–145', ielts: '7.5', cefr: 'C1' },
+    { det: '130–135', ielts: '7', cefr: 'C1' },
+    { det: '120–125', ielts: '6.5', cefr: 'B2', typical: true },
+    { det: '105–115', ielts: '6', cefr: 'B2', typical: true },
+    { det: '100', ielts: '5.5', cefr: 'B2' },
+    { det: '95', ielts: '5.5', cefr: 'B1' },
+    { det: '80–90', ielts: '5', cefr: 'B1' },
+    { det: '65–75', ielts: '4.5', cefr: 'B1' },
+    { det: '60', ielts: '4', cefr: 'B1' },
+    { det: '10–55', ielts: '0–4', cefr: 'A1–A2' },
   ],
   /** Typical university requirement. A guide only – each programme sets its own. */
   typicalAsk: '105–125',
