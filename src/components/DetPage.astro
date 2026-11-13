@@ -54,6 +54,18 @@ const t = bg ? {
   scoreIntro: `Резултатите са от ${det.scoreMin} до ${det.scoreMax}. Ето как се сравняват с бандовете в IELTS и нивата по CEFR според официалното сравнение на Duolingo. Много университети изискват резултат ${det.typicalAsk}, а най-селективните – повече. Винаги проверявайте изискванията на вашата програма.`,
   scoreHead: ['Duolingo English Test', 'IELTS Academic', 'CEFR'],
   scoreKey: 'Диапазонът, който много университети изискват',
+  ptEyebrow: 'Безплатен пробен тест', ptH2a: 'Разберете резултата си ', ptH2b: 'преди истинския изпит',
+  ptP: 'Пълен пробен тест със същите типове задачи и същите срокове. Безплатен, около 45 минути, с ориентировъчен резултат накрая.',
+  ptStats: [
+    { n: 'Безплатно', l: 'целият първи тест' },
+    { n: '45 мин', l: 'с време, както на истинския' },
+    { n: '8 части', l: 'четене, слушане, писане и говорене' },
+    { n: '10–160', l: 'ориентировъчен резултат по скалата на теста' },
+  ],
+  ptNeedH3: 'Ще ви трябват',
+  ptNeed: ['Компютър с клавиатура, не телефон', 'Микрофон за говоренето', 'Тиха стая и 45 минути без почивка', 'Без записки, преводач и чужда помощ'],
+  ptCta: 'Започнете безплатния пробен тест',
+  ptNote: 'Само за упражнение. Тестът не е създаден от Duolingo.',
   stepsH3: 'Как протича',
   steps: [
     { h: 'Говорете с нас', p: 'Безплатна консултация, за да проверим дали DET се приема там, където кандидатствате, и какъв резултат ви трябва.' },
@@ -145,6 +157,18 @@ const t = bg ? {
   scoreIntro: `Scores run from ${det.scoreMin} to ${det.scoreMax}. Here's how they compare with IELTS bands and CEFR levels, according to Duolingo's official comparison. Many universities ask for a score of ${det.typicalAsk}, and the most selective ask for more. Always check your own programme.`,
   scoreHead: ['Duolingo English Test', 'IELTS Academic', 'CEFR'],
   scoreKey: 'The range many universities ask for',
+  ptEyebrow: 'Free practice test', ptH2a: 'Know your score ', ptH2b: 'before the real thing',
+  ptP: 'A full practice test with the same kinds of questions and the same time limits. Free, about 45 minutes, with an estimated score at the end.',
+  ptStats: [
+    { n: 'Free', l: 'the full first test, start to finish' },
+    { n: '45 min', l: 'timed, like the real test' },
+    { n: '8 parts', l: 'reading, listening, writing and speaking' },
+    { n: '10–160', l: 'an estimated score on the test\'s own scale' },
+  ],
+  ptNeedH3: 'You\'ll need',
+  ptNeed: ['A computer with a keyboard, not a phone', 'A microphone, for the speaking part', 'A quiet room and 45 minutes with no breaks', 'No notes, no translator, no help'],
+  ptCta: 'Start the free practice test',
+  ptNote: 'Practice only. Not made by Duolingo.',
   stepsH3: 'How it works',
   steps: [
     { h: 'Talk to us', p: 'A free consultation to check the DET is accepted where you\'re applying, and what score you need.' },
@@ -351,6 +375,40 @@ const faqSchema = {
     <img src="/duo-graduate.webp" alt="" width="260" height="260" class="hidden lg:block flex-shrink-0" loading="lazy" />
     </div>
     <p class="flex items-center gap-2 text-[0.85rem] text-ink-soft mt-4"><span class="inline-block w-4 h-4 rounded" style="background: var(--green-soft); border: 1px solid var(--line);"></span>{t.scoreKey}</p>
+  </div>
+</section>
+
+<!-- FREE PRACTICE TEST (Lenny's test; copy adapted from its landing page) -->
+<section class="section section-dark" id="practice-test" style="scroll-margin-top: 90px;">
+  <div class="container-x">
+    <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-start">
+      <div>
+        <span class="eyebrow eyebrow-dot">{t.ptEyebrow}</span>
+        <h2 class="mt-3 mb-4">{t.ptH2a}<span style="color: var(--orange);">{t.ptH2b}</span></h2>
+        <p class="text-[1.05rem] leading-relaxed mb-8 max-w-[52ch]">{t.ptP}</p>
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          {t.ptStats.map(x => (
+            <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 18px 20px;">
+              <p class="font-heading font-bold text-[1.4rem] leading-none mb-2" style="color: var(--off-white);">{x.n}</p>
+              <p class="text-[0.85rem] leading-snug">{x.l}</p>
+            </div>
+          ))}
+        </div>
+        <a href={det.practiceTestUrl} target="_blank" rel="noopener" class="btn btn-primary">{t.ptCta}</a>
+        <p class="text-[0.82rem] mt-4" style="color: rgba(254,255,254,0.6);">{t.ptNote}</p>
+      </div>
+      <div class="surface-light bg-white rounded-xl p-6 md:p-8 shadow-lift">
+        <h3 class="text-[1.2rem] mb-2">{t.ptNeedH3}</h3>
+        <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 16px;"></div>
+        <ul class="flex flex-col gap-3">
+          {t.ptNeed.map(n => (
+            <li class="flex items-start gap-3 text-ink-soft leading-relaxed">
+              <span class="w-[8px] h-[8px] rounded-full flex-shrink-0 mt-[9px]" style="background: var(--orange);"></span>{n}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
