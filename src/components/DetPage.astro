@@ -39,9 +39,9 @@ const t = bg ? {
   fmtEyebrow: 'Формат на изпита', fmtH2a: 'Какво включва ', fmtH2b: 'Duolingo English Test?',
   fmtIntro: 'Изпитът проверява и четирите умения – четене, писане, слушане и говорене – за около час, наведнъж и в три части. Броят на въпросите е различен, защото тестът се адаптира към вас.',
   parts: [
-    { n: `~${det.format.setupMin} мин`, h: 'Подготовка', p: 'Проверка на самоличността, сканиране на стаята и настройване на телефона като втора камера.' },
-    { n: `~${det.format.adaptiveMin} мин`, h: 'Адаптивен тест', p: 'Кратки задачи за четене, слушане, писане и говорене. Стават по-трудни или по-лесни според отговорите ви.' },
-    { n: `~${det.format.samplesMin} мин`, h: 'Писмена и устна задача', p: `Един по-дълъг писмен отговор (${det.format.writingSampleMin} минути) и един по-дълъг устен отговор (${det.format.speakingSampleMin} минути). Университетите ги получават заедно с резултата ви.` },
+    { n: `около ${det.format.setupMin} минути`, h: 'Подготовка', p: 'Покажете документ за самоличност, сканирайте стаята с телефона си и го нагласете като втора камера. Тук още нищо не се оценява.' },
+    { n: `около ${det.format.adaptiveMin} минути`, h: 'Самият изпит', p: 'Кратки задачи по четене, слушане, писане и говорене. Стават по-трудни или по-лесни според отговорите ви и именно тази част определя резултата ви.' },
+    { n: `около ${det.format.samplesMin} минути`, h: 'По-дълга писмена и устна задача', p: 'Напишете кратко есе и запишете един по-дълъг устен отговор. Те не се оценяват, но университетите ги получават заедно с резултата ви.' },
   ],
   qH3: 'Типове задачи',
   skills: [
@@ -116,9 +116,9 @@ const t = bg ? {
   fmtEyebrow: 'Test format', fmtH2a: 'What\'s in the ', fmtH2b: 'Duolingo English Test?',
   fmtIntro: 'The test checks all four skills – reading, writing, listening and speaking – in about an hour, in one sitting and in three parts. The number of questions varies, because the test adapts as you go.',
   parts: [
-    { n: `~${det.format.setupMin} min`, h: 'Set-up', p: 'ID check, room scan and setting up your phone as a second camera.' },
-    { n: `~${det.format.adaptiveMin} min`, h: 'Adaptive test', p: 'Short questions covering reading, listening, writing and speaking. They get harder or easier depending on your answers.' },
-    { n: `~${det.format.samplesMin} min`, h: 'Writing and speaking samples', p: `One longer written answer (${det.format.writingSampleMin} minutes) and one longer spoken answer (${det.format.speakingSampleMin} minutes). Universities receive both with your score.` },
+    { n: `about ${det.format.setupMin} minutes`, h: 'Getting set up', p: 'Show your ID, scan the room with your phone, and set the phone up as a second camera. Nothing is scored yet.' },
+    { n: `about ${det.format.adaptiveMin} minutes`, h: 'The test itself', p: 'Short questions covering reading, listening, writing and speaking. They get harder or easier depending on your answers, and this part gives you your score.' },
+    { n: `about ${det.format.samplesMin} minutes`, h: 'A longer writing and speaking task', p: 'Write one short essay and record one longer spoken answer. These aren\'t scored, but universities receive them with your result.' },
   ],
   qH3: 'Question types',
   skills: [
@@ -265,7 +265,7 @@ const faqSchema = {
     <ol class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10 list-none p-0">
       {t.parts.map((part, i) => (
         <li class="bg-white border border-line rounded-xl p-6 shadow-soft">
-          <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-[0.1em] mb-2" style="color: var(--green);">{i + 1} · {part.n}</p>
+          <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-[0.1em] mb-2" style="color: var(--green);">{bg ? 'Част' : 'Part'} {i + 1} · {part.n}</p>
           <h3 class="text-[1.1rem] mb-2">{part.h}</h3>
           <p class="text-ink-soft text-[0.93rem] leading-relaxed">{part.p}</p>
         </li>
