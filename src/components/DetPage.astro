@@ -29,8 +29,8 @@ const prep = courses.examPreparation;
 const t = bg ? {
   eyebrow: 'Duolingo English Test',
   h1a: 'Сертификат по английски ', h1b: 'по всяко време, навсякъде.', h1c: '',
-  lead: `Duolingo English Test се признава от над ${det.institutionsBg} институции по света, струва около ${det.priceEurApprox} € и резултатите излизат до ${det.resultsDays} дни. Ще ви помогнем да прецените дали е подходящ за вас – и ще ви подготвим за него.`,
-  ctaMain: 'Безплатна консултация', ctaFb: `Обратна връзка – ${fb} €`,
+  lead: `Duolingo English Test (DET) се признава от над ${det.institutionsBg} институции по света, струва около ${det.priceEurApprox} € и резултатите излизат до ${det.resultsDays} дни. Ще ви помогнем да прецените дали е подходящ за вас – и ще ви подготвим за него.`,
+  ctaMain: 'Безплатна консултация', ctaFb: 'Запишете се за DET',
   badgeAlt: 'Duolingo English Test – Global Partner Network – Member',
   badgeCaption: 'Член на глобалната партньорска мрежа на Duolingo English Test',
 
@@ -105,8 +105,8 @@ const t = bg ? {
 } : {
   eyebrow: 'Duolingo English Test',
   h1a: 'Certify your English ', h1b: 'anytime, anywhere.', h1c: '',
-  lead: `The Duolingo English Test is accepted by more than ${det.institutions} institutions worldwide, costs about €${det.priceEurApprox} and gives results in ${det.resultsDays} days. We'll help you decide if it's right for you – and get you ready for it.`,
-  ctaMain: 'Book a free consultation', ctaFb: `Get practice test feedback – €${fb}`,
+  lead: `The Duolingo English Test (DET) is accepted by more than ${det.institutions} institutions worldwide, costs about €${det.priceEurApprox} and gives results in ${det.resultsDays} days. We'll help you decide if it's right for you – and get you ready for it.`,
+  ctaMain: 'Book a free consultation', ctaFb: 'Book your DET',
   badgeAlt: 'Duolingo English Test – Global Partner Network – Member',
   badgeCaption: 'Member of the Duolingo English Test Global Partner Network',
 
@@ -222,7 +222,7 @@ const faqSchema = {
         <p class="text-white/80 text-[1rem] md:text-[1.15rem] leading-[1.55] mb-8 max-w-[52ch]">{t.lead}</p>
         <div class="flex flex-col sm:flex-row gap-3">
           <a href={c('det', 'det-hero')} class="btn btn-primary">{t.ctaMain}</a>
-          <a href={c('det-feedback', 'det-hero')} class="btn btn-ghost text-white border-white/30 hover:border-white">{t.ctaFb}</a>
+          <a href={det.inviteUrl} target="_blank" rel="noopener" class="btn btn-ghost text-white border-white/30 hover:border-white">{t.ctaFb}</a>
         </div>
       </div>
       <div class="bg-white rounded-xl p-6 md:p-8 shadow-lift">
