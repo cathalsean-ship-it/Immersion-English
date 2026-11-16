@@ -45,6 +45,7 @@ const teaserTrips = (() => {
 <BaseLayout title="Immersion English | English Lessons & Dublin Summer for Teens" description={`A native-speaker, Cambridge CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults, and an immersive summer programme in the heart of Dublin for students aged ${ages.min}–${ages.max}.`}>
   <!-- HERO: three-slide carousel (lessons, Dublin Summer, Duolingo English Test). See HeroCarousel.astro. -->
   <HeroCarousel
+    lessonsEyebrow="English lessons"
     lang="en"
     dublin={{ eyebrow: `Dublin, Ireland · Summer ${dublin.year}`, h2a: "This isn't a language course.", h2b: "It's an experience.", lead: `English immersion for teenagers aged ${ages.min}–${ages.max} in Dublin, Ireland – ${durationOptionsLabel(durations)} in ${startMonthsLabel(durations)}. A summer they won't stop talking about.`, cta: `Explore Dublin Summer ${dublin.year}`, href: '/dublin-summer-2027', alt: 'A group of teenagers in front of the Welcome to Dublin sign' }}
     det={{ eyebrow: 'Duolingo English Test · Official partner', h2a: 'Certify your English', h2b: 'anytime, anywhere.', lead: `Accepted by ${det.institutions} institutions worldwide, about an hour from home, results in ${det.resultsDays} days. We help you choose the right test and prepare for it.`, cta: 'Prepare for the DET', href: '/duolingo-english-test', alt: 'Duolingo English Test campaign image' }}

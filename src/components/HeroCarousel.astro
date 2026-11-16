@@ -16,14 +16,16 @@
  */
 interface Props {
   lang: 'en' | 'bg';
+  lessonsEyebrow: string;
   dublin: { eyebrow: string; h2a: string; h2b: string; lead: string; cta: string; href: string; alt: string };
   det: { eyebrow: string; h2a: string; h2b: string; lead: string; cta: string; href: string; alt: string };
 }
-const { lang, dublin, det } = Astro.props;
+const { lang, lessonsEyebrow, dublin, det } = Astro.props;
 const ui = lang === 'bg'
   ? { label: 'Акценти', slide: 'Слайд', of: 'от', prev: 'Предишен слайд', next: 'Следващ слайд', names: ['Уроци', 'Лято в Дъблин', 'Duolingo English Test'] }
   : { label: 'Highlights', slide: 'Slide', of: 'of', prev: 'Previous slide', next: 'Next slide', names: ['Lessons', 'Dublin Summer', 'Duolingo English Test'] };
-const textCol = 'container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[120px] pb-[96px] md:pb-[110px]';
+// Text sits at the same top offset on every slide, so the eyebrows and headings line up as slides change.
+const textCol = 'container-x relative z-10 w-full flex items-start pt-[110px] md:pt-[140px] pb-[110px] md:pb-[120px]';
 ---
 <section class="hero-carousel relative text-white overflow-hidden isolate" aria-roledescription="carousel" aria-label={ui.label} data-hero-carousel>
   <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
@@ -33,7 +35,12 @@ const textCol = 'container-x relative z-10 w-full flex items-end pt-[100px] md:p
     <div class="hero-slide [grid-area:1/1] relative flex items-stretch is-active" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 1 ${ui.of} 3: ${ui.names[0]}`} data-slide>
       <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%), linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"></div>
       <div class={textCol}>
-        <slot name="lessons" />
+        <div>
+          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{lessonsEyebrow}
+          </p>
+          <slot name="lessons" />
+        </div>
       </div>
     </div>
 
