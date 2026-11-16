@@ -51,6 +51,28 @@ export const det = {
     speaking: ['Speak About the Photo', 'Read, Then Speak', 'Interactive Speaking', 'Speaking Sample'],
   },
   /**
+   * Roughly how many of each question type a test taker sees, from the Official
+   * Guide for Test Takers 2026 and the DET Handbook (Part 1, test structure). Every test is
+   * different, so these are typical ranges, not fixed numbers.
+   */
+  questionCounts: {
+    'Read and Select': { en: '15–18', bg: '15–18' },
+    'Fill in the Blanks': { en: '6–9', bg: '6–9' },
+    'Read and Complete': { en: '3–6', bg: '3–6' },
+    'Interactive Reading': { en: '2 sets of 6', bg: '2 серии по 6' },
+    'Listen and Type': { en: '6–9', bg: '6–9' },
+    'Interactive Listening': { en: '2 sets of 8–10 + a summary', bg: '2 серии по 8–10 + резюме' },
+    'Write About the Photo': { en: '3', bg: '3' },
+    'Interactive Writing': { en: '1 set of 2', bg: '1 серия от 2' },
+    'Writing Sample': { en: '1', bg: '1' },
+    'Speak About the Photo': { en: '1', bg: '1' },
+    'Read, Then Speak': { en: '1', bg: '1' },
+    'Interactive Speaking': { en: '1 set of 6–8', bg: '1 серия от 6–8' },
+    'Speaking Sample': { en: '1', bg: '1' },
+  } as Record<string, { en: string; bg: string }>,
+  /** Question types whose difficulty adapts to the test taker (DET Handbook, Part 1). */
+  adaptiveTypes: ['Read and Select', 'Fill in the Blanks', 'Read and Complete', 'Listen and Type', 'Interactive Reading', 'Interactive Listening', 'Interactive Speaking'],
+  /**
    * DET score against IELTS Academic and CEFR, from Duolingo's official score
    * comparison chart (englishtest.duolingo.com/prepare/scores, Nov 2026).
    * `typical` marks the range many universities ask for (105–125).

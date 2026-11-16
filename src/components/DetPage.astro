@@ -35,12 +35,29 @@ const t = bg ? {
 
   whatEyebrow: 'Тестът', whatH2a: 'Какво е ', whatH2b: 'Duolingo English Test?',
   whoLine: 'Модерен изпит по английски, положен от вкъщи, за ученици в последните класове и за всеки, който кандидатства в университет в чужбина.',
-  fmtEyebrow: 'Формат на изпита', fmtH2a: 'Какво включва ', fmtH2b: 'Duolingo English Test?',
-  fmtIntro: 'Изпитът проверява и четирите умения – четене, писане, слушане и говорене – за около час, наведнъж и в три части. Броят на въпросите е различен, защото тестът се адаптира към вас.',
+  fmtEyebrow: 'Формат на изпита', fmtH2a: 'Как протича изпитът: ', fmtH2b: 'един час, три части',
+  fmtIntro: 'И четирите умения – четене, слушане, писане и говорене – наведнъж, за около час, от вкъщи на собствения ви компютър.',
+  minLabel: 'мин',
   parts: [
-    { n: `около ${det.format.setupMin} минути`, h: 'Подготовка', p: 'Покажете документ за самоличност, сканирайте стаята с телефона си и го нагласете като втора камера. Тук още нищо не се оценява.' },
-    { n: `около ${det.format.adaptiveMin} минути`, h: 'Самият изпит', p: 'Кратки задачи по четене, слушане, писане и говорене. Стават по-трудни или по-лесни според отговорите ви и именно тази част определя резултата ви.' },
-    { n: `около ${det.format.samplesMin} минути`, h: 'По-дълга писмена и устна задача', p: 'Напишете кратко есе и запишете един по-дълъг устен отговор. Те не се оценяват, но университетите ги получават заедно с резултата ви.' },
+    { n: `около ${det.format.setupMin} минути`, h: 'Подготовка', note: 'Не се оценява', pts: ['Изтегляте приложението на DET за телефон и проверявате камерата, микрофона и високоговорителите', 'Показвате документ за самоличност със снимка и минавате кратка проверка на лицето', 'Сканирате стаята с телефона и го нагласяте като втора камера'] },
+    { n: `около ${det.format.adaptiveMin} минути`, h: 'Адаптивният тест', note: 'Оценява се', pts: ['Кратки задачи и по четирите умения', 'Стават по-трудни или по-лесни според отговорите ви', 'Броят на въпросите е различен – тестът спира, когато е сигурен в резултата ви'] },
+    { n: `около ${det.format.samplesMin} минути`, h: 'Писмена и устна проба', note: 'Оценява се и се изпраща на университетите', pts: [`Пишете по зададена тема (${det.format.writingSampleMin} минути)`, `Отговаряте устно на въпрос (${det.format.speakingSampleMin} минути)`, 'Университетите получават и двете заедно с резултата ви, а вие можете да ги прегледате след изпита'] },
+  ],
+  qIntro: 'Приблизително колко задачи от всеки тип да очаквате. Всеки изпит е различен, затова броят варира.',
+  adaptiveTag: 'Адаптивни', adaptiveKey: 'стават по-трудни или по-лесни според отговорите ви',
+  chkH3: 'Подгответе мястото за изпита',
+  chkIntro: 'Можете да положите изпита навсякъде, където са изпълнени тези четири условия – не е задължително да е вкъщи.',
+  chk: [
+    { ic: 'quiet', h: 'Тихо', pts: ['Затворени прозорци и врати', 'Без шум на заден план', 'Без излишни телефони и таблети в стаята'] },
+    { ic: 'private', h: 'Насаме', pts: ['Сами сте в стаята', 'Никой няма да ви прекъсва'] },
+    { ic: 'equipment', h: 'Техника', pts: ['Интернет поне 2 Mbps за изтегляне и 1 Mbps за качване', 'Зареден или включен лаптоп, всички други програми затворени', 'Работещи предна камера, микрофон и високоговорители', 'Зареден телефон и стойка, на която да го подпрете'] },
+    { ic: 'light', h: 'Светлина', pts: ['Достатъчно светло, за да се виждате ясно на камерата'] },
+  ],
+  tipsH3: 'Полезно е да знаете',
+  tips: [
+    { h: 'Винаги отговаряйте', p: 'Грешният отговор не ви струва повече от празния, а частично верните отговори носят точки.' },
+    { h: 'Всеки изпит е различен', p: 'Въпросите идват от огромна база, така че едва ли ще видите един и същ въпрос два пъти.' },
+    { h: 'Някои въпроси ще ви се сторят трудни', p: 'Това е нормално – тестът се адаптира, за да открие нивото ви.' },
   ],
   qH3: 'Типове задачи',
   dlH3: 'Официални материали за изтегляне',
@@ -127,12 +144,29 @@ const t = bg ? {
 
   whatEyebrow: 'The test', whatH2a: 'What is the ', whatH2b: 'Duolingo English Test?',
   whoLine: 'A modern English test, taken from home, for students in their final school years and anyone applying to a university abroad.',
-  fmtEyebrow: 'Test format', fmtH2a: 'What\'s in the ', fmtH2b: 'Duolingo English Test?',
-  fmtIntro: 'The test checks all four skills – reading, writing, listening and speaking – in about an hour, in one sitting and in three parts. The number of questions varies, because the test adapts as you go.',
+  fmtEyebrow: 'Test format', fmtH2a: 'How the test works: ', fmtH2b: 'one hour, three parts',
+  fmtIntro: 'All four skills – reading, listening, writing and speaking – in one sitting of about an hour, at home on your own computer.',
+  minLabel: 'min',
   parts: [
-    { n: `about ${det.format.setupMin} minutes`, h: 'Getting set up', p: 'Show your ID, scan the room with your phone, and set the phone up as a second camera. Nothing is scored yet.' },
-    { n: `about ${det.format.adaptiveMin} minutes`, h: 'The test itself', p: 'Short questions covering reading, listening, writing and speaking. They get harder or easier depending on your answers, and this part gives you your score.' },
-    { n: `about ${det.format.samplesMin} minutes`, h: 'A longer writing and speaking task', p: 'Write one short essay and record one longer spoken answer. These aren\'t scored, but universities receive them with your result.' },
+    { n: `about ${det.format.setupMin} minutes`, h: 'Get set up', note: 'Not scored', pts: ['Download the DET phone app and check your camera, microphone and speakers', 'Show your photo ID and do a quick liveness check', 'Scan your room with your phone, then set it up as a second camera'] },
+    { n: `about ${det.format.adaptiveMin} minutes`, h: 'The adaptive test', note: 'Scored', pts: ['Short questions covering all four skills', 'They get harder or easier depending on your answers', 'The number of questions varies – the test stops when it\'s confident of your score'] },
+    { n: `about ${det.format.samplesMin} minutes`, h: 'Writing and speaking samples', note: 'Scored and shared with universities', pts: [`Write at length on a prompt (${det.format.writingSampleMin} minutes)`, `Answer a question out loud (${det.format.speakingSampleMin} minutes)`, 'Universities receive both with your result, and you can review them after the test'] },
+  ],
+  qIntro: 'Roughly how many of each to expect. Every test is different, so the numbers vary.',
+  adaptiveTag: 'Adaptive', adaptiveKey: 'gets harder or easier depending on your answers',
+  chkH3: 'Set up your test space',
+  chkIntro: 'You can take the test anywhere that meets these four conditions – it doesn\'t have to be at home.',
+  chk: [
+    { ic: 'quiet', h: 'Quiet', pts: ['Windows and doors closed', 'No background noise', 'No extra phones or tablets in the room'] },
+    { ic: 'private', h: 'Private', pts: ['You\'re alone in the room', 'No one will interrupt you'] },
+    { ic: 'equipment', h: 'Equipment', pts: ['Internet of at least 2 Mbps down and 1 Mbps up', 'Laptop charged or plugged in, all other programs closed', 'Working front camera, microphone and speakers', 'A charged phone and a stand to lean it on'] },
+    { ic: 'light', h: 'Light', pts: ['Bright enough for you to be clearly visible on camera'] },
+  ],
+  tipsH3: 'Good to know',
+  tips: [
+    { h: 'Always answer', p: 'A wrong answer costs you no more than a blank, and partly right answers can earn partial credit.' },
+    { h: 'Every test is different', p: 'Questions come from a very large pool, so you\'re unlikely to see the same one twice.' },
+    { h: 'Some questions will feel hard', p: 'That\'s normal – the test adapts to find your level.' },
   ],
   qH3: 'Question types',
   dlH3: 'Official guides to download',
@@ -229,6 +263,13 @@ const icon: Record<string, string> = {
   listening: '<path d="M11 5L6.5 9H3v6h3.5l4.5 4V5z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18.5 6a8.5 8.5 0 0 1 0 12"/>',
 };
 const skillKeys = ['speaking', 'writing', 'reading', 'listening'] as const;
+// Test-space checklist icons (our own line icons).
+const chkIcon: Record<string, string> = {
+  quiet: '<path d="M11 5L6.5 9H3v6h3.5l4.5 4V5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/>',
+  private: '<path d="M5 21V4.5A1.5 1.5 0 0 1 6.5 3h11A1.5 1.5 0 0 1 19 4.5V21"/><path d="M3 21h18"/><circle cx="15" cy="12.5" r="1"/>',
+  equipment: '<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/>',
+  light: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>',
+};
 const comboParts = {
   production: ['writing', 'speaking'],
   literacy: ['reading', 'writing'],
@@ -305,28 +346,99 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
       <h2>{t.fmtH2a}<span style="color: var(--orange-text);">{t.fmtH2b}</span></h2>
       <p>{t.fmtIntro}</p>
     </div>
-    <ol class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10 list-none p-0">
+    <!-- The three parts, drawn to scale (5 / 45 / 10 minutes) -->
+    <div class="flex rounded-full overflow-hidden h-3 mb-3" aria-hidden="true" style={`--a:${det.format.setupMin};--b:${det.format.adaptiveMin};--c:${det.format.samplesMin}`}>
+      <span style="flex: var(--a); background: var(--ink-soft); opacity: 0.35;"></span>
+      <span style="flex: var(--b); background: var(--green);"></span>
+      <span style="flex: var(--c); background: var(--orange);"></span>
+    </div>
+    <ol class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12 list-none p-0">
       {t.parts.map((part, i) => (
-        <li class="bg-white border border-line rounded-xl p-6 shadow-soft">
-          <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-[0.1em] mb-2" style="color: var(--green);">{bg ? 'Част' : 'Part'} {i + 1} · {part.n}</p>
-          <h3 class="text-[1.1rem] mb-2">{part.h}</h3>
-          <p class="text-ink-soft text-[0.93rem] leading-relaxed">{part.p}</p>
+        <li class="bg-white border border-line rounded-xl p-6 shadow-soft flex flex-col">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-9 h-9 rounded-full flex items-center justify-center font-heading font-bold text-[0.95rem] flex-shrink-0" style={i === 0 ? 'background: var(--line); color: var(--ink);' : i === 1 ? 'background: var(--green); color: #fff;' : 'background: var(--orange); color: var(--ink);'}>{i + 1}</span>
+            <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-[0.1em] m-0" style="color: var(--green);">{part.n}</p>
+          </div>
+          <h3 class="text-[1.15rem] mb-3">{part.h}</h3>
+          <ul class="flex flex-col gap-2 mb-4 list-none p-0">
+            {part.pts.map(pt => (
+              <li class="flex items-start gap-3 text-ink-soft text-[0.92rem] leading-relaxed">
+                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[8px]" style="background: var(--orange);"></span>
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-auto text-[0.8rem] font-heading font-semibold pt-3 border-t border-line m-0" style={i === 0 ? 'color: var(--ink-soft);' : 'color: var(--green);'}>{part.note}</p>
         </li>
       ))}
     </ol>
+
     <h3 class="text-[1.2rem] mb-2">{t.qH3}</h3>
-    <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
-    <ul class="flex flex-col gap-3 max-w-[78ch]">
-      {t.skills.map(k => (
-        <li class="flex items-start gap-3 text-ink-soft leading-relaxed">
-          <span class="w-[8px] h-[8px] rounded-full flex-shrink-0 mt-[9px]" style="background: var(--orange);"></span>
-          <span><strong style="color: var(--ink);">{k.k}</strong> – <span lang="en">{k.v}</span></span>
+    <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 10px;"></div>
+    <p class="text-ink-soft text-[0.95rem] mb-5">{t.qIntro} <span class="whitespace-nowrap"><span class="inline-block w-[8px] h-[8px] rounded-full align-middle mr-1" style="background: var(--green);"></span>{t.adaptiveTag}</span> – {t.adaptiveKey}.</p>
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 list-none p-0">
+      {(['reading', 'listening', 'writing', 'speaking'] as const).map(k => (
+        <li class="bg-white border border-line rounded-xl p-5 shadow-soft">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--green-soft); color: var(--green);">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icon[k]} />
+            </span>
+            <h4 class="font-heading font-semibold text-ink text-[1.02rem] m-0">{t.skillNames[k]}</h4>
+          </div>
+          <ul class="flex flex-col list-none p-0 m-0">
+            {det.questionTypes[k].map(q => (
+              <li class="flex items-start justify-between gap-3 py-[7px] border-t border-line text-[0.9rem]">
+                <span class="text-ink flex items-start gap-2"><span class="w-[8px] h-[8px] rounded-full flex-shrink-0 mt-[7px]" style={det.adaptiveTypes.includes(q) ? 'background: var(--green);' : 'background: transparent; border: 1.5px solid var(--line);'} title={det.adaptiveTypes.includes(q) ? t.adaptiveTag : undefined}></span><span lang="en">{q}</span></span>
+                <span class="text-ink-soft text-[0.85rem] text-right max-w-[45%]">{det.questionCounts[q]?.[lang]}</span>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+
+    <h3 class="text-[1.2rem] mb-2">{t.chkH3}</h3>
+    <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 10px;"></div>
+    <p class="text-ink-soft text-[0.95rem] mb-5">{t.chkIntro}</p>
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 list-none p-0">
+      {t.chk.map(c => (
+        <li class="bg-white border border-line rounded-xl p-5 shadow-soft">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--green-soft); color: var(--green);">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={chkIcon[c.ic]} />
+            </span>
+            <h4 class="font-heading font-semibold text-ink text-[1.02rem] m-0">{c.h}</h4>
+          </div>
+          <ul class="flex flex-col gap-2 list-none p-0 m-0">
+            {c.pts.map(pt => (
+              <li class="flex items-start gap-3 text-ink-soft text-[0.9rem] leading-relaxed">
+                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[8px]" style="background: var(--orange);"></span>
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+
+    <h3 class="text-[1.2rem] mb-2">{t.tipsH3}</h3>
+    <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 18px;"></div>
+    <ul class="grid md:grid-cols-3 gap-5 list-none p-0">
+      {t.tips.map(tip => (
+        <li class="flex items-start gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-[2px]" style="background: var(--green-soft); color: var(--green);">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+          </span>
+          <span>
+            <strong class="block font-heading font-semibold text-ink text-[0.98rem] mb-1">{tip.h}</strong>
+            <span class="text-ink-soft text-[0.92rem] leading-relaxed">{tip.p}</span>
+          </span>
         </li>
       ))}
     </ul>
 
     <!-- Duolingo's own PDFs from the partner pack, hosted unaltered in /public/downloads. -->
-    <h3 id="downloads" class="text-[1.2rem] mb-2 mt-12" style="scroll-margin-top: 90px;">{t.dlH3}</h3>
+    <h3 id="downloads" class="text-[1.2rem] mb-2 mt-14" style="scroll-margin-top: 90px;">{t.dlH3}</h3>
     <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 18px;"></div>
     <ul class="grid md:grid-cols-2 gap-4 max-w-[900px]">
       {t.dl.map(d => (
