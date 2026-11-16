@@ -45,14 +45,6 @@ const t = bg ? {
   ],
   qIntro: 'Приблизително колко задачи от всеки тип да очаквате. Всеки изпит е различен, затова броят варира.',
   adaptiveTag: 'Адаптивни', adaptiveKey: 'стават по-трудни или по-лесни според отговорите ви',
-  chkH3: 'Подгответе мястото за изпита',
-  chkIntro: 'Можете да положите изпита навсякъде, където са изпълнени тези четири условия – не е задължително да е вкъщи.',
-  chk: [
-    { ic: 'quiet', h: 'Тихо', pts: ['Затворени прозорци и врати', 'Без шум на заден план', 'Без излишни телефони и таблети в стаята'] },
-    { ic: 'private', h: 'Насаме', pts: ['Сами сте в стаята', 'Никой няма да ви прекъсва'] },
-    { ic: 'equipment', h: 'Техника', pts: ['Интернет поне 2 Mbps за изтегляне и 1 Mbps за качване', 'Зареден или включен лаптоп, всички други програми затворени', 'Работещи предна камера, микрофон и високоговорители', 'Зареден телефон и стойка, на която да го подпрете'] },
-    { ic: 'light', h: 'Светлина', pts: ['Достатъчно светло, за да се виждате ясно на камерата'] },
-  ],
   tipsH3: 'Полезно е да знаете',
   tips: [
     { h: 'Винаги отговаряйте', p: 'Грешният отговор не ви струва повече от празния, а частично верните отговори носят точки.' },
@@ -154,14 +146,6 @@ const t = bg ? {
   ],
   qIntro: 'Roughly how many of each to expect. Every test is different, so the numbers vary.',
   adaptiveTag: 'Adaptive', adaptiveKey: 'gets harder or easier depending on your answers',
-  chkH3: 'Set up your test space',
-  chkIntro: 'You can take the test anywhere that meets these four conditions – it doesn\'t have to be at home.',
-  chk: [
-    { ic: 'quiet', h: 'Quiet', pts: ['Windows and doors closed', 'No background noise', 'No extra phones or tablets in the room'] },
-    { ic: 'private', h: 'Private', pts: ['You\'re alone in the room', 'No one will interrupt you'] },
-    { ic: 'equipment', h: 'Equipment', pts: ['Internet of at least 2 Mbps down and 1 Mbps up', 'Laptop charged or plugged in, all other programs closed', 'Working front camera, microphone and speakers', 'A charged phone and a stand to lean it on'] },
-    { ic: 'light', h: 'Light', pts: ['Bright enough for you to be clearly visible on camera'] },
-  ],
   tipsH3: 'Good to know',
   tips: [
     { h: 'Always answer', p: 'A wrong answer costs you no more than a blank, and partly right answers can earn partial credit.' },
@@ -263,13 +247,6 @@ const icon: Record<string, string> = {
   listening: '<path d="M11 5L6.5 9H3v6h3.5l4.5 4V5z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18.5 6a8.5 8.5 0 0 1 0 12"/>',
 };
 const skillKeys = ['speaking', 'writing', 'reading', 'listening'] as const;
-// Test-space checklist icons (our own line icons).
-const chkIcon: Record<string, string> = {
-  quiet: '<path d="M11 5L6.5 9H3v6h3.5l4.5 4V5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/>',
-  private: '<path d="M5 21V4.5A1.5 1.5 0 0 1 6.5 3h11A1.5 1.5 0 0 1 19 4.5V21"/><path d="M3 21h18"/><circle cx="15" cy="12.5" r="1"/>',
-  equipment: '<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/>',
-  light: '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>',
-};
 const comboParts = {
   production: ['writing', 'speaking'],
   literacy: ['reading', 'writing'],
@@ -390,30 +367,6 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
               <li class="flex items-start justify-between gap-3 py-[7px] border-t border-line text-[0.9rem]">
                 <span class="text-ink flex items-start gap-2"><span class="w-[8px] h-[8px] rounded-full flex-shrink-0 mt-[7px]" style={det.adaptiveTypes.includes(q) ? 'background: var(--green);' : 'background: transparent; border: 1.5px solid var(--line);'} title={det.adaptiveTypes.includes(q) ? t.adaptiveTag : undefined}></span><span lang="en">{q}</span></span>
                 <span class="text-ink-soft text-[0.85rem] text-right max-w-[45%]">{det.questionCounts[q]?.[lang]}</span>
-              </li>
-            ))}
-          </ul>
-        </li>
-      ))}
-    </ul>
-
-    <h3 class="text-[1.2rem] mb-2">{t.chkH3}</h3>
-    <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 10px;"></div>
-    <p class="text-ink-soft text-[0.95rem] mb-5">{t.chkIntro}</p>
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 list-none p-0">
-      {t.chk.map(c => (
-        <li class="bg-white border border-line rounded-xl p-5 shadow-soft">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--green-soft); color: var(--green);">
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={chkIcon[c.ic]} />
-            </span>
-            <h4 class="font-heading font-semibold text-ink text-[1.02rem] m-0">{c.h}</h4>
-          </div>
-          <ul class="flex flex-col gap-2 list-none p-0 m-0">
-            {c.pts.map(pt => (
-              <li class="flex items-start gap-3 text-ink-soft text-[0.9rem] leading-relaxed">
-                <span class="w-[7px] h-[7px] rounded-full flex-shrink-0 mt-[8px]" style="background: var(--orange);"></span>
-                <span>{pt}</span>
               </li>
             ))}
           </ul>
