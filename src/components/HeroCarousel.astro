@@ -1,0 +1,130 @@
+---
+/**
+ * Homepage hero as a three-slide carousel (EN and BG homepages).
+ *
+ *  1. Lessons – the original hero, passed in through the "lessons" slot so the
+ *     page keeps its own wording and its single <h1>.
+ *  2. Dublin Summer – wording from the Dublin page hero. Photo in greyscale
+ *     (brand rule: site photos are black and white).
+ *  3. Duolingo English Test – wording from the DET page hero. Duolingo's own
+ *     campaign image, shown in colour: their assets must not be recoloured.
+ *
+ * Slides are stacked in one grid cell so the hero keeps the height of the
+ * tallest slide and nothing jumps. Auto-advances every 7 s, pauses on hover or
+ * keyboard focus, stops for good once the visitor uses the controls, and never
+ * auto-advances when the visitor prefers reduced motion.
+ */
+interface Props {
+  lang: 'en' | 'bg';
+  dublin: { eyebrow: string; h2a: string; h2b: string; lead: string; cta: string; href: string; alt: string };
+  det: { eyebrow: string; h2a: string; h2b: string; lead: string; cta: string; href: string; alt: string };
+}
+const { lang, dublin, det } = Astro.props;
+const ui = lang === 'bg'
+  ? { label: 'Акценти', slide: 'Слайд', of: 'от', prev: 'Предишен слайд', next: 'Следващ слайд', names: ['Уроци', 'Лято в Дъблин', 'Duolingo English Test'] }
+  : { label: 'Highlights', slide: 'Slide', of: 'of', prev: 'Previous slide', next: 'Next slide', names: ['Lessons', 'Dublin Summer', 'Duolingo English Test'] };
+const textCol = 'container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[120px] pb-[96px] md:pb-[110px]';
+---
+<section class="hero-carousel relative text-white overflow-hidden isolate" aria-roledescription="carousel" aria-label={ui.label} data-hero-carousel>
+  <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
+
+  <div class="grid">
+    <!-- 1 · Lessons -->
+    <div class="hero-slide [grid-area:1/1] relative flex items-stretch is-active" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 1 ${ui.of} 3: ${ui.names[0]}`} data-slide>
+      <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%), linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"></div>
+      <div class={textCol}>
+        <slot name="lessons" />
+      </div>
+    </div>
+
+    <!-- 2 · Dublin Summer -->
+    <div class="hero-slide [grid-area:1/1] relative flex items-stretch" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 2 ${ui.of} 3: ${ui.names[1]}`} data-slide>
+      <img src="/dublin-welcome-group-2.webp" alt={dublin.alt} fetchpriority="low" decoding="async" class="absolute -z-[1] inset-0 w-full h-full object-cover object-[center_75%] md:inset-auto md:right-0 md:top-0 md:w-[60%]" style="filter: grayscale(100%) contrast(1.05);" />
+      <div class="absolute inset-0 -z-[1] pointer-events-none md:hidden" style="background: linear-gradient(180deg, rgba(20,32,26,0.55) 0%, rgba(20,32,26,0.75) 45%, rgba(20,32,26,0.95) 100%);"></div>
+      <div class="absolute inset-0 -z-[1] pointer-events-none hidden md:block" style="background: linear-gradient(90deg, #14201a 0%, #14201a 38%, rgba(20,32,26,0.75) 50%, rgba(20,32,26,0.15) 70%, rgba(20,32,26,0) 85%);"></div>
+      <div class={textCol}>
+        <div class="max-w-[680px]">
+          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{dublin.eyebrow}
+          </p>
+          <h2 class="text-white hero-h">{dublin.h2a}<br /><span style="color: var(--orange);">{dublin.h2b}</span></h2>
+          <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">{dublin.lead}</p>
+          <div class="mt-6 sm:mt-8 flex"><a href={dublin.href} class="btn btn-primary">{dublin.cta}</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · Duolingo English Test -->
+    <div class="hero-slide [grid-area:1/1] relative flex items-stretch" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 3 ${ui.of} 3: ${ui.names[2]}`} data-slide>
+      <img src="/blog-det.webp" alt={det.alt} fetchpriority="low" decoding="async" class="hidden md:block absolute -z-[1] right-0 top-0 h-full w-[46%] object-cover object-center" />
+      <div class="absolute inset-0 -z-[1] pointer-events-none hidden md:block" style="background: linear-gradient(90deg, #14201a 0%, #14201a 50%, rgba(20,32,26,0.6) 56%, rgba(20,32,26,0) 66%);"></div>
+      <div class={textCol}>
+        <div class="max-w-[640px]">
+          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{det.eyebrow}
+          </p>
+          <h2 class="text-white hero-h">{det.h2a}<br /><span style="color: var(--orange);">{det.h2b}</span></h2>
+          <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[50ch] leading-[1.55]">{det.lead}</p>
+          <div class="mt-6 sm:mt-8 flex"><a href={det.href} class="btn btn-primary">{det.cta}</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="absolute z-20 left-0 right-0 bottom-0">
+    <div class="container-x flex items-center gap-3 pb-6 md:pb-8">
+      <button type="button" class="hero-prev w-10 h-10 rounded-full flex items-center justify-center border border-white/30 bg-transparent text-white cursor-pointer hover:border-white" aria-label={ui.prev}>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <div class="flex items-center gap-2">
+        {ui.names.map((n, i) => (
+          <button type="button" class="hero-dot h-[10px] rounded-full border-0 cursor-pointer p-0 transition-all" aria-label={`${ui.slide} ${i + 1}: ${n}`} aria-current={i === 0 ? 'true' : undefined} data-dot={i}></button>
+        ))}
+      </div>
+      <button type="button" class="hero-next w-10 h-10 rounded-full flex items-center justify-center border border-white/30 bg-transparent text-white cursor-pointer hover:border-white" aria-label={ui.next}>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-slide { opacity: 0; visibility: hidden; transition: opacity 0.6s ease, visibility 0s linear 0.6s; }
+  .hero-slide.is-active { opacity: 1; visibility: visible; transition: opacity 0.6s ease, visibility 0s; }
+  .hero-dot { width: 10px; background: rgba(255,255,255,0.4); }
+  .hero-dot[aria-current="true"] { width: 28px; background: var(--orange); }
+  .hero-h { font-size: clamp(2rem, 5.2vw, 3.6rem); line-height: 1.08; }
+  @media (prefers-reduced-motion: reduce) { .hero-slide, .hero-slide.is-active { transition: none; } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-hero-carousel]').forEach(root => {
+    const slides = [...root.querySelectorAll<HTMLElement>('[data-slide]')];
+    const dots = [...root.querySelectorAll<HTMLButtonElement>('[data-dot]')];
+    let i = 0, timer: number | undefined, stopped = false;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const show = (n: number) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => {
+        s.classList.toggle('is-active', k === i);
+        s.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+        s.querySelectorAll<HTMLElement>('a, button').forEach(el => { if (k === i) el.removeAttribute('tabindex'); else el.setAttribute('tabindex', '-1'); });
+      });
+      dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    };
+    const play = () => { if (stopped || reduce) return; clearInterval(timer); timer = window.setInterval(() => show(i + 1), 7000); };
+    const pause = () => clearInterval(timer);
+    const user = (n: number) => { stopped = true; pause(); show(n); (window as any).gtag?.('event', 'hero_carousel', { slide: n + 1 }); };
+    root.querySelector('.hero-prev')?.addEventListener('click', () => user(i - 1));
+    root.querySelector('.hero-next')?.addEventListener('click', () => user(i + 1));
+    dots.forEach((d, k) => d.addEventListener('click', () => user(k)));
+    root.addEventListener('mouseenter', pause); root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', pause); root.addEventListener('focusout', play);
+    // Swipe on touch screens
+    let x0: number | null = null;
+    root.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) user(dx < 0 ? i + 1 : i - 1); x0 = null; });
+    show(0); play();
+  });
+</script>

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroCarousel from '../components/HeroCarousel.astro';
+import { det } from '../data/det';
 import { Image } from 'astro:assets';
 import studentsWalking from '../assets/dublin-welcome-group.jpg';
 import { dublin, durationOptionsLabel, priceFromLabel, startMonthsLabel } from '../data/dublin';
@@ -41,40 +43,19 @@ const teaserTrips = (() => {
 ---
 
 <BaseLayout title="Immersion English | English Lessons & Dublin Summer for Teens" description={`A native-speaker, Cambridge CELTA-qualified English teacher in Sofia, Bulgaria. Speaking-focused online lessons for adults, and an immersive summer programme in the heart of Dublin for students aged ${ages.min}–${ages.max}.`}>
-  <!-- HERO -->
-  <section class="relative flex items-stretch text-white overflow-hidden isolate">
-    <div
-      class="absolute inset-0 -z-[2] bg-[#1a2a20] bg-cover bg-[center_40%]"
-      style="background-image: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"
-    ></div>
-    <div
-      class="absolute inset-0 -z-[1] pointer-events-none"
-      style="background:
-        linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%),
-        linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"
-    ></div>
-
-    <div class="container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
-      <div class="max-w-[760px]">
-        {/* No eyebrow here on purpose. This hero was labelled "Dublin, Ireland ·
-            Summer 2027", which framed the whole homepage as the Dublin
-            programme when the headline and the paragraph beneath it are about
-            the school. Dublin still leads the calls to action and keeps its own
-            section further down the page. Owner's decision, 29 Aug 2026. */}
+  <!-- HERO: three-slide carousel (lessons, Dublin Summer, Duolingo English Test). See HeroCarousel.astro. -->
+  <HeroCarousel
+    lang="en"
+    dublin={{ eyebrow: `Dublin, Ireland · Summer ${dublin.year}`, h2a: "This isn't a language course.", h2b: "It's an experience.", lead: `English immersion for teenagers aged ${ages.min}–${ages.max} in Dublin, Ireland – ${durationOptionsLabel(durations)} in ${startMonthsLabel(durations)}. A summer they won't stop talking about.`, cta: `Explore Dublin Summer ${dublin.year}`, href: '/dublin-summer-2027', alt: 'A group of teenagers in front of the Welcome to Dublin sign' }}
+    det={{ eyebrow: 'Duolingo English Test · Official partner', h2a: 'Certify your English', h2b: 'anytime, anywhere.', lead: `Accepted by ${det.institutions} institutions worldwide, about an hour from home, results in ${det.resultsDays} days. We help you choose the right test and prepare for it.`, cta: 'Prepare for the DET', href: '/duolingo-english-test', alt: 'Duolingo English Test campaign image' }}
+  >
+    <div slot="lessons" class="max-w-[760px]">
         <h1 class="text-white">
           Confident English<br />
           comes from <span style="color: var(--orange);">using</span> it.<br />
           Not <span style="color: var(--orange);">memorising</span> it.
         </h1>
 
-        {/*
-          Two wordings of the same claim, not two claims. The long one ran to six
-          lines at 375px and pushed both buttons past the fold once a phone
-          browser's own toolbars are showing; the short one is three lines and
-          costs nothing on desktop, where the long version still renders.
-          The age range interpolates in both — change the wording here, never the
-          numbers. If you edit one sentence, edit the other.
-        */}
         <p class="md:hidden mt-5 text-[1rem] text-white/85 leading-[1.55]">
           Speaking-focused English lessons for adults and teenagers, and an immersive summer programme in Dublin for ages {ages.min}–{ages.max}.
         </p>
@@ -83,20 +64,12 @@ const teaserTrips = (() => {
         </p>
 
         <div class="mt-5 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
-          <a href="/dublin-summer-2027" class="btn btn-primary">
-            Explore Dublin Summer 2027
-          </a>
-          <a href="/lessons" class="btn btn-ghost text-white border-white/30 hover:border-white">
+          <a href="/lessons" class="btn btn-primary">
             Choose your lessons
           </a>
         </div>
-
-
-      </div>
     </div>
-
-
-  </section>
+  </HeroCarousel>
 
   <!-- CREDENTIALS BAND -->
   <section style="background: var(--ink); border-bottom: none;">

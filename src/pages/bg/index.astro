@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroCarousel from '../../components/HeroCarousel.astro';
+import { det } from '../../data/det';
 import { Image } from 'astro:assets';
 import studentsWalking from '../../assets/dublin-welcome-group.jpg';
 import { dublin } from '../../data/dublin';
@@ -46,40 +48,19 @@ const teaserTrips = (() => {
   title="Immersion English | Уроци по английски и лятна програма в Дъблин за тийнейджъри"
   description={`Носител на езика с Cambridge CELTA, опитен преподавател по английски в София. Онлайн разговорни уроци за възрастни и лятна програма в Дъблин за ${ages.min}–${ages.max} години.`}
 >
-  <!-- HERO -->
-  <section class="relative flex items-stretch text-white overflow-hidden isolate">
-    <div
-      class="absolute inset-0 -z-[2] bg-[#1a2a20] bg-cover bg-[center_40%]"
-      style="background-image: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"
-    ></div>
-    <div
-      class="absolute inset-0 -z-[1] pointer-events-none"
-      style="background:
-        linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%),
-        linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"
-    ></div>
-
-    <div class="container-x relative z-10 w-full flex items-end pt-[100px] md:pt-[120px] pb-[60px] md:pb-[80px]">
-      <div class="max-w-[760px] bg-hero-wide">
-        {/* No eyebrow here on purpose. This hero was labelled "Dublin, Ireland ·
-            Summer 2027", which framed the whole homepage as the Dublin
-            programme when the headline and the paragraph beneath it are about
-            the school. Dublin still leads the calls to action and keeps its own
-            section further down the page. Owner's decision, 29 Aug 2026. */}
+  <!-- HERO: three-slide carousel (lessons, Dublin Summer, Duolingo English Test). See HeroCarousel.astro. -->
+  <HeroCarousel
+    lang="bg"
+    dublin={{ eyebrow: `Дъблин, Ирландия · Лято ${dublin.year}`, h2a: 'Това не е езиков курс.', h2b: 'Това е преживяване.', lead: `Лято с цялостно потапяне в английския език за тийнейджъри (${ages.min}–${ages.max} години) в Дъблин, Ирландия – за ${durationOptionsLabelBg(durations)} през месец ${startMonthsLabelBg(durations)}. Лято, за което детето ви ще разказва още дълго.`, cta: `Разгледайте лятната програма ${dublin.year}`, href: '/bg/dublin-summer-2027', alt: 'Група тийнейджъри пред надписа Welcome to Dublin' }}
+    det={{ eyebrow: 'Duolingo English Test · Официален партньор', h2a: 'Сертификат по английски', h2b: 'по всяко време, навсякъде.', lead: `Приема се от над ${det.institutionsBg} институции по света, полага се за около час от вкъщи, резултатът е готов до ${det.resultsDays} дни. Помагаме ви да изберете правилния изпит и да се подготвите за него.`, cta: 'Подгответе се за DET', href: '/bg/duolingo-english-test', alt: 'Рекламно изображение на Duolingo English Test' }}
+  >
+    <div slot="lessons" class="max-w-[760px] bg-hero-wide">
         <h1 class="text-white">
           Увереността в&nbsp;английския<br />
           идва от <span style="color: var(--orange);">използването</span> на&nbsp;езика.<br />
           Не от <span style="color: var(--orange);">наизустяването</span> му.
         </h1>
 
-        {/*
-          Two wordings of the same claim, not two claims. The long one ran to six
-          lines at 375px and pushed both buttons past the fold once a phone
-          browser's own toolbars are showing; the short one is three lines and
-          costs nothing on desktop, where the long version still renders.
-          The age range interpolates in both — change the wording here, never the
-          numbers. If you edit one sentence, edit the other.
-        */}
         <p class="md:hidden mt-5 text-[1rem] text-white/85 leading-[1.55]">
           <strong class="font-semibold text-white">Уроци по английски</strong> за възрастни и тийнейджъри, с фокус върху говоренето, и <strong class="font-semibold text-white">лятна програма в Дъблин</strong> с пълно потапяне в една от най-топлите англоговорящи среди (за {ages.min}–{ages.max}-годишни).
         </p>
@@ -88,20 +69,12 @@ const teaserTrips = (() => {
         </p>
 
         <div class="mt-5 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
-          <a href="/bg/dublin-summer-2027" class="btn btn-primary">
-            Разгледайте лятната програма в Дъблин 2027
-          </a>
-          <a href="/lessons" class="btn btn-ghost text-white border-white/30 hover:border-white">
+          <a href="/lessons" class="btn btn-primary">
             Изберете своите уроци
           </a>
         </div>
-
-
-      </div>
     </div>
-
-
-  </section>
+  </HeroCarousel>
 
   <!-- CREDENTIALS BAND -->
   <section style="background: var(--ink); border-bottom: none;">
