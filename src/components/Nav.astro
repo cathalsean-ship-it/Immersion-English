@@ -8,8 +8,8 @@ const bg = lang === 'bg';
 // On Bulgarian pages, labels are Bulgarian and links go to the Bulgarian
 // version where one exists (see BG_PAGES in i18n.ts); otherwise to English.
 const t = bg
-  ? { about: 'За нас', lessons: 'Уроци', det: 'Duolingo тест', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', detBtn: 'Duolingo тест', detLabel: 'Duolingo English Test – подготовка и информация', sub: 'Покажи подменюто за Лято в Дъблин', lessonsSub: 'Покажи подменюто за Уроци', detPrep: 'Подготовка за Duolingo English Test' }
-  : { about: 'About', lessons: 'Lessons', det: 'Duolingo Test', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', detBtn: 'Duolingo Test', detLabel: 'Duolingo English Test – preparation and information', sub: 'Toggle Dublin Summer submenu', lessonsSub: 'Toggle Lessons submenu', detPrep: 'Duolingo English Test prep' };
+  ? { about: 'За нас', lessons: 'Уроци', det: 'Duolingo тест', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', detBtn: 'Duolingo тест', detLabel: 'Duolingo English Test – подготовка и информация', sub: 'Покажи подменюто за Лято в Дъблин', lessonsSub: 'Покажи подменюто за Уроци', detPrep: 'Подготовка за Duolingo English Test', groupLessons: 'Индивидуални и групови уроци' }
+  : { about: 'About', lessons: 'Lessons', det: 'Duolingo Test', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', detBtn: 'Duolingo Test', detLabel: 'Duolingo English Test – preparation and information', sub: 'Toggle Dublin Summer submenu', lessonsSub: 'Toggle Lessons submenu', detPrep: 'Duolingo English Test prep', groupLessons: 'Individual & group lessons' };
 const href = (h: string) => (bg ? bgHref(h) : h);
 const homeHref = bg ? '/bg' : '/';
 const switchHref = switchTarget(path);
@@ -22,6 +22,7 @@ const dublinSub = [
 ].map(i => ({ ...i, href: href(i.href) }));
 
 const lessonsSub = [
+  { href: href('/lessons') + '#courses', label: t.groupLessons },
   { href: href('/corporate-training'), label: t.corporate },
   { href: href('/duolingo-english-test'), label: t.detPrep },
 ];
