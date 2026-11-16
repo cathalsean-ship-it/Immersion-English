@@ -43,7 +43,8 @@ const t = bg ? {
     { n: `около ${det.format.adaptiveMin} минути`, h: 'Адаптивният тест', note: 'Оценява се', pts: ['Кратки задачи и по четирите умения', 'Стават по-трудни или по-лесни според отговорите ви', 'Броят на въпросите е различен – тестът спира, когато е сигурен в резултата ви'] },
     { n: `около ${det.format.samplesMin} минути`, h: 'Писмена и устна проба', note: 'Оценява се и се изпраща на университетите', pts: [`Пишете по зададена тема (${det.format.writingSampleMin} минути)`, `Отговаряте устно на въпрос (${det.format.speakingSampleMin} минути)`, 'Университетите получават и двете заедно с резултата ви, а вие можете да ги прегледате след изпита'] },
   ],
-  qIntro: 'Приблизително колко задачи от всеки тип да очаквате. Всеки изпит е различен, затова броят варира.',
+  qIntro: 'Всяка карта показва типовете задачи за едно умение и приблизително колко от всеки ще получите. Всеки изпит е различен, затова броят леко варира.',
+  qColType: 'Тип задача', qColCount: 'Колко',
   adaptiveTag: 'Адаптивни', adaptiveKey: 'стават по-трудни или по-лесни според отговорите ви',
   tipsH3: 'Полезно е да знаете',
   tips: [
@@ -144,7 +145,8 @@ const t = bg ? {
     { n: `about ${det.format.adaptiveMin} minutes`, h: 'The adaptive test', note: 'Scored', pts: ['Short questions covering all four skills', 'They get harder or easier depending on your answers', 'The number of questions varies – the test stops when it\'s confident of your score'] },
     { n: `about ${det.format.samplesMin} minutes`, h: 'Writing and speaking samples', note: 'Scored and shared with universities', pts: [`Write at length on a prompt (${det.format.writingSampleMin} minutes)`, `Answer a question out loud (${det.format.speakingSampleMin} minutes)`, 'Universities receive both with your result, and you can review them after the test'] },
   ],
-  qIntro: 'Roughly how many of each to expect. Every test is different, so the numbers vary.',
+  qIntro: 'Each card lists the question types for one skill and roughly how many of each you\'ll get. Every test is different, so the numbers vary a little.',
+  qColType: 'Question type', qColCount: 'How many',
   adaptiveTag: 'Adaptive', adaptiveKey: 'gets harder or easier depending on your answers',
   tipsH3: 'Good to know',
   tips: [
@@ -353,7 +355,7 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
     <h3 class="text-[1.2rem] mb-2">{t.qH3}</h3>
     <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 10px;"></div>
     <p class="text-ink-soft text-[0.95rem] mb-5">{t.qIntro} <span class="whitespace-nowrap"><span class="inline-block w-[8px] h-[8px] rounded-full align-middle mr-1" style="background: var(--green);"></span>{t.adaptiveTag}</span> – {t.adaptiveKey}.</p>
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 list-none p-0">
+    <ul class="grid md:grid-cols-2 gap-4 mb-12 list-none p-0">
       {(['reading', 'listening', 'writing', 'speaking'] as const).map(k => (
         <li class="bg-white border border-line rounded-xl p-5 shadow-soft">
           <div class="flex items-center gap-3 mb-4">
@@ -362,11 +364,12 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
             </span>
             <h4 class="font-heading font-semibold text-ink text-[1.02rem] m-0">{t.skillNames[k]}</h4>
           </div>
+          <div class="flex justify-between gap-3 pb-2 text-[0.7rem] font-heading font-semibold uppercase tracking-[0.08em] text-ink-mute" aria-hidden="true"><span>{t.qColType}</span><span>{t.qColCount}</span></div>
           <ul class="flex flex-col list-none p-0 m-0">
             {det.questionTypes[k].map(q => (
               <li class="flex items-start justify-between gap-3 py-[7px] border-t border-line text-[0.9rem]">
                 <span class="text-ink flex items-start gap-2"><span class="w-[8px] h-[8px] rounded-full flex-shrink-0 mt-[7px]" style={det.adaptiveTypes.includes(q) ? 'background: var(--green);' : 'background: transparent; border: 1.5px solid var(--line);'} title={det.adaptiveTypes.includes(q) ? t.adaptiveTag : undefined}></span><span lang="en">{q}</span></span>
-                <span class="text-ink-soft text-[0.85rem] text-right max-w-[45%]">{det.questionCounts[q]?.[lang]}</span>
+                <span class="text-ink-soft text-[0.85rem] text-right max-w-[48%] leading-snug pt-[1px]">{det.questionCounts[q]?.[lang]}</span>
               </li>
             ))}
           </ul>
