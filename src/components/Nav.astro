@@ -1,6 +1,5 @@
 ---
 import { type Lang, switchTarget, bgHref } from '../data/i18n';
-import { det } from '../data/det';
 
 interface Props { lang?: Lang; path?: string }
 const { lang = 'en', path = '/' } = Astro.props;
@@ -9,8 +8,8 @@ const bg = lang === 'bg';
 // On Bulgarian pages, labels are Bulgarian and links go to the Bulgarian
 // version where one exists (see BG_PAGES in i18n.ts); otherwise to English.
 const t = bg
-  ? { about: 'За нас', lessons: 'Уроци', det: 'Duolingo тест', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', detBtn: 'Запишете се', detLabel: 'Запишете се за Duolingo English Test (отваря се в нов прозорец)', sub: 'Покажи подменюто за Лято в Дъблин' }
-  : { about: 'About', lessons: 'Lessons', det: 'Duolingo Test', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', detBtn: 'Get the test', detLabel: 'Get the Duolingo English Test (opens in a new tab)', sub: 'Toggle Dublin Summer submenu' };
+  ? { about: 'За нас', lessons: 'Уроци', det: 'Duolingo тест', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', detBtn: 'Duolingo тест', detLabel: 'Duolingo English Test – подготовка и информация', sub: 'Покажи подменюто за Лято в Дъблин' }
+  : { about: 'About', lessons: 'Lessons', det: 'Duolingo Test', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', detBtn: 'Duolingo Test', detLabel: 'Duolingo English Test – preparation and information', sub: 'Toggle Dublin Summer submenu' };
 const href = (h: string) => (bg ? bgHref(h) : h);
 const homeHref = bg ? '/bg' : '/';
 const switchHref = switchTarget(path);
@@ -31,15 +30,14 @@ const dublinSub = [
         <span class="block text-[0.72rem] font-heading font-semibold tracking-wide leading-tight" style="color: var(--ink-soft);">English.<br>For Living.</span>
       </a>
 
-      <!-- DUOLINGO PARTNER BUTTON: our invite link, so tests booked through it count towards our partner tier.
+      <!-- DUOLINGO BUTTON: goes to our Duolingo English Test page (the page's own buttons carry the invite link),
+           and stands in for a 'Duolingo Test' item in the menu.
            The full menu needs the xl width (1280px+) once this button is in; below that the menu button is used.
            Beside the full menu there is only room for the logo, so the 'Get the test' words show on tablets and
            phones in the menu-button layout (the link's aria-label says it for screen readers). Phones show the logo only.
            The logo is Duolingo's own file, used as supplied (no recolouring or stretching). -->
       <a
-        href={det.inviteUrl}
-        target="_blank"
-        rel="noopener sponsored"
+        href={href("/duolingo-english-test")}
         id="det-invite"
         aria-label={t.detLabel}
         title={t.detBtn}
@@ -54,7 +52,6 @@ const dublinSub = [
       <div class="hidden xl:flex items-center gap-5">
         <a href={href("/about")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.about}</a>
         <a href={href("/lessons")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.lessons}</a>
-        <a href={href("/duolingo-english-test")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.det}</a>
         <a href={href("/corporate-training")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.corporate}</a>
 
         <!-- Dropdown -->
@@ -143,7 +140,6 @@ const dublinSub = [
 
         <a href={href("/about")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.about}</a>
         <a href={href("/lessons")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.lessons}</a>
-        <a href={href("/duolingo-english-test")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.det}</a>
         <a href={href("/corporate-training")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.corporate}</a>
 
         <a href={href("/blog")} class="py-2 text-ink-soft no-underline text-[0.98rem] font-medium hover:text-brand-green transition-colors">{t.blog}</a>
@@ -159,9 +155,9 @@ const dublinSub = [
 </header>
 
 <script>
-  // Count clicks on the Duolingo button (only sent if the visitor accepted cookies)
+  // Count clicks on the Duolingo button (to our DET page) (only sent if the visitor accepted cookies)
   document.getElementById('det-invite')?.addEventListener('click', () => {
-    if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'det_invite_click', { location: 'header' });
+    if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'det_page_click', { location: 'header' });
   });
 
   // Mobile menu toggle
