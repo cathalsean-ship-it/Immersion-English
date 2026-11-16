@@ -48,3 +48,10 @@
   from = "/det"
   to = "/duolingo-english-test?utm_source=facebook&utm_medium=organic&utm_campaign=det_launch&utm_content=carousel#offer"
   status = 302
+
+# Short link for social posts about the free DET guides (Nov 2026). Lands on the
+# downloads block of the DET page; counted as organic social in GA4.
+[[redirects]]
+  from = "/det-guide"
+  to = "/duolingo-english-test?utm_source=social&utm_medium=organic&utm_campaign=det_guide#downloads"
+  status = 302
