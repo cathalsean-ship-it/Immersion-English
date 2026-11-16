@@ -18,7 +18,7 @@ interface Props {
   lang: 'en' | 'bg';
   lessonsEyebrow: string;
   dublin: { eyebrow: string; h2a: string; h2b: string; lead: string; cta: string; href: string; alt: string };
-  det: { eyebrow: string; h2a: string; h2b: string; lead: string; cta: string; href: string; alt: string };
+  det: { eyebrow: string; h2a: string; h2b: string; lead: string; cta: string; href: string; badgeAlt: string };
 }
 const { lang, lessonsEyebrow, dublin, det } = Astro.props;
 const ui = lang === 'bg'
@@ -61,18 +61,29 @@ const textCol = 'container-x relative z-10 w-full flex items-start pt-[110px] md
       </div>
     </div>
 
-    <!-- 3 · Duolingo English Test -->
+    <!-- 3 · Duolingo English Test: Duolingo's own assets, unaltered – the animated graduate Duo and the GPN "Member" badge. -->
     <div class="hero-slide [grid-area:1/1] relative flex items-stretch" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 3 ${ui.of} 3: ${ui.names[2]}`} data-slide>
-      <img src="/blog-det.webp" alt={det.alt} fetchpriority="low" decoding="async" class="hidden md:block absolute -z-[1] right-0 top-0 h-full w-[46%] object-cover object-center" />
-      <div class="absolute inset-0 -z-[1] pointer-events-none hidden md:block" style="background: linear-gradient(90deg, #14201a 0%, #14201a 50%, rgba(20,32,26,0.6) 56%, rgba(20,32,26,0) 66%);"></div>
+      <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%), linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"></div>
       <div class={textCol}>
-        <div class="max-w-[640px]">
-          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
-            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{det.eyebrow}
-          </p>
-          <h2 class="text-white hero-h">{det.h2a}<br /><span style="color: var(--orange);">{det.h2b}</span></h2>
-          <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[50ch] leading-[1.55]">{det.lead}</p>
-          <div class="mt-6 sm:mt-8 flex"><a href={det.href} class="btn btn-primary">{det.cta}</a></div>
+        <div class="w-full flex items-center justify-between gap-10">
+          <div class="max-w-[620px]">
+            <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+              <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{det.eyebrow}
+            </p>
+            <h2 class="text-white hero-h">{det.h2a}<br /><span style="color: var(--orange);">{det.h2b}</span></h2>
+            <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[50ch] leading-[1.55]">{det.lead}</p>
+            <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4">
+              <a href={det.href} class="btn btn-primary">{det.cta}</a>
+              <span class="md:hidden inline-flex bg-white rounded-lg px-3 py-2"><img src="/det-gpn-member.svg" alt={det.badgeAlt} width="120" height="57" class="block h-[40px] w-auto" /></span>
+            </div>
+          </div>
+          <div class="hidden md:flex flex-col items-center gap-5 flex-shrink-0">
+            <div class="relative w-[300px] h-[300px] lg:w-[340px] lg:h-[340px] flex items-center justify-center">
+              <div class="absolute inset-[16px] rounded-full" style="background: rgba(255,255,255,0.1);"></div>
+              <img src="/duo-graduate.webp" alt="" width="260" height="260" fetchpriority="low" decoding="async" class="relative w-full h-full object-contain" />
+            </div>
+            <span class="inline-flex bg-white rounded-xl px-5 py-3 shadow-lift"><img src="/det-gpn-member.svg" alt={det.badgeAlt} width="210" height="100" class="block h-[78px] w-auto" /></span>
+          </div>
         </div>
       </div>
     </div>
