@@ -52,7 +52,7 @@ const teaserTrips = (() => {
   <HeroCarousel
     lessonsEyebrow="Уроци по английски"
     lang="bg"
-    dublin={{ eyebrow: `Дъблин, Ирландия · Лято ${dublin.year}`, h2a: 'Това не е езиков курс.', h2b: 'Това е преживяване.', lead: `Лято с цялостно потапяне в английския език за тийнейджъри (${ages.min}–${ages.max} години) в Дъблин, Ирландия – за ${durationOptionsLabelBg(durations)} през месец ${startMonthsLabelBg(durations)}. Лято, за което детето ви ще разказва още дълго.`, cta: `Разгледайте лятната програма ${dublin.year}`, href: '/bg/dublin-summer-2027', alt: 'Група тийнейджъри пред надписа Welcome to Dublin' }}
+    dublin={{ eyebrow: `Дъблин, Ирландия · Лято ${dublin.year}`, h2a: 'Това не е езиков курс.', h2b: 'Това е преживяване.', lead: `Лято с цялостно потапяне в английския език за тийнейджъри (${ages.min}–${ages.max} години) в Дъблин, Ирландия – за ${durationOptionsLabelBg(durations).replace(/ /g, '\u00a0')} през месец ${startMonthsLabelBg(durations)}. Лято, за което детето ви ще разказва още дълго.`, cta: `Разгледайте лятната програма ${dublin.year}`, href: '/bg/dublin-summer-2027', alt: 'Група тийнейджъри пред надписа Welcome to Dublin' }}
     det={{ eyebrow: 'Duolingo English Test · Официален партньор', h2a: 'Сертификат по английски', h2b: 'по всяко време, навсякъде.', lead: `Приема се от над ${det.institutionsBg} институции по света, полага се за около час от вкъщи, резултатът е готов до ${det.resultsDays} дни. Помагаме ви да изберете правилния изпит и да се подготвите за него.`, cta: 'Подгответе се за DET', href: '/bg/duolingo-english-test', alt: 'Рекламно изображение на Duolingo English Test' }}
   >
     <div slot="lessons" class="max-w-[760px] bg-hero-wide">
