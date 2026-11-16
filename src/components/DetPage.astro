@@ -77,7 +77,8 @@ const t = bg ? {
   repTag: 'Пример', repH: 'Как изглежда един резултат',
   repOverall: 'Обща оценка', repEquiv: '≈ IELTS 6.5 · CEFR B2',
   repSkills: 'Умения', repCombos: 'Комбинирани оценки',
-  repNote: 'Примерни оценки, не реален резултат. Официалният ви сертификат се издава от Duolingo.',
+  repNote: 'Примерен сертификат от Duolingo – кандидатът е измислен. Истинският ви сертификат има собствен линк за проверка, който университетите могат да отворят.',
+  repAlt: 'Примерен сертификат от Duolingo English Test: обща оценка 130 (CEFR C1), оценки по умения – говорене 130, писане 100, четене 135, слушане 145 – и комбинирани оценки – продукция 115, грамотност 120, разбиране 140, разговор 140.',
   stats: [
     { u: 'Удобен', n: '~1 час', l: 'онлайн, на собствения ви компютър – по всяко време и навсякъде по света' },
     { u: 'Бърз', n: `${det.resultsDays} дни`, l: 'до резултата ви – с обща оценка, оценки по умения и вашите писмен и устен отговор' },
@@ -179,7 +180,8 @@ const t = bg ? {
   repTag: 'Sample', repH: 'What a score report looks like',
   repOverall: 'Overall score', repEquiv: '≈ IELTS 6.5 · CEFR B2',
   repSkills: 'Skills', repCombos: 'Combined scores',
-  repNote: 'Illustrative scores, not a real result. Your official certificate comes from Duolingo.',
+  repNote: 'A sample certificate from Duolingo – the test taker is fictional. Your real certificate has its own verification link that universities can open.',
+  repAlt: 'Sample Duolingo English Test certificate: overall score 130 (CEFR C1), individual subscores – speaking 130, writing 100, reading 135, listening 145 – and integrated subscores – production 115, literacy 120, comprehension 140, conversation 140.',
   stats: [
     { u: 'Convenient', n: '~1 hour', l: 'online, on your own computer – at any time, anywhere in the world' },
     { u: 'Fast', n: `${det.resultsDays} days`, l: 'for your results – your overall score, subscores, and your writing and speaking samples' },
@@ -477,11 +479,11 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
     <p class="flex items-center gap-2 text-[0.85rem] text-ink-soft mt-4"><span class="inline-block w-4 h-4 rounded" style="background: var(--green-soft); border: 1px solid var(--line);"></span>{t.scoreKey}</p>
 
     <!-- Subscores (left) and a sample score report (right) -->
-    <div class="grid lg:grid-cols-[1.2fr_1fr] gap-8 mt-14 items-start">
+    <div class="grid lg:grid-cols-2 gap-10 mt-14 items-start">
       <div>
         <h3 class="text-[1.35rem] mb-2">{t.subH}</h3>
         <p class="text-ink-soft text-[0.95rem] mb-4">{t.subIndiv}</p>
-        <ul class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+        <ul class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 mb-8">
           {skillKeys.map(k => (
             <li class="bg-white border border-line rounded-xl shadow-soft px-3 py-5 flex flex-col items-center gap-3 text-center">
               <span class="w-12 h-12 rounded-full flex items-center justify-center" style="background: var(--green-soft); color: var(--green);">
@@ -492,7 +494,7 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
           ))}
         </ul>
         <p class="text-ink-soft text-[0.95rem] mb-4">{t.subInteg}</p>
-        <ul class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <ul class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3">
           {comboKeys.map(k => (
             <li class="bg-white border border-line rounded-xl shadow-soft px-3 py-5 flex flex-col items-center gap-3 text-center">
               <span class="flex items-center gap-1" style="color: var(--green);">
@@ -507,42 +509,14 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
         </ul>
       </div>
 
-      <!-- Sample report: our own illustration, clearly marked as a sample. Not Duolingo's certificate design. -->
-      <figure class="bg-white border border-line rounded-xl shadow-lift overflow-hidden m-0">
-        <div class="flex items-center justify-between px-6 py-4" style="background: var(--green);">
-          <span class="font-heading font-semibold text-white text-[0.95rem]">{t.repH}</span>
+      <!-- Sample report: Duolingo's own sample certificate (fictional test taker), shown unaltered. -->
+      <figure class="m-0">
+        <div class="flex items-center justify-between mb-3">
+          <span class="font-heading font-semibold text-ink text-[1.05rem]">{t.repH}</span>
           <span class="text-[0.68rem] font-heading font-semibold uppercase tracking-[0.1em] px-[10px] py-[4px] rounded-full" style="background: var(--orange); color: var(--ink);">{t.repTag}</span>
         </div>
-        <div class="px-6 py-6">
-          <div class="flex items-end gap-4 pb-5 border-b border-line">
-            <span class="font-heading font-bold leading-none text-[3.4rem]" style="color: var(--orange-text);">{sampleOverall}</span>
-            <span class="pb-1">
-              <span class="block font-heading font-semibold text-ink text-[0.95rem]">{t.repOverall}</span>
-              <span class="block text-ink-soft text-[0.85rem]">{t.repEquiv}</span>
-            </span>
-          </div>
-          <p class="text-[0.7rem] font-heading font-semibold uppercase tracking-[0.1em] text-ink-mute mt-5 mb-3">{t.repSkills}</p>
-          <ul class="flex flex-col gap-3">
-            {skillKeys.map(k => (
-              <li class="grid grid-cols-[1.4rem_6.5rem_1fr_2.2rem] items-center gap-2 text-[0.88rem]">
-                <svg class="w-[1.1rem] h-[1.1rem]" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icon[k]} />
-                <span class="text-ink">{t.skillNames[k]}</span>
-                <span class="h-2 rounded-full overflow-hidden" style="background: var(--green-soft);"><span class="block h-full rounded-full" style={`width: ${barPct(sample[k])}; background: var(--green);`}></span></span>
-                <span class="font-heading font-semibold text-ink text-right">{sample[k]}</span>
-              </li>
-            ))}
-          </ul>
-          <p class="text-[0.7rem] font-heading font-semibold uppercase tracking-[0.1em] text-ink-mute mt-6 mb-3">{t.repCombos}</p>
-          <ul class="grid grid-cols-2 gap-x-6 gap-y-2 text-[0.85rem]">
-            {comboKeys.map(k => (
-              <li class="flex items-center justify-between border-b border-line py-[6px]">
-                <span class="text-ink-soft">{t.combos[k].replace(/ \(.*\)$/, '')}</span>
-                <span class="font-heading font-semibold text-ink">{comboScore(k)}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <figcaption class="px-6 py-3 text-[0.78rem] text-ink-soft border-t border-line" style="background: var(--cream);">{t.repNote}</figcaption>
+        <img src="/det/sample-score-report.webp" width="900" height="1167" loading="lazy" decoding="async" alt={t.repAlt} class="block w-full h-auto rounded-xl border border-line shadow-lift bg-white" />
+        <figcaption class="mt-3 text-[0.8rem] text-ink-soft leading-relaxed">{t.repNote}</figcaption>
       </figure>
     </div>
   </div>
