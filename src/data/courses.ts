@@ -126,26 +126,6 @@ export const courses = {
   },
 } satisfies Record<string, Course>;
 
-/**
- * One-off services sold at a fixed price, not per lesson. Kept apart from
- * Course because they have no lesson length or bundles.
- */
-export interface Service {
-  name: string;
-  summary: string;
-  price: number;
-}
-
-export const services = {
-  // €10, confirmed by Lina on 13 Nov 2026. Shown on /duolingo-english-test and
-  // promised in the DET blog post – change it here and both follow.
-  detFeedback: {
-    name: 'Practice test feedback (Duolingo English Test)',
-    summary: 'personal feedback on your speaking and writing from a practice test, by a trained speaking examiner',
-    price: 10,
-  },
-} satisfies Record<string, Service>;
-
 /** Order used in llms.txt. */
 export const courseList: Course[] = [
   courses.speakUp,

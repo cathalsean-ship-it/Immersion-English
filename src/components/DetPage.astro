@@ -15,7 +15,7 @@
  * legible, and don't show it too small to read. The clear space is built in.
  */
 import { det, otherTests } from '../data/det';
-import { courses, services } from '../data/courses';
+import { courses } from '../data/courses';
 
 interface Props { lang: 'en' | 'bg' }
 const { lang } = Astro.props;
@@ -23,7 +23,6 @@ const bg = lang === 'bg';
 const contact = bg ? '/bg/contact' : '/contact';
 const c = (interest: string, from: string) => `${contact}?interest=${interest}&from=${from}#booking-form`;
 
-const fb = services.detFeedback.price;
 const prep = courses.examPreparation;
 
 const t = bg ? {
@@ -178,18 +177,6 @@ const t = bg ? {
   endP: 'Book a free consultation and we\'ll help you choose – no commitment.',
 };
 
-// Service + Offer for the feedback product, so the price can show in search.
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: services.detFeedback.name,
-  description: services.detFeedback.summary,
-  serviceType: 'Duolingo English Test preparation',
-  provider: { '@type': 'EducationalOrganization', name: 'Immersion English', url: 'https://immersion-english.com/' },
-  areaServed: 'BG',
-  offers: { '@type': 'Offer', price: String(services.detFeedback.price), priceCurrency: 'EUR' },
-};
-
 // FAQPage structured data for this page, from the same answers shown below.
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -200,7 +187,6 @@ const faqSchema = {
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 
 <!-- HERO -->
 <section class="relative flex items-center text-white overflow-hidden isolate">

@@ -4,8 +4,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // Figures come from the same data files as /duolingo-english-test, so the post
 // and the landing page cannot disagree.
 import { det, otherTests } from '../../data/det';
-import { services } from '../../data/courses';
-const fb = services.detFeedback.price;
 ---
 
 <BaseLayout
@@ -110,7 +108,7 @@ const fb = services.detFeedback.price;
           <li><span><strong>You can send your score anywhere, free.</strong> Apply to ten universities or twenty – sending your results costs nothing extra.</span></li>
           <li><span><strong>Results within 48 hours.</strong> Standard results arrive within two days – or pay about €34 extra and get them in around 12 hours.</span></li>
           <li><span><strong>Two attempts still cost less than one traditional test.</strong> Buy two tests together and each works out at about €50 – far less than a single IELTS or Cambridge exam. See the table below for the full comparison.</span></li>
-          <li><span><strong>Free official practice.</strong> Duolingo's free practice test gives you an idea of your level, but no detailed feedback. For that, take <a href={det.practiceTestUrl} target="_blank" rel="noopener">my practice test</a> and, for €{fb}, I'll give you personal feedback on your results. As an official Duolingo partner, I also use exclusive preparation materials that aren't publicly available.</span></li>
+          <li><span><strong>Free official practice.</strong> Duolingo's free practice test gives you an idea of your level. As an official Duolingo partner, I also use exclusive preparation materials that aren't publicly available.</span></li>
         </ul>
 
         <h2>How does the DET compare to other tests?</h2>
@@ -160,7 +158,7 @@ const fb = services.detFeedback.price;
 
         <h2>Try it for yourself</h2>
 
-        <p>Curious? Try my <a href={det.practiceTestUrl} target="_blank" rel="noopener">free practice test for the Duolingo English Test</a>. And if you're still not sure which test to go for, send me a message or email and we can talk about it.</p>
+        <p>If you're still not sure which test to go for, send me a message or email and we can talk about it.</p>
 
         <p>Immersion English is a member of the Duolingo English Test Global Partner Network, and I prepare students for IELTS and Cambridge too – so you'll get honest advice on whichever test suits you best.</p>
 
@@ -172,7 +170,7 @@ const fb = services.detFeedback.price;
       <div style="background: var(--cream); border-radius: 16px; padding: 2.5rem; margin-top: 3rem; text-align: center;">
         <p class="eyebrow mb-3">Ready to start?</p>
         <h3 style="margin-bottom: 1rem;">Prepare for the Duolingo English Test</h3>
-        <p style="color: var(--ink-soft); margin-bottom: 1.5rem;">Format, scores, practice test and preparation with a Duolingo English Test partner.</p>
+        <p style="color: var(--ink-soft); margin-bottom: 1.5rem;">Format, scores and preparation with a Duolingo English Test partner.</p>
         <a href="/duolingo-english-test" class="btn btn-primary">See how we can help</a>
       </div>
 

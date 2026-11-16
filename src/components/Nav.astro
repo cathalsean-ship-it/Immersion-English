@@ -1,5 +1,6 @@
 ---
 import { type Lang, switchTarget, bgHref } from '../data/i18n';
+import { det } from '../data/det';
 
 interface Props { lang?: Lang; path?: string }
 const { lang = 'en', path = '/' } = Astro.props;
@@ -8,8 +9,8 @@ const bg = lang === 'bg';
 // On Bulgarian pages, labels are Bulgarian and links go to the Bulgarian
 // version where one exists (see BG_PAGES in i18n.ts); otherwise to English.
 const t = bg
-  ? { about: 'За нас', lessons: 'Уроци', det: 'Duolingo тест', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', sub: 'Покажи подменюто за Лято в Дъблин' }
-  : { about: 'About', lessons: 'Lessons', det: 'Duolingo Test', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', sub: 'Toggle Dublin Summer submenu' };
+  ? { about: 'За нас', lessons: 'Уроци', det: 'Duolingo тест', corporate: 'Корпоративно обучение', dublin: 'Лято в Дъблин 2027', blog: 'Блог', contact: 'Контакти', home: 'Immersion English – начало', open: 'Отвори менюто', detBtn: 'Запишете се', detLabel: 'Запишете се за Duolingo English Test (отваря се в нов прозорец)', sub: 'Покажи подменюто за Лято в Дъблин' }
+  : { about: 'About', lessons: 'Lessons', det: 'Duolingo Test', corporate: 'Corporate Training', dublin: 'Dublin Summer 2027', blog: 'Blog', contact: 'Contact', home: 'Immersion English – home', open: 'Open menu', detBtn: 'Get the test', detLabel: 'Get the Duolingo English Test (opens in a new tab)', sub: 'Toggle Dublin Summer submenu' };
 const href = (h: string) => (bg ? bgHref(h) : h);
 const homeHref = bg ? '/bg' : '/';
 const switchHref = switchTarget(path);
@@ -25,17 +26,35 @@ const dublinSub = [
 <header class="sticky top-0 z-50 border-b border-ink/5 bg-off-white/70 backdrop-blur-md backdrop-saturate-150">
   <nav class="container-x">
     <div class="flex items-center justify-between gap-6 h-[72px]">
-      <a href={homeHref} class="flex items-center gap-3 no-underline" aria-label={t.home}>
+      <a href={homeHref} class="flex items-center gap-3 no-underline shrink-0" aria-label={t.home}>
         <img src="/ie-logo-80.png" alt="Immersion English" width="40" height="40" class="h-10 w-auto block" loading="eager" />
         <span class="block text-[0.72rem] font-heading font-semibold tracking-wide leading-tight" style="color: var(--ink-soft);">English.<br>For Living.</span>
       </a>
 
+      <!-- DUOLINGO PARTNER BUTTON: our invite link, so tests booked through it count towards our partner tier.
+           The full menu needs the xl width (1280px+) once this button is in; below that the menu button is used.
+           Beside the full menu there is only room for the logo, so the 'Get the test' words show on tablets and
+           phones in the menu-button layout (the link's aria-label says it for screen readers). Phones show the logo only.
+           The logo is Duolingo's own file, used as supplied (no recolouring or stretching). -->
+      <a
+        href={det.inviteUrl}
+        target="_blank"
+        rel="noopener sponsored"
+        id="det-invite"
+        aria-label={t.detLabel}
+        title={t.detBtn}
+        class="det-invite ml-auto shrink-0 flex items-center gap-3 no-underline bg-white rounded-full border border-ink/10 px-3 sm:px-4 py-2 transition-colors hover:border-brand-green"
+      >
+        <img src="/det/det-logo.png" alt="Duolingo English Test" width="293" height="44" class="h-[14px] sm:h-[18px] w-auto block" loading="eager" />
+        <span class="hidden sm:block xl:hidden w-px h-4 bg-ink/15" aria-hidden="true"></span>
+        <span class="hidden sm:block xl:hidden whitespace-nowrap font-heading font-semibold text-[0.8rem] text-ink">{t.detBtn}</span>
+      </a>
+
       <!-- DESKTOP NAV -->
-      <div class="hidden md:flex items-center gap-7">
+      <div class="hidden xl:flex items-center gap-5">
         <a href={href("/about")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.about}</a>
         <a href={href("/lessons")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.lessons}</a>
-        <!-- Shown from 1100px: below that the desktop row has no room for it (it is in the mobile menu, and linked from Lessons). -->
-        <a href={href("/duolingo-english-test")} class="hidden min-[1100px]:inline text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.det}</a>
+        <a href={href("/duolingo-english-test")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.det}</a>
         <a href={href("/corporate-training")} class="text-ink-soft no-underline whitespace-nowrap text-[0.94rem] font-medium hover:text-brand-green transition-colors">{t.corporate}</a>
 
         <!-- Dropdown -->
@@ -79,7 +98,7 @@ const dublinSub = [
       <!-- MOBILE TOGGLE -->
       <button
         id="nav-toggle"
-        class="md:hidden w-10 h-10 p-2 bg-transparent border-0 flex flex-col justify-center items-stretch gap-[5px] cursor-pointer"
+        class="xl:hidden w-10 h-10 p-2 bg-transparent border-0 flex flex-col justify-center items-stretch gap-[5px] cursor-pointer"
         aria-label={t.open}
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -91,7 +110,7 @@ const dublinSub = [
     </div>
 
     <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="hidden md:hidden pb-5">
+    <div id="mobile-menu" class="hidden xl:hidden pb-5">
       <div class="flex flex-col gap-1 border-t border-line pt-4">
         <!-- Mobile dropdown — link + separate chevron -->
         <div>
@@ -140,6 +159,11 @@ const dublinSub = [
 </header>
 
 <script>
+  // Count clicks on the Duolingo button (only sent if the visitor accepted cookies)
+  document.getElementById('det-invite')?.addEventListener('click', () => {
+    if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'det_invite_click', { location: 'header' });
+  });
+
   // Mobile menu toggle
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
