@@ -1,0 +1,375 @@
+{
+ "report_type": "weekly",
+ "period_label": "Week 9–15 Nov 2026",
+ "this_week": [
+  "2026-11-09",
+  "2026-11-15"
+ ],
+ "prev_week": [
+  "2026-11-02",
+  "2026-11-08"
+ ],
+ "daily": [
+  [
+   "2026-10-17",
+   1,
+   1,
+   0,
+   1
+  ],
+  [
+   "2026-10-18",
+   7,
+   6,
+   6,
+   6
+  ],
+  [
+   "2026-10-19",
+   3,
+   2,
+   2,
+   3
+  ],
+  [
+   "2026-10-20",
+   8,
+   4,
+   0,
+   7
+  ],
+  [
+   "2026-10-21",
+   4,
+   2,
+   0,
+   4
+  ],
+  [
+   "2026-10-22",
+   8,
+   2,
+   0,
+   7
+  ],
+  [
+   "2026-10-23",
+   5,
+   3,
+   0,
+   3
+  ],
+  [
+   "2026-10-24",
+   8,
+   4,
+   4,
+   7
+  ],
+  [
+   "2026-10-25",
+   2,
+   1,
+   0,
+   2
+  ],
+  [
+   "2026-10-26",
+   2,
+   1,
+   0,
+   0
+  ],
+  [
+   "2026-10-27",
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   "2026-10-28",
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   "2026-10-29",
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   "2026-10-30",
+   4,
+   1,
+   0,
+   2
+  ],
+  [
+   "2026-10-31",
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   "2026-11-01",
+   2,
+   2,
+   2,
+   2
+  ],
+  [
+   "2026-11-02",
+   21,
+   21,
+   38,
+   19
+  ],
+  [
+   "2026-11-03",
+   3,
+   2,
+   2,
+   3
+  ],
+  [
+   "2026-11-04",
+   1,
+   1,
+   2,
+   1
+  ],
+  [
+   "2026-11-05",
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   "2026-11-06",
+   2,
+   1,
+   0,
+   1
+  ],
+  [
+   "2026-11-07",
+   4,
+   1,
+   0,
+   4
+  ],
+  [
+   "2026-11-08",
+   2,
+   1,
+   0,
+   2
+  ],
+  [
+   "2026-11-09",
+   2,
+   1,
+   0,
+   0
+  ],
+  [
+   "2026-11-10",
+   1,
+   1,
+   0,
+   0
+  ],
+  [
+   "2026-11-11",
+   8,
+   4,
+   2,
+   4
+  ],
+  [
+   "2026-11-12",
+   2,
+   2,
+   0,
+   2
+  ],
+  [
+   "2026-11-13",
+   2,
+   1,
+   0,
+   1
+  ],
+  [
+   "2026-11-14",
+   3,
+   1,
+   0,
+   1
+  ],
+  [
+   "2026-11-15",
+   3,
+   3,
+   2,
+   1
+  ]
+ ],
+ "leads_daily": {
+  "2026-10-25": 2,
+  "2026-11-02": 20,
+  "2026-11-07": 2,
+  "2026-11-08": 1,
+  "2026-11-11": 2
+ },
+ "contact_views_daily": {
+  "2026-10-18": 6,
+  "2026-10-20": 3,
+  "2026-10-25": 2,
+  "2026-11-02": 20,
+  "2026-11-07": 2,
+  "2026-11-08": 1,
+  "2026-11-11": 4,
+  "2026-11-13": 1
+ },
+ "anomalies": [
+  "2026-11-02"
+ ],
+ "sources_30d": [
+  [
+   "Direct",
+   56
+  ],
+  [
+   "Facebook",
+   28
+  ],
+  [
+   "Schools fair flyer",
+   13
+  ],
+  [
+   "Google search",
+   7
+  ],
+  [
+   "ChatGPT",
+   3
+  ],
+  [
+   "Other",
+   3
+  ]
+ ],
+ "sources_week": [
+  [
+   "Direct",
+   9
+  ],
+  [
+   "Google search",
+   6
+  ],
+  [
+   "Facebook",
+   5
+  ],
+  [
+   "Schools fair flyer",
+   1
+  ]
+ ],
+ "pages_30d": [
+  [
+   "Home",
+   "/",
+   375
+  ],
+  [
+   "Dublin Summer 2027",
+   "/dublin-summer-2027",
+   121
+  ],
+  [
+   "Contact",
+   "/contact",
+   70
+  ],
+  [
+   "About",
+   "/about",
+   46
+  ],
+  [
+   "Trips & activities",
+   "/dublin-summer-2027/trips-and-activities",
+   32
+  ],
+  [
+   "Bulgarian home",
+   "/bg",
+   19
+  ],
+  [
+   "Duolingo English Test",
+   "/duolingo-english-test",
+   18
+  ],
+  [
+   "Lessons",
+   "/lessons",
+   19
+  ],
+  [
+   "Weekly programme",
+   "/dublin-summer-2027/weekly-programme",
+   8
+  ],
+  [
+   "Blog (all)",
+   "/blog",
+   12
+  ]
+ ],
+ "instagram": {
+  "followers": 0,
+  "posts": 1,
+  "reach_30d": 0
+ },
+ "meta_ads": {
+  "spend_30d": 0,
+  "campaigns": 0
+ },
+ "search_console": {
+  "property": "https://www.immersion-english.com/",
+  "clicks_30d": 1,
+  "impressions_30d": 8,
+  "queries": [
+   [
+    "immersion english",
+    1,
+    3,
+    9.3
+   ],
+   [
+    "immersion",
+    0,
+    3,
+    6.7
+   ]
+  ],
+  "note": "Search Console is connected to the <b>www.</b> version of the site, but the site lives at immersion-english.com (no www), so most searches aren't counted yet. GA4 saw 6 Google visits this week while Search Console saw 1."
+ },
+ "todo": [
+  "Add <b>immersion-english.com</b> (no www) as a Search Console property – ideally a Domain property – and reconnect it in Windsor, so we see the real Google searches.",
+  "Mark <b>generate_lead</b> as a key event in GA4 so enquiries show up as conversions.",
+  "Keep a simple lead sheet (date, name, source, programme) – GA can't see WhatsApp, phone or email enquiries.",
+  "Use the <b>immersion-english.com/det</b> short link in every DET post so we can measure that campaign separately."
+ ]
+}
