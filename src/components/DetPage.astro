@@ -405,7 +405,7 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
           <div class="flex-1 min-w-0">
             <h4 class="font-heading font-semibold text-ink text-[1rem] mb-1">{d.h}</h4>
             <p class="text-ink-soft text-[0.9rem] leading-relaxed mb-3">{d.p}</p>
-            <a href={d.href} download class="inline-flex items-center gap-2 font-heading font-semibold text-[0.9rem] no-underline" style="color: var(--green);">{t.dlBtn}<span class="font-body font-normal text-ink-soft text-[0.8rem]">· {d.size}</span></a>
+            <a href={d.href} download data-dl={d.href.split('/').pop()} class="det-download inline-flex items-center gap-2 font-heading font-semibold text-[0.9rem] no-underline" style="color: var(--green);">{t.dlBtn}<span class="font-body font-normal text-ink-soft text-[0.8rem]">· {d.size}</span></a>
           </div>
         </li>
       ))}
@@ -646,6 +646,12 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
 </section>
 
 <script>
+  // Count guide downloads in GA4 as 'det_guide_download', with the file name and page language.
+  document.querySelectorAll<HTMLAnchorElement>('.det-download').forEach(link => {
+    link.addEventListener('click', () => {
+      (window as any).gtag?.('event', 'det_guide_download', { file_name: link.dataset.dl, page_language: document.documentElement.lang });
+    });
+  });
   // Copy the DET invite link (offer card "Book through us").
   document.querySelectorAll<HTMLButtonElement>('.copy-invite').forEach(btn => {
     const label = btn.textContent;
