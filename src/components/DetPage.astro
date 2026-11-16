@@ -63,12 +63,14 @@ const t = bg ? {
   repSkills: 'Умения', repCombos: 'Комбинирани оценки',
   repNote: 'Примерни оценки, не реален резултат. Официалният ви сертификат се издава от Duolingo.',
   stats: [
-    { n: '~1 час', l: 'на собствения ви компютър, когато ви е удобно' },
-    { n: det.institutionsBg, l: 'институции по света го признават' },
-    { n: `${det.resultsDays} дни`, l: 'до резултатите' },
-    { n: `~${det.priceEurApprox} €`, l: 'целият изпит, с неограничено изпращане на резултата' },
-    { n: 'Адаптивен', l: 'въпросите стават по-трудни или по-лесни според отговорите ви, така че решавате задачи, близки до вашето ниво' },
-    { n: '4 умения', l: 'четене, писане, слушане и говорене – в един изпит' },
+    { u: 'Удобен', n: '~1 час', l: 'онлайн, на собствения ви компютър – по всяко време и навсякъде по света' },
+    { u: 'Бърз', n: `${det.resultsDays} дни`, l: 'до резултата ви – с обща оценка, оценки по умения и вашите писмен и устен отговор' },
+    { u: 'Достъпен', n: `~${det.priceEurApprox} €`, l: 'част от цената на другите изпити, а резултатът се изпраща до колкото искате университети без допълнително заплащане' },
+    { u: 'Признат', n: det.institutionsBg, l: 'институции по света го приемат' },
+    { u: 'Адаптивен', n: 'Вашето ниво', l: 'въпросите стават по-трудни или по-лесни според отговорите ви, така че решавате задачи, близки до вашето ниво' },
+    { u: 'Точен', n: 'Експертна оценка', l: 'създаден от специалисти по езиково тестване и оценяван от система, обучена да преценява английския ви като опитен изпитващ' },
+    { u: 'Сигурен', n: 'Под наблюдение', l: 'всеки изпит се преглежда от квестори, подпомогнати от технология, която отбелязва всичко необичайно' },
+    { u: 'Пълен', n: '4 умения', l: 'четене, писане, слушане и говорене – в един изпит' },
   ],
 
 
@@ -147,12 +149,14 @@ const t = bg ? {
   repSkills: 'Skills', repCombos: 'Combined scores',
   repNote: 'Illustrative scores, not a real result. Your official certificate comes from Duolingo.',
   stats: [
-    { n: '~1 hour', l: 'on your own computer, whenever suits you' },
-    { n: det.institutions, l: 'institutions worldwide accept it' },
-    { n: `${det.resultsDays} days`, l: 'for your results' },
-    { n: `~€${det.priceEurApprox}`, l: 'the full test, with unlimited score reports included' },
-    { n: 'Adaptive', l: 'questions get harder or easier as you answer, so you don\'t attempt questions far beyond your English level' },
-    { n: '4 skills', l: 'reading, writing, listening and speaking, all in one test' },
+    { u: 'Convenient', n: '~1 hour', l: 'online, on your own computer – at any time, anywhere in the world' },
+    { u: 'Fast', n: `${det.resultsDays} days`, l: 'for your results – your overall score, subscores, and your writing and speaking samples' },
+    { u: 'Affordable', n: `~€${det.priceEurApprox}`, l: 'a fraction of the price of other tests, and you can send your score to as many universities as you like at no extra cost' },
+    { u: 'Trusted', n: det.institutions, l: 'institutions worldwide accept it' },
+    { u: 'Adaptive', n: 'Your level', l: 'questions get harder or easier as you answer, so you don\'t attempt questions far beyond your English level' },
+    { u: 'Accurate', n: 'Expert scoring', l: 'designed by language testing experts, and scored by an engine trained to rate your English the way expert examiners do' },
+    { u: 'Secure', n: 'Proctored', l: 'human proctors review every test, helped by technology that flags anything unusual' },
+    { u: 'Complete', n: '4 skills', l: 'reading, writing, listening and speaking, all in one test' },
   ],
 
 
@@ -269,10 +273,11 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
       <h2>{t.whatH2a}<span style="color: var(--orange-text);">{t.whatH2b}</span></h2>
       <p>{t.whoLine}</p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {t.stats.map(s => (
-        <div class="bg-white border border-line rounded-xl p-5 shadow-soft">
-          <p class="font-heading font-bold text-[1.6rem] text-ink leading-none mb-2">{s.n}</p>
+        <div class="bg-white border border-line rounded-xl p-4 sm:p-5 shadow-soft">
+          <p class="text-[0.7rem] font-heading font-semibold uppercase tracking-[0.1em] mb-2" style="color: var(--orange-text);">{s.u}</p>
+          <p class="font-heading font-bold text-[1.05rem] sm:text-[1.45rem] text-ink leading-tight mb-2 [overflow-wrap:break-word]">{s.n}</p>
           <p class="text-[0.88rem] text-ink-soft leading-snug">{s.l}</p>
         </div>
       ))}
