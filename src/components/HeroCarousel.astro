@@ -2,12 +2,13 @@
 /**
  * Homepage hero as a three-slide carousel (EN and BG homepages).
  *
- *  1. Lessons – the original hero, passed in through the "lessons" slot so the
- *     page keeps its own wording and its single <h1>.
- *  2. Dublin Summer – wording from the Dublin page hero. Photo in greyscale
+ *  1. Duolingo English Test – wording from the DET page hero, with Duolingo's own
+ *     animated graduate Duo and GPN "Member" badge, unaltered. First by the owner's
+ *     choice (16 Nov 2026).
+ *  2. Lessons – the original hero, passed in through the "lessons" slot so the
+ *     page keeps its own wording and its single <h1> (still the page's h1 for SEO).
+ *  3. Dublin Summer – wording from the Dublin page hero. Photo in greyscale
  *     (brand rule: site photos are black and white).
- *  3. Duolingo English Test – wording from the DET page hero. Duolingo's own
- *     campaign image, shown in colour: their assets must not be recoloured.
  *
  * Slides are stacked in one grid cell so the hero keeps the height of the
  * tallest slide and nothing jumps. Auto-advances every 7 s, pauses on hover or
@@ -22,8 +23,8 @@ interface Props {
 }
 const { lang, lessonsEyebrow, dublin, det } = Astro.props;
 const ui = lang === 'bg'
-  ? { label: 'Акценти', slide: 'Слайд', of: 'от', prev: 'Предишен слайд', next: 'Следващ слайд', names: ['Уроци', 'Лято в Дъблин', 'Duolingo English Test'] }
-  : { label: 'Highlights', slide: 'Slide', of: 'of', prev: 'Previous slide', next: 'Next slide', names: ['Lessons', 'Dublin Summer', 'Duolingo English Test'] };
+  ? { label: 'Акценти', slide: 'Слайд', of: 'от', prev: 'Предишен слайд', next: 'Следващ слайд', names: ['Duolingo English Test', 'Уроци', 'Лято в Дъблин'] }
+  : { label: 'Highlights', slide: 'Slide', of: 'of', prev: 'Previous slide', next: 'Next slide', names: ['Duolingo English Test', 'Lessons', 'Dublin Summer'] };
 // Text sits at the same top offset on every slide, so the eyebrows and headings line up as slides change.
 const textCol = 'container-x relative z-10 w-full flex items-start pt-[110px] md:pt-[140px] pb-[110px] md:pb-[120px]';
 ---
@@ -31,38 +32,8 @@ const textCol = 'container-x relative z-10 w-full flex items-start pt-[110px] md
   <div class="absolute inset-0 -z-[2]" style="background: linear-gradient(135deg, var(--hero-top) 0%, #14201a 60%, #0a3f25 100%);"></div>
 
   <div class="grid">
-    <!-- 1 · Lessons -->
+    <!-- 1 · Duolingo English Test: Duolingo's own assets, unaltered – the animated graduate Duo and the GPN "Member" badge. -->
     <div class="hero-slide [grid-area:1/1] relative flex items-stretch is-active" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 1 ${ui.of} 3: ${ui.names[0]}`} data-slide>
-      <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%), linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"></div>
-      <div class={textCol}>
-        <div>
-          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
-            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{lessonsEyebrow}
-          </p>
-          <slot name="lessons" />
-        </div>
-      </div>
-    </div>
-
-    <!-- 2 · Dublin Summer -->
-    <div class="hero-slide [grid-area:1/1] relative flex items-stretch" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 2 ${ui.of} 3: ${ui.names[1]}`} data-slide>
-      <img src="/hero-teens-dublin.webp" alt={dublin.alt} fetchpriority="low" decoding="async" class="absolute -z-[1] inset-0 w-full h-full object-cover object-[center_60%] md:inset-auto md:right-0 md:top-0 md:w-[62%] md:object-[75%_55%]" style="filter: grayscale(100%) contrast(1.05);" />
-      <div class="absolute inset-0 -z-[1] pointer-events-none md:hidden" style="background: linear-gradient(180deg, rgba(20,32,26,0.55) 0%, rgba(20,32,26,0.75) 45%, rgba(20,32,26,0.95) 100%);"></div>
-      <div class="absolute inset-0 -z-[1] pointer-events-none hidden md:block" style="background: linear-gradient(90deg, #14201a 0%, #14201a 38%, rgba(20,32,26,0.75) 50%, rgba(20,32,26,0.15) 70%, rgba(20,32,26,0) 85%);"></div>
-      <div class={textCol}>
-        <div class="max-w-[680px]">
-          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
-            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{dublin.eyebrow}
-          </p>
-          <h2 class="text-white hero-h">{dublin.h2a}<br /><span style="color: var(--orange);">{dublin.h2b}</span></h2>
-          <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">{dublin.lead}</p>
-          <div class="mt-6 sm:mt-8 flex"><a href={dublin.href} class="btn btn-primary">{dublin.cta}</a></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3 · Duolingo English Test: Duolingo's own assets, unaltered – the animated graduate Duo and the GPN "Member" badge. -->
-    <div class="hero-slide [grid-area:1/1] relative flex items-stretch" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 3 ${ui.of} 3: ${ui.names[2]}`} data-slide>
       <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%), linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"></div>
       <div class={textCol}>
         <div class="w-full flex items-center justify-between gap-10">
@@ -87,6 +58,36 @@ const textCol = 'container-x relative z-10 w-full flex items-start pt-[110px] md
         </div>
       </div>
     </div>
+    <!-- 2 · Lessons -->
+    <div class="hero-slide [grid-area:1/1] relative flex items-stretch" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 2 ${ui.of} 3: ${ui.names[1]}`} data-slide>
+      <div class="absolute inset-0 -z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(20,32,26,0.35) 0%, rgba(20,32,26,0.55) 45%, rgba(20,32,26,0.92) 100%), linear-gradient(95deg, rgba(0,80,40,0.45) 0%, rgba(20,32,26,0.15) 50%, rgba(20,32,26,0) 100%);"></div>
+      <div class={textCol}>
+        <div>
+          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{lessonsEyebrow}
+          </p>
+          <slot name="lessons" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · Dublin Summer -->
+    <div class="hero-slide [grid-area:1/1] relative flex items-stretch" role="group" aria-roledescription="slide" aria-label={`${ui.slide} 3 ${ui.of} 3: ${ui.names[2]}`} data-slide>
+      <img src="/hero-teens-dublin.webp" alt={dublin.alt} fetchpriority="low" decoding="async" class="absolute -z-[1] inset-0 w-full h-full object-cover object-[center_60%] md:inset-auto md:right-0 md:top-0 md:w-[62%] md:object-[75%_55%]" style="filter: grayscale(100%) contrast(1.05);" />
+      <div class="absolute inset-0 -z-[1] pointer-events-none md:hidden" style="background: linear-gradient(180deg, rgba(20,32,26,0.55) 0%, rgba(20,32,26,0.75) 45%, rgba(20,32,26,0.95) 100%);"></div>
+      <div class="absolute inset-0 -z-[1] pointer-events-none hidden md:block" style="background: linear-gradient(90deg, #14201a 0%, #14201a 38%, rgba(20,32,26,0.75) 50%, rgba(20,32,26,0.15) 70%, rgba(20,32,26,0) 85%);"></div>
+      <div class={textCol}>
+        <div class="max-w-[680px]">
+          <p class="flex items-center gap-2 font-heading font-semibold text-[0.82rem] tracking-wide text-white/80 mb-6">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--orange);"></span>{dublin.eyebrow}
+          </p>
+          <h2 class="text-white hero-h">{dublin.h2a}<br /><span style="color: var(--orange);">{dublin.h2b}</span></h2>
+          <p class="mt-5 text-[1rem] md:text-[1.18rem] text-white/85 max-w-[52ch] leading-[1.55]">{dublin.lead}</p>
+          <div class="mt-6 sm:mt-8 flex"><a href={dublin.href} class="btn btn-primary">{dublin.cta}</a></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Controls -->
