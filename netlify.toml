@@ -39,3 +39,12 @@
   from = "/dublin2027"
   to = "/dublin-summer-2027?utm_source=private-schools-fair&utm_medium=print&utm_campaign=dublin-2027&utm_content=business-card"
   status = 302
+
+# Short link for the DET carousel post on Facebook (18 Nov 2026), in the post text
+# and the first comment. Same rules as /dublin2027: exact path, 302, and every
+# visit is counted as that organic Facebook post in GA4, so use it there only.
+# #offer lands visitors on the "Prepare with a DET partner" section.
+[[redirects]]
+  from = "/det"
+  to = "/duolingo-english-test?utm_source=facebook&utm_medium=organic&utm_campaign=det_launch&utm_content=carousel#offer"
+  status = 302
