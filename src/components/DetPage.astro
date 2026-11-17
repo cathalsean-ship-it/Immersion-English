@@ -91,6 +91,7 @@ const t = bg ? {
   ],
 
 
+  cmpMore: 'Искате повече подробности? Прочетете: ', cmpMoreLink: 'Duolingo English Test или IELTS – кой изпит е за вас?', cmpMoreNote: ' (на английски)',
   cmpEyebrow: 'Сравнение', cmpH2a: 'Duolingo English Test, ', cmpH2b: 'IELTS или Cambridge?',
   cmpHead: ['', 'Duolingo|English Test', 'IELTS|Academic', 'Cambridge|C1 Advanced'],
   cmpRows: [
@@ -194,6 +195,7 @@ const t = bg ? {
   ],
 
 
+  cmpMore: 'Want the full picture? Read: ', cmpMoreLink: 'Duolingo English Test vs IELTS – is it right for you?', cmpMoreNote: '',
   cmpEyebrow: 'At a glance', cmpH2a: 'How does the Duolingo English Test compare ', cmpH2b: 'to other tests?',
   cmpHead: ['', 'Duolingo|English Test', 'IELTS|Academic', 'Cambridge|C1 Advanced'],
   cmpRows: [
@@ -448,6 +450,7 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
         </tbody>
       </table>
     </div>
+    <p class="mt-5 text-[0.95rem] text-ink-soft">{t.cmpMore}<a href="/blog/is-the-duolingo-english-test-right-for-you" class="font-semibold underline underline-offset-2" style="color: var(--green);">{t.cmpMoreLink}</a>{t.cmpMoreNote}</p>
   </div>
 </section>
 
