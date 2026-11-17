@@ -106,7 +106,7 @@ const t = bg ? {
   offers: [
     { h: 'Изберете правилния изпит', p: 'Не сте сигурни кой изпит е подходящ за вашите планове? В безплатна консултация ще ви дадем ясен отговор: DET, IELTS или Cambridge.', price: 'Безплатно', cta: 'Запишете консултация', href: c('det', 'det-offer-consultation') },
     { h: 'Подготовка 1:1', p: 'Онлайн уроци, изградени около типовете задачи и времето в DET, с ексклузивните материали на Duolingo за партньори. Включват обратна връзка за говоренето и писането ви от обучен изпитващ по говорене.', price: `${prep.perLesson} € / ${prep.lessonMinutes} мин`, cta: 'Попитайте за уроците', href: c('det', 'det-offer-lessons') },
-    { h: 'Купете теста чрез нас', p: 'Регистрирайте се с нашия линк и ще виждаме официалния ви резултат и оценките по отделните умения, така че да знаем върху какво да работим. Без допълнително заплащане.', copy: det.inviteUrl, copyLabel: 'Копирайте и споделете линка', copyBtn: 'Копирай', copied: 'Копирано', cta: 'Регистрирайте се с този линк', href: det.inviteUrl, ext: true },
+    { id: 'get-the-test', h: 'Купете теста чрез нас', p: 'Регистрирайте се с нашия линк и ще виждаме официалния ви резултат и оценките по отделните умения, така че да знаем върху какво да работим. Без допълнително заплащане.', copy: det.inviteUrl, copyLabel: 'Копирайте и споделете линка', copyBtn: 'Копирай', copied: 'Копирано', cta: 'Регистрирайте се с този линк', href: det.inviteUrl, ext: true },
   ],
 
   trainerEyebrow: 'Вашият преподавател',
@@ -209,7 +209,7 @@ const t = bg ? {
   offers: [
     { h: 'Choose the right test', p: 'Not sure which test fits your plans? In a free consultation we\'ll give you a straight answer: the DET, IELTS or Cambridge.', price: 'Free', cta: 'Book a consultation', href: c('det', 'det-offer-consultation') },
     { h: 'Prepare 1:1', p: 'Online lessons built around the DET\'s question types and timing, using Duolingo\'s exclusive partner materials. Includes feedback on your speaking and writing from a trained speaking examiner.', price: `€${prep.perLesson} / ${prep.lessonMinutes} min`, cta: 'Ask about lessons', href: c('det', 'det-offer-lessons') },
-    { h: 'Book through us', p: 'Register with our link and we can see your official results and skill scores, so we know what to work on next. It costs you nothing extra.', copy: det.inviteUrl, copyLabel: 'Copy and share our link', copyBtn: 'Copy', copied: 'Copied', cta: 'Register with this link', href: det.inviteUrl, ext: true },
+    { id: 'get-the-test', h: 'Book through us', p: 'Register with our link and we can see your official results and skill scores, so we know what to work on next. It costs you nothing extra.', copy: det.inviteUrl, copyLabel: 'Copy and share our link', copyBtn: 'Copy', copied: 'Copied', cta: 'Register with this link', href: det.inviteUrl, ext: true },
   ],
 
   trainerEyebrow: 'Your trainer',
@@ -531,7 +531,7 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
       {t.offers.map(o => (
-        <div class="bg-white border border-line rounded-xl p-6 flex flex-col shadow-soft">
+        <div id={o.id} class="bg-white border border-line rounded-xl p-6 flex flex-col shadow-soft" style="scroll-margin-top: 90px;">
           <h3 class="text-[1.1rem] mb-2">{o.h}</h3>
           <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
           <p class="text-ink-soft text-[0.93rem] leading-relaxed mb-5 flex-1">{o.p}</p>

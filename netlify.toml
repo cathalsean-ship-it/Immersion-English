@@ -74,9 +74,9 @@
 # Short link for the DET comparison post on Facebook (Nov 2026): the table of
 # DET vs IELTS vs Cambridge. Same rules as /det: exact path, 302, and every
 # visit is counted as that organic Facebook post in GA4, so use it there only.
-# #offer lands visitors on the "Prepare with a DET partner" section, which has
-# the "Book through us" partner link.
+# #get-the-test lands visitors on the "Book through us" card itself (the partner
+# link), so on a phone they don't scroll past the consultation and lessons cards.
 [[redirects]]
   from = "/det-compare"
-  to = "/duolingo-english-test?utm_source=facebook&utm_medium=organic&utm_campaign=det_compare&utm_content=comparison_post#offer"
+  to = "/duolingo-english-test?utm_source=facebook&utm_medium=organic&utm_campaign=det_compare&utm_content=comparison_post#get-the-test"
   status = 302
