@@ -99,6 +99,16 @@
   status = 302
 
 [[redirects]]
+  from = "/det-carousel"
+  to = "/duolingo-english-test?utm_source=facebook&utm_medium=paid_social&utm_campaign=det_dec26&utm_content=usp_carousel#offer"
+  status = 302
+
+[[redirects]]
+  from = "/det-blog"
+  to = "/blog/is-the-duolingo-english-test-right-for-you?utm_source=facebook&utm_medium=organic&utm_campaign=det_blog"
+  status = 302
+
+[[redirects]]
   from = "/bg/det-video"
   to = "/bg/duolingo-english-test?utm_source=facebook&utm_medium=paid_social&utm_campaign=det_dec26&utm_content=lenny_video"
   status = 302
