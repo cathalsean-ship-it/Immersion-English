@@ -190,6 +190,19 @@ const META_PIXEL_ID = '4098945000240922';
         if (typeof window.fbq === 'function') window.fbq('track', 'Contact', { content_name: method });
         if (typeof window.gtag === 'function') window.gtag('event', 'contact_click', { method: method });
       });
+      // Duolingo English Test partner (invite) link, wherever it appears on the site.
+      // GA4: 'det_invite_click' with where on the page it was clicked.
+      // Meta: standard 'InitiateCheckout' (the step before buying the test on Duolingo's site),
+      // so ads can report and later optimise for it. Consent-gated like the rest.
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href*="englishtest.duolingo.com/invite/"]') : null;
+        if (!a) return;
+        var sec = a.closest('section');
+        var where = (sec && (sec.id || ((sec.querySelector('h1,h2') || {}).textContent || '').trim().slice(0, 40))) || 'page';
+        var lang = document.documentElement.lang || 'en';
+        if (typeof window.gtag === 'function') window.gtag('event', 'det_invite_click', { link_location: where, page_language: lang });
+        if (typeof window.fbq === 'function') window.fbq('track', 'InitiateCheckout', { content_name: 'Duolingo English Test', content_category: 'det_partner_link', currency: 'EUR', value: 60 });
+      });
     </script>
     <!-- Page-specific search terms, EN + BG. See src/data/keywords.ts -->
     {keywords && <meta name="keywords" content={keywords.join(', ')} />}
