@@ -31,6 +31,21 @@
 [[plugins]]
   package = "/plugins/indexnow"
 
+# Sends the old Netlify address to the real domain, so search engines stop
+# showing immersionenglish.netlify.app as a second copy of the site (Nov 2026).
+# It was still turning up in search results with out-of-date snippets.
+#
+# This is NOT the catch-all warned about above: `from` starts with a full host,
+# so it only matches requests made to immersionenglish.netlify.app itself. It
+# cannot match immersion-english.com, and it does not match deploy previews
+# (deploy-preview-N--immersionenglish.netlify.app is a different host).
+# `force` is needed because the pages exist on that host too.
+[[redirects]]
+  from = "https://immersionenglish.netlify.app/*"
+  to = "https://immersion-english.com/:splat"
+  status = 301
+  force = true
+
 # Short link printed on the business cards for the Sofia private schools fair
 # (Oct 2026). Exact path only, no splat, so it cannot touch real pages.
 # 302 so search engines never index /dublin2027 in place of the real page.
