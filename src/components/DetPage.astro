@@ -46,12 +46,6 @@ const t = bg ? {
   qIntro: 'Всяка карта показва типовете задачи за едно умение и приблизително колко от всеки ще получите. Броят леко варира при всяко явяване.',
   qColType: 'Тип задача', qColCount: 'Колко',
   adaptiveTag: 'Адаптивни', adaptiveKey: 'стават по-трудни или по-лесни според отговорите ви',
-  tipsH3: 'Полезно е да знаете',
-  tips: [
-    { h: 'Винаги отговаряйте', p: 'Грешният отговор не ви струва повече от празния, а частично верните отговори носят точки.' },
-    { h: 'Всеки изпит е различен', p: 'Въпросите идват от огромна база, така че едва ли ще видите един и същ въпрос два пъти.' },
-    { h: 'Някои въпроси ще ви се сторят трудни', p: 'Това е нормално. DET се адаптира, за да открие нивото ви.' },
-  ],
   qH3: 'Типове задачи',
   dlH3: 'Официални материали за изтегляне',
   dlBtn: 'Изтеглете PDF',
@@ -150,12 +144,6 @@ const t = bg ? {
   qIntro: 'Each card lists the question types for one skill and roughly how many of each you\'ll get. The numbers vary a little from one sitting to the next.',
   qColType: 'Question type', qColCount: 'How many',
   adaptiveTag: 'Adaptive', adaptiveKey: 'gets harder or easier depending on your answers',
-  tipsH3: 'Good to know',
-  tips: [
-    { h: 'Always answer', p: 'A wrong answer costs you no more than a blank, and partly right answers can earn partial credit.' },
-    { h: 'Every test is different', p: 'Questions come from a very large pool, so you\'re unlikely to see the same one twice.' },
-    { h: 'Some questions will feel hard', p: 'That\'s normal. The DET adapts to find your level.' },
-  ],
   qH3: 'Question types',
   dlH3: 'Official guides to download',
   dlBtn: 'Download PDF',
@@ -412,21 +400,6 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
       ))}
     </ul>
 
-    <h3 class="text-[1.2rem] mb-2">{t.tipsH3}</h3>
-    <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 18px;"></div>
-    <ul class="grid md:grid-cols-3 gap-5 list-none p-0">
-      {t.tips.map(tip => (
-        <li class="flex items-start gap-3">
-          <span class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-[2px]" style="background: var(--green-soft); color: var(--green);">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-          </span>
-          <span>
-            <strong class="block font-heading font-semibold text-ink text-[0.98rem] mb-1">{tip.h}</strong>
-            <span class="text-ink-soft text-[0.92rem] leading-relaxed">{tip.p}</span>
-          </span>
-        </li>
-      ))}
-    </ul>
 
     <!-- Duolingo's own PDFs from the partner pack, hosted unaltered in /public/downloads. -->
     <h3 id="downloads" class="text-[1.2rem] mb-2 mt-14" style="scroll-margin-top: 90px;">{t.dlH3}</h3>
