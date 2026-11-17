@@ -87,6 +87,27 @@
 # visit is counted as that organic Facebook post in GA4, so use it there only.
 # #get-the-test lands visitors on the "Book through us" card itself (the partner
 # link), so on a phone they don't scroll past the consultation and lessons cards.
+# Paid DET campaign, Dec 2026 – one short link per ad
+[[redirects]]
+  from = "/det-video"
+  to = "/duolingo-english-test?utm_source=facebook&utm_medium=paid_social&utm_campaign=det_dec26&utm_content=lenny_video"
+  status = 302
+
+[[redirects]]
+  from = "/det-table"
+  to = "/duolingo-english-test?utm_source=facebook&utm_medium=paid_social&utm_campaign=det_dec26&utm_content=comparison_table"
+  status = 302
+
+[[redirects]]
+  from = "/bg/det-video"
+  to = "/bg/duolingo-english-test?utm_source=facebook&utm_medium=paid_social&utm_campaign=det_dec26&utm_content=lenny_video"
+  status = 302
+
+[[redirects]]
+  from = "/bg/det-table"
+  to = "/bg/duolingo-english-test?utm_source=facebook&utm_medium=paid_social&utm_campaign=det_dec26&utm_content=comparison_table"
+  status = 302
+
 [[redirects]]
   from = "/det-compare"
   to = "/duolingo-english-test?utm_source=facebook&utm_medium=organic&utm_campaign=det_compare&utm_content=comparison_post#get-the-test"

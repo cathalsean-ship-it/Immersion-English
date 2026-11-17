@@ -626,6 +626,13 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
       setTimeout(() => { btn.textContent = label; }, 2000);
     });
   });
+  // Count clicks on the DET partner invite link (hero, offer card, FAQ, final CTA) as 'det_invite_click'.
+  document.querySelectorAll<HTMLAnchorElement>('a[href*="englishtest.duolingo.com/invite/"]').forEach(a => {
+    a.addEventListener('click', () => {
+      const where = a.closest('section')?.id || a.closest('section')?.querySelector('h2,h1')?.textContent?.trim().slice(0, 40) || 'page';
+      (window as any).gtag?.('event', 'det_invite_click', { link_location: where, page_language: document.documentElement.lang });
+    });
+  });
   document.querySelectorAll('.faq-trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {
       const item = trigger.closest('.faq-item');
