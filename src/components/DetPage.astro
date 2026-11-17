@@ -321,8 +321,39 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
   </div>
 </section>
 
+<!-- COMPARISON -->
+<section class="section section-tinted" id="compare" style="scroll-margin-top: 90px;">
+  <div class="container-x">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-dot">{t.cmpEyebrow}</span>
+      <h2>{t.cmpH2a}<span style="color: var(--orange-text);">{t.cmpH2b}</span></h2>
+    </div>
+    <div class="overflow-x-auto rounded-xl border border-line shadow-soft bg-white">
+      <table class="w-full text-left text-[0.92rem] min-w-[680px]">
+        <thead>
+          <tr style="background: var(--green);">
+            {t.cmpHead.map((h, i) => <th scope="col" class={`font-heading font-semibold text-white px-4 py-3 ${i === 0 ? 'w-[18%] sticky left-0 z-10' : ''}`} style={i === 0 ? 'background: var(--green);' : ''}>{h.split('|').map((l, k) => <>{k > 0 && <br />}<span class="whitespace-nowrap">{l}</span></>)}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {t.cmpRows.map(row => (
+            <tr class="border-t border-line align-top">
+              <!-- First column stays put when the table is scrolled sideways on mobile. -->
+              <th scope="row" class="font-heading font-semibold text-ink px-4 py-3 sticky left-0 z-10 bg-white" style="box-shadow: 1px 0 0 var(--line);">{row[0]}</th>
+              <td class="px-4 py-3 text-ink font-semibold" style="background: var(--green-soft);">{row[1]}</td>
+              <td class="px-4 py-3 text-ink-soft">{row[2]}</td>
+              <td class="px-4 py-3 text-ink-soft">{row[3]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-5 text-[0.95rem] text-ink-soft">{t.cmpMore}<a href="/blog/is-the-duolingo-english-test-right-for-you" class="font-semibold underline underline-offset-2" style="color: var(--green);">{t.cmpMoreLink}</a>{t.cmpMoreNote}</p>
+  </div>
+</section>
+
 <!-- TEST FORMAT -->
-<section class="section section-tinted" id="format" style="scroll-margin-top: 90px;">
+<section class="section" id="format" style="scroll-margin-top: 90px;">
   <div class="container-x">
     <div class="section-head">
       <span class="eyebrow eyebrow-dot">{t.fmtEyebrow}</span>
@@ -420,37 +451,6 @@ const barPct = (v: number) => `${((v - det.scoreMin) / (det.scoreMax - det.score
       <img src="/det/det-logo.png" alt="Duolingo English Test" width="440" height="66" class="block w-[220px] h-auto" loading="lazy" />
     </div>
     </div>
-  </div>
-</section>
-
-<!-- COMPARISON -->
-<section class="section" id="compare" style="scroll-margin-top: 90px;">
-  <div class="container-x">
-    <div class="section-head">
-      <span class="eyebrow eyebrow-dot">{t.cmpEyebrow}</span>
-      <h2>{t.cmpH2a}<span style="color: var(--orange-text);">{t.cmpH2b}</span></h2>
-    </div>
-    <div class="overflow-x-auto rounded-xl border border-line shadow-soft bg-white">
-      <table class="w-full text-left text-[0.92rem] min-w-[680px]">
-        <thead>
-          <tr style="background: var(--green);">
-            {t.cmpHead.map((h, i) => <th scope="col" class={`font-heading font-semibold text-white px-4 py-3 ${i === 0 ? 'w-[18%] sticky left-0 z-10' : ''}`} style={i === 0 ? 'background: var(--green);' : ''}>{h.split('|').map((l, k) => <>{k > 0 && <br />}<span class="whitespace-nowrap">{l}</span></>)}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {t.cmpRows.map(row => (
-            <tr class="border-t border-line align-top">
-              <!-- First column stays put when the table is scrolled sideways on mobile. -->
-              <th scope="row" class="font-heading font-semibold text-ink px-4 py-3 sticky left-0 z-10 bg-white" style="box-shadow: 1px 0 0 var(--line);">{row[0]}</th>
-              <td class="px-4 py-3 text-ink font-semibold" style="background: var(--green-soft);">{row[1]}</td>
-              <td class="px-4 py-3 text-ink-soft">{row[2]}</td>
-              <td class="px-4 py-3 text-ink-soft">{row[3]}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <p class="mt-5 text-[0.95rem] text-ink-soft">{t.cmpMore}<a href="/blog/is-the-duolingo-english-test-right-for-you" class="font-semibold underline underline-offset-2" style="color: var(--green);">{t.cmpMoreLink}</a>{t.cmpMoreNote}</p>
   </div>
 </section>
 
