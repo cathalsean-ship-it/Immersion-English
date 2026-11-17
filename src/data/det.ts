@@ -95,9 +95,8 @@ export const det = {
   /** Typical university requirement. A guide only – each programme sets its own. */
   typicalAsk: '105–125',
   scoresUrl: 'https://englishtest.duolingo.com/prepare/scores',
-  // TODO: replace with the exact title on Lenny's DET trainer certificate once
-  // Lina shares it. Until then this is the wording, on both language versions.
-  trainerTitle: { en: 'Duolingo English Test trainer', bg: 'Обучител за Duolingo English Test' },
+  // Lenny's title as confirmed by Lina (17 Nov 2026), on both language versions.
+  trainerTitle: { en: 'Certified Duolingo English Test (DET) trainer', bg: 'Сертифициран обучител за Duolingo English Test (DET)' },
 };
 
 /** The other tests in the comparison table. Prices are this provider's in Sofia. */
