@@ -70,3 +70,13 @@
   from = "/det-guide"
   to = "/duolingo-english-test?utm_source=social&utm_medium=organic&utm_campaign=det_guide#downloads"
   status = 302
+
+# Short link for the DET comparison post on Facebook (Nov 2026): the table of
+# DET vs IELTS vs Cambridge. Same rules as /det: exact path, 302, and every
+# visit is counted as that organic Facebook post in GA4, so use it there only.
+# #offer lands visitors on the "Prepare with a DET partner" section, which has
+# the "Book through us" partner link.
+[[redirects]]
+  from = "/det-compare"
+  to = "/duolingo-english-test?utm_source=facebook&utm_medium=organic&utm_campaign=det_compare&utm_content=comparison_post#offer"
+  status = 302
