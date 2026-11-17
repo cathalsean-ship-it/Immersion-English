@@ -40,7 +40,7 @@ const t = bg ? {
   minLabel: 'мин',
   parts: [
     { n: `около ${det.format.setupMin} минути`, h: 'Подготовка', note: 'Не се оценява', pts: ['Изтегляте приложението на DET за телефон и проверявате камерата, микрофона и високоговорителите', 'Показвате документ за самоличност със снимка и минавате кратка проверка на лицето', 'Сканирате стаята с телефона и го нагласяте като втора камера'] },
-    { n: `около ${det.format.adaptiveMin} минути`, h: 'Адаптивният тест', note: 'Оценява се', pts: ['Кратки задачи и по четирите умения', 'Стават по-трудни или по-лесни според отговорите ви', 'Броят на въпросите е различен – DET спира, когато е сигурен в резултата ви'] },
+    { n: `около ${det.format.adaptiveMin} минути`, h: 'Адаптивният тест', note: 'Оценява се', pts: ['Кратки задачи и по четирите умения', 'Стават по-трудни или по-лесни според отговорите ви', 'Броят на въпросите е различен – тази част приключва, когато DET е сигурен в резултата ви'] },
     { n: `около ${det.format.samplesMin} минути`, h: 'Писмена и устна проба', note: 'Оценява се и се изпраща на университетите', pts: [`Пишете по зададена тема (${det.format.writingSampleMin} минути)`, `Отговаряте устно на въпрос (${det.format.speakingSampleMin} минути)`, 'Университетите получават и двете заедно с резултата ви, а вие можете да ги прегледате след това'] },
   ],
   qIntro: 'Всяка карта показва типовете задачи за едно умение и приблизително колко от всеки ще получите. Броят леко варира при всяко явяване.',
@@ -143,7 +143,7 @@ const t = bg ? {
   minLabel: 'min',
   parts: [
     { n: `about ${det.format.setupMin} minutes`, h: 'Get set up', note: 'Not scored', pts: ['Download the DET phone app and check your camera, microphone and speakers', 'Show your photo ID and do a quick liveness check', 'Scan your room with your phone, then set it up as a second camera'] },
-    { n: `about ${det.format.adaptiveMin} minutes`, h: 'The adaptive test', note: 'Scored', pts: ['Short questions covering all four skills', 'They get harder or easier depending on your answers', 'The number of questions varies – the DET stops when it\'s confident of your score'] },
+    { n: `about ${det.format.adaptiveMin} minutes`, h: 'The adaptive test', note: 'Scored', pts: ['Short questions covering all four skills', 'They get harder or easier depending on your answers', 'The number of questions varies – this part ends once the DET is confident of your score'] },
     { n: `about ${det.format.samplesMin} minutes`, h: 'Writing and speaking samples', note: 'Scored and shared with universities', pts: [`Write at length on a prompt (${det.format.writingSampleMin} minutes)`, `Answer a question out loud (${det.format.speakingSampleMin} minutes)`, 'Universities receive both with your result, and you can review them afterwards'] },
   ],
   qIntro: 'Each card lists the question types for one skill and roughly how many of each you\'ll get. The numbers vary a little from one sitting to the next.',
@@ -159,7 +159,7 @@ const t = bg ? {
   dlH3: 'Official guides to download',
   dlBtn: 'Download PDF',
   dl: [
-    { h: 'Official Guide for Test Takers 2026', p: 'Duolingo\'s full guide: how the DET works, how to prepare, the rules on the day and how scores work. 28 pages.', href: '/downloads/duolingo-english-test-official-guide-2026.pdf', size: 'PDF · 625 KB' },
+    { h: 'Official Guide for Test Takers 2026', p: 'Duolingo\'s full guide: how the DET works, how to prepare, test-day rules and how scores work. 28 pages.', href: '/downloads/duolingo-english-test-official-guide-2026.pdf', size: 'PDF · 625 KB' },
     { h: 'Test flow at a glance', p: 'Every question type in order – with timings and how many of each to expect. 2 pages.', href: '/downloads/duolingo-english-test-test-flow.pdf', size: 'PDF · 642 KB' },
   ],
   skills: [
@@ -220,7 +220,7 @@ const t = bg ? {
   faqEyebrow: 'Questions', faqH2a: 'Duolingo English Test: ', faqH2b: 'your questions answered',
   faqs: [
     { q: 'Which universities accept the Duolingo English Test?', a: `More than ${det.institutions.replace('+', '')} institutions worldwide. In Ireland, nearly every university accepts it, and there\'s no visa to worry about. In the UK, more than ${det.ukUniversities} universities accept it for degree courses, but for a foundation or pre-sessional course you\'ll need a UKVI-approved test such as IELTS for UKVI. In the US and Canada it\'s widely accepted, including by all eight Ivy League universities. For the Netherlands, talk to us first – several of the big Dutch universities don\'t accept it yet. Always check your programme\'s own admissions page.` },
-    { q: 'Can you trust a test taken at home?', a: 'Yes. The whole session is recorded through your computer, phone camera, microphone, keyboard and mouse. Trained proctors, helped by AI, review every session in several independent rounds before the result is released. Questions come from a vast bank, and the DET cancels itself if you try to open another app.' },
+    { q: 'Can you trust a test taken at home?', a: 'Yes. The whole session is recorded through your computer, phone camera, microphone, keyboard and mouse. Trained proctors, helped by AI, review every session in several independent rounds before the result is released. Questions come from a vast bank, and the DET is cancelled automatically if you try to open another app.' },
     { q: 'What do I need to take it?', a: 'A Windows or Mac computer with a camera, microphone and speakers, the free Duolingo English Test desktop app, a smartphone (it acts as a second camera, recording your screen and keyboard), a quiet room to yourself and your ID.', link: { href: det.appDownloadUrl, label: 'Download the app' } },
     { q: 'Is there an examiner for the speaking part?', a: 'No. You see or hear a prompt on screen, take a moment to think, and answer – just you and a camera. Speaking is still scored as a skill in its own right, and universities can watch your video. But without an examiner across the table, there\'s far less pressure.' },
     { q: 'How is it scored?', a: `You get an overall score from ${det.scoreMin} to ${det.scoreMax}, in 5-point steps, plus separate scores for reading, writing, listening and speaking.` },
