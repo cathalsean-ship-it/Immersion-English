@@ -121,7 +121,7 @@ const t = bg ? {
     { q: 'Мога ли да се явя отново?', a: 'Да. Можете да купите нов изпит по всяко време, но не повече от три в рамките на 30 дни.' },
     { q: 'Колко време е валиден резултатът?', a: `${det.validityYears} години.` },
     { q: 'Колко струва?', a: `${det.priceUsd} щатски долара (около ${det.priceEurApprox} €), еднаква цена навсякъде. Резултатите излизат до ${det.resultsDays} дни, а изпращането им до университети е безплатно.` },
-    { q: 'Трябва ли да го положа веднага след покупката?', a: `Не. Имате ${det.daysToTakeAfterPurchase} дни да го положите.` },
+    { q: 'Трябва ли да го положа веднага след покупката?', a: `Не. Имате ${det.daysToTakeAfterPurchase} дни да го положите. Ако го купите чрез нашия партньорски линк, ще виждаме резултатите ви и ще можем да ви посъветваме за следващата стъпка.`, link: { href: det.inviteUrl, label: 'Купете изпита чрез нашия партньорски линк' } },
   ],
 
   endH2: 'Не сте сигурни кой изпит е подходящ за вас?',
@@ -222,7 +222,7 @@ const t = bg ? {
     { q: 'Can I retake the test?', a: 'Yes. You can buy another test at any time, up to three in any 30-day period.' },
     { q: 'How long are the results valid?', a: `${det.validityYears} years.` },
     { q: 'How much does it cost?', a: `US$${det.priceUsd} (about €${det.priceEurApprox}), the same price everywhere. Results arrive within ${det.resultsDays} days, and sending them to universities is free.` },
-    { q: 'Do I have to take it straight after buying it?', a: `No. You have ${det.daysToTakeAfterPurchase} days to take it.` },
+    { q: 'Do I have to take it straight after buying it?', a: `No. You have ${det.daysToTakeAfterPurchase} days to take it. If you buy it through our partner link, we can see your results and advise you on your next step.`, link: { href: det.inviteUrl, label: 'Buy the test through our partner link' } },
   ],
 
   endH2: 'Not sure which test is right for you?',
