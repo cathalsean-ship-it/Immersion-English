@@ -18,33 +18,8 @@ import EnquiryForm from '../components/EnquiryForm.astro';
       </p>
       <h1 class="text-white mb-4">Get in touch.</h1>
       <p class="text-white/80 text-[1.15rem] max-w-[46ch] leading-[1.55]">
-        Questions about lessons, the Dublin programme, or anything else – we're happy to hear from you.
+        Questions about lessons, the Dublin programme or the Duolingo English Test? Send us a message and we'll reply within one working day – no tests and no paperwork before we've spoken.
       </p>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="section section-tinted">
-    <div class="container-x">
-      <div class="section-head">
-        <span class="eyebrow eyebrow-dot">Getting started</span>
-        <h2>It starts with a chat.</h2>
-        <p>Whether you're joining a course or enquiring about the Dublin Summer Programme, it starts the same way.</p>
-      </div>
-      <div class="max-w-[62ch] mx-auto">
-        <div class="trust-card">
-          <h3>Talk to us about whatever you need</h3>
-          <p>
-            Lessons, the Dublin programme, or just a question: send us a message below and we'll
-            come back within one working day. If it helps, we'll set up a short call. Course
-            details, the registration form and payment instructions follow by email afterwards.
-            No tests, no paperwork before we've spoken.
-          </p>
-          <div class="mt-5">
-            <a href="#booking-form" class="btn btn-primary">Send us a message</a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -53,8 +28,8 @@ import EnquiryForm from '../components/EnquiryForm.astro';
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10 md:gap-16 items-start">
 
-        <!-- LEFT: details -->
-        <div>
+        <!-- LEFT: details (below the form on phones) -->
+        <div class="order-2 md:order-none">
           <span class="eyebrow eyebrow-dot">How to reach us</span>
           <h2 class="mt-4 mb-6 text-[1.9rem]">We reply within one working day.</h2>
 
@@ -84,7 +59,7 @@ import EnquiryForm from '../components/EnquiryForm.astro';
         </div>
 
         <!-- RIGHT: form -->
-        <EnquiryForm lang="en" />
+        <div class="order-1 md:order-none"><EnquiryForm lang="en" /></div>
 
       </div>
     </div>

@@ -32,12 +32,12 @@ import { dublin } from '../../data/dublin';
   <section class="section">
     <div class="container-x">
       <div class="grid grid-cols-1 md:grid-cols-[5fr_7fr] gap-10 md:gap-16 items-start">
-        <div>
+        <div class="order-2 md:order-none">
           <span class="eyebrow eyebrow-dot">Как да се свържете с нас</span>
           <h2 class="mt-4 mb-6 text-[1.9rem]">Отговаряме до един работен ден.</h2>
           <ContactMethods lang="bg" />
         </div>
-        <EnquiryForm lang="bg" />
+        <div class="order-1 md:order-none"><EnquiryForm lang="bg" /></div>
       </div>
     </div>
   </section>
