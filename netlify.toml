@@ -75,6 +75,18 @@
   to = "/duolingo-english-test?utm_source=facebook&utm_medium=organic&utm_campaign=det_launch&utm_content=carousel#offer"
   status = 302
 
+# Instagram version of /det (carousel first comment), so IG visits aren't counted as Facebook.
+[[redirects]]
+  from = "/det-ig"
+  to = "/duolingo-english-test?utm_source=instagram&utm_medium=organic&utm_campaign=det_launch&utm_content=carousel#offer"
+  status = 302
+
+# Story link stickers / swipe-up links (Facebook and Instagram stories).
+[[redirects]]
+  from = "/det-story"
+  to = "/duolingo-english-test?utm_source=meta_stories&utm_medium=organic&utm_campaign=det_launch&utm_content=usp_stories#offer"
+  status = 302
+
 # Short link for social posts about the free DET guides (Nov 2026). Lands on the
 # downloads block of the DET page; counted as organic social in GA4.
 [[redirects]]
