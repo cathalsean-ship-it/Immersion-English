@@ -47,8 +47,8 @@ const teaserTrips = (() => {
   <HeroCarousel
     lessonsEyebrow="English lessons"
     lang="en"
-    dublin={{ eyebrow: `Dublin, Ireland · Summer ${dublin.year}`, h2a: "This isn't a language course.", h2b: "It's an experience.", lead: `English immersion for teenagers aged ${ages.min}–${ages.max} in Dublin, Ireland – ${durationOptionsLabel(durations).replace(/ /g, '\u00a0')} in ${startMonthsLabel(durations)}. A summer they won't stop talking about.`, cta: `Explore Dublin Summer ${dublin.year}`, href: '/dublin-summer-2027', alt: 'Four teenagers chatting on a street in Dublin' }}
-    det={{ eyebrow: 'Duolingo English Test · Official partner', h2a: 'Certify your English', h2b: 'anytime, anywhere.', lead: `The DET is accepted by ${det.institutions} institutions worldwide, costs about €${det.priceEurApprox} and gives results in ${det.resultsDays} days. We’ll help you decide if it’s right for you – then get you ready for it.`, cta: 'Prepare for the DET', href: '/duolingo-english-test', badgeAlt: 'Duolingo English Test – Global Partner Network – Member' }}
+    dublin={{ eyebrow: `Dublin, Ireland · Summer ${dublin.year}`, h2a: "This isn't a language course.", h2b: "It's an experience.", lead: `English immersion for teenagers aged ${ages.min}–${ages.max} in Dublin, Ireland – ${durationOptionsLabel(durations).replace(/ /g, '\u00a0')} in ${startMonthsLabel(durations)}.`, cta: `Explore Dublin Summer ${dublin.year}`, href: '/dublin-summer-2027', alt: 'Four teenagers chatting on a street in Dublin' }}
+    det={{ eyebrow: 'Duolingo English Test · Official partner', h2a: 'Certify your English', h2b: 'anytime, anywhere.', lead: `The Duolingo English Test (DET) is accepted by ${det.institutions} institutions worldwide, costs about €${det.priceEurApprox} and gives results in ${det.resultsDays} days. We’ll help you decide if it’s right for you – then get you ready for it.`, cta: 'Prepare for the DET', href: '/duolingo-english-test', badgeAlt: 'Duolingo English Test – Global Partner Network – Member' }}
   >
     <div slot="lessons" class="max-w-[760px]">
         <h1 class="text-white">
@@ -129,10 +129,10 @@ const teaserTrips = (() => {
           <h2 class="mt-4 mb-2">English. <span style="color: var(--orange-text);">Beyond the classroom.</span></h2>
           </div>
           <p class="text-ink-soft text-[1.08rem] max-w-[56ch] mb-3">
-            Each summer we take a group from Sofia to an international summer centre in Dublin, at the {venue.name} – where English stops being a subject and starts being part of daily life.
+            Each summer we take a group from Sofia to an international summer centre in Dublin, at the {venue.name}, where English is the language of the whole day: in class, at meals and on trips.
           </p>
           <p class="font-heading font-semibold text-[1.18rem] leading-snug mb-0" style="color: var(--orange-text);">
-            Real conversations.<br/>Real confidence.<br/>Students from across Europe.
+            Lessons, trips and new friends<br/>from all over Europe.
           </p>
 
           {/* Key facts panel — soft green ground so it reads as the at-a-glance summary,
@@ -154,12 +154,12 @@ const teaserTrips = (() => {
 
           <ul class="list-none p-0 m-0 flex flex-col gap-3">
             {[
-              { label: 'Your group leaders, all the way', detail: 'one of us flies with every group from Sofia, and both of us stay for the whole programme. A Dubliner who speaks the city’s language, a Bulgarian who speaks yours.' },
+              { label: 'Your group leaders, all the way', detail: 'one of us flies with every group from Sofia, and both of us stay for the whole programme. An Irish teacher who knows Dublin well, and a Bulgarian who speaks your language.' },
               { label: 'Wellbeing on site', detail: 'a welfare manager and medical staff on site 24 hours a day' },
               { label: 'A trusted partner in Dublin', detail: '', detailHtml: 'decades of experience welcoming young people from around the world, and a member of the <a href="https://partner-schools.english.britishcouncil.org/" target="_blank" rel="noopener" class="underline">British Council Partner Schools Network</a>' },
-              { label: 'En-suite campus living, full board', detail: `a true college campus experience at the ${venue.name}, in the heart of Dublin, with all meals included and a Prepaid Meal Card on excursions` },
+              { label: 'En-suite campus living, full board', detail: `rooms on the ${venue.name} campus, ten minutes' walk from the city centre, with all meals included and a prepaid meal card on excursions` },
               { label: `${hoursPerWeek} hours of English a week`, detail: 'classes with qualified English teachers' },
-              { label: 'An international experience', detail: 'students from across Europe, so English becomes the language of connection, cultural exchange and friendship' },
+              { label: 'An international experience', detail: 'students from across Europe, so English is how everyone talks to each other' },
             ].map(({ label, detail, detailHtml }) => (
               <li class="flex items-start gap-3 rounded-lg px-4 py-3" style="background: var(--cream); border: 1px solid var(--line);">
                 <span class="flex-shrink-0 mt-[5px] w-[10px] h-[10px] rounded-full" style="background: var(--orange);"></span>
@@ -187,8 +187,8 @@ const teaserTrips = (() => {
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Included in Dublin Summer {dublin.year}</span>
-        <h2>A full <span style="color: var(--orange-text);">Dublin</span> immersive summer programme.</h2>
-        <p>Daily English lessons, cultural excursions, and real Irish life – with everything included in the price. Transport, entry tickets, accommodation, and full supervision from arrival to departure.</p>
+        <h2>Everything in <span style="color: var(--orange-text);">one price</span>.</h2>
+        <p>English lessons, excursions and evening activities, with transport, entry tickets, accommodation and supervision included from arrival to departure.</p>
       </div>
 
       {/* TODO: awaiting MLA 2027 confirmation — NCI excursion list, catalogue p.44.
@@ -254,18 +254,18 @@ const teaserTrips = (() => {
     <div class="container-x">
       <div class="section-head">
         <span class="eyebrow eyebrow-dot">Why Immersion English</span>
-        <h2>English is <span style="color: var(--orange-text);">learned</span> best when it's used <span style="color: var(--orange-text);">meaningfully</span>.</h2>
+        <h2>Lessons built around <span style="color: var(--orange-text);">speaking</span>.</h2>
         <p>
-          Our lessons are built for adults and teenagers who want to speak – not just study. Whether you're preparing for a job interview, a presentation, an exam, or everyday life in English, we focus on what actually moves you forward.
+          Our lessons are for adults and teenagers who want to speak English, not just study it. Whether you're preparing for a job interview, a presentation, an exam or everyday life, we work on what you actually need.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { title: 'Speaking-first teaching', body: 'Every lesson prioritises active speaking and real communication over passive learning. You leave each class having used English, not just studied it.' },
-          { title: 'A personal approach', body: 'Individual lessons are built entirely around you – your goals, your schedule, your level. No fixed syllabus, no shared pace. Just focused, one-to-one attention from the first session.' },
-          { title: 'Small groups, big attention', body: '8 students per group in our online Speak Up! courses. You get individual feedback, more time to speak, and a teacher who knows your goals.' },
-          { title: 'Experience that counts', body: 'Lenny is a native English speaker from Ireland, Cambridge CELTA-qualified, and the founder of Immersion English – with 10 years teaching General English and Business English at the British Council in Bulgaria, and experience with international summer programmes in Oxford and Cambridge.' },
+          { title: 'Speaking-first teaching', body: 'Most of every lesson is spent speaking, so the English you learn gets used straight away.' },
+          { title: 'A personal approach', body: 'Individual lessons are planned around your goals, your schedule and your level. There\'s no fixed syllabus, and you never have to keep pace with anyone else.' },
+          { title: 'Small groups', body: '8 students per group in our online Speak Up! courses. You get individual feedback, more time to speak, and a teacher who knows your goals.' },
+          { title: 'An experienced teacher', body: 'Lenny is a native English speaker from Ireland, Cambridge CELTA-qualified, and the founder of Immersion English – with 10 years teaching General English and Business English at the British Council in Bulgaria, and experience with international summer programmes in Oxford and Cambridge.' },
         ].map(({ title, body }) => (
           <div class="trust-card">
             <div style="display: flex; flex-direction: column; gap: 14px;">
@@ -315,7 +315,7 @@ const teaserTrips = (() => {
     <div class="container-x">
       <div class="max-w-[540px]">
         <span class="eyebrow eyebrow-dot" style="color: var(--green-on-dark);">Contact</span>
-        <h2 class="mt-4 mb-4"><span class="text-white">Got a </span><span style="color: var(--orange);">question?</span><span class="text-white"> We're here.</span></h2>
+        <h2 class="mt-4 mb-4"><span class="text-white">Got a </span><span style="color: var(--orange);">question?</span></h2>
         <p>Reach out and we'll help you find the right programme or course.</p>
 
         <div class="flex flex-col gap-6 mt-8">
