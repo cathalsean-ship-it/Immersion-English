@@ -89,7 +89,7 @@ const corpBundle = corp.bundles[0];
             { n: '10+', label: 'Years of experience' },
             { n: 'CELTA', label: 'Qualified native teacher' },
             { n: 'British Council', label: 'Background & experience' },
-            { n: '1:1 & Group', label: 'Trainings available' },
+            { n: '1:1 & Group', label: 'Training options' },
           ].map(({ n, label }) => (
             <div style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 20px 24px;">
               <p class="font-heading font-bold text-[1.6rem] text-white leading-none mb-1">{n}</p>
@@ -168,11 +168,11 @@ const corpBundle = corp.bundles[0];
             <h3 class="text-[1.2rem] mb-1">1:1 Communication & English Coaching</h3>
             <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
             <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-4">
-              <strong class="text-ink">Professional communication coaching</strong> for people whose work depends on how they come across in English, built around their role and the situations they face.
+              <strong class="text-ink">Professional communication coaching</strong> for people who represent the company in English, built around their role and the situations they face.
             </p>
             <div class="rounded-lg px-4 py-3 mb-5" style="background: #f0f4ff; border-left: 3px solid var(--blue); min-height: 80px;">
               <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-wide mb-1" style="color: var(--blue);">Best for</p>
-              <p class="text-[0.85rem] text-ink-soft">Senior managers and executives who represent the company externally and need to come across clearly and confidently in English.</p>
+              <p class="text-[0.85rem] text-ink-soft">Senior managers and executives who deal with clients and partners and need to come across clearly and confidently in English.</p>
             </div>
             <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
               {[
@@ -210,16 +210,15 @@ const corpBundle = corp.bundles[0];
             <h3 class="text-[1.2rem] mb-1">Small Group Business English Training</h3>
             <div style="width: 32px; height: 3px; border-radius: 2px; background: var(--orange); margin-bottom: 14px;"></div>
             <p class="text-ink-soft text-[0.95rem] leading-relaxed mb-4">
-              Structured sessions for <strong class="text-ink">teams who work together</strong> – built around your shared context, your industry, and the real situations your people face every day.
+              Structured sessions for <strong class="text-ink">teams who work together</strong>, using examples from your industry and your team's day-to-day work.
             </p>
             <div class="rounded-lg px-4 py-3 mb-5" style="background: #f0f4ff; border-left: 3px solid var(--blue); min-height: 80px;">
               <p class="font-heading font-semibold text-[0.78rem] uppercase tracking-wide mb-1" style="color: var(--blue);">Best for</p>
-              <p class="text-[0.85rem] text-ink-soft">Sales teams, client services, operations – any group with shared communication goals who need to perform in English together.</p>
+              <p class="text-[0.85rem] text-ink-soft">Sales, client services, operations: any team that needs to work well together in English.</p>
             </div>
             <ul class="flex flex-col gap-2 text-[0.88rem] text-ink-soft mb-6 flex-1">
               {[
                 'Up to 6 participants per group',
-                "Built around your team's shared industry and context",
                 'Real workplace scenarios, role plays, and case studies',
                 'Speaking, listening, and professional writing',
                 'Flexible scheduling around working hours',
@@ -273,7 +272,7 @@ const corpBundle = corp.bundles[0];
                 'Native English speaker from Ireland',
                 'Founder of Immersion English',
                 'Teaches every corporate programme personally',
-                'CELTA-qualified',
+                'British Council ESAT-J examiner',
               ].map(item => (
                 <li class="flex items-start gap-2">
                   <span class="w-[6px] h-[6px] rounded-full flex-shrink-0 mt-[5px]" style="background: var(--orange);"></span>
@@ -324,7 +323,7 @@ const corpBundle = corp.bundles[0];
             {[
               { n: '01', text: 'You fill in the enquiry form below' },
               { n: '02', text: 'We schedule a call to discuss your needs' },
-              { n: '03', text: 'We design a programme and finalise with you' },
+              { n: '03', text: 'We plan the programme and agree it with you' },
             ].map(({ n, text }) => (
               <div class="flex gap-4 items-center">
                 <span class="font-heading font-bold text-[1.3rem] leading-none flex-shrink-0" style="color: var(--orange);">{n}</span>
