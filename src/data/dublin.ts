@@ -362,9 +362,9 @@ export const dublin: DublinProgramme = {
   included: [
     '15 hours of English classes a week – with qualified English teachers, in classes placed by level after an online placement test',
     'Progress you can see – placement test, eBooks and student portfolio, plus an end-of-course report, certificate of attendance and graduation ceremony',
-    'Your group leaders, all the way – one of us flies with every group from Sofia, and both of us stay for the whole programme, with return airport transfers included. A Dubliner who speaks the city’s language, a Bulgarian who speaks yours',
+    'Your group leaders, all the way – one of us flies with every group from Sofia, and both of us stay for the whole programme, with return airport transfers included. An Irish teacher who knows Dublin well, and a Bulgarian who speaks your language',
     'Wellbeing on site – a dedicated Welfare Manager and qualified medical staff, on site 24 hours a day, plus student coordinators to keep every day active and friendly',
-    'En-suite rooms on a real college campus – single or twin rooms at the National College of Ireland, in the heart of Dublin',
+    'En-suite rooms on a real college campus – single or twin rooms at the National College of Ireland, ten minutes\' walk from the city centre',
     'Full board – every meal included, plus a prepaid meal card on excursions so they can choose where to eat',
     'Excursions included – the full excursion programme, with transfers, transport and tickets covered',
     'Activities, day and night – art, sports, kitchen and magic by day; karaoke, talent shows, discos and an Irish céilí dance by night',
@@ -423,7 +423,7 @@ export const dublin: DublinProgramme = {
     {
       title: "St Stephen's Green & Temple Bar",
       description:
-        "Relax in one of the city's green lungs, then Temple Bar by night – one of Dublin's oldest and most characterful neighbourhoods.",
+        "A break in St Stephen's Green, then Temple Bar by night, one of Dublin's oldest and liveliest areas.",
       duration: 'half-day',
       image: '/st-stephens-green.webp',
     },
@@ -437,7 +437,7 @@ export const dublin: DublinProgramme = {
     {
       title: 'EPIC Museum',
       description:
-        'The Irish Emigration Museum – step into what it truly means to be Irish. Entrance ticket included.',
+        'The Irish Emigration Museum, which tells the story of the Irish who left and where they went. Entrance ticket included.',
       image: '/epic-museum.webp',
       duration: 'half-day',
     },

@@ -61,7 +61,7 @@ export const det = {
     'Read and Complete': { en: '3–6 passages', bg: '3–6 текста' },
     'Interactive Reading': { en: '2 sets of 6 questions', bg: '2 серии по 6 въпроса' },
     'Listen and Type': { en: '6–9 sentences', bg: '6–9 изречения' },
-    'Interactive Listening': { en: '2 sets of 8–10 questions + a summary', bg: '2 серии по 8–10 въпроса + резюме' },
+    'Interactive Listening': { en: '2 sets of 8–10 questions + a summary (only the Listen and Respond questions adapt)', bg: '2 серии по 8–10 въпроса + резюме (адаптивни са само въпросите Listen and Respond)' },
     'Write About the Photo': { en: '3 photos', bg: '3 снимки' },
     'Interactive Writing': { en: '1 set of 2 questions', bg: '1 серия от 2 въпроса' },
     'Writing Sample': { en: '1 longer answer', bg: '1 по-дълъг отговор' },
@@ -70,8 +70,11 @@ export const det = {
     'Interactive Speaking': { en: '1 set of 6–8 questions', bg: '1 серия от 6–8 въпроса' },
     'Speaking Sample': { en: '1 longer answer', bg: '1 по-дълъг отговор' },
   } as Record<string, { en: string; bg: string }>,
-  /** Question types whose difficulty adapts to the test taker (DET Handbook, Part 1). */
-  adaptiveTypes: ['Read and Select', 'Fill in the Blanks', 'Read and Complete', 'Listen and Type', 'Interactive Reading', 'Interactive Listening', 'Interactive Speaking'],
+  /** Question types whose difficulty adapts to the test taker (DET Handbook, Part 1).
+   *  Interactive Listening is left out: per the DET Scoring Guide for Teachers (2026),
+   *  only its Listen and Respond questions adapt; Listen and Complete and Summarize
+   *  the Conversation do not. Its count line below says so. */
+  adaptiveTypes: ['Read and Select', 'Fill in the Blanks', 'Read and Complete', 'Listen and Type', 'Interactive Reading', 'Interactive Speaking'],
   /**
    * DET score against IELTS Academic and CEFR, from Duolingo's official score
    * comparison chart (englishtest.duolingo.com/prepare/scores, Nov 2026).
